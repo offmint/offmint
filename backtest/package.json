@@ -8,7 +8,8 @@
     "typecheck": "tsc --noEmit",
     "curate": "tsx src/curate.ts",
     "screen": "tsx src/screen.ts",
-    "weekday": "tsx src/weekday.ts"
+    "weekday": "tsx src/weekday.ts",
+    "detect": "tsx src/detect.ts"
   },
   "engines": {
     "node": ">=20"
