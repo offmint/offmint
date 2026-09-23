@@ -14,7 +14,7 @@ OUT = Path(__file__).resolve().parent.parent / "contracts/config/mainnet.json"
 
 def http_json(url, body=None):
     req = urllib.request.Request(url, data=json.dumps(body).encode() if body else None,
-                                 headers={"content-type": "application/json", "user-agent": "offbell/0.1"})
+                                 headers={"content-type": "application/json", "user-agent": "offmint/0.1"})
     for attempt in range(8):
         try:
             with urllib.request.urlopen(req, timeout=60) as r:

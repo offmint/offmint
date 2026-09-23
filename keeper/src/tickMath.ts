@@ -1,4 +1,4 @@
-// Exact bigint port of Uniswap v4 TickMath + Offbell RangeMath (contracts/src/libraries/RangeMath.sol).
+// Exact bigint port of Uniswap v4 TickMath + Offmint RangeMath (contracts/src/libraries/RangeMath.sol).
 // Constants below are generated from contracts/lib/v4-core/src/libraries/TickMath.sol — do not hand-edit.
 
 export const MIN_TICK = -887272;

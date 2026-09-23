@@ -1,0 +1,17 @@
+{
+  "name": "offmint",
+  "private": true,
+  "description": "Offmint — weekend float vault for Robinhood Chain stock tokens (monorepo)",
+  "license": "MIT",
+  "workspaces": ["keeper"],
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build:contracts": "cd contracts && forge build",
+    "test:contracts": "cd contracts && forge test",
+    "test:keeper": "npm run test -w keeper",
+    "typecheck": "npm run typecheck -w keeper",
+    "test": "npm run test:contracts && npm run typecheck && npm run test:keeper",
+    "paper": "npm run paper -w keeper",
+    "replay": "npm run replay -w keeper --"
+  }
+}

@@ -6,7 +6,7 @@ import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import {IStockToken} from "../interfaces/IStockToken.sol";
 
 /// @title MockStockToken — TESTNET / TESTS ONLY
-/// @notice 18-decimal ERC-20 exposing the ERC-8056 bits Offbell reads (`oraclePaused`, `uiMultiplier`).
+/// @notice 18-decimal ERC-20 exposing the ERC-8056 bits Offmint reads (`oraclePaused`, `uiMultiplier`).
 contract MockStockToken is ERC20, Ownable, IStockToken {
     bool public oraclePaused;
     uint256 public uiMultiplier = 1e18;

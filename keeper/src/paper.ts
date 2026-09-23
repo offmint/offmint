@@ -1,4 +1,4 @@
-// Offbell paper mode (SPEC §8): read-only on Robinhood mainnet, no key.
+// Offmint paper mode (SPEC §8): read-only on Robinhood mainnet, no key.
 //   npm run paper                      live: every 60s, advance this weekend's hypothetical epoch per ticker
 //   npm run replay -- 2026-09-19       replay the weekend window containing / following that date
 //   options: --tickers TSLA,NVDA  --out ../web/public/paper
