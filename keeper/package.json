@@ -10,7 +10,8 @@
     "bot": "tsx src/bot.ts",
     "stress": "tsx src/stress.ts",
     "service": "tsx src/service.ts",
-    "api-oracle": "tsx src/apiOracle.ts"
+    "api-oracle": "tsx src/apiOracle.ts",
+    "detect": "tsx detector/detector.ts"
   },
   "engines": {
     "node": ">=20"

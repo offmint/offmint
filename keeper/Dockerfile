@@ -2,7 +2,7 @@
 # config file = keeper/railway.json, volume at /data.
 FROM node:22-slim
 WORKDIR /app
-ENV NODE_ENV=production PAPER_OUT_DIR=/data/paper LOG_DIR=/data/logs
+ENV NODE_ENV=production PAPER_OUT_DIR=/data/paper LOG_DIR=/data/logs BASKET_PATH=/data/basket.json DETECTOR_CACHE=/data/.detector-cache.json
 # workspaces: install deps first for layer caching (tsx is needed at runtime, so dev deps are kept)
 COPY package.json package-lock.json ./
 COPY keeper/package.json keeper/package.json

@@ -2,33 +2,14 @@
   "sessionOffset": 0,
   "params": {},
   "premiumTable": {},
-  "tickers": [
-    "TSLA",
-    "NVDA",
-    "AAPL",
-    "AMZN",
-    "META",
-    "MSFT",
-    "GOOGL",
-    "COIN",
-    "PLTR",
-    "MSTR",
-    "AMD",
-    "SPY",
-    "QQQ",
-    "HIMS"
-  ],
+  "tickers": [],
   "skip": [],
-  "tickerSource": "curation",
+  "tickerSource": "basket",
   "controls": [
     "NVDA",
-    "SPY"
+    "SPY",
+    "HIMS"
   ],
-  "watch": [
-    "AMC",
-    "BB",
-    "GLXY",
-    "NU",
-    "RCAT"
-  ]
+  "basketPath": "contracts/config/basket.json",
+  "_note": "No fixed ticker list (CLAUDE.md/SPEC \u00a73.7): the universe is the live Detector basket + labelled controls."
 }

@@ -22,13 +22,27 @@ interface KeeperConfig {
   params: Partial<Params>;
   premiumTable: Record<string, number>;
   /** "curation": use contracts/config/tickers.json (M0.5); "static": use `tickers` below. */
-  tickerSource?: "curation" | "static";
+  tickerSource?: "basket" | "curation" | "static";
   /** Liquid names paper-traded alongside the curated list so results show both regimes honestly. */
   controls?: string[];
-  /** Explicit watch list (e.g. new listings in the no-feed window: BB, AMC, RCAT), always paper-traded. */
-  watch?: string[];
+  /** "basket": paper-trade every Detector basket member (SPEC §3.7) plus `controls`. No fixed ticker lists. */
+  basketPath?: string;
   tickers: string[];
   skip: string[];
+}
+
+/** TickerCfg from a Detector basket member (no Chainlink feed: P0 from the pool / API). */
+export function basketCfg(m: any): TickerCfg {
+  return {
+    ticker: m.ticker,
+    stock: m.token,
+    feed: null,
+    feedDecimals: 8,
+    stockIsCurrency0: m.pool.stockIsCurrency0,
+    poolId: m.pool.poolId,
+    fee: m.pool.poolKey.fee,
+    tickSpacing: m.pool.poolKey.tickSpacing,
+  };
 }
 
 /**
@@ -52,13 +66,19 @@ function loadConfig(only?: string[]): { cfgs: TickerCfg[]; params: Params; kc: K
   const facts = JSON.parse(readFileSync(join(ROOT, "contracts/config/mainnet.json"), "utf8"));
   const params = { ...DEFAULT_PARAMS, ...kc.params };
   let universe = kc.tickers;
-  const curPath = join(ROOT, "contracts/config/tickers.json");
-  if (kc.tickerSource === "curation" && existsSync(curPath)) {
-    universe = [...new Set([...curatedUniverse(JSON.parse(readFileSync(curPath, "utf8")), kc.controls ?? []), ...(kc.watch ?? [])])].sort();
-    log({ event: "universe", source: "curation", tickers: universe });
-  }
   const cfgs: TickerCfg[] = [];
+  const basketPath = process.env.BASKET_PATH ?? join(ROOT, kc.basketPath ?? "contracts/config/basket.json");
+  if (kc.tickerSource === "basket" && existsSync(basketPath)) {
+    // SPEC §3.7: the universe is the live Detector basket (+ controls), never a hand-maintained list
+    const basket = JSON.parse(readFileSync(basketPath, "utf8"));
+    for (const m of basket.members ?? []) cfgs.push(basketCfg(m));
+    universe = [...new Set([...cfgs.map((c) => c.ticker), ...(kc.controls ?? [])])].sort();
+    log({ event: "universe", source: "basket", members: cfgs.length, controls: kc.controls ?? [], generatedAt: basket.generatedAt });
+  } else if (kc.tickerSource === "curation" && existsSync(join(ROOT, "contracts/config/tickers.json"))) {
+    universe = curatedUniverse(JSON.parse(readFileSync(join(ROOT, "contracts/config/tickers.json"), "utf8")), kc.controls ?? []);
+  }
   for (const t of only ?? universe) {
+    if (cfgs.some((c) => c.ticker === t)) continue; // basket member, already configured
     const s = facts.stocks[t];
     if (!s?.bestNoHookPool) {
       log({ level: "warn", msg: "no config / no hook-free pool; run scripts/discover_pools.py", ticker: t });
@@ -76,7 +96,7 @@ function loadConfig(only?: string[]): { cfgs: TickerCfg[]; params: Params; kc: K
       tickSpacing: s.bestNoHookPool.poolKey.tickSpacing,
     });
   }
-  return { cfgs, params, kc };
+  return { cfgs: only ? cfgs.filter((c) => only.includes(c.ticker)) : cfgs, params, kc };
 }
 
 // ------------------------------------------------------------------ logging / output
@@ -223,7 +243,9 @@ async function replay(dateArg: string, only: string[] | undefined, outDir: strin
 }
 
 export async function live(only: string[] | undefined, outDir: string) {
-  const { cfgs, params, kc } = loadConfig(only);
+  // the basket is reloaded at every new weekend window, so new listings join without a restart
+  let { cfgs, params, kc } = loadConfig(only);
+  let loadedFor = 0;
   const c = makeClient();
   const ctx: Ctx = { c, params, hist: new Map() };
   const sims = new Map<string, EpochSim>();
@@ -233,6 +255,11 @@ export async function live(only: string[] | undefined, outDir: string) {
       const now = Number((await c.getBlock()).timestamp);
       const ws = clockStart(now, kc.sessionOffset);
       const we = ws + 2 * DAY;
+      if (ws !== loadedFor) {
+        ({ cfgs, params, kc } = loadConfig(only));
+        loadedFor = ws;
+        log({ event: "universe-loaded", window: iso(ws), tickers: cfgs.map((x) => x.ticker) });
+      }
       await refreshHist(ctx, cfgs, ws - params.maxPreCloseAge - DAY);
       for (const cfg of cfgs) {
         let sim = sims.get(cfg.ticker);

@@ -26,7 +26,9 @@ lint_on_build = false
 #  unsafe-typecast          - every cast is bound-checked (TickMath range, uint64 timestamps, signed deltas checked)
 #  unused-return            - ignored slot0 fields / feesAccrued (already inside callerDelta) / settle() paid amount
 #  reentrancy-no-eth/events - every mutator is nonReentrant; unlockCallback is PoolManager-only; tokens have no hooks
-exclude_lints = ["block-timestamp", "divide-before-multiply", "unsafe-typecast", "unused-return", "reentrancy-no-eth", "reentrancy-events"]
+#  require-revert-in-loop   - price guards (zero / out-of-range sqrtPrice) run per ladder rung; a bad price must abort
+#                             the whole arm rather than silently skip a rung
+exclude_lints = ["block-timestamp", "divide-before-multiply", "unsafe-typecast", "unused-return", "reentrancy-no-eth", "reentrancy-events", "require-revert-in-loop"]
 ignore = ["test/**/*", "script/**/*"]
 
 [invariant]

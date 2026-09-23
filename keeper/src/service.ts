@@ -6,6 +6,7 @@ import { createServer } from "node:http";
 import { existsSync, mkdirSync, readFileSync } from "node:fs";
 import { join, resolve, basename } from "node:path";
 import { live, liveStatus } from "./paper.js";
+import { runDetector } from "../detector/detector.js";
 
 const OUT = resolve(process.env.PAPER_OUT_DIR ?? "/data/paper");
 const PORT = Number(process.env.PORT ?? 8080);
@@ -44,6 +45,7 @@ createServer((req, res) => {
       ticks: liveStatus.ticks,
       restarts,
       lastTick: liveStatus.lastTick,
+      detector: (globalThis as any).__detectorStatus,
       uptimeSec: Math.round((Date.now() - started) / 1000),
     });
   }
@@ -57,4 +59,21 @@ createServer((req, res) => {
   json(res, 404, { error: "not found", routes: ["/health", "/paper/index.json", "/paper/<date>-<TICKER>.json"] });
 }).listen(PORT, () => console.log(JSON.stringify({ event: "service-start", port: PORT, out: OUT })));
 
-void runForever();
+// Detector (SPEC §3.7): refresh the basket at start and every 6h; a failed run keeps the last good basket.
+const detectorStatus = { lastRunAt: 0, members: 0, error: null as string | null };
+async function detectOnce() {
+  try {
+    const doc = await runDetector();
+    Object.assign(detectorStatus, { lastRunAt: Date.now(), members: doc.counts.members, error: null });
+    console.log(JSON.stringify({ event: "basket", ...doc.counts, members: doc.members.map((m: any) => m.ticker) }));
+  } catch (e) {
+    detectorStatus.error = String(e).slice(0, 300);
+    console.error(JSON.stringify({ event: "detector-failed", msg: detectorStatus.error }));
+  }
+}
+(globalThis as any).__detectorStatus = detectorStatus;
+void (async () => {
+  await detectOnce();
+  setInterval(detectOnce, 6 * 3600_000);
+  void runForever();
+})();

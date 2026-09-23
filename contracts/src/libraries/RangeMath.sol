@@ -20,6 +20,27 @@ library RangeMath {
     error PriceOutOfRange();
     error RangeInvalid();
 
+    /// @notice One ladder rung (SPEC §5.0): sells `shareBps` of the deployed STOCK over
+    ///         [P0 * (1 + premiumBps), P0 * (1 + premiumBps + widthBps)].
+    struct Rung {
+        uint16 premiumBps;
+        uint16 widthBps;
+        uint16 shareBps;
+    }
+
+    /// @notice A computed rung position. `amount` is the STOCK allotted to it (0 when the rung was skipped).
+    struct RungPosition {
+        int24 tickLower;
+        int24 tickUpper;
+        uint128 liquidity;
+        uint256 amount;
+    }
+
+    uint256 internal constant MAX_RUNGS = 4;
+    uint256 internal constant MIN_PREMIUM_BPS = 500;
+
+    error LadderInvalid();
+
     struct Decimals {
         uint8 feed; // Chainlink feed decimals (read from the feed, usually 8)
         uint8 stock; // STOCK token decimals (18)
@@ -162,5 +183,86 @@ library RangeMath {
         uint256 capUsd = FullMath.mulDiv(freshPrice, BPS + slippageBps, BPS);
         // S0: lower sqrt = lower USD -> floor. S1: higher sqrt = lower USD -> ceil.
         return usdToSqrtPriceX96(capUsd, d, stockIs0, !stockIs0);
+    }
+
+    // ------------------------------------------------------------------ ladder (SPEC §5.0)
+
+    /// @notice The default 4-rung ladder: 25% at +8-12%, 30% at +15-22%, 25% at +25-35%, 20% at +40-55%.
+    function defaultLadder() public pure returns (Rung[] memory r) {
+        r = new Rung[](4);
+        r[0] = Rung(800, 400, 2500);
+        r[1] = Rung(1500, 700, 3000);
+        r[2] = Rung(2500, 1000, 2500);
+        r[3] = Rung(4000, 1500, 2000);
+    }
+
+    /// @notice Reverts unless 1-4 rungs, shares sum to 10000, every premium >= 5%, every width > 0, and the USD bands
+    ///         are ascending and non-overlapping (premium_i + width_i <= premium_{i+1}).
+    function validateLadder(Rung[] memory r) public pure {
+        bool bad = r.length == 0 || r.length > MAX_RUNGS;
+        uint256 shares = 0;
+        for (uint256 i = 0; i < r.length && !bad; i++) {
+            bad = r[i].premiumBps < MIN_PREMIUM_BPS || r[i].widthBps == 0 || r[i].shareBps == 0
+                || (i > 0 && uint256(r[i - 1].premiumBps) + r[i - 1].widthBps > r[i].premiumBps);
+            shares += r[i].shareBps;
+        }
+        if (bad || shares != BPS) revert LadderInvalid();
+    }
+
+    /// @notice Single-sided positions for every rung (SPEC §5.0 + §5.2 per rung). Each rung gets
+    ///         amountStock * shareBps / 10000. A rung the pool has already traded through (it would be two-sided or
+    ///         empty after the away-from-price snap) is skipped with amount 0: deploy less, never more.
+    ///         Ticks never overlap between rungs: S0 rung[i].tickUpper <= rung[i+1].tickLower; S1 mirrored.
+    /// @dev Public (linked) so the vault stays under the EIP-170 size limit.
+    function ladderPositions(
+        uint256 p0,
+        Rung[] memory rungs,
+        int24 curTick,
+        int24 spacing,
+        Decimals memory d,
+        bool stockIsCurrency0,
+        uint256 amountStock
+    ) public pure returns (RungPosition[] memory out) {
+        validateLadder(rungs);
+        out = new RungPosition[](rungs.length);
+        bool any = false;
+        for (uint256 i = 0; i < rungs.length; i++) {
+            uint256 amt = amountStock * rungs[i].shareBps / BPS;
+            if (amt == 0) continue;
+            (bool ok, int24 tl, int24 tu) = _tryRange(p0, rungs[i], curTick, spacing, d, stockIsCurrency0);
+            if (!ok) continue;
+            uint160 sa = TickMath.getSqrtPriceAtTick(tl);
+            uint160 sb = TickMath.getSqrtPriceAtTick(tu);
+            uint128 liq = stockIsCurrency0
+                ? LiquidityAmounts.getLiquidityForAmount0(sa, sb, amt)
+                : LiquidityAmounts.getLiquidityForAmount1(sa, sb, amt);
+            if (liq == 0) continue;
+            out[i] = RungPosition(tl, tu, liq, amt);
+            any = true;
+        }
+        if (!any) revert RangeInvalid();
+    }
+
+    /// @dev sellRange without reverting (a crossed rung is skipped, not fatal).
+    function _tryRange(uint256 p0, Rung memory r, int24 cur, int24 spacing, Decimals memory d, bool s0)
+        private
+        pure
+        returns (bool ok, int24 tl, int24 tu)
+    {
+        uint256 lUsd = FullMath.mulDivRoundingUp(p0, BPS + r.premiumBps, BPS);
+        uint256 uUsd = FullMath.mulDiv(p0, BPS + r.premiumBps + r.widthBps, BPS);
+        if (s0) {
+            uint160 sL = usdToSqrtPriceX96(lUsd, d, true, true);
+            int24 t = TickMath.getTickAtSqrtPrice(sL);
+            if (TickMath.getSqrtPriceAtTick(t) < sL) t += 1;
+            tl = ceilToSpacing(t, spacing);
+            tu = floorToSpacing(usdToTick(uUsd, d, true), spacing);
+            if (tl <= cur) tl = ceilToSpacing(cur + 1, spacing);
+        } else {
+            tu = floorToSpacing(usdToTick(lUsd, d, false), spacing);
+            tl = ceilToSpacing(TickMath.getTickAtSqrtPrice(usdToSqrtPriceX96(uUsd, d, false, true)), spacing);
+            if (tu > cur) tu = floorToSpacing(cur, spacing);
+        }
+        ok = tu > tl && tl >= TickMath.minUsableTick(spacing) && tu <= TickMath.maxUsableTick(spacing);
     }
 }
