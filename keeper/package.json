@@ -9,7 +9,8 @@
     "typecheck": "tsc --noEmit",
     "bot": "tsx src/bot.ts",
     "stress": "tsx src/stress.ts",
-    "service": "tsx src/service.ts"
+    "service": "tsx src/service.ts",
+    "api-oracle": "tsx src/apiOracle.ts"
   },
   "engines": {
     "node": ">=20"
