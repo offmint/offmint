@@ -45,3 +45,4 @@
   cleared) → Monday → bot settle → +8.45 STOCK / 100. CI runs it.
 - Demo findings: the vault fixes `windowEnd` at arm (`closeWeekend` can't shorten an armed window), and a thin seed pool
   sends the buyback to PENDING_BUYBACK (correct cap behaviour). The demo pool is seeded with L=1e18.
+- Testnet deploy (chain 46630): 19/19 txs succeeded (0.00013 ETH gas), 8/8 contracts verified on Blockscout. Vault `0xc3413BCcc6BAf64430FF0f0f56B9C2B1D9850bdA`; pool initialised at $28.84 with L=1e18 on the chain's own PoolManager. `contracts/deployments/46630.json` + broadcast log committed.

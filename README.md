@@ -18,7 +18,7 @@ the stock back after reopen. Depositors end the weekend with more stock per shar
 | M2 | `SessionClock`, `ManualSessionClock`, `RangeMath` + unit/fuzz tests | ✅ done |
 | M3 | `OffmintVault` + unlock-callback flows + integration + invariant tests | ✅ done (incl. approved `lock()`) |
 | M4 | Mainnet fork test + backtest JSON | ✅ fork green on TSLA (S0) + HIMS (S1); HIMS backtest +14.7% STOCK vs HODL ex-fees |
-| M5 | Web `/vault` `/backtest` `/paper`, testnet deploy, DemoBuyer | 🚧 backend done: Deploy + DemoBuyer scripts, keeper bot, local E2E green (+8.45 STOCK / 100); testnet broadcast awaiting approval; web pending |
+| M5 | Web `/vault` `/backtest` `/paper`, testnet deploy, DemoBuyer | 🚧 backend done: Deploy + DemoBuyer scripts, keeper bot, local E2E green (+8.45 STOCK / 100); **testnet deployed + verified**; demo weekend next; web pending |
 | M6 | README, diagram, video, deck | ⏳ |
 
 ## Backtest: HIMS, 28–31 Aug 2026
@@ -33,6 +33,23 @@ The pool peaked at $124.70 on Sunday night and was back at $32.53 when settle op
 | `lock()` at Mon 00:00 − 15 min | $51.24 | +14.7% |
 
 A live vault would have dampened the spike, so real fills would differ. LP-fee estimates are reported separately in the JSON.
+
+## Deployed: Robinhood Chain testnet (46630)
+
+All contracts are source-verified on the explorer. Pool: hook-free mHIMS/USDG, fee 0.30%, tick spacing 60, initialised at
+$28.84 (stock = currency0). The vault is OPEN with a 100 mHIMS demo deposit.
+
+| Contract | Address |
+|---|---|
+| OffmintVault (omHIMS) | [`0xc3413BCcc6BAf64430FF0f0f56B9C2B1D9850bdA`](https://explorer.testnet.chain.robinhood.com/address/0xc3413BCcc6BAf64430FF0f0f56B9C2B1D9850bdA) |
+| Mock HIMS (mHIMS) | [`0x615f0560B449599e8f4825B76B495713f0fbC67B`](https://explorer.testnet.chain.robinhood.com/address/0x615f0560B449599e8f4825B76B495713f0fbC67B) |
+| Mock USDG (6 dec) | [`0x9ADB65C487dCC0B6D61b4110B45c07098f7A4006`](https://explorer.testnet.chain.robinhood.com/address/0x9ADB65C487dCC0B6D61b4110B45c07098f7A4006) |
+| MockFeed | [`0xB1427c1699306e612868EBCc92A2Ec3Ff9d414f6`](https://explorer.testnet.chain.robinhood.com/address/0xB1427c1699306e612868EBCc92A2Ec3Ff9d414f6) |
+| ManualSessionClock | [`0x2dc88AdB3D66Dc754F97CAE59Cb3a01E97eA109d`](https://explorer.testnet.chain.robinhood.com/address/0x2dc88AdB3D66Dc754F97CAE59Cb3a01E97eA109d) |
+| v4 PoolManager (chain's own) | [`0x8366a39CC670B4001A1121B8F6A443A643e40951`](https://explorer.testnet.chain.robinhood.com/address/0x8366a39CC670B4001A1121B8F6A443A643e40951) |
+| PoolSwapTest (demo buyer) | [`0xb0C6BE3C382e93a4d83Ae4648A91BcE3907B0edA`](https://explorer.testnet.chain.robinhood.com/address/0xb0C6BE3C382e93a4d83Ae4648A91BcE3907B0edA) |
+| PoolModifyLiquidityTest (seed LP) | [`0x6fA6b29869e5044A091E115B5Cb9f2dF737FE53e`](https://explorer.testnet.chain.robinhood.com/address/0x6fA6b29869e5044A091E115B5Cb9f2dF737FE53e) |
+| RangeMath (linked library) | [`0x20f2776d12dc69daabe0b61f731aae53b3a39d3a`](https://explorer.testnet.chain.robinhood.com/address/0x20f2776d12dc69daabe0b61f731aae53b3a39d3a) |
 
 ## Demo (testnet)
 
