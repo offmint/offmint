@@ -61,14 +61,28 @@ export async function feedHistory(c: Client, feed: Address, since: number): Prom
 /** Last round with updatedAt <= t (undefined if none). */
 export const roundAt = (h: Round[], t: number) => h.filter((r) => r.updatedAt <= t).at(-1);
 
-export async function slot0(c: Client, poolId: Hex): Promise<{ sqrtPriceX96: bigint; tick: number; block: bigint }> {
+export async function slot0(
+  c: Pick<Client, "getBlockNumber" | "readContract">,
+  poolId: Hex,
+  pm: Address = POOL_MANAGER,
+): Promise<{ sqrtPriceX96: bigint; tick: number; block: bigint }> {
   const slot = keccak256(encodeAbiParameters([{ type: "bytes32" }, { type: "uint256" }], [poolId, POOLS_SLOT]));
   const block = await c.getBlockNumber();
-  const word = BigInt(await c.readContract({ address: POOL_MANAGER, abi: pmAbi, functionName: "extsload", args: [slot], blockNumber: block }));
+  const word = BigInt(await c.readContract({ address: pm, abi: pmAbi, functionName: "extsload", args: [slot], blockNumber: block }));
   const sqrtPriceX96 = word & ((1n << 160n) - 1n);
   let tick = Number((word >> 160n) & 0xffffffn);
   if (tick >= 1 << 23) tick -= 1 << 24;
   return { sqrtPriceX96, tick, block };
+}
+
+/** v4 PoolId = keccak256(abi.encode(PoolKey)). */
+export function poolIdOf(k: { currency0: Address; currency1: Address; fee: number; tickSpacing: number; hooks: Address }): Hex {
+  return keccak256(
+    encodeAbiParameters(
+      [{ type: "address" }, { type: "address" }, { type: "uint24" }, { type: "int24" }, { type: "address" }],
+      [k.currency0, k.currency1, k.fee, k.tickSpacing, k.hooks],
+    ),
+  );
 }
 
 /** Greatest block with timestamp <= ts (binary search). */

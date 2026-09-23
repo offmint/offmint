@@ -4,6 +4,7 @@ pragma solidity ^0.8.26;
 import {FullMath} from "@uniswap/v4-core/src/libraries/FullMath.sol";
 import {TickMath} from "@uniswap/v4-core/src/libraries/TickMath.sol";
 import {Math} from "@openzeppelin/contracts/utils/math/Math.sol";
+import {LiquidityAmounts} from "v4-periphery/src/libraries/LiquidityAmounts.sol";
 
 /// @title RangeMath
 /// @notice Converts Chainlink USD prices into Uniswap v4 sqrtPriceX96 / ticks for a STOCK/USDG pool,
@@ -105,7 +106,7 @@ library RangeMath {
         int24 spacing,
         Decimals memory d,
         bool stockIs0
-    ) internal pure returns (int24 tickLower, int24 tickUpper) {
+    ) public pure returns (int24 tickLower, int24 tickUpper) {
         uint256 lUsd = FullMath.mulDivRoundingUp(p0, BPS + premiumBps, BPS);
         uint256 uUsd = FullMath.mulDiv(p0, BPS + premiumBps + widthBps, BPS);
 
@@ -130,11 +131,31 @@ library RangeMath {
         }
     }
 
+    /// @notice Sell range plus the liquidity that holds exactly `amountStock` in it (single-sided).
+    /// @dev Public (linked) so the vault stays under the EIP-170 size limit.
+    function sellPosition(
+        uint256 p0,
+        uint256 premiumBps,
+        uint256 widthBps,
+        int24 curTick,
+        int24 spacing,
+        Decimals memory d,
+        bool stockIs0,
+        uint256 amountStock
+    ) public pure returns (int24 tickLower, int24 tickUpper, uint128 liquidity) {
+        (tickLower, tickUpper) = sellRange(p0, premiumBps, widthBps, curTick, spacing, d, stockIs0);
+        uint160 sa = TickMath.getSqrtPriceAtTick(tickLower);
+        uint160 sb = TickMath.getSqrtPriceAtTick(tickUpper);
+        liquidity = stockIs0
+            ? LiquidityAmounts.getLiquidityForAmount0(sa, sb, amountStock)
+            : LiquidityAmounts.getLiquidityForAmount1(sa, sb, amountStock);
+    }
+
     /// @notice Buyback price limit: freshPrice * (1 + slippageBps) as a sqrtPriceX96 (SPEC §5.3).
     /// @dev S0 buys currency0 (zeroForOne=false, price rises to the cap). S1 buys currency1 (zeroForOne=true,
     ///      price falls to the cap). Rounded so the cap never exceeds the USD limit.
     function buybackSqrtCap(uint256 freshPrice, uint256 slippageBps, Decimals memory d, bool stockIs0)
-        internal
+        public
         pure
         returns (uint160)
     {

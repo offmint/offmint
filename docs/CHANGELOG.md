@@ -35,3 +35,13 @@
   The script now merges instead of overwriting.
 - Lint: `forge fmt` applied; `forge lint src` is clean with documented exclusions; CI runs fmt --check + lint.
   Zero keeper rejected.
+- **Size fix:** `OffmintVault` was 26.5 KB, over EIP-170, and couldn't deploy. `RangeMath.sellPosition` / `sellRange` /
+  `buybackSqrtCap` are now public linked-library functions, and `_fullySold` compares ticks. The vault is now 23.3 KB. CI runs
+  `forge build --sizes`, which fails on oversize (verified).
+- `settle` / `retryBuyback` return the STOCK bought, so the keeper can simulate them and set `minStockOut` to 99.5% of the quote.
+- M5 backend: `script/Deploy.s.sol` (testnet stack, deploys PoolManager only if none exists), `script/DemoBuyer.s.sol`
+  (demo market controls), keeper bot `keeper/src/bot.ts` with a pure `decide()` (unit-tested), ABI generated from forge
+  artifacts (CI checks for drift), and `scripts/e2e-local.sh`. Fresh anvil → deploy → bot arm → squeeze → lock (band
+  cleared) → Monday → bot settle → +8.45 STOCK / 100. CI runs it.
+- Demo findings: the vault fixes `windowEnd` at arm (`closeWeekend` can't shorten an armed window), and a thin seed pool
+  sends the buyback to PENDING_BUYBACK (correct cap behaviour). The demo pool is seeded with L=1e18.

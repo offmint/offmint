@@ -14,7 +14,8 @@ jobs:
       - uses: foundry-rs/foundry-toolchain@v1
       - run: forge fmt --check
         working-directory: contracts
-      - run: forge build
+      - name: forge build --sizes (fails if any contract exceeds EIP-170)
+        run: forge build --sizes
         working-directory: contracts
       - name: forge lint (src; fails on any non-excluded finding)
         working-directory: contracts
@@ -23,6 +24,8 @@ jobs:
           if echo "$out" | grep -qE '^(error|warning|note)\['; then exit 1; fi
       - run: forge test
         working-directory: contracts
+      - name: keeper ABI matches contracts
+        run: node scripts/export-abi.mjs && git diff --exit-code keeper/src/abi
 
   keeper:
     runs-on: ubuntu-latest
@@ -35,3 +38,18 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm run test:keeper
+
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+      - uses: foundry-rs/foundry-toolchain@v1
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: local anvil weekend (deploy -> arm -> squeeze -> lock -> settle)
+        run: scripts/e2e-local.sh

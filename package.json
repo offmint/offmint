@@ -20,6 +20,8 @@
     "test": "npm run test:contracts && npm run typecheck && npm run test:keeper",
     "paper": "npm run paper -w keeper",
     "replay": "npm run replay -w keeper --",
-    "backtest": "npm run replay -w backtest --"
+    "backtest": "npm run replay -w backtest --",
+    "abi": "cd contracts && forge build && cd .. && node scripts/export-abi.mjs",
+    "e2e": "scripts/e2e-local.sh"
   }
 }

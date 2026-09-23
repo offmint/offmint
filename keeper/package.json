@@ -6,7 +6,8 @@
     "paper": "tsx src/paper.ts",
     "replay": "tsx src/paper.ts --replay",
     "test": "tsx --test test/*.test.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "bot": "tsx src/bot.ts"
   },
   "engines": {
     "node": ">=20"

@@ -16,8 +16,6 @@ import {Currency} from "@uniswap/v4-core/src/types/Currency.sol";
 import {BalanceDelta} from "@uniswap/v4-core/src/types/BalanceDelta.sol";
 import {StateLibrary} from "@uniswap/v4-core/src/libraries/StateLibrary.sol";
 import {TransientStateLibrary} from "@uniswap/v4-core/src/libraries/TransientStateLibrary.sol";
-import {TickMath} from "@uniswap/v4-core/src/libraries/TickMath.sol";
-import {LiquidityAmounts} from "v4-periphery/src/libraries/LiquidityAmounts.sol";
 
 import {AggregatorV3Interface} from "./interfaces/AggregatorV3Interface.sol";
 import {IStockToken} from "./interfaces/IStockToken.sol";
@@ -312,13 +310,9 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
     {
         if (amount == 0) revert ParamOutOfBounds();
         (, int24 cur,,) = poolManager.getSlot0(_poolKey.toId());
-        (ps.tickLower, ps.tickUpper) =
-            RangeMath.sellRange(p0, premiumBps, widthBps, cur, _poolKey.tickSpacing, _decimals(), stockIsCurrency0);
-        uint160 sa = TickMath.getSqrtPriceAtTick(ps.tickLower);
-        uint160 sb = TickMath.getSqrtPriceAtTick(ps.tickUpper);
-        ps.liquidity = stockIsCurrency0
-            ? LiquidityAmounts.getLiquidityForAmount0(sa, sb, amount)
-            : LiquidityAmounts.getLiquidityForAmount1(sa, sb, amount);
+        (ps.tickLower, ps.tickUpper, ps.liquidity) = RangeMath.sellPosition(
+            p0, premiumBps, widthBps, cur, _poolKey.tickSpacing, _decimals(), stockIsCurrency0, amount
+        );
         if (ps.liquidity == 0) revert RangeInvalid();
         ps.salt = bytes32(epochCount + 1);
     }
@@ -342,7 +336,8 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
     /// @notice After reopen with a fresh oracle: remove the position (if still live) and buy STOCK back with all USDG,
     ///         capped at freshPrice * (1 + buybackSlippageBps). Keeper-only until `windowEnd + settleDelay + settleGrace`.
     /// @param minStockOut Keeper's floor on STOCK bought; ignored for permissionless calls (the cap still applies).
-    function settle(uint256 minStockOut) external nonReentrant {
+    /// @return bought STOCK bought back in this call (lets the keeper simulate before sending).
+    function settle(uint256 minStockOut) external nonReentrant returns (uint256 bought) {
         if (state != State.ARMED) revert WrongState();
         Epoch storage e = _epochs[epochCount];
         Params memory p = params;
@@ -357,7 +352,9 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
 
         bool wasLocked = e.locked;
         bytes memory res = poolManager.unlock(abi.encode(Action.SETTLE, abi.encode(wasLocked, _pos(e), sqrtCap)));
-        (uint256 stockBack, uint256 usdgBack, uint256 bought) = abi.decode(res, (uint256, uint256, uint256));
+        uint256 stockBack;
+        uint256 usdgBack;
+        (stockBack, usdgBack, bought) = abi.decode(res, (uint256, uint256, uint256));
         if (bought < minStockOut) revert SlippageMinOut();
         if (!wasLocked) {
             e.locked = true;
@@ -377,7 +374,8 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
     /// @notice Retry the buyback after a capped (partial) settle. Anyone, with a fresh oracle.
     ///         Callable in PENDING_BUYBACK (within RETRY_WINDOW) and in OPEN_MIXED (to restore OPEN).
     /// @param minStockOut Caller's floor on STOCK bought.
-    function retryBuyback(uint256 minStockOut) external nonReentrant {
+    /// @return bought STOCK bought back in this call.
+    function retryBuyback(uint256 minStockOut) external nonReentrant returns (uint256 bought) {
         Epoch storage e = _epochs[epochCount];
         if (state == State.PENDING_BUYBACK) {
             if (block.timestamp > uint256(e.settledAt) + RETRY_WINDOW) revert WrongState();
@@ -386,7 +384,7 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
         }
         uint160 sqrtCap = _freshCap(e.windowEnd, params);
         bytes memory res = poolManager.unlock(abi.encode(Action.RETRY, abi.encode(sqrtCap)));
-        uint256 bought = abi.decode(res, (uint256));
+        bought = abi.decode(res, (uint256));
         if (bought < minStockOut) revert SlippageMinOut();
         e.stockBought += bought;
         _afterBuyback(e);
@@ -596,11 +594,11 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
         state = State.OPEN;
     }
 
+    /// @dev Position is 100% USDG once the pool trades beyond the sell side of the range.
+    ///      Tick form: S0 sqrtP >= sqrt(tickUpper) <=> tick >= tickUpper; S1 uses tick < tickLower (strictly beyond).
     function _fullySold(Epoch storage e) internal view returns (bool) {
-        (uint160 sp,,,) = poolManager.getSlot0(_poolKey.toId());
-        return stockIsCurrency0
-            ? sp >= TickMath.getSqrtPriceAtTick(e.tickUpper)
-            : sp <= TickMath.getSqrtPriceAtTick(e.tickLower);
+        (, int24 cur,,) = poolManager.getSlot0(_poolKey.toId());
+        return stockIsCurrency0 ? cur >= e.tickUpper : cur < e.tickLower;
     }
 
     /// @dev Burn the whole position; returns (stock, usdg) credited (principal + fees).

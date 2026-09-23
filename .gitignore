@@ -26,3 +26,11 @@ keeper/logs/
 .DS_Store
 .vscode/
 .idea/
+
+# local anvil deployments (testnet/mainnet deployment files ARE committed)
+contracts/deployments/31337.json
+
+# forge script preprocessor scratch
+contracts/foundry-pp/
+# local anvil broadcasts (testnet/mainnet broadcast logs ARE committed as deploy evidence)
+contracts/broadcast/**/31337/
