@@ -1,0 +1,21 @@
+{
+ "updatedAt": "2026-09-23T04:10:55Z",
+ "entries": [
+  {
+   "file": "2026-08-29-HIMS.json",
+   "ticker": "HIMS",
+   "window": "2026-08-29T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 1.1407078092502079e+51,
+   "vsHodlPct": 39.7258
+  },
+  {
+   "file": "2026-08-29-TSLA.json",
+   "ticker": "TSLA",
+   "window": "2026-08-29T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 1.52,
+   "vsHodlPct": 0
+  }
+ ]
+}

@@ -40,3 +40,18 @@ Regenerate mainnet with `python3 scripts/discover_pools.py [TICKER ...]` (needs 
 - StateView / Quoter addresses on Robinhood mainnet. Offchain reads use `extsload` (works).
 - Robinhood testnet settlement-layer migration (Sepolia retirement notice).
 - Stock Token jurisdiction list (needed before any mainnet deposit).
+
+## Mechanism finding from the HIMS 28–31 Aug replay (keeper replay, real Swap logs)
+
+`npm run replay -- 2026-08-29 --tickers HIMS` (P0 from the pool, $29.83, because there's no HIMS feed; band $32.92–$47.62; 100 HIMS):
+
+| Variant | What it does | Avg sell | Net HIMS vs HODL, ex-fees | incl. estimated LP fees |
+|---|---|---|---|---|
+| **spec** (SPEC §6.6 as written) | hold the range until `settle` at windowEnd + 1h | — | **+0.00%** | +39.7% |
+| lockOnFill | pull the position the first time price clears the top of the band | $41.73 | **+18.57%** | +23.9% |
+| lockPreOpen | pull the position at windowEnd − 15 min | $54.18 | **+18.57%** | +50.7% |
+
+- The spike ran **Sun 30 Aug 21:00 UTC → Mon 00:59 UTC** (pool peak ~$56–71, plus one print where a swap drained the pool to MIN_TICK). By settle (Mon 01:00) the price was back to $32.53.
+- A range order **un-sells as the price falls back through it**. Under the spec, the vault buys all its stock back *inside the band*, at premium prices, before `settle` can remove the position. The premium sale disappears, and only LP fees remain.
+- The LP-fee column assumes our liquidity doesn't change the price path. In-band pool liquidity was thin, so that assumption is weak. Treat fees as noisy upside, not the thesis. The ex-fee column is the robust number.
+- **Proposed fix (needs approval, since it changes SPEC §6.2/§6.6):** add a permissionless `lock()` during ARMED that removes the position without swapping, allowed (a) any time the pool price is beyond the top of the band (position is 100% USDG), and (b) by anyone from `windowEnd − lockLead`. `settle` then only does the buyback. Removing liquidity needs no oracle and doesn't trade. The remaining surface is someone selling STOCK into the band just before a scheduled lock, which is the same exposure the spec's settle already has.

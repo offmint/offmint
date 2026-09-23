@@ -23,6 +23,10 @@ def http_json(url, body=None):
             if e.code != 429 or attempt == 7:
                 raise
             time.sleep(2 ** attempt)
+        except urllib.error.URLError:
+            if attempt == 7:
+                raise
+            time.sleep(2 ** attempt)
 
 def rpc(method, params):
     r = http_json(RPC, {"jsonrpc": "2.0", "id": 1, "method": method, "params": params})

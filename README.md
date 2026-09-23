@@ -14,7 +14,7 @@ the stock back after reopen. Depositors end the weekend with more stock per shar
 | Milestone | Scope | Status |
 |---|---|---|
 | M0 | Scaffold, on-chain fact checks (`docs/FACTS.md`, `contracts/config/*.json`) | ✅ done |
-| M1 | Keeper paper mode (read-only mainnet) + `/monitor` | 🚧 in progress |
+| M1 | Keeper paper mode (read-only mainnet) + `/monitor` | 🚧 paper/replay engine done; `/monitor` pending |
 | M2 | `SessionClock`, `ManualSessionClock`, `RangeMath` + unit/fuzz tests | ✅ done (21 tests) |
 | M3 | `OffbellVault` + unlock-callback flows + integration tests | ⏳ |
 | M4 | Mainnet fork test + backtest JSON | ⏳ |
@@ -37,6 +37,9 @@ docs/       FACTS.md, CHANGELOG.md
 ```bash
 cd contracts && forge build && forge test -vvv
 python3 scripts/discover_pools.py TSLA NVDA     # refresh contracts/config/mainnet.json
+cd keeper && npm i && npm test
+npm run paper                                    # live paper mode (read-only mainnet, no key)
+npm run replay -- 2026-08-29 --tickers HIMS      # replay a past weekend -> web/public/paper/replay/
 ```
 
 ## License

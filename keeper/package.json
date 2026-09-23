@@ -1,0 +1,22 @@
+{
+  "name": "offbell-keeper",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "paper": "tsx src/paper.ts",
+    "replay": "tsx src/paper.ts --replay",
+    "test": "tsx --test test/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "viem": "^2.56.8"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

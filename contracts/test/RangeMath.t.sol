@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.26;
 
-import {Test} from "forge-std/Test.sol";
+import {Test, console2} from "forge-std/Test.sol";
 import {TickMath} from "@uniswap/v4-core/src/libraries/TickMath.sol";
 import {RangeMath} from "../src/libraries/RangeMath.sol";
 
@@ -176,5 +176,13 @@ contract RangeMathTest is Test {
         uint256 capUsd = RangeMath.sqrtPriceX96ToUsd(cap, d, s0);
         assertLe(capUsd, fresh * (10_000 + slip) / 10_000 + 1);
         assertApproxEqRel(capUsd, fresh * (10_000 + slip) / 10_000, 1e12); // within 1e-6
+    }
+}
+
+contract RangeMathVectors is Test {
+    function test_vectors() public pure {
+        RangeMath.Decimals memory d = RangeMath.Decimals({feed: 8, stock: 18, usd: 6});
+        console2.log("VEC_T30_S0", RangeMath.usdToTick(30e8, d, true));
+        console2.log("VEC_T30_S1", RangeMath.usdToTick(30e8, d, false));
     }
 }
