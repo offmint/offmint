@@ -1,0 +1,350 @@
+{
+  "chainId": 4663,
+  "poolManager": "0x8366a39cc670b4001a1121b8f6a443a643e40951",
+  "usdg": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+  "usdgDecimals": 6,
+  "sequencerUptimeFeed": "UNVERIFIED - not listed in Chainlink directory for robinhood-mainnet (checked 2026-09-23)",
+  "sources": [
+    "https://api.robinhood.com/rhj/assets",
+    "https://reference-data-directory.vercel.app/feeds-robinhood-mainnet.json",
+    "PoolManager Initialize logs"
+  ],
+  "stocks": {
+    "TSLA": {
+      "token": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+      "decimals": 18,
+      "name": "Tesla \u2022 Robinhood Token",
+      "currentMultiplier": "1.000000000000000000",
+      "pendingMultiplier": "",
+      "feed": "0x4A1166a659A55625345e9515b32adECea5547C38",
+      "feedDecimals": 8,
+      "feedHeartbeat": 86400,
+      "stockIsCurrency0": true,
+      "bestNoHookPool": {
+        "poolId": "0x8517f8071ae5b831b738052f12125e8e3d6c158b78728aa44ce3b25e5104d32e",
+        "poolKey": {
+          "currency0": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+          "currency1": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+          "fee": 3000,
+          "tickSpacing": 60,
+          "hooks": "0x0000000000000000000000000000000000000000"
+        },
+        "initBlock": 2670479,
+        "sqrtPriceX96": "1542994189288154826292677",
+        "tick": -216939,
+        "liquidity": "524860568438398154"
+      },
+      "pools": [
+        {
+          "poolId": "0x8517f8071ae5b831b738052f12125e8e3d6c158b78728aa44ce3b25e5104d32e",
+          "poolKey": {
+            "currency0": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+            "currency1": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+            "fee": 3000,
+            "tickSpacing": 60,
+            "hooks": "0x0000000000000000000000000000000000000000"
+          },
+          "initBlock": 2670479,
+          "sqrtPriceX96": "1542994189288154826292677",
+          "tick": -216939,
+          "liquidity": "524860568438398154"
+        },
+        {
+          "poolId": "0x36ac732af427fd9958b9039a0dcb2ac0da0e45e959b4429d53e0b29b6cb2aeba",
+          "poolKey": {
+            "currency0": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+            "currency1": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+            "fee": 8388608,
+            "tickSpacing": 1,
+            "hooks": "0xa4e6f5500e88691fdcb289aa0e99067481434880"
+          },
+          "initBlock": 68704721,
+          "sqrtPriceX96": "1542295794300206779258593",
+          "tick": -216948,
+          "liquidity": "114270486671251610"
+        },
+        {
+          "poolId": "0xd5effce87036cd858146c0c15fa825c231a9de1843200ca108e431e431331e8e",
+          "poolKey": {
+            "currency0": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+            "currency1": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+            "fee": 8388608,
+            "tickSpacing": 10,
+            "hooks": "0x67d86050d22d574df046f3d90f722045f714e080"
+          },
+          "initBlock": 41258986,
+          "sqrtPriceX96": "1542373852998234037990737",
+          "tick": -216947,
+          "liquidity": "76633280872863617"
+        },
+        {
+          "poolId": "0xff5e30e68690402ce94cd9466deab56ecc2014f8e2827c1a88fa6d77e9e90392",
+          "poolKey": {
+            "currency0": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+            "currency1": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+            "fee": 8388608,
+            "tickSpacing": 60,
+            "hooks": "0x64e9ae1066c47ac4a3cc0a5bd7b135908590e088"
+          },
+          "initBlock": 45485831,
+          "sqrtPriceX96": "1542499510202566586504425",
+          "tick": -216945,
+          "liquidity": "1429264421712267"
+        },
+        {
+          "poolId": "0x34cb7ca02e0809f9519fc46d3e903ea9199c50ee7160a832e4689c2e5d536506",
+          "poolKey": {
+            "currency0": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+            "currency1": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+            "fee": 30000,
+            "tickSpacing": 300,
+            "hooks": "0x0000000000000000000000000000000000000000"
+          },
+          "initBlock": 41481716,
+          "sqrtPriceX96": "1500248180089558475881674",
+          "tick": -217501,
+          "liquidity": "24777533131313"
+        },
+        {
+          "poolId": "0xbccda7f9d83db6a032a4f45d07a888b24b5f59cc81a44974dcb80ad526d34f7d",
+          "poolKey": {
+            "currency0": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+            "currency1": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+            "fee": 2950,
+            "tickSpacing": 30,
+            "hooks": "0x0000000000000000000000000000000000000000"
+          },
+          "initBlock": 54987806,
+          "sqrtPriceX96": "1540301629047684571012856",
+          "tick": -216974,
+          "liquidity": "20612798403079"
+        },
+        {
+          "poolId": "0x7e2a3c1cdd7fe245f44d5905db72e52baad1b1ab5233709a46c2f61f8e5a84a4",
+          "poolKey": {
+            "currency0": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+            "currency1": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+            "fee": 770000,
+            "tickSpacing": 1,
+            "hooks": "0x0000000000000000000000000000000000000000"
+          },
+          "initBlock": 63762997,
+          "sqrtPriceX96": "1505809504984154987550395",
+          "tick": -217426,
+          "liquidity": "10559481604205"
+        },
+        {
+          "poolId": "0xe1661fa620662bc622091a44fe1dc12fe2b46ced2fe50016b468a952afd9f955",
+          "poolKey": {
+            "currency0": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+            "currency1": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+            "fee": 500000,
+            "tickSpacing": 10000,
+            "hooks": "0x0000000000000000000000000000000000000000"
+          },
+          "initBlock": 1583116,
+          "sqrtPriceX96": "1572046821615579902650310",
+          "tick": -216565,
+          "liquidity": "6406021365429"
+        },
+        {
+          "poolId": "0xa3fd0cd5fc476278f3a17e56d357fdd2113ecd473e6e3bcfae489481d2c5a2a1",
+          "poolKey": {
+            "currency0": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+            "currency1": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+            "fee": 800000,
+            "tickSpacing": 8000,
+            "hooks": "0x0000000000000000000000000000000000000000"
+          },
+          "initBlock": 21495452,
+          "sqrtPriceX96": "1383248717151919561914004",
+          "tick": -219124,
+          "liquidity": "5705685693920"
+        },
+        {
+          "poolId": "0x6725b4d6dbdbce3752e1305cda158c81e8c8cee3e57d0145bc119bd084c183f8",
+          "poolKey": {
+            "currency0": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+            "currency1": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+            "fee": 900000,
+            "tickSpacing": 18000,
+            "hooks": "0x0000000000000000000000000000000000000000"
+          },
+          "initBlock": 987370,
+          "sqrtPriceX96": "1411803666040158495267776",
+          "tick": -218716,
+          "liquidity": "4852353009890"
+        }
+      ],
+      "poolCount": 80
+    },
+    "HIMS": {
+      "token": "0xCceE82fE024c36fA15E1005edE3E9e4787e23D09",
+      "decimals": 18,
+      "name": "Hims & Hers Health \u2022 Robinhood Token",
+      "currentMultiplier": "1.000000000000000000",
+      "pendingMultiplier": "",
+      "feed": null,
+      "feedDecimals": null,
+      "feedHeartbeat": null,
+      "stockIsCurrency0": false,
+      "bestNoHookPool": {
+        "poolId": "0x68d4f28f1432e0ad714658853edb2e6b0b1ac4060355ff3d169fea656b1d1c52",
+        "poolKey": {
+          "currency0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+          "currency1": "0xCceE82fE024c36fA15E1005edE3E9e4787e23D09",
+          "fee": 9000,
+          "tickSpacing": 90,
+          "hooks": "0x0000000000000000000000000000000000000000"
+        },
+        "initBlock": 41738721,
+        "sqrtPriceX96": "14337470538036589221470152607916317",
+        "tick": 242133,
+        "liquidity": "390992767301332328"
+      },
+      "pools": [
+        {
+          "poolId": "0x68d4f28f1432e0ad714658853edb2e6b0b1ac4060355ff3d169fea656b1d1c52",
+          "poolKey": {
+            "currency0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+            "currency1": "0xCceE82fE024c36fA15E1005edE3E9e4787e23D09",
+            "fee": 9000,
+            "tickSpacing": 90,
+            "hooks": "0x0000000000000000000000000000000000000000"
+          },
+          "initBlock": 41738721,
+          "sqrtPriceX96": "14337470538036589221470152607916317",
+          "tick": 242133,
+          "liquidity": "390992767301332328"
+        },
+        {
+          "poolId": "0xa7b26f2f7d0fdddbbe626845948f92eb006ff7df732ffc40d59d560453db8c2a",
+          "poolKey": {
+            "currency0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+            "currency1": "0xCceE82fE024c36fA15E1005edE3E9e4787e23D09",
+            "fee": 2000,
+            "tickSpacing": 20,
+            "hooks": "0x0000000000000000000000000000000000000000"
+          },
+          "initBlock": 53319850,
+          "sqrtPriceX96": "14363804232397619877037364388323509",
+          "tick": 242169,
+          "liquidity": "64734744423691516"
+        },
+        {
+          "poolId": "0x16dce5f6a91bd93c2f5f05866dbb780afbe47d2776ea8dcdbb758efff57248a7",
+          "poolKey": {
+            "currency0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+            "currency1": "0xCceE82fE024c36fA15E1005edE3E9e4787e23D09",
+            "fee": 8388608,
+            "tickSpacing": 60,
+            "hooks": "0x5eb87f69be00df39981622fd60a8de4b7837e080"
+          },
+          "initBlock": 57726593,
+          "sqrtPriceX96": "14363805095962753984835164087336378",
+          "tick": 242169,
+          "liquidity": "55494316967419835"
+        },
+        {
+          "poolId": "0x5133dd69760c5fd2ad1d6109dc6429e0a7d6edf2975f81d90afa786a2f99dc56",
+          "poolKey": {
+            "currency0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+            "currency1": "0xCceE82fE024c36fA15E1005edE3E9e4787e23D09",
+            "fee": 3000,
+            "tickSpacing": 30,
+            "hooks": "0x0000000000000000000000000000000000000000"
+          },
+          "initBlock": 50994750,
+          "sqrtPriceX96": "14364485333462403233493999976277725",
+          "tick": 242170,
+          "liquidity": "11589889214785571"
+        },
+        {
+          "poolId": "0x357c92ce338be3ec9d363140acc16d44bc651bb0669527aafce0ba6f0a634758",
+          "poolKey": {
+            "currency0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+            "currency1": "0xCceE82fE024c36fA15E1005edE3E9e4787e23D09",
+            "fee": 8300,
+            "tickSpacing": 83,
+            "hooks": "0x0000000000000000000000000000000000000000"
+          },
+          "initBlock": 50664326,
+          "sqrtPriceX96": "14321575582192481771281603659170831",
+          "tick": 242111,
+          "liquidity": "1909233459558988"
+        },
+        {
+          "poolId": "0x46db6e8b4201981058d7ada2d343a0b9e2e5ab5e08af127ff9d0861a14d85d0e",
+          "poolKey": {
+            "currency0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+            "currency1": "0xCceE82fE024c36fA15E1005edE3E9e4787e23D09",
+            "fee": 8690,
+            "tickSpacing": 87,
+            "hooks": "0x0000000000000000000000000000000000000000"
+          },
+          "initBlock": 70137763,
+          "sqrtPriceX96": "14360995565765250251272046162510192",
+          "tick": 242166,
+          "liquidity": "1347179048527959"
+        },
+        {
+          "poolId": "0xf7e00e8adfeaafbb70b504156adc5dc6343481a3d52efa2dc49a885accaa3058",
+          "poolKey": {
+            "currency0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+            "currency1": "0xCceE82fE024c36fA15E1005edE3E9e4787e23D09",
+            "fee": 40000,
+            "tickSpacing": 400,
+            "hooks": "0x0000000000000000000000000000000000000000"
+          },
+          "initBlock": 53256702,
+          "sqrtPriceX96": "14403981579284168917538971240052789",
+          "tick": 242225,
+          "liquidity": "450257544002914"
+        },
+        {
+          "poolId": "0x1dfdaa8faca16dfa314979495fc95431569e821598a4fae42c18c8843f560fe1",
+          "poolKey": {
+            "currency0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+            "currency1": "0xCceE82fE024c36fA15E1005edE3E9e4787e23D09",
+            "fee": 8588,
+            "tickSpacing": 86,
+            "hooks": "0x0000000000000000000000000000000000000000"
+          },
+          "initBlock": 49181559,
+          "sqrtPriceX96": "14297530039757951137938836437478971",
+          "tick": 242077,
+          "liquidity": "327076507484812"
+        },
+        {
+          "poolId": "0x9c722fcf0d2de472d1374c2dcb09aad1549d439c6085989570aa1b9c202ae6ed",
+          "poolKey": {
+            "currency0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+            "currency1": "0xCceE82fE024c36fA15E1005edE3E9e4787e23D09",
+            "fee": 700000,
+            "tickSpacing": 7000,
+            "hooks": "0x0000000000000000000000000000000000000000"
+          },
+          "initBlock": 36078619,
+          "sqrtPriceX96": "16547066028627686592314729769310687",
+          "tick": 245000,
+          "liquidity": "104426667775068"
+        },
+        {
+          "poolId": "0x57f023cad3be87ea3b3d5913aa05e7abc7c5551cc96666a92d1b4fe687e0aa9d",
+          "poolKey": {
+            "currency0": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+            "currency1": "0xCceE82fE024c36fA15E1005edE3E9e4787e23D09",
+            "fee": 770000,
+            "tickSpacing": 1,
+            "hooks": "0x0000000000000000000000000000000000000000"
+          },
+          "initBlock": 63850569,
+          "sqrtPriceX96": "14915694719126563077223678881675956",
+          "tick": 242924,
+          "liquidity": "37651825631052"
+        }
+      ],
+      "poolCount": 115
+    }
+  }
+}

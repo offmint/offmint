@@ -1,0 +1,28 @@
+# Private working docs (kept local, not committed)
+CLAUDE.md
+docs/SPEC.md
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Foundry
+contracts/out/
+contracts/cache/
+contracts/broadcast/*/*/dry-run/
+contracts/broadcast/**/run-latest.json
+
+# Node
+node_modules/
+.next/
+dist/
+*.tsbuildinfo
+
+# Keeper runtime
+keeper/logs/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

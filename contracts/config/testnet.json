@@ -1,0 +1,25 @@
+{
+  "chainId": 46630,
+  "checkedAt": "2026-09-23",
+  "poolManager": {
+    "address": "0x8366a39cc670b4001a1121b8f6a443a643e40951",
+    "status": "VERIFIED - deployed; runtime bytecode keccak identical to mainnet (0xbd3881180b547f5fe817545743cfb4343e96b1bc6640dcd70c106b0066e95626)"
+  },
+  "weth": { "address": "0x7943e237c7F95DA44E0301572D358911207852Fa", "status": "VERIFIED - has code" },
+  "usdg": {
+    "address": "UNVERIFIED",
+    "candidate": "0x000000E08bC9a3Eb9dabE6D8fF855dd48CC4F34f",
+    "candidateNotes": "Explorer-verified 'USD Gold (testnet)', symbol USDG, but decimals() = 18 (mainnet USDG = 6). Not confirmed as the faucet token. Demo uses MockUSDG (6 dec) unless the faucet tx says otherwise.",
+    "decimals": null
+  },
+  "stocks": {
+    "TSLA": {
+      "address": "UNVERIFIED",
+      "candidate": "0xC9f9c86933092BbbfFF3CCb4b105A4A94bf3Bd4E",
+      "candidateNotes": "Explorer-verified 'Tesla' TSLA, 18 dec, uiMultiplier()=1e18, but oraclePaused() REVERTS (not implemented). The vault's oracle check would revert against it -> demo uses MockStockToken.",
+      "decimals": 18
+    }
+  },
+  "chainlinkFeeds": "NONE on testnet (per CLAUDE.md) -> MockFeed",
+  "sequencerUptimeFeed": null
+}
