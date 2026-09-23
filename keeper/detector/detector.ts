@@ -7,7 +7,9 @@
 //              failing this is recorded as rejected and never enters the basket.
 // 3. Classify  no live Chainlink feed AND pool age <= vulnerableWindowDays -> basket member (PushPriceReference path).
 //              A live feed -> not a member ("graduated"; majors don't squeeze).
-// 4. Floor     USDG needed to push the pool +10% must be >= minDepthUsd, or there is nothing real to arm a ladder into.
+// 4. Floor     pool TVL (current active liquidity within 0.5x-2x of price) must be >= minTvlUsd ($10k default, SPEC §3.7),
+//              or there is not enough real liquidity to arm a ladder against. (Spec asks for an average TVL; without
+//              archive state this is the current snapshot.)
 // 5. Output    basket.json (BASKET_PATH, default contracts/config/basket.json) with members AND exclusions + reasons.
 // Deterministic automation, no model involved.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -16,7 +18,7 @@ import { fileURLToPath } from "node:url";
 import { encodeAbiParameters, keccak256, parseAbi, type Address, type Hex } from "viem";
 import { makeClient, blockTime, POOL_MANAGER, type Client } from "../src/chain.js";
 import { sqrtPriceX96ToUsd } from "../src/rangeMath.js";
-import { stockDepthWithin10, usdToPush10 } from "../src/depth.js";
+import { stockDepthWithin10, tvlUsdEstimate, usdToPush10 } from "../src/depth.js";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 export const USDG = "0x5fc5360d0400a0fd4f2af552add042d716f1d168";
@@ -26,9 +28,10 @@ const D8 = { feed: 8, stock: 18, usd: 6 };
 
 export interface DetectorConfig {
   vulnerableWindowDays: number;
-  minDepthUsd: number;
+  minTvlUsd: number;
 }
-export const DEFAULTS: DetectorConfig = { vulnerableWindowDays: 30, minDepthUsd: 2_000 };
+/** SPEC §3.7 starting defaults (tunable from ongoing data, not derived constants). */
+export const DEFAULTS: DetectorConfig = { vulnerableWindowDays: 30, minTvlUsd: 10_000 };
 
 export interface Candidate {
   ticker: string;
@@ -38,7 +41,8 @@ export interface Candidate {
   onchainDecimals: number | null;
   hasFeed: boolean;
   poolAgeDays: number | null;
-  depthUsdTo10: number | null;
+  tvlUsd: number | null;
+  depthUsdTo10: number | null; // informational
 }
 
 export type Verdict = { member: true; path: "push-price" } | { member: false; reason: string };
@@ -51,7 +55,7 @@ export function judge(c: Candidate, cfg: DetectorConfig): Verdict {
   if (c.hasFeed) return { member: false, reason: "graduated: live Chainlink feed (majors don't squeeze)" };
   if (c.poolAgeDays === null) return { member: false, reason: "no hook-free STOCK/USDG pool" };
   if (c.poolAgeDays > cfg.vulnerableWindowDays) return { member: false, reason: `pool ${c.poolAgeDays}d old > ${cfg.vulnerableWindowDays}d window` };
-  if ((c.depthUsdTo10 ?? 0) < cfg.minDepthUsd) return { member: false, reason: `depth $${Math.round(c.depthUsdTo10 ?? 0)} to +10% < $${cfg.minDepthUsd} floor` };
+  if ((c.tvlUsd ?? 0) < cfg.minTvlUsd) return { member: false, reason: `TVL ~$${Math.round(c.tvlUsd ?? 0)} < $${cfg.minTvlUsd} floor` };
   return { member: true, path: "push-price" };
 }
 
@@ -202,6 +206,7 @@ export async function runDetector(cfg: DetectorConfig = DEFAULTS, out = process.
       onchainDecimals: meta.get(t)?.decimals ?? null,
       hasFeed: !!feedBy.get(ticker),
       poolAgeDays: best ? Math.round(((now - best.p.createdAt) / 86_400) * 10) / 10 : null,
+      tvlUsd: best && priceUsd ? Math.round(tvlUsdEstimate(best.s.L, priceUsd, best.p.stockIs0)) : null,
       depthUsdTo10: best && priceUsd ? Math.round(usdToPush10(best.s.L, priceUsd, best.p.stockIs0)) : null,
     };
     const v = judge(cand, cfg);
@@ -235,7 +240,8 @@ export async function runDetector(cfg: DetectorConfig = DEFAULTS, out = process.
   members.sort((x, y) => (x.poolAgeDays ?? 0) - (y.poolAgeDays ?? 0));
   const doc = {
     generatedAt: new Date().toISOString(),
-    rule: `member = in canonical registry AND onchain symbol/decimals match AND no Chainlink feed AND deepest hook-free USDG pool <= ${cfg.vulnerableWindowDays}d old AND >= $${cfg.minDepthUsd} to push +10%`,
+    rule: `member = in canonical registry AND onchain symbol/decimals match AND no Chainlink feed AND deepest hook-free USDG pool <= ${cfg.vulnerableWindowDays}d old AND pool TVL >= $${cfg.minTvlUsd} (current active-liquidity snapshot)`,
+    graduation: "a member that gains a Chainlink feed leaves the basket here, but MetaVault only switches its oracle at the next SELECT, never while a BasketPosition is open (SPEC §3.7)",
     config: cfg,
     counts: { members: members.length, excluded: excluded.length, nonRegistryUsdgPairsIgnored: copycats },
     members,

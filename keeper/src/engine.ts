@@ -248,10 +248,13 @@ export class EpochSim {
         const usdgLeft = canBuy ? 0 : usdg;
         const pnl = stockBack + stockBought - q;
         const feeStock = pnl > 0 && canBuy ? (pnl * params.perfFeeBps) / 10_000 : 0;
-        const net = stockBack + stockBought - feeStock;
+        // net STOCK-equivalent: pending USDG marked at the fresh price
+        const net = stockBack + stockBought - feeStock + (canBuy ? 0 : usdgLeft / freshUsd);
         // same epoch with LP fees stripped out (fees are the least robust part of the estimate)
         const [s0x, u0x] = cfg.stockIsCurrency0 ? [p.amount0, p.amount1] : [p.amount1, p.amount0];
-        const exStock = Number(s0x) / 1e18 + (canBuy ? Number(u0x) / 1e6 / buyPx : 0);
+        // PENDING_BUYBACK: the vault still holds USDG. Mark it to market at the fresh price (it is not a loss);
+        // the old metric valued it at 0 and showed -100% on capped weekends.
+        const exStock = Number(s0x) / 1e18 + Number(u0x) / 1e6 / (canBuy ? buyPx : freshUsd);
         const exPnl = exStock - q;
         const exNet = exStock - (exPnl > 0 && canBuy ? (exPnl * params.perfFeeBps) / 10_000 : 0);
         return {

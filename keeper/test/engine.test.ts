@@ -79,6 +79,8 @@ for (const s0 of [true, false]) {
     assert.equal(r.state, "PENDING_BUYBACK");
     assert.ok(r.usdgLeft > 0);
     assert.equal(r.stockBought, 0);
+    assert.ok(r.vsHodlPctExFees > -100, "pending USDG is marked to market, not valued at zero");
+    assert.ok(Math.abs(r.netStock - (r.stockBack + r.usdgLeft / 45)) < 1e-3, "matches within output rounding");
   });
 
   test(`${o}: fee estimate capped by share of active liquidity`, () => {

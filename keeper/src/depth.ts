@@ -1,5 +1,5 @@
 // Quote-agnostic pool depth helpers (tested in backtest/test/screen.test.ts and keeper/test/detector.test.ts).
-import { usdToSqrtPriceX96 } from "./rangeMath.js";
+import { usdToSqrtPriceX96, amountsForLiquidity } from "./rangeMath.js";
 
 const Q96 = 1n << 96n;
 const D8 = { feed: 8, stock: 18, usd: 6 };
@@ -35,4 +35,19 @@ export function usdToPush10(L: bigint, p: number, stockIs0: boolean): number {
   const [lo, hi] = a < b ? [a, b] : [b, a];
   const raw = stockIs0 ? (L * (hi - lo)) >> 96n : ((L << 96n) * (hi - lo)) / lo / hi;
   return Number(raw) / 1e6;
+}
+
+/**
+ * Pool TVL estimate in USD: both tokens held by the CURRENT active liquidity L between p/2 and 2p, valued at p.
+ * (SPEC §3.7 asks for an average TVL; without archive state this is the current snapshot, labelled as such.)
+ */
+export function tvlUsdEstimate(L: bigint, p: number, stockIs0: boolean): number {
+  if (L === 0n || !(p > 0)) return 0;
+  const s = usdToSqrtPriceX96(BigInt(Math.round(p * 1e8)), D8, stockIs0);
+  const a = usdToSqrtPriceX96(BigInt(Math.round((p / 2) * 1e8)), D8, stockIs0);
+  const b = usdToSqrtPriceX96(BigInt(Math.round(p * 2 * 1e8)), D8, stockIs0);
+  const [lo, hi] = a < b ? [a, b] : [b, a];
+  const { amount0, amount1 } = amountsForLiquidity(L, s, lo, hi);
+  const [stockRaw, usdgRaw] = stockIs0 ? [amount0, amount1] : [amount1, amount0];
+  return (Number(stockRaw) / 1e18) * p + Number(usdgRaw) / 1e6;
 }

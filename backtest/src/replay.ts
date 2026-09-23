@@ -19,7 +19,12 @@ async function main() {
   if (!id || !events[id]) throw new Error(`usage: --event <${Object.keys(events).join("|")}>`);
   const ev = events[id];
   const facts = JSON.parse(readFileSync(join(ROOT, "contracts/config/mainnet.json"), "utf8"));
-  const s = facts.stocks[ev.ticker];
+  let s = facts.stocks[ev.ticker];
+  if (!s?.bestNoHookPool) {
+    const basket = JSON.parse(readFileSync(join(ROOT, "contracts/config/basket.json"), "utf8"));
+    const m = [...basket.members, ...basket.excluded].find((x: any) => x.ticker === ev.ticker && x.pool);
+    if (m) s = { token: m.token, feed: null, stockIsCurrency0: m.pool.stockIsCurrency0, bestNoHookPool: { poolId: m.pool.poolId, poolKey: m.pool.poolKey } };
+  }
   if (!s?.bestNoHookPool) throw new Error(`${ev.ticker} missing from contracts/config/mainnet.json`);
   const cfg: TickerCfg = {
     ticker: ev.ticker,
@@ -41,7 +46,13 @@ async function main() {
   const armBlock = await blockAtOrBefore(c, armTime);
   const atArm = await lastSwapBefore(c, cfg.poolId as Hex, armBlock);
   if (!atArm) throw new Error("no swaps before arm");
-  const p0 = BigInt(Math.round(Number(ev.p0) * 10 ** cfg.feedDecimals));
+  let p0Usd = ev.p0 ? Number(ev.p0) : NaN;
+  if (!ev.p0) {
+    // no NYSE/feed reference given: pool price at Friday 20:00 UTC (market close)
+    const fri = await lastSwapBefore(c, cfg.poolId as Hex, await blockAtOrBefore(c, ws - 4 * 3600));
+    p0Usd = Number((await import("../../keeper/src/rangeMath.js")).sqrtPriceX96ToUsd(fri!.sqrtPriceX96, { feed: 8, stock: 18, usd: 6 }, cfg.stockIsCurrency0)) / 1e8;
+  }
+  const p0 = BigInt(Math.round(p0Usd * 10 ** cfg.feedDecimals));
   sim.doArm({ time: armTime, block: armBlock, p0, p0Source: "chainlink", feedUpdatedAt: null, sqrtPriceX96: atArm.sqrtPriceX96, tick: atArm.tick });
   if (sim.status !== "armed") throw new Error(`not armed: ${sim.skipReason}`);
 

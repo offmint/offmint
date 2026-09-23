@@ -4,7 +4,15 @@
     "title": "HIMS weekend squeeze, 28-31 Aug 2026",
     "windowStart": "2026-08-29T00:00:00Z",
     "p0": "28.84",
-    "p0Source": "NYSE close Fri 28 Aug (no Chainlink HIMS feed on Robinhood Chain; SPEC §10 fallback)",
+    "p0Source": "NYSE close Fri 28 Aug (no Chainlink HIMS feed on Robinhood Chain; SPEC \u00a710 fallback)",
+    "freshSource": "pool price at windowEnd + settleDelay (no feed after reopen)"
+  },
+  "glxy-2026-09-11": {
+    "ticker": "GLXY",
+    "title": "GLXY weekend squeeze, 11-14 Sep 2026 (first weekend after listing)",
+    "windowStart": "2026-09-12T00:00:00Z",
+    "p0": null,
+    "p0Source": "pool price at Friday 20:00 UTC (no Chainlink GLXY feed)",
     "freshSource": "pool price at windowEnd + settleDelay (no feed after reopen)"
   }
 }

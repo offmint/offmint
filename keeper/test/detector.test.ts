@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { judge, DEFAULTS, type Candidate } from "../detector/detector.js";
 
-const ok: Candidate = { ticker: "GLXY", token: "0xg", inRegistry: true, onchainSymbol: "GLXY", onchainDecimals: 18, hasFeed: false, poolAgeDays: 4, depthUsdTo10: 50_000 };
+const ok: Candidate = { ticker: "GLXY", token: "0xg", inRegistry: true, onchainSymbol: "GLXY", onchainDecimals: 18, hasFeed: false, poolAgeDays: 4, tvlUsd: 80_000, depthUsdTo10: 50_000 };
 
 test("§3.7: a fresh, verified, no-feed, liquid listing is a basket member (push-price path)", () => {
   assert.deepEqual(judge(ok, DEFAULTS), { member: true, path: "push-price" });
@@ -25,8 +25,19 @@ test("§3.7 step 3: a live feed graduates the token out; old pools leave the win
   assert.match((judge({ ...ok, poolAgeDays: null }, DEFAULTS) as any).reason, /no hook-free/);
 });
 
-test("§3.7 step 4: liquidity floor", () => {
-  assert.match((judge({ ...ok, depthUsdTo10: 1_999 }, DEFAULTS) as any).reason, /floor/);
-  assert.equal(judge({ ...ok, depthUsdTo10: 2_000 }, DEFAULTS).member, true);
-  assert.equal(judge({ ...ok, depthUsdTo10: 500 }, { ...DEFAULTS, minDepthUsd: 100 }).member, true, "configurable");
+test("§3.7 step 4: $10,000 TVL floor (SPEC default, tunable)", () => {
+  assert.equal(DEFAULTS.minTvlUsd, 10_000);
+  assert.match((judge({ ...ok, tvlUsd: 9_999 }, DEFAULTS) as any).reason, /floor/);
+  assert.equal(judge({ ...ok, tvlUsd: 10_000 }, DEFAULTS).member, true);
+  assert.equal(judge({ ...ok, tvlUsd: 500 }, { ...DEFAULTS, minTvlUsd: 100 }).member, true, "configurable");
+});
+
+test("tvlUsdEstimate: a position holding only STOCK/only USDG is valued in USD, both orientations", async () => {
+  const { tvlUsdEstimate } = await import("../src/depth.js");
+  for (const s0 of [true, false]) {
+    const t = tvlUsdEstimate(10n ** 17n, 30, s0);
+    assert.ok(t > 1_000 && t < 10_000_000, `tvl ${t}`);
+    assert.ok(Math.abs(tvlUsdEstimate(10n ** 17n, 30, s0) * 2 - tvlUsdEstimate(2n * 10n ** 17n, 30, s0)) < 1, "linear in L");
+  }
+  assert.equal(tvlUsdEstimate(0n, 30, true), 0);
 });

@@ -25,3 +25,16 @@ test("summary rows cover every variant x quantity; headline uses lockOnFill ex-f
 test("unsettled epoch is rejected", () => {
   assert.throws(() => summarize({ ...sim, settlement: null }, ev), /not settled/);
 });
+
+test("MetaVault net: friction and the stock's own move are both counted", async () => {
+  const { metaVaultNet } = await import("../src/summary.js");
+  const f = { poolFeeBps: 30, slippageBps: 30, txFeeBps: 50 };
+  const flat = metaVaultNet(0, 10, 10, f); // no squeeze, no price move: pure cost
+  assert.equal(flat.frictionPct, 2.2);
+  assert.equal(flat.netUsdPct, -2.2);
+  const marginal = metaVaultNet(1.5, 10, 10, f); // +1.5% shares is NOT enough to cover a 2.2% round trip
+  assert.ok(marginal.grossUsdPct > 0 && marginal.netUsdPct < 0);
+  const down = metaVaultNet(18.57, 30, 27, f); // big squeeze but the stock fell 10% by Monday
+  assert.equal(down.priceMovePct, -10);
+  assert.ok(down.netUsdPct < down.sharesGainPct);
+});
