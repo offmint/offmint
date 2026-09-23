@@ -58,3 +58,21 @@ test("memeAdjacent: memecoin quotes count; USDG, ETH and other stock tokens do n
   assert.equal(memeAdjacent(v("USDG", "WETH"), stocks), false);
   assert.equal(memeAdjacent(v("USDG", "MEME"), stocks), true);
 });
+
+test("option (b): no-feed candidates + facts built from the screen and pool cache", async () => {
+  const { pickNoFeedCandidates, augmentFacts } = await import("../src/curate.js");
+  const screen = {
+    tickers: {
+      AMC: { swaps7d: 5, hasFeed: false, bestUsdgPool: "0xa", thin: false, vol7dStock: 900, token: "0xamc", top2ByVolume: [{ quote: "USDG" }, { quote: "MEME" }] },
+      BB: { swaps7d: 5, hasFeed: false, bestUsdgPool: "0xb", thin: true, vol7dStock: 50, token: "0xbb", top2ByVolume: [{ quote: "USDG" }] },
+      TSLA: { swaps7d: 5, hasFeed: true, bestUsdgPool: "0xt", thin: true, vol7dStock: 999, token: "0xt", top2ByVolume: [] },
+      DEEP: { swaps7d: 5, hasFeed: false, bestUsdgPool: "0xd", thin: false, vol7dStock: 999, token: "0xd", top2ByVolume: [{ quote: "USDG" }, { quote: "ETH" }] },
+    },
+  };
+  assert.deepEqual(pickNoFeedCandidates(screen), ["AMC", "BB"]);
+  const facts: any = { stocks: {} };
+  augmentFacts(facts, screen, { AMC: [{ poolId: "0xA", stockIs0: false, fee: 3000, tickSpacing: 60, hooks: "0x0" }] }, ["AMC", "BB"]);
+  assert.equal(facts.stocks.AMC.bestNoHookPool.poolKey.tickSpacing, 60);
+  assert.equal(facts.stocks.AMC.feed, null);
+  assert.equal(facts.stocks.BB, undefined, "no pool in cache -> skipped");
+});

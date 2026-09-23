@@ -73,6 +73,32 @@ export function pickCandidates(screen: any, facts: any, n = 6): string[] {
   return [...new Set([...flagged, ...extra])];
 }
 
+/** Option (b): flagged tickers WITHOUT a feed that have a hook-free USDG pool, top n by recent volume. */
+export function pickNoFeedCandidates(screen: any, n = 10): string[] {
+  const stocks = new Set(Object.keys(screen.tickers));
+  return Object.entries<any>(screen.tickers)
+    .filter(([, v]) => v.swaps7d > 0 && !v.hasFeed && v.bestUsdgPool && (v.thin || memeAdjacent(v, stocks)))
+    .sort((a, b) => b[1].vol7dStock - a[1].vol7dStock)
+    .slice(0, n)
+    .map(([t]) => t);
+}
+
+/** Adds tickers missing from contracts/config/mainnet.json using the screen's best USDG pool + the pool cache. */
+export function augmentFacts(facts: any, screen: any, poolCache: Record<string, any[]>, tickers: string[]): void {
+  for (const t of tickers) {
+    if (facts.stocks[t]?.bestNoHookPool) continue;
+    const sc = screen.tickers[t];
+    const pool = (poolCache[t] ?? []).find((p) => p.poolId.toLowerCase() === String(sc?.bestUsdgPool).toLowerCase());
+    if (!sc || !pool) continue;
+    facts.stocks[t] = {
+      token: sc.token,
+      feed: null,
+      stockIsCurrency0: pool.stockIs0,
+      bestNoHookPool: { poolId: pool.poolId, poolKey: { fee: pool.fee, tickSpacing: pool.tickSpacing, hooks: pool.hooks } },
+    };
+  }
+}
+
 /** Pure classification of one ticker's weekend evidence (unit-tested). Shippability (feed) is decided separately. */
 export function classify(ev: WeekendEvidence[]): { bucket: Bucket; reason: string; dislocated: number; worst: number } {
   const usable = ev.filter((w) => w.maxPremiumPct !== null && w.swaps >= RULES.minSwapsPerWeekend);
@@ -133,7 +159,13 @@ async function main() {
   const since = Math.floor(Date.parse(`${opt("--since") ?? "2026-07-04"}T00:00:00Z`) / 1000);
   const facts = JSON.parse(readFileSync(join(ROOT, "contracts/config/mainnet.json"), "utf8"));
   let only = opt("--tickers")?.split(",");
-  if (args.includes("--from-screen")) {
+  if (args.includes("--no-feed")) {
+    const screen = JSON.parse(readFileSync(join(ROOT, "contracts/config/screen.json"), "utf8"));
+    const cache = JSON.parse(readFileSync(join(ROOT, "backtest/.cache/pools.json"), "utf8"));
+    only = pickNoFeedCandidates(screen, Number(opt("--no-feed") ?? 10));
+    augmentFacts(facts, screen, cache, only);
+    console.log(`no-feed candidates (option b): ${only.join(", ")}`);
+  } else if (args.includes("--from-screen")) {
     const screen = JSON.parse(readFileSync(join(ROOT, "contracts/config/screen.json"), "utf8"));
     only = pickCandidates(screen, facts);
     console.log(`candidates from screen: ${only.join(", ")}`);
@@ -314,12 +346,16 @@ async function main() {
     weekends: weekends.map((s) => new Date(s * 1000).toISOString().slice(0, 10)),
     tickers: out,
   };
-  writeFileSync(join(ROOT, "contracts/config/tickers.json"), JSON.stringify(doc, null, 1) + "\n");
-  writeFileSync(join(ROOT, "docs/curation.md"), markdown(doc));
+  // --out <name>: side analyses (e.g. option b, no-feed tickers) must never overwrite the M0.5 ship decision
+  const name = opt("--out");
+  const jsonPath = name ? `contracts/config/tickers-${name}.json` : "contracts/config/tickers.json";
+  const mdPath = name ? `docs/curation-${name}.md` : "docs/curation.md";
+  writeFileSync(join(ROOT, jsonPath), JSON.stringify(doc, null, 1) + "\n");
+  writeFileSync(join(ROOT, mdPath), markdown(doc));
   const counts: Record<string, string[]> = {};
   for (const [t, v] of Object.entries(out)) (counts[v.bucket] ??= []).push(t);
   console.log(JSON.stringify(counts, null, 1));
-  console.log("wrote contracts/config/tickers.json and docs/curation.md");
+  console.log(`wrote ${jsonPath} and ${mdPath}`);
 }
 
 function median(xs: number[]): number | null {
