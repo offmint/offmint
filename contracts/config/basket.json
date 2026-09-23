@@ -1,0 +1,5234 @@
+{
+ "generatedAt": "2026-09-23T22:04:37.035Z",
+ "rule": "member = in canonical registry AND onchain symbol/decimals match AND no Chainlink feed AND deepest hook-free USDG pool <= 30d old AND pool TVL >= $10000 (current active-liquidity snapshot)",
+ "graduation": "a member that gains a Chainlink feed leaves the basket here, but MetaVault only switches its oracle at the next SELECT, never while a BasketPosition is open (SPEC §3.7)",
+ "config": {
+  "vulnerableWindowDays": 30,
+  "minTvlUsd": 10000
+ },
+ "counts": {
+  "members": 74,
+  "excluded": 120,
+  "nonRegistryUsdgPairsIgnored": 86442
+ },
+ "members": [
+  {
+   "ticker": "AAOI",
+   "token": "0x521cf887e6531c6f667b5bc4d896e5d9bfe8eb2e",
+   "inRegistry": true,
+   "onchainSymbol": "AAOI",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 0.1,
+   "tvlUsd": 54398,
+   "depthUsdTo10": 4533,
+   "name": "Applied Optoelectronics • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 100.87019203,
+   "pool": {
+    "poolId": "0x80de3f7e4f540613fad8891383b1cbb02c603f4ce3994d0febfec54ed9517880",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x521Cf887E6531c6F667b5BC4D896E5d9bfE8EB2E",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 2500,
+     "tickSpacing": 25,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-23T18:30:15.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "ANET",
+   "token": "0x28babd556b60e53663b8615036479a29c2cdd1bf",
+   "inRegistry": true,
+   "onchainSymbol": "ANET",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 0.1,
+   "tvlUsd": 169892,
+   "depthUsdTo10": 14156,
+   "name": "Arista • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 200.24603247,
+   "pool": {
+    "poolId": "0x8cb0cb504062e0edc691c3bb4632e86c006c3b9a4f169439f5b9366730292754",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x28bABD556b60E53663B8615036479a29c2CDd1Bf",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 2510,
+     "tickSpacing": 25,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-23T18:28:27.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "TE",
+   "token": "0xb1969f6604ca1ae7a2cd3f1827876e914594ca2d",
+   "inRegistry": true,
+   "onchainSymbol": "TE",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 0.2,
+   "tvlUsd": 184976,
+   "depthUsdTo10": 15413,
+   "name": "T1 Energy • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 4.07374512,
+   "pool": {
+    "poolId": "0xb35be910c91bad0abf8571845330abb00b89d7ecb8dfce3e6cfd59c8b6f7ec36",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xb1969f6604CA1AE7a2cD3F1827876e914594CA2D",
+     "fee": 2500,
+     "tickSpacing": 25,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-23T18:23:56.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "FTNT",
+   "token": "0x3fb8976980d486084b2eb4a404bd12e72823958f",
+   "inRegistry": true,
+   "onchainSymbol": "FTNT",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 0.2,
+   "tvlUsd": 209978,
+   "depthUsdTo10": 17496,
+   "name": "Fortinet • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 175.7553876,
+   "pool": {
+    "poolId": "0xad8360eaac8cf3f8c7ad926e4f5b88eaa154db85896cf7e4f9987fe06a6d7d3f",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x3FB8976980d486084b2eb4a404BD12e72823958f",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 2500,
+     "tickSpacing": 25,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-23T18:22:25.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "SHOP",
+   "token": "0xf53f66751b1eff985311b693531e3290f600c410",
+   "inRegistry": true,
+   "onchainSymbol": "SHOP",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 1.1,
+   "tvlUsd": 500776,
+   "depthUsdTo10": 41726,
+   "name": "Shopify • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 148.73296851,
+   "pool": {
+    "poolId": "0x8636068a8938341d9f50008b8cfa2cb57749b1d8da6d12c3528632808413e3ec",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xF53F66751B1Eff985311b693531E3290F600c410",
+     "fee": 2500,
+     "tickSpacing": 25,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-22T19:36:36.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "INDA",
+   "token": "0xacef2e09adb47ad6abebad9ff06689e60615c2b6",
+   "inRegistry": true,
+   "onchainSymbol": "INDA",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 1.1,
+   "tvlUsd": 9604893,
+   "depthUsdTo10": 800298,
+   "name": "iShares MSCI India ETF • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 48.3859115,
+   "pool": {
+    "poolId": "0x9bb8fba327fed3758be2b909d23b5caedc901acbff020480f06f9fa69b478a3b",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xACEF2e09adb47aD6aBeBAD9fF06689E60615C2B6",
+     "fee": 1000,
+     "tickSpacing": 10,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-22T19:54:16.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "PFE",
+   "token": "0x7066a64c24e4206cd62e83bf198c1e7eb361f51e",
+   "inRegistry": true,
+   "onchainSymbol": "PFE",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 1.1,
+   "tvlUsd": 8177659,
+   "depthUsdTo10": 681378,
+   "name": "Pfizer • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 27.91700534,
+   "pool": {
+    "poolId": "0xe7f632df148e79209e767fdc6bcd6b6f46be45a4907f76894a3e8d456e72a562",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x7066A64c24e4206CD62E83bf198c1E7EB361F51e",
+     "fee": 1000,
+     "tickSpacing": 10,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-22T19:45:46.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "SOUN",
+   "token": "0x6e3dfd9f7e1649baa14d25cac18c94d62db10a54",
+   "inRegistry": true,
+   "onchainSymbol": "SOUN",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 6.2,
+   "tvlUsd": 43074,
+   "depthUsdTo10": 3589,
+   "name": "SoundHound AI • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 6.07546706,
+   "pool": {
+    "poolId": "0xebc97d7efbdfda34658ba801749c4bc664b41cd5df086c27137de35267306de2",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x6E3Dfd9f7e1649BaA14D25cac18C94d62dB10A54",
+     "fee": 2457,
+     "tickSpacing": 25,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-17T18:04:55.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "LULU",
+   "token": "0x4e62068525ab11fe768e29dfd00ef909b9803016",
+   "inRegistry": true,
+   "onchainSymbol": "LULU",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 6.2,
+   "tvlUsd": 125687,
+   "depthUsdTo10": 10473,
+   "name": "Lululemon • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 102.13260919,
+   "pool": {
+    "poolId": "0x5d3fdc1880b35f9fe20f98bff4e47db44e48f2c293985feea658563fd83b9831",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x4e62068525Ab11FE768e29dfD00ef909B9803016",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 1860,
+     "tickSpacing": 19,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-17T18:06:22.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "RIVN",
+   "token": "0xb1bf26c1d20ff267a4f93550d1e0d06ac40a114b",
+   "inRegistry": true,
+   "onchainSymbol": "RIVN",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 12.9,
+   "tvlUsd": 522808,
+   "depthUsdTo10": 43561,
+   "name": "Rivian Automotive • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 15.00488957,
+   "pool": {
+    "poolId": "0x58b68552d45529cc6c3b35faeaa75e47f4e2bcf2afb2399597acbc39e34a9a8a",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xB1BF26c1D20ff267A4f93550d1E0d06ac40a114B",
+     "fee": 2300,
+     "tickSpacing": 23,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-10T23:26:00.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "INOD",
+   "token": "0xf1953dab6fad537488d5a022361ffaa8b4c95ec6",
+   "inRegistry": true,
+   "onchainSymbol": "INOD",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 14.1,
+   "tvlUsd": 1000459,
+   "depthUsdTo10": 83360,
+   "name": "Innodata • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 54.1037242,
+   "pool": {
+    "poolId": "0x63c29e10a43395389b7227ea0511c72b9df693f380db0cc1cc93436ab832dda3",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xf1953DAB6FaD537488d5A022361FfAa8B4c95eC6",
+     "fee": 11,
+     "tickSpacing": 1,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-09T19:31:11.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "NNE",
+   "token": "0xbef75684c43c4ea7bd18dd532a2244674ee8b926",
+   "inRegistry": true,
+   "onchainSymbol": "NNE",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 15.1,
+   "tvlUsd": 175043,
+   "depthUsdTo10": 14585,
+   "name": "Nano Nuclear Energy • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 17.21271755,
+   "pool": {
+    "poolId": "0x9b0ca1c4906f6517a12802513c3ae6f1c1e3ec47d81c6d23437fc401b6e2771b",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xBEF75684C43c4ea7BD18Dd532a2244674Ee8b926",
+     "fee": 10000,
+     "tickSpacing": 100,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-08T19:24:49.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "CRM",
+   "token": "0xd95b44124e475743a7589e68f3d74008a5536d44",
+   "inRegistry": true,
+   "onchainSymbol": "CRM",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 15.3,
+   "tvlUsd": 566252,
+   "depthUsdTo10": 47181,
+   "name": "Salesforce • Robinhood Token",
+   "currentMultiplier": "1.001148322800714293",
+   "priceUsd": 239.98704774,
+   "pool": {
+    "poolId": "0x5d0434f1dcf45ff9450c1a63b5c9e088f90cfebf483458164e81be6fb96e2b2a",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xd95B44124e475743a7589e68F3D74008A5536D44",
+     "fee": 10000,
+     "tickSpacing": 100,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-08T13:46:05.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "CBRS",
+   "token": "0x5c90450bbb4273d7b2f17cf6917aeb237a569679",
+   "inRegistry": true,
+   "onchainSymbol": "CBRS",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 15.3,
+   "tvlUsd": 61018,
+   "depthUsdTo10": 5084,
+   "name": "Cerebras Systems • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 205.93118477,
+   "pool": {
+    "poolId": "0x1a12140a52b6dc67065600899a8d59e23905d690d445250f3c0f59821fa146e4",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x5c90450Bbb4273D7b2f17CF6917AEB237A569679",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 10000,
+     "tickSpacing": 100,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-08T13:53:02.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "SMR",
+   "token": "0x1eebee7f74517e0279dfb09d25b0407beec3fdd6",
+   "inRegistry": true,
+   "onchainSymbol": "SMR",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 15.3,
+   "tvlUsd": 17764,
+   "depthUsdTo10": 1480,
+   "name": "NuScale Power • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 8.84890419,
+   "pool": {
+    "poolId": "0xcc6c340ed95ed19ccd6b97cae7dd3abb7b8aef25e8185bac2122ad9e91cd21a8",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x1Eebee7F74517e0279dFb09d25B0407bEEc3FDd6",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 9000,
+     "tickSpacing": 90,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-08T13:55:03.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "CEG",
+   "token": "0xae517a2903e68bd929dfd15be875f8369d53e94a",
+   "inRegistry": true,
+   "onchainSymbol": "CEG",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 15.4,
+   "tvlUsd": 124654,
+   "depthUsdTo10": 10386,
+   "name": "Constellation Energy • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 261.36285043,
+   "pool": {
+    "poolId": "0x21e190d0a42ad1b36f957bf2490eef78825d13a579d3a326bf10aadc1d634f4f",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xaE517A2903E68bd929Dfd15be875F8369D53e94a",
+     "fee": 9000,
+     "tickSpacing": 90,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-08T12:45:10.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "MRNA",
+   "token": "0x43b07d15ce533bec5476d70c22a78a1b2b662155",
+   "inRegistry": true,
+   "onchainSymbol": "MRNA",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 15.4,
+   "tvlUsd": 36854,
+   "depthUsdTo10": 3071,
+   "name": "Moderna • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 160.02799529,
+   "pool": {
+    "poolId": "0x103d57adc392a0dca76cc78db366e52c6e8d493d2ffc484bf7504796cfc749a7",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x43B07D15cE533bEc5476d70C22a78a1B2B662155",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 1890,
+     "tickSpacing": 19,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-08T11:23:42.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "RCAT",
+   "token": "0xfde6b5d9bb419b10c23268c74e369abff39c0460",
+   "inRegistry": true,
+   "onchainSymbol": "RCAT",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 15.7,
+   "tvlUsd": 320681,
+   "depthUsdTo10": 26720,
+   "name": "Red Cat • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 6.63031465,
+   "pool": {
+    "poolId": "0xd3c27381f7d1ef4dcd8ec4ba66e74fe88d06ab5250c1393769d4dd0e996a8dc9",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xFDE6b5d9BB419B10C23268c74e369AbFF39C0460",
+     "fee": 2500,
+     "tickSpacing": 25,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-08T05:20:53.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "IBM",
+   "token": "0x980dcf6766fa79f5cf0c4aadb3ab477ff15a9619",
+   "inRegistry": true,
+   "onchainSymbol": "IBM",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 15.7,
+   "tvlUsd": 1116678,
+   "depthUsdTo10": 93044,
+   "name": "IBM • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 233.43206806,
+   "pool": {
+    "poolId": "0xfefcd3697193dacac74626b2c8ca15937479605b4ee074670186f746b448028a",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x980dcf6766FA79f5Cf0c4AAdb3ab477ff15a9619",
+     "fee": 1500,
+     "tickSpacing": 15,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-08T04:52:55.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "GLXY",
+   "token": "0x2d427692e928fa156ec22acfabafa0447c5805b7",
+   "inRegistry": true,
+   "onchainSymbol": "GLXY",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 15.7,
+   "tvlUsd": 1416778,
+   "depthUsdTo10": 118049,
+   "name": "Galaxy Digital Inc. • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 25.91521774,
+   "pool": {
+    "poolId": "0xb49380cfe4008c71faa07f7d79865429f8e5ae468b4af80ff2497e6a27ecb804",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x2D427692E928fa156ec22acfaBaFA0447C5805B7",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 5000,
+     "tickSpacing": 25,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-08T05:20:52.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "QCOM",
+   "token": "0x0f17206447090e464c277571124dd2688e48aea9",
+   "inRegistry": true,
+   "onchainSymbol": "QCOM",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 15.8,
+   "tvlUsd": 717080,
+   "depthUsdTo10": 59748,
+   "name": "Qualcomm • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 196.79301848,
+   "pool": {
+    "poolId": "0x106af997d180cf37a574c42c04179f267b9245cf221b1c57fb3e491137915de6",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x0f17206447090e464C277571124dD2688E48AEA9",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 3500,
+     "tickSpacing": 71,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-08T03:29:17.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "COST",
+   "token": "0x4ea005168d7f09a7a0ba9d1def21a479950e44c2",
+   "inRegistry": true,
+   "onchainSymbol": "COST",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 17.5,
+   "tvlUsd": 770575,
+   "depthUsdTo10": 64206,
+   "name": "Costco • Robinhood Token",
+   "currentMultiplier": "1.000612040296259656",
+   "priceUsd": 904.95935354,
+   "pool": {
+    "poolId": "0xd0f36f913c83d95ab0e5f2cd2b991fc74bad741745ba9e7aeb6df8394c761f7b",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x4EA005168D7F09a7A0Ba9D1DEf21a479950E44C2",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 880,
+     "tickSpacing": 9,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-06T10:40:57.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "GLD",
+   "token": "0xc9a981fee1f9dec688bb123ccdecc63d0debfc4e",
+   "inRegistry": true,
+   "onchainSymbol": "GLD",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 17.7,
+   "tvlUsd": 1549384,
+   "depthUsdTo10": 129098,
+   "name": "SPDR Gold Trust • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 393.11020887,
+   "pool": {
+    "poolId": "0xc5a09af1c4c8d4309ef0def83c718ccc6b5a991a1c47ae45de879c6a6df6081f",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xC9a981FEE1F9DEc688bb123ccDeCc63D0deBFC4e",
+     "fee": 450,
+     "tickSpacing": 5,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-06T04:48:40.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "FLY",
+   "token": "0x03bc731ffb162cdd7b98d3c6542bfc291126075d",
+   "inRegistry": true,
+   "onchainSymbol": "FLY",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 18.1,
+   "tvlUsd": 25623,
+   "depthUsdTo10": 2135,
+   "name": "Firefly Aerospace Inc. • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 22.28251733,
+   "pool": {
+    "poolId": "0x6edaf089b86a262e86caa0d40c693502e59de8781402de5f89d2de8e5a230070",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x03BC731Ffb162cdd7B98D3C6542bFC291126075d",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 20000,
+     "tickSpacing": 200,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-05T19:02:13.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "LHX",
+   "token": "0x48d60243c66437c6ac3c2495be94747aed5dfe25",
+   "inRegistry": true,
+   "onchainSymbol": "LHX",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 18.7,
+   "tvlUsd": 61530,
+   "depthUsdTo10": 5127,
+   "name": "L3Harris • Robinhood Token",
+   "currentMultiplier": "1.004922488323561562",
+   "priceUsd": 245.83827407,
+   "pool": {
+    "poolId": "0x908ad1c8b831e15c8016116429731d952d0b50dd525ee7751764149f605771ef",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x48d60243c66437c6ac3c2495Be94747aEd5Dfe25",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 20000,
+     "tickSpacing": 200,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-05T04:19:45.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "UPS",
+   "token": "0xf23250dac154d05bb671cb0d0ebef3c635c79ce2",
+   "inRegistry": true,
+   "onchainSymbol": "UPS",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 19,
+   "tvlUsd": 210102,
+   "depthUsdTo10": 17506,
+   "name": "UPS • Robinhood Token",
+   "currentMultiplier": "1.002208724969205741",
+   "priceUsd": 95.74678565,
+   "pool": {
+    "poolId": "0xb7b2dac83aef0f428dbd079fbe571a6146f97ca392c073a9b1cf61cd26dc0c3f",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xf23250dac154D05Bb671CB0d0eBEf3c635c79CE2",
+     "fee": 2400,
+     "tickSpacing": 24,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-04T21:39:38.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "ELF",
+   "token": "0x39ec44bee4f6a116c6f9b8de566848a985c53c60",
+   "inRegistry": true,
+   "onchainSymbol": "ELF",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 19,
+   "tvlUsd": 294418,
+   "depthUsdTo10": 24531,
+   "name": "e.l.f. Beauty • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 100.4497892,
+   "pool": {
+    "poolId": "0x88fedfdf265b86eeb91b294e889302f7508934d191890c105b39098ef8b30853",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x39EC44Bee4F6A116c6F9B8De566848a985C53C60",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 20100,
+     "tickSpacing": 201,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-04T21:08:44.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "NET",
+   "token": "0x116f00968269b7bfbad4109ce591d6e74c0601d4",
+   "inRegistry": true,
+   "onchainSymbol": "NET",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 19.1,
+   "tvlUsd": 359616,
+   "depthUsdTo10": 29964,
+   "name": "Cloudflare, Inc. Class A common stock • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 354.15305834,
+   "pool": {
+    "poolId": "0xd10f11e907c3322a26afda82b07ca7dee68697261f79fa3d28863f628efcf107",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x116F00968269B7bfbaD4109cE591d6E74c0601d4",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 5000,
+     "tickSpacing": 50,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-04T19:40:56.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "WDAY",
+   "token": "0x82da4646242e1d962e96e932269dc644c94a9caa",
+   "inRegistry": true,
+   "onchainSymbol": "WDAY",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 19.6,
+   "tvlUsd": 55095,
+   "depthUsdTo10": 4591,
+   "name": "Workday • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 192.43426962,
+   "pool": {
+    "poolId": "0x27bb98c5c9265a4fb0f50e074fe8c751e20b55a901c96a8e150a306417c5b1a6",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x82DA4646242e1D962e96e932269Dc644c94a9CaA",
+     "fee": 20000,
+     "tickSpacing": 200,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-04T07:21:40.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "DDOG",
+   "token": "0x27c99fbde9d0d2aa4f4bfb4943f237843ddf6958",
+   "inRegistry": true,
+   "onchainSymbol": "DDOG",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 19.7,
+   "tvlUsd": 746652,
+   "depthUsdTo10": 62212,
+   "name": "Datadog • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 254.10756231,
+   "pool": {
+    "poolId": "0x977c78c96cd9b306d87c235dee5a69ccab913b0f775575627e709643ad416598",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x27c99fBde9D0d2AA4f4Bfb4943f237843DdF6958",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 10000,
+     "tickSpacing": 100,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-04T04:12:25.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "AMC",
+   "token": "0x05a3d1cd21d0c88145e82600e62e7e496e0f222b",
+   "inRegistry": true,
+   "onchainSymbol": "AMC",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 19.7,
+   "tvlUsd": 3729063,
+   "depthUsdTo10": 310713,
+   "name": "AMC Entertainment • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 2.87029573,
+   "pool": {
+    "poolId": "0x7499938c352d5b5b8f0c648722aca5ee964ef9b85c3a3041f1ec379726291d9d",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x05a3d1Cd21d0C88145E82600E62e7E496e0F222B",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 1000,
+     "tickSpacing": 10,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-04T04:33:52.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "PENG",
+   "token": "0x9b23573b156b52565012f5ce02cdf60afbaa70be",
+   "inRegistry": true,
+   "onchainSymbol": "PENG",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 19.9,
+   "tvlUsd": 54370,
+   "depthUsdTo10": 4530,
+   "name": "Penguin Solutions • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 54.81248009,
+   "pool": {
+    "poolId": "0xba07c20c0a900a626ffdab053c218c2ff31c1a752a5c4fcfc1d1098f17a87d6c",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x9b23573b156B52565012F5cE02CDF60AFBaa70Be",
+     "fee": 20000,
+     "tickSpacing": 200,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-04T00:42:25.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "FIX",
+   "token": "0x93dbb1d2dc5d63f4abacff30485273f538df68ac",
+   "inRegistry": true,
+   "onchainSymbol": "FIX",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20,
+   "tvlUsd": 138486,
+   "depthUsdTo10": 11539,
+   "name": "Comfort Systems • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 1628.42456221,
+   "pool": {
+    "poolId": "0x747a731b1ef419ce6006993cf907266a24069c81fb004ec78d2d17ba5863b724",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x93Dbb1d2Dc5D63F4abACFF30485273f538Df68Ac",
+     "fee": 30000,
+     "tickSpacing": 300,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T23:04:58.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "NOW",
+   "token": "0x0c3260af4b8f13a69c4c2dfb84fd667890cdfa14",
+   "inRegistry": true,
+   "onchainSymbol": "NOW",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20,
+   "tvlUsd": 17668,
+   "depthUsdTo10": 1472,
+   "name": "ServiceNow • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 138.56946913,
+   "pool": {
+    "poolId": "0xc56a28baafe3bcb71c4243043a186347ed7c8751abf4d84b82563f43a50e81cf",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x0C3260aF4B8f13a69c4c2dFb84fD667890CDFa14",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 19000,
+     "tickSpacing": 190,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T21:15:26.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "MPWR",
+   "token": "0x52d50d0280ad1054b43f052bd70a49a212a1b128",
+   "inRegistry": true,
+   "onchainSymbol": "MPWR",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20,
+   "tvlUsd": 11929,
+   "depthUsdTo10": 994,
+   "name": "Monolithic Power Systems • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 1363.48191758,
+   "pool": {
+    "poolId": "0xa346fd5a390ba8945da9b869c1ff16e89d5999197c8dcc0479328ab3f27fa582",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x52D50D0280AD1054b43f052bD70a49a212A1b128",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 30000,
+     "tickSpacing": 300,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T22:49:47.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "JOBY",
+   "token": "0xb334c5ce741b80b5b671f47f5c269cb193fe8e24",
+   "inRegistry": true,
+   "onchainSymbol": "JOBY",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.1,
+   "tvlUsd": 12751,
+   "depthUsdTo10": 1062,
+   "name": "Joby Aviation • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 6.32625405,
+   "pool": {
+    "poolId": "0x5ac0d300231e792db1528aecaf28af5f81700efd7ac6cf222500ef5f8934d898",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xb334C5cE741B80B5B671F47F5C269Cb193fe8E24",
+     "fee": 25000,
+     "tickSpacing": 250,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T19:45:42.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "CVNA",
+   "token": "0xa4f319104089fe321dc8093c6e707d4fe190a988",
+   "inRegistry": true,
+   "onchainSymbol": "CVNA",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.1,
+   "tvlUsd": 11256,
+   "depthUsdTo10": 938,
+   "name": "Carvana • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 64.08690566,
+   "pool": {
+    "poolId": "0x4e001c9d3c2969f8b3d0c348e8842941355f1fa2ed8791456758ce26249883d9",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xa4f319104089FE321dc8093C6E707d4fE190A988",
+     "fee": 20000,
+     "tickSpacing": 200,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T19:04:21.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "LMT",
+   "token": "0x329fcaceb9ad6f9580dd5f643fed0646900d043c",
+   "inRegistry": true,
+   "onchainSymbol": "LMT",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.1,
+   "tvlUsd": 3153479,
+   "depthUsdTo10": 262754,
+   "name": "Lockheed • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 528.41984101,
+   "pool": {
+    "poolId": "0x0b118d2480ebdb11374d3ad2ea1b935e9458a9f704222004b3b8de07bc98f1eb",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x329fcACEb9AD6F9580DD5F643fed0646900D043c",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 5000,
+     "tickSpacing": 50,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T19:18:20.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "TEAM",
+   "token": "0x5b97476b922f3305131b8f0b9d333172e87f4aae",
+   "inRegistry": true,
+   "onchainSymbol": "TEAM",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.1,
+   "tvlUsd": 14612,
+   "depthUsdTo10": 1217,
+   "name": "Atlassian Corporation • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 191.09206661,
+   "pool": {
+    "poolId": "0x432e417b7d855d9ba9a87131585c18350bf89eb40cfc83e8f28d7ec4b0efde42",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x5B97476b922F3305131B8f0B9D333172E87f4aaE",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 27900,
+     "tickSpacing": 279,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T20:28:50.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "SOXX",
+   "token": "0x75742c18bc1f1c5c5f448f4c9d9c6f66dafaaa38",
+   "inRegistry": true,
+   "onchainSymbol": "SOXX",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.2,
+   "tvlUsd": 56325,
+   "depthUsdTo10": 4693,
+   "name": "iShares Semiconductor ETF • Robinhood Token",
+   "currentMultiplier": "1.000450838210425960",
+   "priceUsd": 563.22877848,
+   "pool": {
+    "poolId": "0xda48bde4c58cb3364d522c1f3141376f8e20036d207bbb93191cb1fe65eaa95a",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x75742c18BC1f1C5c5f448f4C9D9C6F66dafAAa38",
+     "fee": 9000,
+     "tickSpacing": 90,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T16:56:00.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "SNAP",
+   "token": "0xf6589f11bc40b669e584073f428b05562f568733",
+   "inRegistry": true,
+   "onchainSymbol": "SNAP",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.2,
+   "tvlUsd": 1721137,
+   "depthUsdTo10": 143408,
+   "name": "Snap • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 5.3112868,
+   "pool": {
+    "poolId": "0x2e4cc4c65587faca7a08b69a13c86ca8c86599d90ad818ceaa1a875176f5fb52",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xF6589F11Bc40b669e584073F428B05562F568733",
+     "fee": 1950,
+     "tickSpacing": 20,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T17:51:59.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "GE",
+   "token": "0x63b814ddbd6bf339f25fed8c36158a008d5b373e",
+   "inRegistry": true,
+   "onchainSymbol": "GE",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.3,
+   "tvlUsd": 567273,
+   "depthUsdTo10": 47266,
+   "name": "General Electric • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 318.58970553,
+   "pool": {
+    "poolId": "0x6bf00eb49fa8d3713cb0f77e9a11f9acd9f5363fc4824e13488acfa28d90dc2d",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x63b814DDBd6BF339f25Fed8c36158a008D5B373e",
+     "fee": 20000,
+     "tickSpacing": 200,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T15:19:18.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "HII",
+   "token": "0xeb61c0ed490a367d4e3631ccf8a74b3bfc7e775d",
+   "inRegistry": true,
+   "onchainSymbol": "HII",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.3,
+   "tvlUsd": 159813,
+   "depthUsdTo10": 13316,
+   "name": "Huntington Ingalls • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 274.95984001,
+   "pool": {
+    "poolId": "0x2341b2ec6872da1303df008689f40e3d04d9e08851279658ef85b80f8dbf0196",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xEB61c0Ed490A367d4E3631cCf8a74B3bfc7E775D",
+     "fee": 30000,
+     "tickSpacing": 300,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T13:51:45.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "APP",
+   "token": "0xa249baf1063af884807c1e1400aef7784836917e",
+   "inRegistry": true,
+   "onchainSymbol": "APP",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.5,
+   "tvlUsd": 53260,
+   "depthUsdTo10": 4438,
+   "name": "AppLovin • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 315.23359165,
+   "pool": {
+    "poolId": "0xd344e3d4f856c9cd589a24e229f597b27f499fca5b91743d44206b0cb69959bd",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xA249BAF1063Af884807C1E1400AEf7784836917E",
+     "fee": 34000,
+     "tickSpacing": 340,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T09:31:59.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "GEV",
+   "token": "0x94b8aae43a1ccc08aa64b7d1f29b4d920af4a0c9",
+   "inRegistry": true,
+   "onchainSymbol": "GEV",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.5,
+   "tvlUsd": 10295,
+   "depthUsdTo10": 858,
+   "name": "GE Vernova • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 964.9333646,
+   "pool": {
+    "poolId": "0x0cfa6887c0e4e1cf772a1d80d5929587a462e8dd9daf141fa606901f84c759ed",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x94B8AAE43A1cCc08Aa64B7D1F29b4D920aF4a0C9",
+     "fee": 40000,
+     "tickSpacing": 400,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T09:30:41.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "BA",
+   "token": "0x4d21483a44bf67a86b77e3da301411880797d452",
+   "inRegistry": true,
+   "onchainSymbol": "BA",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.5,
+   "tvlUsd": 811701,
+   "depthUsdTo10": 67633,
+   "name": "Boeing • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 199.9500487,
+   "pool": {
+    "poolId": "0x1bd266afaf99164a3913a959e4d27698c51fe51535bbe0af0718d7ae666c7e10",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x4D21483a44Bf67a86b77E3dA301411880797D452",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 2000,
+     "tickSpacing": 20,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T09:08:24.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "RBLX",
+   "token": "0xf0c4bf4c582cb3836e98394b1d4e7b7281101be8",
+   "inRegistry": true,
+   "onchainSymbol": "RBLX",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.6,
+   "tvlUsd": 133948,
+   "depthUsdTo10": 11161,
+   "name": "Roblox • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 49.17708249,
+   "pool": {
+    "poolId": "0xf807376333cd408c36d48a11a96309b92c5bd2bca9ba9f0b21800636cb3a30da",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xF0C4BF4C582cb3836e98394b1d4e7B7281101bE8",
+     "fee": 1000,
+     "tickSpacing": 10,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T07:52:16.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "XOM",
+   "token": "0xf9b46d3d1b22199d4d1025a9cedb540a33f1a2d5",
+   "inRegistry": true,
+   "onchainSymbol": "XOM",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.6,
+   "tvlUsd": 161337,
+   "depthUsdTo10": 13443,
+   "name": "ExxonMobil Holdings Corporation • Robinhood Token",
+   "currentMultiplier": "1.001039563764661900",
+   "priceUsd": 161.0096629,
+   "pool": {
+    "poolId": "0xb3d129708f216d47fd3f996bc9dd0365912e6f14f961e0c61de76a0c1deef074",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xf9B46d3D1B22199D4D1025a9cEDB540A33F1a2d5",
+     "fee": 2000,
+     "tickSpacing": 20,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T08:44:15.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "CSCO",
+   "token": "0xf543967eebb6f1917992ef0e68de63ab07a5a0da",
+   "inRegistry": true,
+   "onchainSymbol": "CSCO",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.6,
+   "tvlUsd": 11401,
+   "depthUsdTo10": 950,
+   "name": "Cisco Systems • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 106.40480467,
+   "pool": {
+    "poolId": "0x13bf682da8d76cfda75783ad2a3bdd269438c5083eb401facb69039f4e7ff333",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xF543967EEBB6f1917992eF0E68De63ab07a5a0dA",
+     "fee": 18000,
+     "tickSpacing": 180,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T06:39:34.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "AVGO",
+   "token": "0x156e175dd063a8ce274c50654ef40e0032b3fbcf",
+   "inRegistry": true,
+   "onchainSymbol": "AVGO",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.6,
+   "tvlUsd": 111839,
+   "depthUsdTo10": 9319,
+   "name": "Broadcom • Robinhood Token",
+   "currentMultiplier": "1.001257318662278132",
+   "priceUsd": 358.8241183,
+   "pool": {
+    "poolId": "0x9214bd3afeae46a8df2a39278050362e0bde9d587f0e0934a38031bc4831a90e",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x156E175DD063a8cE274C50654eF40e0032b3fbcF",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 10000,
+     "tickSpacing": 100,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T06:31:11.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "QUBT",
+   "token": "0x59818904ab4ce163b3ce4ffb64f2d6ca02c434b4",
+   "inRegistry": true,
+   "onchainSymbol": "QUBT",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.7,
+   "tvlUsd": 13494,
+   "depthUsdTo10": 1124,
+   "name": "Quantum Computing • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 8.12867452,
+   "pool": {
+    "poolId": "0xb21dd415c122151817e70a7b5ed7edb3379e06a6f2038668ee40e9aa8caed3e3",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x59818904ab4cE163b3cE4FfB64f2D6Ca02c434B4",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 2345,
+     "tickSpacing": 23,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T05:13:15.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "SIMO",
+   "token": "0x77e655e37f4d913fb9540e0d541d824171a60e81",
+   "inRegistry": true,
+   "onchainSymbol": "SIMO",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.9,
+   "tvlUsd": 30240,
+   "depthUsdTo10": 2520,
+   "name": "Silicon Motion • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 276.28316591,
+   "pool": {
+    "poolId": "0xab99c0156e7107cfcdf445b7ab53cf5e547d4a906c434093ce40bfed7a140efe",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x77E655E37F4d913fB9540e0d541D824171a60e81",
+     "fee": 30000,
+     "tickSpacing": 300,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T01:35:58.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "SNOW",
+   "token": "0xba0cab75495255d0cb58e22b648bfed4ecd1f47e",
+   "inRegistry": true,
+   "onchainSymbol": "SNOW",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21,
+   "tvlUsd": 869249,
+   "depthUsdTo10": 72427,
+   "name": "Snowflake • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 337.48764389,
+   "pool": {
+    "poolId": "0xac720e95589b7124f0affbdb9e66c7ec6e824c68eae00dc54f9e11b0b294bac8",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xBa0CAB75495255d0cB58E22B648bFED4ECD1F47E",
+     "fee": 10000,
+     "tickSpacing": 200,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T23:01:28.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "RUN",
+   "token": "0x756bc80af765c82da966a788858d65adf14f3793",
+   "inRegistry": true,
+   "onchainSymbol": "RUN",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21,
+   "tvlUsd": 82297,
+   "depthUsdTo10": 6857,
+   "name": "Sunrun • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 8.49526586,
+   "pool": {
+    "poolId": "0x87be5bc8f3196643f962d5d28fc9121f7c6c7b79f56d54827c76ef8c06d94020",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x756Bc80af765C82da966a788858d65aDF14f3793",
+     "fee": 6000,
+     "tickSpacing": 60,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T21:37:02.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "ZM",
+   "token": "0x44c4f142009036cf477ed2d09932051843137cf1",
+   "inRegistry": true,
+   "onchainSymbol": "ZM",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21,
+   "tvlUsd": 114143,
+   "depthUsdTo10": 9511,
+   "name": "Zoom • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 92.21654936,
+   "pool": {
+    "poolId": "0x46f1c54d32456c306e2c1e79f5ccf982654e3d7bd6df4bb4a06a69b27c67571b",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x44c4F142009036cF477eD2d09932051843137CF1",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 10000,
+     "tickSpacing": 100,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T22:05:34.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "WYFI",
+   "token": "0x9e7abd3c9139d14e4c86dce0e455aab7a0c2fb3e",
+   "inRegistry": true,
+   "onchainSymbol": "WYFI",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.1,
+   "tvlUsd": 41126,
+   "depthUsdTo10": 3427,
+   "name": "WhiteFiber, Inc. • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 19.38200003,
+   "pool": {
+    "poolId": "0xade8f03250521f174360017d003aac3b30df3633ca31769e23a7906bb3c6262d",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x9e7ABD3C9139D14E4c86DcE0e455AAB7A0C2FB3E",
+     "fee": 11100,
+     "tickSpacing": 111,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T19:18:07.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "LLY",
+   "token": "0x8005d266423c7ea827372c9c864491e5786600ea",
+   "inRegistry": true,
+   "onchainSymbol": "LLY",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.3,
+   "tvlUsd": 4985811,
+   "depthUsdTo10": 415427,
+   "name": "Eli Lilly • Robinhood Token",
+   "currentMultiplier": "1.000002288774375687",
+   "priceUsd": 1153.68235418,
+   "pool": {
+    "poolId": "0x23b1d33a2158e4551b9d48f16bbf0d19ade4b119668fd16864402143240bc673",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x8005d266423c7ea827372c9c864491e5786600ea",
+     "fee": 810,
+     "tickSpacing": 8,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T15:46:22.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "BE",
+   "token": "0x822cc93ffd030293e9842c30bbd678f530701867",
+   "inRegistry": true,
+   "onchainSymbol": "BE",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.5,
+   "tvlUsd": 165742,
+   "depthUsdTo10": 13810,
+   "name": "Bloom Energy • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 276.93069075,
+   "pool": {
+    "poolId": "0xbc363db0ae0c1a411168e26ec2cd8deeab765d7ae7fcb3eac711f6fe766462fc",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x822CC93fFD030293E9842c30BBD678F530701867",
+     "fee": 19000,
+     "tickSpacing": 190,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T10:47:18.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "BULL",
+   "token": "0xcef9027c7d6985b85f0ba431125073529a947a68",
+   "inRegistry": true,
+   "onchainSymbol": "BULL",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.5,
+   "tvlUsd": 88000,
+   "depthUsdTo10": 7332,
+   "name": "Webull • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 7.71682458,
+   "pool": {
+    "poolId": "0xdfc620485cebd394955e7cde9e3d336ec8dabe24a7c80c4b9de71ea896208e79",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xceF9027c7d6985b85f0BA431125073529A947A68",
+     "fee": 8000,
+     "tickSpacing": 50,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T10:44:54.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "NU",
+   "token": "0x408c14038a04f7bd235329e26d2bf569ee20e250",
+   "inRegistry": true,
+   "onchainSymbol": "NU",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.5,
+   "tvlUsd": 233185,
+   "depthUsdTo10": 19429,
+   "name": "Nu • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 13.72194279,
+   "pool": {
+    "poolId": "0x9136ac3e649882d73b81d5dcf2d73aef5e3054387401a30dbdafa4f744193b6d",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x408c14038a04f7bD235329E26d2bf569ee20e250",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 8000,
+     "tickSpacing": 1,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T09:02:37.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "SOFI",
+   "token": "0x98e75885157c80992a8d41b696d8c9c6fb30a926",
+   "inRegistry": true,
+   "onchainSymbol": "SOFI",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.6,
+   "tvlUsd": 10397,
+   "depthUsdTo10": 866,
+   "name": "SoFi Technologies • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 17.46640063,
+   "pool": {
+    "poolId": "0x4aefdd6300067298704486a0a8436e9c7aadc8bdae2d96bbcfcb860fb7a1381b",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x98E75885157C80992A8D41b696D8c9C6Fb30A926",
+     "fee": 29578,
+     "tickSpacing": 296,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T06:56:29.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "HPE",
+   "token": "0x59dd09d4900c2e4b5f75b7c0d4e6796fcc234cb1",
+   "inRegistry": true,
+   "onchainSymbol": "HPE",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.7,
+   "tvlUsd": 13624,
+   "depthUsdTo10": 1135,
+   "name": "HP Enterprise • Robinhood Token",
+   "currentMultiplier": "1.001716957939304938",
+   "priceUsd": 61.02952342,
+   "pool": {
+    "poolId": "0x8449bc525b02fb251bc7e281da91bdec6ef184a0e99f4a40bfa9a5fc7ebb4fcf",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x59dd09d4900C2E4B5F75b7c0d4E6796fcc234Cb1",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 30000,
+     "tickSpacing": 1,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T04:07:31.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "KTOS",
+   "token": "0x7fd06a4d81ccfa3f351394e144d5191874c31313",
+   "inRegistry": true,
+   "onchainSymbol": "KTOS",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.8,
+   "tvlUsd": 22218,
+   "depthUsdTo10": 1851,
+   "name": "Kratos Defense & Security Solutions • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 47.45609581,
+   "pool": {
+    "poolId": "0x2dc444dda358d7a75a5e92915c388efeaa9e770ab2599b6fdc540f94b1001c71",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x7FD06a4d81cCfA3F351394E144d5191874C31313",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T03:11:22.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "ADBE",
+   "token": "0x232b8ed6377be97813853b0ac104c4cda8378d1b",
+   "inRegistry": true,
+   "onchainSymbol": "ADBE",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.8,
+   "tvlUsd": 10023,
+   "depthUsdTo10": 835,
+   "name": "Adobe • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 242.32552836,
+   "pool": {
+    "poolId": "0x92a8b42d686c4be5444f3ea927ae29e04ada9205127f36c7e5a8a98d37c65a8b",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x232B8ed6377BE97813853B0Ac104c4Cda8378d1B",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 40000,
+     "tickSpacing": 400,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T01:58:55.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "HWM",
+   "token": "0xaea445c5f3db1a462998ccc422a875a361ee5d99",
+   "inRegistry": true,
+   "onchainSymbol": "HWM",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.9,
+   "tvlUsd": 16708,
+   "depthUsdTo10": 1392,
+   "name": "Howmet Aerospace • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 220.77891643,
+   "pool": {
+    "poolId": "0xf98b47b7db37c1727e078a8df7bf1d63915529263089e010d976d56d31f34e8e",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xAEa445c5F3DB1a462998ccC422A875A361ee5d99",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T00:09:00.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "FIG",
+   "token": "0x41f4267525a8aff329540ef24fd83d9044758b33",
+   "inRegistry": true,
+   "onchainSymbol": "FIG",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22.2,
+   "tvlUsd": 106523,
+   "depthUsdTo10": 8876,
+   "name": "Figma • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 21.94815272,
+   "pool": {
+    "poolId": "0xaee7f2e61946d4e2a096f44dc686c5b6ba8b2ce0857fa167f2e95c3d2eeb62b8",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x41F4267525a8AFf329540eF24fD83d9044758B33",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 20000,
+     "tickSpacing": 100,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T17:46:56.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "CELH",
+   "token": "0x8cf07c5a878945185d327aaa6e33faa95f95e7bf",
+   "inRegistry": true,
+   "onchainSymbol": "CELH",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22.4,
+   "tvlUsd": 61039,
+   "depthUsdTo10": 5086,
+   "name": "Celsius • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 28.80604869,
+   "pool": {
+    "poolId": "0x375cb43973bff222e1d2ea36c064cce0489687145a4c10c069c083a5aed66a00",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x8cF07C5A878945185d327aAa6e33FAa95F95e7bF",
+     "fee": 48000,
+     "tickSpacing": 480,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T11:48:08.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "PATH",
+   "token": "0xfb2664f07b6aadd29ea7a59d8859b1aeb8645cda",
+   "inRegistry": true,
+   "onchainSymbol": "PATH",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22.6,
+   "tvlUsd": 224918,
+   "depthUsdTo10": 18741,
+   "name": "UiPath • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 13.00869341,
+   "pool": {
+    "poolId": "0x251018f410a9ac182e458a5f26949d598e31a60881b53d0fd5806e2fc12bda1a",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xfb2664f07B6Aadd29ea7a59D8859b1AeB8645cDa",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T06:51:28.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "FUTU",
+   "token": "0xeb30663bdff0622ef4e4e5cbb4e975f19f33f51d",
+   "inRegistry": true,
+   "onchainSymbol": "FUTU",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22.7,
+   "tvlUsd": 25624,
+   "depthUsdTo10": 2135,
+   "name": "Futu Holdings • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 112.3148608,
+   "pool": {
+    "poolId": "0x26d55d21a7a072ebb10bdaf24a054f66243f91550a4ec5f791b9eeac613a68e2",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xeB30663bDFf0622Ef4e4E5cBb4E975F19f33f51D",
+     "fee": 45000,
+     "tickSpacing": 450,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T04:11:06.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "ASTS",
+   "token": "0x1af6446f07eb1d97c546afc8c9544cbdf3ad5137",
+   "inRegistry": true,
+   "onchainSymbol": "ASTS",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 23,
+   "tvlUsd": 36711,
+   "depthUsdTo10": 3059,
+   "name": "AST SpaceMobile • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 61.29131765,
+   "pool": {
+    "poolId": "0x4e67b9742f8991a5ed481d10ab0b2ca5532ee14e33f7d1cec1e894e95bd74632",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x1AF6446f07eb1d97c546AFC8c9544cBDF3AD5137",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 60000,
+     "tickSpacing": 600,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-08-31T21:49:07.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "RDDT",
+   "token": "0x05b37fb53a299a1b874a619e1c4c404d52c36f4c",
+   "inRegistry": true,
+   "onchainSymbol": "RDDT",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 23,
+   "tvlUsd": 895567,
+   "depthUsdTo10": 74620,
+   "name": "Reddit • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 151.64636485,
+   "pool": {
+    "poolId": "0x7c2985fd7623a5dcd88c7d51099931ca295875743b96bc64990e374f49e5f387",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x05b37Fb53A299a1b874A619e1c4C404D52C36F4C",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 2900,
+     "tickSpacing": 29,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-08-31T22:12:06.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "BB",
+   "token": "0x48e39e56acdba37b09020c0b734a613c9a2f100a",
+   "inRegistry": true,
+   "onchainSymbol": "BB",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 23.1,
+   "tvlUsd": 170712,
+   "depthUsdTo10": 14224,
+   "name": "Blackberry • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 8.45401608,
+   "pool": {
+    "poolId": "0xc250650901b49785b18443a0b1bfee10b98f5c20f11988635252030e5283a288",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x48E39E56aCdbA37b09020C0b734A613C9a2f100A",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 7100,
+     "tickSpacing": 71,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-08-31T20:04:14.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "JNJ",
+   "token": "0x03dfbbe0ac4e7bcdafd08ed41a400326b77d8c80",
+   "inRegistry": true,
+   "onchainSymbol": "JNJ",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 23.1,
+   "tvlUsd": 182845,
+   "depthUsdTo10": 15235,
+   "name": "Johnson & Johnson • Robinhood Token",
+   "currentMultiplier": "1.000021490286701962",
+   "priceUsd": 268.29283217,
+   "pool": {
+    "poolId": "0x939699357c3dfe97e84bce4ac71470ded8af8b7e2b52de4c216394b5849f8298",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x03DfbBE0AC4E7bCDaFd08eD41A400326B77D8c80",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-08-31T20:51:58.000Z"
+   },
+   "path": "push-price"
+  },
+  {
+   "ticker": "SKHY",
+   "token": "0x84cab63bc87912e71ad199ff14a0ba45de68fef8",
+   "inRegistry": true,
+   "onchainSymbol": "SKHY",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 26.4,
+   "tvlUsd": 529753,
+   "depthUsdTo10": 44140,
+   "name": "SK hynix Inc. American Depositary Shares • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 187.20379227,
+   "pool": {
+    "poolId": "0x994db79a9e80b73d726171d0e834dfe6fdce7987539dcf5cceef7b2b95c5fd95",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x84CAb63bc87912E71ad199ff14A0bA45de68FeF8",
+     "fee": 8880,
+     "tickSpacing": 89,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-08-28T12:30:56.000Z"
+   },
+   "path": "push-price"
+  }
+ ],
+ "excluded": [
+  {
+   "ticker": "QQQ",
+   "token": "0xd5f3879160bc7c32ebb4dc785f8a4f505888de68",
+   "inRegistry": true,
+   "onchainSymbol": "QQQ",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 60.6,
+   "tvlUsd": 5837,
+   "depthUsdTo10": 486,
+   "name": "Invesco QQQ • Robinhood Token",
+   "currentMultiplier": "1.000700791241405425",
+   "priceUsd": 744.05511886,
+   "pool": {
+    "poolId": "0xf9568ec0cba6e9ba30d9daabbf3e807813b8852e5737b7d83ea06529c73c9758",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xD5f3879160bc7c32ebb4dC785F8a4F505888de68",
+     "fee": 3000,
+     "tickSpacing": 60,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-07-25T06:51:29.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "NVDA",
+   "token": "0xd0601ce157db5bdc3162bbac2a2c8af5320d9eec",
+   "inRegistry": true,
+   "onchainSymbol": "NVDA",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 82.9,
+   "tvlUsd": 4456513,
+   "depthUsdTo10": 371325,
+   "name": "NVIDIA • Robinhood Token",
+   "currentMultiplier": "1.000775159164630595",
+   "priceUsd": 225.27148076,
+   "pool": {
+    "poolId": "0x3bb34a44f1b2b5f32c034c38a53065a521a47b199700fa9bd19d60985ff24bf1",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+     "fee": 3000,
+     "tickSpacing": 60,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-07-02T23:26:51.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "AMD",
+   "token": "0x86923f96303d656e4aa86d9d42d1e57ad2023fdc",
+   "inRegistry": true,
+   "onchainSymbol": "AMD",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 82.9,
+   "tvlUsd": 2315029,
+   "depthUsdTo10": 192893,
+   "name": "AMD • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 614.89981925,
+   "pool": {
+    "poolId": "0xde9f85fdd9e05a943a52f2c69ffafe3064a3287df03d02c9b431bc92d4781274",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x86923f96303D656E4aa86D9d42D1e57ad2023fdC",
+     "fee": 10000,
+     "tickSpacing": 200,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-07-02T23:18:12.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "MU",
+   "token": "0xff080c8ce2e5feadaca0da81314ae59d232d4afd",
+   "inRegistry": true,
+   "onchainSymbol": "MU",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 78.1,
+   "tvlUsd": 1291039,
+   "depthUsdTo10": 107572,
+   "name": "Micron Technology • Robinhood Token",
+   "currentMultiplier": "1.000074823219171086",
+   "priceUsd": 1076.44594102,
+   "pool": {
+    "poolId": "0x6fa3ee0048e78bf0a513eb0ab56f482944a767c21db990fcf555605e69f05659",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xfF080c8ce2E5feadaCa0Da81314Ae59D232d4afD",
+     "fee": 10000,
+     "tickSpacing": 200,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-07-07T20:46:16.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "SNDK",
+   "token": "0xb90a19ff0af67f7779aff50a882a9cff42446400",
+   "inRegistry": true,
+   "onchainSymbol": "SNDK",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 83.5,
+   "tvlUsd": 983950,
+   "depthUsdTo10": 81985,
+   "name": "Sandisk Corporation • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 1823.34331122,
+   "pool": {
+    "poolId": "0x2707cb88a6a40fa0f948f58958051ba097d6f6a3cf7f87929bd68ccc5becea24",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xB90A19fF0Af67f7779afF50A882A9CfF42446400",
+     "fee": 10000,
+     "tickSpacing": 200,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-07-02T11:12:13.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "COIN",
+   "token": "0x6330d8c3178a418788df01a47479c0ce7ccf450b",
+   "inRegistry": true,
+   "onchainSymbol": "COIN",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 63.1,
+   "tvlUsd": 2346808,
+   "depthUsdTo10": 195541,
+   "name": "Coinbase • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 198.16604169,
+   "pool": {
+    "poolId": "0x007a13fa152f6dc383cad20a8eaab4e1e2538b606936eae2a424f8aa47d6db31",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x6330D8C3178a418788dF01a47479c0ce7CCF450b",
+     "fee": 10000,
+     "tickSpacing": 200,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-07-22T18:44:47.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "META",
+   "token": "0xc0d6457c16cc70d6790dd43521c899c87ce02f35",
+   "inRegistry": true,
+   "onchainSymbol": "META",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 74.4,
+   "tvlUsd": 67544441,
+   "depthUsdTo10": 5627932,
+   "name": "Meta Platforms • Robinhood Token",
+   "currentMultiplier": "1.000541459879451635",
+   "priceUsd": 747.29216942,
+   "pool": {
+    "poolId": "0x5875d407a42965b0e768c8925cea290e06fa50603ef34fc99eb92a1050e6ae36",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xc0D6457C16Cc70d6790Dd43521C899C87ce02f35",
+     "fee": 3000,
+     "tickSpacing": 60,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-07-11T12:18:48.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "AAPL",
+   "token": "0xaf3d76f1834a1d425780943c99ea8a608f8a93f9",
+   "inRegistry": true,
+   "onchainSymbol": "AAPL",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 72.7,
+   "tvlUsd": 6488024,
+   "depthUsdTo10": 540595,
+   "name": "Apple • Robinhood Token",
+   "currentMultiplier": "1.000566080061092436",
+   "priceUsd": 337.05519227,
+   "pool": {
+    "poolId": "0xc748f4671a867db48b552f6b7650bf3255e05f80f00e3f7aad1b17ccb7898fdb",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+     "fee": 3000,
+     "tickSpacing": 60,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-07-13T04:28:33.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "MSFT",
+   "token": "0xe93237c50d904957cf27e7b1133b510c669c2e74",
+   "inRegistry": true,
+   "onchainSymbol": "MSFT",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 67.4,
+   "tvlUsd": 3770113,
+   "depthUsdTo10": 314133,
+   "name": "Microsoft • Robinhood Token",
+   "currentMultiplier": "1.000412952576205964",
+   "priceUsd": 500.73292651,
+   "pool": {
+    "poolId": "0x9194a557b6a6bb2236b49ea7e2bbccec5d3eeb705aef00903be4b3de1d949579",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xe93237C50D904957Cf27E7B1133b510C669c2e74",
+     "fee": 3000,
+     "tickSpacing": 60,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-07-18T12:13:11.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "PLTR",
+   "token": "0x894e1ec2d74ffe5aef8dc8a9e84686accb964f2a",
+   "inRegistry": true,
+   "onchainSymbol": "PLTR",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 74.2,
+   "tvlUsd": 7440861,
+   "depthUsdTo10": 619987,
+   "name": "Palantir Technologies • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 191.50022639,
+   "pool": {
+    "poolId": "0xee430ee1003e1985e1828a01b9a20dad67ad4302994fe2abb4a173de4ac54623",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x894E1EC2D74FFE5AEF8Dc8A9e84686acCB964F2A",
+     "fee": 10000,
+     "tickSpacing": 200,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-07-11T16:17:29.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "CRCL",
+   "token": "0xdf0992e440dd0be65bd8439b609d6d4366bf1cb5",
+   "inRegistry": true,
+   "onchainSymbol": "CRCL",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 18.6,
+   "tvlUsd": 261315,
+   "depthUsdTo10": 21773,
+   "name": "Circle Internet Group • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 91.74534028,
+   "pool": {
+    "poolId": "0x970df1466b2e888c80e8f66e014e4637ead055085557514a084468695e669daf",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xdF0992E440dD0be65BD8439b609d6D4366bf1CB5",
+     "fee": 2450,
+     "tickSpacing": 25,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-05T06:57:03.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "INTC",
+   "token": "0xc72b96e0e48ecd4dc75e1e45396e26300bc39681",
+   "inRegistry": true,
+   "onchainSymbol": "INTC",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 71.2,
+   "tvlUsd": 1703809,
+   "depthUsdTo10": 141965,
+   "name": "Intel • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 121.73510885,
+   "pool": {
+    "poolId": "0xf2e329e631d0fb315a5c563ee3a9120f24822b5ef6c502a91cb56b174d5d8c22",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xc72b96e0E48ecd4DC75E1e45396e26300BC39681",
+     "fee": 10000,
+     "tickSpacing": 200,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-07-14T17:40:10.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "BABA",
+   "token": "0xad25ac6c84d497db898fa1e8387bf6af3532a1c4",
+   "inRegistry": true,
+   "onchainSymbol": "BABA",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 20.3,
+   "tvlUsd": 764708,
+   "depthUsdTo10": 63717,
+   "name": "Alibaba • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 110.98137234,
+   "pool": {
+    "poolId": "0x1791fc651cc794a282e5dbcb56d0b2b38eff8754b677c8876e86901521ecc439",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xad25Ac6C84D497db898fa1E8387bf6Af3532a1c4",
+     "fee": 1000,
+     "tickSpacing": 10,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T15:59:45.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "ORCL",
+   "token": "0xb0992820e760d836549ba69bc7598b4af75dee03",
+   "inRegistry": true,
+   "onchainSymbol": "ORCL",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 63.6,
+   "tvlUsd": 76159,
+   "depthUsdTo10": 6346,
+   "name": "Oracle • Robinhood Token",
+   "currentMultiplier": "1.002210914971013375",
+   "priceUsd": 144.84861413,
+   "pool": {
+    "poolId": "0xc2ce4784e1e72cf0221b51b30c8aaadf6c0b12863cf03ab3687854fb7b1d850a",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xb0992820E760d836549ba69BC7598b4af75dEE03",
+     "fee": 10000,
+     "tickSpacing": 200,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-07-22T08:03:57.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "EWY",
+   "token": "0x7f0abef0c07280f82c6a08ead09ded6bae2c13fc",
+   "inRegistry": true,
+   "onchainSymbol": "EWY",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 21.1,
+   "tvlUsd": 179303,
+   "depthUsdTo10": 14940,
+   "name": "iShares MSCI South Korea fund • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 182.77661363,
+   "pool": {
+    "poolId": "0xaac10c49a6386a702427c6cd4f378706ade03c53267080712f9e5d2fc496b61a",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x7f0aBeF0C07280F82c6a08ead09dEd6BAE2C13Fc",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T19:23:51.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "SGOV",
+   "token": "0x92fd66527192e3e61d4ddd13322aa222de86f9b5",
+   "inRegistry": true,
+   "onchainSymbol": "SGOV",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 20.8,
+   "tvlUsd": 18313930,
+   "depthUsdTo10": 1525952,
+   "name": "iShares 0-3 Month Treasury Bond • Robinhood Token",
+   "currentMultiplier": "1.005101770003214918",
+   "priceUsd": 101.06440883,
+   "pool": {
+    "poolId": "0x2a72510d7d92cc121f9733ab6d14227ef8963cfadf9d40ac574f02e20e6299a8",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x92FD66527192E3e61d4DDd13322Aa222DE86F9B5",
+     "fee": 375,
+     "tickSpacing": 4,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T02:39:33.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "USAR",
+   "token": "0xd917b029c761d264c6a312bbbcda868658ef86a6",
+   "inRegistry": true,
+   "onchainSymbol": "USAR",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 82.9,
+   "tvlUsd": 79,
+   "depthUsdTo10": 7,
+   "name": "USA Rare Earth • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 16.99327476,
+   "pool": {
+    "poolId": "0x061a6e50ea9288db8b8cda2e4c9976dd9c295d91870cde18aaeb0bfd054beff4",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xd917B029C761D264c6A312BBbcDA868658eF86a6",
+     "fee": 900000,
+     "tickSpacing": 18000,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-07-02T23:55:43.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "USO",
+   "token": "0xa30fa36db767ad9ed3f7a60fc79526fb4d56d344",
+   "inRegistry": true,
+   "onchainSymbol": "USO",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 15.7,
+   "tvlUsd": 1289713,
+   "depthUsdTo10": 107461,
+   "name": "United States Oil Fund • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 149.20004282,
+   "pool": {
+    "poolId": "0x1f2ad5a274a776d8e1408292bde1d92d8fa7b6444acf14ad60b9c3e4e5b66420",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xa30FA36Db767ad9eD3f7a60fC79526fB4d56D344",
+     "fee": 1200,
+     "tickSpacing": 15,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-08T04:54:45.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "IREN",
+   "token": "0xf0ab0c93be6f41369d302e55db1a96b3c430212d",
+   "inRegistry": true,
+   "onchainSymbol": "IREN",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 56.1,
+   "tvlUsd": 20710,
+   "depthUsdTo10": 1726,
+   "name": "IREN Limited • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 47.09339589,
+   "pool": {
+    "poolId": "0x2566088fd6aa48831800109ad3360328f6c4131da2043b948e1bacdde5151e9f",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xF0AB0c93bE6F41369d302e55db1A96b3c430212D",
+     "fee": 9000,
+     "tickSpacing": 90,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-07-29T20:49:08.000Z"
+   },
+   "reason": "pool 56.1d old > 30d window"
+  },
+  {
+   "ticker": "GLW",
+   "token": "0x7c04e6a3368f2a1de3874f0e80d2e0a1a9915da6",
+   "inRegistry": true,
+   "onchainSymbol": "GLW",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22.4,
+   "tvlUsd": 572,
+   "depthUsdTo10": 48,
+   "name": "Corning • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 151.58985484,
+   "pool": {
+    "poolId": "0x684aa60e68b957a5fb3cb83c55473cd35ba5cb27ac3eb1ec840dcc42439618f8",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x7c04E6A3368F2A1DE3874f0e80d2e0A1a9915da6",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T11:18:49.000Z"
+   },
+   "reason": "TVL ~$572 < $10000 floor"
+  },
+  {
+   "ticker": "MSTR",
+   "token": "0xec262a75e413fafd0df80480274532c79d42da09",
+   "inRegistry": true,
+   "onchainSymbol": "MSTR",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 29.7,
+   "tvlUsd": 5237902,
+   "depthUsdTo10": 436432,
+   "name": "Strategy Inc. • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 162.04742901,
+   "pool": {
+    "poolId": "0x319bac87e616a89e241c10aeb8afd4892a852cdd8b373cd9765ecddc40b87cfe",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xec262a75e413fAfD0dF80480274532C79D42da09",
+     "fee": 2500,
+     "tickSpacing": 25,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-08-25T04:51:53.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "NFLX",
+   "token": "0xe0444ef8bf4ed74f74fd73686e2ddf4c1c5591e8",
+   "inRegistry": true,
+   "onchainSymbol": "NFLX",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 66.9,
+   "tvlUsd": 371966,
+   "depthUsdTo10": 30993,
+   "name": "Netflix • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 72.04756112,
+   "pool": {
+    "poolId": "0xe4930a6215f21aa3b37c01adbded3362f56ae31b9a60066f5f9641e601d5111f",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xE0444EF8BF4eD74f74FD73686e2ddF4C1c5591E8",
+     "fee": 10000,
+     "tickSpacing": 100,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-07-19T00:40:58.000Z"
+   },
+   "reason": "pool 66.9d old > 30d window"
+  },
+  {
+   "ticker": "RDW",
+   "token": "0x92ef19e82bd8ff36661de838d5eae7e5cef0effe",
+   "inRegistry": true,
+   "onchainSymbol": "RDW",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.2,
+   "tvlUsd": 293,
+   "depthUsdTo10": 24,
+   "name": "Redwire • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 11.1592518,
+   "pool": {
+    "poolId": "0x9be36ee3f30629bd396e6958865563df399c8f2ac50e006aa662123a801e5548",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x92Ef19E82bD8fF36661DE838D5eaE7e5CEF0EfFE",
+     "fee": 49000,
+     "tickSpacing": 490,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T16:53:42.000Z"
+   },
+   "reason": "TVL ~$293 < $10000 floor"
+  },
+  {
+   "ticker": "APLD",
+   "token": "0xb8dbf92f9741c9ac1c32115e78581f23509916fd",
+   "inRegistry": true,
+   "onchainSymbol": "APLD",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22.7,
+   "tvlUsd": 4463,
+   "depthUsdTo10": 372,
+   "name": "Applied Digital • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 28.40088726,
+   "pool": {
+    "poolId": "0xe82d21b94f44ccb01d6bff61535134d0ac7644c6012d53967e3da4e792ec831e",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xb8DBf92F9741c9ac1c32115E78581f23509916FD",
+     "fee": 46000,
+     "tickSpacing": 460,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T04:06:54.000Z"
+   },
+   "reason": "TVL ~$4463 < $10000 floor"
+  },
+  {
+   "ticker": "CCL",
+   "token": "0x9651342cea770ae9a2969ba2a52611523146aef9",
+   "inRegistry": true,
+   "onchainSymbol": "CCL",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 23,
+   "tvlUsd": 1986,
+   "depthUsdTo10": 165,
+   "name": "Carnival Corporation • Robinhood Token",
+   "currentMultiplier": "1.021486444855206408",
+   "priceUsd": 22.31328009,
+   "pool": {
+    "poolId": "0x3111f698a75bd4cb79376c43e59411bdf6fc06cb14a0df308eac91b7d3b03f9c",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x9651342CeA770aE9a2969Ba2A52611523146aef9",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-08-31T21:18:27.000Z"
+   },
+   "reason": "TVL ~$1986 < $10000 floor"
+  },
+  {
+   "ticker": "DELL",
+   "token": "0x941ae714ec6d8130c7b75d67160ca08f1e7d11dd",
+   "inRegistry": true,
+   "onchainSymbol": "DELL",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 17.7,
+   "tvlUsd": 937560,
+   "depthUsdTo10": 78119,
+   "name": "Dell • Robinhood Token",
+   "currentMultiplier": "1.000063708620124549",
+   "priceUsd": 548.71996919,
+   "pool": {
+    "poolId": "0x729651c09684919bdffda473141be4e908ee0e8cf8a43f41135831217fa7d3bb",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x941AE714EC6D8130c7B75d67160Ca08f1e7d11Dd",
+     "fee": 5000,
+     "tickSpacing": 25,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-06T06:20:37.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "LITE",
+   "token": "0x8ef20885f94e3d9bc7eb3080279188bd5ed7c08c",
+   "inRegistry": true,
+   "onchainSymbol": "LITE",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.1,
+   "tvlUsd": 3397,
+   "depthUsdTo10": 283,
+   "name": "Lumentum • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 945.6916942,
+   "pool": {
+    "poolId": "0xe2c508ce68ebc3a04a5000cc3659905bb391d390e5b8994d0a65ba316ec326c2",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x8eF20885F94e3D9bc7eB3080279188Bd5ED7c08C",
+     "fee": 10000,
+     "tickSpacing": 100,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T19:00:42.000Z"
+   },
+   "reason": "TVL ~$3397 < $10000 floor"
+  },
+  {
+   "ticker": "LUNR",
+   "token": "0xa5d4968421ba94814be3b136b15cf422101ac1a3",
+   "inRegistry": true,
+   "onchainSymbol": "LUNR",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 5.3,
+   "tvlUsd": 1532,
+   "depthUsdTo10": 128,
+   "name": "Intuitive Machines • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 15.37482937,
+   "pool": {
+    "poolId": "0xc7bc5aa29ea0cadc01d6015d409cafea9364fab2234b793ca41be0d728d78a9b",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xa5D4968421bA94814Be3B136b15cf422101aC1a3",
+     "fee": 60000,
+     "tickSpacing": 600,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-18T14:08:37.000Z"
+   },
+   "reason": "TVL ~$1532 < $10000 floor"
+  },
+  {
+   "ticker": "MRVL",
+   "token": "0x62fd0668e10d8b72339be2dcf7643001688ff13b",
+   "inRegistry": true,
+   "onchainSymbol": "MRVL",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 23,
+   "tvlUsd": 7511,
+   "depthUsdTo10": 626,
+   "name": "Marvell Technology • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 248.47295209,
+   "pool": {
+    "poolId": "0xec44496df8d7e622bdbc3927c93190606397166c7514b3fd09a328c0c438140c",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x62fd0668e10D8B72339BE2DCF7643001688ff13B",
+     "fee": 45000,
+     "tickSpacing": 450,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-08-31T20:56:51.000Z"
+   },
+   "reason": "TVL ~$7511 < $10000 floor"
+  },
+  {
+   "ticker": "NBIS",
+   "token": "0x9d9c6684f596f66a64c030b93a886d51fd4d7931",
+   "inRegistry": true,
+   "onchainSymbol": "NBIS",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 14.8,
+   "tvlUsd": 196304,
+   "depthUsdTo10": 16356,
+   "name": "Nebius Group • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 228.82285719,
+   "pool": {
+    "poolId": "0x7c2f9ce1214ba9baf56d1b6a1fc640c1b63e9a711172c0c7d10e5a9c4a3d4f0c",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x9D9c6684F596F66a64C030B93A886D51Fd4D7931",
+     "fee": 9900,
+     "tickSpacing": 99,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-09T02:18:23.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "NVTS",
+   "token": "0xbe6702d7b70315376dc48a3293f24f0982f86386",
+   "inRegistry": true,
+   "onchainSymbol": "NVTS",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.3,
+   "tvlUsd": 580,
+   "depthUsdTo10": 48,
+   "name": "Navitas Semiconductor • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 11.70104126,
+   "pool": {
+    "poolId": "0x5ea9601ea0ffe2593fad6f0a184fe21a67e4d6d9da31b0528a66b0d860d5c0f0",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xbE6702d7b70315376dC48a3293f24f0982F86386",
+     "fee": 49000,
+     "tickSpacing": 490,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T14:02:10.000Z"
+   },
+   "reason": "TVL ~$580 < $10000 floor"
+  },
+  {
+   "ticker": "POET",
+   "token": "0xcf6b2d875361be807eafa57458c80f28521f9333",
+   "inRegistry": true,
+   "onchainSymbol": "POET",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 18.4,
+   "tvlUsd": 3472,
+   "depthUsdTo10": 289,
+   "name": "POET Technologies • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 8.14049445,
+   "pool": {
+    "poolId": "0xfcffa3e303895e022e3960b32eccd7302d7ddbe7dd58483bb780acea5aa39aa5",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xcf6B2D875361be807EAfa57458c80f28521F9333",
+     "fee": 25000,
+     "tickSpacing": 250,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-05T12:18:56.000Z"
+   },
+   "reason": "TVL ~$3472 < $10000 floor"
+  },
+  {
+   "ticker": "SMCI",
+   "token": "0xc01aa1fecec0605b13bc84874ff7256c0f5f562a",
+   "inRegistry": true,
+   "onchainSymbol": "SMCI",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22.4,
+   "tvlUsd": 4762,
+   "depthUsdTo10": 397,
+   "name": "Super Micro Computer • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 40.50349958,
+   "pool": {
+    "poolId": "0xcbc5164c76a22d18a8195ee1da318ae08a214f6b5ccf11e556f0289211a51cee",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xc01aA1fECeC0605b13bc84874ff7256C0f5F562a",
+     "fee": 48000,
+     "tickSpacing": 480,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T12:47:02.000Z"
+   },
+   "reason": "TVL ~$4762 < $10000 floor"
+  },
+  {
+   "ticker": "SPMO",
+   "token": "0xad622320e520de39e72d41ef07438c3fd3354875",
+   "inRegistry": true,
+   "onchainSymbol": "SPMO",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.4,
+   "tvlUsd": 2224,
+   "depthUsdTo10": 185,
+   "name": "Invesco S&P 500 Momentum ETF • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 141.89456575,
+   "pool": {
+    "poolId": "0xe9245222555990431b1354e76b6230f52df3241e1bcb1adf69963ce33319c6a4",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xAd622320e520de39e72d41EF07438C3Fd3354875",
+     "fee": 69000,
+     "tickSpacing": 690,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T13:32:42.000Z"
+   },
+   "reason": "TVL ~$2224 < $10000 floor"
+  },
+  {
+   "ticker": "ZS",
+   "token": "0x7dc013eb55e436f30d7ed1afe4e36d6e45e3c3f7",
+   "inRegistry": true,
+   "onchainSymbol": "ZS",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 6,
+   "tvlUsd": 881,
+   "depthUsdTo10": 73,
+   "name": "Zscaler • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 207.94167367,
+   "pool": {
+    "poolId": "0x0ed2521e7399d7975b936b66d9313f3baadc63513480d3f967c5d07833f8947f",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x7dc013eB55e436f30d7ED1AFE4E36d6e45e3c3f7",
+     "fee": 38500,
+     "tickSpacing": 385,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-17T21:11:38.000Z"
+   },
+   "reason": "TVL ~$881 < $10000 floor"
+  },
+  {
+   "ticker": "TSEM",
+   "token": "0x89776d4cd68193597a2fc132cfac1fde36ccea8a",
+   "inRegistry": true,
+   "onchainSymbol": "TSEM",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.3,
+   "tvlUsd": 558,
+   "depthUsdTo10": 46,
+   "name": "Tower Semiconductor • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 225.52333112,
+   "pool": {
+    "poolId": "0x670a1d29e3b14ba41039da2a1fb9ddb3e58d5af5eecc7f5d943046df94742260",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x89776d4Cd68193597A2fC132cfaC1fDe36CCeA8a",
+     "fee": 49000,
+     "tickSpacing": 490,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T15:46:58.000Z"
+   },
+   "reason": "TVL ~$558 < $10000 floor"
+  },
+  {
+   "ticker": "MDB",
+   "token": "0xddf2266b79abf0b48898959b0ed6e6adf512be74",
+   "inRegistry": true,
+   "onchainSymbol": "MDB",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 6.2,
+   "tvlUsd": 4950,
+   "depthUsdTo10": 412,
+   "name": "MongoDB • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 418.20401173,
+   "pool": {
+    "poolId": "0xaccf878bb53d27731feacfb856110fbbc2b28889aca990afaa088e272b99d16a",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xDdf2266b79abf0B48898959B0ed6E6adf512be74",
+     "fee": 38400,
+     "tickSpacing": 384,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-17T18:02:07.000Z"
+   },
+   "reason": "TVL ~$4950 < $10000 floor"
+  },
+  {
+   "ticker": "XNDU",
+   "token": "0xa8eb3bccbf2017ee7cbfb652eb51cf2e1b153289",
+   "inRegistry": true,
+   "onchainSymbol": "XNDU",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.2,
+   "tvlUsd": 1334,
+   "depthUsdTo10": 111,
+   "name": "Xanadu Quantum • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 5.87992711,
+   "pool": {
+    "poolId": "0x18502289dd37db0c0026b8099cf3a2018d70679120d1178eab5b1434bdeafae4",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xA8eB3BCcbf2017eE7CBfb652eB51CF2E1B153289",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T16:08:42.000Z"
+   },
+   "reason": "TVL ~$1334 < $10000 floor"
+  },
+  {
+   "ticker": "CLSK",
+   "token": "0xcbb95bbf36099d34da091dc6fa6f49efa257cee3",
+   "inRegistry": true,
+   "onchainSymbol": "CLSK",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 22.5,
+   "tvlUsd": 3067,
+   "depthUsdTo10": 256,
+   "name": "CleanSpark • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 14.39977856,
+   "pool": {
+    "poolId": "0x2a957ec877e91cccd9920e39b8d50128310a75ba7fa3765eb4e4a5ef11ab69a5",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xcBB95BBF36099d34dA091dc6Fa6F49EfA257Cee3",
+     "fee": 46800,
+     "tickSpacing": 468,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T10:02:32.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "QBTS",
+   "token": "0xc583c60aef9dc401da72cec1b404743a93cea1cc",
+   "inRegistry": true,
+   "onchainSymbol": "QBTS",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.3,
+   "tvlUsd": 3211,
+   "depthUsdTo10": 268,
+   "name": "D-Wave Quantum Inc. Common Stock • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 18.14866193,
+   "pool": {
+    "poolId": "0x29f9c0665fd943433148f6173826a54d69135a74994dc53101605b30568cf362",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xC583c60aeF9Dc401Da72cEC1B404743a93cea1Cc",
+     "fee": 69000,
+     "tickSpacing": 690,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T14:47:12.000Z"
+   },
+   "reason": "TVL ~$3211 < $10000 floor"
+  },
+  {
+   "ticker": "SATS",
+   "token": "0x95052ddcd5dc25641657424a8cf04834997e1730",
+   "inRegistry": true,
+   "onchainSymbol": "SATS",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": null,
+   "tvlUsd": null,
+   "depthUsdTo10": null,
+   "name": "EchoStar • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": null,
+   "pool": null,
+   "reason": "no hook-free STOCK/USDG pool"
+  },
+  {
+   "ticker": "CRWD",
+   "token": "0xea72ecca2d0f6bfa1394dbbcff85b52cd4233931",
+   "inRegistry": true,
+   "onchainSymbol": "CRWD",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.2,
+   "tvlUsd": 5681,
+   "depthUsdTo10": 473,
+   "name": "CrowdStrike Holdings • Robinhood Token",
+   "currentMultiplier": "4.000000000000000000",
+   "priceUsd": 1014.2392911,
+   "pool": {
+    "poolId": "0x5f821fb6375536036d61372b33381d3396302a9fc5c1b97830a80ba0120f1f0c",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xea72Ecca2d0f6bFA1394DBBCff85b52CD4233931",
+     "fee": 28456,
+     "tickSpacing": 285,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T17:08:49.000Z"
+   },
+   "reason": "TVL ~$5681 < $10000 floor"
+  },
+  {
+   "ticker": "WDC",
+   "token": "0xf52597345a8edf418bc4071b4a35112472277d3e",
+   "inRegistry": true,
+   "onchainSymbol": "WDC",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22.2,
+   "tvlUsd": 1619,
+   "depthUsdTo10": 135,
+   "name": "Western Digital • Robinhood Token",
+   "currentMultiplier": "1.000217565250523909",
+   "priceUsd": 440.56472224,
+   "pool": {
+    "poolId": "0x6f2464d44ece96fa49583328ccbc5872f1f975443fb41619099a59cbdf8b87fd",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xF52597345A8Edf418bc4071b4a35112472277D3e",
+     "fee": 60000,
+     "tickSpacing": 600,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T18:15:28.000Z"
+   },
+   "reason": "TVL ~$1619 < $10000 floor"
+  },
+  {
+   "ticker": "ALAB",
+   "token": "0x748c32c3ca24edf31ea597db1f3d330a7a6da3dc",
+   "inRegistry": true,
+   "onchainSymbol": "ALAB",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22.6,
+   "tvlUsd": 2583,
+   "depthUsdTo10": 215,
+   "name": "Astera Labs, Inc. • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 345.63742663,
+   "pool": {
+    "poolId": "0x2402e7a9b73a54f18310091f876fd19efe6e0da60a2d913c7eccd11cb88a8d94",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x748c32c3ca24eDf31ea597Db1F3d330a7a6DA3Dc",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T06:44:44.000Z"
+   },
+   "reason": "TVL ~$2583 < $10000 floor"
+  },
+  {
+   "ticker": "AVAV",
+   "token": "0xf6290b5e7c26502e2da514c31509849718ea76a5",
+   "inRegistry": true,
+   "onchainSymbol": "AVAV",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.3,
+   "tvlUsd": 1221,
+   "depthUsdTo10": 102,
+   "name": "AeroVironment • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 156.00575256,
+   "pool": {
+    "poolId": "0xd7212dc814809c5e7806eb9d1f10461e40a9f72b5d3f90bbd9484ab46c37f104",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xF6290b5e7C26502e2dA514C31509849718EA76A5",
+     "fee": 69000,
+     "tickSpacing": 690,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T13:40:17.000Z"
+   },
+   "reason": "TVL ~$1221 < $10000 floor"
+  },
+  {
+   "ticker": "PL",
+   "token": "0xaa4d64474c172010ab57719cb9951e6142a100d3",
+   "inRegistry": true,
+   "onchainSymbol": "PL",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22.6,
+   "tvlUsd": 483,
+   "depthUsdTo10": 40,
+   "name": "Planet Labs • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 16.65790281,
+   "pool": {
+    "poolId": "0xeb1ee02e6a3df0ba0aa41ac6750a046ad52c9f40ee0a22ba82b9c97771918b2a",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xAA4d64474c172010aB57719cb9951E6142a100d3",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T06:54:16.000Z"
+   },
+   "reason": "TVL ~$483 < $10000 floor"
+  },
+  {
+   "ticker": "KLAC",
+   "token": "0x96b933c74ecb4a0926b9210cef7b743ef46be2e9",
+   "inRegistry": true,
+   "onchainSymbol": "KLAC",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21,
+   "tvlUsd": 2597,
+   "depthUsdTo10": 216,
+   "name": "KLA • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 179.7729818,
+   "pool": {
+    "poolId": "0x5f31d2d37e46503e6e0e9ddff1ee8966452fd0cfaa7227bb79baf50346e545dc",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x96b933C74eCB4A0926b9210cef7b743EF46be2E9",
+     "fee": 40000,
+     "tickSpacing": 400,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T22:10:10.000Z"
+   },
+   "reason": "TVL ~$2597 < $10000 floor"
+  },
+  {
+   "ticker": "COHR",
+   "token": "0x92f9f459f1a9a5ad266b182be7bffd1c6c666894",
+   "inRegistry": true,
+   "onchainSymbol": "COHR",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 23,
+   "tvlUsd": 4538,
+   "depthUsdTo10": 378,
+   "name": "Coherent • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 319.31972591,
+   "pool": {
+    "poolId": "0xf630e3ddabc02fec5c77eae4c65ce42f5a28818ba3ec1826d732648db10e9d28",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x92F9F459F1a9a5AD266b182BE7Bffd1C6c666894",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-08-31T21:55:13.000Z"
+   },
+   "reason": "TVL ~$4538 < $10000 floor"
+  },
+  {
+   "ticker": "AMKR",
+   "token": "0xdd356aa38f40a7b7076755ac854b6fbb1f0d305b",
+   "inRegistry": true,
+   "onchainSymbol": "AMKR",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.8,
+   "tvlUsd": 1594,
+   "depthUsdTo10": 133,
+   "name": "Amkor Technology • Robinhood Token",
+   "currentMultiplier": "1.000866850964062008",
+   "priceUsd": 52.0461616,
+   "pool": {
+    "poolId": "0xc19d2a4b00988a3b1ec24b03207c7ad2a01a3c47e3ed1a524ae8cdc9ade5caa8",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xDd356AA38F40A7b7076755aC854B6FBb1F0D305B",
+     "fee": 49000,
+     "tickSpacing": 490,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T02:06:56.000Z"
+   },
+   "reason": "TVL ~$1594 < $10000 floor"
+  },
+  {
+   "ticker": "ON",
+   "token": "0xbbd09f72b025360fee5c928053dca6248d35be54",
+   "inRegistry": true,
+   "onchainSymbol": "ON",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 8.2,
+   "tvlUsd": 117,
+   "depthUsdTo10": 10,
+   "name": "ON Semiconductor • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 74.58855283,
+   "pool": {
+    "poolId": "0x592fa7e9be0269f169d2aa4bc869832ff46aec17a57a71725c4832e80050d6d6",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xbBD09F72b025360FeE5C928053Dca6248d35be54",
+     "fee": 770000,
+     "tickSpacing": 1,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-15T18:14:37.000Z"
+   },
+   "reason": "TVL ~$117 < $10000 floor"
+  },
+  {
+   "ticker": "AXON",
+   "token": "0xc27dbd474af5181c5a8777903690d8d262d12648",
+   "inRegistry": true,
+   "onchainSymbol": "AXON",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.1,
+   "tvlUsd": 293,
+   "depthUsdTo10": 24,
+   "name": "Axon • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 470.19948636,
+   "pool": {
+    "poolId": "0x5b51890885f099d7558497b14379841303d954d1be24c06110a4d64aaf4aa027",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xC27dBD474aF5181c5A8777903690D8D262D12648",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T19:18:26.000Z"
+   },
+   "reason": "TVL ~$293 < $10000 floor"
+  },
+  {
+   "ticker": "HIMS",
+   "token": "0xccee82fe024c36fa15e1005ede3e9e4787e23d09",
+   "inRegistry": true,
+   "onchainSymbol": "HIMS",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 34,
+   "tvlUsd": 1062498,
+   "depthUsdTo10": 88529,
+   "name": "Hims & Hers Health • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 28.7147037,
+   "pool": {
+    "poolId": "0x68d4f28f1432e0ad714658853edb2e6b0b1ac4060355ff3d169fea656b1d1c52",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xCceE82fE024c36fA15E1005edE3E9e4787e23D09",
+     "fee": 9000,
+     "tickSpacing": 90,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-08-20T21:20:08.000Z"
+   },
+   "reason": "pool 34d old > 30d window"
+  },
+  {
+   "ticker": "TEM",
+   "token": "0xb1cc0ec7db69cf43539119814df40071b9d61793",
+   "inRegistry": true,
+   "onchainSymbol": "TEM",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.9,
+   "tvlUsd": 1194,
+   "depthUsdTo10": 100,
+   "name": "Tempus AI • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 76.14521836,
+   "pool": {
+    "poolId": "0xcf2605e1d19103efa0445216057b6432686c1ef305cf2573cfa887b090b22bfe",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xB1CC0EC7Db69Cf43539119814df40071b9d61793",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T01:18:22.000Z"
+   },
+   "reason": "TVL ~$1194 < $10000 floor"
+  },
+  {
+   "ticker": "INFQ",
+   "token": "0xb853bc83a753342a4f8320ea680b4b1e84118d21",
+   "inRegistry": true,
+   "onchainSymbol": "INFQ",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.3,
+   "tvlUsd": 1588,
+   "depthUsdTo10": 132,
+   "name": "Infleqtion • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 14.14994617,
+   "pool": {
+    "poolId": "0x99fa98346d33dedb419d59e7deae54c312c75b2d0a3cfe3877938fee56b33e28",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xB853bC83a753342a4f8320ea680b4B1E84118D21",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T14:32:45.000Z"
+   },
+   "reason": "TVL ~$1588 < $10000 floor"
+  },
+  {
+   "ticker": "VRT",
+   "token": "0xfa78c12e6488814a0262e4e802749a4a737d5fb7",
+   "inRegistry": true,
+   "onchainSymbol": "VRT",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20,
+   "tvlUsd": 4570,
+   "depthUsdTo10": 381,
+   "name": "Vertiv • Robinhood Token",
+   "currentMultiplier": "1.000162788892052072",
+   "priceUsd": 251.17119391,
+   "pool": {
+    "poolId": "0x3eae82e369298632e85c28220c80f20060855c0083aed3ddd6c1e7ec1b1e4193",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xFA78C12E6488814A0262E4e802749a4a737d5fB7",
+     "fee": 30000,
+     "tickSpacing": 300,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T22:30:50.000Z"
+   },
+   "reason": "TVL ~$4570 < $10000 floor"
+  },
+  {
+   "ticker": "FISV",
+   "token": "0x9ece29a4a2397c0a35fb5fa8ee2b9509130a98cc",
+   "inRegistry": true,
+   "onchainSymbol": "FISV",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.9,
+   "tvlUsd": 6994,
+   "depthUsdTo10": 583,
+   "name": "Fiserv • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 48.40858421,
+   "pool": {
+    "poolId": "0x1725d684f22412ec3d2a9704897cb7ae979c89545c095de334a3ab61efbad10f",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x9ECe29A4A2397C0a35fb5fA8EE2b9509130a98cc",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T23:59:14.000Z"
+   },
+   "reason": "TVL ~$6994 < $10000 floor"
+  },
+  {
+   "ticker": "SCHD",
+   "token": "0xd63abb2c13d7a8421a8017a712802053568e3c1d",
+   "inRegistry": true,
+   "onchainSymbol": "SCHD",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.5,
+   "tvlUsd": 4857,
+   "depthUsdTo10": 405,
+   "name": "Schwab US Dividend Equity ETF • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 34.0660631,
+   "pool": {
+    "poolId": "0xd25405cc28ad944042b60b670674421e5c2f950a35e3dc295d27a696cb2ea61f",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xd63ABB2C13d7a8421a8017a712802053568e3C1D",
+     "fee": 49000,
+     "tickSpacing": 490,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T09:33:24.000Z"
+   },
+   "reason": "TVL ~$4857 < $10000 floor"
+  },
+  {
+   "ticker": "UNH",
+   "token": "0xcf364ea52787e289de6f32077834056e3e70d6a8",
+   "inRegistry": true,
+   "onchainSymbol": "UNH",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.1,
+   "tvlUsd": 8467,
+   "depthUsdTo10": 706,
+   "name": "UnitedHealth • Robinhood Token",
+   "currentMultiplier": "1.004241501039702113",
+   "priceUsd": 371.39206767,
+   "pool": {
+    "poolId": "0x6901c42bf2baa57e6473fde740b4f25d4e0fe7278df8156af9406081a9755a0d",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xcF364ea52787e289De6F32077834056E3E70D6A8",
+     "fee": 8000,
+     "tickSpacing": 80,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T19:21:49.000Z"
+   },
+   "reason": "TVL ~$8467 < $10000 floor"
+  },
+  {
+   "ticker": "OKLO",
+   "token": "0x8b2f88497f15a18e9d4ffa1a8ffb8538399ae774",
+   "inRegistry": true,
+   "onchainSymbol": "OKLO",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 16.8,
+   "tvlUsd": 2784,
+   "depthUsdTo10": 232,
+   "name": "Oklo • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 40.13377955,
+   "pool": {
+    "poolId": "0x58f187dd17ac479fe139249866b1be0fe142947555018726cac63330eb785daf",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x8B2f88497f15A18E9D4FFa1a8fFB8538399aE774",
+     "fee": 45000,
+     "tickSpacing": 450,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-07T03:52:23.000Z"
+   },
+   "reason": "TVL ~$2784 < $10000 floor"
+  },
+  {
+   "ticker": "IBRX",
+   "token": "0x7c148f74ac7445d1f28366b7fcdc6792a9fcd0cf",
+   "inRegistry": true,
+   "onchainSymbol": "IBRX",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22.6,
+   "tvlUsd": 2122,
+   "depthUsdTo10": 177,
+   "name": "ImmunityBio, • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 8.79469882,
+   "pool": {
+    "poolId": "0xde46baa778f381fe00d9843dcbd2d7d679033cfe6a38a4c02578991427363cf1",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x7c148F74ac7445D1F28366b7FcDC6792a9Fcd0Cf",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T07:44:22.000Z"
+   },
+   "reason": "TVL ~$2122 < $10000 floor"
+  },
+  {
+   "ticker": "CLS",
+   "token": "0xbf449977089c718c004a66c554b26b94ef3ad4de",
+   "inRegistry": true,
+   "onchainSymbol": "CLS",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.1,
+   "tvlUsd": 5479,
+   "depthUsdTo10": 457,
+   "name": "Celestica • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 347.87059036,
+   "pool": {
+    "poolId": "0xfbdd733f4126b89ff843d1a60de900aef2ada676981dfd9ee066a0b02732f253",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xBf449977089c718C004a66C554B26B94ef3Ad4De",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T20:28:19.000Z"
+   },
+   "reason": "TVL ~$5479 < $10000 floor"
+  },
+  {
+   "ticker": "PANW",
+   "token": "0xb039597ed45cba7b6e2fb9e8be51802969cee5be",
+   "inRegistry": true,
+   "onchainSymbol": "PANW",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 6,
+   "tvlUsd": 1497,
+   "depthUsdTo10": 125,
+   "name": "Palo Alto Networks • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 386.50333041,
+   "pool": {
+    "poolId": "0x9b2796ddb2b2452e6a7160e81f22d41df8d5dc3491aad78f578c7e73cd2fafad",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xB039597eD45CBa7B6E2fb9E8BE51802969CEe5Be",
+     "fee": 42000,
+     "tickSpacing": 420,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-17T20:59:31.000Z"
+   },
+   "reason": "TVL ~$1497 < $10000 floor"
+  },
+  {
+   "ticker": "SHY",
+   "token": "0xbe274710bf3d9567e1b290ef6a5f9f90ca016fd8",
+   "inRegistry": true,
+   "onchainSymbol": "SHY",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.1,
+   "tvlUsd": 8592,
+   "depthUsdTo10": 716,
+   "name": "iShares 1-3 Year Treasury Bond ETF • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 82.36829594,
+   "pool": {
+    "poolId": "0x768b3c7809afd191f99027866d40a43960408d39554835821b1159ea208daa2e",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xBE274710Bf3d9567e1B290eF6a5F9f90ca016FD8",
+     "fee": 48380,
+     "tickSpacing": 1,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T19:26:26.000Z"
+   },
+   "reason": "TVL ~$8592 < $10000 floor"
+  },
+  {
+   "ticker": "AEIS",
+   "token": "0xfaf9cb261b5fcc1f404bb10cd39c5c6c1974e612",
+   "inRegistry": true,
+   "onchainSymbol": "AEIS",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.3,
+   "tvlUsd": 1942,
+   "depthUsdTo10": 162,
+   "name": "Advanced Energy • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 274.81379606,
+   "pool": {
+    "poolId": "0x5a80cc66da10bb3bea2b32859cf35a892f2be523a2f3931a9a6375a8fa104977",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xfAf9cb261B5FCC1f404Bb10CD39C5c6C1974E612",
+     "fee": 69000,
+     "tickSpacing": 690,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T15:34:53.000Z"
+   },
+   "reason": "TVL ~$1942 < $10000 floor"
+  },
+  {
+   "ticker": "PWR",
+   "token": "0x9ab02ead789b6903c3c44d0ed32f9c707cdf12fd",
+   "inRegistry": true,
+   "onchainSymbol": "PWR",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 40.3,
+   "tvlUsd": 146,
+   "depthUsdTo10": 12,
+   "name": "Quanta • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 714.35074465,
+   "pool": {
+    "poolId": "0x0039d1d3b744de53b821bbd19fca84cb6ef4e8e064dd869df9c19d0088153638",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x9Ab02Ead789b6903c3c44d0ED32F9c707CDF12FD",
+     "fee": 900000,
+     "tickSpacing": 9000,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-08-14T13:48:15.000Z"
+   },
+   "reason": "pool 40.3d old > 30d window"
+  },
+  {
+   "ticker": "CTSH",
+   "token": "0x63d5a3b6939a33f1e75d8bcd85759858239600db",
+   "inRegistry": true,
+   "onchainSymbol": "CTSH",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22.5,
+   "tvlUsd": 6421,
+   "depthUsdTo10": 535,
+   "name": "Cognizant • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 61.37219113,
+   "pool": {
+    "poolId": "0x672208ab6e5af6c473e9dbf7a2c160e89b5dbd94bfd94e8ddf828e8b789f047f",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x63D5a3b6939a33f1e75d8Bcd85759858239600DB",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T11:08:35.000Z"
+   },
+   "reason": "TVL ~$6421 < $10000 floor"
+  },
+  {
+   "ticker": "CLOV",
+   "token": "0x62200915e7deab1ec7f79fb246dadbb80eacddd0",
+   "inRegistry": true,
+   "onchainSymbol": "CLOV",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 19.8,
+   "tvlUsd": 6847,
+   "depthUsdTo10": 570,
+   "name": "Clover Health Investments • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 4.54893788,
+   "pool": {
+    "poolId": "0x73fa85bb27e0168f5fea56d0959a0b19d09930b62879cb99fca3a0dcbbf151bf",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x62200915e7DEab1eC7f79fb246daDbB80eACdDd0",
+     "fee": 9000,
+     "tickSpacing": 90,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-04T04:00:38.000Z"
+   },
+   "reason": "TVL ~$6847 < $10000 floor"
+  },
+  {
+   "ticker": "AMBA",
+   "token": "0x99d9d8663545151603863c5acbd6fc3218899009",
+   "inRegistry": true,
+   "onchainSymbol": "AMBA",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.1,
+   "tvlUsd": 899,
+   "depthUsdTo10": 75,
+   "name": "Ambarella • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 66.30008197,
+   "pool": {
+    "poolId": "0x222b543214371ceaffea532955d5851b04bf81c186ee339c8925a2a88903ee52",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x99D9D8663545151603863C5AcbD6FC3218899009",
+     "fee": 45000,
+     "tickSpacing": 450,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T19:12:59.000Z"
+   },
+   "reason": "TVL ~$899 < $10000 floor"
+  },
+  {
+   "ticker": "VICR",
+   "token": "0x6006ed4b2f94110851ff7509d97d034f0eed9226",
+   "inRegistry": true,
+   "onchainSymbol": "VICR",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22,
+   "tvlUsd": 2475,
+   "depthUsdTo10": 206,
+   "name": "Vicor • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 268.55634502,
+   "pool": {
+    "poolId": "0xae0da9f7f8d8383c6a82b870deb3771629fa8834c1bac2400d7773b1666ff3d3",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x6006ed4B2F94110851ff7509D97D034f0EeD9226",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T21:01:06.000Z"
+   },
+   "reason": "TVL ~$2475 < $10000 floor"
+  },
+  {
+   "ticker": "MTSI",
+   "token": "0xc93f4d80e268ab922e871bd169156c3cc41894e6",
+   "inRegistry": true,
+   "onchainSymbol": "MTSI",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22,
+   "tvlUsd": 576,
+   "depthUsdTo10": 48,
+   "name": "MACOM • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 270.1437449,
+   "pool": {
+    "poolId": "0xe0fa8194377bd00cf1a8367570727ee7d0b97b3284f51e30e190b49b3d7aa0a0",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xC93f4d80e268AB922e871bd169156C3CC41894e6",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T22:14:13.000Z"
+   },
+   "reason": "TVL ~$576 < $10000 floor"
+  },
+  {
+   "ticker": "NAVN",
+   "token": "0xf7181b63fdb858558a74ba96bc42732684cd7965",
+   "inRegistry": true,
+   "onchainSymbol": "NAVN",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.1,
+   "tvlUsd": 243,
+   "depthUsdTo10": 20,
+   "name": "Navan • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 22.0807061,
+   "pool": {
+    "poolId": "0x4b5edb4707081ce5b41ab6e189630ac80e66755cf757c984acf1b331db42bbf8",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xf7181b63Fdb858558A74ba96BC42732684cd7965",
+     "fee": 48730,
+     "tickSpacing": 1,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T19:09:50.000Z"
+   },
+   "reason": "TVL ~$243 < $10000 floor"
+  },
+  {
+   "ticker": "DOCN",
+   "token": "0xc02f12b9fe9e707079ec0d546f3050d3f6c1f8bd",
+   "inRegistry": true,
+   "onchainSymbol": "DOCN",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22.3,
+   "tvlUsd": 2334,
+   "depthUsdTo10": 194,
+   "name": "DigitalOcean • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 140.016953,
+   "pool": {
+    "poolId": "0x8e815feaaade919e90a2578d1d28193f5ff516c312fb2449ccf5e6440f327b20",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xc02f12B9fe9E707079EC0d546f3050d3F6C1F8bD",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T14:09:03.000Z"
+   },
+   "reason": "TVL ~$2334 < $10000 floor"
+  },
+  {
+   "ticker": "MOD",
+   "token": "0xc6cbad1016b38b797610c25e1dc7d95988b1f362",
+   "inRegistry": true,
+   "onchainSymbol": "MOD",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 16.8,
+   "tvlUsd": 1428,
+   "depthUsdTo10": 119,
+   "name": "Modine • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 191.93327927,
+   "pool": {
+    "poolId": "0x3da137f6726622b735a74f5b84333b0e4d90313454cc7b55483fbe32df2c93dc",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xc6Cbad1016b38B797610c25E1dc7D95988B1f362",
+     "fee": 40000,
+     "tickSpacing": 260,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-07T03:22:17.000Z"
+   },
+   "reason": "TVL ~$1428 < $10000 floor"
+  },
+  {
+   "ticker": "FICO",
+   "token": "0xa48f22a46c0f1c46ca7d111cb6c137c271987180",
+   "inRegistry": true,
+   "onchainSymbol": "FICO",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.5,
+   "tvlUsd": 6502,
+   "depthUsdTo10": 542,
+   "name": "Fair Isaac • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 924.76591698,
+   "pool": {
+    "poolId": "0x0021ada15e38e9845147b83aa52c3da94bfb02b07353e393a5c6f86bdf50d7b5",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xa48F22A46C0F1C46CA7D111CB6c137c271987180",
+     "fee": 44000,
+     "tickSpacing": 440,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T09:17:19.000Z"
+   },
+   "reason": "TVL ~$6502 < $10000 floor"
+  },
+  {
+   "ticker": "JBL",
+   "token": "0xeaf2512dfc1beac608f8794b3793cd4e02894aa6",
+   "inRegistry": true,
+   "onchainSymbol": "JBL",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22.4,
+   "tvlUsd": 280,
+   "depthUsdTo10": 23,
+   "name": "Jabil Inc. • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 302.80237116,
+   "pool": {
+    "poolId": "0xcc7af572cbd4a8e7a10230dcb639977bbf1c3b76f59e68c570977721d41d7ec4",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0xEAf2512dFC1bEAc608F8794B3793CD4E02894Aa6",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T11:27:02.000Z"
+   },
+   "reason": "TVL ~$280 < $10000 floor"
+  },
+  {
+   "ticker": "ONTO",
+   "token": "0x8ff63eaeee3fe54ba450c4f5538064ec5a893aef",
+   "inRegistry": true,
+   "onchainSymbol": "ONTO",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.1,
+   "tvlUsd": 4595,
+   "depthUsdTo10": 383,
+   "name": "Onto Innovation • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 273.60557672,
+   "pool": {
+    "poolId": "0x8b9aa6d8470414b929ed9258a35b48ee3d91281eebc703173ba165e2e81e2b6a",
+    "stockIsCurrency0": false,
+    "poolKey": {
+     "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "currency1": "0x8ff63eAeEe3fE54Ba450c4F5538064Ec5A893Aef",
+     "fee": 48600,
+     "tickSpacing": 1,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T18:57:02.000Z"
+   },
+   "reason": "TVL ~$4595 < $10000 floor"
+  },
+  {
+   "ticker": "SPCX",
+   "token": "0x4a0e65a3eccec6dbe60ae065f2e7bb85fae35eea",
+   "inRegistry": true,
+   "onchainSymbol": "SPCX",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 83.9,
+   "tvlUsd": 5631115,
+   "depthUsdTo10": 469195,
+   "name": "Space Exploration Technologies Corp. Class A Common Stock • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 149.71453083,
+   "pool": {
+    "poolId": "0xcb6ffbcc84359535c2cc0a5688c0a76520ea6e0a4820fddd3ac8d7880e576370",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 10000,
+     "tickSpacing": 200,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-07-02T00:28:14.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "TSLA",
+   "token": "0x322f0929c4625ed5bad873c95208d54e1c003b2d",
+   "inRegistry": true,
+   "onchainSymbol": "TSLA",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 80.7,
+   "tvlUsd": 6224032,
+   "depthUsdTo10": 518598,
+   "name": "Tesla • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 379.05790474,
+   "pool": {
+    "poolId": "0x8517f8071ae5b831b738052f12125e8e3d6c158b78728aa44ce3b25e5104d32e",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 3000,
+     "tickSpacing": 60,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-07-05T06:08:37.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "AMZN",
+   "token": "0x12f190a9f9d7d37a250758b26824b97ce941bf54",
+   "inRegistry": true,
+   "onchainSymbol": "AMZN",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 19.1,
+   "tvlUsd": 330606,
+   "depthUsdTo10": 27547,
+   "name": "Amazon • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 249.0894082,
+   "pool": {
+    "poolId": "0xefc94885c96b02696b9b45de43eeeb8ac53c0199cab42b4daae4911b96fb8825",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x12f190a9F9d7D37a250758b26824B97CE941bF54",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 2400,
+     "tickSpacing": 24,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-04T20:27:02.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "GOOGL",
+   "token": "0x2e0847e8910a9732eb3fb1bb4b70a580adad4fe3",
+   "inRegistry": true,
+   "onchainSymbol": "GOOGL",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 72.7,
+   "tvlUsd": 5704510,
+   "depthUsdTo10": 475311,
+   "name": "Alphabet Class A • Robinhood Token",
+   "currentMultiplier": "1.000193924414112587",
+   "priceUsd": 339.08809898,
+   "pool": {
+    "poolId": "0xd4ecb79fdc521d7725d22b33ed43cb4e47aa96bfad76aa29577e3151f723ac5e",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 3000,
+     "tickSpacing": 60,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-07-13T04:39:16.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "SPY",
+   "token": "0x117cc2133c37b721f49de2a7a74833232b3b4c0c",
+   "inRegistry": true,
+   "onchainSymbol": "SPY",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 71.6,
+   "tvlUsd": 138125960,
+   "depthUsdTo10": 11508920,
+   "name": "SPDR S&P 500 ETF Trust • Robinhood Token",
+   "currentMultiplier": "1.001717991187472003",
+   "priceUsd": 770.51648113,
+   "pool": {
+    "poolId": "0xfe2a80bb5618fd14984b92ca6d45bf5ba67443ddb1435e28b2e48df2fc1526cd",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 3000,
+     "tickSpacing": 60,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-07-14T07:28:30.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "SLV",
+   "token": "0x411efb0e7f985935daec3d4c3ebaea0d0ad7d89f",
+   "inRegistry": true,
+   "onchainSymbol": "SLV",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 70.1,
+   "tvlUsd": 1429,
+   "depthUsdTo10": 119,
+   "name": "iShares Silver Trust • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 61.08777938,
+   "pool": {
+    "poolId": "0xf6f742665e3927ee7ee8da2a9caac0b68580af5249f1c70f4db02937bb1b0b58",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x411eFb0E7f985935DAec3D4C3ebaEa0d0AD7D89f",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 20000,
+     "tickSpacing": 400,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-07-15T19:46:59.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "CRWV",
+   "token": "0x5f10a1c971b69e47e059e1dc91901b59b3fb49c3",
+   "inRegistry": true,
+   "onchainSymbol": "CRWV",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 36.6,
+   "tvlUsd": 423072,
+   "depthUsdTo10": 35251,
+   "name": "CoreWeave • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 87.21756392,
+   "pool": {
+    "poolId": "0x237014478f7ef98afbe7412ac35b6a3f96b8fb111de48b7c4dbf49dba4bd9c4b",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x5f10A1C971B69e47e059e1dC91901B59b3fB49C3",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 9000,
+     "tickSpacing": 90,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-08-18T07:55:29.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "AMAT",
+   "token": "0x36046893810a7e7fce501229d57dc3fc8c8716d0",
+   "inRegistry": true,
+   "onchainSymbol": "AMAT",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22.6,
+   "tvlUsd": 1985,
+   "depthUsdTo10": 165,
+   "name": "Applied Materials • Robinhood Token",
+   "currentMultiplier": "1.000044656302636618",
+   "priceUsd": 460.71161873,
+   "pool": {
+    "poolId": "0xabc93f35755b3c1cf8feea9b6490d93fd184d7964529aef89b6c5a66d321fe40",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x36046893810a7E7fCE501229d57dc3FC8c8716d0",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T06:43:57.000Z"
+   },
+   "reason": "TVL ~$1985 < $10000 floor"
+  },
+  {
+   "ticker": "FLNC",
+   "token": "0x282e87451e10fa6679bc7d76c69be44cd3fc777c",
+   "inRegistry": true,
+   "onchainSymbol": "FLNC",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 23.3,
+   "tvlUsd": 256,
+   "depthUsdTo10": 21,
+   "name": "Fluence Energy • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 7.61767486,
+   "pool": {
+    "poolId": "0x2cba3b361fcbac8776c6705c817ee2e140b4b9ab8c00ed57eb8d3fe39d5e5070",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x282e87451E10fA6679BC7D76C69BE44cD3fC777C",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-08-31T15:09:45.000Z"
+   },
+   "reason": "TVL ~$256 < $10000 floor"
+  },
+  {
+   "ticker": "RKLB",
+   "token": "0x3b14c39e89d60d627b42a1a4ca45b5bb45fc12e2",
+   "inRegistry": true,
+   "onchainSymbol": "RKLB",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 20.8,
+   "tvlUsd": 29761,
+   "depthUsdTo10": 2480,
+   "name": "Rocket Lab Corporation • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 71.0953491,
+   "pool": {
+    "poolId": "0xbbc15d66fef8391f53569e19016e86545be9de3f302b82db93ed6165236d22f3",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x3b14C39E89D60D627b42a1A4CA45b5bb45Fc12e2",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 9000,
+     "tickSpacing": 90,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T01:43:01.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "TSM",
+   "token": "0x58ffe4a942d3885baa22d7520691f611ef09e7aa",
+   "inRegistry": true,
+   "onchainSymbol": "TSM",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 26.1,
+   "tvlUsd": 1868786,
+   "depthUsdTo10": 155711,
+   "name": "Taiwan Semiconductor Manufacturing • Robinhood Token",
+   "currentMultiplier": "1.001463024159690554",
+   "priceUsd": 447.28444473,
+   "pool": {
+    "poolId": "0x0ba5d53d2f6255f334b7c8ead4f56b6aef5af3402c5e4d11180afd38c6b85fb1",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x58FfE4a942d3885bAa22D7520691F611EF09e7AA",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 7500,
+     "tickSpacing": 75,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-08-28T19:11:35.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "GME",
+   "token": "0x1b0e319c6a659f002271b69db8a7df2f911c153e",
+   "inRegistry": true,
+   "onchainSymbol": "GME",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 62.8,
+   "tvlUsd": 206132,
+   "depthUsdTo10": 17175,
+   "name": "GameStop • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 24.3780617,
+   "pool": {
+    "poolId": "0x3d436b4fdc532c61a0bf15d6cae80a66eb8f28ee9daec34dbec4b5bc9964063b",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x1b0E319c6A659F002271B69dB8A7df2F911c153E",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 10000,
+     "tickSpacing": 200,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-07-23T03:32:06.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "INTU",
+   "token": "0x56d23bee5f41a7120170b0c603dae30128e460e9",
+   "inRegistry": true,
+   "onchainSymbol": "INTU",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.1,
+   "tvlUsd": 4822,
+   "depthUsdTo10": 402,
+   "name": "Intuit • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 296.92764613,
+   "pool": {
+    "poolId": "0x42473e27f793b7a3b71b225729e3962651c5dfea6d7fa078a44dc8a4adf3d9bf",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x56d23beE5f41A7120170b0c603Dae30128e460e9",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 30000,
+     "tickSpacing": 300,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T18:43:13.000Z"
+   },
+   "reason": "TVL ~$4822 < $10000 floor"
+  },
+  {
+   "ticker": "IONQ",
+   "token": "0x558378e000d634a36593e338ebacdd6207640efe",
+   "inRegistry": true,
+   "onchainSymbol": "IONQ",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 9.1,
+   "tvlUsd": 6093,
+   "depthUsdTo10": 508,
+   "name": "IonQ • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 44.00102955,
+   "pool": {
+    "poolId": "0xbd78e53962e76c3b6228b86dc074059258bc73d565e5e343ae4ad3c4c1ac5681",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x558378E000D634A36593E338eBacdd6207640EfE",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 40000,
+     "tickSpacing": 400,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-14T19:59:25.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "RGTI",
+   "token": "0x284358abc07f9359f19f4b5b4ac91901be2597ba",
+   "inRegistry": true,
+   "onchainSymbol": "RGTI",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 22.6,
+   "tvlUsd": 3503,
+   "depthUsdTo10": 292,
+   "name": "Rigetti Computing • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 17.00561052,
+   "pool": {
+    "poolId": "0x98bb85ee9d390ce0d9104afeed2b83038f83df54843fc35afed5d7545ec4936f",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x284358abc07F9359f19f4b5b4aC91901Be2597Ba",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T07:14:42.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "ASML",
+   "token": "0x47f93d52cbec7c6d2cfc080e154002370a60daea",
+   "inRegistry": true,
+   "onchainSymbol": "ASML",
+   "onchainDecimals": 18,
+   "hasFeed": true,
+   "poolAgeDays": 22.3,
+   "tvlUsd": 7182,
+   "depthUsdTo10": 598,
+   "name": "ASML Holding NV • Robinhood Token",
+   "currentMultiplier": "1.000101323251417769",
+   "priceUsd": 1730.3483133,
+   "pool": {
+    "poolId": "0x95dfd3468383956e449265b3e3d1dac182d0faad0eec5d409f943acaaec3104f",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x47F93d52cBeC7C6D2CfC080e154002370a60dAEA",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 7000,
+     "tickSpacing": 70,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T14:03:11.000Z"
+   },
+   "reason": "graduated: live Chainlink feed (majors don't squeeze)"
+  },
+  {
+   "ticker": "TTWO",
+   "token": "0x5e81213613b6b86eab4c6c50d718d34359459786",
+   "inRegistry": true,
+   "onchainSymbol": "TTWO",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 40.3,
+   "tvlUsd": 2181173,
+   "depthUsdTo10": 181739,
+   "name": "Take-Two Interactive Software • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 208.25479432,
+   "pool": {
+    "poolId": "0xc9dad63b6fb9afe1fe888ebc7b023c587c58b9498f5bd17166226c0995dbc4eb",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x5e81213613b6B86EaB4c6c50d718d34359459786",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 8000,
+     "tickSpacing": 80,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-08-14T14:57:51.000Z"
+   },
+   "reason": "pool 40.3d old > 30d window"
+  },
+  {
+   "ticker": "P",
+   "token": "0x1cdad396db64bda184d5182a97dd9b3c62100b7d",
+   "inRegistry": true,
+   "onchainSymbol": "P",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 15.4,
+   "tvlUsd": 5326,
+   "depthUsdTo10": 444,
+   "name": "Everpure • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 115.05809059,
+   "pool": {
+    "poolId": "0x86da9b0a00f7a4b914241b941ecdb0880f60e4b89c4b52ed1a4524be4efc3879",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x1Cdad396DB64BDa184d5182A97Dd9B3C62100b7D",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 25200,
+     "tickSpacing": 252,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-08T11:32:24.000Z"
+   },
+   "reason": "TVL ~$5326 < $10000 floor"
+  },
+  {
+   "ticker": "PR",
+   "token": "0x4189f0c66ebbb0bfef1c31f763131361ef32f77c",
+   "inRegistry": true,
+   "onchainSymbol": "PR",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.2,
+   "tvlUsd": 983,
+   "depthUsdTo10": 82,
+   "name": "Permian Resources • Robinhood Token",
+   "currentMultiplier": "1.004477942292229526",
+   "priceUsd": 23.85184281,
+   "pool": {
+    "poolId": "0xe49fd12344baac89d663deff327d19ff9190954adac4d60c68f67e1edb803066",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x4189F0c66EBBB0bfeF1C31f763131361EF32f77C",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 47500,
+     "tickSpacing": 475,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T18:20:24.000Z"
+   },
+   "reason": "TVL ~$983 < $10000 floor"
+  },
+  {
+   "ticker": "MXL",
+   "token": "0x48961813349333209994750ffa89b3c5c22ec969",
+   "inRegistry": true,
+   "onchainSymbol": "MXL",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.1,
+   "tvlUsd": 2993,
+   "depthUsdTo10": 249,
+   "name": "MaxLinear • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 84.090548,
+   "pool": {
+    "poolId": "0xfd2b69c50861e695fcdf298429bd1f7bce1579f489f1c03aed4dd393802ac8e0",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x48961813349333209994750ffA89b3c5C22eC969",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 48910,
+     "tickSpacing": 1,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T18:53:56.000Z"
+   },
+   "reason": "TVL ~$2993 < $10000 floor"
+  },
+  {
+   "ticker": "XLK",
+   "token": "0x15cd20759ce7f3285c29a319de2d1a2e098c6f43",
+   "inRegistry": true,
+   "onchainSymbol": "XLK",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.6,
+   "tvlUsd": 1589,
+   "depthUsdTo10": 132,
+   "name": "State Street Technology Select Sector SPDR ETF • Robinhood Token",
+   "currentMultiplier": "1.000804404520428861",
+   "priceUsd": 188.83960154,
+   "pool": {
+    "poolId": "0x905b2d64b76de44f3f4bdcc046f20c51eaa95ae752b86a1d3c516e1b97e3b719",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x15Cd20759CE7F3285c29A319dE2D1A2e098c6f43",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 30000,
+     "tickSpacing": 300,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T08:26:04.000Z"
+   },
+   "reason": "TVL ~$1589 < $10000 floor"
+  },
+  {
+   "ticker": "UMC",
+   "token": "0x0e6e67ba88e7b5d9b67636a215c76779b948de79",
+   "inRegistry": true,
+   "onchainSymbol": "UMC",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.3,
+   "tvlUsd": 538,
+   "depthUsdTo10": 45,
+   "name": "United Microelectronics • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 24.09569344,
+   "pool": {
+    "poolId": "0xbba762f4ea3498286aa62323120bb190416fee7018d6cd7881eb5bf19578edaf",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x0E6e67Ba88e7b5d9B67636A215c76779B948dE79",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T14:32:44.000Z"
+   },
+   "reason": "TVL ~$538 < $10000 floor"
+  },
+  {
+   "ticker": "F",
+   "token": "0x25c288e6d899b9bc30160965ad9644c67e73be0c",
+   "inRegistry": true,
+   "onchainSymbol": "F",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21,
+   "tvlUsd": 5633,
+   "depthUsdTo10": 469,
+   "name": "Ford Motor • Robinhood Token",
+   "currentMultiplier": "1.000145502866134027",
+   "priceUsd": 12.94553128,
+   "pool": {
+    "poolId": "0x474f3efdf9e7e7111737893d84a4e41ad49265e68753dd0b25fb1329ae8c105d",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x25C288E6D899b9BC30160965aD9644c67e73bE0C",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 7000,
+     "tickSpacing": 70,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T22:57:12.000Z"
+   },
+   "reason": "TVL ~$5633 < $10000 floor"
+  },
+  {
+   "ticker": "DJT",
+   "token": "0x1d11f0496982706c5e14a514d4e79f2e6bde4516",
+   "inRegistry": true,
+   "onchainSymbol": "DJT",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 31.4,
+   "tvlUsd": 2110958,
+   "depthUsdTo10": 175889,
+   "name": "Trump Media & Technology Group • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 9.06468498,
+   "pool": {
+    "poolId": "0x55f2df399bf61fd758b99848452eaf217ee9d2f98fb9c79deb23fe9a2652bc5a",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x1D11f0496982706C5e14A514D4E79F2e6BdE4516",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 2057,
+     "tickSpacing": 21,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-08-23T11:56:29.000Z"
+   },
+   "reason": "pool 31.4d old > 30d window"
+  },
+  {
+   "ticker": "CRDO",
+   "token": "0x4d67253bc223e6b0e104f1084c1fb2b669ddc41b",
+   "inRegistry": true,
+   "onchainSymbol": "CRDO",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20,
+   "tvlUsd": 2765,
+   "depthUsdTo10": 230,
+   "name": "Credo Technology Group • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 182.67165174,
+   "pool": {
+    "poolId": "0xbe8c2d4471f558ddfef2b792a9839fdcf496362241e68e77f1c3cd943954cdf3",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x4D67253bc223e6b0e104F1084c1fb2b669dDC41b",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 69000,
+     "tickSpacing": 690,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T22:30:16.000Z"
+   },
+   "reason": "TVL ~$2765 < $10000 floor"
+  },
+  {
+   "ticker": "AXTI",
+   "token": "0x141eea040c2250eec0314e336975e81f85f6585e",
+   "inRegistry": true,
+   "onchainSymbol": "AXTI",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 16.8,
+   "tvlUsd": 1905,
+   "depthUsdTo10": 159,
+   "name": "AXT • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 77.16978244,
+   "pool": {
+    "poolId": "0x3ea5347263573435685e60bc0cb23ac8136683cacb73d91f78e0b8459806835e",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x141eEa040c2250eEc0314e336975e81f85f6585e",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 47000,
+     "tickSpacing": 470,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-07T03:49:03.000Z"
+   },
+   "reason": "TVL ~$1905 < $10000 floor"
+  },
+  {
+   "ticker": "WULF",
+   "token": "0x348be1a8663f15edde5cdf8a96bb69078f7ab6fd",
+   "inRegistry": true,
+   "onchainSymbol": "WULF",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.2,
+   "tvlUsd": 4083,
+   "depthUsdTo10": 340,
+   "name": "TeraWulf • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 17.00207114,
+   "pool": {
+    "poolId": "0xe227fe730938cc9667253e4c64aab19ab4991d8b4889f244aaa2d04d9e5617ce",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x348Be1A8663f15edDe5CDf8A96BB69078f7aB6Fd",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 35500,
+     "tickSpacing": 355,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T16:04:08.000Z"
+   },
+   "reason": "TVL ~$4083 < $10000 floor"
+  },
+  {
+   "ticker": "LRCX",
+   "token": "0x57b0030166db0c31690d1a5aa167e2e26e2c29a4",
+   "inRegistry": true,
+   "onchainSymbol": "LRCX",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.9,
+   "tvlUsd": 2097,
+   "depthUsdTo10": 175,
+   "name": "Lam Research Corp • Robinhood Token",
+   "currentMultiplier": "1.000732562938505984",
+   "priceUsd": 283.86763208,
+   "pool": {
+    "poolId": "0x418770b0685112b2c69bd3c74e45594eb2b50aab201469ca53011f3e510c0c7f",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x57b0030166DB0C31690d1A5aA167e2e26e2C29a4",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 69000,
+     "tickSpacing": 690,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T01:26:00.000Z"
+   },
+   "reason": "TVL ~$2097 < $10000 floor"
+  },
+  {
+   "ticker": "TTD",
+   "token": "0x0b5fb4031cae9163db10b169ee72685f0edc8545",
+   "inRegistry": true,
+   "onchainSymbol": "TTD",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20,
+   "tvlUsd": 279,
+   "depthUsdTo10": 23,
+   "name": "Trade Desk • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 14.21255266,
+   "pool": {
+    "poolId": "0x2df1560a14d8ce2109ebf93e5775a9afaa3c2ff8a342e828b65d198653d11fe4",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x0b5fb4031cae9163db10B169Ee72685F0EdC8545",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 35000,
+     "tickSpacing": 350,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T21:01:12.000Z"
+   },
+   "reason": "TVL ~$279 < $10000 floor"
+  },
+  {
+   "ticker": "OUST",
+   "token": "0x40e7a279850e443f582059ae5dc1c3b6563e6395",
+   "inRegistry": true,
+   "onchainSymbol": "OUST",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22,
+   "tvlUsd": 563,
+   "depthUsdTo10": 47,
+   "name": "Ouster • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 37.90018835,
+   "pool": {
+    "poolId": "0x8a51e6b42cf8635fe663c94ec95d9f4687eb6db8b8059bdf960c5fc1dd8d7b77",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x40E7a279850e443f582059ae5dC1c3b6563E6395",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T21:16:14.000Z"
+   },
+   "reason": "TVL ~$563 < $10000 floor"
+  },
+  {
+   "ticker": "KSS",
+   "token": "0x12e3c047bf9aecaf9ddc98c05c31bfd1dd043993",
+   "inRegistry": true,
+   "onchainSymbol": "KSS",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 5.4,
+   "tvlUsd": 4607,
+   "depthUsdTo10": 384,
+   "name": "Kohls Corporation • Robinhood Token",
+   "currentMultiplier": "1.004610068732316661",
+   "priceUsd": 16.7100886,
+   "pool": {
+    "poolId": "0x27c99bc5d1388db195928f1264637b309ac80563f5a00d126d374d3c0f097309",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x12e3c047bf9AeCAF9dDC98c05C31BFD1dd043993",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 35500,
+     "tickSpacing": 355,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-18T13:32:48.000Z"
+   },
+   "reason": "TVL ~$4607 < $10000 floor"
+  },
+  {
+   "ticker": "SMH",
+   "token": "0x072f979c2cac8e1391b0162a87fee094bf8744a0",
+   "inRegistry": true,
+   "onchainSymbol": "SMH",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.9,
+   "tvlUsd": 2404,
+   "depthUsdTo10": 200,
+   "name": "VanEck Semiconductor ETF • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 564.06984821,
+   "pool": {
+    "poolId": "0xd55a1afbcb039f6120cc98a844c08642c202bd633632a7b51cb06e7f7b01fa6f",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x072f979c2CAc8e1391B0162a87Fee094bF8744a0",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 69000,
+     "tickSpacing": 690,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T01:19:03.000Z"
+   },
+   "reason": "TVL ~$2404 < $10000 floor"
+  },
+  {
+   "ticker": "VTI",
+   "token": "0x0594134df3f171a354d9c85ebd65b7a6148f6d09",
+   "inRegistry": true,
+   "onchainSymbol": "VTI",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.1,
+   "tvlUsd": 244,
+   "depthUsdTo10": 20,
+   "name": "Vanguard Morningstar Total Stock Market ETF • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 376.70067655,
+   "pool": {
+    "poolId": "0xf9e68c9da6b5bd77bff43572c14b854d3a6ff22475d1919a9e52abd15e614ad8",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x0594134DF3f171a354D9C85eBD65b7A6148F6D09",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T19:04:28.000Z"
+   },
+   "reason": "TVL ~$244 < $10000 floor"
+  },
+  {
+   "ticker": "VST",
+   "token": "0x561e2a49212b7ccf47f2744ccb83e200722fadbc",
+   "inRegistry": true,
+   "onchainSymbol": "VST",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 16.8,
+   "tvlUsd": 8562,
+   "depthUsdTo10": 713,
+   "name": "Vistra • Robinhood Token",
+   "currentMultiplier": "1.001114738710796417",
+   "priceUsd": 145.03387379,
+   "pool": {
+    "poolId": "0x4bf631615e415693271d7562589d3ec1660d828f4ec0587b79e5d86b81a83e0c",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x561e2a49212b7cCF47f2744Ccb83e200722fADBc",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 39000,
+     "tickSpacing": 390,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-07T03:29:12.000Z"
+   },
+   "reason": "TVL ~$8562 < $10000 floor"
+  },
+  {
+   "ticker": "TER",
+   "token": "0x2778c5024d5ca2cdb0f8ead671ffc69963adcd9c",
+   "inRegistry": true,
+   "onchainSymbol": "TER",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22,
+   "tvlUsd": 2280,
+   "depthUsdTo10": 190,
+   "name": "Teradyne • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 365.5006936,
+   "pool": {
+    "poolId": "0xabae74f2df8f5344edbfe344f414042ee019815253858827ce2c059464d88976",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x2778C5024D5cA2CdB0f8eAD671ffc69963AdCD9C",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T21:02:09.000Z"
+   },
+   "reason": "TVL ~$2280 < $10000 floor"
+  },
+  {
+   "ticker": "CIEN",
+   "token": "0x44f6d488021f8233b9416294d1fe9b1fee28382d",
+   "inRegistry": true,
+   "onchainSymbol": "CIEN",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 32.1,
+   "tvlUsd": 536,
+   "depthUsdTo10": 45,
+   "name": "Ciena • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 362.52836027,
+   "pool": {
+    "poolId": "0xc95560483f794e8d894f17917d3f6df5d8460e99d4cd7b46bc10c5e2d8f94196",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x44f6D488021f8233B9416294d1FE9b1fEe28382d",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-08-22T20:05:01.000Z"
+   },
+   "reason": "pool 32.1d old > 30d window"
+  },
+  {
+   "ticker": "EWT",
+   "token": "0x1c690498150252222c275a5ced69d3a6b1f52d5e",
+   "inRegistry": true,
+   "onchainSymbol": "EWT",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22.4,
+   "tvlUsd": 310,
+   "depthUsdTo10": 26,
+   "name": "iShares MSCI Taiwan Capped ETF • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 105.63067004,
+   "pool": {
+    "poolId": "0x8fdd55edc23a8034e1a3146978d19c412f7f4753d2c8a890d3ec9d98cf2b39dc",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x1c690498150252222C275A5CEd69d3A6b1f52D5E",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 100000,
+     "tickSpacing": 1000,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T13:27:46.000Z"
+   },
+   "reason": "TVL ~$310 < $10000 floor"
+  },
+  {
+   "ticker": "AUR",
+   "token": "0x373c06c4f7bde527d7dae4ba169e42b55e393ced",
+   "inRegistry": true,
+   "onchainSymbol": "AUR",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 21.3,
+   "tvlUsd": 1948,
+   "depthUsdTo10": 162,
+   "name": "Aurora Innovation • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 6.33224571,
+   "pool": {
+    "poolId": "0xbdfaad395f56b59e875df126e7aa956024297358cc8c74ae4e70b5bcd7e95674",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x373C06c4f7BDe527D7Dae4BA169E42b55E393CeD",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 69000,
+     "tickSpacing": 690,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-02T15:57:20.000Z"
+   },
+   "reason": "TVL ~$1948 < $10000 floor"
+  },
+  {
+   "ticker": "AEHR",
+   "token": "0x5f604fba1162193a4388a5dfa56f556f3e133cc2",
+   "inRegistry": true,
+   "onchainSymbol": "AEHR",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 16.8,
+   "tvlUsd": 1516,
+   "depthUsdTo10": 126,
+   "name": "Aehr • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 95.14015917,
+   "pool": {
+    "poolId": "0x10e21a00ee20b27b5dee917151b9f7ef3faa13702c415462113720cc8437f763",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x5F604fBA1162193A4388A5DFa56F556f3E133cC2",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 47000,
+     "tickSpacing": 470,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-07T03:38:32.000Z"
+   },
+   "reason": "TVL ~$1516 < $10000 floor"
+  },
+  {
+   "ticker": "SLS",
+   "token": "0x285b231728c7e4333799183df1094d775246a535",
+   "inRegistry": true,
+   "onchainSymbol": "SLS",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22,
+   "tvlUsd": 499,
+   "depthUsdTo10": 42,
+   "name": "SELLAS Life Sciences • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 11.44375375,
+   "pool": {
+    "poolId": "0xeac99c4a9e4244a762abbcabc07780ff3a3228de0404942ea18e53e7afba37dc",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x285b231728c7E4333799183DF1094d775246a535",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T21:14:30.000Z"
+   },
+   "reason": "TVL ~$499 < $10000 floor"
+  },
+  {
+   "ticker": "POWL",
+   "token": "0x237c16d66590f67b886d978acd362eaead8b18c7",
+   "inRegistry": true,
+   "onchainSymbol": "POWL",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22,
+   "tvlUsd": 9279,
+   "depthUsdTo10": 773,
+   "name": "Powell Industries • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 183.45390874,
+   "pool": {
+    "poolId": "0x5934fccc26180f5543547fc9dbcc569f91d54c5827379643d6ef59cfe8408c24",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x237c16D66590F67B886d978ACD362EAeaD8B18c7",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T21:37:50.000Z"
+   },
+   "reason": "TVL ~$9279 < $10000 floor"
+  },
+  {
+   "ticker": "ABCL",
+   "token": "0x3139d77ace0cbaa5bdfd38bd1f1911a794af0b0e",
+   "inRegistry": true,
+   "onchainSymbol": "ABCL",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 22.6,
+   "tvlUsd": 2265,
+   "depthUsdTo10": 189,
+   "name": "Abcellera Biologics • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 12.42420598,
+   "pool": {
+    "poolId": "0xa94b759be671dece5ce7f832ce98dee1bca776799320855c7ae5d7b415d1d90d",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x3139D77Ace0cbAA5bDfD38bD1F1911a794AF0B0e",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 50000,
+     "tickSpacing": 500,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-01T06:52:18.000Z"
+   },
+   "reason": "TVL ~$2265 < $10000 floor"
+  },
+  {
+   "ticker": "VSAT",
+   "token": "0x26dcbfb34fc83cabd6990f449674efdc6097ff85",
+   "inRegistry": true,
+   "onchainSymbol": "VSAT",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": 20.2,
+   "tvlUsd": 1534,
+   "depthUsdTo10": 128,
+   "name": "ViaSat • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": 73.5580177,
+   "pool": {
+    "poolId": "0x4df5d1a7288ff2e34dc5ff079245a6699175e704529e5229dda03c3d0d87fd10",
+    "stockIsCurrency0": true,
+    "poolKey": {
+     "currency0": "0x26dCbfb34FC83CAbD6990f449674efDc6097fF85",
+     "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "fee": 46520,
+     "tickSpacing": 465,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    "createdAt": "2026-09-03T16:41:40.000Z"
+   },
+   "reason": "TVL ~$1534 < $10000 floor"
+  },
+  {
+   "ticker": "BND",
+   "token": "0x2f62fc9fabb470c690f141c28340ed832bb27020",
+   "inRegistry": true,
+   "onchainSymbol": "BND",
+   "onchainDecimals": 18,
+   "hasFeed": false,
+   "poolAgeDays": null,
+   "tvlUsd": null,
+   "depthUsdTo10": null,
+   "name": "Vanguard Total Bond Market ETF • Robinhood Token",
+   "currentMultiplier": "1.000000000000000000",
+   "priceUsd": null,
+   "pool": null,
+   "reason": "no hook-free STOCK/USDG pool"
+  }
+ ]
+}

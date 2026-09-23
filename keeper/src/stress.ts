@@ -265,7 +265,7 @@ async function main() {
         p0: Number(ep.p0) / 1e8,
         peakUsd: Math.round(peak * 100) / 100,
         mondayUsd: Math.round(fresh * 100) / 100,
-        locked: ep.locked,
+        rungs: Number(ep.rungs),
         path,
         stockDeployed: Number(ep.stockDeployed) / 1e18,
         usdgReceived: Number(ep.usdgReceived) / 1e6,

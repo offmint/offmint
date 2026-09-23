@@ -19,6 +19,8 @@ import {MockFeed} from "../src/mocks/MockFeed.sol";
 import {AggregatorV3Interface} from "../src/interfaces/AggregatorV3Interface.sol";
 import {ISessionClock} from "../src/interfaces/ISessionClock.sol";
 import {IStockToken} from "../src/interfaces/IStockToken.sol";
+import {IPriceReference} from "../src/interfaces/IPriceReference.sol";
+import {ChainlinkPriceReference} from "../src/oracle/ChainlinkPriceReference.sol";
 
 /// @notice Mainnet fork: real Robinhood Chain PoolManager, stock tokens, USDG and pools (addresses from
 ///         config/mainnet.json). Skipped unless RH_MAINNET_RPC (or ALCHEMY_RH_MAINNET_URL) is set.
@@ -102,8 +104,17 @@ abstract contract ForkBase is Test {
             OffmintVault.Config({
                 poolManager: pm,
                 clock: ISessionClock(address(clock)),
-                feed: AggregatorV3Interface(feedAddr),
-                sequencerFeed: AggregatorV3Interface(address(0)), // none listed for Robinhood Chain (docs/FACTS.md)
+                // Chainlink adapter over the real (or pool-seeded mock) feed; no sequencer feed is listed for
+                // Robinhood Chain (docs/FACTS.md)
+                priceRef: IPriceReference(
+                    address(
+                        new ChainlinkPriceReference(
+                            AggregatorV3Interface(feedAddr),
+                            AggregatorV3Interface(address(0)),
+                            IStockToken(address(stock))
+                        )
+                    )
+                ),
                 stock: stock,
                 usdg: usdg,
                 poolKey: key,
@@ -166,8 +177,9 @@ abstract contract ForkBase is Test {
         vm.warp(sat - 4 hours);
         _print(p0, sat - 4 hours); // Friday 20:00 UTC close
         vm.warp(sat + 20 minutes);
+        RangeMath.Rung[] memory lad = RangeMath.defaultLadder(); // before the prank: a library call consumes it
         vm.prank(keeperAddr);
-        vault.arm(1000, 5000, 3000);
+        vault.arm(lad, 3000);
     }
 
     // ------------------------------------------------------------------ tests
@@ -179,10 +191,16 @@ abstract contract ForkBase is Test {
         assertEq(vault.stockIsCurrency0(), s0);
         assertApproxEqRel(e.stockDeployed, 30e18, 1e12);
         assertEq(usdg.balanceOf(address(vault)), 0, "single-sided");
-        uint256 low = s0 ? RangeMath.tickToUsd(e.tickLower, dec, true) : RangeMath.tickToUsd(e.tickUpper, dec, false);
-        assertGe(low, p0 * 11_000 / 10_000, "band >= P0 * 1.1");
-        assertEq(e.tickLower % key.tickSpacing, 0);
-        assertEq(e.tickUpper % key.tickSpacing, 0);
+        OffmintVault.RungResult[] memory rs = vault.epochRungs(vault.epochCount());
+        assertEq(rs.length, 4, "4-rung ladder on the real pool");
+        for (uint256 i = 0; i < rs.length; i++) {
+            if (rs[i].removed) continue;
+            uint256 low =
+                s0 ? RangeMath.tickToUsd(rs[i].tickLower, dec, true) : RangeMath.tickToUsd(rs[i].tickUpper, dec, false);
+            assertGe(low, p0 * 10_800 / 10_000, "every rung >= P0 * 1.08");
+            assertEq(rs[i].tickLower % key.tickSpacing, 0);
+            assertEq(rs[i].tickUpper % key.tickSpacing, 0);
+        }
     }
 
     function test_fork_fullCycle_squeezeLockBuyback() public {
@@ -243,7 +261,7 @@ abstract contract ForkBase is Test {
         vm.prank(keeperAddr);
         vault.settle(0);
         assertEq(uint8(vault.state()), uint8(OffmintVault.State.OPEN));
-        assertApproxEqAbs(stock.balanceOf(address(vault)), 100e18, 2);
+        assertApproxEqAbs(stock.balanceOf(address(vault)), 100e18, 8, "<= 2 wei rounding per rung");
     }
 }
 

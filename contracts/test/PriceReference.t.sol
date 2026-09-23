@@ -78,12 +78,15 @@ contract PushPriceReferenceTest is Test {
     PushPriceReference ref;
     address poster = makeAddr("poster");
     address keeper = makeAddr("keeper");
+    address refOwner = makeAddr("refOwner");
 
     function setUp() public {
         vm.warp(1_790_000_000);
         stock = new MockStockToken(address(this), "BlackBerry", "BB");
         // max 20% per post intraday; any move allowed after a >= 12h gap (market reopen)
-        ref = new PushPriceReference(poster, IStockToken(address(stock)), 2000, 12 hours, "Robinhood API BB/USD");
+        ref = new PushPriceReference(
+            poster, refOwner, IStockToken(address(stock)), 2000, 12 hours, "Robinhood API BB/USD"
+        );
     }
 
     function _post(uint256 p, uint256 at, bool h) internal {
@@ -150,6 +153,30 @@ contract PushPriceReferenceTest is Test {
 
     function test_constructorRejectsZeroPoster() public {
         vm.expectRevert(PushPriceReference.BadConfig.selector);
-        new PushPriceReference(address(0), IStockToken(address(stock)), 2000, 12 hours, "x");
+        new PushPriceReference(address(0), refOwner, IStockToken(address(stock)), 2000, 12 hours, "x");
+        vm.expectRevert(PushPriceReference.BadConfig.selector);
+        new PushPriceReference(poster, poster, IStockToken(address(stock)), 2000, 12 hours, "x");
+    }
+
+    function test_ownerHaltFreezesPostsAndReads_posterCannotLiftIt() public {
+        vm.prank(poster);
+        ref.post(30e8, block.timestamp, false);
+        vm.prank(poster);
+        vm.expectRevert(PushPriceReference.NotOwner.selector);
+        ref.setOwnerHalt(true);
+
+        vm.prank(refOwner);
+        ref.setOwnerHalt(true);
+        vm.expectRevert(PushPriceReference.OraclePaused.selector);
+        ref.read();
+        vm.warp(block.timestamp + 60);
+        vm.prank(poster);
+        vm.expectRevert(PushPriceReference.OraclePaused.selector);
+        ref.post(30e8, block.timestamp, false); // a post with halted_=false cannot clear the owner freeze
+
+        vm.prank(refOwner);
+        ref.setOwnerHalt(false);
+        (uint256 p,,) = ref.read();
+        assertEq(p, 30e8);
     }
 }

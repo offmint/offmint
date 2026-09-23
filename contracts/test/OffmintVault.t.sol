@@ -16,6 +16,7 @@ import {IERC4626} from "@openzeppelin/contracts/interfaces/IERC4626.sol";
 import {ERC4626} from "@openzeppelin/contracts/token/ERC20/extensions/ERC4626.sol";
 
 import {OffmintVault} from "../src/OffmintVault.sol";
+import {OffmintParams} from "../src/libraries/OffmintParams.sol";
 import {SessionClock} from "../src/clock/SessionClock.sol";
 import {RangeMath} from "../src/libraries/RangeMath.sol";
 import {MockFeed} from "../src/mocks/MockFeed.sol";
@@ -23,6 +24,9 @@ import {MockStockToken} from "../src/mocks/MockStockToken.sol";
 import {MockUSDG} from "../src/mocks/MockUSDG.sol";
 import {AggregatorV3Interface} from "../src/interfaces/AggregatorV3Interface.sol";
 import {ISessionClock} from "../src/interfaces/ISessionClock.sol";
+import {IPriceReference} from "../src/interfaces/IPriceReference.sol";
+import {IStockToken} from "../src/interfaces/IStockToken.sol";
+import {ChainlinkPriceReference} from "../src/oracle/ChainlinkPriceReference.sol";
 
 /// @dev Full-cycle tests against a locally deployed v4 PoolManager. Every test runs in both pool orientations
 ///      (VaultS0Test: STOCK is currency0, VaultS1Test: STOCK is currency1).
@@ -44,6 +48,7 @@ abstract contract VaultSetup is Deployers {
     MockStockToken stock;
     MockUSDG usd;
     MockFeed feed;
+    ChainlinkPriceReference ref;
     SessionClock clock;
     OffmintVault vault;
     bool s0;
@@ -65,6 +70,9 @@ abstract contract VaultSetup is Deployers {
         feed = new MockFeed(address(this), 8, "TSLA / USD", int256(P0));
         feed.setAnswerAt(int256(P0), SAT - 4 hours); // Friday 20:00 UTC close print
         clock = new SessionClock(address(this), 0);
+        ref = new ChainlinkPriceReference(
+            AggregatorV3Interface(address(feed)), AggregatorV3Interface(address(0)), IStockToken(address(stock))
+        );
 
         (Currency c0, Currency c1) = s0
             ? (Currency.wrap(address(stock)), Currency.wrap(address(usd)))
@@ -97,8 +105,7 @@ abstract contract VaultSetup is Deployers {
             OffmintVault.Config({
                 poolManager: manager,
                 clock: ISessionClock(address(clock)),
-                feed: AggregatorV3Interface(address(feed)),
-                sequencerFeed: AggregatorV3Interface(address(0)),
+                priceRef: IPriceReference(address(ref)),
                 stock: IERC20(address(stock)),
                 usdg: IERC20(address(usd)),
                 poolKey: key,
@@ -143,7 +150,7 @@ abstract contract VaultSetup is Deployers {
     function _arm() internal {
         vm.warp(SAT + 20 minutes);
         vm.prank(keeperAddr);
-        vault.arm(1000, 5000, 3000);
+        vault.arm(_ladder(), 3000);
     }
 
     /// @dev Monday reopen: feed prints `fresh` at 00:10, then time moves to the settle-able point.
@@ -151,6 +158,24 @@ abstract contract VaultSetup is Deployers {
         vm.warp(MON + 10 minutes);
         feed.setAnswer(int256(fresh));
         vm.warp(MON + 1 hours);
+    }
+
+    /// @dev Default ladder built locally: an external call (library/vault view) would consume vm.expectRevert.
+    function _ladder() internal pure returns (RangeMath.Rung[] memory r) {
+        r = new RangeMath.Rung[](4);
+        r[0] = RangeMath.Rung(800, 400, 2500);
+        r[1] = RangeMath.Rung(1500, 700, 3000);
+        r[2] = RangeMath.Rung(2500, 1000, 2500);
+        r[3] = RangeMath.Rung(4000, 1500, 2000);
+    }
+
+    function _rungs() internal view returns (OffmintVault.RungResult[] memory) {
+        return vault.epochRungs(vault.epochCount());
+    }
+
+    /// @dev USD of a rung's edge nearest the market (its lowest sell price).
+    function _lowUsd(OffmintVault.RungResult memory r) internal view returns (uint256) {
+        return s0 ? RangeMath.tickToUsd(r.tickLower, dec, true) : RangeMath.tickToUsd(r.tickUpper, dec, false);
     }
 
     function _pps() internal view returns (uint256) {
@@ -169,24 +194,32 @@ abstract contract VaultTestBase is VaultSetup {
 
     // ================================================================== arm
 
-    function test_arm_rangeIsSingleSidedAndAbovePremium() public {
+    function test_arm_ladderIsSingleSidedAndAbovePremium() public {
         _arm();
         OffmintVault.Epoch memory e = vault.currentEpoch();
+        OffmintVault.RungResult[] memory rs = _rungs();
+        RangeMath.Rung[] memory lad = _ladder();
         assertEq(uint8(vault.state()), uint8(OffmintVault.State.ARMED));
         assertEq(e.p0, P0);
+        assertEq(e.rungs, 4);
         assertApproxEqRel(e.stockDeployed, 30e18, 1e12, "30% deployed (liquidity rounding dust)");
         assertEq(stock.balanceOf(address(vault)), 100e18 - e.stockDeployed);
         assertEq(usd.balanceOf(address(vault)), 0);
-        uint256 minUsd = P0 * 11_000 / 10_000;
         (, int24 cur,,) = manager.getSlot0(key.toId());
-        if (s0) {
-            assertGt(e.tickLower, cur);
-            assertGe(RangeMath.tickToUsd(e.tickLower, dec, true), minUsd);
-        } else {
-            assertLe(e.tickUpper, cur);
-            assertGe(RangeMath.tickToUsd(e.tickUpper, dec, false), minUsd);
+        for (uint256 i = 0; i < rs.length; i++) {
+            assertFalse(rs[i].removed, "every rung placed at P0");
+            if (s0) assertGt(rs[i].tickLower, cur, "S0 single-sided");
+            else assertLe(rs[i].tickUpper, cur, "S1 single-sided");
+            assertGe(
+                _lowUsd(rs[i]), P0 * (10_000 + uint256(lad[i].premiumBps)) / 10_000, "rung >= P0 x (1 + its premium)"
+            );
+            assertApproxEqRel(rs[i].stockDeployed, 30e18 * uint256(lad[i].shareBps) / 10_000, 1e12, "rung share");
+            if (i > 0) {
+                if (s0) assertGe(rs[i].tickLower, rs[i - 1].tickUpper, "non-overlapping");
+                else assertLe(rs[i].tickUpper, rs[i - 1].tickLower, "non-overlapping");
+            }
         }
-        // totalAssets still counts the deployed stock while the position is live
+        // totalAssets still counts the deployed stock while the rungs are live
         assertApproxEqRel(vault.totalAssets(), 100e18, 1e12);
     }
 
@@ -194,21 +227,21 @@ abstract contract VaultTestBase is VaultSetup {
         _arm();
         vm.prank(keeperAddr);
         vm.expectRevert(OffmintVault.WrongState.selector);
-        vault.arm(1000, 5000, 3000);
+        vault.arm(_ladder(), 3000);
     }
 
     function test_arm_reverts_notWindow() public {
         vm.warp(SAT - 1 hours);
         vm.prank(keeperAddr);
         vm.expectRevert(OffmintVault.NotWindow.selector);
-        vault.arm(1000, 5000, 3000);
+        vault.arm(_ladder(), 3000);
     }
 
     function test_arm_reverts_tooEarly() public {
         vm.warp(SAT + 4 minutes);
         vm.prank(keeperAddr);
         vm.expectRevert(OffmintVault.TooEarly.selector);
-        vault.arm(1000, 5000, 3000);
+        vault.arm(_ladder(), 3000);
     }
 
     function test_arm_reverts_oracleNotFrozen() public {
@@ -217,7 +250,7 @@ abstract contract VaultTestBase is VaultSetup {
         vm.warp(SAT + 20 minutes);
         vm.prank(keeperAddr);
         vm.expectRevert(OffmintVault.OracleNotFrozen.selector);
-        vault.arm(1000, 5000, 3000);
+        vault.arm(_ladder(), 3000);
     }
 
     function test_arm_reverts_staleClose() public {
@@ -225,72 +258,84 @@ abstract contract VaultTestBase is VaultSetup {
         vm.warp(SAT + 20 minutes);
         vm.prank(keeperAddr);
         vm.expectRevert(OffmintVault.OracleStale.selector);
-        vault.arm(1000, 5000, 3000);
+        vault.arm(_ladder(), 3000);
     }
 
     function test_arm_reverts_oraclePaused() public {
         stock.setOraclePaused(true);
         vm.warp(SAT + 20 minutes);
         vm.prank(keeperAddr);
-        vm.expectRevert(OffmintVault.OraclePaused.selector);
-        vault.arm(1000, 5000, 3000);
+        vm.expectRevert(ChainlinkPriceReference.OraclePaused.selector);
+        vault.arm(_ladder(), 3000);
     }
 
     function test_arm_reverts_nonPositiveAnswer() public {
         feed.setAnswerAt(0, SAT - 4 hours);
         vm.warp(SAT + 20 minutes);
         vm.prank(keeperAddr);
-        vm.expectRevert(OffmintVault.OracleStale.selector);
-        vault.arm(1000, 5000, 3000);
+        vm.expectRevert(ChainlinkPriceReference.OracleStale.selector);
+        vault.arm(_ladder(), 3000);
     }
 
     function test_arm_reverts_paramBounds() public {
         vm.warp(SAT + 20 minutes);
+        RangeMath.Rung[] memory lad = _ladder();
+        lad[0].premiumBps = 700; // first rung less conservative than the default 8%
         vm.startPrank(keeperAddr);
         vm.expectRevert(OffmintVault.ParamOutOfBounds.selector);
-        vault.arm(999, 5000, 3000); // less conservative than default premium
+        vault.arm(lad, 3000);
+        lad = _ladder();
+        lad[1].premiumBps = 1100; // overlaps rung 0: invalid ladder
+        vm.expectRevert(RangeMath.LadderInvalid.selector);
+        vault.arm(lad, 3000);
+        lad = _ladder();
         vm.expectRevert(OffmintVault.ParamOutOfBounds.selector);
-        vault.arm(1000, 10_001, 3000);
+        vault.arm(lad, 3001); // deploys more than default
         vm.expectRevert(OffmintVault.ParamOutOfBounds.selector);
-        vault.arm(1000, 999, 3000);
-        vm.expectRevert(OffmintVault.ParamOutOfBounds.selector);
-        vault.arm(1000, 5000, 3001); // deploys more than default
-        vm.expectRevert(OffmintVault.ParamOutOfBounds.selector);
-        vault.arm(1000, 5000, 0);
+        vault.arm(lad, 0);
         vm.stopPrank();
     }
 
     function test_arm_keeperOnlyBeforeGrace_thenAnyoneWithDefaults() public {
+        RangeMath.Rung[] memory odd = new RangeMath.Rung[](1);
+        odd[0] = RangeMath.Rung(5000, 1000, 10_000);
         vm.warp(SAT + 20 minutes);
         vm.prank(rando);
         vm.expectRevert(OffmintVault.NotKeeper.selector);
-        vault.arm(5000, 1000, 100);
+        vault.arm(odd, 100);
         vm.warp(SAT + 2 hours);
         vm.prank(rando);
-        vault.arm(5000, 1000, 100); // args ignored -> defaults
+        vault.arm(odd, 100); // args ignored -> default ladder + default deploy
         OffmintVault.Epoch memory e = vault.currentEpoch();
+        assertEq(e.rungs, 4, "default ladder");
         assertApproxEqRel(e.stockDeployed, 30e18, 1e12, "default deployBps");
-        uint256 lowUsd = s0 ? RangeMath.tickToUsd(e.tickLower, dec, true) : RangeMath.tickToUsd(e.tickUpper, dec, false);
-        assertApproxEqRel(lowUsd, P0 * 11 / 10, 0.01e18, "default premium");
+        assertApproxEqRel(_lowUsd(_rungs()[0]), P0 * 108 / 100, 0.01e18, "default first rung +8%");
     }
 
     function test_arm_conservativeKeeperParams() public {
+        RangeMath.Rung[] memory one = new RangeMath.Rung[](1);
+        one[0] = RangeMath.Rung(2000, 3000, 10_000);
         vm.warp(SAT + 20 minutes);
         vm.prank(keeperAddr);
-        vault.arm(2000, 3000, 1000);
+        vault.arm(one, 1000);
         OffmintVault.Epoch memory e = vault.currentEpoch();
+        assertEq(e.rungs, 1);
         assertApproxEqRel(e.stockDeployed, 10e18, 1e12);
-        uint256 lowUsd = s0 ? RangeMath.tickToUsd(e.tickLower, dec, true) : RangeMath.tickToUsd(e.tickUpper, dec, false);
-        assertGe(lowUsd, P0 * 12 / 10);
+        assertGe(_lowUsd(_rungs()[0]), P0 * 12 / 10);
     }
 
     function test_arm_poolAlreadyAboveThreshold_sellsOnlyAboveMarket() public {
-        _moveTo(P0 * 13 / 10); // weekend premium already +30% when we arm
+        _moveTo(P0 * 113 / 100); // weekend premium already +13%: the +8-12% rung is behind the market
         _arm();
-        OffmintVault.Epoch memory e = vault.currentEpoch();
-        uint256 lowUsd = s0 ? RangeMath.tickToUsd(e.tickLower, dec, true) : RangeMath.tickToUsd(e.tickUpper, dec, false);
-        assertGe(lowUsd * 10_001 / 10_000, _poolUsd(), "band starts at/above market");
-        assertEq(usd.balanceOf(address(vault)), 0);
+        OffmintVault.RungResult[] memory rs = _rungs();
+        assertTrue(rs[0].removed, "crossed rung skipped");
+        assertEq(rs[0].stockDeployed, 0);
+        for (uint256 i = 1; i < rs.length; i++) {
+            assertFalse(rs[i].removed);
+            assertGe(_lowUsd(rs[i]) * 10_001 / 10_000, _poolUsd(), "every placed rung at/above market");
+        }
+        assertEq(usd.balanceOf(address(vault)), 0, "still single-sided");
+        assertApproxEqRel(vault.currentEpoch().stockDeployed, 30e18 * 7500 / 10_000, 1e12, "deploys less, never more");
     }
 
     function test_arm_oncePerWindow() public {
@@ -302,7 +347,7 @@ abstract contract VaultTestBase is VaultSetup {
         feed.setAnswerAt(int256(P0), SAT + 7 days - 4 hours);
         vm.warp(SAT + 7 days + 20 minutes);
         vm.prank(keeperAddr);
-        vault.arm(1000, 5000, 3000);
+        vault.arm(_ladder(), 3000);
         assertEq(vault.epochCount(), 2);
     }
 
@@ -338,8 +383,7 @@ abstract contract VaultTestBase is VaultSetup {
             OffmintVault.Config({
                 poolManager: manager,
                 clock: ISessionClock(address(clock)),
-                feed: AggregatorV3Interface(address(feed)),
-                sequencerFeed: AggregatorV3Interface(address(0)),
+                priceRef: IPriceReference(address(ref)),
                 stock: IERC20(address(stock)),
                 usdg: IERC20(address(usd)),
                 poolKey: key,
@@ -380,11 +424,14 @@ abstract contract VaultTestBase is VaultSetup {
     function test_cycle_profit_lockOnFill() public {
         uint256 ppsBefore = _pps();
         _arm();
-        _moveTo(P0 * 17 / 10); // squeeze above the band top (P0*1.6)
+        _moveTo(P0 * 17 / 10); // squeeze above the top rung (P0*1.55)
         vm.prank(rando);
-        vault.lock(); // anyone, because the position is fully sold
+        vault.lock(); // anyone: every rung is fully sold
         OffmintVault.Epoch memory e = vault.currentEpoch();
-        assertTrue(e.locked);
+        OffmintVault.RungResult[] memory rs = _rungs();
+        for (uint256 i = 0; i < rs.length; i++) {
+            assertTrue(rs[i].removed, "rung locked");
+        }
         assertLe(e.stockBack, 1e6, "fully sold");
         assertGt(e.usdgReceived, 30 * 33e6, "sold above P0*1.1 on average");
 
@@ -399,22 +446,25 @@ abstract contract VaultTestBase is VaultSetup {
         assertGt(e.feeStock, 0);
         assertEq(stock.balanceOf(feeTo), e.feeStock, "fee to feeRecipient");
         assertEq(e.feeStock, uint256(e.pnlStock) * 1000 / 10_000);
-        assertGt(stock.balanceOf(address(vault)), 100e18 + 5e18, "vault gained > 5 STOCK on 30 deployed");
+        assertGt(stock.balanceOf(address(vault)), 100e18 + 4e18, "vault gained > 4 STOCK on 30 deployed");
         assertGt(_pps(), ppsBefore, "share price up");
-        // deposits re-enabled
-        assertGt(vault.maxDeposit(bob), 0);
+        assertGt(vault.maxDeposit(bob), 0, "deposits re-enabled");
     }
 
     /// Partial fill inside the band, anyone locks 15 min before reopen, then buyback.
     function test_cycle_profit_lockPreOpen() public {
         _arm();
-        _moveTo(P0 * 13 / 10);
+        _moveTo(P0 * 13 / 10); // rungs +8-12% and +15-22% fully sold, +25-35% partly
         vm.warp(MON - 20 minutes);
-        vm.expectRevert(OffmintVault.TooEarly.selector);
-        vault.lock();
+        vault.lock(); // not yet near reopen: only the fully-sold rungs come out
+        OffmintVault.RungResult[] memory rs = _rungs();
+        assertTrue(rs[0].removed && rs[1].removed, "sold rungs locked early");
+        assertFalse(rs[2].removed || rs[3].removed, "unsold rungs stay live");
         vm.warp(MON - 15 minutes);
         vm.prank(rando);
-        vault.lock();
+        vault.lock(); // near reopen: everything left comes out
+        rs = _rungs();
+        assertTrue(rs[2].removed && rs[3].removed);
         OffmintVault.Epoch memory e = vault.currentEpoch();
         assertGt(e.stockBack, 0);
         assertGt(e.usdgReceived, 0);
@@ -448,13 +498,13 @@ abstract contract VaultTestBase is VaultSetup {
         assertEq(uint8(vault.state()), uint8(OffmintVault.State.OPEN));
         assertEq(e.stockBought, 0);
         assertEq(e.usdgReceived, 0);
-        assertApproxEqAbs(stock.balanceOf(address(vault)), 100e18, 2);
+        assertApproxEqAbs(stock.balanceOf(address(vault)), 100e18, 8, "<= 2 wei rounding per rung");
         assertEq(e.feeStock, 0);
         // withdraw works again
         uint256 sh = vault.balanceOf(alice);
         vm.prank(alice);
         uint256 out = vault.redeem(sh, alice, alice);
-        assertApproxEqAbs(out, 100e18, 2);
+        assertApproxEqAbs(out, 100e18, 8);
     }
 
     /// Monday gap-up: fresh price P0*1.5; buyback stops at the cap -> PENDING_BUYBACK -> price eases -> retry -> OPEN.
@@ -587,7 +637,7 @@ abstract contract VaultTestBase is VaultSetup {
         _reopen(P0);
         stock.setOraclePaused(true);
         vm.prank(keeperAddr);
-        vm.expectRevert(OffmintVault.OraclePaused.selector);
+        vm.expectRevert(ChainlinkPriceReference.OraclePaused.selector);
         vault.settle(0);
     }
 
@@ -619,17 +669,28 @@ abstract contract VaultTestBase is VaultSetup {
         vault.settle(1_000e18);
     }
 
-    function test_lock_reverts() public {
+    function test_lock_rules() public {
         vm.expectRevert(OffmintVault.WrongState.selector);
         vault.lock();
         _arm();
-        _moveTo(P0 * 13 / 10); // in band, not fully sold, not near reopen
+        _moveTo(P0 * 105 / 100); // below the first rung: nothing sold, not near reopen
         vm.expectRevert(OffmintVault.TooEarly.selector);
         vault.lock();
+        _moveTo(P0 * 113 / 100); // rung 0 (+8-12%) fully sold
+        vault.lock();
+        assertTrue(_rungs()[0].removed);
+        assertFalse(_rungs()[1].removed);
+        vm.expectRevert(OffmintVault.TooEarly.selector);
+        vault.lock(); // nothing else sold yet
         _moveTo(P0 * 17 / 10);
-        vault.lock();
-        vm.expectRevert(OffmintVault.WrongState.selector);
-        vault.lock();
+        vault.lock(); // the rest is sold now
+        OffmintVault.RungResult[] memory rs = _rungs();
+        for (uint256 i = 0; i < rs.length; i++) {
+            assertTrue(rs[i].removed);
+        }
+        vm.expectRevert(OffmintVault.TooEarly.selector);
+        vault.lock(); // nothing left to pull
+        assertEq(uint8(vault.state()), uint8(OffmintVault.State.ARMED), "still ARMED until settle");
     }
 
     function test_unlockCallback_onlyPoolManager() public {
@@ -655,20 +716,17 @@ abstract contract VaultTestBase is VaultSetup {
     }
 
     function test_setParams_bounds() public {
-        OffmintVault.Params memory p = _params();
+        OffmintParams.Params memory p = _params();
         vm.prank(rando);
         vm.expectRevert();
         vault.setParams(p);
 
         vm.startPrank(owner);
         vault.setParams(p);
-        p.defaultPremiumBps = 499;
-        _expectBad(p);
-        p = _params();
-        p.defaultWidthBps = 10_001;
-        _expectBad(p);
-        p = _params();
         p.defaultDeployBps = 5001;
+        _expectBad(p);
+        p = _params();
+        p.defaultDeployBps = 0;
         _expectBad(p);
         p = _params();
         p.buybackSlippageBps = 301;
@@ -691,6 +749,35 @@ abstract contract VaultTestBase is VaultSetup {
         vm.stopPrank();
     }
 
+    function test_setDefaultLadder_boundedAndOnlyWhileOpen() public {
+        RangeMath.Rung[] memory lad = _ladder();
+        vm.prank(rando);
+        vm.expectRevert();
+        vault.setDefaultLadder(lad);
+
+        lad[0].premiumBps = 499; // below the 5% floor
+        vm.prank(owner);
+        vm.expectRevert(RangeMath.LadderInvalid.selector);
+        vault.setDefaultLadder(lad);
+
+        RangeMath.Rung[] memory two = new RangeMath.Rung[](2);
+        two[0] = RangeMath.Rung(1000, 1000, 5000);
+        two[1] = RangeMath.Rung(2500, 2500, 5000);
+        vm.prank(owner);
+        vault.setDefaultLadder(two);
+        assertEq(vault.defaultLadder().length, 2);
+
+        vm.warp(SAT + 20 minutes);
+        vm.prank(keeperAddr);
+        vm.expectRevert(OffmintVault.ParamOutOfBounds.selector);
+        vault.arm(_ladder(), 3000); // an 8% first rung is now LESS conservative than the new 10% default
+        vm.prank(keeperAddr);
+        vault.arm(two, 3000);
+        vm.prank(owner);
+        vm.expectRevert(OffmintVault.WrongState.selector);
+        vault.setDefaultLadder(_ladder()); // an armed epoch never changes under the vault
+    }
+
     function test_setKeeper_cannotBeFeeRecipient() public {
         vm.startPrank(owner);
         vault.setKeeper(bob);
@@ -708,8 +795,7 @@ abstract contract VaultTestBase is VaultSetup {
         OffmintVault.Config memory c = OffmintVault.Config({
             poolManager: manager,
             clock: ISessionClock(address(clock)),
-            feed: AggregatorV3Interface(address(feed)),
-            sequencerFeed: AggregatorV3Interface(address(0)),
+            priceRef: IPriceReference(address(ref)),
             stock: IERC20(address(stock)),
             usdg: IERC20(address(usd)),
             poolKey: hooked,
@@ -733,12 +819,12 @@ abstract contract VaultTestBase is VaultSetup {
         assertEq(vault.stockIsCurrency0(), s0);
     }
 
-    function _params() internal view returns (OffmintVault.Params memory) {
+    function _params() internal view returns (OffmintParams.Params memory) {
         return vault.getParams();
     }
 
-    function _expectBad(OffmintVault.Params memory p) internal {
-        vm.expectRevert(OffmintVault.ParamOutOfBounds.selector);
+    function _expectBad(OffmintParams.Params memory p) internal {
+        vm.expectRevert(OffmintParams.ParamOutOfBounds.selector);
         vault.setParams(p);
     }
 }
@@ -771,8 +857,15 @@ contract VaultSequencerTest is VaultSetup {
             OffmintVault.Config({
                 poolManager: manager,
                 clock: ISessionClock(address(clock)),
-                feed: AggregatorV3Interface(address(feed)),
-                sequencerFeed: AggregatorV3Interface(address(seq)),
+                priceRef: IPriceReference(
+                    address(
+                        new ChainlinkPriceReference(
+                            AggregatorV3Interface(address(feed)),
+                            AggregatorV3Interface(address(seq)),
+                            IStockToken(address(stock))
+                        )
+                    )
+                ),
                 stock: IERC20(address(stock)),
                 usdg: IERC20(address(usd)),
                 poolKey: key,
@@ -789,18 +882,18 @@ contract VaultSequencerTest is VaultSetup {
         vm.warp(SAT + 20 minutes);
         seq.setAnswerAt(1, SAT - 10 days); // status 1 = down
         vm.prank(keeperAddr);
-        vm.expectRevert(OffmintVault.SequencerDown.selector);
-        vault.arm(1000, 5000, 3000);
+        vm.expectRevert(ChainlinkPriceReference.SequencerDown.selector);
+        vault.arm(_ladder(), 3000);
     }
 
     function test_sequencerGracePeriod() public {
         vm.warp(SAT + 20 minutes);
         seq.setAnswerAt(0, SAT); // came back up 20 minutes ago (< 1h grace)
         vm.prank(keeperAddr);
-        vm.expectRevert(OffmintVault.SequencerDown.selector);
-        vault.arm(1000, 5000, 3000);
+        vm.expectRevert(ChainlinkPriceReference.SequencerDown.selector);
+        vault.arm(_ladder(), 3000);
         vm.warp(SAT + 1 hours + 1);
         vm.prank(keeperAddr);
-        vault.arm(1000, 5000, 3000);
+        vault.arm(_ladder(), 3000);
     }
 }

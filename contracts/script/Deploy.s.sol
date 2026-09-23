@@ -12,12 +12,16 @@ import {PoolModifyLiquidityTest} from "@uniswap/v4-core/src/test/PoolModifyLiqui
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 import {OffmintVault} from "../src/OffmintVault.sol";
+import {OffmintParams} from "../src/libraries/OffmintParams.sol";
 import {ManualSessionClock} from "../src/clock/ManualSessionClock.sol";
 import {RangeMath} from "../src/libraries/RangeMath.sol";
 import {MockFeed} from "../src/mocks/MockFeed.sol";
 import {MockStockToken} from "../src/mocks/MockStockToken.sol";
 import {MockUSDG} from "../src/mocks/MockUSDG.sol";
 import {AggregatorV3Interface} from "../src/interfaces/AggregatorV3Interface.sol";
+import {IPriceReference} from "../src/interfaces/IPriceReference.sol";
+import {IStockToken} from "../src/interfaces/IStockToken.sol";
+import {ChainlinkPriceReference} from "../src/oracle/ChainlinkPriceReference.sol";
 import {ISessionClock} from "../src/interfaces/ISessionClock.sol";
 
 /// @title Deploy — testnet demo stack (SPEC §7)
@@ -119,8 +123,14 @@ contract Deploy is Script {
             OffmintVault.Config({
                 poolManager: IPoolManager(o.poolManager),
                 clock: ISessionClock(o.clock),
-                feed: AggregatorV3Interface(o.feed),
-                sequencerFeed: AggregatorV3Interface(address(0)),
+                // testnet: Chainlink-shaped adapter over the MockFeed (no sequencer feed on testnet)
+                priceRef: IPriceReference(
+                    address(
+                        new ChainlinkPriceReference(
+                            AggregatorV3Interface(o.feed), AggregatorV3Interface(address(0)), IStockToken(o.stock)
+                        )
+                    )
+                ),
                 stock: IERC20(o.stock),
                 usdg: IERC20(o.usdg),
                 poolKey: key,
@@ -132,7 +142,7 @@ contract Deploy is Script {
         );
         o.vault = address(vault);
         // demo-speed timing: every value at the edge of the hard bounds, never outside them
-        OffmintVault.Params memory p = vault.getParams();
+        OffmintParams.Params memory p = vault.getParams();
         p.armDelay = 1 minutes;
         p.minFrozen = 5 minutes;
         p.settleDelay = 30 minutes;

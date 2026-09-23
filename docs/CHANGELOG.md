@@ -61,3 +61,26 @@
 - Scan performance: block-by-timestamp lookup cut from ~30 to ~13 RPC calls, quiet-pool look-back capped, per-weekend
   resume cache, pool discovery and state caches.
 - `backtest/src/weekday.ts`: weekday (live feed) vs weekend (frozen close) premium comparison.
+
+## 2026-09-24
+- M2/M3 (SPEC §3.6, §5.0): the price source is pluggable through `IPriceReference`. `ChainlinkPriceReference` checks answer > 0,
+  `oraclePaused` and the sequencer with its grace period. `PushPriceReference` covers no-feed listings: a separate poster role,
+  forward-only timestamps, a 20% per-post cap unless the gap is ≥ 12h, and a poster halt flag. It also has an **owner freeze**
+  (`setOwnerHalt`) that blocks both posts and reads, and the poster cannot lift it; the owner and poster must be different
+  addresses.
+- M3: `OffmintVault` arms a **ladder** of up to 4 one-sided rungs (default `{800,400,2500} {1500,700,3000} {2500,1000,2500}
+  {4000,1500,2000}`):
+  - crossed rungs are skipped and rungs must not overlap;
+  - the keeper can only be more conservative: the first-rung premium must be ≥ the default, and deploy ≤ the default;
+  - `lock()` pulls each fully-sold rung as soon as it is sold, and every remaining rung from windowEnd − 15 min;
+  - per-rung results are exposed through `epochRungs(id)`;
+  - the owner can change the default ladder only while the vault is OPEN.
+- Size: the pool flows moved to the linked library `VaultPoolOps` and param validation to `OffmintParams`, with optimizer_runs = 1.
+  The vault is 23,590 B (986 B under EIP-170).
+- Keeper: `decide()` arms with the vault's own default ladder, shifted up by the per-ticker premium floor. It locks on any sold
+  rung. The bot reads the price reference, where a revert means paused. Local E2E: +6.41 STOCK / 100. Stress (10 epochs,
+  8 users): 0 invariant violations.
+- Contracts: 126 forge tests pass (the fork tests skip without an RPC, and pass with one: TSLA +7.08, HIMS +6.99 on 30 deployed).
+- Backtest GLXY 11–14 Sep: +32.8% STOCK vs HODL ex-fees (lockOnFill). The MetaVault friction model gives 28.5% gross and
+  25.1% net USD. The buy-in is approximated at the Friday close.
+- `.detector-cache.json` (48 MB log cache) is gitignored. `contracts/config/basket.json` (the detector output) is committed.

@@ -9,30 +9,31 @@ import {ReentrancyGuardTransient} from "@openzeppelin/contracts/utils/Reentrancy
 
 import {IPoolManager} from "@uniswap/v4-core/src/interfaces/IPoolManager.sol";
 import {IUnlockCallback} from "@uniswap/v4-core/src/interfaces/callback/IUnlockCallback.sol";
-import {IHooks} from "@uniswap/v4-core/src/interfaces/IHooks.sol";
 import {PoolKey} from "@uniswap/v4-core/src/types/PoolKey.sol";
-import {PoolId, PoolIdLibrary} from "@uniswap/v4-core/src/types/PoolId.sol";
+import {PoolIdLibrary} from "@uniswap/v4-core/src/types/PoolId.sol";
 import {Currency} from "@uniswap/v4-core/src/types/Currency.sol";
 import {BalanceDelta} from "@uniswap/v4-core/src/types/BalanceDelta.sol";
 import {StateLibrary} from "@uniswap/v4-core/src/libraries/StateLibrary.sol";
 import {TransientStateLibrary} from "@uniswap/v4-core/src/libraries/TransientStateLibrary.sol";
 
-import {AggregatorV3Interface} from "./interfaces/AggregatorV3Interface.sol";
-import {IStockToken} from "./interfaces/IStockToken.sol";
+import {IPriceReference} from "./interfaces/IPriceReference.sol";
 import {ISessionClock} from "./interfaces/ISessionClock.sol";
 import {RangeMath} from "./libraries/RangeMath.sol";
+import {VaultPoolOps} from "./libraries/VaultPoolOps.sol";
+import {OffmintParams} from "./libraries/OffmintParams.sol";
 
-/// @title OffmintVault
-/// @notice Weekend float vault for one Robinhood Chain stock token.
-///         Mon–Fri: holders deposit STOCK (ERC-4626). When minting closes for the weekend, `arm` posts a one-sided
-///         Uniswap v4 range order of part of the STOCK above the last Chainlink price (+ premium). If a weekend supply
-///         crunch pushes the pool into the band, the vault sells at a premium. `lock` pulls the position before the
-///         Monday reopen so fills are not reversed by the mint-driven sell-off, and `settle` buys the STOCK back
-///         once the oracle is fresh, capped at feed * (1 + slippage).
-/// @dev Talks to the PoolManager directly through unlock/unlockCallback (the chain's UniversalRouter uses a
-///      non-standard swap struct). Time is block.timestamp only. No arbitrary calls; no path moves assets to the
-///      owner or keeper. The only outbound transfers are ERC-4626 redemptions, `redeemMixed`, and the performance
-///      fee to the immutable `feeRecipient`.
+/// @title OffmintVault — the per-stock weekend engine (SPEC §6)
+/// @notice Holders deposit STOCK (ERC-4626). When minting closes for the weekend, `arm` posts a LADDER of up to four
+///         one-sided Uniswap v4 range orders of part of the STOCK above the last reference price (SPEC §5.0). If a
+///         weekend supply crunch pushes the pool into the ladder, the vault sells slices at rising premiums. `lock`
+///         pulls fully-sold rungs (any time) or every rung (just before the Monday reopen) so fills are not reversed
+///         by the mint-driven sell-off, and `settle` buys the STOCK back once the reference is fresh, capped at
+///         price * (1 + slippage) so a real Monday gap-up can never force a bad buyback.
+/// @dev Price source is an `IPriceReference` (Chainlink adapter, or the Robinhood-API `PushPriceReference` for new
+///      listings without a feed): the vault neither knows nor cares which (SPEC §3.6). Talks to the PoolManager
+///      directly via unlock/unlockCallback (the chain's UniversalRouter uses a non-standard swap struct). Time is
+///      block.timestamp only. No arbitrary calls; no path moves assets to the owner or keeper. Outbound transfers:
+///      ERC-4626 redemptions, `redeemMixed`, and the performance fee to the immutable `feeRecipient`.
 contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnlockCallback {
     using SafeERC20 for IERC20;
     using PoolIdLibrary for PoolKey;
@@ -50,33 +51,19 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
 
     enum Action {
         ARM,
-        LOCK,
-        SETTLE,
-        RETRY,
-        UNWIND
+        REMOVE,
+        RETRY
     }
 
-    /// @dev Position identifiers passed through unlock().
-    struct Pos {
+    /// @notice Per-rung record of an epoch (SPEC §6.4).
+    struct RungResult {
         int24 tickLower;
         int24 tickUpper;
         uint128 liquidity;
-        bytes32 salt;
-    }
-
-    struct Params {
-        uint16 defaultPremiumBps;
-        uint16 defaultWidthBps;
-        uint16 defaultDeployBps;
-        uint16 buybackSlippageBps;
-        uint16 perfFeeBps;
-        uint32 armDelay;
-        uint32 minFrozen;
-        uint32 maxPreCloseAge;
-        uint32 settleDelay;
-        uint32 maxFreshAge;
-        uint32 armGrace;
-        uint32 settleGrace;
+        bool removed; // pulled by lock / settle / unwind (or never placed)
+        uint256 stockDeployed;
+        uint256 stockBack;
+        uint256 usdgReceived;
     }
 
     struct Epoch {
@@ -84,16 +71,13 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
         uint64 armedAt;
         uint64 windowEnd;
         uint64 settledAt; // settle / emergencyUnwind time; starts the retry window
-        uint256 p0; // feed answer at arm
-        int24 tickLower;
-        int24 tickUpper;
-        uint128 liquidity;
-        bytes32 salt;
-        bool locked; // position already removed (lock / settle / unwind)
+        uint256 p0; // reference price at arm
+        uint8 priceDecimals; // decimals of p0 (from the price reference)
+        uint8 rungs; // number of rungs in this epoch's ladder
         uint256 stockBefore; // vault STOCK before arm (incl. undeployed)
         uint256 stockDeployed;
-        uint256 stockBack; // STOCK returned from the position (incl. fees)
-        uint256 usdgReceived; // USDG returned from the position (fills + fees)
+        uint256 stockBack; // STOCK returned from all rungs (incl. fees)
+        uint256 usdgReceived; // USDG returned from all rungs (fills + fees)
         uint256 stockBought; // from buyback(s)
         uint256 usdgLeft;
         int256 pnlStock; // stockAfter - stockBefore, before fee
@@ -103,10 +87,9 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
     // ------------------------------------------------------------------ constants
 
     uint256 internal constant BPS = 10_000;
-    uint256 public constant SEQ_GRACE = 3600;
     uint256 public constant RETRY_WINDOW = 48 hours;
     uint256 public constant EMERGENCY_DELAY = 96 hours;
-    /// @notice Anyone may `lock` from this long before the Monday reopen.
+    /// @notice Anyone may pull every remaining rung from this long before the Monday reopen.
     uint256 public constant LOCK_LEAD = 15 minutes;
     /// @notice USDG left below this (raw units) counts as fully bought back; it rolls into the next buyback.
     uint256 public constant USDG_DUST = 100;
@@ -115,32 +98,33 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
 
     IPoolManager public immutable poolManager;
     ISessionClock public immutable clock;
-    AggregatorV3Interface public immutable feed;
-    /// @notice L2 sequencer uptime feed; address(0) disables the check (none is listed for Robinhood Chain yet).
-    AggregatorV3Interface public immutable sequencerFeed;
+    /// @notice Price source: Chainlink adapter or PushPriceReference (SPEC §3.6). Health checks live in the adapter.
+    IPriceReference public immutable priceRef;
     IERC20 public immutable usdg;
     address public immutable feeRecipient;
     bool public immutable stockIsCurrency0;
-    uint8 internal immutable _feedDecimals;
     uint8 internal immutable _stockDecimals;
     uint8 internal immutable _usdDecimals;
 
     // ------------------------------------------------------------------ storage
 
     PoolKey internal _poolKey;
-    Params public params;
+    OffmintParams.Params public params;
+    RangeMath.Rung[] internal _defaultLadder;
     address public keeper;
     bool public depositsPaused;
     State public state;
     uint256 public epochCount;
     mapping(uint256 => Epoch) internal _epochs;
+    mapping(uint256 => RungResult[]) internal _rungResults;
 
     // ------------------------------------------------------------------ events / errors
 
-    event Armed(
-        uint256 indexed id, uint256 p0, int24 tickLower, int24 tickUpper, uint256 stockDeployed, uint128 liquidity
+    event Armed(uint256 indexed id, uint256 p0, uint256 rungs, uint256 stockDeployed);
+    event RungArmed(
+        uint256 indexed id, uint256 rung, int24 tickLower, int24 tickUpper, uint128 liquidity, uint256 stock
     );
-    event Locked(uint256 indexed id, uint256 stockBack, uint256 usdgReceived);
+    event RungRemoved(uint256 indexed id, uint256 rung, uint256 stockBack, uint256 usdgReceived);
     event Settled(
         uint256 indexed id,
         uint256 stockBack,
@@ -154,7 +138,8 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
     event EmergencyUnwound(uint256 indexed id);
     event BuybackExpired(uint256 indexed id);
     event MixedRedeemed(address indexed owner, address indexed to, uint256 shares, uint256 stockOut, uint256 usdgOut);
-    event ParamsUpdated(Params p);
+    event ParamsUpdated(OffmintParams.Params p);
+    event LadderUpdated(RangeMath.Rung[] ladder);
     event KeeperUpdated(address keeper);
     event DepositsPaused(bool paused);
 
@@ -163,12 +148,8 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
     error TooEarly();
     error OracleStale();
     error OracleNotFrozen();
-    error OraclePaused();
-    error SequencerDown();
     error ParamOutOfBounds();
     error NotKeeper();
-    error RangeInvalid();
-    error NotSingleSided();
     error SlippageMinOut();
     error OnlyPoolManager();
     error BadConfig();
@@ -178,8 +159,7 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
     struct Config {
         IPoolManager poolManager;
         ISessionClock clock;
-        AggregatorV3Interface feed;
-        AggregatorV3Interface sequencerFeed;
+        IPriceReference priceRef;
         IERC20 stock;
         IERC20 usdg;
         PoolKey poolKey;
@@ -201,7 +181,7 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
         bool s0 = c0 == s && c1 == u;
         if (!s0 && !(c0 == u && c1 == s)) revert BadConfig();
         // hook-free pools only: a hook could block addLiquidity or skim the position
-        if (address(c.poolKey.hooks) != address(0)) revert BadConfig();
+        if (address(c.poolKey.hooks) != address(0) || address(c.priceRef) == address(0)) revert BadConfig();
         if (
             c.keeper == address(0) || c.feeRecipient == address(0) || c.feeRecipient == c.owner
                 || c.feeRecipient == c.keeper
@@ -211,167 +191,134 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
 
         poolManager = c.poolManager;
         clock = c.clock;
-        feed = c.feed;
-        sequencerFeed = c.sequencerFeed;
+        priceRef = c.priceRef;
         usdg = c.usdg;
         feeRecipient = c.feeRecipient;
         stockIsCurrency0 = s0;
-        _feedDecimals = c.feed.decimals();
         _stockDecimals = IERC20Metadata(s).decimals();
         _usdDecimals = IERC20Metadata(u).decimals();
         _poolKey = c.poolKey;
         keeper = c.keeper;
 
-        _setParams(
-            Params({
-                defaultPremiumBps: 1000,
-                defaultWidthBps: 5000,
-                defaultDeployBps: 3000,
-                buybackSlippageBps: 100,
-                perfFeeBps: 1000,
-                armDelay: 5 minutes,
-                minFrozen: 15 minutes,
-                maxPreCloseAge: 6 hours,
-                settleDelay: 1 hours,
-                maxFreshAge: 1 hours,
-                armGrace: 2 hours,
-                settleGrace: 6 hours
-            })
-        );
+        _setParams(OffmintParams.defaults());
+        _setLadder(RangeMath.defaultLadder());
     }
 
     // ================================================================== lifecycle
 
-    /// @notice Post the weekend range order. Keeper-only until `windowStart + armGrace`, then anyone (defaults used).
-    /// @param premiumBps Band start above P0; keeper may only be more conservative than the default.
-    /// @param widthBps Band width; within [1000, 10000].
-    /// @param deployBps Share of vault STOCK to deploy; at most the default.
-    function arm(uint16 premiumBps, uint16 widthBps, uint16 deployBps) external nonReentrant {
+    /// @notice Post the weekend ladder. Keeper-only until `windowStart + armGrace`, then anyone (defaults used).
+    /// @param rungs Keeper ladder: valid (SPEC §5.0) and at least as conservative as the default
+    ///              (first rung's premium >= the default first rung's premium). Ignored for permissionless calls.
+    /// @param deployBps Share of vault STOCK to deploy; at most the default. Ignored for permissionless calls.
+    function arm(RangeMath.Rung[] calldata rungs, uint16 deployBps) external nonReentrant {
         if (state != State.OPEN) revert WrongState();
-        (premiumBps, widthBps, deployBps) = _armParams(premiumBps, widthBps, deployBps);
-        uint256 p0 = _armOracle();
+        RangeMath.Rung[] memory ladder = _armParams(rungs, deployBps);
+        if (msg.sender != keeper) deployBps = params.defaultDeployBps;
+        (uint256 p0, uint8 pd) = _armOracle();
         uint256 stockBefore = IERC20(asset()).balanceOf(address(this));
-        Pos memory ps = _buildPosition(p0, premiumBps, widthBps, stockBefore * deployBps / BPS);
-        uint256 deployed = abi.decode(poolManager.unlock(abi.encode(Action.ARM, abi.encode(ps))), (uint256));
+        uint256 id = epochCount + 1;
+        (RangeMath.RungPosition[] memory ps, VaultPoolOps.Pos[] memory pos) =
+            _buildLadder(id, p0, pd, ladder, stockBefore * deployBps / BPS);
+        uint256[] memory owed = abi.decode(poolManager.unlock(abi.encode(Action.ARM, abi.encode(pos))), (uint256[]));
+        _recordArm(id, p0, pd, stockBefore, ps, owed);
+    }
 
-        uint256 id = uint256(uint256(ps.salt));
+    /// @dev Single-sided rung positions for this epoch (SPEC §5.0; math in the linked RangeMath library).
+    function _buildLadder(uint256 id, uint256 p0, uint8 pd, RangeMath.Rung[] memory ladder, uint256 amount)
+        internal
+        view
+        returns (RangeMath.RungPosition[] memory ps, VaultPoolOps.Pos[] memory pos)
+    {
+        (, int24 cur,,) = poolManager.getSlot0(_poolKey.toId());
+        ps = RangeMath.ladderPositions(p0, ladder, cur, _poolKey.tickSpacing, _decimals(pd), stockIsCurrency0, amount);
+        pos = new VaultPoolOps.Pos[](ps.length);
+        for (uint256 i = 0; i < ps.length; i++) {
+            pos[i] = VaultPoolOps.Pos(ps[i].tickLower, ps[i].tickUpper, ps[i].liquidity, _salt(id, i));
+        }
+    }
+
+    /// @dev Stores the epoch and its per-rung results after the ARM unlock.
+    function _recordArm(
+        uint256 id,
+        uint256 p0,
+        uint8 pd,
+        uint256 stockBefore,
+        RangeMath.RungPosition[] memory ps,
+        uint256[] memory owed
+    ) internal {
         epochCount = id;
         Epoch storage e = _epochs[id];
         e.id = uint64(id);
         e.armedAt = uint64(block.timestamp);
         e.windowEnd = uint64(clock.windowEnd(block.timestamp));
         e.p0 = p0;
-        e.tickLower = ps.tickLower;
-        e.tickUpper = ps.tickUpper;
-        e.liquidity = ps.liquidity;
-        e.salt = ps.salt;
+        e.priceDecimals = pd;
+        e.rungs = uint8(ps.length);
         e.stockBefore = stockBefore;
+        uint256 deployed = 0;
+        RungResult[] storage rs = _rungResults[id];
+        for (uint256 i = 0; i < ps.length; i++) {
+            RungResult storage r = rs.push();
+            r.tickLower = ps[i].tickLower;
+            r.tickUpper = ps[i].tickUpper;
+            r.liquidity = ps[i].liquidity;
+            r.removed = ps[i].liquidity == 0;
+            r.stockDeployed = owed[i];
+            deployed += owed[i];
+            if (ps[i].liquidity != 0) {
+                emit RungArmed(id, i, ps[i].tickLower, ps[i].tickUpper, ps[i].liquidity, owed[i]);
+            }
+        }
         e.stockDeployed = deployed;
         state = State.ARMED;
-        emit Armed(id, p0, ps.tickLower, ps.tickUpper, deployed, ps.liquidity);
+        emit Armed(id, p0, ps.length, deployed);
     }
 
-    /// @dev Window, caller and bounds checks for `arm`; non-keepers get the defaults.
-    function _armParams(uint16 premiumBps, uint16 widthBps, uint16 deployBps)
-        internal
-        view
-        returns (uint16, uint16, uint16)
-    {
-        Params memory p = params;
-        if (!clock.inWeekendWindow(block.timestamp)) revert NotWindow();
-        uint256 ws = clock.windowStart(block.timestamp);
-        if (block.timestamp < ws + p.armDelay) revert TooEarly();
-        if (msg.sender != keeper) {
-            if (block.timestamp < ws + p.armGrace) revert NotKeeper();
-            (premiumBps, widthBps, deployBps) = (p.defaultPremiumBps, p.defaultWidthBps, p.defaultDeployBps);
-        }
-        if (
-            premiumBps < p.defaultPremiumBps || widthBps < 1000 || widthBps > 10_000 || deployBps == 0
-                || deployBps > p.defaultDeployBps
-        ) revert ParamOutOfBounds();
-        uint256 last = epochCount;
-        if (last != 0 && _epochs[last].armedAt >= ws) revert WrongState(); // one epoch per window
-        return (premiumBps, widthBps, deployBps);
-    }
-
-    /// @dev Oracle must be frozen (market closed) but have printed recently before the window (SPEC §4).
-    function _armOracle() internal view returns (uint256 p0) {
-        uint256 updatedAt;
-        (p0, updatedAt) = _readFeed();
-        if (block.timestamp - updatedAt < params.minFrozen) revert OracleNotFrozen();
-        if (updatedAt + params.maxPreCloseAge < clock.windowStart(block.timestamp)) revert OracleStale();
-    }
-
-    /// @dev One-sided range above P0 * (1 + premium) holding `amount` STOCK (SPEC §5.2).
-    function _buildPosition(uint256 p0, uint16 premiumBps, uint16 widthBps, uint256 amount)
-        internal
-        view
-        returns (Pos memory ps)
-    {
-        if (amount == 0) revert ParamOutOfBounds();
-        (, int24 cur,,) = poolManager.getSlot0(_poolKey.toId());
-        (ps.tickLower, ps.tickUpper, ps.liquidity) = RangeMath.sellPosition(
-            p0, premiumBps, widthBps, cur, _poolKey.tickSpacing, _decimals(), stockIsCurrency0, amount
-        );
-        if (ps.liquidity == 0) revert RangeInvalid();
-        ps.salt = bytes32(epochCount + 1);
-    }
-
-    /// @notice Remove the position without trading, keeping whatever it holds (anyone).
-    /// @dev Allowed once the pool trades beyond the top of the band (position is 100% USDG, the sale is done), or
-    ///      from `windowEnd - LOCK_LEAD`. Stops a Monday mint-driven sell-off from buying the STOCK back inside the band.
+    /// @notice Pull rungs without trading, keeping whatever they hold (anyone).
+    /// @dev Any time while ARMED: every rung the pool has traded fully through (100% USDG, the sale is done).
+    ///      From `windowEnd - LOCK_LEAD`: every remaining rung. Stops a Monday mint-driven sell-off from buying the
+    ///      STOCK back inside the ladder.
     function lock() external nonReentrant {
         if (state != State.ARMED) revert WrongState();
         Epoch storage e = _epochs[epochCount];
-        if (e.locked) revert WrongState();
-        if (block.timestamp + LOCK_LEAD < e.windowEnd && !_fullySold(e)) revert TooEarly();
-        bytes memory res = poolManager.unlock(abi.encode(Action.LOCK, abi.encode(_pos(e))));
-        (uint256 stockBack, uint256 usdgBack) = abi.decode(res, (uint256, uint256));
-        e.locked = true;
-        e.stockBack = stockBack;
-        e.usdgReceived = usdgBack;
-        emit Locked(e.id, stockBack, usdgBack);
+        bool nearOpen = block.timestamp + LOCK_LEAD >= e.windowEnd;
+        (, int24 cur,,) = poolManager.getSlot0(_poolKey.toId());
+        RungResult[] storage rs = _rungResults[e.id];
+        bool[] memory pick = new bool[](rs.length);
+        bool any = false;
+        for (uint256 i = 0; i < rs.length; i++) {
+            if (rs[i].removed) continue;
+            bool sold = stockIsCurrency0 ? cur >= rs[i].tickUpper : cur < rs[i].tickLower;
+            if (nearOpen || sold) pick[i] = any = true;
+        }
+        if (!any) revert TooEarly();
+        _removeRungs(e, pick, false, 0);
     }
 
-    /// @notice After reopen with a fresh oracle: remove the position (if still live) and buy STOCK back with all USDG,
-    ///         capped at freshPrice * (1 + buybackSlippageBps). Keeper-only until `windowEnd + settleDelay + settleGrace`.
+    /// @notice After reopen with a fresh reference: pull every remaining rung and buy STOCK back with all USDG, capped
+    ///         at price * (1 + buybackSlippageBps). Keeper-only until `windowEnd + settleDelay + settleGrace`.
     /// @param minStockOut Keeper's floor on STOCK bought; ignored for permissionless calls (the cap still applies).
     /// @return bought STOCK bought back in this call (lets the keeper simulate before sending).
     function settle(uint256 minStockOut) external nonReentrant returns (uint256 bought) {
         if (state != State.ARMED) revert WrongState();
         Epoch storage e = _epochs[epochCount];
-        Params memory p = params;
+        OffmintParams.Params memory p = params;
         uint256 openAt = uint256(e.windowEnd) + p.settleDelay;
         if (block.timestamp < openAt) revert TooEarly();
-        bool isKeeper = msg.sender == keeper;
-        if (!isKeeper) {
+        if (msg.sender != keeper) {
             if (block.timestamp < openAt + p.settleGrace) revert NotKeeper();
             minStockOut = 0;
         }
         uint160 sqrtCap = _freshCap(e.windowEnd, p);
-
-        bool wasLocked = e.locked;
-        bytes memory res = poolManager.unlock(abi.encode(Action.SETTLE, abi.encode(wasLocked, _pos(e), sqrtCap)));
-        uint256 stockBack;
-        uint256 usdgBack;
-        (stockBack, usdgBack, bought) = abi.decode(res, (uint256, uint256, uint256));
+        bought = _removeRungs(e, _remaining(e), true, sqrtCap);
         if (bought < minStockOut) revert SlippageMinOut();
-        if (!wasLocked) {
-            e.locked = true;
-            e.stockBack = stockBack;
-            e.usdgReceived = usdgBack;
-        }
         e.stockBought = bought;
         e.settledAt = uint64(block.timestamp);
         _afterBuyback(e);
         _emitSettled(e);
     }
 
-    function _emitSettled(Epoch storage e) internal {
-        emit Settled(e.id, e.stockBack, e.usdgReceived, e.stockBought, e.usdgLeft, e.pnlStock, e.feeStock);
-    }
-
-    /// @notice Retry the buyback after a capped (partial) settle. Anyone, with a fresh oracle.
+    /// @notice Retry the buyback after a capped (partial) settle. Anyone, with a fresh reference.
     ///         Callable in PENDING_BUYBACK (within RETRY_WINDOW) and in OPEN_MIXED (to restore OPEN).
     /// @param minStockOut Caller's floor on STOCK bought.
     /// @return bought STOCK bought back in this call.
@@ -383,25 +330,20 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
             revert WrongState();
         }
         uint160 sqrtCap = _freshCap(e.windowEnd, params);
-        bytes memory res = poolManager.unlock(abi.encode(Action.RETRY, abi.encode(sqrtCap)));
-        bought = abi.decode(res, (uint256));
+        bought = abi.decode(poolManager.unlock(abi.encode(Action.RETRY, abi.encode(sqrtCap))), (uint256));
         if (bought < minStockOut) revert SlippageMinOut();
         e.stockBought += bought;
         _afterBuyback(e);
         emit BuybackRetried(e.id, bought, e.usdgLeft);
     }
 
-    /// @notice Liveness escape: if the oracle never comes back fresh, anyone can pull the position after
+    /// @notice Liveness escape: if the reference never comes back fresh, anyone can pull every rung after
     ///         windowEnd + EMERGENCY_DELAY. No swap; the vault moves to PENDING_BUYBACK (or OPEN if nothing sold).
     function emergencyUnwind() external nonReentrant {
         if (state != State.ARMED) revert WrongState();
         Epoch storage e = _epochs[epochCount];
         if (block.timestamp < uint256(e.windowEnd) + EMERGENCY_DELAY) revert TooEarly();
-        if (!e.locked) {
-            bytes memory res = poolManager.unlock(abi.encode(Action.UNWIND, abi.encode(_pos(e))));
-            (e.stockBack, e.usdgReceived) = abi.decode(res, (uint256, uint256));
-            e.locked = true;
-        }
+        _removeRungs(e, _remaining(e), false, 0);
         e.settledAt = uint64(block.timestamp);
         _afterBuyback(e);
         emit EmergencyUnwound(e.id);
@@ -417,6 +359,8 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
     }
 
     /// @notice OPEN_MIXED exit: burn `shares` for a pro-rata slice of the vault's STOCK and USDG.
+    /// @param shares Shares to burn (caller's).
+    /// @param to Receiver of STOCK and USDG.
     function redeemMixed(uint256 shares, address to) external nonReentrant returns (uint256 stockOut, uint256 usdgOut) {
         if (state != State.OPEN_MIXED) revert WrongState();
         // same virtual-share denominator as ERC-4626 conversions, so the offset keeps protecting against donations
@@ -432,46 +376,35 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
     // ================================================================== unlock callback
 
     /// @inheritdoc IUnlockCallback
+    /// @dev Pool plumbing runs in the linked VaultPoolOps library via delegatecall, i.e. as this vault.
     function unlockCallback(bytes calldata data) external returns (bytes memory) {
         if (msg.sender != address(poolManager)) revert OnlyPoolManager();
         (Action action, bytes memory args) = abi.decode(data, (Action, bytes));
-
+        VaultPoolOps.Ctx memory c = VaultPoolOps.Ctx(poolManager, _poolKey, stockIsCurrency0, asset(), address(usdg));
         if (action == Action.ARM) {
-            Pos memory ps = abi.decode(args, (Pos));
-            (BalanceDelta delta,) = poolManager.modifyLiquidity(_poolKey, _mlp(ps, int256(uint256(ps.liquidity))), "");
-            (int128 dStock, int128 dUsd) = _split(delta);
-            if (dUsd != 0 || dStock >= 0) revert NotSingleSided();
-            _settleDeltas();
-            return abi.encode(uint256(uint128(-dStock)));
+            return abi.encode(VaultPoolOps.armRungs(c, abi.decode(args, (VaultPoolOps.Pos[]))));
         }
-        if (action == Action.LOCK || action == Action.UNWIND) {
-            (uint256 s, uint256 u) = _remove(abi.decode(args, (Pos)));
-            _settleDeltas();
-            return abi.encode(s, u);
-        }
-        if (action == Action.SETTLE) {
-            (bool wasLocked, Pos memory ps, uint160 sqrtCap) = abi.decode(args, (bool, Pos, uint160));
-            (uint256 s, uint256 u) = wasLocked ? (0, 0) : _remove(ps);
-            uint256 bought = _buyback(sqrtCap);
-            _settleDeltas();
+        if (action == Action.REMOVE) {
+            (VaultPoolOps.Pos[] memory pos, bool buyback, uint160 sqrtCap) =
+                abi.decode(args, (VaultPoolOps.Pos[], bool, uint160));
+            (uint256[] memory s, uint256[] memory u, uint256 bought) =
+                VaultPoolOps.removeRungs(c, pos, buyback, sqrtCap);
             return abi.encode(s, u, bought);
         }
-        // RETRY
-        uint160 cap = abi.decode(args, (uint160));
-        uint256 got = _buyback(cap);
-        _settleDeltas();
-        return abi.encode(got);
+        return abi.encode(VaultPoolOps.retry(c, abi.decode(args, (uint160)))); // RETRY
     }
 
     // ================================================================== ERC-4626 gating
 
-    /// @notice STOCK held by the vault, plus STOCK still sitting in a live position while ARMED (display only;
+    /// @notice STOCK held by the vault, plus STOCK still sitting in live rungs while ARMED (display only;
     ///         deposits and withdrawals are disabled outside OPEN).
     function totalAssets() public view override returns (uint256) {
         uint256 bal = IERC20(asset()).balanceOf(address(this));
         if (state == State.ARMED) {
-            Epoch storage e = _epochs[epochCount];
-            if (!e.locked) bal += e.stockDeployed;
+            RungResult[] storage rs = _rungResults[epochCount];
+            for (uint256 i = 0; i < rs.length; i++) {
+                if (!rs[i].removed) bal += rs[i].stockDeployed;
+            }
         }
         return bal;
     }
@@ -499,8 +432,14 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
     // ================================================================== admin (bounded)
 
     /// @notice Update parameters; every field is bounded (SPEC §6.5).
-    function setParams(Params calldata p) external onlyOwner {
+    function setParams(OffmintParams.Params calldata p) external onlyOwner {
         _setParams(p);
+    }
+
+    /// @notice Replace the default ladder (validated: SPEC §5.0). Only while OPEN, so an armed epoch never changes.
+    function setDefaultLadder(RangeMath.Rung[] calldata ladder) external onlyOwner {
+        if (state != State.OPEN) revert WrongState();
+        _setLadder(ladder);
     }
 
     /// @notice Set the keeper (arm/settle before grace). The keeper can never move vault funds.
@@ -519,8 +458,13 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
     // ================================================================== views
 
     /// @notice Current parameters as a struct.
-    function getParams() external view returns (Params memory) {
+    function getParams() external view returns (OffmintParams.Params memory) {
         return params;
+    }
+
+    /// @notice The default ladder used for permissionless arms.
+    function defaultLadder() external view returns (RangeMath.Rung[] memory) {
+        return _defaultLadder;
     }
 
     /// @notice Latest epoch (zeroed before the first arm).
@@ -533,6 +477,11 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
         return _epochs[id];
     }
 
+    /// @notice Per-rung results of an epoch.
+    function epochRungs(uint256 id) external view returns (RungResult[] memory) {
+        return _rungResults[id];
+    }
+
     /// @notice The STOCK/USDG pool this vault trades in.
     function poolKey() external view returns (PoolKey memory) {
         return _poolKey;
@@ -540,36 +489,99 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
 
     // ================================================================== internals
 
-    function _setParams(Params memory p) internal {
-        if (
-            p.defaultPremiumBps < 500 || p.defaultWidthBps < 1000 || p.defaultWidthBps > 10_000
-                || p.defaultDeployBps == 0 || p.defaultDeployBps > 5000 || p.buybackSlippageBps > 300
-                || p.perfFeeBps > 2000 || p.armDelay < 1 minutes || p.armDelay > 1 hours || p.minFrozen < 5 minutes
-                || p.minFrozen > 2 hours || p.maxPreCloseAge < 1 hours || p.maxPreCloseAge > 12 hours
-                || p.settleDelay < 30 minutes || p.settleDelay > 12 hours || p.maxFreshAge < 5 minutes
-                || p.maxFreshAge > 2 hours || p.armGrace > 12 hours || p.settleGrace > 12 hours
-        ) revert ParamOutOfBounds();
+    function _setParams(OffmintParams.Params memory p) internal {
+        OffmintParams.validate(p); // reverts OffmintParams.ParamOutOfBounds outside the SPEC §6.5 bounds
         params = p;
         emit ParamsUpdated(p);
     }
 
-    /// @dev Feed read with the checks that apply to every action (SPEC §4).
-    function _readFeed() internal view returns (uint256 price, uint256 updatedAt) {
-        if (address(sequencerFeed) != address(0)) {
-            (, int256 status, uint256 startedAt,,) = sequencerFeed.latestRoundData();
-            if (status != 0 || startedAt == 0 || block.timestamp - startedAt <= SEQ_GRACE) revert SequencerDown();
+    function _setLadder(RangeMath.Rung[] memory ladder) internal {
+        RangeMath.validateLadder(ladder); // 1-4 rungs, shares = 10000, >= 5% floor, ascending, non-overlapping
+        delete _defaultLadder;
+        for (uint256 i = 0; i < ladder.length; i++) {
+            _defaultLadder.push(ladder[i]);
         }
-        if (IStockToken(asset()).oraclePaused()) revert OraclePaused();
-        (, int256 answer,, uint256 ts,) = feed.latestRoundData();
-        if (answer <= 0) revert OracleStale();
-        return (uint256(answer), ts);
+        emit LadderUpdated(ladder);
     }
 
-    /// @dev Fresh-oracle rule for settle / retry, returning the buyback price cap as a sqrtPrice.
-    function _freshCap(uint256 windowEnd, Params memory p) internal view returns (uint160) {
-        (uint256 price, uint256 updatedAt) = _readFeed();
+    /// @dev Window, caller and bounds checks for `arm`; non-keepers get the default ladder.
+    function _armParams(RangeMath.Rung[] calldata rungs, uint16 deployBps)
+        internal
+        view
+        returns (RangeMath.Rung[] memory ladder)
+    {
+        OffmintParams.Params memory p = params;
+        if (!clock.inWeekendWindow(block.timestamp)) revert NotWindow();
+        uint256 ws = clock.windowStart(block.timestamp);
+        if (block.timestamp < ws + p.armDelay) revert TooEarly();
+        uint256 last = epochCount;
+        if (last != 0 && _epochs[last].armedAt >= ws) revert WrongState(); // one epoch per window
+        if (msg.sender != keeper) {
+            if (block.timestamp < ws + p.armGrace) revert NotKeeper();
+            return _defaultLadder;
+        }
+        ladder = rungs;
+        RangeMath.validateLadder(ladder);
+        // the keeper can only be MORE conservative: first rung at or above the default premium, never deploy more
+        if (ladder[0].premiumBps < _defaultLadder[0].premiumBps || deployBps == 0 || deployBps > p.defaultDeployBps) {
+            revert ParamOutOfBounds();
+        }
+    }
+
+    /// @dev Reference must be frozen (market closed) but have printed recently before the window (SPEC §4).
+    function _armOracle() internal view returns (uint256 p0, uint8 pd) {
+        uint256 updatedAt;
+        (p0, pd, updatedAt) = _readPrice();
+        if (block.timestamp - updatedAt < params.minFrozen) revert OracleNotFrozen();
+        if (updatedAt + params.maxPreCloseAge < clock.windowStart(block.timestamp)) revert OracleStale();
+    }
+
+    /// @dev Health checks (answer > 0, issuer oraclePaused, sequencer / halt flag) live in the reference adapter.
+    function _readPrice() internal view returns (uint256 price, uint8 decimals, uint256 updatedAt) {
+        (price, decimals, updatedAt) = priceRef.read();
+        if (price == 0) revert OracleStale();
+    }
+
+    /// @dev Fresh-reference rule for settle / retry, returning the buyback price cap as a sqrtPrice.
+    function _freshCap(uint256 windowEnd, OffmintParams.Params memory p) internal view returns (uint160) {
+        (uint256 price, uint8 pd, uint256 updatedAt) = _readPrice();
         if (updatedAt < windowEnd || block.timestamp - updatedAt > p.maxFreshAge) revert OracleStale();
-        return RangeMath.buybackSqrtCap(price, p.buybackSlippageBps, _decimals(), stockIsCurrency0);
+        return RangeMath.buybackSqrtCap(price, p.buybackSlippageBps, _decimals(pd), stockIsCurrency0);
+    }
+
+    /// @dev Pull the picked rungs (and optionally buy back), record per-rung and epoch totals.
+    function _removeRungs(Epoch storage e, bool[] memory pick, bool buyback, uint160 sqrtCap)
+        internal
+        returns (uint256 bought)
+    {
+        RungResult[] storage rs = _rungResults[e.id];
+        VaultPoolOps.Pos[] memory pos = new VaultPoolOps.Pos[](rs.length);
+        for (uint256 i = 0; i < rs.length; i++) {
+            if (pick[i]) pos[i] = VaultPoolOps.Pos(rs[i].tickLower, rs[i].tickUpper, rs[i].liquidity, _salt(e.id, i));
+        }
+        (uint256[] memory s, uint256[] memory u, uint256 b) = abi.decode(
+            poolManager.unlock(abi.encode(Action.REMOVE, abi.encode(pos, buyback, sqrtCap))),
+            (uint256[], uint256[], uint256)
+        );
+        for (uint256 i = 0; i < rs.length; i++) {
+            if (!pick[i]) continue;
+            rs[i].removed = true;
+            rs[i].stockBack = s[i];
+            rs[i].usdgReceived = u[i];
+            e.stockBack += s[i];
+            e.usdgReceived += u[i];
+            emit RungRemoved(e.id, i, s[i], u[i]);
+        }
+        return b;
+    }
+
+    /// @dev Mask of rungs still live (not yet removed).
+    function _remaining(Epoch storage e) internal view returns (bool[] memory pick) {
+        RungResult[] storage rs = _rungResults[e.id];
+        pick = new bool[](rs.length);
+        for (uint256 i = 0; i < rs.length; i++) {
+            pick[i] = !rs[i].removed;
+        }
     }
 
     /// @dev Final accounting once a buyback attempt ran (or the position was unwound without one).
@@ -594,73 +606,16 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
         state = State.OPEN;
     }
 
-    /// @dev Position is 100% USDG once the pool trades beyond the sell side of the range.
-    ///      Tick form: S0 sqrtP >= sqrt(tickUpper) <=> tick >= tickUpper; S1 uses tick < tickLower (strictly beyond).
-    function _fullySold(Epoch storage e) internal view returns (bool) {
-        (, int24 cur,,) = poolManager.getSlot0(_poolKey.toId());
-        return stockIsCurrency0 ? cur >= e.tickUpper : cur < e.tickLower;
+    function _emitSettled(Epoch storage e) internal {
+        emit Settled(e.id, e.stockBack, e.usdgReceived, e.stockBought, e.usdgLeft, e.pnlStock, e.feeStock);
     }
 
-    /// @dev Burn the whole position; returns (stock, usdg) credited (principal + fees).
-    function _remove(Pos memory ps) internal returns (uint256, uint256) {
-        (BalanceDelta delta,) = poolManager.modifyLiquidity(_poolKey, _mlp(ps, -int256(uint256(ps.liquidity))), "");
-        (int128 dStock, int128 dUsd) = _split(delta);
-        return (uint256(uint128(dStock)), uint256(uint128(dUsd)));
+    /// @dev Unique position salt per (epoch, rung).
+    function _salt(uint256 id, uint256 rung) internal pure returns (bytes32) {
+        return bytes32((id << 8) | rung);
     }
 
-    /// @dev Swap all USDG (PoolManager credit + vault balance) for STOCK, stopping at `sqrtCap` (partial fill, no revert).
-    function _buyback(uint160 sqrtCap) internal returns (uint256 bought) {
-        Currency cu = Currency.wrap(address(usdg));
-        int256 credit = poolManager.currencyDelta(address(this), cu);
-        uint256 usdIn = usdg.balanceOf(address(this)) + (credit > 0 ? uint256(credit) : 0);
-        if (usdIn == 0) return 0;
-        bool zeroForOne = !stockIsCurrency0; // pay USDG
-        (uint160 sp,,,) = poolManager.getSlot0(_poolKey.toId());
-        // pool already at/through the cap: nothing can be bought inside the limit
-        if (zeroForOne ? sp <= sqrtCap : sp >= sqrtCap) return 0;
-        BalanceDelta delta = poolManager.swap(
-            _poolKey,
-            IPoolManager.SwapParams({
-                zeroForOne: zeroForOne, amountSpecified: -int256(usdIn), sqrtPriceLimitX96: sqrtCap
-            }),
-            ""
-        );
-        (int128 dStock,) = _split(delta);
-        bought = dStock > 0 ? uint256(uint128(dStock)) : 0;
-    }
-
-    /// @dev Clear this contract's open deltas: take credits, pay debts from the vault balance.
-    function _settleDeltas() internal {
-        _clear(Currency.wrap(asset()));
-        _clear(Currency.wrap(address(usdg)));
-    }
-
-    function _clear(Currency c) internal {
-        int256 d = poolManager.currencyDelta(address(this), c);
-        if (d > 0) {
-            poolManager.take(c, address(this), uint256(d));
-        } else if (d < 0) {
-            poolManager.sync(c);
-            IERC20(Currency.unwrap(c)).safeTransfer(address(poolManager), uint256(-d));
-            poolManager.settle();
-        }
-    }
-
-    function _pos(Epoch storage e) internal view returns (Pos memory) {
-        return Pos(e.tickLower, e.tickUpper, e.liquidity, e.salt);
-    }
-
-    function _mlp(Pos memory ps, int256 delta) internal pure returns (IPoolManager.ModifyLiquidityParams memory) {
-        return IPoolManager.ModifyLiquidityParams({
-            tickLower: ps.tickLower, tickUpper: ps.tickUpper, liquidityDelta: delta, salt: ps.salt
-        });
-    }
-
-    function _split(BalanceDelta d) internal view returns (int128 dStock, int128 dUsd) {
-        return stockIsCurrency0 ? (d.amount0(), d.amount1()) : (d.amount1(), d.amount0());
-    }
-
-    function _decimals() internal view returns (RangeMath.Decimals memory) {
-        return RangeMath.Decimals({feed: _feedDecimals, stock: _stockDecimals, usd: _usdDecimals});
+    function _decimals(uint8 priceDecimals) internal view returns (RangeMath.Decimals memory) {
+        return RangeMath.Decimals({feed: priceDecimals, stock: _stockDecimals, usd: _usdDecimals});
     }
 }

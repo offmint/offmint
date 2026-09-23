@@ -58,12 +58,12 @@ demo "openWeekend(uint256)" 2400 # 40-min demo weekend; windowEnd is fixed at ar
 warp 90
 expect_action arm
 
-step "weekend squeeze to \$49.03 (+70%): band cleared"
+step "weekend squeeze to \$49.03 (+70%): every rung cleared"
 demo "pump(uint256)" 4903000000
 expect_action lock
-# must be the band-cleared trigger (proves the bot reads the right pool/tick), not the pre-reopen timer
-grep -q '"action":"lock".*band cleared' "$LOG" || {
-  echo "FAIL: lock was not triggered by the band being cleared"
+# must be the rung-sold trigger (proves the bot reads the right pool/tick), not the pre-reopen timer
+grep -q '"action":"lock".*fully sold' "$LOG" || {
+  echo "FAIL: lock was not triggered by a sold rung"
   cat "$LOG"
   exit 1
 }

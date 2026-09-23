@@ -7,7 +7,7 @@ script = "script"
 solc_version = "0.8.26"
 evm_version = "cancun"
 optimizer = true
-optimizer_runs = 200
+optimizer_runs = 1 # smallest bytecode: keeps OffmintVault under EIP-170 (weekly-cadence calls, gas is secondary)
 via_ir = false
 fs_permissions = [{ access = "read-write", path = "./config" }, { access = "write", path = "../web/src/config" }, { access = "write", path = "./test/vectors" }, { access = "read-write", path = "./deployments" }]
 
@@ -28,7 +28,9 @@ lint_on_build = false
 #  reentrancy-no-eth/events - every mutator is nonReentrant; unlockCallback is PoolManager-only; tokens have no hooks
 #  require-revert-in-loop   - price guards (zero / out-of-range sqrtPrice) run per ladder rung; a bad price must abort
 #                             the whole arm rather than silently skip a rung
-exclude_lints = ["block-timestamp", "divide-before-multiply", "unsafe-typecast", "unused-return", "reentrancy-no-eth", "reentrancy-events", "require-revert-in-loop"]
+#  calls-loop               - the rung loop makes <= 4 PoolManager calls (MAX_RUNGS), bounded and intended
+#  missing-events-access-control - epoch writes all emit Armed / RungArmed / RungRemoved (false positive)
+exclude_lints = ["calls-loop", "missing-events-access-control", "block-timestamp", "divide-before-multiply", "unsafe-typecast", "unused-return", "reentrancy-no-eth", "reentrancy-events", "require-revert-in-loop"]
 ignore = ["test/**/*", "script/**/*"]
 
 [invariant]

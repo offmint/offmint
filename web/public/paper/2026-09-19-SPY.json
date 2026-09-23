@@ -1,0 +1,58 @@
+{
+ "ticker": "SPY",
+ "stock": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+ "feed": "0x319724394D3A0e3669269846abE664Cd621f9f6A",
+ "poolId": "0xfe2a80bb5618fd14984b92ca6d45bf5ba67443ddb1435e28b2e48df2fc1526cd",
+ "poolFee": 3000,
+ "tickSpacing": 60,
+ "stockIsCurrency0": true,
+ "window": {
+  "start": 1789776000,
+  "end": 1789948800,
+  "startIso": "2026-09-19T00:00:00Z",
+  "endIso": "2026-09-21T00:00:00Z"
+ },
+ "params": {
+  "premiumBps": 1000,
+  "widthBps": 5000,
+  "armDelay": 300,
+  "minFrozen": 900,
+  "maxPreCloseAge": 21600,
+  "settleDelay": 3600,
+  "maxFreshAge": 3600,
+  "emergencyDelay": 345600,
+  "buybackSlippageBps": 100,
+  "perfFeeBps": 1000,
+  "lockLead": 900,
+  "quantities": [
+   10,
+   50,
+   100
+  ]
+ },
+ "status": "skipped",
+ "skipReason": "recent-close check fails: last feed update 11.6h before window start (max 6h)",
+ "checks": {
+  "feedUpdatedAt": "2026-09-18T12:22:01Z",
+  "frozenOk": true,
+  "recentCloseOk": false,
+  "preCloseAgeMin": 698,
+  "answerPositive": true,
+  "inWindow": true
+ },
+ "arm": null,
+ "stats": {
+  "swaps": 0,
+  "maxUsd": null,
+  "minUsd": null,
+  "maxPremiumPct": null,
+  "firstInBandAt": null,
+  "lastBlock": "0"
+ },
+ "timeline": [],
+ "outliers": [],
+ "fills": [],
+ "settlement": null,
+ "caveat": "Hypothetical: assumes the vault's position does not move the pool price. A live vault would dampen spikes; real fills would differ.",
+ "generatedAt": "2026-09-23T20:45:23Z"
+}

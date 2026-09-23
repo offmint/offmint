@@ -9,9 +9,14 @@ export const RETRY_WINDOW = 48 * 3600;
 export const EMERGENCY_DELAY = 96 * 3600;
 export const RETRY_EVERY = 15 * 60;
 
+export interface Rung {
+  premiumBps: number;
+  widthBps: number;
+  shareBps: number;
+}
+
 export interface VaultParams {
-  defaultPremiumBps: number;
-  defaultWidthBps: number;
+  defaultLadder: Rung[]; // the vault's own default ladder (SPEC §5.0)
   defaultDeployBps: number;
   armDelay: number;
   minFrozen: number;
@@ -30,7 +35,13 @@ export interface Snapshot {
   oraclePaused: boolean;
   stockIsCurrency0: boolean;
   poolTick: number;
-  epoch: { id: number; armedAt: number; windowEnd: number; settledAt: number; locked: boolean; tickLower: number; tickUpper: number };
+  epoch: {
+    id: number;
+    armedAt: number;
+    windowEnd: number;
+    settledAt: number;
+    rungs: { tickLower: number; tickUpper: number; removed: boolean }[];
+  };
   /** Corporate action (multiplier change) effective inside this window -> skip (SPEC §8.2). */
   corporateActionAt: number | null;
   lastRetryAt: number;
@@ -42,9 +53,18 @@ export interface KeeperPolicy {
 }
 
 export type Decision =
-  | { action: "arm"; args: [number, number, number]; reason: string }
+  | { action: "arm"; args: [Rung[], number]; reason: string }
   | { action: "lock" | "settle" | "retryBuyback" | "emergencyUnwind" | "expireBuyback"; reason: string }
   | { action: "none"; reason: string };
+
+/**
+ * The keeper may only be MORE conservative than the vault default: a per-ticker premium floor shifts every rung up by
+ * the same amount (widths and ordering unchanged, so the ladder stays valid and non-overlapping).
+ */
+export function conservativeLadder(ladder: Rung[], minFirstPremiumBps?: number): Rung[] {
+  const shift = Math.max(0, (minFirstPremiumBps ?? 0) - (ladder[0]?.premiumBps ?? 0));
+  return ladder.map((r) => ({ ...r, premiumBps: r.premiumBps + shift }));
+}
 
 const fresh = (s: Snapshot, windowEnd: number) =>
   !s.oraclePaused && s.feed.answer > 0n && s.feed.updatedAt >= windowEnd && s.now - s.feed.updatedAt <= s.params.maxFreshAge;
@@ -65,18 +85,17 @@ export function decide(s: Snapshot, policy: KeeperPolicy): Decision {
       if (s.feed.answer <= 0n) return { action: "none", reason: "feed answer <= 0" };
       if (s.now - s.feed.updatedAt < p.minFrozen) return { action: "none", reason: "feed not frozen yet" };
       if (s.feed.updatedAt + p.maxPreCloseAge < ws) return { action: "none", reason: "no recent close print: skip weekend" };
-      const premium = Math.max(p.defaultPremiumBps, policy.premiumTable[s.ticker] ?? 0);
-      return { action: "arm", args: [premium, p.defaultWidthBps, p.defaultDeployBps], reason: "weekend window, oracle frozen" };
+      return { action: "arm", args: [conservativeLadder(p.defaultLadder, policy.premiumTable[s.ticker]), p.defaultDeployBps], reason: "weekend window, oracle frozen" };
     }
     case "ARMED": {
       const we = s.epoch.windowEnd;
       if (s.now >= we + EMERGENCY_DELAY) return { action: "emergencyUnwind", reason: "oracle never came back fresh" };
       if (s.now >= we + p.settleDelay && fresh(s, we)) return { action: "settle", reason: "reopened, oracle fresh" };
-      if (!s.epoch.locked) {
-        const sold = s.stockIsCurrency0 ? s.poolTick >= s.epoch.tickUpper : s.poolTick < s.epoch.tickLower;
-        if (sold) return { action: "lock", reason: "band cleared: position is 100% USDG" };
-        if (s.now + LOCK_LEAD >= we) return { action: "lock", reason: "reopen imminent" };
-      }
+      const live = s.epoch.rungs.filter((r) => !r.removed);
+      // same rule as OffmintVault.lock(): any fully-sold rung, or everything left just before reopen
+      const sold = live.filter((r) => (s.stockIsCurrency0 ? s.poolTick >= r.tickUpper : s.poolTick < r.tickLower));
+      if (sold.length) return { action: "lock", reason: `${sold.length} rung(s) fully sold: position is 100% USDG there` };
+      if (live.length && s.now + LOCK_LEAD >= we) return { action: "lock", reason: "reopen imminent" };
       return { action: "none", reason: s.now < we ? "weekend: position live" : "waiting for fresh oracle" };
     }
     case "PENDING_BUYBACK": {

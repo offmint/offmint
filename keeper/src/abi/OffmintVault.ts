@@ -19,14 +19,9 @@ export const offmintVaultAbi = [
             "internalType": "contract ISessionClock"
           },
           {
-            "name": "feed",
+            "name": "priceRef",
             "type": "address",
-            "internalType": "contract AggregatorV3Interface"
-          },
-          {
-            "name": "sequencerFeed",
-            "type": "address",
-            "internalType": "contract AggregatorV3Interface"
+            "internalType": "contract IPriceReference"
           },
           {
             "name": "stock",
@@ -136,19 +131,6 @@ export const offmintVaultAbi = [
   },
   {
     "type": "function",
-    "name": "SEQ_GRACE",
-    "inputs": [],
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256",
-        "internalType": "uint256"
-      }
-    ],
-    "stateMutability": "view"
-  },
-  {
-    "type": "function",
     "name": "USDG_DUST",
     "inputs": [],
     "outputs": [
@@ -220,14 +202,26 @@ export const offmintVaultAbi = [
     "name": "arm",
     "inputs": [
       {
-        "name": "premiumBps",
-        "type": "uint16",
-        "internalType": "uint16"
-      },
-      {
-        "name": "widthBps",
-        "type": "uint16",
-        "internalType": "uint16"
+        "name": "rungs",
+        "type": "tuple[]",
+        "internalType": "struct RangeMath.Rung[]",
+        "components": [
+          {
+            "name": "premiumBps",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "widthBps",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "shareBps",
+            "type": "uint16",
+            "internalType": "uint16"
+          }
+        ]
       },
       {
         "name": "deployBps",
@@ -357,29 +351,14 @@ export const offmintVaultAbi = [
             "internalType": "uint256"
           },
           {
-            "name": "tickLower",
-            "type": "int24",
-            "internalType": "int24"
+            "name": "priceDecimals",
+            "type": "uint8",
+            "internalType": "uint8"
           },
           {
-            "name": "tickUpper",
-            "type": "int24",
-            "internalType": "int24"
-          },
-          {
-            "name": "liquidity",
-            "type": "uint128",
-            "internalType": "uint128"
-          },
-          {
-            "name": "salt",
-            "type": "bytes32",
-            "internalType": "bytes32"
-          },
-          {
-            "name": "locked",
-            "type": "bool",
-            "internalType": "bool"
+            "name": "rungs",
+            "type": "uint8",
+            "internalType": "uint8"
           },
           {
             "name": "stockBefore",
@@ -435,6 +414,36 @@ export const offmintVaultAbi = [
         "name": "",
         "type": "uint8",
         "internalType": "uint8"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "defaultLadder",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple[]",
+        "internalType": "struct RangeMath.Rung[]",
+        "components": [
+          {
+            "name": "premiumBps",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "widthBps",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "shareBps",
+            "type": "uint16",
+            "internalType": "uint16"
+          }
+        ]
       }
     ],
     "stateMutability": "view"
@@ -498,6 +507,62 @@ export const offmintVaultAbi = [
   },
   {
     "type": "function",
+    "name": "epochRungs",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple[]",
+        "internalType": "struct OffmintVault.RungResult[]",
+        "components": [
+          {
+            "name": "tickLower",
+            "type": "int24",
+            "internalType": "int24"
+          },
+          {
+            "name": "tickUpper",
+            "type": "int24",
+            "internalType": "int24"
+          },
+          {
+            "name": "liquidity",
+            "type": "uint128",
+            "internalType": "uint128"
+          },
+          {
+            "name": "removed",
+            "type": "bool",
+            "internalType": "bool"
+          },
+          {
+            "name": "stockDeployed",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "stockBack",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "usdgReceived",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
     "name": "epochs",
     "inputs": [
       {
@@ -538,29 +603,14 @@ export const offmintVaultAbi = [
             "internalType": "uint256"
           },
           {
-            "name": "tickLower",
-            "type": "int24",
-            "internalType": "int24"
+            "name": "priceDecimals",
+            "type": "uint8",
+            "internalType": "uint8"
           },
           {
-            "name": "tickUpper",
-            "type": "int24",
-            "internalType": "int24"
-          },
-          {
-            "name": "liquidity",
-            "type": "uint128",
-            "internalType": "uint128"
-          },
-          {
-            "name": "salt",
-            "type": "bytes32",
-            "internalType": "bytes32"
-          },
-          {
-            "name": "locked",
-            "type": "bool",
-            "internalType": "bool"
+            "name": "rungs",
+            "type": "uint8",
+            "internalType": "uint8"
           },
           {
             "name": "stockBefore",
@@ -629,37 +679,14 @@ export const offmintVaultAbi = [
   },
   {
     "type": "function",
-    "name": "feed",
-    "inputs": [],
-    "outputs": [
-      {
-        "name": "",
-        "type": "address",
-        "internalType": "contract AggregatorV3Interface"
-      }
-    ],
-    "stateMutability": "view"
-  },
-  {
-    "type": "function",
     "name": "getParams",
     "inputs": [],
     "outputs": [
       {
         "name": "",
         "type": "tuple",
-        "internalType": "struct OffmintVault.Params",
+        "internalType": "struct OffmintParams.Params",
         "components": [
-          {
-            "name": "defaultPremiumBps",
-            "type": "uint16",
-            "internalType": "uint16"
-          },
-          {
-            "name": "defaultWidthBps",
-            "type": "uint16",
-            "internalType": "uint16"
-          },
           {
             "name": "defaultDeployBps",
             "type": "uint16",
@@ -867,16 +894,6 @@ export const offmintVaultAbi = [
     "inputs": [],
     "outputs": [
       {
-        "name": "defaultPremiumBps",
-        "type": "uint16",
-        "internalType": "uint16"
-      },
-      {
-        "name": "defaultWidthBps",
-        "type": "uint16",
-        "internalType": "uint16"
-      },
-      {
         "name": "defaultDeployBps",
         "type": "uint16",
         "internalType": "uint16"
@@ -1073,6 +1090,19 @@ export const offmintVaultAbi = [
   },
   {
     "type": "function",
+    "name": "priceRef",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "contract IPriceReference"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
     "name": "redeem",
     "inputs": [
       {
@@ -1157,16 +1187,33 @@ export const offmintVaultAbi = [
   },
   {
     "type": "function",
-    "name": "sequencerFeed",
-    "inputs": [],
-    "outputs": [
+    "name": "setDefaultLadder",
+    "inputs": [
       {
-        "name": "",
-        "type": "address",
-        "internalType": "contract AggregatorV3Interface"
+        "name": "ladder",
+        "type": "tuple[]",
+        "internalType": "struct RangeMath.Rung[]",
+        "components": [
+          {
+            "name": "premiumBps",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "widthBps",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "shareBps",
+            "type": "uint16",
+            "internalType": "uint16"
+          }
+        ]
       }
     ],
-    "stateMutability": "view"
+    "outputs": [],
+    "stateMutability": "nonpayable"
   },
   {
     "type": "function",
@@ -1201,18 +1248,8 @@ export const offmintVaultAbi = [
       {
         "name": "p",
         "type": "tuple",
-        "internalType": "struct OffmintVault.Params",
+        "internalType": "struct OffmintParams.Params",
         "components": [
-          {
-            "name": "defaultPremiumBps",
-            "type": "uint16",
-            "internalType": "uint16"
-          },
-          {
-            "name": "defaultWidthBps",
-            "type": "uint16",
-            "internalType": "uint16"
-          },
           {
             "name": "defaultDeployBps",
             "type": "uint16",
@@ -1522,28 +1559,16 @@ export const offmintVaultAbi = [
         "internalType": "uint256"
       },
       {
-        "name": "tickLower",
-        "type": "int24",
+        "name": "rungs",
+        "type": "uint256",
         "indexed": false,
-        "internalType": "int24"
-      },
-      {
-        "name": "tickUpper",
-        "type": "int24",
-        "indexed": false,
-        "internalType": "int24"
+        "internalType": "uint256"
       },
       {
         "name": "stockDeployed",
         "type": "uint256",
         "indexed": false,
         "internalType": "uint256"
-      },
-      {
-        "name": "liquidity",
-        "type": "uint128",
-        "indexed": false,
-        "internalType": "uint128"
       }
     ],
     "anonymous": false
@@ -1658,25 +1683,30 @@ export const offmintVaultAbi = [
   },
   {
     "type": "event",
-    "name": "Locked",
+    "name": "LadderUpdated",
     "inputs": [
       {
-        "name": "id",
-        "type": "uint256",
-        "indexed": true,
-        "internalType": "uint256"
-      },
-      {
-        "name": "stockBack",
-        "type": "uint256",
+        "name": "ladder",
+        "type": "tuple[]",
         "indexed": false,
-        "internalType": "uint256"
-      },
-      {
-        "name": "usdgReceived",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
+        "internalType": "struct RangeMath.Rung[]",
+        "components": [
+          {
+            "name": "premiumBps",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "widthBps",
+            "type": "uint16",
+            "internalType": "uint16"
+          },
+          {
+            "name": "shareBps",
+            "type": "uint16",
+            "internalType": "uint16"
+          }
+        ]
       }
     ],
     "anonymous": false
@@ -1764,18 +1794,8 @@ export const offmintVaultAbi = [
         "name": "p",
         "type": "tuple",
         "indexed": false,
-        "internalType": "struct OffmintVault.Params",
+        "internalType": "struct OffmintParams.Params",
         "components": [
-          {
-            "name": "defaultPremiumBps",
-            "type": "uint16",
-            "internalType": "uint16"
-          },
-          {
-            "name": "defaultWidthBps",
-            "type": "uint16",
-            "internalType": "uint16"
-          },
           {
             "name": "defaultDeployBps",
             "type": "uint16",
@@ -1827,6 +1847,80 @@ export const offmintVaultAbi = [
             "internalType": "uint32"
           }
         ]
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "RungArmed",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint256",
+        "indexed": true,
+        "internalType": "uint256"
+      },
+      {
+        "name": "rung",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "tickLower",
+        "type": "int24",
+        "indexed": false,
+        "internalType": "int24"
+      },
+      {
+        "name": "tickUpper",
+        "type": "int24",
+        "indexed": false,
+        "internalType": "int24"
+      },
+      {
+        "name": "liquidity",
+        "type": "uint128",
+        "indexed": false,
+        "internalType": "uint128"
+      },
+      {
+        "name": "stock",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "RungRemoved",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint256",
+        "indexed": true,
+        "internalType": "uint256"
+      },
+      {
+        "name": "rung",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "stockBack",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "usdgReceived",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
       }
     ],
     "anonymous": false
@@ -2124,11 +2218,6 @@ export const offmintVaultAbi = [
   },
   {
     "type": "error",
-    "name": "NotSingleSided",
-    "inputs": []
-  },
-  {
-    "type": "error",
     "name": "NotWindow",
     "inputs": []
   },
@@ -2140,11 +2229,6 @@ export const offmintVaultAbi = [
   {
     "type": "error",
     "name": "OracleNotFrozen",
-    "inputs": []
-  },
-  {
-    "type": "error",
-    "name": "OraclePaused",
     "inputs": []
   },
   {
@@ -2181,11 +2265,6 @@ export const offmintVaultAbi = [
   },
   {
     "type": "error",
-    "name": "RangeInvalid",
-    "inputs": []
-  },
-  {
-    "type": "error",
     "name": "ReentrancyGuardReentrantCall",
     "inputs": []
   },
@@ -2199,11 +2278,6 @@ export const offmintVaultAbi = [
         "internalType": "address"
       }
     ]
-  },
-  {
-    "type": "error",
-    "name": "SequencerDown",
-    "inputs": []
   },
   {
     "type": "error",

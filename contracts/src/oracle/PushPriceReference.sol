@@ -17,6 +17,7 @@ contract PushPriceReference is IPriceReference {
     uint8 public constant DECIMALS = 8;
 
     address public immutable poster;
+    address public immutable owner;
     IStockToken public immutable stock;
     uint16 public immutable maxMoveBps;
     uint32 public immutable gapAfter;
@@ -24,11 +25,14 @@ contract PushPriceReference is IPriceReference {
 
     uint256 public price;
     uint256 public observedAt;
-    bool public halted;
+    bool public halted; // underlying trading halt, set by the poster with each post
+    bool public ownerHalted; // owner freeze: blocks posts and reads until the owner lifts it
 
     event Posted(uint256 price, uint256 observedAt, bool halted);
+    event OwnerHalt(bool halted);
 
     error NotPoster();
+    error NotOwner();
     error BadTimestamp();
     error MoveTooLarge();
     error ZeroPrice();
@@ -36,9 +40,20 @@ contract PushPriceReference is IPriceReference {
     error NoPrice();
     error BadConfig();
 
-    constructor(address poster_, IStockToken stock_, uint16 maxMoveBps_, uint32 gapAfter_, string memory description_) {
-        if (poster_ == address(0) || address(stock_) == address(0) || maxMoveBps_ == 0) revert BadConfig();
+    constructor(
+        address poster_,
+        address owner_,
+        IStockToken stock_,
+        uint16 maxMoveBps_,
+        uint32 gapAfter_,
+        string memory description_
+    ) {
+        if (
+            poster_ == address(0) || owner_ == address(0) || poster_ == owner_ || address(stock_) == address(0)
+                || maxMoveBps_ == 0
+        ) revert BadConfig();
         poster = poster_;
+        owner = owner_;
         stock = stock_;
         maxMoveBps = maxMoveBps_;
         gapAfter = gapAfter_;
@@ -51,6 +66,7 @@ contract PushPriceReference is IPriceReference {
     /// @param halted_ underlying trading halt (API isTradingHalt)
     function post(uint256 price_, uint256 observedAt_, bool halted_) external {
         if (msg.sender != poster) revert NotPoster();
+        if (ownerHalted) revert OraclePaused();
         if (price_ == 0) revert ZeroPrice();
         if (observedAt_ <= observedAt || observedAt_ > block.timestamp) revert BadTimestamp();
         uint256 prev = price;
@@ -64,10 +80,18 @@ contract PushPriceReference is IPriceReference {
         emit Posted(price_, observedAt_, halted_);
     }
 
+    /// @notice Owner freeze (SPEC §3.6): while set, posts revert and `read()` reverts like a paused oracle.
+    /// @param halted_ true to freeze, false to lift
+    function setOwnerHalt(bool halted_) external {
+        if (msg.sender != owner) revert NotOwner();
+        ownerHalted = halted_;
+        emit OwnerHalt(halted_);
+    }
+
     /// @inheritdoc IPriceReference
     function read() external view returns (uint256, uint8, uint256) {
         if (price == 0) revert NoPrice();
-        if (halted || stock.oraclePaused()) revert OraclePaused();
+        if (halted || ownerHalted || stock.oraclePaused()) revert OraclePaused();
         return (price, DECIMALS, observedAt);
     }
 

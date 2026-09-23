@@ -8,11 +8,12 @@ import { createPublicClient, createWalletClient, defineChain, http, parseAbi, ty
 import { privateKeyToAccount } from "viem/accounts";
 import { offmintVaultAbi } from "./abi/OffmintVault.js";
 import { sessionClockAbi } from "./abi/ISessionClock.js";
-import { feedAbi, slot0, poolIdOf } from "./chain.js";
+import { slot0, poolIdOf } from "./chain.js";
 import { decide, STATE, type Decision, type KeeperPolicy, type Snapshot } from "./decide.js";
 import { iso, isoDate } from "./clock.js";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
+const refAbi = parseAbi(["function read() view returns (uint256 price, uint8 decimals, uint256 updatedAt)"]);
 const stockAbi = parseAbi([
   "function oraclePaused() view returns (bool)",
   "function uiMultiplier() view returns (uint256)",
@@ -70,10 +71,10 @@ export async function createBot(o: BotOptions) {
   const wallet = createWalletClient({ chain, transport: transport(), account });
 
   const v = { address: vault, abi: offmintVaultAbi } as const;
-  const [stock, clock, feed, pm, key, s0, onchainKeeper] = await Promise.all([
+  const [stock, clock, priceRef, pm, key, s0, onchainKeeper] = await Promise.all([
     pub.readContract({ ...v, functionName: "asset" }),
     pub.readContract({ ...v, functionName: "clock" }),
-    pub.readContract({ ...v, functionName: "feed" }),
+    pub.readContract({ ...v, functionName: "priceRef" }),
     pub.readContract({ ...v, functionName: "poolManager" }),
     pub.readContract({ ...v, functionName: "poolKey" }),
     pub.readContract({ ...v, functionName: "stockIsCurrency0" }),
@@ -92,17 +93,26 @@ export async function createBot(o: BotOptions) {
     const now = Number((await pub.getBlock()).timestamp);
     const nowB = BigInt(now);
     const c = { address: clock as Address, abi: sessionClockAbi } as const;
-    const [st, params, inWindow, ws, we, round, paused, pool, epoch] = await Promise.all([
+    const [st, params, ladder, inWindow, ws, we, pool, epoch] = await Promise.all([
       pub.readContract({ ...v, functionName: "state" }),
       pub.readContract({ ...v, functionName: "getParams" }),
+      pub.readContract({ ...v, functionName: "defaultLadder" }),
       pub.readContract({ ...c, functionName: "inWeekendWindow", args: [nowB] }),
       pub.readContract({ ...c, functionName: "windowStart", args: [nowB] }),
       pub.readContract({ ...c, functionName: "windowEnd", args: [nowB] }),
-      pub.readContract({ address: feed, abi: feedAbi, functionName: "latestRoundData" }),
-      pub.readContract({ address: stock, abi: stockAbi, functionName: "oraclePaused" }),
       slot0(pub, poolId, pm),
       pub.readContract({ ...v, functionName: "currentEpoch" }),
     ]);
+    const rungs = epoch.id > 0n ? await pub.readContract({ ...v, functionName: "epochRungs", args: [epoch.id] }) : [];
+    // the vault's price reference reverts when unhealthy (issuer pause, halt flag, sequencer): treat as paused
+    let price = { answer: 0n, updatedAt: 0 };
+    let paused = false;
+    try {
+      const [answer, , updatedAt] = await pub.readContract({ address: priceRef as Address, abi: refAbi, functionName: "read" });
+      price = { answer, updatedAt: Number(updatedAt) };
+    } catch {
+      paused = true;
+    }
     let corporateActionAt: number | null = null;
     try {
       const [cur, next, at] = await Promise.all([
@@ -119,8 +129,7 @@ export async function createBot(o: BotOptions) {
       ticker,
       state: STATE[st],
       params: {
-        defaultPremiumBps: params.defaultPremiumBps,
-        defaultWidthBps: params.defaultWidthBps,
+        defaultLadder: ladder.map((r) => ({ premiumBps: r.premiumBps, widthBps: r.widthBps, shareBps: r.shareBps })),
         defaultDeployBps: params.defaultDeployBps,
         armDelay: params.armDelay,
         minFrozen: params.minFrozen,
@@ -129,7 +138,7 @@ export async function createBot(o: BotOptions) {
         maxFreshAge: params.maxFreshAge,
       },
       clock: { inWindow, windowStart: Number(ws), windowEnd: Number(we) },
-      feed: { answer: round[1], updatedAt: Number(round[3]) },
+      feed: price,
       oraclePaused: paused,
       stockIsCurrency0: s0,
       poolTick: pool.tick,
@@ -138,9 +147,7 @@ export async function createBot(o: BotOptions) {
         armedAt: Number(epoch.armedAt),
         windowEnd: Number(epoch.windowEnd),
         settledAt: Number(epoch.settledAt),
-        locked: epoch.locked,
-        tickLower: epoch.tickLower,
-        tickUpper: epoch.tickUpper,
+        rungs: rungs.map((r) => ({ tickLower: r.tickLower, tickUpper: r.tickUpper, removed: r.removed })),
       },
       corporateActionAt,
       lastRetryAt,

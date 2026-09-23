@@ -1,0 +1,69 @@
+{
+ "updatedAt": "2026-09-23T20:45:23Z",
+ "entries": [
+  {
+   "file": "2026-09-19-AMC.json",
+   "ticker": "AMC",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.85,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-BB.json",
+   "ticker": "BB",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.39,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-GLXY.json",
+   "ticker": "GLXY",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.24,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-HIMS.json",
+   "ticker": "HIMS",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.48,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-NU.json",
+   "ticker": "NU",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.01,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-NVDA.json",
+   "ticker": "NVDA",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.15,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-RCAT.json",
+   "ticker": "RCAT",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.9,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-SPY.json",
+   "ticker": "SPY",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "skipped",
+   "maxPremiumPct": null,
+   "vsHodlPct": null
+  }
+ ]
+}

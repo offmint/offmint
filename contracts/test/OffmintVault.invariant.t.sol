@@ -136,7 +136,7 @@ contract VaultHandler is Test {
     // ------------------------------------------------------------------ lifecycle
 
     /// Jump to the next Saturday 00:20 (Friday close printed at 20:00) and arm.
-    function arm(uint16 prem, uint16 width, uint16 deploy) external {
+    function arm(uint16 prem, uint16 deploy) external {
         calls++;
         uint256 t = block.timestamp;
         uint256 dow = ((t / 1 days) + 4) % 7;
@@ -146,10 +146,11 @@ contract VaultHandler is Test {
         feed.setAnswer(int256(price));
         vm.warp(sat + 20 minutes);
         uint256 supply = vault.totalSupply();
+        // build the ladder BEFORE the prank: a library call in between would consume vm.prank
+        RangeMath.Rung[] memory lad = RangeMath.defaultLadder();
+        lad[0].premiumBps = uint16(bound(prem, 800, 1100)); // keeper may only be more conservative (>= 8%)
         vm.prank(keeper);
-        try vault.arm(
-            uint16(bound(prem, 1000, 3000)), uint16(bound(width, 1000, 10_000)), uint16(bound(deploy, 1, 3000))
-        ) {
+        try vault.arm(lad, uint16(bound(deploy, 1, 3000))) {
             supplyAtArm = supply;
             arms++;
         } catch {}
@@ -181,7 +182,7 @@ contract VaultHandler is Test {
     /// A whole weekend in one call: arm, weekend pump, optional lock, Monday move, settle.
     /// @param monPremBps Pool premium over the fresh feed on Monday (> 100 bps = beyond the buyback cap).
     function cycle(uint256 pumpBps, uint256 reopenBps, bool doLock, uint16 deploy, uint256 monPremBps) external {
-        this.arm(1000, 5000, deploy);
+        this.arm(800, deploy);
         if (_state() != OffmintVault.State.ARMED) return;
         this.movePool(bound(pumpBps, 10_000, 20_000));
         if (doLock) this.lock(true);
@@ -311,10 +312,13 @@ abstract contract VaultInvariantBase is VaultSetup {
         }
     }
 
-    /// The vault never leaves value inside the PoolManager outside ARMED.
-    function invariant_noLivePositionOutsideArmed() public view {
-        OffmintVault.Epoch memory e = vault.currentEpoch();
-        if (vault.state() != OffmintVault.State.ARMED && e.id != 0) assertTrue(e.locked);
+    /// The vault never leaves a rung inside the PoolManager outside ARMED.
+    function invariant_noLiveRungOutsideArmed() public view {
+        if (vault.state() == OffmintVault.State.ARMED || vault.epochCount() == 0) return;
+        OffmintVault.RungResult[] memory rs = vault.epochRungs(vault.epochCount());
+        for (uint256 i = 0; i < rs.length; i++) {
+            assertTrue(rs[i].removed, "rung still live outside ARMED");
+        }
     }
 }
 

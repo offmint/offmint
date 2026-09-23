@@ -38,3 +38,6 @@ contracts/broadcast/**/31337/
 
 # screening cache
 backtest/.cache/
+
+# detector log cache (large, rebuilt incrementally)
+contracts/config/.detector-cache.json
