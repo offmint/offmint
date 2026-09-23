@@ -11,7 +11,8 @@
     "stress": "tsx src/stress.ts",
     "service": "tsx src/service.ts",
     "api-oracle": "tsx src/apiOracle.ts",
-    "detect": "tsx detector/detector.ts"
+    "detect": "tsx detector/detector.ts",
+    "select": "tsx src/select.ts"
   },
   "engines": {
     "node": ">=20"

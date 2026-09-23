@@ -5,7 +5,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const targets = [["OffmintVault", "offmintVaultAbi"], ["ISessionClock", "sessionClockAbi"]];
+const targets = [["OffmintVault", "offmintVaultAbi"], ["ISessionClock", "sessionClockAbi"], ["MetaVault", "metaVaultAbi"], ["VaultFactory", "vaultFactoryAbi"]];
 mkdirSync(join(root, "keeper/src/abi"), { recursive: true });
 for (const [name, exportName] of targets) {
   const art = JSON.parse(readFileSync(join(root, `contracts/out/${name}.sol/${name}.json`), "utf8"));

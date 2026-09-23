@@ -84,3 +84,36 @@
 - Backtest GLXY 11–14 Sep: +32.8% STOCK vs HODL ex-fees (lockOnFill). The MetaVault friction model gives 28.5% gross and
   25.1% net USD. The buy-in is approximated at the Friday close.
 - `.detector-cache.json` (48 MB log cache) is gitignored. `contracts/config/basket.json` (the detector output) is committed.
+- M3.5 (SPEC §6.5): `MetaVault`, a USDG ERC-4626 (`omMETA`, offset 6):
+  - state machine: IDLE iff `openPositionCount == 0`; deposit/withdraw only when IDLE.
+  - weekly cycle: `buyIn` (keeper) → `triggerEarlyUnwind` (anyone, BUY-IN→commit only) → `commit` (keeper; deposits
+    into the ticker's OffmintVault before its ladder arms) → OffmintVault arm/lock/settle unchanged → `unwind` (anyone
+    after the weekend; keeper may abort a BOUGHT position earlier).
+  - BUY-IN: a pre-check (pool ≤ reference × (1 + buyInSlippageBps)) **and** the same cap as the swap's `sqrtPriceLimitX96`.
+    The swap is `VaultPoolOps.swapExact`, the same capped primitive as settle's buyback.
+  - UNWIND sells at no less than reference × (1 − unwindSlippageBps). Partial fills are kept for a later call. After
+    the weekend, only a post-reopen print counts.
+  - A realized loss above `weeklyLossCapBps` blacklists the ticker for `blacklistDays`, stop-loss exits included.
+    `buyIn` refuses blacklisted tickers onchain (no keeper override).
+  - `totalAssets` = USDG + committed sub-vault shares × reference + held STOCK × reference. It uses the ticker's own
+    reference; a reverting reference falls back to the buy-in price, for display only.
+  - `txFeeBps` (default 50, ≤ 200) on deposit and withdraw, using the fee-vault pattern (previews match execution).
+    Fees go to the immutable `feeRecipient`.
+- `VaultFactory` (§6.5.4): anyone can `deployVault(stock)` for an owner-listed canonical stock:
+  - It wires a ChainlinkPriceReference (feed) or PushPriceReference (no feed, poster ≠ keeper, owner freeze) and
+    requires an initialized hook-free STOCK/USDG pool.
+  - OffmintVault's initcode is ~28 KB, too big to embed, so it is stored in data contracts and pinned by
+    `vaultCodeHash`. The factory can only deploy that exact code.
+- Keeper `select.ts` (§6.5.2): score = w1 × 7d volume growth % + w2 × top non-USDG pool share %. It picks ≤ maxConcurrent
+  above `minScoreBps` and excludes skip/earnings and blacklisted tickers; zero picks is normal. It writes the whole
+  scored table weekly.
+- Tests: 25 MetaVault/factory tests, both orientations (A: stock = currency0 with Chainlink; B: currency1 with push):
+  - full cycle IDLE→…→IDLE, NAV +0.44% on a +30% squeeze (30% alloc × 30% ladder deploy, net of fees);
+  - a −5% no-squeeze week loses ≤ alloc × (move + slippage + fees);
+  - the stop-loss fires, and its loss reaches the blacklist;
+  - the stop-loss refuses while the issuer oracle is paused, trading is halted, or the owner freeze is on;
+  - a buy-in sandwich partial-fills at the cap; the average fill is ≤ cap + LP fee;
+  - `txFeeBps` is charged on deposit and withdraw, and share price is unchanged;
+  - NAV is exact with one position armed and one still pre-arm;
+  - factory rejections.
+  In total: 151 forge tests; MetaVault is 19.1 KB and VaultFactory 11.2 KB.

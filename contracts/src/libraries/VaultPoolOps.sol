@@ -79,25 +79,47 @@ library VaultPoolOps {
         _settleDeltas(c);
     }
 
+    /// @notice Swap an exact input between STOCK and USDG, stopping at `sqrtLimit` (partial fill, never reverts on the
+    ///         limit), then clear deltas. MetaVault's BUY-IN (`buyStock`) and UNWIND (sell) use it: the same capped swap
+    ///         as the Monday buyback, with an explicit amount instead of "all USDG".
+    /// @return amountIn tokens actually paid, amountOut tokens received
+    function swapExact(Ctx memory c, bool buyStock, uint256 amount, uint160 sqrtLimit)
+        public
+        returns (uint256 amountIn, uint256 amountOut)
+    {
+        (amountIn, amountOut) = _swap(c, buyStock, amount, sqrtLimit);
+        _settleDeltas(c);
+    }
+
     /// @dev Swap all USDG (PoolManager credit + vault balance) for STOCK, stopping at `sqrtCap` (partial fill, no revert).
     function _buyback(Ctx memory c, uint160 sqrtCap) private returns (uint256 bought) {
         int256 credit = c.pm.currencyDelta(address(this), Currency.wrap(c.usdg));
         uint256 usdIn = IERC20(c.usdg).balanceOf(address(this)) + (credit > 0 ? uint256(credit) : 0);
-        if (usdIn == 0) return 0;
-        bool zeroForOne = !c.stockIs0; // pay USDG
+        (, bought) = _swap(c, true, usdIn, sqrtCap);
+    }
+
+    /// @dev The one capped swap primitive. `buyStock`: pay USDG for STOCK; else pay STOCK for USDG.
+    function _swap(Ctx memory c, bool buyStock, uint256 amount, uint160 sqrtLimit)
+        private
+        returns (uint256 amountIn, uint256 amountOut)
+    {
+        if (amount == 0) return (0, 0);
+        bool zeroForOne = buyStock != c.stockIs0; // paying currency0?
         (uint160 sp,,,) = c.pm.getSlot0(c.key.toId());
-        // pool already at/through the cap: nothing can be bought inside the limit
-        if (zeroForOne ? sp <= sqrtCap : sp >= sqrtCap) return 0;
+        // pool already at/through the limit: nothing can trade inside it
+        if (zeroForOne ? sp <= sqrtLimit : sp >= sqrtLimit) return (0, 0);
         BalanceDelta delta = c.pm
             .swap(
                 c.key,
                 IPoolManager.SwapParams({
-                    zeroForOne: zeroForOne, amountSpecified: -int256(usdIn), sqrtPriceLimitX96: sqrtCap
+                    zeroForOne: zeroForOne, amountSpecified: -int256(amount), sqrtPriceLimitX96: sqrtLimit
                 }),
                 ""
             );
-        (int128 dStock,) = _split(c, delta);
-        bought = dStock > 0 ? uint256(uint128(dStock)) : 0;
+        (int128 dStock, int128 dUsd) = _split(c, delta);
+        (int128 dIn, int128 dOut) = buyStock ? (dUsd, dStock) : (dStock, dUsd);
+        amountIn = dIn < 0 ? uint256(uint128(-dIn)) : 0;
+        amountOut = dOut > 0 ? uint256(uint128(dOut)) : 0;
     }
 
     /// @dev Clear the vault's open deltas: take credits, pay debts from the vault balance.
