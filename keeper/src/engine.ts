@@ -315,7 +315,7 @@ export class EpochSim {
   }
 }
 
-const round = (x: number, dp = 6) => Math.round(x * 10 ** dp) / 10 ** dp;
+const round = (x: number, dp = 6) => Math.round(x * 10 ** dp) / 10 ** dp + 0; // + 0 normalises -0
 
 /** Keeps first/last and per-bucket min/max so spikes survive downsampling. */
 function downsample<T extends { t: number; usd: number }>(xs: T[], max: number): T[] {

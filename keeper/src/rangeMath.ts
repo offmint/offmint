@@ -39,7 +39,8 @@ export function usdToSqrtPriceX96(answer: bigint, d: Decimals, stockIs0: boolean
 /** sqrtPriceX96 -> USD answer in feed decimals (rounded down). */
 export function sqrtPriceX96ToUsd(s: bigint, d: Decimals, stockIs0: boolean): bigint {
   const scale = pow10(d.feed + d.stock - d.usd);
-  return stockIs0 ? (s * s * scale) >> 192n : (scale << 192n) / (s * s);
+  // mirrors the Solidity rounding exactly (two floored mulDivs)
+  return stockIs0 ? (((s * s) >> 64n) * scale) >> 128n : (((scale << 96n) / s) << 96n) / s;
 }
 
 export const usdToTick = (answer: bigint, d: Decimals, stockIs0: boolean) =>

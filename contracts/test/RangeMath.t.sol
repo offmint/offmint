@@ -180,9 +180,73 @@ contract RangeMathTest is Test {
 }
 
 contract RangeMathVectors is Test {
+    RangeMathHarness h = new RangeMathHarness();
+
     function test_vectors() public pure {
         RangeMath.Decimals memory d = RangeMath.Decimals({feed: 8, stock: 18, usd: 6});
         console2.log("VEC_T30_S0", RangeMath.usdToTick(30e8, d, true));
         console2.log("VEC_T30_S1", RangeMath.usdToTick(30e8, d, false));
+    }
+
+    struct V {
+        bool s0;
+        uint256 p0;
+        uint256 prem;
+        uint256 width;
+        int24 sp;
+        int24 cur;
+    }
+
+    /// Writes test/vectors/rangeMath.json; keeper/test/vectors.test.ts checks the TS port matches exactly.
+    function test_writeCrossLanguageVectors() public {
+        string memory out = "[";
+        for (uint256 i = 0; i < 200; i++) {
+            out = string.concat(out, i == 0 ? "" : ",", _vec(_input(i)));
+        }
+        vm.writeFile("test/vectors/rangeMath.json", string.concat(out, "]"));
+    }
+
+    function _dec() internal pure returns (RangeMath.Decimals memory) {
+        return RangeMath.Decimals({feed: 8, stock: 18, usd: 6});
+    }
+
+    function _input(uint256 i) internal pure returns (V memory v) {
+        uint256 r = uint256(keccak256(abi.encode(i)));
+        int24[4] memory sps = [int24(1), 10, 60, 200];
+        v.s0 = r & 1 == 1;
+        v.p0 = 1e6 + (r >> 8) % (10_000e8 - 1e6);
+        v.prem = 500 + (r >> 80) % 4500;
+        v.width = 1000 + (r >> 100) % 9000;
+        v.sp = sps[(r >> 120) % 4];
+        // pool from -50% to +80% of p0 (some above the band -> RangeInvalid)
+        v.cur = RangeMath.usdToTick(v.p0 * (5000 + (r >> 130) % 13_000) / 10_000, _dec(), v.s0);
+    }
+
+    function _vec(V memory v) internal view returns (string memory) {
+        string memory range;
+        try h.sellRange(v.p0, v.prem, v.width, v.cur, v.sp, _dec(), v.s0) returns (int24 lo, int24 up) {
+            range = string.concat("[", vm.toString(lo), ",", vm.toString(up), "]");
+        } catch {
+            range = "null";
+        }
+        string memory head = string.concat(
+            "{\"s0\":", v.s0 ? "true" : "false",
+            ",\"p0\":\"", vm.toString(v.p0),
+            "\",\"prem\":", vm.toString(v.prem),
+            ",\"width\":", vm.toString(v.width),
+            ",\"spacing\":", vm.toString(v.sp),
+            ",\"cur\":", vm.toString(v.cur)
+        );
+        return string.concat(head, _prices(v), ",\"range\":", range, "}");
+    }
+
+    function _prices(V memory v) internal pure returns (string memory) {
+        uint160 sq = RangeMath.usdToSqrtPriceX96(v.p0, _dec(), v.s0, false);
+        return string.concat(
+            ",\"sqrt\":\"", vm.toString(uint256(sq)),
+            "\",\"sqrtUp\":\"", vm.toString(uint256(RangeMath.usdToSqrtPriceX96(v.p0, _dec(), v.s0, true))),
+            "\",\"usdBack\":\"", vm.toString(RangeMath.sqrtPriceX96ToUsd(sq, _dec(), v.s0)),
+            "\",\"cap\":\"", vm.toString(uint256(RangeMath.buybackSqrtCap(v.p0, 100, _dec(), v.s0))), "\""
+        );
     }
 }

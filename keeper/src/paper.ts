@@ -6,9 +6,10 @@ import { mkdirSync, readFileSync, writeFileSync, appendFileSync, readdirSync } f
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Hex } from "viem";
-import { makeClient, feedHistory, roundAt, blockAtOrBefore, swapLogs, lastSwapBefore, stockAbi, type Client, type Round, type SwapLog } from "./chain.js";
+import { makeClient, feedHistory, blockAtOrBefore, swapLogs, lastSwapBefore, stockAbi, type Client, type Round, type SwapLog } from "./chain.js";
 import { EpochSim, DEFAULT_PARAMS, type Params, type TickerCfg } from "./engine.js";
 import { windowStart as clockStart, isoDate, iso } from "./clock.js";
+import { armPlan, settlePlan } from "./plan.js";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(HERE, "../..");
@@ -84,52 +85,6 @@ interface Ctx {
   c: Client;
   params: Params;
   hist: Map<string, Round[]>;
-}
-
-/** When would the vault arm, and would the oracle checks pass? (SPEC §4) */
-function armPlan(sim: EpochSim, hist: Round[] | undefined) {
-  const p = sim.params;
-  const earliest = sim.windowStart + p.armDelay;
-  if (!hist) return { time: earliest, round: undefined };
-  const r = roundAt(hist, earliest);
-  if (!r) return { time: earliest, round: undefined, reason: "no feed round before window" };
-  const time = Math.max(earliest, r.updatedAt + p.minFrozen);
-  // a new round between `earliest` and `time` would reset the frozen clock; use the round live at `time`
-  const r2 = roundAt(hist, time)!;
-  const recentClose = r2.updatedAt >= sim.windowStart - p.maxPreCloseAge;
-  const inWindow = time < sim.windowEnd;
-  sim.checks = {
-    feedUpdatedAt: iso(r2.updatedAt),
-    frozenOk: time - r2.updatedAt >= p.minFrozen,
-    recentCloseOk: recentClose,
-    preCloseAgeMin: Math.round((sim.windowStart - r2.updatedAt) / 60),
-    answerPositive: r2.answer > 0n,
-    inWindow,
-  };
-  const reason = !recentClose
-    ? `recent-close check fails: last feed update ${Math.round((sim.windowStart - r2.updatedAt) / 3600 * 10) / 10}h before window start (max ${p.maxPreCloseAge / 3600}h)`
-    : r2.answer <= 0n
-      ? "answer <= 0"
-      : !inWindow
-        ? "feed kept updating through the window"
-        : undefined;
-  return { time, round: r2, reason };
-}
-
-/** When would the vault settle? First t >= windowEnd + settleDelay with a fresh feed round (SPEC §4). */
-function settlePlan(sim: EpochSim, hist: Round[] | undefined, now: number) {
-  const p = sim.params;
-  let t = sim.windowEnd + p.settleDelay;
-  if (!hist) return t <= now ? { time: t, round: undefined } : undefined;
-  const deadline = sim.windowEnd + p.emergencyDelay;
-  while (t <= Math.min(now, deadline)) {
-    const r = roundAt(hist, t);
-    if (r && r.updatedAt >= sim.windowEnd && t - r.updatedAt <= p.maxFreshAge) return { time: t, round: r };
-    const next = hist.find((x) => x.updatedAt > t);
-    if (!next) return undefined;
-    t = Math.max(t, next.updatedAt);
-  }
-  return undefined;
 }
 
 async function priceAt(ctx: Ctx, poolId: Hex, block: bigint): Promise<SwapLog | undefined> {
