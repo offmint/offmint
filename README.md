@@ -18,7 +18,7 @@ the stock back after reopen. Depositors end the weekend with more stock per shar
 | M2 | `SessionClock`, `ManualSessionClock`, `RangeMath` + unit/fuzz tests | ✅ done |
 | M3 | `OffmintVault` + unlock-callback flows + integration + invariant tests | ✅ done (incl. approved `lock()`) |
 | M4 | Mainnet fork test + backtest JSON | ✅ fork green on TSLA (S0) + HIMS (S1); HIMS backtest +14.7% STOCK vs HODL ex-fees |
-| M5 | Web `/vault` `/backtest` `/paper`, testnet deploy, DemoBuyer | 🚧 backend done: Deploy + DemoBuyer scripts, keeper bot, local E2E green (+8.45 STOCK / 100); **testnet deployed + verified**; demo weekend next; web pending |
+| M5 | Web `/vault` `/backtest` `/paper`, testnet deploy, DemoBuyer | 🚧 backend done: Deploy + DemoBuyer scripts, keeper bot, local E2E green (+8.45 STOCK / 100); **testnet deployed + verified; live demo weekend completed: +8.45 mHIMS / 100** (arm → lock → settle by the keeper bot); web pending |
 | M6 | README, diagram, video, deck | ⏳ |
 
 ## Backtest: HIMS, 28–31 Aug 2026
@@ -71,6 +71,13 @@ that deposits and withdrawals are gated outside OPEN, and that share supply is f
 Scenario outcomes are synthetic, chosen to exercise every code path. Use the backtest for return expectations, not these.
 
 ## Demo (testnet)
+
+**Completed live on 23 Sep 2026** (`contracts/deployments/demo-46630.json`). The keeper bot armed
+([`0x0ba5…549e`](https://explorer.testnet.chain.robinhood.com/tx/0x0ba528efee4a85c8c02bf68ae7be5f7798328e9b62437d233db1ec616149549e)),
+locked when the band was cleared ([`0x7893…d268`](https://explorer.testnet.chain.robinhood.com/tx/0x7893e661e74fd038331203ee7c477168e0159648652f00b8e380489688d268bd))
+and settled ([`0xc862…6841`](https://explorer.testnet.chain.robinhood.com/tx/0xc86205ad0410819a4d5c290c8ce58b25f9290b2ddcd7404252383d0da3c06841)).
+The vault sold 30 mHIMS for 1,151.04 USDG and bought back 39.39, for +9.39 mHIMS gross and **+8.45 per 100 deposited after
+the 10% fee**. `scripts/demo-testnet.sh` reruns it and is resumable.
 
 `contracts/script/Deploy.s.sol` deploys mock HIMS, 6-decimal mock USDG, a MockFeed and a ManualSessionClock. It creates a
 hook-free pool on the chain's own v4 PoolManager and deploys the vault. `contracts/script/DemoBuyer.s.sol` plays the

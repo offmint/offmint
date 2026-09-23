@@ -10,6 +10,8 @@ export const robinhood = {
   name: "Robinhood Chain",
   nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
   rpcUrls: { default: { http: ["https://rpc.mainnet.chain.robinhood.com"] } },
+  // canonical Multicall3 (verified deployed on Robinhood mainnet 2026-09-23)
+  contracts: { multicall3: { address: "0xcA11bde05977b3631167028862bE2a173976CA11" as const } },
 } as const;
 
 export function makeClient() {

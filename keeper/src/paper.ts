@@ -2,11 +2,11 @@
 //   npm run paper                      live: every 60s, advance this weekend's hypothetical epoch per ticker
 //   npm run replay -- 2026-09-19       replay the weekend window containing / following that date
 //   options: --tickers TSLA,NVDA  --out ../web/public/paper
-import { mkdirSync, readFileSync, writeFileSync, appendFileSync, readdirSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync, appendFileSync, readdirSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Hex } from "viem";
-import { makeClient, feedHistory, blockAtOrBefore, swapLogs, lastSwapBefore, stockAbi, type Client, type Round, type SwapLog } from "./chain.js";
+import { makeClient, feedHistory, latestRound, blockAtOrBefore, swapLogs, lastSwapBefore, stockAbi, type Client, type Round, type SwapLog } from "./chain.js";
 import { EpochSim, DEFAULT_PARAMS, type Params, type TickerCfg } from "./engine.js";
 import { windowStart as clockStart, isoDate, iso } from "./clock.js";
 import { armPlan, settlePlan } from "./plan.js";
@@ -21,16 +21,37 @@ interface KeeperConfig {
   sessionOffset: number;
   params: Partial<Params>;
   premiumTable: Record<string, number>;
+  /** "curation": use contracts/config/tickers.json (M0.5); "static": use `tickers` below. */
+  tickerSource?: "curation" | "static";
+  /** Liquid names paper-traded alongside the curated list so results show both regimes honestly. */
+  controls?: string[];
   tickers: string[];
   skip: string[];
+}
+
+/** Paper universe from M0.5 curation: thin + watch + squeeze-prone names without a feed + liquid controls. */
+export function curatedUniverse(curation: any, controls: string[]): string[] {
+  const out = new Set<string>();
+  for (const [t, v] of Object.entries<any>(curation.tickers ?? {})) {
+    if (v.bucket === "thin" || v.bucket === "watch") out.add(t);
+    if (v.bucket === "ineligible" && /squeeze-prone/.test(v.reason)) out.add(t);
+  }
+  for (const t of controls) if (curation.tickers?.[t]) out.add(t);
+  return [...out].sort();
 }
 
 function loadConfig(only?: string[]): { cfgs: TickerCfg[]; params: Params; kc: KeeperConfig } {
   const kc: KeeperConfig = JSON.parse(readFileSync(join(ROOT, "keeper/config.mainnet.json"), "utf8"));
   const facts = JSON.parse(readFileSync(join(ROOT, "contracts/config/mainnet.json"), "utf8"));
   const params = { ...DEFAULT_PARAMS, ...kc.params };
+  let universe = kc.tickers;
+  const curPath = join(ROOT, "contracts/config/tickers.json");
+  if (kc.tickerSource === "curation" && existsSync(curPath)) {
+    universe = curatedUniverse(JSON.parse(readFileSync(curPath, "utf8")), kc.controls ?? []);
+    log({ event: "universe", source: "curation", tickers: universe });
+  }
   const cfgs: TickerCfg[] = [];
-  for (const t of only ?? kc.tickers) {
+  for (const t of only ?? universe) {
     const s = facts.stocks[t];
     if (!s?.bestNoHookPool) {
       log({ level: "warn", msg: "no config / no hook-free pool; run scripts/discover_pools.py", ticker: t });
@@ -151,10 +172,20 @@ async function advance(ctx: Ctx, sim: EpochSim, now: number, live: boolean) {
   }
 }
 
+/** Feed history per ticker; after the first load only rounds newer than the cached tip are fetched. */
 async function refreshHist(ctx: Ctx, cfgs: TickerCfg[], since: number) {
   for (const cfg of cfgs) {
     if (!cfg.feed) continue;
-    ctx.hist.set(cfg.ticker, await feedHistory(ctx.c, cfg.feed, since));
+    const cached = ctx.hist.get(cfg.ticker);
+    if (!cached?.length || cached[0].updatedAt > since) {
+      ctx.hist.set(cfg.ticker, await feedHistory(ctx.c, cfg.feed, since));
+      continue;
+    }
+    const tip = cached[cached.length - 1];
+    const latest = await latestRound(ctx.c, cfg.feed);
+    if (latest.roundId === tip.roundId) continue;
+    const fresh = (await feedHistory(ctx.c, cfg.feed, tip.updatedAt + 1)).filter((r) => r.roundId > tip.roundId);
+    ctx.hist.set(cfg.ticker, [...cached.filter((r) => r.updatedAt >= since), ...fresh]);
   }
 }
 
@@ -218,19 +249,21 @@ async function live(only: string[] | undefined, outDir: string) {
 
 // ------------------------------------------------------------------ cli
 
-const args = process.argv.slice(2);
-const opt = (k: string) => {
-  const i = args.indexOf(k);
-  return i >= 0 ? args[i + 1] : undefined;
-};
-const only = opt("--tickers")?.split(",").map((s) => s.trim().toUpperCase());
-const outDir = resolve(opt("--out") ?? join(ROOT, "web/public/paper"));
-const replayIdx = args.indexOf("--replay");
-if (replayIdx >= 0) {
-  const date = args[replayIdx + 1];
-  if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error("usage: npm run replay -- YYYY-MM-DD [--tickers A,B]");
-  const replayOut = resolve(opt("--out") ?? join(ROOT, "web/public/paper/replay"));
-  await replay(date, only, replayOut);
-} else {
-  await live(only, outDir);
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  const args = process.argv.slice(2);
+  const opt = (k: string) => {
+    const i = args.indexOf(k);
+    return i >= 0 ? args[i + 1] : undefined;
+  };
+  const only = opt("--tickers")?.split(",").map((s) => s.trim().toUpperCase());
+  const outDir = resolve(opt("--out") ?? join(ROOT, "web/public/paper"));
+  const replayIdx = args.indexOf("--replay");
+  if (replayIdx >= 0) {
+    const date = args[replayIdx + 1];
+    if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error("usage: npm run replay -- YYYY-MM-DD [--tickers A,B]");
+    const replayOut = resolve(opt("--out") ?? join(ROOT, "web/public/paper/replay"));
+    await replay(date, only, replayOut);
+  } else {
+    await live(only, outDir);
+  }
 }

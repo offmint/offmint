@@ -2,6 +2,26 @@
   "sessionOffset": 0,
   "params": {},
   "premiumTable": {},
-  "tickers": ["TSLA", "NVDA", "AAPL", "AMZN", "META", "MSFT", "GOOGL", "COIN", "PLTR", "MSTR", "AMD", "SPY", "QQQ", "HIMS"],
-  "skip": []
+  "tickers": [
+    "TSLA",
+    "NVDA",
+    "AAPL",
+    "AMZN",
+    "META",
+    "MSFT",
+    "GOOGL",
+    "COIN",
+    "PLTR",
+    "MSTR",
+    "AMD",
+    "SPY",
+    "QQQ",
+    "HIMS"
+  ],
+  "skip": [],
+  "tickerSource": "curation",
+  "controls": [
+    "NVDA",
+    "SPY"
+  ]
 }

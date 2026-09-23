@@ -5,7 +5,11 @@
   "scripts": {
     "replay": "tsx src/replay.ts",
     "test": "tsx --test test/*.test.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "curate": "tsx src/curate.ts",
+    "screen": "tsx src/screen.ts"
   },
-  "engines": { "node": ">=20" }
+  "engines": {
+    "node": ">=20"
+  }
 }

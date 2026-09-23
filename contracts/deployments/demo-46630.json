@@ -1,0 +1,52 @@
+{
+  "chainId": 46630,
+  "vault": "0xc3413BCcc6BAf64430FF0f0f56B9C2B1D9850bdA",
+  "totalAssetsBefore": "100000000000000000000",
+  "totalAssetsAfter": "108448329415362469723",
+  "shareSupply": "100000000000000000000000",
+  "stockGained": 8.448329415362469,
+  "keeperTxs": [
+    {
+      "action": "arm",
+      "reason": "weekend window, oracle frozen",
+      "hash": "0x0ba528efee4a85c8c02bf68ae7be5f7798328e9b62437d233db1ec616149549e",
+      "status": "success",
+      "stateAfter": "ARMED"
+    },
+    {
+      "action": "lock",
+      "reason": "band cleared: position is 100% USDG",
+      "hash": "0x7893e661e74fd038331203ee7c477168e0159648652f00b8e380489688d268bd",
+      "status": "success",
+      "stateAfter": "ARMED"
+    },
+    {
+      "action": "settle",
+      "reason": "reopened, oracle fresh",
+      "hash": "0xc86205ad0410819a4d5c290c8ce58b25f9290b2ddcd7404252383d0da3c06841",
+      "status": "success",
+      "stateAfter": "OPEN"
+    }
+  ],
+  "epoch": {
+    "id": "1",
+    "armedAt": "1790146324",
+    "windowEnd": "1790148441",
+    "settledAt": "1790150504",
+    "p0": "2883999999",
+    "tickLower": "-241740",
+    "tickUpper": "-238020",
+    "liquidity": "996177308422442",
+    "salt": "0x0000000000000000000000000000000000000000000000000000000000000001",
+    "locked": "true",
+    "stockBefore": "100000000000000000000",
+    "stockDeployed": "29999999999999992601",
+    "stockBack": "0",
+    "usdgReceived": "1151041342",
+    "stockBought": "39387032683736070070",
+    "usdgLeft": "0",
+    "pnlStock": "9387032683736077469",
+    "feeStock": "938703268373607746"
+  },
+  "explorer": "https://explorer.testnet.chain.robinhood.com/tx/"
+}

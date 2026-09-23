@@ -1,6 +1,7 @@
 # Private working docs (kept local, not committed)
 CLAUDE.md
 docs/SPEC.md
+SPEC.md
 
 # Secrets
 .env
