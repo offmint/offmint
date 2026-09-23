@@ -24,3 +24,14 @@
   cross-language RangeMath vectors (bit-exact).
 - Keeper: arm/settle timing moved to `plan.ts` with unit tests; engine tests on synthetic swap streams. Fixed a TS
   rounding mismatch in `sqrtPriceX96ToUsd` (found by the cross-language vectors) and `-0` in output JSON.
+- `lock()` approved and kept.
+- M4: mainnet fork tests (`contracts/test/Fork.t.sol`) on real TSLA/USDG (S0, real Chainlink feed) and HIMS/USDG
+  (S1, pool-seeded MockFeed): arm on the real pool, squeeze → lock → buyback (+9.3 STOCK on 30 deployed), gap-up cap, no-fill.
+  They skip without `RH_MAINNET_RPC`, so CI is deterministic.
+- M4: `backtest/` workspace (reuses the keeper engine) → `web/public/backtest/hims-2026-08-28.json`.
+  +14.7% STOCK vs HODL ex-fees with lock; −0.15% for hold-to-settle.
+- Zero-liquidity drain prints (a swap to MIN_TICK) are now outliers: excluded from stats and the chart, still applied to the position.
+- Pool discovery run for all 35 feed tickers plus HIMS (36 in `contracts/config/mainnet.json`, 13 with stock = currency0).
+  The script now merges instead of overwriting.
+- Lint: `forge fmt` applied; `forge lint src` is clean with documented exclusions; CI runs fmt --check + lint.
+  Zero keeper rejected.

@@ -96,6 +96,20 @@ for (const s0 of [true, false]) {
   });
 }
 
+test("zero-liquidity prints are outliers: excluded from stats, still fill the position", () => {
+  const cfg: TickerCfg = { ticker: "T", stock: "0x1", feed: "0x2", feedDecimals: 8, stockIsCurrency0: false, poolId: "0x3", fee: 3000, tickSpacing: 60 };
+  const sim = new EpochSim(cfg, DEFAULT_PARAMS, SAT, MON);
+  const p0 = usd(30);
+  sim.doArm({ time: SAT + 300, block: 1n, p0, p0Source: "chainlink", feedUpdatedAt: null, sqrtPriceX96: usdToSqrtPriceX96(p0, d, false), tick: usdToTick(p0, d, false) });
+  const drained: SwapLog = { poolId: "0x3", block: 2n, logIndex: 0, ts: SAT + 600, sqrtPriceX96: 4295128740n, tick: -887272, fee: 3000, amount0: -1n, amount1: 1n, liquidity: 0n };
+  sim.ingest(drained);
+  const j = sim.toJSON();
+  assert.equal(j.outliers.length, 1);
+  assert.ok(j.stats.maxUsd! < 31, `max ${j.stats.maxUsd}`);
+  sim.doSettle({ time: MON + 3600, block: 3n, fresh: usd(30), freshSource: "chainlink", freshUpdatedAt: MON, sqrtPriceX96: 4295128740n });
+  assert.ok(sim.settlement.results.lockOnFill.at(-1).stockBack < 1e-6, "range order filled by the drain print");
+});
+
 test("output JSON carries the caveat and downsampled series", () => {
   const path: [number, number][] = Array.from({ length: 5000 }, (_, i) => [SAT + 3600 + i * 30, 30 + 5 * Math.sin(i / 50)]);
   const j = run(true, path, { fresh: 30 }).toJSON();

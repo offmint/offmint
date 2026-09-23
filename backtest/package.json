@@ -1,0 +1,11 @@
+{
+  "name": "offmint-backtest",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "replay": "tsx src/replay.ts",
+    "test": "tsx --test test/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": { "node": ">=20" }
+}

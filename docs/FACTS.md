@@ -54,4 +54,9 @@ Regenerate mainnet with `python3 scripts/discover_pools.py [TICKER ...]` (needs 
 - The spike ran **Sun 30 Aug 21:00 UTC → Mon 00:59 UTC** (pool peak ~$56–71, plus one print where a swap drained the pool to MIN_TICK). By settle (Mon 01:00) the price was back to $32.53.
 - A range order **un-sells as the price falls back through it**. Under the spec, the vault buys all its stock back *inside the band*, at premium prices, before `settle` can remove the position. The premium sale disappears, and only LP fees remain.
 - The LP-fee column assumes our liquidity doesn't change the price path. In-band pool liquidity was thin, so that assumption is weak. Treat fees as noisy upside, not the thesis. The ex-fee column is the robust number.
-- **Proposed fix (needs approval, since it changes SPEC §6.2/§6.6):** add a permissionless `lock()` during ARMED that removes the position without swapping, allowed (a) any time the pool price is beyond the top of the band (position is 100% USDG), and (b) by anyone from `windowEnd − lockLead`. `settle` then only does the buyback. Removing liquidity needs no oracle and doesn't trade. The remaining surface is someone selling STOCK into the band just before a scheduled lock, which is the same exposure the spec's settle already has.
+- **Adopted (approved 2026-09-23):** add a permissionless `lock()` during ARMED that removes the position without swapping, allowed (a) any time the pool price is beyond the top of the band (position is 100% USDG), and (b) by anyone from `windowEnd − lockLead`. `settle` then only does the buyback. Removing liquidity needs no oracle and doesn't trade. The remaining surface is someone selling STOCK into the band just before a scheduled lock, which is the same exposure the spec's settle already has.
+
+### Confirmed by the SPEC §10 backtest and the mainnet fork
+
+- Backtest with P0 = $28.84: hold-to-settle −0.15%, `lock()` +14.7% STOCK vs HODL ex-fees (`web/public/backtest/hims-2026-08-28.json`).
+- Fork test on the real TSLA/USDG and HIMS/USDG pools: the full cycle with `lock()` returns +9.3 STOCK on 30 deployed for a +70% squeeze and a +1% reopen.

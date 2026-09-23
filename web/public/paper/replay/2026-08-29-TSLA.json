@@ -5836,6 +5836,7 @@
    "usd": 347.84138705
   }
  ],
+ "outliers": [],
  "fills": [],
  "settlement": {
   "time": 1788138000,
@@ -6001,5 +6002,5 @@
   }
  },
  "caveat": "Hypothetical: assumes the vault's position does not move the pool price. A live vault would dampen spikes; real fills would differ.",
- "generatedAt": "2026-09-23T04:07:32Z"
+ "generatedAt": "2026-09-23T05:26:27Z"
 }

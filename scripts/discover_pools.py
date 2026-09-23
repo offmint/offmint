@@ -108,6 +108,10 @@ def main():
         }
         print(f"{sym:6} feed={'yes' if f else 'NO '} pools={len(pools):3} s0={s_is0} best={'none' if not best else best['poolId'][:10]+' L='+best['liquidity']}", flush=True)
     OUT.parent.mkdir(parents=True, exist_ok=True)
+    # merge: keep tickers from earlier runs that this run didn't touch (e.g. HIMS, which has no feed)
+    if OUT.exists():
+        prev = json.loads(OUT.read_text()).get("stocks", {})
+        res["stocks"] = {**prev, **res["stocks"]}
     OUT.write_text(json.dumps(res, indent=2) + "\n")
     print("wrote", OUT)
 

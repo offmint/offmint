@@ -1,19 +1,25 @@
 {
   "name": "offmint",
   "private": true,
-  "description": "Offmint — weekend float vault for Robinhood Chain stock tokens (monorepo)",
+  "description": "Offmint \u2014 weekend float vault for Robinhood Chain stock tokens (monorepo)",
   "license": "MIT",
-  "workspaces": ["keeper"],
-  "engines": { "node": ">=20" },
+  "workspaces": [
+    "keeper",
+    "backtest"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build:contracts": "cd contracts && forge build",
     "test:contracts": "cd contracts && forge test",
     "test:fork": "cd contracts && RH_MAINNET_RPC=${RH_MAINNET_RPC:-https://rpc.mainnet.chain.robinhood.com} forge test --match-path test/Fork.t.sol -vv",
     "lint:contracts": "cd contracts && forge fmt --check && forge lint src",
-    "test:keeper": "npm run test -w keeper",
-    "typecheck": "npm run typecheck -w keeper",
+    "test:keeper": "npm run test -w keeper && npm run test -w backtest",
+    "typecheck": "npm run typecheck -w keeper && npm run typecheck -w backtest",
     "test": "npm run test:contracts && npm run typecheck && npm run test:keeper",
     "paper": "npm run paper -w keeper",
-    "replay": "npm run replay -w keeper --"
+    "replay": "npm run replay -w keeper --",
+    "backtest": "npm run replay -w backtest --"
   }
 }

@@ -90,6 +90,9 @@ export class EpochSim {
   checks: Record<string, boolean | string | number | null> = {};
   skipReason: string | null = null;
   timeline: { t: number; usd: number }[] = [];
+  /** Prints that left the pool with zero active liquidity (e.g. a swap draining it to MIN/MAX tick): not a
+   *  tradable price, so excluded from stats/timeline but still applied to the position (a real order would fill). */
+  outliers: { t: number; usd: number; tick: number }[] = [];
   fills: { t: number; usd: number; soldPct: number }[] = [];
   maxUsd = 0;
   minUsd = Number.POSITIVE_INFINITY;
@@ -212,7 +215,8 @@ export class EpochSim {
     }
     this.s = next;
     this.lastBlock = sw.block;
-    this.point(sw.ts, next);
+    if (sw.liquidity === 0n) this.outliers.push({ t: sw.ts, usd: this.usd(next), tick: sw.tick });
+    else this.point(sw.ts, next);
     const ref = this.pos.spec[this.pos.spec.length - 1];
     if (ref && prev !== next) {
       const q = BigInt(this.params.quantities[this.params.quantities.length - 1]) * 10n ** 18n;
@@ -307,6 +311,7 @@ export class EpochSim {
         lastBlock: this.lastBlock.toString(),
       },
       timeline: downsample(this.timeline, 1500),
+      outliers: this.outliers.slice(0, 50),
       fills: downsample(this.fills, 500),
       settlement: this.settlement,
       caveat: "Hypothetical: assumes the vault's position does not move the pool price. A live vault would dampen spikes; real fills would differ.",
