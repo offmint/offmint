@@ -20,6 +20,14 @@ rh_testnet = "${ALCHEMY_RH_TESTNET_URL}"
 
 [lint]
 lint_on_build = false
+# Reviewed and intentionally excluded (CI runs `forge lint src` and fails on anything else):
+#  block-timestamp          - timestamps ARE the time model (never block.number on this Orbit chain)
+#  divide-before-multiply   - floor/ceil tick snapping in RangeMath is deliberate integer division
+#  unsafe-typecast          - every cast is bound-checked (TickMath range, uint64 timestamps, signed deltas checked)
+#  unused-return            - ignored slot0 fields / feesAccrued (already inside callerDelta) / settle() paid amount
+#  reentrancy-no-eth/events - every mutator is nonReentrant; unlockCallback is PoolManager-only; tokens have no hooks
+exclude_lints = ["block-timestamp", "divide-before-multiply", "unsafe-typecast", "unused-return", "reentrancy-no-eth", "reentrancy-events"]
+ignore = ["test/**/*", "script/**/*"]
 
 [invariant]
 runs = 64

@@ -161,7 +161,6 @@ abstract contract VaultSetup is Deployers {
         vm.prank(keeperAddr);
         vault.settle(0);
     }
-
 }
 
 abstract contract VaultTestBase is VaultSetup {
@@ -698,6 +697,8 @@ abstract contract VaultTestBase is VaultSetup {
         assertEq(vault.keeper(), bob);
         vm.expectRevert(OffmintVault.BadConfig.selector);
         vault.setKeeper(feeTo);
+        vm.expectRevert(OffmintVault.BadConfig.selector);
+        vault.setKeeper(address(0));
         vm.stopPrank();
     }
 

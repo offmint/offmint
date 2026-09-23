@@ -12,8 +12,15 @@ jobs:
         with:
           submodules: recursive
       - uses: foundry-rs/foundry-toolchain@v1
+      - run: forge fmt --check
+        working-directory: contracts
       - run: forge build
         working-directory: contracts
+      - name: forge lint (src; fails on any non-excluded finding)
+        working-directory: contracts
+        run: |
+          out=$(forge lint src 2>&1); echo "$out"
+          if echo "$out" | grep -qE '^(error|warning|note)\['; then exit 1; fi
       - run: forge test
         working-directory: contracts
 

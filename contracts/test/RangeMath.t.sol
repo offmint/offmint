@@ -157,7 +157,10 @@ contract RangeMathTest is Test {
         h.sellRange(p0, 1000, 5000, cur1, 60, d, false);
     }
 
-    function testFuzz_sellRange(uint256 p0, uint256 prem, uint256 width, int256 curBps, uint8 spSel, bool s0) public view {
+    function testFuzz_sellRange(uint256 p0, uint256 prem, uint256 width, int256 curBps, uint8 spSel, bool s0)
+        public
+        view
+    {
         p0 = bound(p0, MIN_USD, MAX_USD);
         prem = bound(prem, 500, 5000);
         width = bound(width, 1000, 10_000);
@@ -230,12 +233,18 @@ contract RangeMathVectors is Test {
             range = "null";
         }
         string memory head = string.concat(
-            "{\"s0\":", v.s0 ? "true" : "false",
-            ",\"p0\":\"", vm.toString(v.p0),
-            "\",\"prem\":", vm.toString(v.prem),
-            ",\"width\":", vm.toString(v.width),
-            ",\"spacing\":", vm.toString(v.sp),
-            ",\"cur\":", vm.toString(v.cur)
+            "{\"s0\":",
+            v.s0 ? "true" : "false",
+            ",\"p0\":\"",
+            vm.toString(v.p0),
+            "\",\"prem\":",
+            vm.toString(v.prem),
+            ",\"width\":",
+            vm.toString(v.width),
+            ",\"spacing\":",
+            vm.toString(v.sp),
+            ",\"cur\":",
+            vm.toString(v.cur)
         );
         return string.concat(head, _prices(v), ",\"range\":", range, "}");
     }
@@ -243,10 +252,15 @@ contract RangeMathVectors is Test {
     function _prices(V memory v) internal pure returns (string memory) {
         uint160 sq = RangeMath.usdToSqrtPriceX96(v.p0, _dec(), v.s0, false);
         return string.concat(
-            ",\"sqrt\":\"", vm.toString(uint256(sq)),
-            "\",\"sqrtUp\":\"", vm.toString(uint256(RangeMath.usdToSqrtPriceX96(v.p0, _dec(), v.s0, true))),
-            "\",\"usdBack\":\"", vm.toString(RangeMath.sqrtPriceX96ToUsd(sq, _dec(), v.s0)),
-            "\",\"cap\":\"", vm.toString(uint256(RangeMath.buybackSqrtCap(v.p0, 100, _dec(), v.s0))), "\""
+            ",\"sqrt\":\"",
+            vm.toString(uint256(sq)),
+            "\",\"sqrtUp\":\"",
+            vm.toString(uint256(RangeMath.usdToSqrtPriceX96(v.p0, _dec(), v.s0, true))),
+            "\",\"usdBack\":\"",
+            vm.toString(RangeMath.sqrtPriceX96ToUsd(sq, _dec(), v.s0)),
+            "\",\"cap\":\"",
+            vm.toString(uint256(RangeMath.buybackSqrtCap(v.p0, 100, _dec(), v.s0))),
+            "\""
         );
     }
 }

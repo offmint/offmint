@@ -39,9 +39,13 @@ library RangeMath {
         uint256 usdRaw = answer * 10 ** d.usd;
         uint256 x;
         if (stockIs0) {
-            x = roundUp ? FullMath.mulDivRoundingUp(usdRaw, Q192, scaleStock) : FullMath.mulDiv(usdRaw, Q192, scaleStock);
+            x = roundUp
+                ? FullMath.mulDivRoundingUp(usdRaw, Q192, scaleStock)
+                : FullMath.mulDiv(usdRaw, Q192, scaleStock);
         } else {
-            x = roundUp ? FullMath.mulDivRoundingUp(scaleStock, Q192, usdRaw) : FullMath.mulDiv(scaleStock, Q192, usdRaw);
+            x = roundUp
+                ? FullMath.mulDivRoundingUp(scaleStock, Q192, usdRaw)
+                : FullMath.mulDiv(scaleStock, Q192, usdRaw);
         }
         uint256 s = Math.sqrt(x, roundUp ? Math.Rounding.Ceil : Math.Rounding.Floor);
         if (s < TickMath.MIN_SQRT_PRICE || s >= TickMath.MAX_SQRT_PRICE) revert PriceOutOfRange();
@@ -49,11 +53,7 @@ library RangeMath {
     }
 
     /// @notice Pool sqrtPriceX96 -> USD answer in feed decimals (rounded down).
-    function sqrtPriceX96ToUsd(uint160 sqrtPriceX96, Decimals memory d, bool stockIs0)
-        internal
-        pure
-        returns (uint256)
-    {
+    function sqrtPriceX96ToUsd(uint160 sqrtPriceX96, Decimals memory d, bool stockIs0) internal pure returns (uint256) {
         uint256 s = sqrtPriceX96;
         uint256 scale = 10 ** (uint256(d.feed) + d.stock - d.usd);
         if (stockIs0) {

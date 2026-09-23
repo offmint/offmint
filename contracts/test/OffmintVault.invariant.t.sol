@@ -88,7 +88,10 @@ contract VaultHandler is Test {
 
     function _trackSupply() internal {
         OffmintVault.State st = _state();
-        if ((st == OffmintVault.State.ARMED || st == OffmintVault.State.PENDING_BUYBACK) && vault.totalSupply() != supplyAtArm) {
+        if (
+            (st == OffmintVault.State.ARMED || st == OffmintVault.State.PENDING_BUYBACK)
+                && vault.totalSupply() != supplyAtArm
+        ) {
             supplyChangedWhileLocked = true;
         }
     }
@@ -126,7 +129,8 @@ contract VaultHandler is Test {
             IPoolManager.SwapParams({zeroForOne: t < sp, amountSpecified: -1e30, sqrtPriceLimitX96: t}),
             PoolSwapTest.TestSettings({takeClaims: false, settleUsingBurn: false}),
             ""
-        ) {} catch {}
+        ) {}
+            catch {}
     }
 
     // ------------------------------------------------------------------ lifecycle
@@ -143,7 +147,9 @@ contract VaultHandler is Test {
         vm.warp(sat + 20 minutes);
         uint256 supply = vault.totalSupply();
         vm.prank(keeper);
-        try vault.arm(uint16(bound(prem, 1000, 3000)), uint16(bound(width, 1000, 10_000)), uint16(bound(deploy, 1, 3000))) {
+        try vault.arm(
+            uint16(bound(prem, 1000, 3000)), uint16(bound(width, 1000, 10_000)), uint16(bound(deploy, 1, 3000))
+        ) {
             supplyAtArm = supply;
             arms++;
         } catch {}

@@ -139,7 +139,9 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
 
     // ------------------------------------------------------------------ events / errors
 
-    event Armed(uint256 indexed id, uint256 p0, int24 tickLower, int24 tickUpper, uint256 stockDeployed, uint128 liquidity);
+    event Armed(
+        uint256 indexed id, uint256 p0, int24 tickLower, int24 tickUpper, uint256 stockDeployed, uint128 liquidity
+    );
     event Locked(uint256 indexed id, uint256 stockBack, uint256 usdgReceived);
     event Settled(
         uint256 indexed id,
@@ -202,7 +204,12 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
         if (!s0 && !(c0 == u && c1 == s)) revert BadConfig();
         // hook-free pools only: a hook could block addLiquidity or skim the position
         if (address(c.poolKey.hooks) != address(0)) revert BadConfig();
-        if (c.feeRecipient == address(0) || c.feeRecipient == c.owner || c.feeRecipient == c.keeper) revert BadConfig();
+        if (
+            c.keeper == address(0) || c.feeRecipient == address(0) || c.feeRecipient == c.owner
+                || c.feeRecipient == c.keeper
+        ) {
+            revert BadConfig();
+        }
 
         poolManager = c.poolManager;
         clock = c.clock;
@@ -267,7 +274,11 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
     }
 
     /// @dev Window, caller and bounds checks for `arm`; non-keepers get the defaults.
-    function _armParams(uint16 premiumBps, uint16 widthBps, uint16 deployBps) internal view returns (uint16, uint16, uint16) {
+    function _armParams(uint16 premiumBps, uint16 widthBps, uint16 deployBps)
+        internal
+        view
+        returns (uint16, uint16, uint16)
+    {
         Params memory p = params;
         if (!clock.inWeekendWindow(block.timestamp)) revert NotWindow();
         uint256 ws = clock.windowStart(block.timestamp);
@@ -345,9 +356,7 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
         uint160 sqrtCap = _freshCap(e.windowEnd, p);
 
         bool wasLocked = e.locked;
-        bytes memory res = poolManager.unlock(
-            abi.encode(Action.SETTLE, abi.encode(wasLocked, _pos(e), sqrtCap))
-        );
+        bytes memory res = poolManager.unlock(abi.encode(Action.SETTLE, abi.encode(wasLocked, _pos(e), sqrtCap)));
         (uint256 stockBack, uint256 usdgBack, uint256 bought) = abi.decode(res, (uint256, uint256, uint256));
         if (bought < minStockOut) revert SlippageMinOut();
         if (!wasLocked) {
@@ -391,8 +400,7 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
         Epoch storage e = _epochs[epochCount];
         if (block.timestamp < uint256(e.windowEnd) + EMERGENCY_DELAY) revert TooEarly();
         if (!e.locked) {
-            bytes memory res =
-                poolManager.unlock(abi.encode(Action.UNWIND, abi.encode(_pos(e))));
+            bytes memory res = poolManager.unlock(abi.encode(Action.UNWIND, abi.encode(_pos(e))));
             (e.stockBack, e.usdgReceived) = abi.decode(res, (uint256, uint256));
             e.locked = true;
         }
@@ -499,7 +507,7 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
 
     /// @notice Set the keeper (arm/settle before grace). The keeper can never move vault funds.
     function setKeeper(address k) external onlyOwner {
-        if (k == feeRecipient) revert BadConfig();
+        if (k == address(0) || k == feeRecipient) revert BadConfig();
         keeper = k;
         emit KeeperUpdated(k);
     }
@@ -536,12 +544,12 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
 
     function _setParams(Params memory p) internal {
         if (
-            p.defaultPremiumBps < 500 || p.defaultWidthBps < 1000 || p.defaultWidthBps > 10_000 || p.defaultDeployBps == 0
-                || p.defaultDeployBps > 5000 || p.buybackSlippageBps > 300 || p.perfFeeBps > 2000
-                || p.armDelay < 1 minutes || p.armDelay > 1 hours || p.minFrozen < 5 minutes || p.minFrozen > 2 hours
-                || p.maxPreCloseAge < 1 hours || p.maxPreCloseAge > 12 hours || p.settleDelay < 30 minutes
-                || p.settleDelay > 12 hours || p.maxFreshAge < 5 minutes || p.maxFreshAge > 2 hours || p.armGrace > 12 hours
-                || p.settleGrace > 12 hours
+            p.defaultPremiumBps < 500 || p.defaultWidthBps < 1000 || p.defaultWidthBps > 10_000
+                || p.defaultDeployBps == 0 || p.defaultDeployBps > 5000 || p.buybackSlippageBps > 300
+                || p.perfFeeBps > 2000 || p.armDelay < 1 minutes || p.armDelay > 1 hours || p.minFrozen < 5 minutes
+                || p.minFrozen > 2 hours || p.maxPreCloseAge < 1 hours || p.maxPreCloseAge > 12 hours
+                || p.settleDelay < 30 minutes || p.settleDelay > 12 hours || p.maxFreshAge < 5 minutes
+                || p.maxFreshAge > 2 hours || p.armGrace > 12 hours || p.settleGrace > 12 hours
         ) revert ParamOutOfBounds();
         params = p;
         emit ParamsUpdated(p);
@@ -590,7 +598,9 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
 
     function _fullySold(Epoch storage e) internal view returns (bool) {
         (uint160 sp,,,) = poolManager.getSlot0(_poolKey.toId());
-        return stockIsCurrency0 ? sp >= TickMath.getSqrtPriceAtTick(e.tickUpper) : sp <= TickMath.getSqrtPriceAtTick(e.tickLower);
+        return stockIsCurrency0
+            ? sp >= TickMath.getSqrtPriceAtTick(e.tickUpper)
+            : sp <= TickMath.getSqrtPriceAtTick(e.tickLower);
     }
 
     /// @dev Burn the whole position; returns (stock, usdg) credited (principal + fees).
@@ -612,7 +622,9 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
         if (zeroForOne ? sp <= sqrtCap : sp >= sqrtCap) return 0;
         BalanceDelta delta = poolManager.swap(
             _poolKey,
-            IPoolManager.SwapParams({zeroForOne: zeroForOne, amountSpecified: -int256(usdIn), sqrtPriceLimitX96: sqrtCap}),
+            IPoolManager.SwapParams({
+                zeroForOne: zeroForOne, amountSpecified: -int256(usdIn), sqrtPriceLimitX96: sqrtCap
+            }),
             ""
         );
         (int128 dStock,) = _split(delta);
@@ -642,10 +654,7 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
 
     function _mlp(Pos memory ps, int256 delta) internal pure returns (IPoolManager.ModifyLiquidityParams memory) {
         return IPoolManager.ModifyLiquidityParams({
-            tickLower: ps.tickLower,
-            tickUpper: ps.tickUpper,
-            liquidityDelta: delta,
-            salt: ps.salt
+            tickLower: ps.tickLower, tickUpper: ps.tickUpper, liquidityDelta: delta, salt: ps.salt
         });
     }
 

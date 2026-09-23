@@ -8,6 +8,8 @@
   "scripts": {
     "build:contracts": "cd contracts && forge build",
     "test:contracts": "cd contracts && forge test",
+    "test:fork": "cd contracts && RH_MAINNET_RPC=${RH_MAINNET_RPC:-https://rpc.mainnet.chain.robinhood.com} forge test --match-path test/Fork.t.sol -vv",
+    "lint:contracts": "cd contracts && forge fmt --check && forge lint src",
     "test:keeper": "npm run test -w keeper",
     "typecheck": "npm run typecheck -w keeper",
     "test": "npm run test:contracts && npm run typecheck && npm run test:keeper",
