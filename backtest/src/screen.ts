@@ -6,7 +6,7 @@
 // Writes contracts/config/screen.json.
 // Deviation (documented in output): SPEC asks for 30-day average pool TVL; the public RPC has no archive state, so depth
 // is sampled from the `liquidity` field of the last `--days` of Swap logs plus the current slot.
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { encodeAbiParameters, keccak256, parseAbi, type Address, type Hex } from "viem";
@@ -75,15 +75,34 @@ async function main() {
   const topic = (a: string) => `0x${a.toLowerCase().slice(2).padStart(64, "0")}` as Hex;
   const pools = new Map<string, Pool[]>();
   const symbols = new Map<string, string>([[USDG, "USDG"]]);
+  // pool discovery is cached per ticker so a rerun resumes (backtest/.cache is gitignored)
+  const cachePath = join(ROOT, "backtest/.cache/pools.json");
+  mkdirSync(dirname(cachePath), { recursive: true });
+  const cache: Record<string, Pool[]> = existsSync(cachePath) ? JSON.parse(readFileSync(cachePath, "utf8")) : {};
+  const head = await c.getBlockNumber();
+  // Initialize logs for one filter; splits the block range whenever the RPC's 10k-log cap is hit
+  const initLogs = async (topics: (Hex | null)[], from: bigint, to: bigint): Promise<any[]> => {
+    try {
+      return await c.request({
+        method: "eth_getLogs",
+        params: [{ address: POOL_MANAGER, fromBlock: `0x${from.toString(16)}`, toBlock: `0x${to.toString(16)}`, topics }],
+      } as any);
+    } catch (e) {
+      if (!/exceeds limit|10000/.test(String(e)) || to - from < 1000n) throw e;
+      const mid = (from + to) / 2n;
+      return [...(await initLogs(topics, from, mid)), ...(await initLogs(topics, mid + 1n, to))];
+    }
+  };
   for (const s of stocks) {
+    if (cache[s.ticker]) {
+      pools.set(s.ticker, cache[s.ticker]);
+      continue;
+    }
     const found: Pool[] = [];
     for (const side of [2, 3]) {
       const topics: (Hex | null)[] = [INIT_TOPIC, null, null, null];
       topics[side] = topic(s.token);
-      const logs: any[] = await c.request({
-        method: "eth_getLogs",
-        params: [{ address: POOL_MANAGER, fromBlock: "0x0", toBlock: "latest", topics: topics.slice(0, side + 1) }],
-      } as any);
+      const logs = await initLogs(topics.slice(0, side + 1), 0n, head);
       for (const l of logs) {
         const d = l.data.slice(2);
         const word = (i: number) => BigInt("0x" + d.slice(i * 64, i * 64 + 64));
@@ -99,6 +118,8 @@ async function main() {
       }
     }
     pools.set(s.ticker, found);
+    cache[s.ticker] = found;
+    writeFileSync(cachePath, JSON.stringify(cache));
     process.stdout.write(`${s.ticker}:${found.length} `);
   }
   console.log();

@@ -43,19 +43,36 @@ export async function latestRound(c: Client, feed: Address): Promise<Round> {
   return { roundId, answer, updatedAt: Number(updatedAt) };
 }
 
-/** Walks feed rounds backwards from the latest until updatedAt < `since`. Returned oldest -> newest. */
+/** Walks feed rounds backwards from the latest until updatedAt < `since`, 50 rounds per Multicall3 batch.
+ *  Returned oldest -> newest. */
 export async function feedHistory(c: Client, feed: Address, since: number): Promise<Round[]> {
-  const out: Round[] = [];
-  let r = await latestRound(c, feed);
-  out.push(r);
-  const phaseStart = (r.roundId >> 64n) << 64n;
-  while (r.updatedAt >= since && r.roundId - 1n > phaseStart) {
-    const [roundId, answer, , updatedAt] = await c.readContract({
-      address: feed, abi: feedAbi, functionName: "getRoundData", args: [r.roundId - 1n],
+  const latest = await latestRound(c, feed);
+  const out: Round[] = [latest];
+  const phaseStart = (latest.roundId >> 64n) << 64n;
+  let next = latest.roundId - 1n;
+  while (next > phaseStart && out[out.length - 1].updatedAt >= since) {
+    const ids: bigint[] = [];
+    for (let i = 0n; i < 50n && next - i > phaseStart; i++) ids.push(next - i);
+    const res = await c.multicall({
+      contracts: ids.map((id) => ({ address: feed, abi: feedAbi, functionName: "getRoundData" as const, args: [id] as const })),
+      allowFailure: true,
     });
-    r = { roundId, answer, updatedAt: Number(updatedAt) };
-    if (r.updatedAt === 0) break;
-    out.push(r);
+    let stop = ids.length === 0;
+    for (const r of res) {
+      if (r.status !== "success") continue;
+      const [roundId, answer, , updatedAt] = r.result as readonly [bigint, bigint, bigint, bigint, bigint];
+      if (updatedAt === 0n) {
+        stop = true;
+        break;
+      }
+      out.push({ roundId, answer, updatedAt: Number(updatedAt) });
+      if (Number(updatedAt) < since) {
+        stop = true;
+        break;
+      }
+    }
+    if (stop) break;
+    next -= BigInt(ids.length);
   }
   return out.reverse();
 }

@@ -29,12 +29,17 @@ interface KeeperConfig {
   skip: string[];
 }
 
-/** Paper universe from M0.5 curation: thin + watch + squeeze-prone names without a feed + liquid controls. */
+/**
+ * Paper universe from M0.5 curation (SPEC §3.5): the v1 picks and every other dislocation-prone ticker (with or without a
+ * feed, as evidence), single-spike names (> dislocation threshold once), plus major controls so the results show both
+ * regimes honestly (SPEC §1.1).
+ */
 export function curatedUniverse(curation: any, controls: string[]): string[] {
   const out = new Set<string>();
+  const thr = curation.rules?.dislocationPct ?? 15;
   for (const [t, v] of Object.entries<any>(curation.tickers ?? {})) {
-    if (v.bucket === "thin" || v.bucket === "watch") out.add(t);
-    if (v.bucket === "ineligible" && /squeeze-prone/.test(v.reason)) out.add(t);
+    if (v.ship || v.bucket === "dislocation-prone") out.add(t);
+    else if (v.bucket === "neither" && (v.summary?.maxPremiumPct ?? 0) > thr) out.add(t);
   }
   for (const t of controls) if (curation.tickers?.[t]) out.add(t);
   return [...out].sort();

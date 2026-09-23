@@ -51,6 +51,21 @@ export function saturdays(since: number, now: number): number[] {
   return out;
 }
 
+export const CONTROLS = ["NVDA", "SPY", "AAPL"]; // majors, backtested as controls (SPEC §3.5 step 3)
+export const FLAGSHIP_NO_FEED = ["HIMS"]; // evidence only: no Chainlink feed
+
+/** Stage-2 candidates: flagged (thin or memecoin-adjacent) tickers that CAN ship (feed + hook-free USDG pool), top 6 by
+ *  7-day volume, plus the no-feed flagship and the major controls. */
+export function pickCandidates(screen: any, facts: any, n = 6): string[] {
+  const flagged = Object.entries<any>(screen.tickers)
+    .filter(([t, v]) => v.swaps7d > 0 && (v.thin || v.memecoinAdjacent) && facts.stocks[t]?.feed && facts.stocks[t]?.bestNoHookPool)
+    .sort((a, b) => b[1].vol7dStock - a[1].vol7dStock)
+    .slice(0, n)
+    .map(([t]) => t);
+  const extra = [...FLAGSHIP_NO_FEED, ...CONTROLS].filter((t) => facts.stocks[t]?.bestNoHookPool);
+  return [...new Set([...flagged, ...extra])];
+}
+
 /** Pure classification of one ticker's weekend evidence (unit-tested). Shippability (feed) is decided separately. */
 export function classify(ev: WeekendEvidence[]): { bucket: Bucket; reason: string; dislocated: number; worst: number } {
   const usable = ev.filter((w) => w.maxPremiumPct !== null && w.swaps >= RULES.minSwapsPerWeekend);
@@ -110,7 +125,12 @@ async function main() {
   const opt = (k: string) => (args.includes(k) ? args[args.indexOf(k) + 1] : undefined);
   const since = Math.floor(Date.parse(`${opt("--since") ?? "2026-07-04"}T00:00:00Z`) / 1000);
   const facts = JSON.parse(readFileSync(join(ROOT, "contracts/config/mainnet.json"), "utf8"));
-  const only = opt("--tickers")?.split(",");
+  let only = opt("--tickers")?.split(",");
+  if (args.includes("--from-screen")) {
+    const screen = JSON.parse(readFileSync(join(ROOT, "contracts/config/screen.json"), "utf8"));
+    only = pickCandidates(screen, facts);
+    console.log(`candidates from screen: ${only.join(", ")}`);
+  }
   const tickers = Object.keys(facts.stocks).filter((t) => facts.stocks[t].bestNoHookPool && (!only || only.includes(t))).sort();
   const c = makeClient();
   const nowTs = Number((await c.getBlock()).timestamp);

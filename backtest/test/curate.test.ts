@@ -32,3 +32,19 @@ test("classify: dead pools are ignored, all-dead -> ineligible", () => {
   assert.equal(classify([w(200, RULES.minSwapsPerWeekend - 1), w(2)]).bucket, "major", "a 4-swap spike is not evidence");
   assert.equal(classify([w(50, 0), w(null)]).bucket, "ineligible");
 });
+
+test("pickCandidates: shippable flagged names by volume, then flagship + majors", async () => {
+  const { pickCandidates } = await import("../src/curate.js");
+  const screen = {
+    tickers: {
+      A: { swaps7d: 10, thin: true, memecoinAdjacent: false, vol7dStock: 5 },
+      B: { swaps7d: 10, thin: false, memecoinAdjacent: true, vol7dStock: 50 },
+      C: { swaps7d: 10, thin: true, memecoinAdjacent: false, vol7dStock: 99 }, // no feed -> cannot ship
+      D: { swaps7d: 0, thin: true, memecoinAdjacent: true, vol7dStock: 0 }, // inactive
+      E: { swaps7d: 10, thin: false, memecoinAdjacent: false, vol7dStock: 999 }, // not flagged
+    },
+  };
+  const pool = { bestNoHookPool: { poolId: "0x1" } };
+  const facts = { stocks: { A: { feed: "0xa", ...pool }, B: { feed: "0xb", ...pool }, C: { feed: null, ...pool }, D: { feed: "0xd", ...pool }, E: { feed: "0xe", ...pool }, HIMS: pool, NVDA: pool, SPY: pool, AAPL: pool } };
+  assert.deepEqual(pickCandidates(screen, facts), ["B", "A", "HIMS", "NVDA", "SPY", "AAPL"]);
+});

@@ -35,3 +35,6 @@ contracts/deployments/31337.json
 contracts/foundry-pp/
 # local anvil broadcasts (testnet/mainnet broadcast logs ARE committed as deploy evidence)
 contracts/broadcast/**/31337/
+
+# screening cache
+backtest/.cache/
