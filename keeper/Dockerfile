@@ -1,4 +1,5 @@
-# Offmint paper-mode service (read-only mainnet simulation, no keys). Railway: mount a volume at /data.
+# Offmint paper-mode service (read-only mainnet simulation, no keys). Railway: build context = repo root,
+# config file = keeper/railway.json, volume at /data.
 FROM node:22-slim
 WORKDIR /app
 ENV NODE_ENV=production PAPER_OUT_DIR=/data/paper LOG_DIR=/data/logs

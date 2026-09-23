@@ -74,7 +74,9 @@ Scenario outcomes are synthetic, chosen to exercise every code path. Use the bac
 
 The service runs keeper paper mode around the clock: a read-only, deterministic simulation on mainnet, with no keys. It uses the
 curated tickers (`contracts/config/tickers.json`) plus major controls, and records what the vault would have done every weekend.
-`Dockerfile` + `railway.json`: deploy the repo on Railway and mount a volume at `/data`. Endpoints:
+`keeper/Dockerfile` + `keeper/railway.json`. On Railway, leave Root Directory as `/` (the service also reads
+`contracts/config/`), set **Config File Path** = `/keeper/railway.json`, and mount a volume at `/data`. Its watch paths are
+`keeper/**`, `contracts/config/**` and the root lockfile, so pushes that only touch `web/` don't redeploy it. Endpoints:
 `/health` (last tick, restarts), `/paper/index.json`, `/paper/<date>-<TICKER>.json`. Run it locally with `npm run service -w keeper`,
 or in tmux with `scripts/paper-run.sh`.
 
