@@ -46,3 +46,8 @@
 - Demo findings: the vault fixes `windowEnd` at arm (`closeWeekend` can't shorten an armed window), and a thin seed pool
   sends the buyback to PENDING_BUYBACK (correct cap behaviour). The demo pool is seeded with L=1e18.
 - Testnet deploy (chain 46630): 19/19 txs succeeded (0.00013 ETH gas), 8/8 contracts verified on Blockscout. Vault `0xc3413BCcc6BAf64430FF0f0f56B9C2B1D9850bdA`; pool initialised at $28.84 with L=1e18 on the chain's own PoolManager. `contracts/deployments/46630.json` + broadcast log committed.
+- Stress harness `keeper/src/stress.ts`: 40 random weekends × 12 depositors on anvil with time warps, real deploy
+  script and bot; 0 invariant violations. It found a real keeper bug: viem caches `getBlockNumber()`, so `slot0()` could read
+  a stale pool price right after a trade (it now reads `latest`). The bot now uses `createBot()` (reusable); its RPC retries
+  8×/1.5 s for flaky public endpoints. CI runs a 10-epoch stress.
+- The testnet demo script is resumable (it checks on-chain state before every step). Fixed a first-token parse bug in the lock check.

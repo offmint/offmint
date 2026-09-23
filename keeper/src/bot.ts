@@ -21,7 +21,7 @@ const stockAbi = parseAbi([
   "function symbol() view returns (string)",
 ]);
 
-function log(o: Record<string, unknown>) {
+function logLine(o: Record<string, unknown>) {
   const line = JSON.stringify({ ts: iso(Math.floor(Date.now() / 1000)), ...o }, (_, v) => (typeof v === "bigint" ? v.toString() : v));
   console.log(line);
   try {
@@ -38,15 +38,23 @@ async function notify(text: string) {
   } catch {}
 }
 
-export async function main(argv = process.argv.slice(2)) {
-  const opt = (k: string) => (argv.includes(k) ? argv[argv.indexOf(k) + 1] : undefined);
-  const depPath = resolve(opt("--deployment") ?? join(ROOT, "contracts/deployments/46630.json"));
-  const dep = JSON.parse(readFileSync(depPath, "utf8"));
+export interface BotOptions {
+  rpc: string;
+  pk: Hex;
+  deploymentPath: string;
+  policy?: KeeperPolicy;
+  /** Sink for log records (default: stdout + keeper/logs). */
+  log?: (o: Record<string, unknown>) => void;
+  quiet?: boolean;
+}
+
+/** Builds a keeper bound to one vault deployment. `tick()` runs one snapshot -> decide -> execute cycle. */
+export async function createBot(o: BotOptions) {
+  const log = o.log ?? logLine;
+  const { rpc, pk } = o;
+  const dep = JSON.parse(readFileSync(o.deploymentPath, "utf8"));
   const vault = dep.vault as Address;
-  const rpc = process.env.RPC_URL ?? process.env.RH_TESTNET_RPC;
-  const pk = process.env.KEEPER_PRIVATE_KEY as Hex | undefined;
-  if (!rpc || !pk) throw new Error("set RPC_URL and KEEPER_PRIVATE_KEY");
-  const policy: KeeperPolicy = JSON.parse(readFileSync(join(ROOT, "keeper/policy.json"), "utf8"));
+  const policy: KeeperPolicy = o.policy ?? JSON.parse(readFileSync(join(ROOT, "keeper/policy.json"), "utf8"));
 
   const probe = createPublicClient({ transport: http(rpc) });
   const chain = defineChain({
@@ -55,9 +63,11 @@ export async function main(argv = process.argv.slice(2)) {
     nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
     rpcUrls: { default: { http: [rpc] } },
   });
-  const pub = createPublicClient({ chain, transport: http(rpc) });
+  // public RPCs drop connections (e.g. TLS BadRecordMac on Robinhood testnet): retry generously
+  const transport = () => http(rpc, { retryCount: 8, retryDelay: 1_500, timeout: 45_000 });
+  const pub = createPublicClient({ chain, transport: transport() });
   const account = privateKeyToAccount(pk);
-  const wallet = createWalletClient({ chain, transport: http(rpc), account });
+  const wallet = createWalletClient({ chain, transport: transport(), account });
 
   const v = { address: vault, abi: offmintVaultAbi } as const;
   const [stock, clock, feed, pm, key, s0, onchainKeeper] = await Promise.all([
@@ -74,7 +84,7 @@ export async function main(argv = process.argv.slice(2)) {
   if (onchainKeeper.toLowerCase() !== account.address.toLowerCase()) {
     log({ level: "warn", msg: "this key is not the vault keeper: only permissionless calls (after grace) will succeed", keeper: onchainKeeper, me: account.address });
   }
-  log({ event: "bot-start", chainId: chain.id, vault, ticker, keeper: account.address });
+  if (!o.quiet) log({ event: "bot-start", chainId: chain.id, vault, ticker, keeper: account.address });
 
   let lastRetryAt = 0;
 
@@ -137,7 +147,7 @@ export async function main(argv = process.argv.slice(2)) {
     };
   }
 
-  async function execute(d: Exclude<Decision, { action: "none" }>) {
+  async function execute(d: Exclude<Decision, { action: "none" }>): Promise<{ hash: Hex; gasUsed: bigint; status: string }> {
     let args: readonly unknown[] = [];
     if (d.action === "arm") args = d.args;
     if (d.action === "settle" || d.action === "retryBuyback") {
@@ -152,29 +162,44 @@ export async function main(argv = process.argv.slice(2)) {
     const after = STATE[await pub.readContract({ ...v, functionName: "state" })];
     log({ event: "tx", action: d.action, args, reason: d.reason, hash, status: rcpt.status, gasUsed: rcpt.gasUsed, stateAfter: after });
     await notify(`Offmint ${ticker}: ${d.action} (${d.reason}) -> ${after} ${hash}`);
+    return { hash, gasUsed: rcpt.gasUsed, status: rcpt.status };
   }
 
-  async function tick() {
+  async function tick(): Promise<{ decision: Decision; tx?: { hash: Hex; gasUsed: bigint; status: string }; error?: string }> {
     const s = await snapshot();
     const d = decide(s, policy);
-    log({ event: "tick", state: s.state, action: d.action, reason: d.reason, poolTick: s.poolTick, feedUpdatedAt: s.feed.updatedAt, now: s.now });
-    if (d.action !== "none") {
-      try {
-        await execute(d);
-      } catch (e: any) {
-        log({ level: "error", action: d.action, msg: String(e?.shortMessage ?? e).slice(0, 400) });
-        if (d.action === "retryBuyback") lastRetryAt = s.now;
-      }
+    if (!o.quiet) log({ event: "tick", state: s.state, action: d.action, reason: d.reason, poolTick: s.poolTick, feedUpdatedAt: s.feed.updatedAt, now: s.now });
+    if (d.action === "none") return { decision: d };
+    try {
+      return { decision: d, tx: await execute(d) };
+    } catch (e: any) {
+      const msg = String(e?.shortMessage ?? e).slice(0, 400);
+      log({ level: "error", action: d.action, msg });
+      if (d.action === "retryBuyback") lastRetryAt = s.now;
+      return { decision: d, error: msg };
     }
   }
 
-  if (argv.includes("--once")) return tick();
+  return { tick, snapshot, account, vault, pub };
+}
+
+export async function main(argv = process.argv.slice(2)) {
+  const opt = (k: string) => (argv.includes(k) ? argv[argv.indexOf(k) + 1] : undefined);
+  const rpc = process.env.RPC_URL ?? process.env.RH_TESTNET_RPC;
+  const pk = process.env.KEEPER_PRIVATE_KEY as Hex | undefined;
+  if (!rpc || !pk) throw new Error("set RPC_URL and KEEPER_PRIVATE_KEY");
+  const bot = await createBot({
+    rpc,
+    pk,
+    deploymentPath: resolve(opt("--deployment") ?? join(ROOT, "contracts/deployments/46630.json")),
+  });
+  if (argv.includes("--once")) return bot.tick();
   const interval = Number(opt("--interval") ?? 60) * 1000;
   for (;;) {
     try {
-      await tick();
+      await bot.tick();
     } catch (e) {
-      log({ level: "error", msg: String(e).slice(0, 400) });
+      logLine({ level: "error", msg: String(e).slice(0, 400) });
     }
     await new Promise((r) => setTimeout(r, interval));
   }

@@ -51,6 +51,25 @@ $28.84 (stock = currency0). The vault is OPEN with a 100 mHIMS demo deposit.
 | PoolModifyLiquidityTest (seed LP) | [`0x6fA6b29869e5044A091E115B5Cb9f2dF737FE53e`](https://explorer.testnet.chain.robinhood.com/address/0x6fA6b29869e5044A091E115B5Cb9f2dF737FE53e) |
 | RangeMath (linked library) | [`0x20f2776d12dc69daabe0b61f731aae53b3a39d3a`](https://explorer.testnet.chain.robinhood.com/address/0x20f2776d12dc69daabe0b61f731aae53b3a39d3a) |
 
+## Stress test (local chain, time-warped)
+
+`npm run stress -- --epochs 40 --users 12 --seed 7` runs the real `Deploy.s.sol` and the unmodified keeper bot through
+40 random weekends in about 67 s: squeezes, partial fills, quiet weekends, Monday gap-ups past the
+buyback cap, and oracles that never come back. There are 12 depositors, making 160 deposits and 69 redemptions between epochs.
+After every step it checks that owner and keeper balances never change, that the vault holds no USDG when OPEN,
+that deposits and withdrawals are gated outside OPEN, and that share supply is frozen while ARMED or PENDING.
+**Violations: 0.** The full report is in `docs/stress/stress-report.json`; CI runs a 10-epoch version.
+
+| Keeper action | Calls | Avg gas |
+|---|---|---|
+| `arm` | 40 | 446,903 |
+| `lock` | 24 | 184,561 |
+| `settle` | 38 | 230,877 |
+| `retryBuyback` | 78 | 179,302 |
+| `emergencyUnwind` | 2 | 75,700 |
+
+Scenario outcomes are synthetic, chosen to exercise every code path. Use the backtest for return expectations, not these.
+
 ## Demo (testnet)
 
 `contracts/script/Deploy.s.sol` deploys mock HIMS, 6-decimal mock USDG, a MockFeed and a ManualSessionClock. It creates a

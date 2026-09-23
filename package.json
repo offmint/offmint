@@ -22,6 +22,7 @@
     "replay": "npm run replay -w keeper --",
     "backtest": "npm run replay -w backtest --",
     "abi": "cd contracts && forge build && cd .. && node scripts/export-abi.mjs",
-    "e2e": "scripts/e2e-local.sh"
+    "e2e": "scripts/e2e-local.sh",
+    "stress": "npm run stress -w keeper --"
   }
 }

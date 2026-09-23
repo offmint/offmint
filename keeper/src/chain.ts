@@ -67,8 +67,12 @@ export async function slot0(
   pm: Address = POOL_MANAGER,
 ): Promise<{ sqrtPriceX96: bigint; tick: number; block: bigint }> {
   const slot = keccak256(encodeAbiParameters([{ type: "bytes32" }, { type: "uint256" }], [poolId, POOLS_SLOT]));
-  const block = await c.getBlockNumber();
-  const word = BigInt(await c.readContract({ address: pm, abi: pmAbi, functionName: "extsload", args: [slot], blockNumber: block }));
+  // read at "latest" directly: viem caches getBlockNumber() for a few seconds, which made reads stale right after a trade
+  const [word0, block] = await Promise.all([
+    c.readContract({ address: pm, abi: pmAbi, functionName: "extsload", args: [slot], blockTag: "latest" }),
+    c.getBlockNumber({ cacheTime: 0 }),
+  ]);
+  const word = BigInt(word0);
   const sqrtPriceX96 = word & ((1n << 160n) - 1n);
   let tick = Number((word >> 160n) & 0xffffffn);
   if (tick >= 1 << 23) tick -= 1 << 24;

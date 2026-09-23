@@ -7,7 +7,8 @@
     "replay": "tsx src/paper.ts --replay",
     "test": "tsx --test test/*.test.ts",
     "typecheck": "tsc --noEmit",
-    "bot": "tsx src/bot.ts"
+    "bot": "tsx src/bot.ts",
+    "stress": "tsx src/stress.ts"
   },
   "engines": {
     "node": ">=20"

@@ -1,0 +1,815 @@
+{
+ "generatedAt": "2026-09-23T07:13:41.438Z",
+ "config": {
+  "epochs": 40,
+  "users": 12,
+  "seed": 7
+ },
+ "wallClockSec": 67,
+ "violations": [],
+ "totals": {
+  "deposits": 160,
+  "redeems": 69,
+  "compoundedPpsPct": 359.1337,
+  "feesPaidStock": 1473.7339,
+  "endedOpen": true
+ },
+ "byScenario": {
+  "squeeze": {
+   "n": 16,
+   "avgPpsChangePct": 8.8806
+  },
+  "partial": {
+   "n": 4,
+   "avgPpsChangePct": 0.0574
+  },
+  "quiet": {
+   "n": 6,
+   "avgPpsChangePct": 0
+  },
+  "gapUp": {
+   "n": 12,
+   "avgPpsChangePct": 1.5825
+  },
+  "staleOracle": {
+   "n": 2,
+   "avgPpsChangePct": 0
+  }
+ },
+ "gas": {
+  "arm": {
+   "calls": 40,
+   "avg": 446903,
+   "max": 448891
+  },
+  "lock": {
+   "calls": 24,
+   "avg": 184561,
+   "max": 188225
+  },
+  "settle": {
+   "calls": 38,
+   "avg": 230877,
+   "max": 366749
+  },
+  "retryBuyback": {
+   "calls": 78,
+   "avg": 179302,
+   "max": 244981
+  },
+  "emergencyUnwind": {
+   "calls": 2,
+   "avg": 75700,
+   "max": 75700
+  }
+ },
+ "epochs": [
+  {
+   "epoch": 1,
+   "scenario": "gapUp",
+   "p0": 28.83999999,
+   "peakUsd": 63.58,
+   "mondayUsd": 37.49,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(1 retries)"
+   ],
+   "stockDeployed": 228,
+   "usdgReceived": 8747.9142,
+   "stockBought": 232.29662395949055,
+   "pnlStock": 4.296623959490548,
+   "feeStock": 0.4296623959490548,
+   "ppsChangePct": 0.5088,
+   "totalAssets": 760
+  },
+  {
+   "epoch": 2,
+   "scenario": "squeeze",
+   "p0": 37.59888288,
+   "peakUsd": 53.45,
+   "mondayUsd": 25.81,
+   "locked": true,
+   "path": [
+    "OPEN"
+   ],
+   "stockDeployed": 440.3600884690624,
+   "usdgReceived": 44.001813,
+   "stockBought": 1.6994320675379313,
+   "pnlStock": 2.632505502138114,
+   "feeStock": 0.2632505502138114,
+   "ppsChangePct": 0.1614,
+   "totalAssets": 1467.8669615635415
+  },
+  {
+   "epoch": 3,
+   "scenario": "partial",
+   "p0": 25.81461573,
+   "peakUsd": 33.35,
+   "mondayUsd": 25.26,
+   "locked": true,
+   "path": [
+    "OPEN"
+   ],
+   "stockDeployed": 465.2860882421304,
+   "usdgReceived": 19.488675,
+   "stockBought": 0.7691986155757841,
+   "pnlStock": 1.4011849075521177,
+   "feeStock": 0.14011849075521177,
+   "ppsChangePct": 0.0813,
+   "totalAssets": 1550.9536274737682
+  },
+  {
+   "epoch": 4,
+   "scenario": "gapUp",
+   "p0": 25.26042393,
+   "peakUsd": 45.19,
+   "mondayUsd": 32.84,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(1 retries)"
+   ],
+   "stockDeployed": 626.2756120729264,
+   "usdgReceived": 21057.711069,
+   "stockBought": 636.9971493654393,
+   "pnlStock": 10.721537292512943,
+   "feeStock": 1.0721537292512944,
+   "ppsChangePct": 0.4622,
+   "totalAssets": 2087.5853735764213
+  },
+  {
+   "epoch": 5,
+   "scenario": "gapUp",
+   "p0": 33.07935514,
+   "peakUsd": 52.57,
+   "mondayUsd": 37.49,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(2 retries)"
+   ],
+   "stockDeployed": 751.7277056253446,
+   "usdgReceived": 32524.390132,
+   "stockBought": 860.841646129066,
+   "pnlStock": 120.18728624275953,
+   "feeStock": 12.018728624275951,
+   "ppsChangePct": 4.3168,
+   "totalAssets": 2505.7590187511487
+  },
+  {
+   "epoch": 6,
+   "scenario": "gapUp",
+   "p0": 37.51511961,
+   "peakUsd": 56.35,
+   "mondayUsd": 37.49,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(2 retries)"
+   ],
+   "stockDeployed": 983.4786021588077,
+   "usdgReceived": 40215.538928,
+   "stockBought": 1064.9856677122395,
+   "pnlStock": 234.43595322037638,
+   "feeStock": 23.443595322037634,
+   "ppsChangePct": 6.4361,
+   "totalAssets": 3278.2620071960255
+  },
+  {
+   "epoch": 7,
+   "scenario": "gapUp",
+   "p0": 37.6091117,
+   "peakUsd": 51.66,
+   "mondayUsd": 37.49,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(1 retries)"
+   ],
+   "stockDeployed": 922.5939762275118,
+   "usdgReceived": 26320.404655,
+   "stockBought": 696.9343132635336,
+   "pnlStock": 130.91272577870828,
+   "feeStock": 13.091272577870827,
+   "ppsChangePct": 3.8312,
+   "totalAssets": 3075.313254091706
+  },
+  {
+   "epoch": 8,
+   "scenario": "partial",
+   "p0": 37.81404506,
+   "peakUsd": 37.11,
+   "mondayUsd": 28.4,
+   "locked": true,
+   "path": [
+    "OPEN"
+   ],
+   "stockDeployed": 1184.9546909869102,
+   "usdgReceived": 0,
+   "stockBought": 0,
+   "pnlStock": -1e-18,
+   "feeStock": 0,
+   "ppsChangePct": 0,
+   "totalAssets": 3949.8489699563675
+  },
+  {
+   "epoch": 9,
+   "scenario": "squeeze",
+   "p0": 28.4031531,
+   "peakUsd": 47.95,
+   "mondayUsd": 31.11,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(1 retries)"
+   ],
+   "stockDeployed": 1416.6022727796935,
+   "usdgReceived": 53543.099818,
+   "stockBought": 1707.6242494940732,
+   "pnlStock": 291.0219767143799,
+   "feeStock": 29.102197671437988,
+   "ppsChangePct": 5.5468,
+   "totalAssets": 4722.007575932311
+  },
+  {
+   "epoch": 10,
+   "scenario": "squeeze",
+   "p0": 31.39792953,
+   "peakUsd": 64.22,
+   "mondayUsd": 28.3,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(2 retries)"
+   ],
+   "stockDeployed": 1743.2268108778053,
+   "usdgReceived": 72744.887601,
+   "stockBought": 2551.147544851024,
+   "pnlStock": 807.9207339732186,
+   "feeStock": 80.79207339732186,
+   "ppsChangePct": 12.5135,
+   "totalAssets": 5810.756036259351
+  },
+  {
+   "epoch": 11,
+   "scenario": "gapUp",
+   "p0": 28.50544409,
+   "peakUsd": 59.44,
+   "mondayUsd": 36.79,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(3 retries)"
+   ],
+   "stockDeployed": 1986.1677607741753,
+   "usdgReceived": 75296.419109,
+   "stockBought": 2031.548227655088,
+   "pnlStock": 45.3804668809128,
+   "feeStock": 4.53804668809128,
+   "ppsChangePct": 0.6169,
+   "totalAssets": 6620.559202580585
+  },
+  {
+   "epoch": 12,
+   "scenario": "quiet",
+   "p0": 36.96433126,
+   "peakUsd": 28.84,
+   "mondayUsd": 31.22,
+   "locked": true,
+   "path": [
+    "OPEN"
+   ],
+   "stockDeployed": 2209.920486832022,
+   "usdgReceived": 0,
+   "stockBought": 0,
+   "pnlStock": -1e-18,
+   "feeStock": 0,
+   "ppsChangePct": 0,
+   "totalAssets": 7366.401622773406
+  },
+  {
+   "epoch": 13,
+   "scenario": "squeeze",
+   "p0": 31.22145438,
+   "peakUsd": 69.4,
+   "mondayUsd": 24.62,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(3 retries)"
+   ],
+   "stockDeployed": 2242.6224214411363,
+   "usdgReceived": 93304.356499,
+   "stockBought": 3760.6729868067814,
+   "pnlStock": 1518.0505653656448,
+   "feeStock": 151.8050565365645,
+   "ppsChangePct": 18.2765,
+   "totalAssets": 7475.408071470455
+  },
+  {
+   "epoch": 14,
+   "scenario": "squeeze",
+   "p0": 24.80605224,
+   "peakUsd": 49.1,
+   "mondayUsd": 29.07,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(3 retries)"
+   ],
+   "stockDeployed": 2498.794727714381,
+   "usdgReceived": 82520.021702,
+   "stockBought": 2816.2171962115763,
+   "pnlStock": 317.4224684971953,
+   "feeStock": 31.74224684971953,
+   "ppsChangePct": 3.4298,
+   "totalAssets": 8329.315759047937
+  },
+  {
+   "epoch": 15,
+   "scenario": "squeeze",
+   "p0": 29.08870355,
+   "peakUsd": 50.61,
+   "mondayUsd": 28.61,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(3 retries)"
+   ],
+   "stockDeployed": 2651.9987942086236,
+   "usdgReceived": 102671.863616,
+   "stockBought": 3561.3464190442855,
+   "pnlStock": 909.347624835662,
+   "feeStock": 90.93476248356622,
+   "ppsChangePct": 9.2581,
+   "totalAssets": 8839.995980695412
+  },
+  {
+   "epoch": 16,
+   "scenario": "squeeze",
+   "p0": 28.84485151,
+   "peakUsd": 62.27,
+   "mondayUsd": 32.64,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(3 retries)"
+   ],
+   "stockDeployed": 2659.0218440409944,
+   "usdgReceived": 102021.469084,
+   "stockBought": 3102.252578810402,
+   "pnlStock": 443.230734769408,
+   "feeStock": 44.3230734769408,
+   "ppsChangePct": 4.5006,
+   "totalAssets": 8863.406146803312
+  },
+  {
+   "epoch": 17,
+   "scenario": "quiet",
+   "p0": 32.82179582,
+   "peakUsd": 32.64,
+   "mondayUsd": 31.74,
+   "locked": true,
+   "path": [
+    "OPEN"
+   ],
+   "stockDeployed": 3071.194142428734,
+   "usdgReceived": 0,
+   "stockBought": 0,
+   "pnlStock": -1e-18,
+   "feeStock": 0,
+   "ppsChangePct": 0,
+   "totalAssets": 10237.313808095781
+  },
+  {
+   "epoch": 18,
+   "scenario": "squeeze",
+   "p0": 31.74325552,
+   "peakUsd": 70.47,
+   "mondayUsd": 28.99,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(5 retries)"
+   ],
+   "stockDeployed": 3246.394142428734,
+   "usdgReceived": 137107.464544,
+   "stockBought": 4692.08625191386,
+   "pnlStock": 1445.692109485126,
+   "feeStock": 144.5692109485126,
+   "ppsChangePct": 12.0237,
+   "totalAssets": 10821.313808095781
+  },
+  {
+   "epoch": 19,
+   "scenario": "quiet",
+   "p0": 29.01718018,
+   "peakUsd": 28.99,
+   "mondayUsd": 31.84,
+   "locked": true,
+   "path": [
+    "OPEN"
+   ],
+   "stockDeployed": 3671.8451152596504,
+   "usdgReceived": 0,
+   "stockBought": 0,
+   "pnlStock": -1e-18,
+   "feeStock": 0,
+   "ppsChangePct": 0,
+   "totalAssets": 12239.483717532168
+  },
+  {
+   "epoch": 20,
+   "scenario": "squeeze",
+   "p0": 31.83512014,
+   "peakUsd": 64.76,
+   "mondayUsd": 25.08,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(6 retries)"
+   ],
+   "stockDeployed": 3707.060380352028,
+   "usdgReceived": 157033.507722,
+   "stockBought": 6213.034534530591,
+   "pnlStock": 2505.974154178563,
+   "feeStock": 250.5974154178563,
+   "ppsChangePct": 18.252,
+   "totalAssets": 12356.867934506761
+  },
+  {
+   "epoch": 21,
+   "scenario": "gapUp",
+   "p0": 25.14505405,
+   "peakUsd": 41.52,
+   "mondayUsd": 32.6,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(6 retries)"
+   ],
+   "stockDeployed": 4659.3734019802405,
+   "usdgReceived": 155728.299753,
+   "stockBought": 4739.8658637885055,
+   "pnlStock": 80.49246180826573,
+   "feeStock": 8.049246180826572,
+   "ppsChangePct": 0.4664,
+   "totalAssets": 15531.244673267467
+  },
+  {
+   "epoch": 22,
+   "scenario": "staleOracle",
+   "p0": 32.74840427,
+   "peakUsd": 28.84,
+   "mondayUsd": 27.01,
+   "locked": true,
+   "path": [
+    "ARMED",
+    "OPEN"
+   ],
+   "stockDeployed": 3828.017347901167,
+   "usdgReceived": 0,
+   "stockBought": 0,
+   "pnlStock": -1e-18,
+   "feeStock": 0,
+   "ppsChangePct": 0,
+   "totalAssets": 12760.057826337224
+  },
+  {
+   "epoch": 23,
+   "scenario": "gapUp",
+   "p0": 27.01094216,
+   "peakUsd": 59.2,
+   "mondayUsd": 35.11,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(4 retries)"
+   ],
+   "stockDeployed": 3271.0043362951833,
+   "usdgReceived": 117486.721537,
+   "stockBought": 3319.398650636918,
+   "pnlStock": 48.39431434173509,
+   "feeStock": 4.839431434173509,
+   "ppsChangePct": 0.3995,
+   "totalAssets": 10903.34778765061
+  },
+  {
+   "epoch": 24,
+   "scenario": "squeeze",
+   "p0": 35.45244009,
+   "peakUsd": 50.32,
+   "mondayUsd": 29.7,
+   "locked": true,
+   "path": [
+    "OPEN"
+   ],
+   "stockDeployed": 3211.2582122757103,
+   "usdgReceived": 301.749198,
+   "stockBought": 10.127949392037625,
+   "pnlStock": 16.923466524804493,
+   "feeStock": 1.6923466524804494,
+   "ppsChangePct": 0.1423,
+   "totalAssets": 10704.194040919034
+  },
+  {
+   "epoch": 25,
+   "scenario": "squeeze",
+   "p0": 29.7059696,
+   "peakUsd": 65.34,
+   "mondayUsd": 32.24,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(4 retries)"
+   ],
+   "stockDeployed": 3282.747708597017,
+   "usdgReceived": 129788.24436,
+   "stockBought": 3994.960948375972,
+   "pnlStock": 712.2132397789543,
+   "feeStock": 71.22132397789542,
+   "ppsChangePct": 5.8578,
+   "totalAssets": 10942.492361990058
+  },
+  {
+   "epoch": 26,
+   "scenario": "gapUp",
+   "p0": 32.42173409,
+   "peakUsd": 67.35,
+   "mondayUsd": 41.91,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(4 retries)"
+   ],
+   "stockDeployed": 2971.842900466686,
+   "usdgReceived": 128175.620791,
+   "stockBought": 3034.2082657030473,
+   "pnlStock": 62.3653652363613,
+   "feeStock": 6.23653652363613,
+   "ppsChangePct": 0.5666,
+   "totalAssets": 9906.14300155562
+  },
+  {
+   "epoch": 27,
+   "scenario": "quiet",
+   "p0": 42.31126215,
+   "peakUsd": 28.84,
+   "mondayUsd": 27.55,
+   "locked": true,
+   "path": [
+    "OPEN"
+   ],
+   "stockDeployed": 3052.3814901687015,
+   "usdgReceived": 0,
+   "stockBought": 0,
+   "pnlStock": -1e-18,
+   "feeStock": 0,
+   "ppsChangePct": 0,
+   "totalAssets": 10174.604967229006
+  },
+  {
+   "epoch": 28,
+   "scenario": "quiet",
+   "p0": 27.54897133,
+   "peakUsd": 27.55,
+   "mondayUsd": 30.46,
+   "locked": true,
+   "path": [
+    "OPEN"
+   ],
+   "stockDeployed": 2964.609522412464,
+   "usdgReceived": 22.164302,
+   "stockBought": 0.7255398851023345,
+   "pnlStock": -0.000032657817147412,
+   "feeStock": 0,
+   "ppsChangePct": 0,
+   "totalAssets": 9882.03174137488
+  },
+  {
+   "epoch": 29,
+   "scenario": "squeeze",
+   "p0": 30.45717807,
+   "peakUsd": 50.9,
+   "mondayUsd": 28.05,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(4 retries)"
+   ],
+   "stockDeployed": 2769.1188415009256,
+   "usdgReceived": 112140.37189,
+   "stockBought": 3966.8785537605304,
+   "pnlStock": 1197.7597122596053,
+   "feeStock": 119.77597122596053,
+   "ppsChangePct": 11.6786,
+   "totalAssets": 9230.396138336419
+  },
+  {
+   "epoch": 30,
+   "scenario": "squeeze",
+   "p0": 28.11548088,
+   "peakUsd": 51.66,
+   "mondayUsd": 28.19,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(4 retries)"
+   ],
+   "stockDeployed": 3256.748871606889,
+   "usdgReceived": 121992.011615,
+   "stockBought": 4294.224065192854,
+   "pnlStock": 1037.4751935859654,
+   "feeStock": 103.74751935859653,
+   "ppsChangePct": 8.6012,
+   "totalAssets": 10855.829572022963
+  },
+  {
+   "epoch": 31,
+   "scenario": "gapUp",
+   "p0": 28.35695256,
+   "peakUsd": 47.08,
+   "mondayUsd": 36.65,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(4 retries)"
+   ],
+   "stockDeployed": 3065.606125583223,
+   "usdgReceived": 115523.174157,
+   "stockBought": 3127.886375570437,
+   "pnlStock": 62.28024998721388,
+   "feeStock": 6.228024998721388,
+   "ppsChangePct": 0.5485,
+   "totalAssets": 10218.68708527741
+  },
+  {
+   "epoch": 32,
+   "scenario": "squeeze",
+   "p0": 36.94537741,
+   "peakUsd": 48.46,
+   "mondayUsd": 31.13,
+   "locked": true,
+   "path": [
+    "OPEN"
+   ],
+   "stockDeployed": 2511.0796042015827,
+   "usdgReceived": 164.329669,
+   "stockBought": 5.2620008523614406,
+   "pnlStock": 8.954839321290185,
+   "feeStock": 0.8954839321290184,
+   "ppsChangePct": 0.0963,
+   "totalAssets": 8370.265347338607
+  },
+  {
+   "epoch": 33,
+   "scenario": "squeeze",
+   "p0": 31.13672806,
+   "peakUsd": 62.42,
+   "mondayUsd": 26.67,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(3 retries)"
+   ],
+   "stockDeployed": 2183.865544646766,
+   "usdgReceived": 90587.618035,
+   "stockBought": 3370.293850384928,
+   "pnlStock": 1186.4283057381624,
+   "feeStock": 118.64283057381625,
+   "ppsChangePct": 14.6683,
+   "totalAssets": 7279.55181548922
+  },
+  {
+   "epoch": 34,
+   "scenario": "partial",
+   "p0": 26.80893222,
+   "peakUsd": 32.86,
+   "mondayUsd": 25.2,
+   "locked": true,
+   "path": [
+    "OPEN"
+   ],
+   "stockDeployed": 2541.907538113734,
+   "usdgReceived": 72.566313,
+   "stockBought": 2.871451878508943,
+   "pnlStock": 5.199935913169515,
+   "feeStock": 0.5199935913169516,
+   "ppsChangePct": 0.0552,
+   "totalAssets": 8473.02512704578
+  },
+  {
+   "epoch": 35,
+   "scenario": "gapUp",
+   "p0": 25.19619337,
+   "peakUsd": 44.81,
+   "mondayUsd": 32.75,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(3 retries)"
+   ],
+   "stockDeployed": 2412.7101837531095,
+   "usdgReceived": 80881.277353,
+   "stockBought": 2450.3432565322414,
+   "pnlStock": 37.63307277913195,
+   "feeStock": 3.763307277913195,
+   "ppsChangePct": 0.4211,
+   "totalAssets": 8042.367279177031
+  },
+  {
+   "epoch": 36,
+   "scenario": "squeeze",
+   "p0": 33.02421841,
+   "peakUsd": 63.06,
+   "mondayUsd": 26.69,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(3 retries)"
+   ],
+   "stockDeployed": 2290.7988882327795,
+   "usdgReceived": 100596.635388,
+   "stockBought": 3740.1351658860954,
+   "pnlStock": 1449.3362776533158,
+   "feeStock": 144.93362776533158,
+   "ppsChangePct": 17.0823,
+   "totalAssets": 7635.996294109265
+  },
+  {
+   "epoch": 37,
+   "scenario": "partial",
+   "p0": 26.92416989,
+   "peakUsd": 36.22,
+   "mondayUsd": 29.96,
+   "locked": true,
+   "path": [
+    "OPEN"
+   ],
+   "stockDeployed": 2604.77462108668,
+   "usdgReceived": 1904.58121,
+   "stockBought": 63.36234213186832,
+   "pnlStock": 8.974882356877186,
+   "feeStock": 0.8974882356877186,
+   "ppsChangePct": 0.093,
+   "totalAssets": 8682.582070288934
+  },
+  {
+   "epoch": 38,
+   "scenario": "staleOracle",
+   "p0": 29.9787882,
+   "peakUsd": 29.96,
+   "mondayUsd": 31.3,
+   "locked": true,
+   "path": [
+    "ARMED",
+    "OPEN"
+   ],
+   "stockDeployed": 2547.563175709117,
+   "usdgReceived": 0,
+   "stockBought": 0,
+   "pnlStock": -1e-18,
+   "feeStock": 0,
+   "ppsChangePct": 0,
+   "totalAssets": 8491.877252363724
+  },
+  {
+   "epoch": 39,
+   "scenario": "quiet",
+   "p0": 31.30184469,
+   "peakUsd": 31.3,
+   "mondayUsd": 28.93,
+   "locked": true,
+   "path": [
+    "OPEN"
+   ],
+   "stockDeployed": 2318.634207288118,
+   "usdgReceived": 0,
+   "stockBought": 0,
+   "pnlStock": -1e-18,
+   "feeStock": 0,
+   "ppsChangePct": 0,
+   "totalAssets": 7728.780690960392
+  },
+  {
+   "epoch": 40,
+   "scenario": "gapUp",
+   "p0": 28.92981213,
+   "peakUsd": 57.76,
+   "mondayUsd": 37.61,
+   "locked": true,
+   "path": [
+    "PENDING_BUYBACK",
+    "OPEN(3 retries)"
+   ],
+   "stockDeployed": 2222.44851895773,
+   "usdgReceived": 85527.188501,
+   "stockBought": 2256.727115466136,
+   "pnlStock": 34.27859650840625,
+   "feeStock": 3.4278596508406256,
+   "ppsChangePct": 0.4164,
+   "totalAssets": 7408.1617298591
+  }
+ ]
+}
