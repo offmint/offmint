@@ -25,6 +25,8 @@ interface KeeperConfig {
   tickerSource?: "curation" | "static";
   /** Liquid names paper-traded alongside the curated list so results show both regimes honestly. */
   controls?: string[];
+  /** Explicit watch list (e.g. new listings in the no-feed window: BB, AMC, RCAT), always paper-traded. */
+  watch?: string[];
   tickers: string[];
   skip: string[];
 }
@@ -52,7 +54,7 @@ function loadConfig(only?: string[]): { cfgs: TickerCfg[]; params: Params; kc: K
   let universe = kc.tickers;
   const curPath = join(ROOT, "contracts/config/tickers.json");
   if (kc.tickerSource === "curation" && existsSync(curPath)) {
-    universe = curatedUniverse(JSON.parse(readFileSync(curPath, "utf8")), kc.controls ?? []);
+    universe = [...new Set([...curatedUniverse(JSON.parse(readFileSync(curPath, "utf8")), kc.controls ?? []), ...(kc.watch ?? [])])].sort();
     log({ event: "universe", source: "curation", tickers: universe });
   }
   const cfgs: TickerCfg[] = [];

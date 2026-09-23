@@ -6057,6 +6057,60 @@
         }
       ],
       "poolCount": 115
+    },
+    "BB": {
+      "token": "0x48E39E56aCdbA37b09020C0b734A613C9a2f100A",
+      "decimals": 18,
+      "feed": null,
+      "feedDecimals": null,
+      "stockIsCurrency0": true,
+      "source": "M0.5 screen (new listing, no Chainlink feed); pool from Initialize logs",
+      "bestNoHookPool": {
+        "poolId": "0xc250650901b49785b18443a0b1bfee10b98f5c20f11988635252030e5283a288",
+        "poolKey": {
+          "currency0": "0x48E39E56aCdbA37b09020C0b734A613C9a2f100A",
+          "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+          "fee": 7100,
+          "tickSpacing": 71,
+          "hooks": "0x0000000000000000000000000000000000000000"
+        }
+      }
+    },
+    "AMC": {
+      "token": "0x05a3d1Cd21d0C88145E82600E62e7E496e0F222B",
+      "decimals": 18,
+      "feed": null,
+      "feedDecimals": null,
+      "stockIsCurrency0": true,
+      "source": "M0.5 screen (new listing, no Chainlink feed); pool from Initialize logs",
+      "bestNoHookPool": {
+        "poolId": "0x7499938c352d5b5b8f0c648722aca5ee964ef9b85c3a3041f1ec379726291d9d",
+        "poolKey": {
+          "currency0": "0x05a3d1Cd21d0C88145E82600E62e7E496e0F222B",
+          "currency1": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+          "fee": 1000,
+          "tickSpacing": 10,
+          "hooks": "0x0000000000000000000000000000000000000000"
+        }
+      }
+    },
+    "RCAT": {
+      "token": "0xFDE6b5d9BB419B10C23268c74e369AbFF39C0460",
+      "decimals": 18,
+      "feed": null,
+      "feedDecimals": null,
+      "stockIsCurrency0": false,
+      "source": "M0.5 screen (new listing, no Chainlink feed); pool from Initialize logs",
+      "bestNoHookPool": {
+        "poolId": "0xd3c27381f7d1ef4dcd8ec4ba66e74fe88d06ab5250c1393769d4dd0e996a8dc9",
+        "poolKey": {
+          "currency0": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+          "currency1": "0xFDE6b5d9BB419B10C23268c74e369AbFF39C0460",
+          "fee": 2500,
+          "tickSpacing": 25,
+          "hooks": "0x0000000000000000000000000000000000000000"
+        }
+      }
     }
   }
 }
