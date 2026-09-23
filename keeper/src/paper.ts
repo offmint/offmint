@@ -79,7 +79,9 @@ function loadConfig(only?: string[]): { cfgs: TickerCfg[]; params: Params; kc: K
 
 // ------------------------------------------------------------------ logging / output
 
-const LOG_DIR = join(ROOT, "keeper/logs");
+const LOG_DIR = process.env.LOG_DIR ?? join(ROOT, "keeper/logs");
+/** Last live tick (read by the HTTP service for /health). */
+export const liveStatus = { lastTickAt: 0, lastTick: null as Record<string, unknown> | null, ticks: 0 };
 function log(o: Record<string, unknown>) {
   const line = JSON.stringify({ ts: iso(Math.floor(Date.now() / 1000)), ...o });
   console.log(line);
@@ -218,7 +220,7 @@ async function replay(dateArg: string, only: string[] | undefined, outDir: strin
   }
 }
 
-async function live(only: string[] | undefined, outDir: string) {
+export async function live(only: string[] | undefined, outDir: string) {
   const { cfgs, params, kc } = loadConfig(only);
   const c = makeClient();
   const ctx: Ctx = { c, params, hist: new Map() };
@@ -244,7 +246,11 @@ async function live(only: string[] | undefined, outDir: string) {
         }
         if (sim.status !== "waiting") write(outDir, sim);
       }
-      log({ event: "tick", now: iso(now), status: Object.fromEntries([...sims].map(([k, s]) => [k, s.status])) });
+      const tick = { event: "tick", now: iso(now), status: Object.fromEntries([...sims].map(([k, s]) => [k, s.status])) };
+      log(tick);
+      liveStatus.lastTickAt = Date.now();
+      liveStatus.lastTick = tick;
+      liveStatus.ticks++;
     } catch (e) {
       log({ level: "error", msg: String(e).slice(0, 400) });
     }
@@ -261,7 +267,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     return i >= 0 ? args[i + 1] : undefined;
   };
   const only = opt("--tickers")?.split(",").map((s) => s.trim().toUpperCase());
-  const outDir = resolve(opt("--out") ?? join(ROOT, "web/public/paper"));
+  const outDir = resolve(opt("--out") ?? process.env.PAPER_OUT_DIR ?? join(ROOT, "web/public/paper"));
   const replayIdx = args.indexOf("--replay");
   if (replayIdx >= 0) {
     const date = args[replayIdx + 1];

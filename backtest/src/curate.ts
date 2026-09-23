@@ -4,7 +4,7 @@
 //   P0 (Chainlink Friday close print), max pool premium vs P0, hours >= +10%, premium left at reopen,
 //   pool depth (USD to move +10%), and a full simulated vault epoch (ladder-free single band, lock variant, ex-fees).
 // Writes contracts/config/tickers.json (bucket + evidence per ticker + the 3-5 v1 picks) and docs/curation.md.
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Address, Hex } from "viem";
@@ -147,24 +147,32 @@ async function main() {
     };
   }
   const rounds: Record<string, Round[]> = {};
+  const evCachePre = join(ROOT, `backtest/.cache/evidence-${weekends[0]}-${weekends.at(-1)}.json`);
+  const pre: Record<string, unknown> = existsSync(evCachePre) ? JSON.parse(readFileSync(evCachePre, "utf8")) : {};
+  const needAny = (t: string) => !pre[t];
   for (const t of tickers) {
-    if (!cfgs[t].feed) continue;
+    if (!cfgs[t].feed || !needAny(t)) continue;
     rounds[t] = await feedRounds(c, cfgs[t].feed as Address, weekends[0] - 3 * DAY);
     process.stdout.write(`feed ${t}: ${rounds[t].length} rounds\n`);
   }
 
   const evidence: Record<string, WeekendEvidence[]> = Object.fromEntries(tickers.map((t) => [t, []]));
-  for (const sat of weekends) {
+  const evCache = join(ROOT, `backtest/.cache/evidence-${weekends[0]}-${weekends.at(-1)}.json`);
+  const cached: Record<string, WeekendEvidence[]> = existsSync(evCache) ? JSON.parse(readFileSync(evCache, "utf8")) : {};
+  const need = tickers.filter((t) => !cached[t]);
+  for (const t of tickers) if (cached[t]) evidence[t] = cached[t];
+  if (need.length) console.log(`backtesting ${need.length} ticker(s); ${tickers.length - need.length} from cache`);
+  for (const sat of need.length ? weekends : []) {
     const fri20 = sat - 4 * 3600;
     const mon = sat + 2 * DAY;
     const [bFri, bSat, bEnd] = [await blockAtOrBefore(c, fri20), await blockAtOrBefore(c, sat), await blockAtOrBefore(c, mon + 3600)];
-    const ids = tickers.map((t) => cfgs[t].poolId as Hex);
+    const ids = need.map((t) => cfgs[t].poolId as Hex);
     const logs = await swapLogs(c, ids, bFri, bEnd);
     const byPool = new Map<string, SwapLog[]>();
     for (const l of logs) (byPool.get(l.poolId.toLowerCase()) ?? byPool.set(l.poolId.toLowerCase(), []).get(l.poolId.toLowerCase())!).push(l);
     process.stdout.write(`weekend ${new Date(sat * 1000).toISOString().slice(0, 10)}: ${logs.length} swaps\n`);
 
-    for (const t of tickers) {
+    for (const t of need) {
       const cfg = cfgs[t];
       const s0 = cfg.stockIsCurrency0;
       const pl = byPool.get(cfg.poolId.toLowerCase()) ?? [];
@@ -225,6 +233,15 @@ async function main() {
       w.specVsHodlPctExFees = sim.settlement.results.spec[0].vsHodlPctExFees;
       if (!sim.settlement.buybackPossible) w.note = "buyback capped: would end PENDING_BUYBACK";
     }
+  }
+
+  if (need.length) {
+    mkdirSync(dirname(evCache), { recursive: true });
+    writeFileSync(evCache, JSON.stringify({ ...cached, ...Object.fromEntries(need.map((t) => [t, evidence[t]])) }));
+  }
+  if (args.includes("--collect-only")) {
+    console.log(`evidence cached: ${evCache}`);
+    return;
   }
 
   // ---------------------------------------------------------------- output

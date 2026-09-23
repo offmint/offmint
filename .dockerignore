@@ -1,0 +1,13 @@
+**/node_modules
+.git
+.env
+.env.*
+contracts/lib
+contracts/out
+contracts/cache
+contracts/broadcast
+web
+docs
+backtest/.cache
+keeper/logs
+**/*.log

@@ -127,8 +127,13 @@ async function main() {
   // ------------------------------------------------------------ current slot0 + liquidity for every pool (multicall)
   const all = [...pools.values()].flat();
   const slotOf = (id: Hex) => BigInt(keccak256(encodeAbiParameters([{ type: "bytes32" }, { type: "uint256" }], [id, 6n])));
-  for (let i = 0; i < all.length; i += 200) {
-    const chunk = all.slice(i, i + 200);
+  // state reads: 1000 pools per Multicall3 batch, cached for the day (a rerun skips straight to the swap scan)
+  const statePath = join(ROOT, `backtest/.cache/state-${new Date().toISOString().slice(0, 10)}.json`);
+  const stateCache: Record<string, [string, string]> = existsSync(statePath) ? JSON.parse(readFileSync(statePath, "utf8")) : {};
+  const todo = all.filter((p) => !stateCache[p.poolId]);
+  console.log(`pool state: ${all.length - todo.length} cached, ${todo.length} to read`);
+  for (let i = 0; i < todo.length; i += 1000) {
+    const chunk = todo.slice(i, i + 1000);
     const res = await c.multicall({
       contracts: chunk.flatMap((p) => [
         { address: POOL_MANAGER, abi: pmAbi, functionName: "extsload" as const, args: [`0x${slotOf(p.poolId).toString(16).padStart(64, "0")}` as Hex] as const },
@@ -139,19 +144,23 @@ async function main() {
     chunk.forEach((p, j) => {
       const w0 = res[2 * j].status === "success" ? BigInt(res[2 * j].result as Hex) : 0n;
       const w3 = res[2 * j + 1].status === "success" ? BigInt(res[2 * j + 1].result as Hex) : 0n;
-      p.sqrtPriceX96 = (w0 & ((1n << 160n) - 1n)).toString();
-      p.liquidity = (w3 & ((1n << 128n) - 1n)).toString();
-      p.stockDepth10 = stockDepthWithin10(BigInt(p.liquidity), BigInt(p.sqrtPriceX96), p.stockIs0);
+      stateCache[p.poolId] = [(w0 & ((1n << 160n) - 1n)).toString(), (w3 & ((1n << 128n) - 1n)).toString()];
     });
+    writeFileSync(statePath, JSON.stringify(stateCache));
+    process.stdout.write(`s${Math.min(i + 1000, todo.length)} `);
   }
+  for (const p of all) {
+    [p.sqrtPriceX96, p.liquidity] = stateCache[p.poolId];
+    p.stockDepth10 = stockDepthWithin10(BigInt(p.liquidity), BigInt(p.sqrtPriceX96), p.stockIs0);
+  }
+  console.log();
 
   // ------------------------------------------------------------ last N days of swaps for the pools that matter
-  // top 6 pools per ticker by stock depth, plus every USDG pool with any liquidity
+  // top 3 pools per ticker by stock depth (any quote: catches meme pools) + top 3 USDG pools
   const tracked: Pool[] = [];
   for (const ps of pools.values()) {
-    const live = ps.filter((p) => BigInt(p.liquidity) > 0n);
-    const keep = new Set([...live].sort((a, b) => b.stockDepth10 - a.stockDepth10).slice(0, 6));
-    for (const p of live) if (p.quote.toLowerCase() === USDG) keep.add(p);
+    const live = ps.filter((p) => BigInt(p.liquidity) > 0n).sort((a, b) => b.stockDepth10 - a.stockDepth10);
+    const keep = new Set([...live.slice(0, 3), ...live.filter((p) => p.quote.toLowerCase() === USDG).slice(0, 3)]);
     tracked.push(...keep);
   }
   const now = Number((await c.getBlock()).timestamp);
@@ -159,8 +168,8 @@ async function main() {
   const to = await c.getBlockNumber();
   const byId = new Map(tracked.map((p) => [p.poolId.toLowerCase(), p]));
   console.log(`tracking ${tracked.length} pools over ${days}d (${to - from} blocks)`);
-  for (let i = 0; i < tracked.length; i += 60) {
-    const ids = tracked.slice(i, i + 60).map((p) => p.poolId);
+  for (let i = 0; i < tracked.length; i += 150) {
+    const ids = tracked.slice(i, i + 150).map((p) => p.poolId);
     const logs: SwapLog[] = await swapLogs(c, ids, from, to);
     for (const l of logs) {
       const p = byId.get(l.poolId.toLowerCase())!;

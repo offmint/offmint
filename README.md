@@ -70,6 +70,14 @@ that deposits and withdrawals are gated outside OPEN, and that share supply is f
 
 Scenario outcomes are synthetic, chosen to exercise every code path. Use the backtest for return expectations, not these.
 
+## Paper mode service (Railway)
+
+The service runs keeper paper mode around the clock: a read-only, deterministic simulation on mainnet, with no keys. It uses the
+curated tickers (`contracts/config/tickers.json`) plus major controls, and records what the vault would have done every weekend.
+`Dockerfile` + `railway.json`: deploy the repo on Railway and mount a volume at `/data`. Endpoints:
+`/health` (last tick, restarts), `/paper/index.json`, `/paper/<date>-<TICKER>.json`. Run it locally with `npm run service -w keeper`,
+or in tmux with `scripts/paper-run.sh`.
+
 ## Demo (testnet)
 
 **Completed live on 23 Sep 2026** (`contracts/deployments/demo-46630.json`). The keeper bot armed

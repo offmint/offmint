@@ -139,8 +139,9 @@ export interface SwapLog {
 }
 
 // Older logs on this node carry blockTimestamp = 0x0, so fall back to interpolating between anchor blocks
-// (cached, every 8192 blocks ~ 14 min at ~10 blocks/s). Error is seconds-to-minutes, fine for paper mode.
-const ANCHOR = 8192n;
+// (cached, every 65536 blocks ~ 1.8 h at ~10 blocks/s; block production is steady, so error is ~minutes).
+// A coarser grid keeps historical scans inside the public RPC's rate limit.
+const ANCHOR = 65536n;
 const anchorTs = new Map<bigint, number>();
 async function anchor(c: Client, b: bigint): Promise<number> {
   let t = anchorTs.get(b);
