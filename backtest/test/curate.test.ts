@@ -38,7 +38,7 @@ test("pickCandidates: shippable flagged names by volume, then flagship + majors"
   const screen = {
     tickers: {
       A: { swaps7d: 10, thin: true, memecoinAdjacent: false, vol7dStock: 5 },
-      B: { swaps7d: 10, thin: false, memecoinAdjacent: true, vol7dStock: 50 },
+      B: { swaps7d: 10, thin: false, memecoinAdjacent: true, vol7dStock: 50, top2ByVolume: [{ quote: "USDG" }, { quote: "MEME" }] },
       C: { swaps7d: 10, thin: true, memecoinAdjacent: false, vol7dStock: 99 }, // no feed -> cannot ship
       D: { swaps7d: 0, thin: true, memecoinAdjacent: true, vol7dStock: 0 }, // inactive
       E: { swaps7d: 10, thin: false, memecoinAdjacent: false, vol7dStock: 999 }, // not flagged
@@ -47,4 +47,14 @@ test("pickCandidates: shippable flagged names by volume, then flagship + majors"
   const pool = { bestNoHookPool: { poolId: "0x1" } };
   const facts = { stocks: { A: { feed: "0xa", ...pool }, B: { feed: "0xb", ...pool }, C: { feed: null, ...pool }, D: { feed: "0xd", ...pool }, E: { feed: "0xe", ...pool }, HIMS: pool, NVDA: pool, SPY: pool, AAPL: pool } };
   assert.deepEqual(pickCandidates(screen, facts), ["B", "A", "HIMS", "NVDA", "SPY", "AAPL"]);
+});
+
+test("memeAdjacent: memecoin quotes count; USDG, ETH and other stock tokens do not", async () => {
+  const { memeAdjacent } = await import("../src/curate.js");
+  const stocks = new Set(["SPY", "TSLA", "HIMS"]);
+  const v = (...q: string[]) => ({ top2ByVolume: q.map((quote) => ({ quote })) });
+  assert.equal(memeAdjacent(v("SPY", "BONER"), stocks), true, "HIMS/BONER");
+  assert.equal(memeAdjacent(v("SPY", "ETH"), stocks), false, "stock pair + ETH");
+  assert.equal(memeAdjacent(v("USDG", "WETH"), stocks), false);
+  assert.equal(memeAdjacent(v("USDG", "MEME"), stocks), true);
 });

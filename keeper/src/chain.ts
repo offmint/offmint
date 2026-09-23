@@ -108,18 +108,34 @@ export function poolIdOf(k: { currency0: Address; currency1: Address; fee: numbe
   );
 }
 
-/** Greatest block with timestamp <= ts (binary search). */
+/**
+ * Greatest block with timestamp <= ts. Block production on Robinhood Chain is steady (~10/s), so a secant estimate
+ * lands within a few blocks after 2-4 getBlock calls; a short binary search finishes the job. (A plain binary search
+ * cost ~27 calls, which dominated historical scans on the rate-limited public RPC.)
+ */
 export async function blockAtOrBefore(c: Client, ts: number): Promise<bigint> {
-  let hi = await c.getBlockNumber();
-  const top = await c.getBlock({ blockNumber: hi });
-  if (Number(top.timestamp) <= ts) return hi;
-  // ~10 blocks/s on Robinhood Chain; start with a guess to shorten the search
-  let lo = hi - BigInt(Math.ceil((Number(top.timestamp) - ts) * 12)) - 10_000n;
+  const top = await c.getBlock();
+  if (Number(top.timestamp) <= ts) return top.number;
+  const tsOf = async (b: bigint) => Number((await c.getBlock({ blockNumber: b < 0n ? 0n : b })).timestamp);
+  const RATE = 10; // blocks per second on Robinhood Chain (steady); only used to aim, correctness comes from the search
+  let g = top.number - BigInt(Math.ceil((Number(top.timestamp) - ts) * RATE));
+  for (let i = 0; i < 3; i++) {
+    const t = await tsOf(g);
+    if (Math.abs(t - ts) <= 2) break;
+    g += BigInt(Math.round((ts - t) * RATE));
+  }
+  // bracket [lo, hi] with ts(lo) <= ts < ts(hi), widening if the aim was off
+  let w = 100n;
+  let lo = g - w;
+  while (lo > 0n && (await tsOf(lo)) > ts) lo -= (w *= 4n);
   if (lo < 0n) lo = 0n;
-  while (Number((await c.getBlock({ blockNumber: lo })).timestamp) > ts) lo = lo / 2n;
+  w = 100n;
+  let hi = g + w;
+  while (hi < top.number && (await tsOf(hi)) <= ts) hi += (w *= 4n);
+  if (hi > top.number) hi = top.number;
   while (lo < hi) {
     const mid = (lo + hi + 1n) / 2n;
-    if (Number((await c.getBlock({ blockNumber: mid })).timestamp) <= ts) lo = mid;
+    if ((await tsOf(mid)) <= ts) lo = mid;
     else hi = mid - 1n;
   }
   return lo;
@@ -200,7 +216,7 @@ export async function swapLogs(c: Client, poolIds: Hex[], from: bigint, to: bigi
 }
 
 /** Most recent swap at or before `block` (scans backwards in widening windows). */
-export async function lastSwapBefore(c: Client, poolId: Hex, block: bigint, maxLookback = 20_000_000n): Promise<SwapLog | undefined> {
+export async function lastSwapBefore(c: Client, poolId: Hex, block: bigint, maxLookback = 3_200_000n): Promise<SwapLog | undefined> {
   for (let span = 200_000n; span <= maxLookback; span *= 4n) {
     const from = block > span ? block - span : 0n;
     const logs = await swapLogs(c, [poolId], from, block);

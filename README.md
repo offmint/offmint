@@ -14,6 +14,7 @@ the stock back after reopen. Depositors end the weekend with more stock per shar
 | Milestone | Scope | Status |
 |---|---|---|
 | M0 | Scaffold, on-chain fact checks (`docs/FACTS.md`, `contracts/config/*.json`) | ✅ done |
+| M0.5 | Ticker curation (SPEC §3.5): registry-wide screen + 8-weekend backtest | ✅ ran; **result: 0 shippable tickers**, see `docs/curation.md` (decision pending) |
 | M1 | Keeper paper mode (read-only mainnet) + `/monitor` | 🚧 paper/replay engine done; `/monitor` pending |
 | M2 | `SessionClock`, `ManualSessionClock`, `RangeMath` + unit/fuzz tests | ✅ done |
 | M3 | `OffmintVault` + unlock-callback flows + integration + invariant tests | ✅ done (incl. approved `lock()`) |

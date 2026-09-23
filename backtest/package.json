@@ -7,7 +7,8 @@
     "test": "tsx --test test/*.test.ts",
     "typecheck": "tsc --noEmit",
     "curate": "tsx src/curate.ts",
-    "screen": "tsx src/screen.ts"
+    "screen": "tsx src/screen.ts",
+    "weekday": "tsx src/weekday.ts"
   },
   "engines": {
     "node": ">=20"

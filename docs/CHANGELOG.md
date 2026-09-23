@@ -51,3 +51,13 @@
   a stale pool price right after a trade (it now reads `latest`). The bot now uses `createBot()` (reusable); its RPC retries
   8×/1.5 s for flaky public endpoints. CI runs a 10-epoch stress.
 - The testnet demo script is resumable (it checks on-chain state before every step). Fixed a first-token parse bug in the lock check.
+- M0.5 (SPEC §3.5) ran end to end. Screen of all 195 registry tokens (`contracts/config/screen.json`): 87,109 v4 pools,
+  157 active, 140 thin or meme-adjacent, only 27 of those with a Chainlink feed. 8-weekend backtest of 10 candidates
+  (`contracts/config/tickers.json`, `docs/curation.md`): **every feed-backed candidate behaved as a major (max weekend
+  premium <= +3.7%)**. The only dislocation was HIMS +317.6% (29 Aug, a single weekend, no Chainlink feed). **Ship list: empty.**
+  It is reported, not padded; the product decision is pending (see curation.md).
+- Meme-adjacency tightened: a top-2 pool quoted in USDG, ETH/WETH or another stock token is not a memecoin (a literal
+  "non-USDG" reading flagged nearly every ticker).
+- Scan performance: block-by-timestamp lookup cut from ~30 to ~13 RPC calls, quiet-pool look-back capped, per-weekend
+  resume cache, pool discovery and state caches.
+- `backtest/src/weekday.ts`: weekday (live feed) vs weekend (frozen close) premium comparison.

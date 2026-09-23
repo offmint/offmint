@@ -1,0 +1,4515 @@
+{
+ "step": "M0.5 stage 1 screen (SPEC §3.5 steps 1-2)",
+ "generatedAt": "2026-09-23T17:58:12.879Z",
+ "windowDays": 1,
+ "deviation": "30-day average TVL not available without archive state; depth = current active liquidity, volume = last 1d of Swap logs.",
+ "tickers": {
+  "CRM": {
+   "token": "0xd95B44124e475743a7589e68F3D74008A5536D44",
+   "hasFeed": false,
+   "pools": 75,
+   "livePools": 4,
+   "vol7dStock": 84.11,
+   "swaps7d": 51,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x5d0434f1dcf45ff9450c1a63b5c9e088f90cfebf483458164e81be6fb96e2b2a",
+     "vol7dStock": 83.7,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xa6b973d47204d55709a5e3c94e32183e27835fc7e3d1226541231263f74e39b6",
+     "vol7dStock": 0.41,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x5d0434f1dcf45ff9450c1a63b5c9e088f90cfebf483458164e81be6fb96e2b2a",
+   "impact50kPct": 10.61,
+   "usdgStockDepth10": 187.45,
+   "thin": true
+  },
+  "P": {
+   "token": "0x1Cdad396DB64BDa184d5182A97Dd9B3C62100b7D",
+   "hasFeed": false,
+   "pools": 194,
+   "livePools": 5,
+   "vol7dStock": 0.94,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x3ffaca631ee693b72ab83857393d3ef11915d5ce6675cbb1e30732fc5b8c9fa1",
+     "vol7dStock": 0.94,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x3ffaca631ee693b72ab83857393d3ef11915d5ce6675cbb1e30732fc5b8c9fa1",
+   "impact50kPct": 691.91,
+   "usdgStockDepth10": 11.78,
+   "thin": true
+  },
+  "CIEN": {
+   "token": "0x44f6D488021f8233B9416294d1FE9b1fEe28382d",
+   "hasFeed": false,
+   "pools": 27,
+   "livePools": 6,
+   "vol7dStock": 0.15,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "ETH",
+     "poolId": "0x08d99268a599777de8aff18c129d0d75d7e812ded53cee689ec475ae4ea1971a",
+     "vol7dStock": 0.15,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xc95560483f794e8d894f17917d3f6df5d8460e99d4cd7b46bc10c5e2d8f94196",
+   "impact50kPct": 309235.16,
+   "usdgStockDepth10": 0.12,
+   "thin": true
+  },
+  "ON": {
+   "token": "0xbBD09F72b025360FeE5C928053Dca6248d35be54",
+   "hasFeed": false,
+   "pools": 213,
+   "livePools": 6,
+   "vol7dStock": 0.03,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x3bd7f968ed79b4de392dabb9bc6c5f17163329230a6ed6f470d2bae7ca5157d9",
+     "vol7dStock": 0.03,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x592fa7e9be0269f169d2aa4bc869832ff46aec17a57a71725c4832e80050d6d6",
+   "impact50kPct": 6302510.35,
+   "usdgStockDepth10": 0.12,
+   "thin": true
+  },
+  "APLD": {
+   "token": "0xb8DBf92F9741c9ac1c32115E78581f23509916FD",
+   "hasFeed": false,
+   "pools": 70,
+   "livePools": 6,
+   "vol7dStock": 6.32,
+   "swaps7d": 8,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x3290ce6652e9a71d7ba850367ff1fa3f139f782c345338c19ae208ccda3f1121",
+     "vol7dStock": 2.87,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xe82d21b94f44ccb01d6bff61535134d0ac7644c6012d53967e3da4e792ec831e",
+     "vol7dStock": 2.18,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xe82d21b94f44ccb01d6bff61535134d0ac7644c6012d53967e3da4e792ec831e",
+   "impact50kPct": 5619.54,
+   "usdgStockDepth10": 12.48,
+   "thin": true
+  },
+  "AEHR": {
+   "token": "0x5F604fBA1162193A4388A5DFa56F556f3E133cC2",
+   "hasFeed": false,
+   "pools": 28,
+   "livePools": 6,
+   "vol7dStock": 0.25,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x10e21a00ee20b27b5dee917151b9f7ef3faa13702c415462113720cc8437f763",
+     "vol7dStock": 0.25,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x10e21a00ee20b27b5dee917151b9f7ef3faa13702c415462113720cc8437f763",
+   "impact50kPct": 41195.19,
+   "usdgStockDepth10": 1.27,
+   "thin": true
+  },
+  "TEAM": {
+   "token": "0x5B97476b922F3305131B8f0B9D333172E87f4aaE",
+   "hasFeed": false,
+   "pools": 43,
+   "livePools": 5,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x432e417b7d855d9ba9a87131585c18350bf89eb40cfc83e8f28d7ec4b0efde42",
+   "impact50kPct": 802.69,
+   "usdgStockDepth10": 6.07,
+   "thin": true
+  },
+  "QBTS": {
+   "token": "0xC583c60aeF9Dc401Da72cEC1B404743a93cea1Cc",
+   "hasFeed": false,
+   "pools": 45,
+   "livePools": 6,
+   "vol7dStock": 5.42,
+   "swaps7d": 3,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xbf8976ed9535e82042b58d2fffceb18c81e256caf01d3ffe4d35dceeab7f1a2f",
+     "vol7dStock": 4.61,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xf8b983ca54bbcbc56b904b7501c8d79ae6f08b84b0934738cd0e63a52703a1b3",
+     "vol7dStock": 0.54,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x29f9c0665fd943433148f6173826a54d69135a74994dc53101605b30568cf362",
+   "impact50kPct": 10491.52,
+   "usdgStockDepth10": 14.32,
+   "thin": true
+  },
+  "SATS": {
+   "token": "0x95052ddcd5DC25641657424A8Cf04834997E1730",
+   "hasFeed": false,
+   "pools": 31,
+   "livePools": 3,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": null,
+   "impact50kPct": null,
+   "usdgStockDepth10": null,
+   "thin": true
+  },
+  "FIX": {
+   "token": "0x93Dbb1d2Dc5D63F4abACFF30485273f538Df68Ac",
+   "hasFeed": false,
+   "pools": 48,
+   "livePools": 4,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x747a731b1ef419ce6006993cf907266a24069c81fb004ec78d2d17ba5863b724",
+   "impact50kPct": 46.77,
+   "usdgStockDepth10": 6.76,
+   "thin": true
+  },
+  "MTSI": {
+   "token": "0xC93f4d80e268AB922e871bd169156C3CC41894e6",
+   "hasFeed": false,
+   "pools": 25,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xe0fa8194377bd00cf1a8367570727ee7d0b97b3284f51e30e190b49b3d7aa0a0",
+   "impact50kPct": 268550.8,
+   "usdgStockDepth10": 0.17,
+   "thin": true
+  },
+  "SMCI": {
+   "token": "0xc01aA1fECeC0605b13bc84874ff7256C0f5F562a",
+   "hasFeed": false,
+   "pools": 45,
+   "livePools": 6,
+   "vol7dStock": 2.72,
+   "swaps7d": 5,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xcbc5164c76a22d18a8195ee1da318ae08a214f6b5ccf11e556f0289211a51cee",
+     "vol7dStock": 2.72,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xcbc5164c76a22d18a8195ee1da318ae08a214f6b5ccf11e556f0289211a51cee",
+   "impact50kPct": 5013.75,
+   "usdgStockDepth10": 9.34,
+   "thin": true
+  },
+  "DELL": {
+   "token": "0x941AE714EC6D8130c7B75d67160Ca08f1e7d11Dd",
+   "hasFeed": true,
+   "pools": 367,
+   "livePools": 5,
+   "vol7dStock": 140.13,
+   "swaps7d": 230,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x729651c09684919bdffda473141be4e908ee0e8cf8a43f41135831217fa7d3bb",
+     "vol7dStock": 139.78,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xa92d3c7b017afbee7e144e904d7a73dd73630d883c6ee15d6ab734705c7cd6f9",
+     "vol7dStock": 0.35,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x729651c09684919bdffda473141be4e908ee0e8cf8a43f41135831217fa7d3bb",
+   "impact50kPct": 6.35,
+   "usdgStockDepth10": 135.77,
+   "thin": true
+  },
+  "MXL": {
+   "token": "0x48961813349333209994750ffA89b3c5C22eC969",
+   "hasFeed": false,
+   "pools": 35,
+   "livePools": 6,
+   "vol7dStock": 0.75,
+   "swaps7d": 3,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x1f394bd26e0a518bce8a4b8f7a2211ce621893cef66a50c93e8739854d3c400b",
+     "vol7dStock": 0.44,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xfd2b69c50861e695fcdf298429bd1f7bce1579f489f1c03aed4dd393802ac8e0",
+     "vol7dStock": 0.31,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xfd2b69c50861e695fcdf298429bd1f7bce1579f489f1c03aed4dd393802ac8e0",
+   "impact50kPct": 11531.25,
+   "usdgStockDepth10": 2.83,
+   "thin": true
+  },
+  "RUN": {
+   "token": "0x756Bc80af765C82da966a788858d65aDF14f3793",
+   "hasFeed": false,
+   "pools": 175,
+   "livePools": 4,
+   "vol7dStock": 817.16,
+   "swaps7d": 55,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x87be5bc8f3196643f962d5d28fc9121f7c6c7b79f56d54827c76ef8c06d94020",
+     "vol7dStock": 717.6,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x3a4a60ceb2162900d9bc30624123475761c4bf81bb3c4bae61e2b4a18d53a6d4",
+     "vol7dStock": 51.92,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x87be5bc8f3196643f962d5d28fc9121f7c6c7b79f56d54827c76ef8c06d94020",
+   "impact50kPct": 83.63,
+   "usdgStockDepth10": 767.86,
+   "thin": true
+  },
+  "WDAY": {
+   "token": "0x82DA4646242e1D962e96e932269Dc644c94a9CaA",
+   "hasFeed": false,
+   "pools": 116,
+   "livePools": 5,
+   "vol7dStock": 0.01,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x27bb98c5c9265a4fb0f50e074fe8c751e20b55a901c96a8e150a306417c5b1a6",
+     "vol7dStock": 0.01,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x27bb98c5c9265a4fb0f50e074fe8c751e20b55a901c96a8e150a306417c5b1a6",
+   "impact50kPct": 134.59,
+   "usdgStockDepth10": 22.75,
+   "thin": true
+  },
+  "SPCX": {
+   "token": "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+   "hasFeed": true,
+   "pools": 8654,
+   "livePools": 5,
+   "vol7dStock": 7045.67,
+   "swaps7d": 4607,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xfbc47e0b533fb83e4de65c4a192d85395da62c78fe20365aa237cc25445e610e",
+     "vol7dStock": 5639.97,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xb81d873dfb2bb1aaf08804053f8940fd06bb30a2b5a0fafcdbcc7325544452b9",
+     "vol7dStock": 1136.1,
+     "hooks": "0x5eb87f69be00df39981622fd60a8de4b7837e080"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xcb6ffbcc84359535c2cc0a5688c0a76520ea6e0a4820fddd3ac8d7880e576370",
+   "impact50kPct": 1.11,
+   "usdgStockDepth10": 2750.95,
+   "thin": false
+  },
+  "GLXY": {
+   "token": "0x2D427692E928fa156ec22acfaBaFA0447C5805B7",
+   "hasFeed": false,
+   "pools": 185,
+   "livePools": 5,
+   "vol7dStock": 3820.48,
+   "swaps7d": 380,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xb49380cfe4008c71faa07f7d79865429f8e5ae468b4af80ff2497e6a27ecb804",
+     "vol7dStock": 2256.99,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "ETH",
+     "poolId": "0x08683360c101b897136892e5e8e560bee6af7d74685ae86cc31c131b10f604c9",
+     "vol7dStock": 1407.75,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xb49380cfe4008c71faa07f7d79865429f8e5ae468b4af80ff2497e6a27ecb804",
+   "impact50kPct": 24.83,
+   "usdgStockDepth10": 750.92,
+   "thin": true
+  },
+  "CRWD": {
+   "token": "0xea72Ecca2d0f6bFA1394DBBCff85b52CD4233931",
+   "hasFeed": false,
+   "pools": 64,
+   "livePools": 6,
+   "vol7dStock": 0.95,
+   "swaps7d": 16,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x5f821fb6375536036d61372b33381d3396302a9fc5c1b97830a80ba0120f1f0c",
+     "vol7dStock": 0.82,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x50e7c15c5ccbc3ee5d2dd8ac60d32803ec01cf0aca1043a8ec2580e063c8fce2",
+     "vol7dStock": 0.1,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x5f821fb6375536036d61372b33381d3396302a9fc5c1b97830a80ba0120f1f0c",
+   "impact50kPct": 3689.05,
+   "usdgStockDepth10": 0.44,
+   "thin": true
+  },
+  "AVGO": {
+   "token": "0x156E175DD063a8cE274C50654eF40e0032b3fbcF",
+   "hasFeed": false,
+   "pools": 75,
+   "livePools": 5,
+   "vol7dStock": 31.62,
+   "swaps7d": 212,
+   "top2ByVolume": [
+    {
+     "quote": "SHROOM",
+     "poolId": "0xcb013571869ed3fe377ad11eaf1d6eb856e56cb69e0bd0bbc449996fcd1012d4",
+     "vol7dStock": 27.77,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x9214bd3afeae46a8df2a39278050362e0bde9d587f0e0934a38031bc4831a90e",
+     "vol7dStock": 3.85,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x9214bd3afeae46a8df2a39278050362e0bde9d587f0e0934a38031bc4831a90e",
+   "impact50kPct": 59.16,
+   "usdgStockDepth10": 24.73,
+   "thin": true
+  },
+  "SPY": {
+   "token": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+   "hasFeed": true,
+   "pools": 3995,
+   "livePools": 18,
+   "vol7dStock": 5460.88,
+   "swaps7d": 5825,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xe5923c8a8be481ec89a2ca784a2bbfa4235de6d88f92260fd66b660c4babf907",
+     "vol7dStock": 3117.5,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x8674c1c5544f3c9563565b5d4bd5916701d90b3559b072acf7cef5b4fc5b8dcd",
+     "vol7dStock": 1231.48,
+     "hooks": "0xa0e8fbff13e24af2b5e61a72800e08a161bde080"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xfe2a80bb5618fd14984b92ca6d45bf5ba67443ddb1435e28b2e48df2fc1526cd",
+   "impact50kPct": 0.04,
+   "usdgStockDepth10": 14249.92,
+   "thin": false
+  },
+  "CCL": {
+   "token": "0x9651342CeA770aE9a2969Ba2A52611523146aef9",
+   "hasFeed": false,
+   "pools": 141,
+   "livePools": 6,
+   "vol7dStock": 0.86,
+   "swaps7d": 5,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x622c8ea237558aa2bdd7b8929670e41da206c28c4883c7dddb6ffaba6e9bec7a",
+     "vol7dStock": 0.81,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "TOMCRUISE",
+     "poolId": "0x7ece438a1bac789730ecbe6c2078f613d2a818ef5afc8896c0e96f008742bb25",
+     "vol7dStock": 0.05,
+     "hooks": "0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x3111f698a75bd4cb79376c43e59411bdf6fc06cb14a0df308eac91b7d3b03f9c",
+   "impact50kPct": 24696.3,
+   "usdgStockDepth10": 7.07,
+   "thin": true
+  },
+  "GLD": {
+   "token": "0xC9a981FEE1F9DEc688bb123ccDeCc63D0deBFC4e",
+   "hasFeed": false,
+   "pools": 1281,
+   "livePools": 4,
+   "vol7dStock": 1868.91,
+   "swaps7d": 736,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xfe281bbfa9aa658c1aa9c2ad1b0c62c4286f96c7cb1074296b54e869935a7a3a",
+     "vol7dStock": 1686.61,
+     "hooks": "0xb608a78761f179f7c56f15e7d13921b92f00a080"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xc5a09af1c4c8d4309ef0def83c718ccc6b5a991a1c47ae45de879c6a6df6081f",
+     "vol7dStock": 172.29,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xc5a09af1c4c8d4309ef0def83c718ccc6b5a991a1c47ae45de879c6a6df6081f",
+   "impact50kPct": 3.82,
+   "usdgStockDepth10": 313.36,
+   "thin": false
+  },
+  "SNOW": {
+   "token": "0xBa0CAB75495255d0cB58E22B648bFED4ECD1F47E",
+   "hasFeed": false,
+   "pools": 303,
+   "livePools": 5,
+   "vol7dStock": 98.22,
+   "swaps7d": 152,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xac720e95589b7124f0affbdb9e66c7ec6e824c68eae00dc54f9e11b0b294bac8",
+     "vol7dStock": 95.1,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "COCAINE",
+     "poolId": "0x3767085ffb8ae8a0ab7694089f27d7f165725a09d8f4db685d83dc1218b32106",
+     "vol7dStock": 1.75,
+     "hooks": "0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xac720e95589b7124f0affbdb9e66c7ec6e824c68eae00dc54f9e11b0b294bac8",
+   "impact50kPct": 6.94,
+   "usdgStockDepth10": 201.4,
+   "thin": true
+  },
+  "FICO": {
+   "token": "0xa48F22A46C0F1C46CA7D111CB6c137c271987180",
+   "hasFeed": false,
+   "pools": 31,
+   "livePools": 5,
+   "vol7dStock": 0.28,
+   "swaps7d": 2,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x0021ada15e38e9845147b83aa52c3da94bfb02b07353e393a5c6f86bdf50d7b5",
+     "vol7dStock": 0.28,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x0021ada15e38e9845147b83aa52c3da94bfb02b07353e393a5c6f86bdf50d7b5",
+   "impact50kPct": 2929.99,
+   "usdgStockDepth10": 0.56,
+   "thin": true
+  },
+  "PR": {
+   "token": "0x4189F0c66EBBB0bfeF1C31f763131361EF32f77C",
+   "hasFeed": false,
+   "pools": 36,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xe49fd12344baac89d663deff327d19ff9190954adac4d60c68f67e1edb803066",
+   "impact50kPct": 94671.63,
+   "usdgStockDepth10": 3.28,
+   "thin": true
+  },
+  "QQQ": {
+   "token": "0xD5f3879160bc7c32ebb4dC785F8a4F505888de68",
+   "hasFeed": true,
+   "pools": 1370,
+   "livePools": 6,
+   "vol7dStock": 993.55,
+   "swaps7d": 1210,
+   "top2ByVolume": [
+    {
+     "quote": "SPY",
+     "poolId": "0xf38009b348295f907c1f2e22aba84d731de3b7360d312881df1c206e85ea3b0b",
+     "vol7dStock": 638.58,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "SPY",
+     "poolId": "0x8493982435e4273028008cd181c84c0d6a548f96792fdb5acddcbb6a8c82d305",
+     "vol7dStock": 341.63,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xf9568ec0cba6e9ba30d9daabbf3e807813b8852e5737b7d83ea06529c73c9758",
+   "impact50kPct": 3529.24,
+   "usdgStockDepth10": 0.62,
+   "thin": true
+  },
+  "WYFI": {
+   "token": "0x9e7ABD3C9139D14E4c86DcE0e455AAB7A0C2FB3E",
+   "hasFeed": false,
+   "pools": 342,
+   "livePools": 4,
+   "vol7dStock": 100.66,
+   "swaps7d": 14,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xade8f03250521f174360017d003aac3b30df3633ca31769e23a7906bb3c6262d",
+     "vol7dStock": 69,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "ETH",
+     "poolId": "0xa566d88fe1629e3c000496caddeb965826ffe8b40e181ba60d205d2cc7f9326d",
+     "vol7dStock": 19.68,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xade8f03250521f174360017d003aac3b30df3633ca31769e23a7906bb3c6262d",
+   "impact50kPct": 191.85,
+   "usdgStockDepth10": 167.67,
+   "thin": true
+  },
+  "NNE": {
+   "token": "0xBEF75684C43c4ea7BD18Dd532a2244674Ee8b926",
+   "hasFeed": false,
+   "pools": 90,
+   "livePools": 5,
+   "vol7dStock": 114.44,
+   "swaps7d": 11,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x9b0ca1c4906f6517a12802513c3ae6f1c1e3ec47d81c6d23437fc401b6e2771b",
+     "vol7dStock": 104.92,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xf30e4bc04c47f4a6a0d20a136ce3652295ca7b89047bc78553c8ee836226042a",
+     "vol7dStock": 6.46,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x9b0ca1c4906f6517a12802513c3ae6f1c1e3ec47d81c6d23437fc401b6e2771b",
+   "impact50kPct": 37.42,
+   "usdgStockDepth10": 784.85,
+   "thin": true
+  },
+  "GE": {
+   "token": "0x63b814DDBd6BF339f25Fed8c36158a008D5B373e",
+   "hasFeed": false,
+   "pools": 104,
+   "livePools": 5,
+   "vol7dStock": 12.98,
+   "swaps7d": 10,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x6bf00eb49fa8d3713cb0f77e9a11f9acd9f5363fc4824e13488acfa28d90dc2d",
+     "vol7dStock": 12.98,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x6bf00eb49fa8d3713cb0f77e9a11f9acd9f5363fc4824e13488acfa28d90dc2d",
+   "impact50kPct": 10.59,
+   "usdgStockDepth10": 141.46,
+   "thin": true
+  },
+  "SNAP": {
+   "token": "0xF6589F11Bc40b669e584073F428B05562F568733",
+   "hasFeed": false,
+   "pools": 438,
+   "livePools": 3,
+   "vol7dStock": 126455.02,
+   "swaps7d": 1799,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x2e4cc4c65587faca7a08b69a13c86ca8c86599d90ad818ceaa1a875176f5fb52",
+     "vol7dStock": 82228.27,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x4e7456c28bf5afd8a7a21109090ab2d0e0f75c8f3249e0fa14a4ec06a2360af2",
+     "vol7dStock": 41893.29,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x2e4cc4c65587faca7a08b69a13c86ca8c86599d90ad818ceaa1a875176f5fb52",
+   "impact50kPct": 4.12,
+   "usdgStockDepth10": 21554.52,
+   "thin": false
+  },
+  "SKHY": {
+   "token": "0x84CAb63bc87912E71ad199ff14A0bA45de68FeF8",
+   "hasFeed": false,
+   "pools": 305,
+   "livePools": 5,
+   "vol7dStock": 298.6,
+   "swaps7d": 284,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x994db79a9e80b73d726171d0e834dfe6fdce7987539dcf5cceef7b2b95c5fd95",
+     "vol7dStock": 211.46,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "KDRAMA",
+     "poolId": "0x79615fcd145380f296619bab8cc686fb624ab329f89c641cd808497b0543c185",
+     "vol7dStock": 87.11,
+     "hooks": "0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x994db79a9e80b73d726171d0e834dfe6fdce7987539dcf5cceef7b2b95c5fd95",
+   "impact50kPct": 11.31,
+   "usdgStockDepth10": 223.85,
+   "thin": true
+  },
+  "CBRS": {
+   "token": "0x5c90450Bbb4273D7b2f17CF6917AEB237A569679",
+   "hasFeed": false,
+   "pools": 40,
+   "livePools": 5,
+   "vol7dStock": 6.5,
+   "swaps7d": 12,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x1a12140a52b6dc67065600899a8d59e23905d690d445250f3c0f59821fa146e4",
+     "vol7dStock": 6.48,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xa3b9619424dc66e86916bc6a573227ed7e7060f372315fe9bbd9b570f27d5c77",
+     "vol7dStock": 0.01,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x1a12140a52b6dc67065600899a8d59e23905d690d445250f3c0f59821fa146e4",
+   "impact50kPct": 118.64,
+   "usdgStockDepth10": 23.47,
+   "thin": true
+  },
+  "FUTU": {
+   "token": "0xeB30663bDFf0622Ef4e4E5cBb4E975F19f33f51D",
+   "hasFeed": false,
+   "pools": 74,
+   "livePools": 4,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x26d55d21a7a072ebb10bdaf24a054f66243f91550a4ec5f791b9eeac613a68e2",
+   "impact50kPct": 358.03,
+   "usdgStockDepth10": 18.08,
+   "thin": true
+  },
+  "TSM": {
+   "token": "0x58FfE4a942d3885bAa22D7520691F611EF09e7AA",
+   "hasFeed": true,
+   "pools": 350,
+   "livePools": 5,
+   "vol7dStock": 1900.17,
+   "swaps7d": 2863,
+   "top2ByVolume": [
+    {
+     "quote": "SPY",
+     "poolId": "0x4c862e5846659b086fe73896bbb9058513417e4e6938a1be93aeb7a768fa5754",
+     "vol7dStock": 1463.18,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "AU",
+     "poolId": "0xa656346c328c7185f783e78936b68eb5868aa9cf5809260320b279f7e13790fc",
+     "vol7dStock": 225.93,
+     "hooks": "0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x0ba5d53d2f6255f334b7c8ead4f56b6aef5af3402c5e4d11180afd38c6b85fb1",
+   "impact50kPct": 3.13,
+   "usdgStockDepth10": 334.32,
+   "thin": false
+  },
+  "NU": {
+   "token": "0x408c14038a04f7bD235329E26d2bf569ee20e250",
+   "hasFeed": false,
+   "pools": 263,
+   "livePools": 5,
+   "vol7dStock": 2542.66,
+   "swaps7d": 399,
+   "top2ByVolume": [
+    {
+     "quote": "I",
+     "poolId": "0xc9b1ff65c2a432d81e6c6c8fd29168c2eb82bbc2ccbcc176c60d60a8428644d0",
+     "vol7dStock": 1944.05,
+     "hooks": "0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x9136ac3e649882d73b81d5dcf2d73aef5e3054387401a30dbdafa4f744193b6d",
+     "vol7dStock": 552.13,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x9136ac3e649882d73b81d5dcf2d73aef5e3054387401a30dbdafa4f744193b6d",
+   "impact50kPct": 26.44,
+   "usdgStockDepth10": 1339.76,
+   "thin": true
+  },
+  "INTC": {
+   "token": "0xc72b96e0E48ecd4DC75E1e45396e26300BC39681",
+   "hasFeed": true,
+   "pools": 554,
+   "livePools": 5,
+   "vol7dStock": 14712.61,
+   "swaps7d": 7196,
+   "top2ByVolume": [
+    {
+     "quote": "SPY",
+     "poolId": "0x7fb585f108d921de3b197cf7e26b5aebc96b035fec13f972b868e008ea062394",
+     "vol7dStock": 7874.52,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "CPU",
+     "poolId": "0xaf8aa959b7e460fbbc61d25b9896a6e3f92cbf3a2bde01fa2b5ac811f2d6a986",
+     "vol7dStock": 6174.51,
+     "hooks": "0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xf2e329e631d0fb315a5c563ee3a9120f24822b5ef6c502a91cb56b174d5d8c22",
+   "impact50kPct": 3.54,
+   "usdgStockDepth10": 1096.68,
+   "thin": false
+  },
+  "MSFT": {
+   "token": "0xe93237C50D904957Cf27E7B1133b510C669c2e74",
+   "hasFeed": true,
+   "pools": 1621,
+   "livePools": 7,
+   "vol7dStock": 1509.65,
+   "swaps7d": 1920,
+   "top2ByVolume": [
+    {
+     "quote": "SPY",
+     "poolId": "0xaef5609ceaf79abbd244bcd5198723bf34c50b33136ff3dca52dd559d9554741",
+     "vol7dStock": 1079.28,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x9194a557b6a6bb2236b49ea7e2bbccec5d3eeb705aef00903be4b3de1d949579",
+     "vol7dStock": 388.15,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x9194a557b6a6bb2236b49ea7e2bbccec5d3eeb705aef00903be4b3de1d949579",
+   "impact50kPct": 1.44,
+   "usdgStockDepth10": 650.18,
+   "thin": false
+  },
+  "RCAT": {
+   "token": "0xFDE6b5d9BB419B10C23268c74e369AbFF39C0460",
+   "hasFeed": false,
+   "pools": 321,
+   "livePools": 4,
+   "vol7dStock": 8324.85,
+   "swaps7d": 232,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xd3c27381f7d1ef4dcd8ec4ba66e74fe88d06ab5250c1393769d4dd0e996a8dc9",
+     "vol7dStock": 8135.51,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xa028d7036ef22af0e9493f44b3681678c6596a3027ddee9883e9e95f5d3baba9",
+     "vol7dStock": 164.17,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xd3c27381f7d1ef4dcd8ec4ba66e74fe88d06ab5250c1393769d4dd0e996a8dc9",
+   "impact50kPct": 18.96,
+   "usdgStockDepth10": 3815.66,
+   "thin": true
+  },
+  "RGTI": {
+   "token": "0x284358abc07F9359f19f4b5b4aC91901Be2597Ba",
+   "hasFeed": true,
+   "pools": 46,
+   "livePools": 6,
+   "vol7dStock": 8.39,
+   "swaps7d": 4,
+   "top2ByVolume": [
+    {
+     "quote": "ETH",
+     "poolId": "0x2edf549fdd79f9b09640698c44f552d67a8898249c272128d265dfaf572c81ff",
+     "vol7dStock": 5.58,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x98bb85ee9d390ce0d9104afeed2b83038f83df54843fc35afed5d7545ec4936f",
+     "vol7dStock": 2.82,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x98bb85ee9d390ce0d9104afeed2b83038f83df54843fc35afed5d7545ec4936f",
+   "impact50kPct": 8846.29,
+   "usdgStockDepth10": 16.56,
+   "thin": true
+  },
+  "TTWO": {
+   "token": "0x5e81213613b6B86EaB4c6c50d718d34359459786",
+   "hasFeed": false,
+   "pools": 746,
+   "livePools": 4,
+   "vol7dStock": 655.73,
+   "swaps7d": 770,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xc9dad63b6fb9afe1fe888ebc7b023c587c58b9498f5bd17166226c0995dbc4eb",
+     "vol7dStock": 464.51,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xd5850279c17e422d8ad108691254df010af9c6f8fcec0b586b89133100096556",
+     "vol7dStock": 127.95,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xc9dad63b6fb9afe1fe888ebc7b023c587c58b9498f5bd17166226c0995dbc4eb",
+   "impact50kPct": 4.21,
+   "usdgStockDepth10": 540.79,
+   "thin": false
+  },
+  "META": {
+   "token": "0xc0D6457C16Cc70d6790Dd43521C899C87ce02f35",
+   "hasFeed": true,
+   "pools": 2370,
+   "livePools": 3,
+   "vol7dStock": 32212.94,
+   "swaps7d": 69853,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x5875d407a42965b0e768c8925cea290e06fa50603ef34fc99eb92a1050e6ae36",
+     "vol7dStock": 20894.39,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xc58bb68060bcb7b3ea0f6d4a4afef1e57f628722e808db12afb6d1733552872f",
+     "vol7dStock": 11318.56,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x5875d407a42965b0e768c8925cea290e06fa50603ef34fc99eb92a1050e6ae36",
+   "impact50kPct": 0.18,
+   "usdgStockDepth10": 3388.44,
+   "thin": false
+  },
+  "VICR": {
+   "token": "0x6006ed4B2F94110851ff7509D97D034f0EeD9226",
+   "hasFeed": false,
+   "pools": 25,
+   "livePools": 6,
+   "vol7dStock": 3.08,
+   "swaps7d": 19,
+   "top2ByVolume": [
+    {
+     "quote": "ETH",
+     "poolId": "0xa1f9cad15a9e12d9fdb4e2de9924f4378904f5acdac6b1d9641761cf37054b6a",
+     "vol7dStock": 2.44,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xae0da9f7f8d8383c6a82b870deb3771629fa8834c1bac2400d7773b1666ff3d3",
+     "vol7dStock": 0.64,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xae0da9f7f8d8383c6a82b870deb3771629fa8834c1bac2400d7773b1666ff3d3",
+   "impact50kPct": 16536.19,
+   "usdgStockDepth10": 0.74,
+   "thin": true
+  },
+  "TSEM": {
+   "token": "0x89776d4Cd68193597A2fC132cfaC1fDe36CCeA8a",
+   "hasFeed": false,
+   "pools": 40,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x670a1d29e3b14ba41039da2a1fb9ddb3e58d5af5eecc7f5d943046df94742260",
+   "impact50kPct": 286266.24,
+   "usdgStockDepth10": 0.2,
+   "thin": true
+  },
+  "RDDT": {
+   "token": "0x05b37Fb53A299a1b874A619e1c4C404D52C36F4C",
+   "hasFeed": false,
+   "pools": 1902,
+   "livePools": 4,
+   "vol7dStock": 738.58,
+   "swaps7d": 563,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x7c2985fd7623a5dcd88c7d51099931ca295875743b96bc64990e374f49e5f387",
+     "vol7dStock": 543.72,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "SPY",
+     "poolId": "0x41743585e01364ab3898ff28b3f09fe5aa9a5b17e722f5bea1adb65a07769a7f",
+     "vol7dStock": 117.41,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x7c2985fd7623a5dcd88c7d51099931ca295875743b96bc64990e374f49e5f387",
+   "impact50kPct": 6.67,
+   "usdgStockDepth10": 470.82,
+   "thin": true
+  },
+  "GLW": {
+   "token": "0x7c04E6A3368F2A1DE3874f0e80d2e0A1a9915da6",
+   "hasFeed": false,
+   "pools": 41,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x684aa60e68b957a5fb3cb83c55473cd35ba5cb27ac3eb1ec840dcc42439618f8",
+   "impact50kPct": 272318.82,
+   "usdgStockDepth10": 0.3,
+   "thin": true
+  },
+  "UPS": {
+   "token": "0xf23250dac154D05Bb671CB0d0eBEf3c635c79CE2",
+   "hasFeed": false,
+   "pools": 391,
+   "livePools": 4,
+   "vol7dStock": 104.25,
+   "swaps7d": 81,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xb7b2dac83aef0f428dbd079fbe571a6146f97ca392c073a9b1cf61cd26dc0c3f",
+     "vol7dStock": 95.37,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x3be85a75a6476bcece001bb7455ce14e2ef1cfec889f5d8d207c99cf6057babc",
+     "vol7dStock": 8.88,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xb7b2dac83aef0f428dbd079fbe571a6146f97ca392c073a9b1cf61cd26dc0c3f",
+   "impact50kPct": 19.1,
+   "usdgStockDepth10": 263.29,
+   "thin": true
+  },
+  "PANW": {
+   "token": "0xB039597eD45CBa7B6E2fb9E8BE51802969CEe5Be",
+   "hasFeed": false,
+   "pools": 31,
+   "livePools": 6,
+   "vol7dStock": 0.01,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x9b2796ddb2b2452e6a7160e81f22d41df8d5dc3491aad78f578c7e73cd2fafad",
+     "vol7dStock": 0.01,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x9b2796ddb2b2452e6a7160e81f22d41df8d5dc3491aad78f578c7e73cd2fafad",
+   "impact50kPct": 42198.49,
+   "usdgStockDepth10": 0.31,
+   "thin": true
+  },
+  "LHX": {
+   "token": "0x48d60243c66437c6ac3c2495Be94747aEd5Dfe25",
+   "hasFeed": false,
+   "pools": 29,
+   "livePools": 5,
+   "vol7dStock": 0.1,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x908ad1c8b831e15c8016116429731d952d0b50dd525ee7751764149f605771ef",
+     "vol7dStock": 0.1,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x908ad1c8b831e15c8016116429731d952d0b50dd525ee7751764149f605771ef",
+   "impact50kPct": 117.86,
+   "usdgStockDepth10": 19.88,
+   "thin": true
+  },
+  "FLY": {
+   "token": "0x03BC731Ffb162cdd7B98D3C6542bFC291126075d",
+   "hasFeed": false,
+   "pools": 168,
+   "livePools": 6,
+   "vol7dStock": 30.64,
+   "swaps7d": 12,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x6edaf089b86a262e86caa0d40c693502e59de8781402de5f89d2de8e5a230070",
+     "vol7dStock": 16.8,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "ETH",
+     "poolId": "0xdd822d2a705da7a45408dbf01255258567315c43eebd9c6d32164be6944c3e29",
+     "vol7dStock": 10.79,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x6edaf089b86a262e86caa0d40c693502e59de8781402de5f89d2de8e5a230070",
+   "impact50kPct": 1024.37,
+   "usdgStockDepth10": 43.87,
+   "thin": true
+  },
+  "SNDK": {
+   "token": "0xB90A19fF0Af67f7779afF50A882A9CfF42446400",
+   "hasFeed": true,
+   "pools": 774,
+   "livePools": 5,
+   "vol7dStock": 20.28,
+   "swaps7d": 261,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x2707cb88a6a40fa0f948f58958051ba097d6f6a3cf7f87929bd68ccc5becea24",
+     "vol7dStock": 17.72,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xdb1442f922cc4cd020026726ca07db0b1b3e5eefe549d5c04273e4b935ea4c34",
+     "vol7dStock": 1.35,
+     "hooks": "0xc52fc52698479e42f0da9a8a75296ec3871454c0"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x2707cb88a6a40fa0f948f58958051ba097d6f6a3cf7f87929bd68ccc5becea24",
+   "impact50kPct": 6.1,
+   "usdgStockDepth10": 42.3,
+   "thin": true
+  },
+  "BA": {
+   "token": "0x4D21483a44Bf67a86b77E3dA301411880797D452",
+   "hasFeed": false,
+   "pools": 408,
+   "livePools": 5,
+   "vol7dStock": 264.83,
+   "swaps7d": 181,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x1bd266afaf99164a3913a959e4d27698c51fe51535bbe0af0718d7ae666c7e10",
+     "vol7dStock": 264.44,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xe7f843068898980d0f17c32e24d5631ee1b1267f28a993be77a9d2e85212a1e2",
+     "vol7dStock": 0.39,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x1bd266afaf99164a3913a959e4d27698c51fe51535bbe0af0718d7ae666c7e10",
+   "impact50kPct": 7.67,
+   "usdgStockDepth10": 306.5,
+   "thin": true
+  },
+  "INTU": {
+   "token": "0x56d23beE5f41A7120170b0c603Dae30128e460e9",
+   "hasFeed": false,
+   "pools": 45,
+   "livePools": 5,
+   "vol7dStock": 0.28,
+   "swaps7d": 3,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x5c7ce6e7bd6d8fbb646f4af4e24250d07923816c438180a594a70ab33ff97c8f",
+     "vol7dStock": 0.2,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x42473e27f793b7a3b71b225729e3962651c5dfea6d7fa078a44dc8a4adf3d9bf",
+     "vol7dStock": 0.07,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x42473e27f793b7a3b71b225729e3962651c5dfea6d7fa078a44dc8a4adf3d9bf",
+   "impact50kPct": 835.26,
+   "usdgStockDepth10": 3.76,
+   "thin": true
+  },
+  "ELF": {
+   "token": "0x39EC44Bee4F6A116c6F9B8De566848a985C53C60",
+   "hasFeed": false,
+   "pools": 123,
+   "livePools": 4,
+   "vol7dStock": 15.88,
+   "swaps7d": 8,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x88fedfdf265b86eeb91b294e889302f7508934d191890c105b39098ef8b30853",
+     "vol7dStock": 13.28,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xde350b1f58a33826eecbc54c599ab87391a13a14d5eb4992b4f09b78eba4d49f",
+     "vol7dStock": 2.61,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x88fedfdf265b86eeb91b294e889302f7508934d191890c105b39098ef8b30853",
+   "impact50kPct": 58.97,
+   "usdgStockDepth10": 88.81,
+   "thin": true
+  },
+  "AMZN": {
+   "token": "0x12f190a9F9d7D37a250758b26824B97CE941bF54",
+   "hasFeed": true,
+   "pools": 1224,
+   "livePools": 4,
+   "vol7dStock": 2602.4,
+   "swaps7d": 2001,
+   "top2ByVolume": [
+    {
+     "quote": "SPY",
+     "poolId": "0x68beff3b4270ffbbb78a48d7670648909b9de6736456b0f450fee242e1d10a8b",
+     "vol7dStock": 2432.71,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xefc94885c96b02696b9b45de43eeeb8ac53c0199cab42b4daae4911b96fb8825",
+     "vol7dStock": 89.7,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xefc94885c96b02696b9b45de43eeeb8ac53c0199cab42b4daae4911b96fb8825",
+   "impact50kPct": 18.51,
+   "usdgStockDepth10": 105.47,
+   "thin": true
+  },
+  "NFLX": {
+   "token": "0xE0444EF8BF4eD74f74FD73686e2ddF4C1c5591E8",
+   "hasFeed": false,
+   "pools": 844,
+   "livePools": 5,
+   "vol7dStock": 64.17,
+   "swaps7d": 93,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xe4930a6215f21aa3b37c01adbded3362f56ae31b9a60066f5f9641e601d5111f",
+     "vol7dStock": 58.19,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xc3ce6292ae631e73a6adc6faaad7d10e326a9d11517a6dfcd001345d20097df4",
+     "vol7dStock": 5.98,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xe4930a6215f21aa3b37c01adbded3362f56ae31b9a60066f5f9641e601d5111f",
+   "impact50kPct": 16.39,
+   "usdgStockDepth10": 409.97,
+   "thin": true
+  },
+  "CRCL": {
+   "token": "0xdF0992E440dD0be65BD8439b609d6D4366bf1CB5",
+   "hasFeed": true,
+   "pools": 357,
+   "livePools": 5,
+   "vol7dStock": 11502.79,
+   "swaps7d": 2623,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xdb9c34002d173981250969293af6f43f42a26f2110f19893bbe2ad373375e9e6",
+     "vol7dStock": 6363.74,
+     "hooks": "0x5eb87f69be00df39981622fd60a8de4b7837e080"
+    },
+    {
+     "quote": "ETH",
+     "poolId": "0x6d9af55c4cb0d740dc5237e8fe2d60e017412fb1af4e2d81e948124797e56748",
+     "vol7dStock": 2656.79,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x970df1466b2e888c80e8f66e014e4637ead055085557514a084468695e669daf",
+   "impact50kPct": 23.52,
+   "usdgStockDepth10": 224.88,
+   "thin": true
+  },
+  "USAR": {
+   "token": "0xd917B029C761D264c6A312BBbcDA868658eF86a6",
+   "hasFeed": true,
+   "pools": 527,
+   "livePools": 6,
+   "vol7dStock": 1495.37,
+   "swaps7d": 257,
+   "top2ByVolume": [
+    {
+     "quote": "ETH",
+     "poolId": "0x28d91f8a621ef33aed955fb4c919b50bbfbdb80d9db34cfbdc9e5c196d9e3132",
+     "vol7dStock": 1097.08,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "CUM",
+     "poolId": "0x126bc1113f7f521074efe36c47878517628365d1144c9e26dec9347e8040f2e6",
+     "vol7dStock": 398.3,
+     "hooks": "0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x061a6e50ea9288db8b8cda2e4c9976dd9c295d91870cde18aaeb0bfd054beff4",
+   "impact50kPct": 13921657.4,
+   "usdgStockDepth10": 0.37,
+   "thin": true
+  },
+  "VST": {
+   "token": "0x561e2a49212b7cCF47f2744Ccb83e200722fADBc",
+   "hasFeed": false,
+   "pools": 48,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x4bf631615e415693271d7562589d3ec1660d828f4ec0587b79e5d86b81a83e0c",
+   "impact50kPct": 1854.53,
+   "usdgStockDepth10": 4.69,
+   "thin": true
+  },
+  "CSCO": {
+   "token": "0xF543967EEBB6f1917992eF0E68De63ab07a5a0dA",
+   "hasFeed": false,
+   "pools": 49,
+   "livePools": 5,
+   "vol7dStock": 0,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x13bf682da8d76cfda75783ad2a3bdd269438c5083eb401facb69039f4e7ff333",
+     "vol7dStock": 0,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x13bf682da8d76cfda75783ad2a3bdd269438c5083eb401facb69039f4e7ff333",
+   "impact50kPct": 1173.14,
+   "usdgStockDepth10": 8.51,
+   "thin": true
+  },
+  "FISV": {
+   "token": "0x9ECe29A4A2397C0a35fb5fA8EE2b9509130a98cc",
+   "hasFeed": false,
+   "pools": 30,
+   "livePools": 5,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x1725d684f22412ec3d2a9704897cb7ae979c89545c095de334a3ab61efbad10f",
+   "impact50kPct": 2591.19,
+   "usdgStockDepth10": 11.48,
+   "thin": true
+  },
+  "GOOGL": {
+   "token": "0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3",
+   "hasFeed": true,
+   "pools": 2181,
+   "livePools": 5,
+   "vol7dStock": 5817.99,
+   "swaps7d": 3629,
+   "top2ByVolume": [
+    {
+     "quote": "SPY",
+     "poolId": "0x2bca43d9d8c75399e3c6ba14e9dc88f44ca8968bb4694a8be4f80bd5a550df2e",
+     "vol7dStock": 3030.74,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "ETH",
+     "poolId": "0xe4d9d8c880cedae4ed7884609969c262cd1138a328e05eca7b32f834e649609d",
+     "vol7dStock": 1883.56,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xd4ecb79fdc521d7725d22b33ed43cb4e47aa96bfad76aa29577e3151f723ac5e",
+   "impact50kPct": 1.03,
+   "usdgStockDepth10": 1335.85,
+   "thin": false
+  },
+  "BB": {
+   "token": "0x48E39E56aCdbA37b09020C0b734A613C9a2f100A",
+   "hasFeed": false,
+   "pools": 399,
+   "livePools": 4,
+   "vol7dStock": 3647.06,
+   "swaps7d": 203,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xc250650901b49785b18443a0b1bfee10b98f5c20f11988635252030e5283a288",
+     "vol7dStock": 3436,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x497d52302ec9f8855ee4f084e7879c4c1d125a52d548c6a7b810bc3af769e800",
+     "vol7dStock": 211.06,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xc250650901b49785b18443a0b1bfee10b98f5c20f11988635252030e5283a288",
+   "impact50kPct": 37.34,
+   "usdgStockDepth10": 1607.43,
+   "thin": true
+  },
+  "CVNA": {
+   "token": "0xa4f319104089FE321dc8093C6E707d4fE190A988",
+   "hasFeed": false,
+   "pools": 56,
+   "livePools": 5,
+   "vol7dStock": 5.77,
+   "swaps7d": 6,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x4e001c9d3c2969f8b3d0c348e8842941355f1fa2ed8791456758ce26249883d9",
+     "vol7dStock": 5.77,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x4e001c9d3c2969f8b3d0c348e8842941355f1fa2ed8791456758ce26249883d9",
+   "impact50kPct": 1197.58,
+   "usdgStockDepth10": 13.95,
+   "thin": true
+  },
+  "AXTI": {
+   "token": "0x141eEa040c2250eEc0314e336975e81f85f6585e",
+   "hasFeed": false,
+   "pools": 26,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x3ea5347263573435685e60bc0cb23ac8136683cacb73d91f78e0b8459806835e",
+   "impact50kPct": 26725.96,
+   "usdgStockDepth10": 1.96,
+   "thin": true
+  },
+  "MOD": {
+   "token": "0xc6Cbad1016b38B797610c25E1dc7D95988B1f362",
+   "hasFeed": false,
+   "pools": 36,
+   "livePools": 6,
+   "vol7dStock": 0.02,
+   "swaps7d": 2,
+   "top2ByVolume": [
+    {
+     "quote": "ETH",
+     "poolId": "0x24da5324ca9df4fab3130baeee09d15a34ccc10b6f1006a0ece95455f405bced",
+     "vol7dStock": 0.01,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x3da137f6726622b735a74f5b84333b0e4d90313454cc7b55483fbe32df2c93dc",
+     "vol7dStock": 0.01,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x3da137f6726622b735a74f5b84333b0e4d90313454cc7b55483fbe32df2c93dc",
+   "impact50kPct": 46147.41,
+   "usdgStockDepth10": 0.59,
+   "thin": true
+  },
+  "LULU": {
+   "token": "0x4e62068525Ab11FE768e29dfD00ef909B9803016",
+   "hasFeed": false,
+   "pools": 599,
+   "livePools": 6,
+   "vol7dStock": 172.47,
+   "swaps7d": 341,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x5d3fdc1880b35f9fe20f98bff4e47db44e48f2c293985feea658563fd83b9831",
+     "vol7dStock": 117.32,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x93ccaa0dbab753beaef789704d622d05f619eb547039a0220625693ea12a333e",
+     "vol7dStock": 42.89,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x5d3fdc1880b35f9fe20f98bff4e47db44e48f2c293985feea658563fd83b9831",
+   "impact50kPct": 51.83,
+   "usdgStockDepth10": 97.41,
+   "thin": true
+  },
+  "LMT": {
+   "token": "0x329fcACEb9AD6F9580DD5F643fed0646900D043c",
+   "hasFeed": false,
+   "pools": 186,
+   "livePools": 3,
+   "vol7dStock": 166.81,
+   "swaps7d": 130,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x0b118d2480ebdb11374d3ad2ea1b935e9458a9f704222004b3b8de07bc98f1eb",
+     "vol7dStock": 166,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x6d98b8f5cc98a94f81ec71a21e2e5d78ab0acdbadf117d3f504f4cb68c823e40",
+     "vol7dStock": 0.81,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x0b118d2480ebdb11374d3ad2ea1b935e9458a9f704222004b3b8de07bc98f1eb",
+   "impact50kPct": 1.78,
+   "usdgStockDepth10": 495.12,
+   "thin": false
+  },
+  "INFQ": {
+   "token": "0xB853bC83a753342a4f8320ea680b4B1E84118D21",
+   "hasFeed": false,
+   "pools": 28,
+   "livePools": 6,
+   "vol7dStock": 4.03,
+   "swaps7d": 2,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x99fa98346d33dedb419d59e7deae54c312c75b2d0a3cfe3877938fee56b33e28",
+     "vol7dStock": 4.03,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x99fa98346d33dedb419d59e7deae54c312c75b2d0a3cfe3877938fee56b33e28",
+   "impact50kPct": 37698.78,
+   "usdgStockDepth10": 8.92,
+   "thin": true
+  },
+  "SGOV": {
+   "token": "0x92FD66527192E3e61d4DDd13322Aa222DE86F9B5",
+   "hasFeed": true,
+   "pools": 1024,
+   "livePools": 4,
+   "vol7dStock": 417.88,
+   "swaps7d": 539,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x2a72510d7d92cc121f9733ab6d14227ef8963cfadf9d40ac574f02e20e6299a8",
+     "vol7dStock": 236.65,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x834b8424f719784726e0182701ca18416993a62b56b16e403ede94a48a5793a3",
+     "vol7dStock": 117.01,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x2a72510d7d92cc121f9733ab6d14227ef8963cfadf9d40ac574f02e20e6299a8",
+   "impact50kPct": 0.32,
+   "usdgStockDepth10": 14393.58,
+   "thin": false
+  },
+  "OUST": {
+   "token": "0x40E7a279850e443f582059ae5dC1c3b6563E6395",
+   "hasFeed": false,
+   "pools": 23,
+   "livePools": 6,
+   "vol7dStock": 1.18,
+   "swaps7d": 3,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x8a51e6b42cf8635fe663c94ec95d9f4687eb6db8b8059bdf960c5fc1dd8d7b77",
+     "vol7dStock": 0.59,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "ETH",
+     "poolId": "0xec9f7f5b027987e958da9fecee0d3e73ad4adac95755e201e5efbce019b47956",
+     "vol7dStock": 0.59,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x8a51e6b42cf8635fe663c94ec95d9f4687eb6db8b8059bdf960c5fc1dd8d7b77",
+   "impact50kPct": 280906.72,
+   "usdgStockDepth10": 1.18,
+   "thin": true
+  },
+  "IREN": {
+   "token": "0xF0AB0c93bE6F41369d302e55db1A96b3c430212D",
+   "hasFeed": false,
+   "pools": 54,
+   "livePools": 5,
+   "vol7dStock": 78.48,
+   "swaps7d": 16,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x2566088fd6aa48831800109ad3360328f6c4131da2043b948e1bacdde5151e9f",
+     "vol7dStock": 76.87,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xfe2eb7529e23e4dc4ed46a0ee2b3f9e67c190010936f8d156069ba7ddfc14fa4",
+     "vol7dStock": 1.61,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x2566088fd6aa48831800109ad3360328f6c4131da2043b948e1bacdde5151e9f",
+   "impact50kPct": 475.43,
+   "usdgStockDepth10": 34.55,
+   "thin": true
+  },
+  "MRNA": {
+   "token": "0x43B07D15cE533bEc5476d70C22a78a1B2B662155",
+   "hasFeed": false,
+   "pools": 516,
+   "livePools": 5,
+   "vol7dStock": 190.62,
+   "swaps7d": 349,
+   "top2ByVolume": [
+    {
+     "quote": "VACCINU",
+     "poolId": "0xe4fcea2c4b8fdbd2adf3317b8253b6967ff9e542bfba310642ea81a8b09ce5e6",
+     "vol7dStock": 174.14,
+     "hooks": "0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544"
+    },
+    {
+     "quote": "ETH",
+     "poolId": "0x32be53c0e86965275e39cdd3083c62e290af4e3835673a725305e9034ff5e06b",
+     "vol7dStock": 10.28,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x103d57adc392a0dca76cc78db366e52c6e8d493d2ffc484bf7504796cfc749a7",
+   "impact50kPct": 222.11,
+   "usdgStockDepth10": 18.3,
+   "thin": true
+  },
+  "LRCX": {
+   "token": "0x57b0030166DB0C31690d1A5aA167e2e26e2C29a4",
+   "hasFeed": false,
+   "pools": 31,
+   "livePools": 6,
+   "vol7dStock": 0.4,
+   "swaps7d": 4,
+   "top2ByVolume": [
+    {
+     "quote": "ETH",
+     "poolId": "0x545f5bc9a76365f5d838a9aef6e184177f49d491519306f639c93743365c1656",
+     "vol7dStock": 0.23,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x418770b0685112b2c69bd3c74e45594eb2b50aab201469ca53011f3e510c0c7f",
+     "vol7dStock": 0.17,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x418770b0685112b2c69bd3c74e45594eb2b50aab201469ca53011f3e510c0c7f",
+   "impact50kPct": 22306.79,
+   "usdgStockDepth10": 0.59,
+   "thin": true
+  },
+  "BND": {
+   "token": "0x2F62fC9fAbb470C690f141c28340eD832bB27020",
+   "hasFeed": false,
+   "pools": 12,
+   "livePools": 2,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": null,
+   "impact50kPct": null,
+   "usdgStockDepth10": null,
+   "thin": true
+  },
+  "CEG": {
+   "token": "0xaE517A2903E68bd929Dfd15be875F8369D53e94a",
+   "hasFeed": false,
+   "pools": 46,
+   "livePools": 5,
+   "vol7dStock": 3.41,
+   "swaps7d": 5,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x21e190d0a42ad1b36f957bf2490eef78825d13a579d3a326bf10aadc1d634f4f",
+     "vol7dStock": 3.4,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "ETH",
+     "poolId": "0x633cca89d0bafdfa45a7052f9778394b170828c193e3f85a5fda47b911fb5275",
+     "vol7dStock": 0.02,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x21e190d0a42ad1b36f957bf2490eef78825d13a579d3a326bf10aadc1d634f4f",
+   "impact50kPct": 52.57,
+   "usdgStockDepth10": 37.92,
+   "thin": true
+  },
+  "ALAB": {
+   "token": "0x748c32c3ca24eDf31ea597Db1F3d330a7a6DA3Dc",
+   "hasFeed": false,
+   "pools": 33,
+   "livePools": 6,
+   "vol7dStock": 0.29,
+   "swaps7d": 6,
+   "top2ByVolume": [
+    {
+     "quote": "ETH",
+     "poolId": "0xfefd43410dc8dec18294dc6eb4ac418bde567b8944ffa35e45c6b0923fb5dd32",
+     "vol7dStock": 0.28,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xd74859c163d2f71907766caf9b2f55520bff0fda0464e97b9e983e317d932514",
+     "vol7dStock": 0,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x2402e7a9b73a54f18310091f876fd19efe6e0da60a2d913c7eccd11cb88a8d94",
+   "impact50kPct": 15130.33,
+   "usdgStockDepth10": 0.59,
+   "thin": true
+  },
+  "TEM": {
+   "token": "0xB1CC0EC7Db69Cf43539119814df40071b9d61793",
+   "hasFeed": false,
+   "pools": 24,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xcf2605e1d19103efa0445216057b6432686c1ef305cf2573cfa887b090b22bfe",
+     "vol7dStock": 0,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xcf2605e1d19103efa0445216057b6432686c1ef305cf2573cfa887b090b22bfe",
+   "impact50kPct": 65057.28,
+   "usdgStockDepth10": 1.25,
+   "thin": true
+  },
+  "BULL": {
+   "token": "0xceF9027c7d6985b85f0BA431125073529A947A68",
+   "hasFeed": false,
+   "pools": 286,
+   "livePools": 5,
+   "vol7dStock": 1462.36,
+   "swaps7d": 187,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xdfc620485cebd394955e7cde9e3d336ec8dabe24a7c80c4b9de71ea896208e79",
+     "vol7dStock": 1389.06,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "ETH",
+     "poolId": "0x827928776faafaa14033eca2c7b231c4437230ce5d0df3e1f70ee11141c116c9",
+     "vol7dStock": 47.47,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xdfc620485cebd394955e7cde9e3d336ec8dabe24a7c80c4b9de71ea896208e79",
+   "impact50kPct": 77.44,
+   "usdgStockDepth10": 903.9,
+   "thin": true
+  },
+  "UNH": {
+   "token": "0xcF364ea52787e289De6F32077834056E3E70D6A8",
+   "hasFeed": false,
+   "pools": 51,
+   "livePools": 6,
+   "vol7dStock": 0.95,
+   "swaps7d": 7,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x6901c42bf2baa57e6473fde740b4f25d4e0fe7278df8156af9406081a9755a0d",
+     "vol7dStock": 0.94,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x87eea40bff4f5f70d4781f7c392e69b28aa1b9c4bca28077a336eeac730303d6",
+     "vol7dStock": 0.01,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x6901c42bf2baa57e6473fde740b4f25d4e0fe7278df8156af9406081a9755a0d",
+   "impact50kPct": 1888.4,
+   "usdgStockDepth10": 1.81,
+   "thin": true
+  },
+  "CLOV": {
+   "token": "0x62200915e7DEab1eC7f79fb246daDbB80eACdDd0",
+   "hasFeed": false,
+   "pools": 49,
+   "livePools": 5,
+   "vol7dStock": 75.89,
+   "swaps7d": 10,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x73fa85bb27e0168f5fea56d0959a0b19d09930b62879cb99fca3a0dcbbf151bf",
+     "vol7dStock": 75.89,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x73fa85bb27e0168f5fea56d0959a0b19d09930b62879cb99fca3a0dcbbf151bf",
+   "impact50kPct": 2685.46,
+   "usdgStockDepth10": 119.58,
+   "thin": true
+  },
+  "BABA": {
+   "token": "0xad25Ac6C84D497db898fa1E8387bf6Af3532a1c4",
+   "hasFeed": true,
+   "pools": 576,
+   "livePools": 4,
+   "vol7dStock": 662.71,
+   "swaps7d": 467,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x1791fc651cc794a282e5dbcb56d0b2b38eff8754b677c8876e86901521ecc439",
+     "vol7dStock": 659.53,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x126a5d1d403fd2ebc0615e2479eeac1de8ee640995f203e1c272b5e4fb55a7de",
+     "vol7dStock": 3.18,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x1791fc651cc794a282e5dbcb56d0b2b38eff8754b677c8876e86901521ecc439",
+   "impact50kPct": 7.81,
+   "usdgStockDepth10": 547.74,
+   "thin": true
+  },
+  "SIMO": {
+   "token": "0x77E655E37F4d913fB9540e0d541D824171a60e81",
+   "hasFeed": false,
+   "pools": 33,
+   "livePools": 5,
+   "vol7dStock": 0.64,
+   "swaps7d": 2,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xab99c0156e7107cfcdf445b7ab53cf5e547d4a906c434093ce40bfed7a140efe",
+     "vol7dStock": 0.64,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xab99c0156e7107cfcdf445b7ab53cf5e547d4a906c434093ce40bfed7a140efe",
+   "impact50kPct": 287.52,
+   "usdgStockDepth10": 8.7,
+   "thin": true
+  },
+  "WDC": {
+   "token": "0xF52597345A8Edf418bc4071b4a35112472277D3e",
+   "hasFeed": false,
+   "pools": 37,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x6f2464d44ece96fa49583328ccbc5872f1f975443fb41619099a59cbdf8b87fd",
+   "impact50kPct": 36645.97,
+   "usdgStockDepth10": 0.29,
+   "thin": true
+  },
+  "CLSK": {
+   "token": "0xcBB95BBF36099d34dA091dc6Fa6F49EfA257Cee3",
+   "hasFeed": true,
+   "pools": 47,
+   "livePools": 6,
+   "vol7dStock": 111.09,
+   "swaps7d": 24,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x7a9fd17b8630ce49d0860a31d7fa8b482b6a7f3bebd81318b0555fce76bb828e",
+     "vol7dStock": 59.58,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x2a957ec877e91cccd9920e39b8d50128310a75ba7fa3765eb4e4a5ef11ab69a5",
+     "vol7dStock": 51.5,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x2a957ec877e91cccd9920e39b8d50128310a75ba7fa3765eb4e4a5ef11ab69a5",
+   "impact50kPct": 11031.71,
+   "usdgStockDepth10": 16.92,
+   "thin": true
+  },
+  "PLTR": {
+   "token": "0x894E1EC2D74FFE5AEF8Dc8A9e84686acCB964F2A",
+   "hasFeed": true,
+   "pools": 988,
+   "livePools": 6,
+   "vol7dStock": 17174.51,
+   "swaps7d": 5315,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xee430ee1003e1985e1828a01b9a20dad67ad4302994fe2abb4a173de4ac54623",
+     "vol7dStock": 13719.95,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xc59eaeda6d1a6f031bc7e1d039772f2d675e7b4de2c8668610f4471bd60b3802",
+     "vol7dStock": 3454.56,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xee430ee1003e1985e1828a01b9a20dad67ad4302994fe2abb4a173de4ac54623",
+   "impact50kPct": 1.49,
+   "usdgStockDepth10": 1648.19,
+   "thin": false
+  },
+  "MU": {
+   "token": "0xfF080c8ce2E5feadaCa0Da81314Ae59D232d4afD",
+   "hasFeed": true,
+   "pools": 602,
+   "livePools": 5,
+   "vol7dStock": 757.96,
+   "swaps7d": 1777,
+   "top2ByVolume": [
+    {
+     "quote": "SPY",
+     "poolId": "0xcc2a903a8744a65258bb07fbeea553a25410f731c9fef306321d0c176a09542c",
+     "vol7dStock": 653.23,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x6fa3ee0048e78bf0a513eb0ab56f482944a767c21db990fcf555605e69f05659",
+     "vol7dStock": 91.88,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x6fa3ee0048e78bf0a513eb0ab56f482944a767c21db990fcf555605e69f05659",
+   "impact50kPct": 4.59,
+   "usdgStockDepth10": 95.22,
+   "thin": false
+  },
+  "ASTS": {
+   "token": "0x1AF6446f07eb1d97c546AFC8c9544cBDF3AD5137",
+   "hasFeed": false,
+   "pools": 99,
+   "livePools": 4,
+   "vol7dStock": 12.15,
+   "swaps7d": 13,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x4e67b9742f8991a5ed481d10ab0b2ca5532ee14e33f7d1cec1e894e95bd74632",
+     "vol7dStock": 6.16,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xd94506f18e4d618fba9653e48af35df392ce91d30ea0bff327ad8a1102e11942",
+     "vol7dStock": 4.79,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x4e67b9742f8991a5ed481d10ab0b2ca5532ee14e33f7d1cec1e894e95bd74632",
+   "impact50kPct": 223.22,
+   "usdgStockDepth10": 47.58,
+   "thin": true
+  },
+  "POWL": {
+   "token": "0x237c16D66590F67B886d978ACD362EAeaD8B18c7",
+   "hasFeed": false,
+   "pools": 38,
+   "livePools": 5,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x5934fccc26180f5543547fc9dbcc569f91d54c5827379643d6ef59cfe8408c24",
+   "impact50kPct": 1627.8,
+   "usdgStockDepth10": 4.02,
+   "thin": true
+  },
+  "VTI": {
+   "token": "0x0594134DF3f171a354D9C85eBD65b7A6148F6D09",
+   "hasFeed": false,
+   "pools": 34,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xf9e68c9da6b5bd77bff43572c14b854d3a6ff22475d1919a9e52abd15e614ad8",
+   "impact50kPct": 1464093.61,
+   "usdgStockDepth10": 0.05,
+   "thin": true
+  },
+  "RKLB": {
+   "token": "0x3b14C39E89D60D627b42a1A4CA45b5bb45Fc12e2",
+   "hasFeed": true,
+   "pools": 94,
+   "livePools": 5,
+   "vol7dStock": 15.23,
+   "swaps7d": 25,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xbbc15d66fef8391f53569e19016e86545be9de3f302b82db93ed6165236d22f3",
+     "vol7dStock": 13.9,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "ETH",
+     "poolId": "0xbd5a81db7103ab739ad07814b94460f8ca6bb3b15f1fdb74c5ab45dba90df209",
+     "vol7dStock": 1.33,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xbbc15d66fef8391f53569e19016e86545be9de3f302b82db93ed6165236d22f3",
+   "impact50kPct": 291.67,
+   "usdgStockDepth10": 33.08,
+   "thin": true
+  },
+  "TER": {
+   "token": "0x2778C5024D5cA2CdB0f8eAD671ffc69963AdCD9C",
+   "hasFeed": false,
+   "pools": 74,
+   "livePools": 6,
+   "vol7dStock": 0.45,
+   "swaps7d": 4,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xabae74f2df8f5344edbfe344f414042ee019815253858827ce2c059464d88976",
+     "vol7dStock": 0.45,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xabae74f2df8f5344edbfe344f414042ee019815253858827ce2c059464d88976",
+   "impact50kPct": 19073.54,
+   "usdgStockDepth10": 0.5,
+   "thin": true
+  },
+  "CRWV": {
+   "token": "0x5f10A1C971B69e47e059e1dC91901B59b3fB49C3",
+   "hasFeed": true,
+   "pools": 323,
+   "livePools": 5,
+   "vol7dStock": 520.24,
+   "swaps7d": 204,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x237014478f7ef98afbe7412ac35b6a3f96b8fb111de48b7c4dbf49dba4bd9c4b",
+     "vol7dStock": 487.63,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x214cb0d273321ae3d5fb85a869e3853ed1a8ece7c3eda9dee0c77d7f0d8a4ae8",
+     "vol7dStock": 32.53,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x237014478f7ef98afbe7412ac35b6a3f96b8fb111de48b7c4dbf49dba4bd9c4b",
+   "impact50kPct": 14.76,
+   "usdgStockDepth10": 369.19,
+   "thin": true
+  },
+  "CLS": {
+   "token": "0xBf449977089c718C004a66C554B26B94ef3Ad4De",
+   "hasFeed": false,
+   "pools": 22,
+   "livePools": 5,
+   "vol7dStock": 0.27,
+   "swaps7d": 2,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xfbdd733f4126b89ff843d1a60de900aef2ada676981dfd9ee066a0b02732f253",
+     "vol7dStock": 0.27,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xfbdd733f4126b89ff843d1a60de900aef2ada676981dfd9ee066a0b02732f253",
+   "impact50kPct": 3926.81,
+   "usdgStockDepth10": 1.25,
+   "thin": true
+  },
+  "FIG": {
+   "token": "0x41F4267525a8AFf329540eF24fD83d9044758B33",
+   "hasFeed": false,
+   "pools": 237,
+   "livePools": 5,
+   "vol7dStock": 1034.77,
+   "swaps7d": 108,
+   "top2ByVolume": [
+    {
+     "quote": "LIGMA",
+     "poolId": "0x444951a2f8a271ca2b381c8dd4ff564deba485e6e8520624fc97d8e2c0399154",
+     "vol7dStock": 946.85,
+     "hooks": "0x4eb1976978756bd56802d8162f2271844924e0cc"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xaee7f2e61946d4e2a096f44dc686c5b6ba8b2ce0857fa167f2e95c3d2eeb62b8",
+     "vol7dStock": 68.06,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xaee7f2e61946d4e2a096f44dc686c5b6ba8b2ce0857fa167f2e95c3d2eeb62b8",
+   "impact50kPct": 62.67,
+   "usdgStockDepth10": 384.91,
+   "thin": true
+  },
+  "AMD": {
+   "token": "0x86923f96303D656E4aa86D9d42D1e57ad2023fdC",
+   "hasFeed": true,
+   "pools": 890,
+   "livePools": 5,
+   "vol7dStock": 916.78,
+   "swaps7d": 2914,
+   "top2ByVolume": [
+    {
+     "quote": "SPY",
+     "poolId": "0xe6e17efdbdd916526293cf1b509171be4ffb04f47c4a5fe1a7367acdaa6ffd82",
+     "vol7dStock": 661.81,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xde9f85fdd9e05a943a52f2c69ffafe3064a3287df03d02c9b431bc92d4781274",
+     "vol7dStock": 253.79,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xde9f85fdd9e05a943a52f2c69ffafe3064a3287df03d02c9b431bc92d4781274",
+   "impact50kPct": 2.55,
+   "usdgStockDepth10": 299.09,
+   "thin": false
+  },
+  "EWY": {
+   "token": "0x7f0aBeF0C07280F82c6a08ead09dEd6BAE2C13Fc",
+   "hasFeed": true,
+   "pools": 118,
+   "livePools": 4,
+   "vol7dStock": 24.52,
+   "swaps7d": 26,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x7a028e4523490f2737ddf4420cd118363dd71ef2e3f93e2e1503a63990579ba9",
+     "vol7dStock": 22.58,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x7a226cd760a4b81b6841dfca3b4ae9c05c1d1cb01def5a49154cecf8f8b50086",
+     "vol7dStock": 1.94,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xaac10c49a6386a702427c6cd4f378706ade03c53267080712f9e5d2fc496b61a",
+   "impact50kPct": 35.34,
+   "usdgStockDepth10": 77.93,
+   "thin": true
+  },
+  "SLS": {
+   "token": "0x285b231728c7E4333799183DF1094d775246a535",
+   "hasFeed": false,
+   "pools": 28,
+   "livePools": 6,
+   "vol7dStock": 0.03,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xeac99c4a9e4244a762abbcabc07780ff3a3228de0404942ea18e53e7afba37dc",
+     "vol7dStock": 0.03,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xeac99c4a9e4244a762abbcabc07780ff3a3228de0404942ea18e53e7afba37dc",
+   "impact50kPct": 356118.37,
+   "usdgStockDepth10": 3.46,
+   "thin": true
+  },
+  "CRDO": {
+   "token": "0x4D67253bc223e6b0e104F1084c1fb2b669dDC41b",
+   "hasFeed": false,
+   "pools": 30,
+   "livePools": 6,
+   "vol7dStock": 0.88,
+   "swaps7d": 4,
+   "top2ByVolume": [
+    {
+     "quote": "ETH",
+     "poolId": "0x41bb18586d2cd600b90bc8fd7a06d8991eb0d1ca0bd53b2d647b5ded9855f3b5",
+     "vol7dStock": 0.88,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xbe8c2d4471f558ddfef2b792a9839fdcf496362241e68e77f1c3cd943954cdf3",
+   "impact50kPct": 13650.27,
+   "usdgStockDepth10": 1.22,
+   "thin": true
+  },
+  "SMH": {
+   "token": "0x072f979c2CAc8e1391B0162a87Fee094bF8744a0",
+   "hasFeed": false,
+   "pools": 45,
+   "livePools": 5,
+   "vol7dStock": 0.03,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xd55a1afbcb039f6120cc98a844c08642c202bd633632a7b51cb06e7f7b01fa6f",
+     "vol7dStock": 0.03,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xd55a1afbcb039f6120cc98a844c08642c202bd633632a7b51cb06e7f7b01fa6f",
+   "impact50kPct": 17280.56,
+   "usdgStockDepth10": 0.34,
+   "thin": true
+  },
+  "VRT": {
+   "token": "0xFA78C12E6488814A0262E4e802749a4a737d5fB7",
+   "hasFeed": false,
+   "pools": 32,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x3eae82e369298632e85c28220c80f20060855c0083aed3ddd6c1e7ec1b1e4193",
+   "impact50kPct": 5389.04,
+   "usdgStockDepth10": 1.45,
+   "thin": true
+  },
+  "NOW": {
+   "token": "0x0C3260aF4B8f13a69c4c2dFb84fD667890CDFa14",
+   "hasFeed": false,
+   "pools": 80,
+   "livePools": 5,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xc56a28baafe3bcb71c4243043a186347ed7c8751abf4d84b82563f43a50e81cf",
+   "impact50kPct": 606.59,
+   "usdgStockDepth10": 10.13,
+   "thin": true
+  },
+  "XLK": {
+   "token": "0x15Cd20759CE7F3285c29A319dE2D1A2e098c6f43",
+   "hasFeed": false,
+   "pools": 58,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x905b2d64b76de44f3f4bdcc046f20c51eaa95ae752b86a1d3c516e1b97e3b719",
+   "impact50kPct": 37663.35,
+   "usdgStockDepth10": 0.67,
+   "thin": true
+  },
+  "AMBA": {
+   "token": "0x99D9D8663545151603863C5AcbD6FC3218899009",
+   "hasFeed": false,
+   "pools": 47,
+   "livePools": 6,
+   "vol7dStock": 2.33,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "ETH",
+     "poolId": "0x767f3d7cd19ce87cdd7388325d10e19d979187ffe3f288b7cea05bb29f00a62a",
+     "vol7dStock": 2.33,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x222b543214371ceaffea532955d5851b04bf81c186ee339c8925a2a88903ee52",
+   "impact50kPct": 112690.26,
+   "usdgStockDepth10": 1.08,
+   "thin": true
+  },
+  "NVDA": {
+   "token": "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+   "hasFeed": true,
+   "pools": 14758,
+   "livePools": 6,
+   "vol7dStock": 1340.4,
+   "swaps7d": 1289,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x7990aad9e8fb048f49a155a7df5603db0366f0657035b78eb4196395cccb3dcd",
+     "vol7dStock": 737.64,
+     "hooks": "0x66622f77b797d506e5376f7798b67ab288966080"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x3bb34a44f1b2b5f32c034c38a53065a521a47b199700fa9bd19d60985ff24bf1",
+     "vol7dStock": 593.79,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x3bb34a44f1b2b5f32c034c38a53065a521a47b199700fa9bd19d60985ff24bf1",
+   "impact50kPct": 1.32,
+   "usdgStockDepth10": 1571.68,
+   "thin": false
+  },
+  "JOBY": {
+   "token": "0xb334C5cE741B80B5B671F47F5C269Cb193fe8E24",
+   "hasFeed": false,
+   "pools": 49,
+   "livePools": 5,
+   "vol7dStock": 2.38,
+   "swaps7d": 4,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x5ac0d300231e792db1528aecaf28af5f81700efd7ac6cf222500ef5f8934d898",
+     "vol7dStock": 2.38,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x5ac0d300231e792db1528aecaf28af5f81700efd7ac6cf222500ef5f8934d898",
+   "impact50kPct": 987.07,
+   "usdgStockDepth10": 160.12,
+   "thin": true
+  },
+  "QUBT": {
+   "token": "0x59818904ab4cE163b3cE4FfB64f2D6Ca02c434B4",
+   "hasFeed": false,
+   "pools": 502,
+   "livePools": 6,
+   "vol7dStock": 46.54,
+   "swaps7d": 18,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xb21dd415c122151817e70a7b5ed7edb3379e06a6f2038668ee40e9aa8caed3e3",
+     "vol7dStock": 33.26,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xa4d5975b4be6d211b01adc5cf8742c60192f5dd0f861fc8545d3d79c5f654472",
+     "vol7dStock": 10.72,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xb21dd415c122151817e70a7b5ed7edb3379e06a6f2038668ee40e9aa8caed3e3",
+   "impact50kPct": 905.27,
+   "usdgStockDepth10": 131.88,
+   "thin": true
+  },
+  "USO": {
+   "token": "0xa30FA36Db767ad9eD3f7a60fC79526fB4d56D344",
+   "hasFeed": true,
+   "pools": 591,
+   "livePools": 5,
+   "vol7dStock": 7385.06,
+   "swaps7d": 2220,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x1f2ad5a274a776d8e1408292bde1d92d8fa7b6444acf14ad60b9c3e4e5b66420",
+     "vol7dStock": 7298.37,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "ETH",
+     "poolId": "0x47398a89c00dcb4a7d47bf3d7a48dc496ec020a5c603a26f4922ef4513280302",
+     "vol7dStock": 82.93,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x1f2ad5a274a776d8e1408292bde1d92d8fa7b6444acf14ad60b9c3e4e5b66420",
+   "impact50kPct": 4.38,
+   "usdgStockDepth10": 730.84,
+   "thin": false
+  },
+  "PWR": {
+   "token": "0x9Ab02Ead789b6903c3c44d0ED32F9c707CDF12FD",
+   "hasFeed": false,
+   "pools": 34,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x0039d1d3b744de53b821bbd19fca84cb6ef4e8e064dd869df9c19d0088153638",
+   "impact50kPct": 4074594.12,
+   "usdgStockDepth10": 0.02,
+   "thin": true
+  },
+  "F": {
+   "token": "0x25C288E6D899b9BC30160965aD9644c67e73bE0C",
+   "hasFeed": false,
+   "pools": 324,
+   "livePools": 6,
+   "vol7dStock": 47.46,
+   "swaps7d": 11,
+   "top2ByVolume": [
+    {
+     "quote": "HARRISON",
+     "poolId": "0xb9a8bf2c0efffb2fe4478e556d2f5099e505a8d75f4b7bd38d6ac877b4fc3613",
+     "vol7dStock": 45.61,
+     "hooks": "0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x474f3efdf9e7e7111737893d84a4e41ad49265e68753dd0b25fb1329ae8c105d",
+     "vol7dStock": 1.85,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x474f3efdf9e7e7111737893d84a4e41ad49265e68753dd0b25fb1329ae8c105d",
+   "impact50kPct": 3729.13,
+   "usdgStockDepth10": 34.49,
+   "thin": true
+  },
+  "ZS": {
+   "token": "0x7dc013eB55e436f30d7ED1AFE4E36d6e45e3c3f7",
+   "hasFeed": false,
+   "pools": 45,
+   "livePools": 6,
+   "vol7dStock": 0.14,
+   "swaps7d": 5,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x0ed2521e7399d7975b936b66d9313f3baadc63513480d3f967c5d07833f8947f",
+     "vol7dStock": 0.13,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "ZEROTRUST",
+     "poolId": "0x381bcab4d6be01563722325bd2537a111643c22d4c4980cdfd173ac40532754d",
+     "vol7dStock": 0.01,
+     "hooks": "0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x0ed2521e7399d7975b936b66d9313f3baadc63513480d3f967c5d07833f8947f",
+   "impact50kPct": 117155.74,
+   "usdgStockDepth10": 0.34,
+   "thin": true
+  },
+  "COIN": {
+   "token": "0x6330D8C3178a418788dF01a47479c0ce7CCF450b",
+   "hasFeed": true,
+   "pools": 1337,
+   "livePools": 5,
+   "vol7dStock": 2622.39,
+   "swaps7d": 3407,
+   "top2ByVolume": [
+    {
+     "quote": "SPY",
+     "poolId": "0x982af6ff6a2169c91a78634d3d10b3e1fe1e6a7e76387de04167234a41d50e4c",
+     "vol7dStock": 1681.79,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x007a13fa152f6dc383cad20a8eaab4e1e2538b606936eae2a424f8aa47d6db31",
+     "vol7dStock": 786.07,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x007a13fa152f6dc383cad20a8eaab4e1e2538b606936eae2a424f8aa47d6db31",
+   "impact50kPct": 2.59,
+   "usdgStockDepth10": 911.73,
+   "thin": false
+  },
+  "XOM": {
+   "token": "0xf9B46d3D1B22199D4D1025a9cEDB540A33F1a2d5",
+   "hasFeed": false,
+   "pools": 101,
+   "livePools": 5,
+   "vol7dStock": 24.83,
+   "swaps7d": 39,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xb3d129708f216d47fd3f996bc9dd0365912e6f14f961e0c61de76a0c1deef074",
+     "vol7dStock": 24.58,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x9951d0b12c54838b4e16549557d2e4b675b99665d73f761a780760e5af73d92a",
+     "vol7dStock": 0.15,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xb3d129708f216d47fd3f996bc9dd0365912e6f14f961e0c61de76a0c1deef074",
+   "impact50kPct": 39.68,
+   "usdgStockDepth10": 79.74,
+   "thin": true
+  },
+  "NBIS": {
+   "token": "0x9D9c6684F596F66a64C030B93A886D51Fd4D7931",
+   "hasFeed": true,
+   "pools": 99,
+   "livePools": 4,
+   "vol7dStock": 113.89,
+   "swaps7d": 210,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x7c2f9ce1214ba9baf56d1b6a1fc640c1b63e9a711172c0c7d10e5a9c4a3d4f0c",
+     "vol7dStock": 98.42,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "NEO",
+     "poolId": "0xb49867a9d652246ad10f444f378ec4948b9ed90de35859e543410e666b86136a",
+     "vol7dStock": 15.47,
+     "hooks": "0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x7c2f9ce1214ba9baf56d1b6a1fc640c1b63e9a711172c0c7d10e5a9c4a3d4f0c",
+   "impact50kPct": 31.34,
+   "usdgStockDepth10": 68.67,
+   "thin": true
+  },
+  "SHY": {
+   "token": "0xBE274710Bf3d9567e1B290eF6a5F9f90ca016FD8",
+   "hasFeed": false,
+   "pools": 40,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x768b3c7809afd191f99027866d40a43960408d39554835821b1159ea208daa2e",
+   "impact50kPct": 1843.81,
+   "usdgStockDepth10": 8.29,
+   "thin": true
+  },
+  "SMR": {
+   "token": "0x1Eebee7F74517e0279dFb09d25B0407bEEc3FDd6",
+   "hasFeed": false,
+   "pools": 30,
+   "livePools": 5,
+   "vol7dStock": 9.43,
+   "swaps7d": 2,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xcc6c340ed95ed19ccd6b97cae7dd3abb7b8aef25e8185bac2122ad9e91cd21a8",
+     "vol7dStock": 9.43,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xcc6c340ed95ed19ccd6b97cae7dd3abb7b8aef25e8185bac2122ad9e91cd21a8",
+   "impact50kPct": 601.15,
+   "usdgStockDepth10": 159.39,
+   "thin": true
+  },
+  "SOUN": {
+   "token": "0x6E3Dfd9f7e1649BaA14D25cac18C94d62dB10A54",
+   "hasFeed": false,
+   "pools": 82,
+   "livePools": 4,
+   "vol7dStock": 121.68,
+   "swaps7d": 12,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xebc97d7efbdfda34658ba801749c4bc664b41cd5df086c27137de35267306de2",
+     "vol7dStock": 119.5,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x87be6c780459662d43b05c769343025ca2b59498e8b69d636f8659095c77b5d2",
+     "vol7dStock": 2.18,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xebc97d7efbdfda34658ba801749c4bc664b41cd5df086c27137de35267306de2",
+   "impact50kPct": 181.76,
+   "usdgStockDepth10": 562.07,
+   "thin": true
+  },
+  "POET": {
+   "token": "0xcf6B2D875361be807EAfa57458c80f28521F9333",
+   "hasFeed": false,
+   "pools": 63,
+   "livePools": 6,
+   "vol7dStock": 9.02,
+   "swaps7d": 3,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xfcffa3e303895e022e3960b32eccd7302d7ddbe7dd58483bb780acea5aa39aa5",
+     "vol7dStock": 9.02,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xfcffa3e303895e022e3960b32eccd7302d7ddbe7dd58483bb780acea5aa39aa5",
+   "impact50kPct": 8802.93,
+   "usdgStockDepth10": 33.88,
+   "thin": true
+  },
+  "APP": {
+   "token": "0xA249BAF1063Af884807C1E1400AEf7784836917E",
+   "hasFeed": false,
+   "pools": 58,
+   "livePools": 5,
+   "vol7dStock": 3,
+   "swaps7d": 12,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xd344e3d4f856c9cd589a24e229f597b27f499fca5b91743d44206b0cb69959bd",
+     "vol7dStock": 2.36,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x33598ad54c3098dbc3cebc273666cf7299cec4a7365c5381bddcac93ed3f74d0",
+     "vol7dStock": 0.64,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xd344e3d4f856c9cd589a24e229f597b27f499fca5b91743d44206b0cb69959bd",
+   "impact50kPct": 158.57,
+   "usdgStockDepth10": 12.14,
+   "thin": true
+  },
+  "AAOI": {
+   "token": "0x521Cf887E6531c6F667b5BC4D896E5d9bfE8EB2E",
+   "hasFeed": false,
+   "pools": 89,
+   "livePools": 5,
+   "vol7dStock": 0,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "ETH",
+     "poolId": "0x36b652d2f4bde8958638747d3e45fcb2089fbd2a3c298a17d0d5b458e25c3228",
+     "vol7dStock": 0,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xed045fce8ef2d1df0ea810aacd6e8f2dff744cd4449d62370fd7565eb70b30b4",
+   "impact50kPct": 625.21,
+   "usdgStockDepth10": 12.91,
+   "thin": true
+  },
+  "LITE": {
+   "token": "0x8eF20885F94e3D9bc7eB3080279188Bd5ED7c08C",
+   "hasFeed": false,
+   "pools": 64,
+   "livePools": 6,
+   "vol7dStock": 7.97,
+   "swaps7d": 25,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xe2c508ce68ebc3a04a5000cc3659905bb391d390e5b8994d0a65ba316ec326c2",
+     "vol7dStock": 7.97,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xe2c508ce68ebc3a04a5000cc3659905bb391d390e5b8994d0a65ba316ec326c2",
+   "impact50kPct": 9156.99,
+   "usdgStockDepth10": 0.29,
+   "thin": true
+  },
+  "AEIS": {
+   "token": "0xfAf9cb261B5FCC1f404Bb10CD39C5c6C1974E612",
+   "hasFeed": false,
+   "pools": 34,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x5a80cc66da10bb3bea2b32859cf35a892f2be523a2f3931a9a6375a8fa104977",
+   "impact50kPct": 26195.88,
+   "usdgStockDepth10": 0.57,
+   "thin": true
+  },
+  "KTOS": {
+   "token": "0x7FD06a4d81cCfA3F351394E144d5191874C31313",
+   "hasFeed": false,
+   "pools": 37,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x2dc444dda358d7a75a5e92915c388efeaa9e770ab2599b6fdc540f94b1001c71",
+   "impact50kPct": 21322.31,
+   "usdgStockDepth10": 3.53,
+   "thin": true
+  },
+  "AMAT": {
+   "token": "0x36046893810a7E7fCE501229d57dc3FC8c8716d0",
+   "hasFeed": false,
+   "pools": 54,
+   "livePools": 6,
+   "vol7dStock": 0.03,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x8ef67f2641e6dbdc2247075965871aedca4d162eb8e53d2f160fa2bcb43e461f",
+     "vol7dStock": 0.03,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xabc93f35755b3c1cf8feea9b6490d93fd184d7964529aef89b6c5a66d321fe40",
+   "impact50kPct": 24715.43,
+   "usdgStockDepth10": 0.34,
+   "thin": true
+  },
+  "MRVL": {
+   "token": "0x62fd0668e10D8B72339BE2DCF7643001688ff13B",
+   "hasFeed": false,
+   "pools": 204,
+   "livePools": 6,
+   "vol7dStock": 0.43,
+   "swaps7d": 3,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xec44496df8d7e622bdbc3927c93190606397166c7514b3fd09a328c0c438140c",
+     "vol7dStock": 0.43,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xec44496df8d7e622bdbc3927c93190606397166c7514b3fd09a328c0c438140c",
+   "impact50kPct": 2244.32,
+   "usdgStockDepth10": 2.37,
+   "thin": true
+  },
+  "JBL": {
+   "token": "0xEAf2512dFC1bEAc608F8794B3793CD4E02894Aa6",
+   "hasFeed": false,
+   "pools": 28,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 3,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x74efc8c23435e52ab977c49bfec145d04b7c20d16a6890b0f5553b1bea931855",
+     "vol7dStock": 0,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xcc7af572cbd4a8e7a10230dcb639977bbf1c3b76f59e68c570977721d41d7ec4",
+     "vol7dStock": 0,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xcc7af572cbd4a8e7a10230dcb639977bbf1c3b76f59e68c570977721d41d7ec4",
+   "impact50kPct": 1116931.23,
+   "usdgStockDepth10": 0.07,
+   "thin": true
+  },
+  "LLY": {
+   "token": "0x8005d266423c7ea827372c9c864491e5786600ea",
+   "hasFeed": false,
+   "pools": 497,
+   "livePools": 5,
+   "vol7dStock": 428.18,
+   "swaps7d": 695,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x23b1d33a2158e4551b9d48f16bbf0d19ade4b119668fd16864402143240bc673",
+     "vol7dStock": 427.81,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xa848aae6d958330c367e796877b74065183dfac41e3d8d805d8d71734e386bac",
+     "vol7dStock": 0.36,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x23b1d33a2158e4551b9d48f16bbf0d19ade4b119668fd16864402143240bc673",
+   "impact50kPct": 1.17,
+   "usdgStockDepth10": 347.88,
+   "thin": false
+  },
+  "QCOM": {
+   "token": "0x0f17206447090e464C277571124dD2688E48AEA9",
+   "hasFeed": false,
+   "pools": 69,
+   "livePools": 3,
+   "vol7dStock": 302.27,
+   "swaps7d": 129,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x106af997d180cf37a574c42c04179f267b9245cf221b1c57fb3e491137915de6",
+     "vol7dStock": 302.02,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x80ee0f4dbf8d83456ad66ba18a95ae2f585ca6d81e07292ebcc5aadfea0af5eb",
+     "vol7dStock": 0.25,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x106af997d180cf37a574c42c04179f267b9245cf221b1c57fb3e491137915de6",
+   "impact50kPct": 8.35,
+   "usdgStockDepth10": 289.86,
+   "thin": true
+  },
+  "JNJ": {
+   "token": "0x03DfbBE0AC4E7bCDaFd08eD41A400326B77D8c80",
+   "hasFeed": false,
+   "pools": 232,
+   "livePools": 4,
+   "vol7dStock": 0.04,
+   "swaps7d": 2,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x939699357c3dfe97e84bce4ac71470ded8af8b7e2b52de4c216394b5849f8298",
+     "vol7dStock": 0.04,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x939699357c3dfe97e84bce4ac71470ded8af8b7e2b52de4c216394b5849f8298",
+   "impact50kPct": 34.56,
+   "usdgStockDepth10": 54.08,
+   "thin": true
+  },
+  "KSS": {
+   "token": "0x12e3c047bf9AeCAF9dDC98c05C31BFD1dd043993",
+   "hasFeed": false,
+   "pools": 52,
+   "livePools": 6,
+   "vol7dStock": 86.21,
+   "swaps7d": 20,
+   "top2ByVolume": [
+    {
+     "quote": "ETH",
+     "poolId": "0x554820abca0d7fdecfc8a21edf82103a43c063846f71f9c34fddee96cb06bb37",
+     "vol7dStock": 56.79,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x3f19293823a9a7be7a1fe5d4b628c0f2357ce0b6c388d95a8c52135bf55a1529",
+     "vol7dStock": 29.04,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x3f19293823a9a7be7a1fe5d4b628c0f2357ce0b6c388d95a8c52135bf55a1529",
+   "impact50kPct": 19451.68,
+   "usdgStockDepth10": 10.15,
+   "thin": true
+  },
+  "ANET": {
+   "token": "0x28bABD556b60E53663B8615036479a29c2CDd1Bf",
+   "hasFeed": false,
+   "pools": 25,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x07b62db25b9d40280e9cd1261ea47cbdfda3cec5bbfb3e055ba350ac8ffaa282",
+   "impact50kPct": 1351830.26,
+   "usdgStockDepth10": 0.1,
+   "thin": true
+  },
+  "CTSH": {
+   "token": "0x63D5a3b6939a33f1e75d8Bcd85759858239600DB",
+   "hasFeed": false,
+   "pools": 24,
+   "livePools": 5,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x672208ab6e5af6c473e9dbf7a2c160e89b5dbd94bfd94e8ddf828e8b789f047f",
+   "impact50kPct": 2992.64,
+   "usdgStockDepth10": 8.31,
+   "thin": true
+  },
+  "PL": {
+   "token": "0xAA4d64474c172010aB57719cb9951E6142a100d3",
+   "hasFeed": false,
+   "pools": 59,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xeb1ee02e6a3df0ba0aa41ac6750a046ad52c9f40ee0a22ba82b9c97771918b2a",
+   "impact50kPct": 380144.57,
+   "usdgStockDepth10": 2.3,
+   "thin": true
+  },
+  "IONQ": {
+   "token": "0x558378E000D634A36593E338eBacdd6207640EfE",
+   "hasFeed": true,
+   "pools": 57,
+   "livePools": 6,
+   "vol7dStock": 18.6,
+   "swaps7d": 28,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xbd78e53962e76c3b6228b86dc074059258bc73d565e5e343ae4ad3c4c1ac5681",
+     "vol7dStock": 17.21,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x54c59eece8430d40cba66b28f9ec9768e608c22c934f6640579a15fa8fc32a48",
+     "vol7dStock": 0.79,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xbd78e53962e76c3b6228b86dc074059258bc73d565e5e343ae4ad3c4c1ac5681",
+   "impact50kPct": 3271.72,
+   "usdgStockDepth10": 11,
+   "thin": true
+  },
+  "TE": {
+   "token": "0xb1969f6604CA1AE7a2cD3F1827876e914594CA2D",
+   "hasFeed": false,
+   "pools": 58,
+   "livePools": 6,
+   "vol7dStock": 11.62,
+   "swaps7d": 2,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x383c4652647302804d11b7ad53b729c567cf185b147f9d9bfe7e71195e5647af",
+     "vol7dStock": 11.62,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x383c4652647302804d11b7ad53b729c567cf185b147f9d9bfe7e71195e5647af",
+   "impact50kPct": 579865.93,
+   "usdgStockDepth10": 7.29,
+   "thin": true
+  },
+  "SHOP": {
+   "token": "0xF53F66751B1Eff985311b693531E3290F600c410",
+   "hasFeed": false,
+   "pools": 352,
+   "livePools": 3,
+   "vol7dStock": 838.89,
+   "swaps7d": 495,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x8baff387b51c50e2747e85bcddf87da78fee6efb45629743e1af4dfb07ad13ee",
+     "vol7dStock": 391.22,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x3edfbf6a3c6ef62b822be53c749bab2e52006866ffaa2566b4936823e2c94683",
+     "vol7dStock": 302.14,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x8636068a8938341d9f50008b8cfa2cb57749b1d8da6d12c3528632808413e3ec",
+   "impact50kPct": 12.04,
+   "usdgStockDepth10": 267.48,
+   "thin": true
+  },
+  "NVTS": {
+   "token": "0xbE6702d7b70315376dC48a3293f24f0982F86386",
+   "hasFeed": false,
+   "pools": 40,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x5ea9601ea0ffe2593fad6f0a184fe21a67e4d6d9da31b0528a66b0d860d5c0f0",
+   "impact50kPct": 264928.19,
+   "usdgStockDepth10": 3.94,
+   "thin": true
+  },
+  "PATH": {
+   "token": "0xfb2664f07B6Aadd29ea7a59D8859b1AeB8645cDa",
+   "hasFeed": false,
+   "pools": 35,
+   "livePools": 6,
+   "vol7dStock": 38.23,
+   "swaps7d": 6,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x251018f410a9ac182e458a5f26949d598e31a60881b53d0fd5806e2fc12bda1a",
+     "vol7dStock": 38.23,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x251018f410a9ac182e458a5f26949d598e31a60881b53d0fd5806e2fc12bda1a",
+   "impact50kPct": 2350.55,
+   "usdgStockDepth10": 43.39,
+   "thin": true
+  },
+  "UMC": {
+   "token": "0x0E6e67Ba88e7b5d9B67636A215c76779B948dE79",
+   "hasFeed": false,
+   "pools": 40,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xbba762f4ea3498286aa62323120bb190416fee7018d6cd7881eb5bf19578edaf",
+   "impact50kPct": 307789.45,
+   "usdgStockDepth10": 1.77,
+   "thin": true
+  },
+  "ORCL": {
+   "token": "0xb0992820E760d836549ba69BC7598b4af75dEE03",
+   "hasFeed": true,
+   "pools": 352,
+   "livePools": 5,
+   "vol7dStock": 168.68,
+   "swaps7d": 238,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xc2ce4784e1e72cf0221b51b30c8aaadf6c0b12863cf03ab3687854fb7b1d850a",
+     "vol7dStock": 87.29,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "WAGIE",
+     "poolId": "0xa214be77ae3f4d233d31e30178708470a8773e2fda920460219941d9f0c0aa78",
+     "vol7dStock": 72.37,
+     "hooks": "0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xc2ce4784e1e72cf0221b51b30c8aaadf6c0b12863cf03ab3687854fb7b1d850a",
+   "impact50kPct": 77.02,
+   "usdgStockDepth10": 47.68,
+   "thin": true
+  },
+  "COHR": {
+   "token": "0x92F9F459F1a9a5AD266b182BE7Bffd1C6c666894",
+   "hasFeed": false,
+   "pools": 26,
+   "livePools": 5,
+   "vol7dStock": 0,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xd8df019a93e6168277559efe10f7a2a7b019e2f43c344fc9490dd9686349d43a",
+     "vol7dStock": 0,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xf630e3ddabc02fec5c77eae4c65ce42f5a28818ba3ec1826d732648db10e9d28",
+   "impact50kPct": 5457.02,
+   "usdgStockDepth10": 1.13,
+   "thin": true
+  },
+  "GEV": {
+   "token": "0x94B8AAE43A1cCc08Aa64B7D1F29b4D920aF4a0C9",
+   "hasFeed": false,
+   "pools": 26,
+   "livePools": 5,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x0cfa6887c0e4e1cf772a1d80d5929587a462e8dd9daf141fa606901f84c759ed",
+   "impact50kPct": 1378.45,
+   "usdgStockDepth10": 0.85,
+   "thin": true
+  },
+  "AUR": {
+   "token": "0x373C06c4f7BDe527D7Dae4BA169E42b55E393CeD",
+   "hasFeed": false,
+   "pools": 53,
+   "livePools": 6,
+   "vol7dStock": 7.01,
+   "swaps7d": 3,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xe01e83c6637dcd026ffa51f2554200ff31f04ae2275ca2c93b8a52ea18af6508",
+     "vol7dStock": 4.45,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xbdfaad395f56b59e875df126e7aa956024297358cc8c74ae4e70b5bcd7e95674",
+     "vol7dStock": 2.56,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xbdfaad395f56b59e875df126e7aa956024297358cc8c74ae4e70b5bcd7e95674",
+   "impact50kPct": 25603.22,
+   "usdgStockDepth10": 24.44,
+   "thin": true
+  },
+  "IBM": {
+   "token": "0x980dcf6766FA79f5Cf0c4AAdb3ab477ff15a9619",
+   "hasFeed": false,
+   "pools": 342,
+   "livePools": 4,
+   "vol7dStock": 2119.51,
+   "swaps7d": 5343,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xfefcd3697193dacac74626b2c8ca15937479605b4ee074670186f746b448028a",
+     "vol7dStock": 2043.6,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "ETH",
+     "poolId": "0x92e3a392009026312a9244605471df9db4d165484f5fc8932f4f37603556ad25",
+     "vol7dStock": 62,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xfefcd3697193dacac74626b2c8ca15937479605b4ee074670186f746b448028a",
+   "impact50kPct": 6.63,
+   "usdgStockDepth10": 303.26,
+   "thin": true
+  },
+  "NAVN": {
+   "token": "0xf7181b63Fdb858558A74ba96BC42732684cd7965",
+   "hasFeed": false,
+   "pools": 25,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x4b5edb4707081ce5b41ab6e189630ac80e66755cf757c984acf1b331db42bbf8",
+   "impact50kPct": 1478697.79,
+   "usdgStockDepth10": 0.87,
+   "thin": true
+  },
+  "INOD": {
+   "token": "0xf1953DAB6FaD537488d5A022361FfAa8B4c95eC6",
+   "hasFeed": false,
+   "pools": 45,
+   "livePools": 5,
+   "vol7dStock": 3.69,
+   "swaps7d": 14,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xdff4bb412a8961fd0f06673a2b3dfb3210501485418bfa2f6a396d9b1559e1dc",
+     "vol7dStock": 3.08,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xa7f653a771e460f0740a57530348405b8f762128a465507943021e20100f8a12",
+     "vol7dStock": 0.61,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x63c29e10a43395389b7227ea0511c72b9df693f380db0cc1cc93436ab832dda3",
+   "impact50kPct": 5.94,
+   "usdgStockDepth10": 1469.03,
+   "thin": true
+  },
+  "AAPL": {
+   "token": "0xaF3D76f1834A1d425780943C99Ea8A608f8a93f9",
+   "hasFeed": true,
+   "pools": 3245,
+   "livePools": 6,
+   "vol7dStock": 1753.89,
+   "swaps7d": 2499,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xc748f4671a867db48b552f6b7650bf3255e05f80f00e3f7aad1b17ccb7898fdb",
+     "vol7dStock": 1026.41,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xa2347ba69167e5602f74640ffbf737ee7cdd825e4726d3462564fc6533070147",
+     "vol7dStock": 702.02,
+     "hooks": "0x70a9a88402989226847ec122043ce5e7ff462080"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xc748f4671a867db48b552f6b7650bf3255e05f80f00e3f7aad1b17ccb7898fdb",
+   "impact50kPct": 0.93,
+   "usdgStockDepth10": 1481.03,
+   "thin": false
+  },
+  "AMC": {
+   "token": "0x05a3d1Cd21d0C88145E82600E62e7E496e0F222B",
+   "hasFeed": false,
+   "pools": 2143,
+   "livePools": 5,
+   "vol7dStock": 974880.4,
+   "swaps7d": 5952,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x7499938c352d5b5b8f0c648722aca5ee964ef9b85c3a3041f1ec379726291d9d",
+     "vol7dStock": 609165.65,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "MEME",
+     "poolId": "0x27ccf0a6d1ee74840220715bcca7d3b01e0d33aa30d0259b47ae1585b3f4c071",
+     "vol7dStock": 252485.01,
+     "hooks": "0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x7499938c352d5b5b8f0c648722aca5ee964ef9b85c3a3041f1ec379726291d9d",
+   "impact50kPct": 1.56,
+   "usdgStockDepth10": 103366.7,
+   "thin": false
+  },
+  "RIVN": {
+   "token": "0xB1BF26c1D20ff267A4f93550d1E0d06ac40a114B",
+   "hasFeed": false,
+   "pools": 175,
+   "livePools": 3,
+   "vol7dStock": 2343.24,
+   "swaps7d": 216,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x58b68552d45529cc6c3b35faeaa75e47f4e2bcf2afb2399597acbc39e34a9a8a",
+     "vol7dStock": 2052.18,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xfa29e6cd2536e82e12ef269a80a42df4685ef5177066ecd5f0698d0458e0ec3d",
+     "vol7dStock": 291.06,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x58b68552d45529cc6c3b35faeaa75e47f4e2bcf2afb2399597acbc39e34a9a8a",
+   "impact50kPct": 11.56,
+   "usdgStockDepth10": 2778.29,
+   "thin": true
+  },
+  "GME": {
+   "token": "0x1b0E319c6A659F002271B69dB8A7df2F911c153E",
+   "hasFeed": true,
+   "pools": 4476,
+   "livePools": 6,
+   "vol7dStock": 366.27,
+   "swaps7d": 218,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xbb15d6b62c893a86912b5d4b14599f9cc72111e5898327dcadefa0352f20ae11",
+     "vol7dStock": 240.52,
+     "hooks": "0x08e52564bad99e05a694b4809f397edca417a080"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x3d436b4fdc532c61a0bf15d6cae80a66eb8f28ee9daec34dbec4b5bc9964063b",
+     "vol7dStock": 125.76,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x3d436b4fdc532c61a0bf15d6cae80a66eb8f28ee9daec34dbec4b5bc9964063b",
+   "impact50kPct": 33.01,
+   "usdgStockDepth10": 618.08,
+   "thin": true
+  },
+  "MPWR": {
+   "token": "0x52D50D0280AD1054b43f052bD70a49a212A1b128",
+   "hasFeed": false,
+   "pools": 34,
+   "livePools": 5,
+   "vol7dStock": 0.05,
+   "swaps7d": 3,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xa346fd5a390ba8945da9b869c1ff16e89d5999197c8dcc0479328ab3f27fa582",
+     "vol7dStock": 0.05,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x0aba95cbefbcd87f6aac5c7a08b3c5147c0dc717a72d8f56e7a8ee2e2ef5aaa1",
+     "vol7dStock": 0,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xa346fd5a390ba8945da9b869c1ff16e89d5999197c8dcc0479328ab3f27fa582",
+   "impact50kPct": 1036.79,
+   "usdgStockDepth10": 0.74,
+   "thin": true
+  },
+  "PENG": {
+   "token": "0x9b23573b156B52565012F5cE02CDF60AFBaa70Be",
+   "hasFeed": false,
+   "pools": 253,
+   "livePools": 5,
+   "vol7dStock": 25.96,
+   "swaps7d": 32,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xba07c20c0a900a626ffdab053c218c2ff31c1a752a5c4fcfc1d1098f17a87d6c",
+     "vol7dStock": 15.98,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "CHANG",
+     "poolId": "0xa03e450a11c2f8f8a67243454e42ec216c9f3d1117ab879fbfb3d888a947951e",
+     "vol7dStock": 9.76,
+     "hooks": "0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xba07c20c0a900a626ffdab053c218c2ff31c1a752a5c4fcfc1d1098f17a87d6c",
+   "impact50kPct": 136.55,
+   "usdgStockDepth10": 78.71,
+   "thin": true
+  },
+  "NET": {
+   "token": "0x116F00968269B7bfbaD4109cE591d6E74c0601d4",
+   "hasFeed": false,
+   "pools": 330,
+   "livePools": 4,
+   "vol7dStock": 28.88,
+   "swaps7d": 289,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xd10f11e907c3322a26afda82b07ca7dee68697261f79fa3d28863f628efcf107",
+     "vol7dStock": 18.45,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x578d3e799e888723d7f4292dec70e0e2abe9dc7e3b337a1c53ea16757f18faf2",
+     "vol7dStock": 9.91,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xd10f11e907c3322a26afda82b07ca7dee68697261f79fa3d28863f628efcf107",
+   "impact50kPct": 16.89,
+   "usdgStockDepth10": 80.37,
+   "thin": true
+  },
+  "SCHD": {
+   "token": "0xd63ABB2C13d7a8421a8017a712802053568e3C1D",
+   "hasFeed": false,
+   "pools": 31,
+   "livePools": 5,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xd25405cc28ad944042b60b670674421e5c2f950a35e3dc295d27a696cb2ea61f",
+   "impact50kPct": 4842.31,
+   "usdgStockDepth10": 11.33,
+   "thin": true
+  },
+  "LUNR": {
+   "token": "0xa5D4968421bA94814Be3B136b15cf422101aC1a3",
+   "hasFeed": false,
+   "pools": 51,
+   "livePools": 6,
+   "vol7dStock": 4.02,
+   "swaps7d": 8,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xc7bc5aa29ea0cadc01d6015d409cafea9364fab2234b793ca41be0d728d78a9b",
+     "vol7dStock": 3.71,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xe637783faa44fb29795a7135b3966b8c73e778237ecb83a0b383fe3560c8b798",
+     "vol7dStock": 0.31,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xc7bc5aa29ea0cadc01d6015d409cafea9364fab2234b793ca41be0d728d78a9b",
+   "impact50kPct": 40399.73,
+   "usdgStockDepth10": 7.91,
+   "thin": true
+  },
+  "MSTR": {
+   "token": "0xec262a75e413fAfD0dF80480274532C79D42da09",
+   "hasFeed": true,
+   "pools": 1287,
+   "livePools": 4,
+   "vol7dStock": 12384.95,
+   "swaps7d": 3923,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x319bac87e616a89e241c10aeb8afd4892a852cdd8b373cd9765ecddc40b87cfe",
+     "vol7dStock": 9196.08,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xc105b8300ff65d750a0e4e63c7a879e20504069b770713464a5315e797735326",
+     "vol7dStock": 2545.28,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x319bac87e616a89e241c10aeb8afd4892a852cdd8b373cd9765ecddc40b87cfe",
+   "impact50kPct": 1.14,
+   "usdgStockDepth10": 2497.54,
+   "thin": false
+  },
+  "ABCL": {
+   "token": "0x3139D77Ace0cbAA5bDfD38bD1F1911a794AF0B0e",
+   "hasFeed": false,
+   "pools": 44,
+   "livePools": 6,
+   "vol7dStock": 5.4,
+   "swaps7d": 2,
+   "top2ByVolume": [
+    {
+     "quote": "ETH",
+     "poolId": "0xb0d51d9971f53d6b86315fe0f0f18e8e6ca5fe077e976015b6412a5296422a55",
+     "vol7dStock": 5.37,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xa94b759be671dece5ce7f832ce98dee1bca776799320855c7ae5d7b415d1d90d",
+     "vol7dStock": 0.03,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xa94b759be671dece5ce7f832ce98dee1bca776799320855c7ae5d7b415d1d90d",
+   "impact50kPct": 19302.24,
+   "usdgStockDepth10": 14.49,
+   "thin": true
+  },
+  "AXON": {
+   "token": "0xC27dBD474aF5181c5A8777903690D8D262D12648",
+   "hasFeed": false,
+   "pools": 35,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 8,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x5b51890885f099d7558497b14379841303d954d1be24c06110a4d64aaf4aa027",
+     "vol7dStock": 0,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x5b51890885f099d7558497b14379841303d954d1be24c06110a4d64aaf4aa027",
+   "impact50kPct": 1016495.99,
+   "usdgStockDepth10": 0.05,
+   "thin": true
+  },
+  "TSLA": {
+   "token": "0x322F0929c4625eD5bAd873c95208D54E1c003b2d",
+   "hasFeed": true,
+   "pools": 3950,
+   "livePools": 4,
+   "vol7dStock": 2592.44,
+   "swaps7d": 2569,
+   "top2ByVolume": [
+    {
+     "quote": "SPY",
+     "poolId": "0xa821b3724b451b22476c5347471b2a96d185b86af8760f226273e34ab4b2b8a0",
+     "vol7dStock": 1488.34,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x8517f8071ae5b831b738052f12125e8e3d6c158b78728aa44ce3b25e5104d32e",
+     "vol7dStock": 797.41,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x8517f8071ae5b831b738052f12125e8e3d6c158b78728aa44ce3b25e5104d32e",
+   "impact50kPct": 1.1,
+   "usdgStockDepth10": 1113.89,
+   "thin": false
+  },
+  "EWT": {
+   "token": "0x1c690498150252222C275A5CEd69d3A6b1f52D5E",
+   "hasFeed": false,
+   "pools": 30,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x8fdd55edc23a8034e1a3146978d19c412f7f4753d2c8a890d3ec9d98cf2b39dc",
+   "impact50kPct": 910799.38,
+   "usdgStockDepth10": 0.23,
+   "thin": true
+  },
+  "FTNT": {
+   "token": "0x3FB8976980d486084b2eb4a404BD12e72823958f",
+   "hasFeed": false,
+   "pools": 32,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x0e7cc4842c7a45304b293d21f6bf6773d967a52da8a702c0905d2a53c1b90afa",
+   "impact50kPct": 38456.41,
+   "usdgStockDepth10": 0.74,
+   "thin": true
+  },
+  "HPE": {
+   "token": "0x59dd09d4900C2E4B5F75b7c0d4E6796fcc234Cb1",
+   "hasFeed": false,
+   "pools": 85,
+   "livePools": 5,
+   "vol7dStock": 2.94,
+   "swaps7d": 12,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x8449bc525b02fb251bc7e281da91bdec6ef184a0e99f4a40bfa9a5fc7ebb4fcf",
+     "vol7dStock": 2.56,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "ETH",
+     "poolId": "0xceed5371c11a12b8524b4d2869574e6086b34c4ee760d0674f2ccfcc405cc087",
+     "vol7dStock": 0.37,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x8449bc525b02fb251bc7e281da91bdec6ef184a0e99f4a40bfa9a5fc7ebb4fcf",
+   "impact50kPct": 891.86,
+   "usdgStockDepth10": 17.73,
+   "thin": true
+  },
+  "VSAT": {
+   "token": "0x26dCbfb34FC83CAbD6990f449674efDc6097fF85",
+   "hasFeed": false,
+   "pools": 30,
+   "livePools": 6,
+   "vol7dStock": 0.69,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "ETH",
+     "poolId": "0x6065ca2607746f38d7e421cdd7343bcbb8f16f365ce5c659fcd92a0fc6162d9b",
+     "vol7dStock": 0.69,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x4df5d1a7288ff2e34dc5ff079245a6699175e704529e5229dda03c3d0d87fd10",
+   "impact50kPct": 40273.94,
+   "usdgStockDepth10": 1.66,
+   "thin": true
+  },
+  "ADBE": {
+   "token": "0x232B8ed6377BE97813853B0Ac104c4Cda8378d1B",
+   "hasFeed": false,
+   "pools": 107,
+   "livePools": 5,
+   "vol7dStock": 2.6,
+   "swaps7d": 15,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x97353d5c5e308e56edbb2cd83e52b59c9455f2d13cf89ada2699107d7c32ffbc",
+     "vol7dStock": 1.04,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x92a8b42d686c4be5444f3ea927ae29e04ada9205127f36c7e5a8a98d37c65a8b",
+     "vol7dStock": 1.02,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x92a8b42d686c4be5444f3ea927ae29e04ada9205127f36c7e5a8a98d37c65a8b",
+   "impact50kPct": 1224.93,
+   "usdgStockDepth10": 3.64,
+   "thin": true
+  },
+  "XNDU": {
+   "token": "0xA8eB3BCcbf2017eE7CBfb652eB51CF2E1B153289",
+   "hasFeed": false,
+   "pools": 33,
+   "livePools": 6,
+   "vol7dStock": 92.51,
+   "swaps7d": 6,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x18502289dd37db0c0026b8099cf3a2018d70679120d1178eab5b1434bdeafae4",
+     "vol7dStock": 92.51,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x18502289dd37db0c0026b8099cf3a2018d70679120d1178eab5b1434bdeafae4",
+   "impact50kPct": 1983485.83,
+   "usdgStockDepth10": 2.83,
+   "thin": true
+  },
+  "DDOG": {
+   "token": "0x27c99fBde9D0d2AA4f4Bfb4943f237843DdF6958",
+   "hasFeed": false,
+   "pools": 251,
+   "livePools": 4,
+   "vol7dStock": 108.33,
+   "swaps7d": 101,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x977c78c96cd9b306d87c235dee5a69ccab913b0f775575627e709643ad416598",
+     "vol7dStock": 98.72,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "BITS",
+     "poolId": "0x25cd8bb792d297753217e8f93d47a66b31db5889021cf90971bb68e60a7aac4c",
+     "vol7dStock": 5.89,
+     "hooks": "0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x977c78c96cd9b306d87c235dee5a69ccab913b0f775575627e709643ad416598",
+   "impact50kPct": 8,
+   "usdgStockDepth10": 233.22,
+   "thin": true
+  },
+  "RDW": {
+   "token": "0x92Ef19E82bD8fF36661DE838D5eaE7e5CEF0EfFE",
+   "hasFeed": false,
+   "pools": 34,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x79971306e022f00943f2ab1b7223cd86a666412f04dbc5f9e0aa647a7e026522",
+   "impact50kPct": 957968.74,
+   "usdgStockDepth10": 2.15,
+   "thin": true
+  },
+  "BE": {
+   "token": "0x822CC93fFD030293E9842c30BBD678F530701867",
+   "hasFeed": false,
+   "pools": 441,
+   "livePools": 5,
+   "vol7dStock": 180.22,
+   "swaps7d": 554,
+   "top2ByVolume": [
+    {
+     "quote": "DATACENTER",
+     "poolId": "0x52a5d89cbc34ded976311c864aeb0c5563bd298e9d5260c8a9a932d7a3d5743f",
+     "vol7dStock": 171.97,
+     "hooks": "0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544"
+    },
+    {
+     "quote": "HARAM",
+     "poolId": "0x12e4a5c1e99c2d20b3ed9f9b357904aeb4ab25e0ded995a54e3d7f1fe410bb52",
+     "vol7dStock": 6.08,
+     "hooks": "0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xbc363db0ae0c1a411168e26ec2cd8deeab765d7ae7fcb3eac711f6fe766462fc",
+   "impact50kPct": 38.45,
+   "usdgStockDepth10": 47.53,
+   "thin": true
+  },
+  "DJT": {
+   "token": "0x1D11f0496982706C5e14A514D4E79F2e6BdE4516",
+   "hasFeed": false,
+   "pools": 2041,
+   "livePools": 3,
+   "vol7dStock": 50195,
+   "swaps7d": 2454,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x55f2df399bf61fd758b99848452eaf217ee9d2f98fb9c79deb23fe9a2652bc5a",
+     "vol7dStock": 48014.54,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x36234ef1d896ae6fc77612485565c714fa55a994c4075da3697e06016fb658c8",
+     "vol7dStock": 1135.87,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x55f2df399bf61fd758b99848452eaf217ee9d2f98fb9c79deb23fe9a2652bc5a",
+   "impact50kPct": 3.22,
+   "usdgStockDepth10": 16102.02,
+   "thin": false
+  },
+  "OKLO": {
+   "token": "0x8B2f88497f15A18E9D4FFa1a8fFB8538399aE774",
+   "hasFeed": false,
+   "pools": 27,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x58f187dd17ac479fe139249866b1be0fe142947555018726cac63330eb785daf",
+   "impact50kPct": 13172.49,
+   "usdgStockDepth10": 5.51,
+   "thin": true
+  },
+  "ZM": {
+   "token": "0x44c4F142009036cF477eD2d09932051843137CF1",
+   "hasFeed": false,
+   "pools": 145,
+   "livePools": 4,
+   "vol7dStock": 25.6,
+   "swaps7d": 15,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x46f1c54d32456c306e2c1e79f5ccf982654e3d7bd6df4bb4a06a69b27c67571b",
+     "vol7dStock": 25.6,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x46f1c54d32456c306e2c1e79f5ccf982654e3d7bd6df4bb4a06a69b27c67571b",
+   "impact50kPct": 57.9,
+   "usdgStockDepth10": 98.33,
+   "thin": true
+  },
+  "FLNC": {
+   "token": "0x282e87451E10fA6679BC7D76C69BE44cD3fC777C",
+   "hasFeed": false,
+   "pools": 60,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x2cba3b361fcbac8776c6705c817ee2e140b4b9ab8c00ed57eb8d3fe39d5e5070",
+   "impact50kPct": 1336523.81,
+   "usdgStockDepth10": 2.67,
+   "thin": true
+  },
+  "SLV": {
+   "token": "0x411eFb0E7f985935DAec3D4C3ebaEa0d0AD7D89f",
+   "hasFeed": true,
+   "pools": 496,
+   "livePools": 6,
+   "vol7dStock": 479.56,
+   "swaps7d": 277,
+   "top2ByVolume": [
+    {
+     "quote": "MSFT",
+     "poolId": "0xd1d0b8388378afcb396eafe6587970ad8b5a445de9d40a8d442954e297909bc1",
+     "vol7dStock": 314.3,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "CHROME",
+     "poolId": "0x387c08ba28791ffb7bfed9c6601c5517b541b9aca38416c5fe8673250c635c84",
+     "vol7dStock": 159.05,
+     "hooks": "0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xf6f742665e3927ee7ee8da2a9caac0b68580af5249f1c70f4db02937bb1b0b58",
+   "impact50kPct": 46110.64,
+   "usdgStockDepth10": 1.86,
+   "thin": true
+  },
+  "SOFI": {
+   "token": "0x98E75885157C80992A8D41b696D8c9C6Fb30A926",
+   "hasFeed": false,
+   "pools": 126,
+   "livePools": 5,
+   "vol7dStock": 34.35,
+   "swaps7d": 13,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xb6a881c32ed115cb8790c182580c71607ee7b7b008b4e1c3c65b1bc29b891b53",
+     "vol7dStock": 20.37,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x4aefdd6300067298704486a0a8436e9c7aadc8bdae2d96bbcfcb860fb7a1381b",
+     "vol7dStock": 9.9,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xb6a881c32ed115cb8790c182580c71607ee7b7b008b4e1c3c65b1bc29b891b53",
+   "impact50kPct": 884.19,
+   "usdgStockDepth10": 62.43,
+   "thin": true
+  },
+  "DOCN": {
+   "token": "0xc02f12B9fe9E707079EC0d546f3050d3F6C1F8bD",
+   "hasFeed": false,
+   "pools": 30,
+   "livePools": 6,
+   "vol7dStock": 0.39,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "ETH",
+     "poolId": "0x0b26355937a72d03a303a1ed6e069d681a4bbf152e521ec31aff6f17c6e3a06b",
+     "vol7dStock": 0.39,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x8e815feaaade919e90a2578d1d28193f5ff516c312fb2449ccf5e6440f327b20",
+   "impact50kPct": 18259.58,
+   "usdgStockDepth10": 1.32,
+   "thin": true
+  },
+  "WULF": {
+   "token": "0x348Be1A8663f15edDe5CDf8A96BB69078f7aB6Fd",
+   "hasFeed": false,
+   "pools": 69,
+   "livePools": 5,
+   "vol7dStock": 25.76,
+   "swaps7d": 3,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x38d736c5aa6a73a320947e877f11b127baddb5b6e45862aac2574e1cee1c0c18",
+     "vol7dStock": 25.76,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xe227fe730938cc9667253e4c64aab19ab4991d8b4889f244aaa2d04d9e5617ce",
+   "impact50kPct": 6533.43,
+   "usdgStockDepth10": 19,
+   "thin": true
+  },
+  "COST": {
+   "token": "0x4EA005168D7F09a7A0Ba9D1DEf21a479950E44C2",
+   "hasFeed": false,
+   "pools": 720,
+   "livePools": 4,
+   "vol7dStock": 187.41,
+   "swaps7d": 537,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xd0f36f913c83d95ab0e5f2cd2b991fc74bad741745ba9e7aeb6df8394c761f7b",
+     "vol7dStock": 181.3,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x096ca74a297f13fa25747b622c0b4d6301535c43e55d2dcd67e4d27319826a32",
+     "vol7dStock": 6.11,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xd0f36f913c83d95ab0e5f2cd2b991fc74bad741745ba9e7aeb6df8394c761f7b",
+   "impact50kPct": 1.59,
+   "usdgStockDepth10": 326.09,
+   "thin": false
+  },
+  "TTD": {
+   "token": "0x0b5fb4031cae9163db10B169Ee72685F0EdC8545",
+   "hasFeed": false,
+   "pools": 38,
+   "livePools": 6,
+   "vol7dStock": 0,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x2df1560a14d8ce2109ebf93e5775a9afaa3c2ff8a342e828b65d198653d11fe4",
+     "vol7dStock": 0,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x2df1560a14d8ce2109ebf93e5775a9afaa3c2ff8a342e828b65d198653d11fe4",
+   "impact50kPct": 1126916.3,
+   "usdgStockDepth10": 1.56,
+   "thin": true
+  },
+  "HWM": {
+   "token": "0xAEa445c5F3DB1a462998ccC422A875A361ee5d99",
+   "hasFeed": false,
+   "pools": 36,
+   "livePools": 5,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xf98b47b7db37c1727e078a8df7bf1d63915529263089e010d976d56d31f34e8e",
+   "impact50kPct": 657.88,
+   "usdgStockDepth10": 6.01,
+   "thin": true
+  },
+  "HIMS": {
+   "token": "0xCceE82fE024c36fA15E1005edE3E9e4787e23D09",
+   "hasFeed": false,
+   "pools": 714,
+   "livePools": 5,
+   "vol7dStock": 114537.76,
+   "swaps7d": 5648,
+   "top2ByVolume": [
+    {
+     "quote": "SPY",
+     "poolId": "0x67983c0d78cea3a8b4a5cc283feeeefd278a8ae5c6504b983b0c72bde13d1c0c",
+     "vol7dStock": 79986.18,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "BONER",
+     "poolId": "0x9c89b04303dfa76f3f6fb02c2b77be0e8a00ab8fa00d507119acd54ab3e8640d",
+     "vol7dStock": 30105.15,
+     "hooks": "0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x68d4f28f1432e0ad714658853edb2e6b0b1ac4060355ff3d169fea656b1d1c52",
+   "impact50kPct": 4.89,
+   "usdgStockDepth10": 3298.61,
+   "thin": false
+  },
+  "CELH": {
+   "token": "0x8cF07C5A878945185d327aAa6e33FAa95F95e7bF",
+   "hasFeed": false,
+   "pools": 60,
+   "livePools": 5,
+   "vol7dStock": 15.47,
+   "swaps7d": 11,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x375cb43973bff222e1d2ea36c064cce0489687145a4c10c069c083a5aed66a00",
+     "vol7dStock": 14.68,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x8dd0eaeaa2436c3295e9ea454ed096050ec2e2fb9b996bb4279094e09cf1a903",
+     "vol7dStock": 0.79,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x375cb43973bff222e1d2ea36c064cce0489687145a4c10c069c083a5aed66a00",
+   "impact50kPct": 119,
+   "usdgStockDepth10": 168.34,
+   "thin": true
+  },
+  "RBLX": {
+   "token": "0xF0C4BF4C582cb3836e98394b1d4e7B7281101bE8",
+   "hasFeed": false,
+   "pools": 842,
+   "livePools": 4,
+   "vol7dStock": 969.56,
+   "swaps7d": 424,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xf807376333cd408c36d48a11a96309b92c5bd2bca9ba9f0b21800636cb3a30da",
+     "vol7dStock": 957.73,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x8e0915e4860ad0426dd2f740f44cf6f4f675ae8c9f6a0ad42e323aba809a6149",
+     "vol7dStock": 11.83,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xf807376333cd408c36d48a11a96309b92c5bd2bca9ba9f0b21800636cb3a30da",
+   "impact50kPct": 48.53,
+   "usdgStockDepth10": 216.46,
+   "thin": true
+  },
+  "SPMO": {
+   "token": "0xAd622320e520de39e72d41EF07438C3Fd3354875",
+   "hasFeed": false,
+   "pools": 41,
+   "livePools": 6,
+   "vol7dStock": 0.16,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xe9245222555990431b1354e76b6230f52df3241e1bcb1adf69963ce33319c6a4",
+     "vol7dStock": 0.16,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xe9245222555990431b1354e76b6230f52df3241e1bcb1adf69963ce33319c6a4",
+   "impact50kPct": 19985.38,
+   "usdgStockDepth10": 1.24,
+   "thin": true
+  },
+  "AMKR": {
+   "token": "0xDd356AA38F40A7b7076755aC854B6FBb1F0D305B",
+   "hasFeed": false,
+   "pools": 22,
+   "livePools": 6,
+   "vol7dStock": 0.93,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xc19d2a4b00988a3b1ec24b03207c7ad2a01a3c47e3ed1a524ae8cdc9ade5caa8",
+     "vol7dStock": 0.93,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xc19d2a4b00988a3b1ec24b03207c7ad2a01a3c47e3ed1a524ae8cdc9ade5caa8",
+   "impact50kPct": 37420.89,
+   "usdgStockDepth10": 2.43,
+   "thin": true
+  },
+  "ONTO": {
+   "token": "0x8ff63eAeEe3fE54Ba450c4F5538064Ec5A893Aef",
+   "hasFeed": false,
+   "pools": 27,
+   "livePools": 5,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x8b9aa6d8470414b929ed9258a35b48ee3d91281eebc703173ba165e2e81e2b6a",
+   "impact50kPct": 5512.36,
+   "usdgStockDepth10": 1.36,
+   "thin": true
+  },
+  "SOXX": {
+   "token": "0x75742c18BC1f1C5c5f448f4C9D9C6F66dafAAa38",
+   "hasFeed": false,
+   "pools": 80,
+   "livePools": 4,
+   "vol7dStock": 8.65,
+   "swaps7d": 80,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xa97cff59a20a8d95518ad7f85584fb455f4dc8dee0f3921978ee51d0d5202e2e",
+     "vol7dStock": 5.28,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xda48bde4c58cb3364d522c1f3141376f8e20036d207bbb93191cb1fe65eaa95a",
+     "vol7dStock": 3.1,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xda48bde4c58cb3364d522c1f3141376f8e20036d207bbb93191cb1fe65eaa95a",
+   "impact50kPct": 131.04,
+   "usdgStockDepth10": 7.94,
+   "thin": true
+  },
+  "ASML": {
+   "token": "0x47F93d52cBeC7C6D2CfC080e154002370a60dAEA",
+   "hasFeed": true,
+   "pools": 195,
+   "livePools": 6,
+   "vol7dStock": 0.21,
+   "swaps7d": 30,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x95dfd3468383956e449265b3e3d1dac182d0faad0eec5d409f943acaaec3104f",
+     "vol7dStock": 0.09,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "ORG",
+     "poolId": "0x5d42eecb8d8c2778c51f92ce4392c5d7e37cbc53a4a81ee7d1681e56fd2b9dd5",
+     "vol7dStock": 0.05,
+     "hooks": "0x4e3468951d49f2eea976ed0d6e75ffcb44a9a544"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0x95dfd3468383956e449265b3e3d1dac182d0faad0eec5d409f943acaaec3104f",
+   "impact50kPct": 2488.76,
+   "usdgStockDepth10": 0.33,
+   "thin": true
+  },
+  "HII": {
+   "token": "0xEB61c0Ed490A367d4E3631cCf8a74B3bfc7E775D",
+   "hasFeed": false,
+   "pools": 38,
+   "livePools": 5,
+   "vol7dStock": 0.06,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x2341b2ec6872da1303df008689f40e3d04d9e08851279658ef85b80f8dbf0196",
+     "vol7dStock": 0.06,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x2341b2ec6872da1303df008689f40e3d04d9e08851279658ef85b80f8dbf0196",
+   "impact50kPct": 40.01,
+   "usdgStockDepth10": 46.18,
+   "thin": true
+  },
+  "AVAV": {
+   "token": "0xF6290b5e7C26502e2dA514C31509849718EA76A5",
+   "hasFeed": false,
+   "pools": 34,
+   "livePools": 6,
+   "vol7dStock": 0.85,
+   "swaps7d": 3,
+   "top2ByVolume": [
+    {
+     "quote": "ETH",
+     "poolId": "0x124771185140451495aeb8387fc513b5eb5dbf1ae2a73ee7b4f782f1b4af4c59",
+     "vol7dStock": 0.54,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xd5a82642216856d623f028c09ff50ca51e80d231f7b509e0040e68d2bb35a9bc",
+     "vol7dStock": 0.16,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xd7212dc814809c5e7806eb9d1f10461e40a9f72b5d3f90bbd9484ab46c37f104",
+   "impact50kPct": 62357.47,
+   "usdgStockDepth10": 0.62,
+   "thin": true
+  },
+  "INDA": {
+   "token": "0xACEF2e09adb47aD6aBeBAD9fF06689E60615C2B6",
+   "hasFeed": false,
+   "pools": 175,
+   "livePools": 3,
+   "vol7dStock": 447.03,
+   "swaps7d": 282,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x7d0895d8162b0be326ef944faeb5a84f4a08377b9bc9f010e38fa4d268a94469",
+     "vol7dStock": 342.81,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x9bb8fba327fed3758be2b909d23b5caedc901acbff020480f06f9fa69b478a3b",
+     "vol7dStock": 104.23,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x9bb8fba327fed3758be2b909d23b5caedc901acbff020480f06f9fa69b478a3b",
+   "impact50kPct": 0.61,
+   "usdgStockDepth10": 15770.03,
+   "thin": false
+  },
+  "MDB": {
+   "token": "0xDdf2266b79abf0B48898959B0ed6E6adf512be74",
+   "hasFeed": false,
+   "pools": 55,
+   "livePools": 6,
+   "vol7dStock": 0.17,
+   "swaps7d": 2,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xaccf878bb53d27731feacfb856110fbbc2b28889aca990afaa088e272b99d16a",
+     "vol7dStock": 0.11,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x4a8c7282dd2f7a4f45cdfa91d7b0a1d9a16209de5cdf6b45b029402f62e55444",
+     "vol7dStock": 0.06,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xaccf878bb53d27731feacfb856110fbbc2b28889aca990afaa088e272b99d16a",
+   "impact50kPct": 4685.32,
+   "usdgStockDepth10": 0.94,
+   "thin": true
+  },
+  "QNT": {
+   "token": "0xB7EDfE2F33C1aC06830a971dFb559bDe8A2a3d76",
+   "hasFeed": false,
+   "pools": 3,
+   "livePools": 0,
+   "vol7dStock": 0,
+   "swaps7d": 0,
+   "top2ByVolume": [],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": null,
+   "impact50kPct": null,
+   "usdgStockDepth10": null,
+   "thin": true
+  },
+  "PFE": {
+   "token": "0x7066A64c24e4206CD62E83bf198c1E7EB361F51e",
+   "hasFeed": false,
+   "pools": 245,
+   "livePools": 3,
+   "vol7dStock": 1490.2,
+   "swaps7d": 327,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0xe7f632df148e79209e767fdc6bcd6b6f46be45a4907f76894a3e8d456e72a562",
+     "vol7dStock": 938.47,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0x632d9bdccf26e13dbf23b185f29cba47e237371010e1abf7aceaeff653f66be4",
+     "vol7dStock": 544.4,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0xe7f632df148e79209e767fdc6bcd6b6f46be45a4907f76894a3e8d456e72a562",
+   "impact50kPct": 0.72,
+   "usdgStockDepth10": 23271.21,
+   "thin": false
+  },
+  "KLAC": {
+   "token": "0x96b933C74eCB4A0926b9210cef7b743EF46be2E9",
+   "hasFeed": false,
+   "pools": 41,
+   "livePools": 6,
+   "vol7dStock": 0.73,
+   "swaps7d": 1,
+   "top2ByVolume": [
+    {
+     "quote": "USDG",
+     "poolId": "0x5f31d2d37e46503e6e0e9ddff1ee8966452fd0cfaa7227bb79baf50346e545dc",
+     "vol7dStock": 0.73,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": false,
+   "bestUsdgPool": "0x5f31d2d37e46503e6e0e9ddff1ee8966452fd0cfaa7227bb79baf50346e545dc",
+   "impact50kPct": 14976.34,
+   "usdgStockDepth10": 1.15,
+   "thin": true
+  },
+  "IBRX": {
+   "token": "0x7c148F74ac7445D1F28366b7FcDC6792a9Fcd0Cf",
+   "hasFeed": false,
+   "pools": 36,
+   "livePools": 6,
+   "vol7dStock": 4.44,
+   "swaps7d": 4,
+   "top2ByVolume": [
+    {
+     "quote": "ETH",
+     "poolId": "0xa2523895590afecd6245d18f3ea7b81f7f86bafbe1d849c692cd4792beac5ffc",
+     "vol7dStock": 2.69,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    },
+    {
+     "quote": "USDG",
+     "poolId": "0xde46baa778f381fe00d9843dcbd2d7d679033cfe6a38a4c02578991427363cf1",
+     "vol7dStock": 1.75,
+     "hooks": "0x0000000000000000000000000000000000000000"
+    }
+   ],
+   "memecoinAdjacent": true,
+   "bestUsdgPool": "0xde46baa778f381fe00d9843dcbd2d7d679033cfe6a38a4c02578991427363cf1",
+   "impact50kPct": 21808.24,
+   "usdgStockDepth10": 19.17,
+   "thin": true
+  }
+ }
+}

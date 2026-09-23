@@ -56,9 +56,16 @@ export const FLAGSHIP_NO_FEED = ["HIMS"]; // evidence only: no Chainlink feed
 
 /** Stage-2 candidates: flagged (thin or memecoin-adjacent) tickers that CAN ship (feed + hook-free USDG pool), top 6 by
  *  7-day volume, plus the no-feed flagship and the major controls. */
+/** Meme-adjacent = a top-2 pool (by volume) quoted in something that is not USDG, ETH/WETH or another stock token.
+ *  (A literal "non-USDG" reading of SPEC §3.5 would flag TSLA/SPY or GOOGL/ETH pools, which are not memecoins.) */
+export function memeAdjacent(v: any, stockTickers: Set<string>): boolean {
+  return (v.top2ByVolume ?? []).some((p: any) => !["USDG", "ETH", "WETH"].includes(p.quote) && !stockTickers.has(p.quote));
+}
+
 export function pickCandidates(screen: any, facts: any, n = 6): string[] {
+  const stocks = new Set(Object.keys(screen.tickers));
   const flagged = Object.entries<any>(screen.tickers)
-    .filter(([t, v]) => v.swaps7d > 0 && (v.thin || v.memecoinAdjacent) && facts.stocks[t]?.feed && facts.stocks[t]?.bestNoHookPool)
+    .filter(([t, v]) => v.swaps7d > 0 && (v.thin || memeAdjacent(v, stocks)) && facts.stocks[t]?.feed && facts.stocks[t]?.bestNoHookPool)
     .sort((a, b) => b[1].vol7dStock - a[1].vol7dStock)
     .slice(0, n)
     .map(([t]) => t);
@@ -83,7 +90,7 @@ export function classify(ev: WeekendEvidence[]): { bucket: Bucket; reason: strin
 
 // ---------------------------------------------------------------- data collection
 
-async function feedRounds(c: ReturnType<typeof makeClient>, feed: Address, since: number): Promise<Round[]> {
+export async function feedRounds(c: ReturnType<typeof makeClient>, feed: Address, since: number): Promise<Round[]> {
   const [latestId] = await c.readContract({ address: feed, abi: feedAbi, functionName: "latestRoundData" });
   const phaseStart = (latestId >> 64n) << 64n;
   const out: Round[] = [];
@@ -162,7 +169,15 @@ async function main() {
   const need = tickers.filter((t) => !cached[t]);
   for (const t of tickers) if (cached[t]) evidence[t] = cached[t];
   if (need.length) console.log(`backtesting ${need.length} ticker(s); ${tickers.length - need.length} from cache`);
+  const partialPath = join(ROOT, `backtest/.cache/partial-${weekends[0]}-${weekends.at(-1)}-${need.join("_").slice(0, 80)}.json`);
+  const partial: Record<string, Record<string, WeekendEvidence>> = existsSync(partialPath) ? JSON.parse(readFileSync(partialPath, "utf8")) : {};
   for (const sat of need.length ? weekends : []) {
+    const wk = new Date(sat * 1000).toISOString().slice(0, 10);
+    if (partial[wk]) {
+      for (const t of need) evidence[t].push(partial[wk][t]);
+      process.stdout.write(`weekend ${wk}: from partial cache\n`);
+      continue;
+    }
     const fri20 = sat - 4 * 3600;
     const mon = sat + 2 * DAY;
     const [bFri, bSat, bEnd] = [await blockAtOrBefore(c, fri20), await blockAtOrBefore(c, sat), await blockAtOrBefore(c, mon + 3600)];
@@ -233,6 +248,9 @@ async function main() {
       w.specVsHodlPctExFees = sim.settlement.results.spec[0].vsHodlPctExFees;
       if (!sim.settlement.buybackPossible) w.note = "buyback capped: would end PENDING_BUYBACK";
     }
+    partial[wk] = Object.fromEntries(need.map((t) => [t, evidence[t].at(-1)!]));
+    mkdirSync(dirname(partialPath), { recursive: true });
+    writeFileSync(partialPath, JSON.stringify(partial));
   }
 
   if (need.length) {
