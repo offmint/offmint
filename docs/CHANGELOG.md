@@ -174,3 +174,14 @@
   - `scripts/export-abi.mjs` also writes `web/src/abi` and `web/src/config/addresses.46630.json`; CI checks both for
     drift and builds the app.
 - Paper service: `GET /basket.json` (CORS), so `/monitor` shows the live detector output.
+- **Testnet MetaVault cycle, live (M5 acceptance):** on a scheduled 40-min demo weekend the keeper bot autonomously ran
+  buyIn → commit → arm (both instances) → lock (4/4 rungs sold) → settle (both) → unwind. Deposited 10,000 USDG,
+  withdrew **10,103.71 USDG** (+1.04% after the 0.5% entry and 0.5% exit fees); NAV 9,950.25 → 10,154.22. This was a
+  thin demo pool and a +70% squeeze, so it is not a performance claim. Tx hashes: `contracts/deployments/demo-meta-46630.json`.
+- NEXT.md Task 1 (housekeeping):
+  - One SPEC: `docs/SPEC.md` is canonical (merged from the root copy, which was a superset; the 36 docs-only lines
+    were superseded Offbell/single-range text). The root copy was deleted. It stays private (gitignored).
+  - RPC: the keeper bot and testnet scripts prefer `ALCHEMY_RH_TESTNET_URL`; mainnet reads already prefer
+    `ALCHEMY_RH_MAINNET_URL`. The web app reads through a server-side proxy `/api/rpc/<chainId>` (read-only methods,
+    so the Alchemy key never reaches the browser).
+  - `web/railway.json` added for the web service.

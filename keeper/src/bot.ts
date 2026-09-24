@@ -200,9 +200,9 @@ export async function createBot(o: BotOptions) {
 
 export async function main(argv = process.argv.slice(2)) {
   const opt = (k: string) => (argv.includes(k) ? argv[argv.indexOf(k) + 1] : undefined);
-  const rpc = process.env.RPC_URL ?? process.env.RH_TESTNET_RPC;
+  const rpc = process.env.RPC_URL ?? process.env.ALCHEMY_RH_TESTNET_URL ?? process.env.RH_TESTNET_RPC;
   const pk = process.env.KEEPER_PRIVATE_KEY as Hex | undefined;
-  if (!rpc || !pk) throw new Error("set RPC_URL and KEEPER_PRIVATE_KEY");
+  if (!rpc || !pk) throw new Error("set RPC_URL (or ALCHEMY_RH_TESTNET_URL) and KEEPER_PRIVATE_KEY");
   const deploymentPath = resolve(opt("--deployment") ?? join(ROOT, "contracts/deployments/46630.json"));
   const dep = JSON.parse(readFileSync(deploymentPath, "utf8"));
   // one process keeps every instance of the deployment: the community vault, MetaVault's exclusive instance,

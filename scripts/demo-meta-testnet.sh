@@ -9,7 +9,7 @@ export PATH="$HOME/.foundry/bin:$PATH"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT/contracts"
 set -a && source ../.env && set +a
-RPC="${RH_TESTNET_RPC:-https://rpc.testnet.chain.robinhood.com}"
+RPC="${ALCHEMY_RH_TESTNET_URL:-${RH_TESTNET_RPC:-https://rpc.testnet.chain.robinhood.com}}"
 J=deployments/46630.json
 g() { python3 -c "import json;print(json.load(open('$J'))['$1'])"; }
 META=$(g metaVault)

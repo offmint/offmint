@@ -11,7 +11,10 @@ const config = getDefaultConfig({
   appName: "Offmint",
   projectId: process.env.NEXT_PUBLIC_WC_PROJECT_ID ?? "offmint-local", // WalletConnect Cloud id for mobile wallets
   chains: [robinhoodTestnet],
-  transports: { [robinhoodTestnet.id]: http() },
+  // reads go through our server-side proxy (Alchemy key never reaches the browser); wallets sign with their own RPC
+  transports: {
+    [robinhoodTestnet.id]: http(typeof window === "undefined" ? undefined : `${window.location.origin}/api/rpc/${robinhoodTestnet.id}`),
+  },
   ssr: true,
 });
 

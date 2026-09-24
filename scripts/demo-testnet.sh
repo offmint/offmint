@@ -12,7 +12,7 @@ set -a
 # shellcheck disable=SC1091
 source "$ROOT/.env"
 set +a
-RPC="${RH_TESTNET_RPC:-https://rpc.testnet.chain.robinhood.com}"
+RPC="${ALCHEMY_RH_TESTNET_URL:-${RH_TESTNET_RPC:-https://rpc.testnet.chain.robinhood.com}}"
 DEP="$ROOT/contracts/deployments/46630.json"
 jget() { python3 -c "import json;print(json.load(open('$DEP'))['$1'])"; }
 VAULT=$(jget vault)
