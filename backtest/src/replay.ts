@@ -1,6 +1,6 @@
 // Backtest (SPEC §10): replay a past weekend against real v4 Swap logs with the keeper's EpochSim.
 //   npm run replay -w backtest -- --event hims-2026-08-28
-// Writes web/public/backtest/<event>.json (timeline, band, fills, per-quantity results for every variant).
+// Writes web/public/data/backtest/<event>.json (timeline, band, fills, per-quantity results for every variant).
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -65,11 +65,11 @@ async function main() {
   sim.doSettle({ time: settleTime, block: settleBlock, fresh, freshSource: "pool", freshUpdatedAt: null, sqrtPriceX96: last.sqrtPriceX96 });
 
   const out = { id, event: ev, ...summarize(sim.toJSON(), ev) };
-  const dir = join(ROOT, "web/public/backtest");
+  const dir = join(ROOT, "web/public/data/backtest");
   mkdirSync(dir, { recursive: true });
   writeFileSync(join(dir, `${id}.json`), JSON.stringify(out, null, 1));
   console.log(JSON.stringify(out.summary, null, 2));
-  console.log(`wrote web/public/backtest/${id}.json (${logs.length} swaps)`);
+  console.log(`wrote web/public/data/backtest/${id}.json (${logs.length} swaps)`);
 }
 
 await main();

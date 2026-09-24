@@ -1,7 +1,7 @@
 // Offmint paper mode (SPEC §8): read-only on Robinhood mainnet, no key.
 //   npm run paper                      live: every 60s, advance this weekend's hypothetical epoch per ticker
 //   npm run replay -- 2026-09-19       replay the weekend window containing / following that date
-//   options: --tickers TSLA,NVDA  --out ../web/public/paper
+//   options: --tickers TSLA,NVDA  --out ../web/public/data/paper
 import { existsSync, mkdirSync, readFileSync, writeFileSync, appendFileSync, readdirSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -296,12 +296,12 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     return i >= 0 ? args[i + 1] : undefined;
   };
   const only = opt("--tickers")?.split(",").map((s) => s.trim().toUpperCase());
-  const outDir = resolve(opt("--out") ?? process.env.PAPER_OUT_DIR ?? join(ROOT, "web/public/paper"));
+  const outDir = resolve(opt("--out") ?? process.env.PAPER_OUT_DIR ?? join(ROOT, "web/public/data/paper"));
   const replayIdx = args.indexOf("--replay");
   if (replayIdx >= 0) {
     const date = args[replayIdx + 1];
     if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error("usage: npm run replay -- YYYY-MM-DD [--tickers A,B]");
-    const replayOut = resolve(opt("--out") ?? join(ROOT, "web/public/paper/replay"));
+    const replayOut = resolve(opt("--out") ?? join(ROOT, "web/public/data/paper/replay"));
     await replay(date, only, replayOut);
   } else {
     await live(only, outDir);

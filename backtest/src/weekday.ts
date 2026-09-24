@@ -3,7 +3,7 @@
 // Weekend = Sat 00:00 -> Mon 00:00 UTC (minting closed): premium vs the frozen Friday Chainlink close.
 // Weekday = Tue 00:00 -> Fri 00:00 UTC (minting open): premium vs the LIVE feed price at each swap (latest round <= swap).
 // Per window: max premium, p95 premium, share of time spent above +5% / +10% (time-weighted, zero-liquidity prints excluded).
-// Writes web/public/backtest/weekday-vs-weekend.json and docs/weekday-vs-weekend.md.
+// Writes web/public/data/backtest/weekday-vs-weekend.json and docs/weekday-vs-weekend.md.
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -125,7 +125,7 @@ async function main() {
     weeks: sats.map((x) => new Date(x * 1000).toISOString().slice(0, 10)),
     tickers: summary,
   };
-  const out = join(ROOT, "web/public/backtest/weekday-vs-weekend.json");
+  const out = join(ROOT, "web/public/data/backtest/weekday-vs-weekend.json");
   mkdirSync(dirname(out), { recursive: true });
   writeFileSync(out, JSON.stringify(doc, null, 1));
   const rows = Object.entries<any>(summary)

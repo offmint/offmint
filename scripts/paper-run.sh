@@ -4,7 +4,7 @@
 #   scripts/paper-run.sh status   show session + last log lines
 #   scripts/paper-run.sh stop     stop it
 #   tmux attach -t offmint-paper  watch it live (detach: Ctrl-b d)
-# Output: web/public/paper/<date>-<ticker>.json, logs: keeper/logs/paper-live.log
+# Output: web/public/data/paper/<date>-<ticker>.json, logs: keeper/logs/paper-live.log
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 S=offmint-paper

@@ -11,6 +11,6 @@ export interface BacktestDoc {
 }
 export const EVENTS = ["hims-2026-08-28", "glxy-2026-09-11"] as const;
 export async function loadBacktest(id: string): Promise<BacktestDoc> {
-  const r = await fetch(`/backtest/${id}.json`);
+  const r = await fetch(`/data/backtest/${id}.json`);
   return r.json();
 }

@@ -1,7 +1,7 @@
-# Private working docs (kept local, not committed)
-CLAUDE.md
-docs/SPEC.md
-SPEC.md
+# Private working docs (kept local, not committed): all of docs/ and every markdown file except the public README
+docs/
+*.md
+!README.md
 
 # Secrets
 .env
