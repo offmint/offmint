@@ -19,7 +19,7 @@ the stock back after reopen. Depositors end the weekend with more stock per shar
 | M2 | `SessionClock`, `ManualSessionClock`, `RangeMath` + unit/fuzz tests | ✅ done |
 | M3 | `OffmintVault` + unlock-callback flows + integration + invariant tests | ✅ done: 4-rung ladder (§5.0), per-rung `lock()`, pluggable `IPriceReference` (Chainlink / push with owner freeze); 126 tests, E2E +6.41 STOCK / 100 |
 | M3.5 | `MetaVault` + `VaultFactory` + keeper SELECT (§6.5) | ✅ contracts + acceptance tests (28, incl. `restrictedDepositor` isolation); keeper SELECT scoring + MetaVault cycle in the bot (local E2E: buy-in → commit → arm → settle → unwind, IDLE again) |
-| M4 | Mainnet fork test + backtest JSON | ✅ fork green on TSLA (S0) + HIMS (S1); HIMS backtest +14.7% STOCK vs HODL ex-fees |
+| M4 | Mainnet fork test + backtest JSON | ✅ fork green on TSLA (Chainlink, S0), HIMS (push reference, S1) and GLXY (push reference, S0): +6.99 / +7.09 / +7.07 STOCK on 30 deployed; HIMS + GLXY backtests |
 | M5 | Web `/vault` `/backtest` `/paper`, testnet deploy, DemoBuyer | 🚧 backend done: Deploy + DemoBuyer scripts, keeper bot, local E2E green (+8.45 STOCK / 100); **testnet deployed + verified; live demo weekend completed: +8.45 mHIMS / 100** (arm → lock → settle by the keeper bot); web pending |
 | M6 | README, diagram, video, deck | ⏳ |
 

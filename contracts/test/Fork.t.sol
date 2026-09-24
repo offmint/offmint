@@ -21,6 +21,7 @@ import {ISessionClock} from "../src/interfaces/ISessionClock.sol";
 import {IStockToken} from "../src/interfaces/IStockToken.sol";
 import {IPriceReference} from "../src/interfaces/IPriceReference.sol";
 import {ChainlinkPriceReference} from "../src/oracle/ChainlinkPriceReference.sol";
+import {PushPriceReference} from "../src/oracle/PushPriceReference.sol";
 
 /// @notice Mainnet fork: real Robinhood Chain PoolManager, stock tokens, USDG and pools (addresses from
 ///         config/mainnet.json). Skipped unless RH_MAINNET_RPC (or ALCHEMY_RH_MAINNET_URL) is set.
@@ -34,7 +35,9 @@ abstract contract ForkBase is Test {
     IPoolManager pm;
     IERC20 stock;
     IERC20 usdg;
-    address feedAddr;
+    address feedAddr; // real Chainlink feed (feed tickers)
+    PushPriceReference push; // no-feed tickers: the production path (SPEC §3.6), posted by a separate poster key
+    address poster = makeAddr("poster");
     PoolKey key;
     bool s0;
     RangeMath.Decimals dec;
@@ -52,7 +55,7 @@ abstract contract ForkBase is Test {
 
     function ticker() internal pure virtual returns (string memory);
 
-    /// @dev Real Chainlink feed address, or address(0) to use a MockFeed seeded from the pool (no feed on mainnet).
+    /// @dev true: the real Chainlink feed. false (no feed on mainnet): a PushPriceReference, seeded from the pool.
     function useRealFeed() internal pure virtual returns (bool);
 
     function setUp() public virtual {
@@ -86,12 +89,14 @@ abstract contract ForkBase is Test {
             feedAddr = vm.parseJsonAddress(json, string.concat(base, ".feed"));
             (, int256 answer,,,) = AggregatorV3Interface(feedAddr).latestRoundData();
             p0 = uint256(answer);
+            dec = RangeMath.Decimals({feed: AggregatorV3Interface(feedAddr).decimals(), stock: 18, usd: 6});
         } else {
             dec = RangeMath.Decimals({feed: 8, stock: 18, usd: 6});
             p0 = _poolUsd();
-            feedAddr = address(new MockFeed(address(this), 8, "pool-seeded", int256(p0)));
+            push = new PushPriceReference(poster, owner, IStockToken(address(stock)), 2000, 12 hours, ticker());
+            vm.prank(poster);
+            push.post(p0, block.timestamp, false);
         }
-        dec = RangeMath.Decimals({feed: AggregatorV3Interface(feedAddr).decimals(), stock: 18, usd: 6});
         // sanity: pool and feed agree within 5% on a weekday
         assertApproxEqRel(_poolUsd(), p0, 0.05e18, "pool vs feed");
 
@@ -106,15 +111,17 @@ abstract contract ForkBase is Test {
                 clock: ISessionClock(address(clock)),
                 // Chainlink adapter over the real (or pool-seeded mock) feed; no sequencer feed is listed for
                 // Robinhood Chain (docs/FACTS.md)
-                priceRef: IPriceReference(
-                    address(
-                        new ChainlinkPriceReference(
-                            AggregatorV3Interface(feedAddr),
-                            AggregatorV3Interface(address(0)),
-                            IStockToken(address(stock))
+                priceRef: useRealFeed()
+                    ? IPriceReference(
+                        address(
+                            new ChainlinkPriceReference(
+                                AggregatorV3Interface(feedAddr),
+                                AggregatorV3Interface(address(0)),
+                                IStockToken(address(stock))
+                            )
                         )
                     )
-                ),
+                    : IPriceReference(address(push)),
                 stock: stock,
                 usdg: usdg,
                 poolKey: key,
@@ -161,7 +168,7 @@ abstract contract ForkBase is Test {
         );
     }
 
-    /// @dev Feed print at `ts` with `answer` (mocked on the real feed; set directly on the MockFeed).
+    /// @dev Price print at `ts` (mocked on the real feed; posted by the poster on the push reference).
     function _print(uint256 answer, uint256 ts) internal {
         if (useRealFeed()) {
             vm.mockCall(
@@ -170,7 +177,8 @@ abstract contract ForkBase is Test {
                 abi.encode(uint80(1), int256(answer), ts, ts, uint80(1))
             );
         } else {
-            MockFeed(feedAddr).setAnswerAt(int256(answer), ts);
+            vm.prank(poster);
+            push.post(answer, ts, false);
         }
     }
 
@@ -277,10 +285,21 @@ contract ForkTSLA is ForkBase {
     }
 }
 
-/// HIMS/USDG: stock is currency1 (S1). No HIMS Chainlink feed on mainnet -> MockFeed seeded from the real pool.
+/// HIMS/USDG: stock is currency1 (S1). No HIMS Chainlink feed on mainnet -> PushPriceReference (SPEC §3.6).
 contract ForkHIMS is ForkBase {
     function ticker() internal pure override returns (string memory) {
         return "HIMS";
+    }
+
+    function useRealFeed() internal pure override returns (bool) {
+        return false;
+    }
+}
+
+/// GLXY/USDG: stock is currency0 (S0), no Chainlink feed -> PushPriceReference; squeezed +186% on 12 Sep 2026.
+contract ForkGLXY is ForkBase {
+    function ticker() internal pure override returns (string memory) {
+        return "GLXY";
     }
 
     function useRealFeed() internal pure override returns (bool) {

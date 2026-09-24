@@ -154,3 +154,12 @@
   recorded against a past weekend. DemoBuyer gains `scheduleWeekend(startIn, duration)`.
 - `scripts/e2e-meta.sh` (CI): the unmodified keeper bot runs buy-in → commit → arm → +70% squeeze → lock → settle →
   unwind on anvil; MetaVault returns to IDLE with USDG NAV +2.05%. This is a thin demo pool, not a performance claim.
+- M4: the fork tests now price no-feed tickers through the production `PushPriceReference`: a separate poster key
+  posts forward-only prices under the 20% cap. GLXY was added, and it squeezed +186% on 12 Sep. On mainnet state all
+  12 pass. Gain on 30 STOCK deployed through a squeeze → lock → buyback:
+  - GLXY (push, S0): +7.07 STOCK
+  - HIMS (push, S1): +7.09 STOCK
+  - TSLA (Chainlink, S0): +6.99 STOCK
+  - gap-up cap and no-fill cases pass for all three.
+- Testnet MetaVault demo started: the keeper bot bought in with 2,985.07 USDG (30%) for a scheduled 40-min demo
+  weekend. `scripts/demo-meta-testnet.sh` was made resumable after a wait-condition bug (it evaluated the condition once).
