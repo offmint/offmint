@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body { @apply bg-paper text-ink antialiased; }
+.card { @apply bg-paper-card border border-paper-line rounded-lg p-5; }
+.label { @apply text-xs uppercase tracking-wide text-ink-faint; }
+.num { @apply font-mono tabular-nums; }
+.btn { @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition disabled:opacity-40; }
+.btn-primary { @apply btn bg-accent text-white hover:bg-[#194d71]; }
+.btn-ghost { @apply btn border border-paper-line bg-paper-card hover:bg-paper; }
+table.data { @apply w-full text-sm; }
+table.data th { @apply text-left font-medium text-ink-faint text-xs uppercase tracking-wide py-2 px-2 border-b border-paper-line; }
+table.data td { @apply py-2 px-2 border-b border-paper-line; }

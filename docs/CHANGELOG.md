@@ -163,3 +163,14 @@
   - gap-up cap and no-fill cases pass for all three.
 - Testnet MetaVault demo started: the keeper bot bought in with 2,985.07 USDG (30%) for a scheduled 40-min demo
   weekend. `scripts/demo-meta-testnet.sh` was made resumable after a wait-condition bug (it evaluated the condition once).
+- M5 web (`web/`, Next.js 15 + wagmi v2 + viem + RainbowKit + Tailwind + recharts, its own lockfile):
+  - `/` hero, GLXY + HIMS charts, and the risk disclosure on the page
+  - `/app` MetaVault deposit/withdraw (approve → deposit, withdraw, redeem all), NAV, cycle state with per-position
+    phases, countdown to Sat 00:00 UTC, past cycles from onchain events, jurisdiction notice
+  - `/monitor` detector basket plus paper-keeper state from the Railway service
+  - `/vault/[ticker]` community and MetaVault instances side by side, with rungs
+  - `/backtest` HIMS and GLXY with the MetaVault friction view
+  - `/paper` per-weekend results with charts
+  - `scripts/export-abi.mjs` also writes `web/src/abi` and `web/src/config/addresses.46630.json`; CI checks both for
+    drift and builds the app.
+- Paper service: `GET /basket.json` (CORS), so `/monitor` shows the live detector output.

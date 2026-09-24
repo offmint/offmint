@@ -25,7 +25,7 @@ jobs:
       - run: forge test
         working-directory: contracts
       - name: keeper ABI matches contracts
-        run: node scripts/export-abi.mjs && git diff --exit-code keeper/src/abi
+        run: node scripts/export-abi.mjs && git diff --exit-code keeper/src/abi web/src/abi web/src/config
 
   keeper:
     runs-on: ubuntu-latest
@@ -57,3 +57,20 @@ jobs:
         run: scripts/e2e-meta.sh
       - name: stress (10 random weekends, 8 depositors, invariants after every step)
         run: npm run stress -w keeper -- --epochs 10 --users 8 --seed 11 --port 8549
+
+  web:
+    name: web (Next.js typecheck + build)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run build
