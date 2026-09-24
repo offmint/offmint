@@ -63,6 +63,22 @@ MetaVault is IDLE with 9,950.25 USDG (a 10,000 deposit minus the 0.5% entry fee)
 | VaultPoolOps (linked library) | [`0xdb193f8c2021b974294ef9fb84150e01fa796cc5`](https://explorer.testnet.chain.robinhood.com/address/0xdb193f8c2021b974294ef9fb84150e01fa796cc5) |
 | RangeMath (linked library) | [`0x4d49582dee11bcecdc73430f7d6938ebbf88913f`](https://explorer.testnet.chain.robinhood.com/address/0x4d49582dee11bcecdc73430f7d6938ebbf88913f) |
 
+## Reproduce in one command
+
+```bash
+npm ci                              # repo root (keeper + backtest workspaces); Foundry installed
+scripts/demo-cycle.sh local         # fresh anvil chain, both paths run by the unmodified keeper bot (~4 min)
+```
+Expected tail of the output (local chain, demo pool, +70% squeeze; this demonstrates the mechanism, not a return):
+```
+Community vault : totalAssets 100000000000000000000 -> 106406122541407994293
+                  E2E OK: +6.4061 STOCK per 100 deposited (after perf fee)
+MetaVault       : NAV 9950248756 -> 10154224849
+                  E2E META OK: NAV 2.05% in USDG after a squeeze weekend (fees included)
+```
+`scripts/demo-cycle.sh testnet` runs the same steps against the Robinhood Chain testnet sandbox (needs the sandbox
+deployment and `SANDBOX_PRIVATE_KEY` in `.env`).
+
 ## Stress test (local chain, time-warped)
 
 `npm run stress -- --epochs 40 --users 12 --seed 7` runs the real `Deploy.s.sol` and the unmodified keeper bot through

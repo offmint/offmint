@@ -1,0 +1,13 @@
+{
+ "updatedAt": "2026-09-24T03:45:15Z",
+ "entries": [
+  {
+   "file": "2026-09-19-SOFI.json",
+   "ticker": "SOFI",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  }
+ ]
+}
