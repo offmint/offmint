@@ -1,0 +1,100 @@
+{
+  "source": "contracts/test/Fork.t.sol test_fork_fullCycle_squeezeLockBuyback: simulated +70% weekend spike, Monday reopen at +1%, on the real pool",
+  "forkBlock": 71241990,
+  "chainId": 4663,
+  "tickers": {
+    "GLXY": {
+      "held": 100,
+      "p0": 25.41232341,
+      "rungs": [
+        {
+          "placed": 7.5,
+          "unsold": 0,
+          "usdg": 210.54
+        },
+        {
+          "placed": 9,
+          "unsold": 0,
+          "usdg": 272.32
+        },
+        {
+          "placed": 7.5,
+          "unsold": 0,
+          "usdg": 248.92
+        },
+        {
+          "placed": 6,
+          "unsold": 0,
+          "usdg": 225.65
+        }
+      ],
+      "usdgReceived": 957.43,
+      "stockBought": 37.0155,
+      "pnlStock": 7.0155,
+      "feeStock": 0.7016,
+      "holderAfter": 106.31
+    },
+    "HIMS": {
+      "held": 100,
+      "p0": 28.49706515,
+      "rungs": [
+        {
+          "placed": 7.5,
+          "unsold": 0,
+          "usdg": 237.15
+        },
+        {
+          "placed": 9,
+          "unsold": 0,
+          "usdg": 307.2
+        },
+        {
+          "placed": 7.5,
+          "unsold": 0,
+          "usdg": 280.11
+        },
+        {
+          "placed": 6,
+          "unsold": 0,
+          "usdg": 254.17
+        }
+      ],
+      "usdgReceived": 1078.62,
+      "stockBought": 37.0823,
+      "pnlStock": 7.0823,
+      "feeStock": 0.7082,
+      "holderAfter": 106.37
+    },
+    "TSLA": {
+      "held": 100,
+      "p0": 375.8057,
+      "rungs": [
+        {
+          "placed": 7.5,
+          "unsold": 0,
+          "usdg": 3105.75
+        },
+        {
+          "placed": 9,
+          "unsold": 0,
+          "usdg": 4017.15
+        },
+        {
+          "placed": 7.5,
+          "unsold": 0,
+          "usdg": 3673.87
+        },
+        {
+          "placed": 6,
+          "unsold": 0,
+          "usdg": 3323.76
+        }
+      ],
+      "usdgReceived": 14120.52,
+      "stockBought": 37.0248,
+      "pnlStock": 7.0248,
+      "feeStock": 0.7025,
+      "holderAfter": 106.32
+    }
+  }
+}

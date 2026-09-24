@@ -66,7 +66,11 @@ abstract contract ForkBase is Test {
             vm.skip(true);
             return;
         }
-        vm.createSelectFork(url);
+        // FORK_BLOCK pins the fork so published numbers are reproducible ("mainnet fork @ block N")
+        uint256 pinned = vm.envOr("FORK_BLOCK", uint256(0));
+        if (pinned == 0) vm.createSelectFork(url);
+        else vm.createSelectFork(url, pinned);
+        emit log_named_uint("fork block (L2, pinned)", pinned); // block.number is the L1 height on Arbitrum Orbit
         assertEq(block.chainid, 4663, "not Robinhood Chain mainnet");
 
         string memory json = vm.readFile("config/mainnet.json");

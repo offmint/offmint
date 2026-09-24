@@ -1,5 +1,6 @@
 import testnet from "@/config/addresses.46630.json";
-import { EXPLORER, REPO, TESTNET_CYCLE, TESTS } from "@/content/landing";
+import { EXPLORER, REPO } from "@/content/landing";
+import { DEMO, TESTS, FORK } from "@/lib/claims";
 
 const t = testnet as unknown as Record<string, string>;
 const CARDS = [
@@ -33,7 +34,7 @@ export function Verify() {
         </div>
         <div className="mt-8 grid gap-4 md:grid-cols-[1fr_1.4fr]">
           <div className="grid grid-cols-3 gap-4 rounded-[12px] border border-graphite p-5">
-            {[[TESTS.contracts, "contract tests"], [TESTS.fork, "mainnet-fork tests"], [TESTS.keeper, "keeper + backtest tests"]].map(([n, l]) => (
+            {[[TESTS.contracts, "contract tests"], [TESTS.fork, `mainnet-fork tests @ block ${FORK.forkBlock}`], [TESTS.keeperAndBacktest, "keeper + backtest tests"]].map(([n, l]) => (
               <div key={String(l)}>
                 <div className="fig text-[32px] font-semibold leading-none">{n}</div>
                 <div className="mt-2 text-xs text-[#9AA3A6]">{l}</div>
@@ -43,12 +44,12 @@ export function Verify() {
           <div className="rounded-[12px] border border-graphite p-5">
             <div className="text-sm font-medium">The keeper bot ran a full MetaVault week on testnet, on its own</div>
             <div className="mt-3 flex flex-wrap gap-2">
-              {TESTNET_CYCLE.map(([k, h]) => (
+              {(DEMO.keeperTxs as { action: string; hash: string; instance: string }[]).filter((x) => x.instance !== "community").map(({ action: k, hash: h }) => (
                 <a key={h} href={`${EXPLORER}/tx/${h}`} target="_blank" rel="noreferrer"
                   className="rounded-[6px] border border-graphite px-2.5 py-1 text-xs hover:border-glow focus-visible:outline focus-visible:outline-2 focus-visible:outline-glow">{k} ↗</a>
               ))}
             </div>
-            <p className="mt-3 text-xs text-[#9AA3A6]">10,000 test USDG in, 10,103.71 out after both fees (thin demo pool, +70% squeeze). Code: <a className="underline" href={REPO} target="_blank" rel="noreferrer">github.com/offmint/offmint</a></p>
+            <p className="mt-3 text-xs text-[#9AA3A6]">{(Number(DEMO.deposited) / 1e6).toLocaleString("en-US")} test USDG in, {(Number(DEMO.withdrawn) / 1e6).toLocaleString("en-US", { minimumFractionDigits: 2 })} out after both fees (thin demo pool, simulated +70% squeeze, testnet). Code: <a className="underline" href={REPO} target="_blank" rel="noreferrer">github.com/offmint/offmint</a></p>
           </div>
         </div>
       </div>

@@ -203,6 +203,11 @@ export async function main(argv = process.argv.slice(2)) {
   // `||`, not `??`: an empty variable in .env must fall through to the next option
   const rpc = process.env.RPC_URL || process.env.ALCHEMY_RH_TESTNET_URL || process.env.RH_TESTNET_RPC || "https://rpc.testnet.chain.robinhood.com";
   const pk = process.env.KEEPER_PRIVATE_KEY as Hex | undefined;
+  logLine({
+    event: "rpc", network: "testnet", using: /alchemy/i.test(rpc) ? "alchemy" : "public fallback",
+    expects: ["RPC_URL", "ALCHEMY_RH_TESTNET_URL", "RH_TESTNET_RPC"],
+    set: { RPC_URL: !!process.env.RPC_URL, ALCHEMY_RH_TESTNET_URL: !!process.env.ALCHEMY_RH_TESTNET_URL, RH_TESTNET_RPC: !!process.env.RH_TESTNET_RPC },
+  });
   if (!rpc || !pk) throw new Error("set RPC_URL (or ALCHEMY_RH_TESTNET_URL) and KEEPER_PRIVATE_KEY");
   const deploymentPath = resolve(opt("--deployment") ?? join(ROOT, "contracts/deployments/46630.json"));
   const dep = JSON.parse(readFileSync(deploymentPath, "utf8"));

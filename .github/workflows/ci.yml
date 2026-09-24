@@ -22,8 +22,13 @@ jobs:
         run: |
           out=$(forge lint src 2>&1); echo "$out"
           if echo "$out" | grep -qE '^(error|warning|note)\['; then exit 1; fi
-      - run: forge test
+      - name: forge test (+ published test count must match: web/public/data/tests.json)
         working-directory: contracts
+        run: |
+          out=$(forge test 2>&1); echo "$out" | tail -3
+          n=$(echo "$out" | grep -oE '[0-9]+ tests passed' | tail -1 | grep -oE '^[0-9]+')
+          want=$(python3 -c "import json;print(json.load(open('../web/public/data/tests.json'))['contracts'])")
+          [ "$n" = "$want" ] || { echo "tests.json says $want contract tests, forge ran $n"; exit 1; }
       - name: keeper ABI matches contracts
         run: node scripts/export-abi.mjs && git diff --exit-code keeper/src/abi web/src/abi web/src/config
 
@@ -73,4 +78,5 @@ jobs:
           cache-dependency-path: web/package-lock.json
       - run: npm ci
       - run: npm run typecheck
+      - run: npm test   # claims: rendered numbers == data files; live-premium quality gate
       - run: npm run build

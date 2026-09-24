@@ -26,7 +26,7 @@ export function WeekStrip() {
   return (
     <section id="week" className="gutter py-14">
       <h2 className="h-section text-[32px] md:text-[48px]">The week, as the market sees it</h2>
-      <p className="mt-2 max-w-[64ch] text-ink-soft">Stock tokens trade 24/7. New ones can only be created while the real market is open.</p>
+      <p className="mt-2 max-w-[64ch] text-ink-soft">Stock tokens trade 24/7. New ones can only be created while the real market is open: not on weekends or US market holidays.</p>
       <div ref={scroller} className="mt-4 overflow-x-auto pb-2 pt-8">
         <div className="relative min-w-[720px]">
           <div className="grid grid-cols-7 overflow-hidden rounded-[12px] border border-paper-line">
@@ -55,7 +55,9 @@ export function WeekStrip() {
       </div>
       <div className="mt-2 text-xs text-ink-faint">
         <span className="font-medium text-matte md:hidden">Sat 00:00 → Mon 00:00 UTC: supply can&apos;t respond. </span>
-        {utc && `Now: ${utc}. Robinhood's tokenization window: Mon 02:00 → Sat 02:00 CET/CEST.`}
+        {utc && `Now: ${utc}. `}Robinhood&apos;s tokenization window: Mon 02:00 → Sat 02:00 CET/CEST, closed on weekends and US market holidays
+        (<a className="underline" href="https://docs.robinhood.com/chain/stock-tokens/" target="_blank" rel="noreferrer">Robinhood Chain docs</a>,{" "}
+        <a className="underline" href="https://robinhood.com/eu/en/support/articles/about-stock-tokens" target="_blank" rel="noreferrer">About Stock Tokens</a>).
       </div>
     </section>
   );

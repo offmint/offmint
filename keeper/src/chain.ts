@@ -14,9 +14,21 @@ export const robinhood = {
   contracts: { multicall3: { address: "0xcA11bde05977b3631167028862bE2a173976CA11" as const } },
 } as const;
 
+/** Which RPC a URL is, for logs: never prints the URL (an Alchemy URL contains the API key). */
+export const rpcKind = (u: string) => (/alchemy/i.test(u) ? "alchemy" : /rpc\.(mainnet|testnet)\.chain\.robinhood\.com/.test(u) ? "public" : "custom");
+let rpcLogged = false;
+
 export function makeClient() {
   const urls = [process.env.ALCHEMY_RH_MAINNET_URL, process.env.RH_MAINNET_RPC, "https://rpc.mainnet.chain.robinhood.com"]
     .filter((u): u is string => !!u);
+  if (!rpcLogged) {
+    rpcLogged = true;
+    console.error(JSON.stringify({
+      event: "rpc", network: "mainnet", using: rpcKind(urls[0]) === "alchemy" ? "alchemy" : "public fallback",
+      expects: ["ALCHEMY_RH_MAINNET_URL", "RH_MAINNET_RPC"],
+      set: { ALCHEMY_RH_MAINNET_URL: !!process.env.ALCHEMY_RH_MAINNET_URL, RH_MAINNET_RPC: !!process.env.RH_MAINNET_RPC },
+    }));
+  }
   return createPublicClient({
     chain: robinhood,
     transport: fallback([...new Set(urls)].map((u) => http(u, { retryCount: 6, retryDelay: 1_000, timeout: 60_000 }))),

@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
-import { WORKED_GLXY as G } from "@/content/landing";
-import { TokenLogo } from "@/components/TokenLogo";
+import { WORKED as G, LADDER, PARAMS, FORK } from "@/lib/claims";
+const FORK_SOURCE = FORK.source as string;
+import { Token } from "@/components/TokenLogo";
 
-const PREMIUMS = [8, 15, 25, 40];
+const PREMIUMS = LADDER.map(([lo]) => lo);
 
 /** Mini staircase used as the connector between cards (the logo's ladder motif). */
 function Stairs({ className = "" }: { className?: string }) {
@@ -16,18 +17,18 @@ function Stairs({ className = "" }: { className?: string }) {
 
 export function HowItWorks() {
   const [spike, setSpike] = useState(true);
-  const placed = G.placed.reduce((a, b) => a + b, 0);
+  const placed = Math.round(G.placed.reduce((a: number, b: number) => a + b, 0) * 100) / 100;
   const cards = [
     { n: "01", title: "Friday close", big: `${G.held} GLXY`, sub: `held · Friday price $${G.p0.toFixed(2)}` },
     {
       n: "02", title: "Sell ladder posted", big: `${placed} GLXY`, sub: "placed in 4 steps above Friday's price",
-      steps: G.placed.map((q, i) => ({ q, p: PREMIUMS[i], filled: spike })),
+      steps: G.placed.map((q: number, i: number) => ({ q, p: PREMIUMS[i], filled: spike })),
     },
     spike
-      ? { n: "03", title: "Weekend spike fills all 4", big: `$${G.collected.toFixed(2)}`, sub: "collected in USDG, each step sold above its floor" }
-      : { n: "03", title: "No spike", big: "$0.00", sub: "no step reached; nothing sold" },
+      ? { n: "03", title: "Weekend spike fills all 4", big: `$${G.usdgReceived.toFixed(2)}`, sub: "collected in USDG, each step sold above its floor" }
+      : { n: "03", title: "No spike", big: `$${(0).toFixed(2)}`, sub: "no step reached; nothing sold" },
     spike
-      ? { n: "04", title: "Monday buyback, capped", big: `${G.after.toFixed(2)} GLXY`, sub: `bought back ${G.boughtBack.toFixed(2)} at ≤ fresh price + 1%, after the ${G.fee.toFixed(2)} GLXY fee` }
+      ? { n: "04", title: "Monday buyback, capped", big: `${G.holderAfter.toFixed(2)} GLXY`, sub: `bought back ${G.stockBought.toFixed(2)} at ≤ fresh price + ${PARAMS.vault.buybackSlippageBps / 100}%, after the ${G.feeStock.toFixed(2)} GLXY fee` }
       : { n: "04", title: "Monday", big: `${G.held.toFixed(2)} GLXY`, sub: "ladder pulled back unsold: nothing lost on the ladder" },
   ];
   return (
@@ -35,7 +36,7 @@ export function HowItWorks() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h2 className="h-section text-[40px] md:text-[64px]">How it works, with real numbers</h2>
-          <p className="mt-2 flex max-w-[64ch] items-center gap-2 text-ink-soft">One weekend on the real <TokenLogo ticker="GLXY" size={20} /><b className="text-matte">GLXY</b> pool.</p>
+          <p className="mt-2 flex max-w-[64ch] flex-wrap items-center gap-2 text-ink-soft">Simulated weekend on the real <Token ticker="GLXY" /> pool, mainnet fork @ block {G.block.toLocaleString("en-US")}.</p>
         </div>
         <div role="tablist" aria-label="Scenario" className="inline-flex rounded-[6px] border border-paper-line bg-paper-card p-1 text-sm">
           {[["Spike", true], ["No spike", false]].map(([label, v]) => (
@@ -54,7 +55,6 @@ export function HowItWorks() {
               <div className="text-xs text-ink-faint num">{c.n}</div>
               <div className="mt-1 text-sm font-medium">{c.title}</div>
               <div className={`fig mt-3 flex items-center gap-2 text-[30px] font-semibold leading-none ${i === 3 && spike ? "text-tide" : ""}`}>
-                {c.big.endsWith("GLXY") && <TokenLogo ticker="GLXY" size={26} />}
                 {c.big}
               </div>
               <div className="mt-2 text-sm text-ink-soft">{c.sub}</div>
@@ -79,7 +79,7 @@ export function HowItWorks() {
         ))}
       </div>
       <p className="mt-4 text-[11px] text-ink-faint">
-        {G.source}; simulated +70% spike, Monday reopen +1%. {spike ? `Per step: ${G.usdg.map((u) => `$${u.toFixed(2)}`).join(" / ")}.` : "No-spike view: the ladder is one-sided, so unfilled steps return the same GLXY."}
+        Simulated: {FORK_SOURCE}, block {G.block}. {spike ? `Per step: ${G.usdg.map((u: number) => `$${u.toFixed(2)}`).join(" / ")}.` : "No-spike view: the ladder is one-sided, so unfilled steps return the same GLXY."} Real fills would be lower: our own orders shrink the spike they sell into.
       </p>
     </section>
   );

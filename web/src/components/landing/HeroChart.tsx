@@ -2,13 +2,14 @@
 import { useMemo, useState } from "react";
 import hims from "../../../public/data/backtest/hims-2026-08-28.json";
 import { CandleChart } from "@/components/CandleChart";
-import { TokenLogo } from "@/components/TokenLogo";
+import { EVENTS, LADDER as LADDER_DATA } from "@/lib/claims";
 
-// The real HIMS weekend (29–31 Aug 2026): every swap on the deepest hook-free HIMS/USDG Uniswap v4 pool, as 30-min
-// candles. Reference = the pool price when minting closed (Sat 00:00 UTC), the same reference as our weekend screen,
-// so the peak reads exactly +317.6%. The ladder is Offmint's default: +8–12%, +15–22%, +25–35%, +40–55%.
-const P0 = 124.70452691 / (1 + 3.1756);
-const LADDER: [number, number][] = [[8, 12], [15, 22], [25, 35], [40, 55]];
+// The real HIMS weekend (29–31 Aug 2026): every swap on the deepest hook-free HIMS/USDG Uniswap v4 pool, as candles.
+// Reference P0 is read from the weekend screen (pool price at Fri 20:00 UTC), the same reference as the +317.6% figure.
+// The ladder is Offmint's default, read from the contract source (web/public/data/params.json).
+const EV = EVENTS[0];
+const P0 = EV.p0;
+const LADDER = LADDER_DATA;
 const RAW = (hims as any).sim.timeline as { t: number; usd: number }[];
 const WIN = (hims as any).sim.window as { start: number; end: number };
 const T1 = RAW[RAW.length - 1].t;
@@ -33,8 +34,7 @@ export function HeroChart() {
       <div className="flex flex-col gap-5 border-b border-graphite p-5 lg:border-b-0 lg:border-r">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <TokenLogo ticker="HIMS" size={22} />
-            <span className="text-sm font-semibold">HIMS</span>
+            <span className="rounded-[6px] bg-graphite px-1.5 py-0.5 text-[11px] font-semibold">HIMS</span>
             <span className="text-xs text-[#9AA3A6]">29–31 Aug 2026</span>
           </div>
           <span className={`rounded-[6px] px-2 py-0.5 text-[11px] font-medium ${reopened ? "border border-graphite text-[#C9D1D3]" : "bg-glow text-matte"}`}>
@@ -70,7 +70,7 @@ export function HeroChart() {
         </div>
         <div className="mt-auto text-[11px] leading-snug text-[#9AA3A6]">
           {reached}/4 sell steps reached. 15-min candles from every swap on the deepest hook-free HIMS/USDG Uniswap v4 pool,
-          Robinhood Chain mainnet. Steps sit over the pool price at minting close (${P0.toFixed(2)}).
+          Robinhood Chain mainnet. Reference ${P0.toFixed(2)} is the pool price at Fri 20:00 UTC{EV.nyseClose !== null ? ` (NYSE close $${EV.nyseClose.toFixed(2)})` : ""}.
         </div>
       </div>
       <div className="min-w-0 p-2 sm:p-3">

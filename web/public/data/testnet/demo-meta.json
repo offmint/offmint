@@ -1,0 +1,66 @@
+{
+  "nav0": "9939645132",
+  "nav1": "10154224849",
+  "deposited": "10000000000",
+  "withdrawn": "10103706316",
+  "metaVault": "0xDE1D914e7eC0cAd677137aBa80582c7129F61AAC",
+  "window": "2026-09-24 01:53:51 -> 02:33:51 UTC (ManualSessionClock demo weekend)",
+  "keeperTxs": [
+    {
+      "ts": "2026-09-24T01:34:30Z",
+      "instance": "metaVault",
+      "action": "buyIn",
+      "hash": "0x300799da34a0539bd9e91e0fd6c59e3f5b3e63de7df0a3a40bbf45ae45c6db44"
+    },
+    {
+      "ts": "2026-09-24T01:44:09Z",
+      "instance": "metaVault",
+      "action": "commit",
+      "hash": "0x5ace8e0ffcff552d5b00630ba3d88f2fb95a890030cbf122a8d539cd9d268773"
+    },
+    {
+      "ts": "2026-09-24T01:55:11Z",
+      "instance": "community",
+      "action": "arm",
+      "hash": "0xdf74c0c8b4ce8fb7d68b34bcf3527b11fb0c9ff6cd2407a6f41ca59a8163d8cf"
+    },
+    {
+      "ts": "2026-09-24T01:55:24Z",
+      "instance": "meta-instance",
+      "action": "arm",
+      "hash": "0xbee65c69857ad7bd3d23234faea4ef5afbf72f9ce665bbbda67d2de7877ebd45"
+    },
+    {
+      "ts": "2026-09-24T01:56:48Z",
+      "instance": "community",
+      "action": "lock",
+      "hash": "0x16bee437d00eeb6fbf3216ca868e86dbc45528138a6eb7ea26e09c73a2c8fcdd"
+    },
+    {
+      "ts": "2026-09-24T01:56:57Z",
+      "instance": "meta-instance",
+      "action": "lock",
+      "hash": "0xbb44130566bb67489c66247b9388622a29d1a018d6ea58c421a83dba4488a36c"
+    },
+    {
+      "ts": "2026-09-24T03:04:03Z",
+      "instance": "community",
+      "action": "settle",
+      "hash": "0x83c375bb33ebea2f317d2715381870efb3a16342e5b62f61b227b25086b2356b"
+    },
+    {
+      "ts": "2026-09-24T03:04:08Z",
+      "instance": "meta-instance",
+      "action": "settle",
+      "hash": "0x0b385a948e9ce253e080cdf62f6a26147f216a8a9944ce305cd2b3ce7840e8de"
+    },
+    {
+      "ts": "2026-09-24T03:04:15Z",
+      "instance": "metaVault",
+      "action": "unwind",
+      "hash": "0xe64969cc5b07ecba05140341c9fb23113dbecbdfc6873edced65ef33764daa9e"
+    }
+  ],
+  "chainId": 46630,
+  "explorer": "https://explorer.testnet.chain.robinhood.com"
+}

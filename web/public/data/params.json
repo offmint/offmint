@@ -1,0 +1,38 @@
+{
+  "source": "contracts/src (MetaVault.defaultParams, RangeMath.defaultLadder, OffmintParams.defaults)",
+  "metaVault": {
+    "maxConcurrent": 2,
+    "allocBps": 3000,
+    "earlyUnwindThresholdBps": 800,
+    "weeklyLossCapBps": 1000,
+    "txFeeBps": 50,
+    "blacklistDays": 28
+  },
+  "vault": {
+    "defaultDeployBps": 3000,
+    "buybackSlippageBps": 100,
+    "perfFeeBps": 1000
+  },
+  "ladder": [
+    {
+      "premiumBps": 800,
+      "widthBps": 400,
+      "shareBps": 2500
+    },
+    {
+      "premiumBps": 1500,
+      "widthBps": 700,
+      "shareBps": 3000
+    },
+    {
+      "premiumBps": 2500,
+      "widthBps": 1000,
+      "shareBps": 2500
+    },
+    {
+      "premiumBps": 4000,
+      "widthBps": 1500,
+      "shareBps": 2000
+    }
+  ]
+}

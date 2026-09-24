@@ -102,10 +102,10 @@ All contracts are source-verified on Blockscout. Pool: hook-free mHIMS/USDG, fee
 
 | Contract | Address |
 |---|---|
-| MetaVault (omMETA, USDG in) | [`0xDE1D914e7eC0cAd677137aBa80582c7129F61AAC`](https://explorer.testnet.chain.robinhood.com/address/0xDE1D914e7eC0cAd677137aBa80582c7129F61AAC) |
+| MetaVault (omMETA, USDG in) | [`0x84bCE120B05Ef691f421Fb715729D8B21005179a`](https://explorer.testnet.chain.robinhood.com/address/0x84bCE120B05Ef691f421Fb715729D8B21005179a) |
 | VaultFactory | [`0x93EeffA175076F01184Fd467CA9ca4d48Ca2A2E1`](https://explorer.testnet.chain.robinhood.com/address/0x93EeffA175076F01184Fd467CA9ca4d48Ca2A2E1) |
 | OffmintVault, community instance (obmHIMS, open) | [`0x2ea8dF9feA9DDEBb0abf774aE46E1DFF9a6E4285`](https://explorer.testnet.chain.robinhood.com/address/0x2ea8dF9feA9DDEBb0abf774aE46E1DFF9a6E4285) |
-| OffmintVault, MetaVault-exclusive instance (mbmHIMS) | [`0x4DF1d410aa932BF5B22E0E2d4dB8d71c1102193E`](https://explorer.testnet.chain.robinhood.com/address/0x4DF1d410aa932BF5B22E0E2d4dB8d71c1102193E) |
+| OffmintVault, MetaVault-exclusive instance (mbmHIMS) | [`0xb611cA1b7AE953e40Cfaf0d03c4356a37c505268`](https://explorer.testnet.chain.robinhood.com/address/0xb611cA1b7AE953e40Cfaf0d03c4356a37c505268) |
 | ChainlinkPriceReference (shared by both instances) | [`0x9B2eB67C72E32Fd0fb06F6130005CC0734271b61`](https://explorer.testnet.chain.robinhood.com/address/0x9B2eB67C72E32Fd0fb06F6130005CC0734271b61) |
 | Mock HIMS (mHIMS) | [`0x048A615495D189992bf03Ca54767be60754bD1bE`](https://explorer.testnet.chain.robinhood.com/address/0x048A615495D189992bf03Ca54767be60754bD1bE) |
 | Mock USDG (6 dec) | [`0x0844463B36f999C84641aE0cd0fFF27179C4DBBb`](https://explorer.testnet.chain.robinhood.com/address/0x0844463B36f999C84641aE0cd0fFF27179C4DBBb) |

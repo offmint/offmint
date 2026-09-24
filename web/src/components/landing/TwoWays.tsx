@@ -1,3 +1,4 @@
+import { PARAMS } from "@/lib/claims";
 /** §5: two unequal panels, each with a flow diagram; risk inside the MetaVault panel at equal weight. */
 function Node({ x, y, w = 96, label, dark = false, icon }: { x: number; y: number; w?: number; label: string; dark?: boolean; icon?: string }) {
   return (
@@ -37,7 +38,7 @@ export function TwoWays() {
             <div className="text-sm text-ink-soft">Holding dollars?</div>
             <div className="mt-1 text-xl font-semibold">MetaVault</div>
             <ol className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-3 text-sm" aria-label="USDG buys up to two new listings mid-week, runs the ladder, returns to USDG">
-              {[["your USDG", ""], ["up to 2 new listings", "bought Wed/Thu"], ["weekend ladder", "Sat–Mon"], ["USDG", "sold Monday"]].map(([label, note], i, a) => (
+              {[["your USDG", ""], [`up to ${PARAMS.metaVault.maxConcurrent} new listings`, "bought Wed/Thu"], ["weekend ladder", "Sat–Mon"], ["USDG", "sold Monday"]].map(([label, note], i, a) => (
                 <li key={label} className="flex items-center gap-2">
                   <span className={`rounded-[6px] border border-graphite px-3 py-1.5 ${i === a.length - 1 ? "bg-matte text-paper-text" : "bg-white"}`}>
                     {label}{note && <span className="ml-1.5 text-xs text-ink-faint">{note}</span>}
@@ -49,7 +50,7 @@ export function TwoWays() {
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
               <p className="text-sm text-ink-soft">Rotates into the week&apos;s most exposed new listings. More USDG back when a spike comes.</p>
               <p className="rounded-[6px] border border-caution-line bg-caution-bg p-3 text-sm text-caution">
-                <b>Can lose money.</b> 8% stop-loss before the weekend, max 30% of the vault per pick, losing tickers blacklisted 28 days.
+                <b>Can lose money.</b> {PARAMS.metaVault.earlyUnwindThresholdBps / 100}% stop-loss before the weekend, max {PARAMS.metaVault.allocBps / 100}% of the vault per pick, a ticker that loses more than {PARAMS.metaVault.weeklyLossCapBps / 100}% is blacklisted {PARAMS.metaVault.blacklistDays} days. Unaudited, testnet only.
               </p>
             </div>
           </div>

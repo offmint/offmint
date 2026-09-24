@@ -4,7 +4,7 @@
 //   GET /paper/index.json  -> list of paper epochs;  GET /paper/<date>-<TICKER>.json -> one epoch
 //   GET /basket.json       -> the detector's current basket (SPEC §3.7), for the web /monitor page
 import { createServer } from "node:http";
-import { existsSync, mkdirSync, readFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve, basename } from "node:path";
 import { live, liveStatus } from "./paper.js";
 import { runDetector } from "../detector/detector.js";
@@ -13,6 +13,20 @@ const OUT = resolve(process.env.PAPER_OUT_DIR ?? "/data/paper");
 const PORT = Number(process.env.PORT ?? 8080);
 const STALE_SEC = 5 * 60; // /health fails if the loop hasn't ticked for 5 minutes
 mkdirSync(OUT, { recursive: true });
+
+// Volume persistence check (AIRTIGHT item 14): a marker in the volume root counts boots across redeploys.
+const MARKER = resolve(OUT, "..", ".offmint-volume-marker.json");
+const volume = (() => {
+  try {
+    const m = existsSync(MARKER) ? JSON.parse(readFileSync(MARKER, "utf8")) : { createdAt: new Date().toISOString(), boots: 0 };
+    m.boots += 1;
+    m.lastBootAt = new Date().toISOString();
+    writeFileSync(MARKER, JSON.stringify(m));
+    return { ...m, path: MARKER, persisted: m.boots > 1 };
+  } catch (e) {
+    return { error: String(e).slice(0, 120), path: MARKER };
+  }
+})();
 const started = Date.now();
 let restarts = 0;
 
@@ -47,6 +61,7 @@ createServer((req, res) => {
       restarts,
       lastTick: liveStatus.lastTick,
       detector: (globalThis as any).__detectorStatus,
+      volume,
       uptimeSec: Math.round((Date.now() - started) / 1000),
     });
   }

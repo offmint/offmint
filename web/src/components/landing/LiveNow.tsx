@@ -3,9 +3,10 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { sessionNow } from "./StatBand";
 import { Token } from "@/components/TokenLogo";
+import { GATE } from "@/lib/liveGate";
 
-interface Row { ticker: string; token: string; poolUsd: number | null; refUsd: number | null; premiumPct: number | null; depthUsdTo10: number; poolAgeDays: number }
-interface Live { basket: { live: boolean; count: number | null }; rows: Row[]; updatedAt: string }
+interface Row { ticker: string; token: string; poolUsd: number | null; refUsd: number | null; premiumPct: number | null; depthUsdTo10: number; poolAgeDays: number; verified: boolean; reasons: string[] }
+interface Live { basket: { live: boolean; count: number | null }; rows: Row[]; updatedAt: string; verifiedCount: number }
 
 const usd = (x: number | null, d = 2) => (x === null ? "—" : `$${x.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d })}`);
 
@@ -19,7 +20,8 @@ export function LiveNow() {
     return () => clearInterval(t);
   }, []);
   const L = live && live !== "error" ? live : null;
-  const rows = (L?.rows ?? []).filter((r) => r.premiumPct !== null).sort((a, b) => b.premiumPct! - a.premiumPct!).slice(0, 8);
+  const rows = (L?.rows ?? []).filter((r) => r.verified && r.premiumPct !== null).sort((a, b) => b.premiumPct! - a.premiumPct!).slice(0, 8);
+  const total = L?.rows.length ?? 0;
   const session = sessionNow(Date.now()).off ? "Minting off" : "Minting on";
   return (
     <section id="live" className="border-y border-paper-line bg-paper-card">
@@ -28,7 +30,7 @@ export function LiveNow() {
           <h2 className="h-section text-[40px] md:text-[64px]">Live now</h2>
           <Link href="/monitor" className="text-sm font-medium text-tide underline underline-offset-4">Open live monitor</Link>
         </div>
-        <p className="mt-2 max-w-[64ch] text-ink-soft">New listings in the vulnerable window, highest premium first.</p>
+        <p className="mt-2 max-w-[64ch] text-ink-soft">Verified live premiums only: every row passed the quality checks below. {L ? `${rows.length} of ${total} basket tokens pass right now.` : ""}</p>
         <div className="mt-6 overflow-x-auto rounded-[12px] border border-paper-line">
           <table className="w-full min-w-[640px] text-sm">
             <thead className="bg-mist text-left text-xs text-ink-faint">
@@ -37,7 +39,7 @@ export function LiveNow() {
             <tbody>
               {live === null && <tr><td colSpan={6} className="px-4 py-6 text-ink-faint">Loading…</td></tr>}
               {live !== null && rows.length === 0 && (
-                <tr><td colSpan={6} className="px-4 py-6 text-ink-soft">{L?.basket.live === false || live === "error" ? "Live data is updating. Try again in a minute." : "No new listings in the vulnerable window right now."}</td></tr>
+                <tr><td colSpan={6} className="px-4 py-6 text-ink-soft">{L?.basket.live === false || live === "error" ? "Live data is updating. Try again in a minute." : "No verified premiums right now. The live monitor lists every basket token with the reason it did not pass."}</td></tr>
               )}
               {rows.map((r) => (
                 <tr key={r.token} className="border-t border-paper-line">
@@ -53,7 +55,8 @@ export function LiveNow() {
           </table>
         </div>
         <p className="mt-3 text-[11px] text-ink-faint">
-          Token price: the deepest hook-free Uniswap v4 pool, read onchain. Reference: Robinhood&apos;s Stock Token API. Refreshed every 60 s
+          Live. Token price: the deepest hook-free Uniswap v4 pool, read onchain. Reference: Robinhood&apos;s Stock Token API quote (multiplier-adjusted).
+          {`Verified = pool TVL ≥ $${GATE.minTvlUsd.toLocaleString("en-US")}, a $1,000 swap moves it < ${GATE.maxImpact1kPct}%, a swap in the last ${GATE.maxLastSwapAgeSec / 3600} h, quote spread ≤ ${GATE.maxRefSpreadPct}% and not halted, and GeckoTerminal agrees within ${GATE.maxIndependentDiffPct}%.`} Refreshed every 60 s
           {L ? `; updated ${new Date(L.updatedAt).toISOString().slice(11, 16)} UTC` : ""}.
         </p>
       </div>

@@ -7,6 +7,7 @@ import { Token } from "@/components/TokenLogo";
 
 interface Member { ticker: string; token: string; hasFeed: boolean; poolAgeDays: number; tvlUsd: number; depthUsdTo10: number; priceUsd: number | null; path: string }
 interface Basket { generatedAt: string; rule?: string; counts: Record<string, number>; members: Member[]; excluded: { ticker: string; reason: string }[] }
+interface LiveRow { token: string; poolUsd: number | null; refUsd: number | null; premiumPct: number | null; verified: boolean; reasons: string[]; lastSwapAgeSec: number | null }
 interface Health { lastTickAgoSec: number | null; lastTick?: { status?: Record<string, string> }; detector?: { lastRunAt: number; members: number } }
 
 /** Live, no wallet: the detector's basket (SPEC §3.7) and the paper keeper's per-ticker state, from the Railway service. */
@@ -14,13 +15,16 @@ export default function Monitor() {
   const [basket, setBasket] = useState<Basket | null>(null);
   const [health, setHealth] = useState<Health | null>(null);
   const [err, setErr] = useState<string | null>(null);
+  const [live, setLive] = useState<Map<string, LiveRow>>(new Map());
   useEffect(() => {
     const load = () =>
       Promise.all([fetch(`${PAPER_API}/basket.json`).then((r) => r.json()), fetch(`${PAPER_API}/health`).then((r) => r.json())])
         .then(([b, h]) => { setBasket(b); setHealth(h); setErr(null); })
         .catch((e) => setErr(String(e)));
+    const loadLive = () => fetch("/api/live").then((r) => r.json()).then((d) => setLive(new Map((d.rows as LiveRow[]).map((r) => [r.token, r])))).catch(() => {});
     load();
-    const t = setInterval(load, 30_000);
+    loadLive();
+    const t = setInterval(() => { load(); loadLive(); }, 60_000);
     return () => clearInterval(t);
   }, []);
   const status = health?.lastTick?.status ?? {};
@@ -43,13 +47,16 @@ export default function Monitor() {
       </div>
       <div className="card overflow-x-auto">
         <table className="data">
-          <thead><tr><th>Ticker</th><th>Price reference</th><th>Pool price</th><th>Pool age</th><th>TVL</th><th>$ to move +10%</th><th>Paper keeper</th></tr></thead>
+          <thead><tr><th>Ticker</th><th>Price reference</th><th>Pool price</th><th>Reference</th><th>Premium</th><th>Quality</th><th>Pool age</th><th>TVL</th><th>$ to move +10%</th><th>Paper keeper</th></tr></thead>
           <tbody>
             {members.map((m) => (
               <tr key={m.token}>
                 <td><Token ticker={m.ticker} size={22} /></td>
                 <td className="text-xs">{m.hasFeed ? "Chainlink" : "none (PushPriceReference path)"}</td>
-                <td className="num">{m.priceUsd ? `$${m.priceUsd.toFixed(2)}` : "–"}</td>
+                <td className="num">{live.get(m.token)?.poolUsd ? `$${live.get(m.token)!.poolUsd!.toFixed(2)}` : "–"}</td>
+                <td className="num text-ink-soft">{live.get(m.token)?.refUsd ? `$${live.get(m.token)!.refUsd!.toFixed(2)}` : "–"}</td>
+                <td className="num">{live.get(m.token)?.premiumPct != null ? `${live.get(m.token)!.premiumPct! >= 0 ? "+" : ""}${live.get(m.token)!.premiumPct!.toFixed(2)}%` : "–"}</td>
+                <td className="text-xs">{!live.get(m.token) ? "–" : live.get(m.token)!.verified ? <span className="text-tide">verified</span> : <span className="text-caution" title={live.get(m.token)!.reasons.join("; ")}>unverified: {live.get(m.token)!.reasons[0]}</span>}</td>
                 <td className="num">{m.poolAgeDays.toFixed(1)}d</td>
                 <td className="num">${usd(m.tvlUsd, 0)}</td>
                 <td className="num">${usd(m.depthUsdTo10, 0)}</td>

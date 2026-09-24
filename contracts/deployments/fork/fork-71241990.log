@@ -1,0 +1,93 @@
+Compiling 1 files with Solc 0.8.26
+Solc 0.8.26 finished in 12.66s
+Compiler run successful!
+
+Ran 1 test for test/Fork.t.sol:ForkGLXY
+[PASS] test_fork_fullCycle_squeezeLockBuyback() (gas: 4231777)
+Logs:
+  fork block: 26046253
+  P0 (USD): 25.41232341
+  USDG received: 957.428011
+  STOCK bought back: 37.015539089896550296
+  PnL (STOCK): 7.015539089896562074
+  rung: 0
+    STOCK placed: 7.499999999999999084
+    STOCK left unsold: 0.000000000000000000
+    USDG received: 210.535065
+  rung: 1
+    STOCK placed: 8.999999999999995335
+    STOCK left unsold: 0.000000000000000000
+    USDG received: 272.317872
+  rung: 2
+    STOCK placed: 7.499999999999998721
+    STOCK left unsold: 0.000000000000000000
+    USDG received: 248.923060
+  rung: 3
+    STOCK placed: 5.999999999999995082
+    STOCK left unsold: 0.000000000000000000
+    USDG received: 225.652014
+  perf fee (STOCK): 0.701553908989656207
+  holder redeems 100 -> STOCK: 106.313985180906905866
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 56.58s (39.35s CPU time)
+
+Ran 1 test for test/Fork.t.sol:ForkHIMS
+[PASS] test_fork_fullCycle_squeezeLockBuyback() (gas: 3890474)
+Logs:
+  fork block: 26046253
+  P0 (USD): 28.49706515
+  USDG received: 1078.621979
+  STOCK bought back: 37.082261832067071177
+  PnL (STOCK): 7.082261832067085006
+  rung: 0
+    STOCK placed: 7.499999999999999750
+    STOCK left unsold: 0.000000000000000000
+    USDG received: 237.145570
+  rung: 1
+    STOCK placed: 8.999999999999995728
+    STOCK left unsold: 0.000000000000000000
+    USDG received: 307.197821
+  rung: 2
+    STOCK placed: 7.499999999999996833
+    STOCK left unsold: 0.000000000000000000
+    USDG received: 280.105369
+  rung: 3
+    STOCK placed: 5.999999999999993860
+    STOCK left unsold: 0.000000000000000000
+    USDG received: 254.173219
+  perf fee (STOCK): 0.708226183206708500
+  holder redeems 100 -> STOCK: 106.374035648860376505
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 61.00s (43.77s CPU time)
+
+Ran 1 test for test/Fork.t.sol:ForkTSLA
+[PASS] test_fork_fullCycle_squeezeLockBuyback() (gas: 5163854)
+Logs:
+  fork block: 26046253
+  P0 (USD): 375.80570000
+  USDG received: 14120.523511
+  STOCK bought back: 37.024753551977355769
+  PnL (STOCK): 7.024753551977358390
+  rung: 0
+    STOCK placed: 7.499999999999999950
+    STOCK left unsold: 0.000000000000000000
+    USDG received: 3105.746938
+  rung: 1
+    STOCK placed: 8.999999999999999178
+    STOCK left unsold: 0.000000000000000000
+    USDG received: 4017.147420
+  rung: 2
+    STOCK placed: 7.499999999999998793
+    STOCK left unsold: 0.000000000000000000
+    USDG received: 3673.870900
+  rung: 3
+    STOCK placed: 5.999999999999999458
+    STOCK left unsold: 0.000000000000000000
+    USDG received: 3323.758253
+  perf fee (STOCK): 0.702475355197735839
+  holder redeems 100 -> STOCK: 106.322278196779622550
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 58.88s (50.55s CPU time)
+
+Ran 3 test suites in 115.53s (176.47s CPU time): 3 tests passed, 0 failed, 0 skipped (3 total tests)
+exit=0
