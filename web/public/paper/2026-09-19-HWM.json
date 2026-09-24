@@ -1,0 +1,240 @@
+{
+ "ticker": "HWM",
+ "stock": "0xaea445c5f3db1a462998ccc422a875a361ee5d99",
+ "feed": null,
+ "poolId": "0xf98b47b7db37c1727e078a8df7bf1d63915529263089e010d976d56d31f34e8e",
+ "poolFee": 50000,
+ "tickSpacing": 500,
+ "stockIsCurrency0": false,
+ "window": {
+  "start": 1789776000,
+  "end": 1789948800,
+  "startIso": "2026-09-19T00:00:00Z",
+  "endIso": "2026-09-21T00:00:00Z"
+ },
+ "params": {
+  "premiumBps": 1000,
+  "widthBps": 5000,
+  "armDelay": 300,
+  "minFrozen": 900,
+  "maxPreCloseAge": 21600,
+  "settleDelay": 3600,
+  "maxFreshAge": 3600,
+  "emergencyDelay": 345600,
+  "buybackSlippageBps": 100,
+  "perfFeeBps": 1000,
+  "lockLead": 900,
+  "quantities": [
+   10,
+   50,
+   100
+  ]
+ },
+ "status": "settled",
+ "skipReason": null,
+ "checks": {
+  "oraclePaused": null,
+  "sequencer": "no uptime feed listed for Robinhood mainnet"
+ },
+ "arm": {
+  "time": 1789776300,
+  "block": "66639913",
+  "p0": "22052280587",
+  "p0Usd": 220.52280587,
+  "p0Source": "pool",
+  "feedUpdatedAt": null,
+  "poolUsdAtArm": 220.52280587,
+  "tick": 222361,
+  "tickLower": 218000,
+  "tickUpper": 221000,
+  "bandUsd": [
+   252.68054989,
+   341.0779499
+  ]
+ },
+ "stats": {
+  "swaps": 1,
+  "maxUsd": 220.5375,
+  "minUsd": 220.5228,
+  "maxPremiumPct": 0.01,
+  "firstInBandAt": null,
+  "lastBlock": "68386920"
+ },
+ "timeline": [
+  {
+   "t": 1789776300,
+   "usd": 220.52280587
+  },
+  {
+   "t": 1789830711,
+   "usd": 220.53748952
+  }
+ ],
+ "outliers": [],
+ "fills": [],
+ "settlement": {
+  "time": 1789952400,
+  "timeIso": "2026-09-21T01:00:00Z",
+  "block": "68386920",
+  "freshUsd": 220.53748952,
+  "freshSource": "pool",
+  "freshUpdatedAt": null,
+  "poolUsd": 220.5375,
+  "capUsd": 222.7429,
+  "buybackPossible": true,
+  "results": {
+   "spec": [
+    {
+     "deployed": 10,
+     "stockBack": 10,
+     "usdgReceived": 0,
+     "avgSellUsd": null,
+     "stockBought": 0,
+     "usdgLeft": 0,
+     "feeStock": 0,
+     "netStock": 10,
+     "vsHodlPct": 0,
+     "lpFeesStockEq": 0,
+     "vsHodlPctExFees": 0,
+     "lockedAt": null,
+     "lockedUsd": null,
+     "state": "OPEN"
+    },
+    {
+     "deployed": 50,
+     "stockBack": 50,
+     "usdgReceived": 0,
+     "avgSellUsd": null,
+     "stockBought": 0,
+     "usdgLeft": 0,
+     "feeStock": 0,
+     "netStock": 50,
+     "vsHodlPct": 0,
+     "lpFeesStockEq": 0,
+     "vsHodlPctExFees": 0,
+     "lockedAt": null,
+     "lockedUsd": null,
+     "state": "OPEN"
+    },
+    {
+     "deployed": 100,
+     "stockBack": 100,
+     "usdgReceived": 0,
+     "avgSellUsd": null,
+     "stockBought": 0,
+     "usdgLeft": 0,
+     "feeStock": 0,
+     "netStock": 100,
+     "vsHodlPct": 0,
+     "lpFeesStockEq": 0,
+     "vsHodlPctExFees": 0,
+     "lockedAt": null,
+     "lockedUsd": null,
+     "state": "OPEN"
+    }
+   ],
+   "lockOnFill": [
+    {
+     "deployed": 10,
+     "stockBack": 10,
+     "usdgReceived": 0,
+     "avgSellUsd": null,
+     "stockBought": 0,
+     "usdgLeft": 0,
+     "feeStock": 0,
+     "netStock": 10,
+     "vsHodlPct": 0,
+     "lpFeesStockEq": 0,
+     "vsHodlPctExFees": 0,
+     "lockedAt": null,
+     "lockedUsd": null,
+     "state": "OPEN"
+    },
+    {
+     "deployed": 50,
+     "stockBack": 50,
+     "usdgReceived": 0,
+     "avgSellUsd": null,
+     "stockBought": 0,
+     "usdgLeft": 0,
+     "feeStock": 0,
+     "netStock": 50,
+     "vsHodlPct": 0,
+     "lpFeesStockEq": 0,
+     "vsHodlPctExFees": 0,
+     "lockedAt": null,
+     "lockedUsd": null,
+     "state": "OPEN"
+    },
+    {
+     "deployed": 100,
+     "stockBack": 100,
+     "usdgReceived": 0,
+     "avgSellUsd": null,
+     "stockBought": 0,
+     "usdgLeft": 0,
+     "feeStock": 0,
+     "netStock": 100,
+     "vsHodlPct": 0,
+     "lpFeesStockEq": 0,
+     "vsHodlPctExFees": 0,
+     "lockedAt": null,
+     "lockedUsd": null,
+     "state": "OPEN"
+    }
+   ],
+   "lockPreOpen": [
+    {
+     "deployed": 10,
+     "stockBack": 10,
+     "usdgReceived": 0,
+     "avgSellUsd": null,
+     "stockBought": 0,
+     "usdgLeft": 0,
+     "feeStock": 0,
+     "netStock": 10,
+     "vsHodlPct": 0,
+     "lpFeesStockEq": 0,
+     "vsHodlPctExFees": 0,
+     "lockedAt": "2026-09-20T23:45:00Z",
+     "lockedUsd": 220.5375,
+     "state": "OPEN"
+    },
+    {
+     "deployed": 50,
+     "stockBack": 50,
+     "usdgReceived": 0,
+     "avgSellUsd": null,
+     "stockBought": 0,
+     "usdgLeft": 0,
+     "feeStock": 0,
+     "netStock": 50,
+     "vsHodlPct": 0,
+     "lpFeesStockEq": 0,
+     "vsHodlPctExFees": 0,
+     "lockedAt": "2026-09-20T23:45:00Z",
+     "lockedUsd": 220.5375,
+     "state": "OPEN"
+    },
+    {
+     "deployed": 100,
+     "stockBack": 100,
+     "usdgReceived": 0,
+     "avgSellUsd": null,
+     "stockBought": 0,
+     "usdgLeft": 0,
+     "feeStock": 0,
+     "netStock": 100,
+     "vsHodlPct": 0,
+     "lpFeesStockEq": 0,
+     "vsHodlPctExFees": 0,
+     "lockedAt": "2026-09-20T23:45:00Z",
+     "lockedUsd": 220.5375,
+     "state": "OPEN"
+    }
+   ]
+  }
+ },
+ "caveat": "Hypothetical: assumes the vault's position does not move the pool price. A live vault would dampen spikes; real fills would differ.",
+ "generatedAt": "2026-09-24T00:55:04Z"
+}

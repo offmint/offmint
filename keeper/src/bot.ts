@@ -11,6 +11,7 @@ import { sessionClockAbi } from "./abi/ISessionClock.js";
 import { slot0, poolIdOf } from "./chain.js";
 import { decide, STATE, type Decision, type KeeperPolicy, type Snapshot } from "./decide.js";
 import { iso, isoDate } from "./clock.js";
+import { createMetaBot } from "./metaBot.js";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const refAbi = parseAbi(["function read() view returns (uint256 price, uint8 decimals, uint256 updatedAt)"]);
@@ -47,6 +48,9 @@ export interface BotOptions {
   /** Sink for log records (default: stdout + keeper/logs). */
   log?: (o: Record<string, unknown>) => void;
   quiet?: boolean;
+  /** Run against another instance than the deployment's community `vault` (e.g. MetaVault's `metaInstance`). */
+  vaultAddress?: Address;
+  label?: string;
 }
 
 /** Builds a keeper bound to one vault deployment. `tick()` runs one snapshot -> decide -> execute cycle. */
@@ -54,7 +58,8 @@ export async function createBot(o: BotOptions) {
   const log = o.log ?? logLine;
   const { rpc, pk } = o;
   const dep = JSON.parse(readFileSync(o.deploymentPath, "utf8"));
-  const vault = dep.vault as Address;
+  const vault = (o.vaultAddress ?? dep.vault) as Address;
+  const label = o.label ?? "community";
   const policy: KeeperPolicy = o.policy ?? JSON.parse(readFileSync(join(ROOT, "keeper/policy.json"), "utf8"));
 
   const probe = createPublicClient({ transport: http(rpc) });
@@ -85,7 +90,7 @@ export async function createBot(o: BotOptions) {
   if (onchainKeeper.toLowerCase() !== account.address.toLowerCase()) {
     log({ level: "warn", msg: "this key is not the vault keeper: only permissionless calls (after grace) will succeed", keeper: onchainKeeper, me: account.address });
   }
-  if (!o.quiet) log({ event: "bot-start", chainId: chain.id, vault, ticker, keeper: account.address });
+  if (!o.quiet) log({ event: "bot-start", chainId: chain.id, instance: label, vault, ticker, keeper: account.address });
 
   let lastRetryAt = 0;
 
@@ -167,21 +172,24 @@ export async function createBot(o: BotOptions) {
     const rcpt = await pub.waitForTransactionReceipt({ hash });
     if (d.action === "retryBuyback") lastRetryAt = Number((await pub.getBlock()).timestamp);
     const after = STATE[await pub.readContract({ ...v, functionName: "state" })];
-    log({ event: "tx", action: d.action, args, reason: d.reason, hash, status: rcpt.status, gasUsed: rcpt.gasUsed, stateAfter: after });
-    await notify(`Offmint ${ticker}: ${d.action} (${d.reason}) -> ${after} ${hash}`);
+    log({ event: "tx", instance: label, action: d.action, args, reason: d.reason, hash, status: rcpt.status, gasUsed: rcpt.gasUsed, stateAfter: after });
+    await notify(`Offmint ${ticker} (${label}): ${d.action} (${d.reason}) -> ${after} ${hash}`);
     return { hash, gasUsed: rcpt.gasUsed, status: rcpt.status };
   }
 
   async function tick(): Promise<{ decision: Decision; tx?: { hash: Hex; gasUsed: bigint; status: string }; error?: string }> {
     const s = await snapshot();
-    const d = decide(s, policy);
-    if (!o.quiet) log({ event: "tick", state: s.state, action: d.action, reason: d.reason, poolTick: s.poolTick, feedUpdatedAt: s.feed.updatedAt, now: s.now });
+    let d = decide(s, policy);
+    if (d.action === "arm" && (await pub.readContract({ ...v, functionName: "totalAssets" })) === 0n) {
+      d = { action: "none", reason: "nothing deposited: nothing to arm" };
+    }
+    if (!o.quiet) log({ event: "tick", instance: label, state: s.state, action: d.action, reason: d.reason, poolTick: s.poolTick, feedUpdatedAt: s.feed.updatedAt, now: s.now });
     if (d.action === "none") return { decision: d };
     try {
       return { decision: d, tx: await execute(d) };
     } catch (e: any) {
       const msg = String(e?.shortMessage ?? e).slice(0, 400);
-      log({ level: "error", action: d.action, msg });
+      log({ level: "error", instance: label, action: d.action, msg });
       if (d.action === "retryBuyback") lastRetryAt = s.now;
       return { decision: d, error: msg };
     }
@@ -195,16 +203,24 @@ export async function main(argv = process.argv.slice(2)) {
   const rpc = process.env.RPC_URL ?? process.env.RH_TESTNET_RPC;
   const pk = process.env.KEEPER_PRIVATE_KEY as Hex | undefined;
   if (!rpc || !pk) throw new Error("set RPC_URL and KEEPER_PRIVATE_KEY");
-  const bot = await createBot({
-    rpc,
-    pk,
-    deploymentPath: resolve(opt("--deployment") ?? join(ROOT, "contracts/deployments/46630.json")),
-  });
-  if (argv.includes("--once")) return bot.tick();
+  const deploymentPath = resolve(opt("--deployment") ?? join(ROOT, "contracts/deployments/46630.json"));
+  const dep = JSON.parse(readFileSync(deploymentPath, "utf8"));
+  // one process keeps every instance of the deployment: the community vault, MetaVault's exclusive instance,
+  // and MetaVault's weekly cycle (SELECT picks -> buy-in -> commit -> unwind)
+  const bots = [await createBot({ rpc, pk, deploymentPath })];
+  if (dep.metaInstance) bots.push(await createBot({ rpc, pk, deploymentPath, vaultAddress: dep.metaInstance, label: "meta-instance" }));
+  const meta = dep.metaVault && !argv.includes("--no-meta") ? await createMetaBot({ rpc, pk, deploymentPath, log: logLine }) : null;
+  const tickAll = async () => {
+    const out: unknown[] = [];
+    for (const b of bots) out.push(await b.tick());
+    if (meta) out.push(await meta.tick());
+    return out;
+  };
+  if (argv.includes("--once")) return tickAll();
   const interval = Number(opt("--interval") ?? 60) * 1000;
   for (;;) {
     try {
-      await bot.tick();
+      await tickAll();
     } catch (e) {
       logLine({ level: "error", msg: String(e).slice(0, 400) });
     }

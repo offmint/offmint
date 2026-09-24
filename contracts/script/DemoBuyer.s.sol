@@ -18,6 +18,7 @@ import {ManualSessionClock} from "../src/clock/ManualSessionClock.sol";
 /// @notice One step per call, so a live demo can narrate each one. The keeper bot reacts (arm / lock / settle).
 ///   forge script script/DemoBuyer.s.sol --sig "fridayClose()"            --rpc-url $RPC --broadcast
 ///   forge script script/DemoBuyer.s.sol --sig "openWeekend(uint256)" 2400 --rpc-url $RPC --broadcast  # 40-min weekend
+///   forge script script/DemoBuyer.s.sol --sig "scheduleWeekend(uint256,uint256)" 28800 2400 ...  # MetaVault demo
 ///   forge script script/DemoBuyer.s.sol --sig "pump(uint256)" 4900000000 --rpc-url $RPC --broadcast  # move pool to $49
 ///   forge script script/DemoBuyer.s.sol --sig "closeWeekend()"           --rpc-url $RPC --broadcast
 ///   forge script script/DemoBuyer.s.sol --sig "mondayPrint(uint256)" 2950000000 --rpc-url $RPC --broadcast
@@ -76,6 +77,16 @@ contract DemoBuyer is Script {
         d.clock.openWindow(duration);
         vm.stopBroadcast();
         console2.log("weekend open until", d.clock.end());
+    }
+
+    /// @notice Schedule the next weekend: opens in `startIn` seconds for `duration` seconds. MetaVault buys for the
+    ///         scheduled window, so on the demo clock this must come before BUY-IN.
+    function scheduleWeekend(uint256 startIn, uint256 duration) external {
+        D memory d = _load();
+        vm.startBroadcast(vm.envUint("DEPLOYER_PRIVATE_KEY"));
+        d.clock.setWindow(block.timestamp + startIn, block.timestamp + startIn + duration);
+        vm.stopBroadcast();
+        console2.log("weekend scheduled", d.clock.start(), d.clock.end());
     }
 
     /// @notice Weekend buyer (or Monday seller): trade the pool to `targetE8` USD per STOCK.

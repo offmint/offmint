@@ -183,6 +183,7 @@ contract MetaVault is ERC4626, Ownable2Step, ReentrancyGuard, IUnlockCallback {
         if (clock.inWeekendWindow(block.timestamp)) revert NotWindow();
         OffmintVault v = _vault(stock);
         uint64 we = uint64(clock.windowEnd(block.timestamp + 7 days)); // the coming weekend (Mon-Fri call)
+        if (we <= block.timestamp) revert NotWindow(); // no upcoming window known (e.g. demo clock not scheduled)
 
         Params memory pr = params;
         if (openPositionCount == 0) {

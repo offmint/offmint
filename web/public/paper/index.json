@@ -1,12 +1,68 @@
 {
- "updatedAt": "2026-09-23T20:45:23Z",
+ "updatedAt": "2026-09-24T01:05:08Z",
  "entries": [
+  {
+   "file": "2026-09-19-AAOI.json",
+   "ticker": "AAOI",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "skipped",
+   "maxPremiumPct": null,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-19-ADBE.json",
+   "ticker": "ADBE",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
+   "vsHodlPct": 0
+  },
   {
    "file": "2026-09-19-AMC.json",
    "ticker": "AMC",
    "window": "2026-09-19T00:00:00Z",
    "status": "settled",
    "maxPremiumPct": 0.85,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-ANET.json",
+   "ticker": "ANET",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "skipped",
+   "maxPremiumPct": null,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-19-APP.json",
+   "ticker": "APP",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.12,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-ASTS.json",
+   "ticker": "ASTS",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-AVGO.json",
+   "ticker": "AVGO",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.04,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-BA.json",
+   "ticker": "BA",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
    "vsHodlPct": 0
   },
   {
@@ -18,6 +74,158 @@
    "vsHodlPct": 0
   },
   {
+   "file": "2026-09-19-BE.json",
+   "ticker": "BE",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-BULL.json",
+   "ticker": "BULL",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-CBRS.json",
+   "ticker": "CBRS",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-CEG.json",
+   "ticker": "CEG",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.04,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-CELH.json",
+   "ticker": "CELH",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-COST.json",
+   "ticker": "COST",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.48,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-CRM.json",
+   "ticker": "CRM",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.06,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-CSCO.json",
+   "ticker": "CSCO",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.46,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-CVNA.json",
+   "ticker": "CVNA",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-DDOG.json",
+   "ticker": "DDOG",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-ELF.json",
+   "ticker": "ELF",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-FIG.json",
+   "ticker": "FIG",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-FIX.json",
+   "ticker": "FIX",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-FLY.json",
+   "ticker": "FLY",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.06,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-FTNT.json",
+   "ticker": "FTNT",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "skipped",
+   "maxPremiumPct": null,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-19-FUTU.json",
+   "ticker": "FUTU",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-GE.json",
+   "ticker": "GE",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-GEV.json",
+   "ticker": "GEV",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "skipped",
+   "maxPremiumPct": null,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-19-GLD.json",
+   "ticker": "GLD",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "skipped",
+   "maxPremiumPct": null,
+   "vsHodlPct": null
+  },
+  {
    "file": "2026-09-19-GLXY.json",
    "ticker": "GLXY",
    "window": "2026-09-19T00:00:00Z",
@@ -26,11 +234,155 @@
    "vsHodlPct": 0
   },
   {
+   "file": "2026-09-19-HII.json",
+   "ticker": "HII",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.17,
+   "vsHodlPct": 0
+  },
+  {
    "file": "2026-09-19-HIMS.json",
    "ticker": "HIMS",
    "window": "2026-09-19T00:00:00Z",
    "status": "settled",
    "maxPremiumPct": 0.48,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-HPE.json",
+   "ticker": "HPE",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-HWM.json",
+   "ticker": "HWM",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.01,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-IBM.json",
+   "ticker": "IBM",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 1.5,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-INDA.json",
+   "ticker": "INDA",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "skipped",
+   "maxPremiumPct": null,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-19-INOD.json",
+   "ticker": "INOD",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-JNJ.json",
+   "ticker": "JNJ",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.03,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-JOBY.json",
+   "ticker": "JOBY",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.02,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-KTOS.json",
+   "ticker": "KTOS",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.05,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-LHX.json",
+   "ticker": "LHX",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.62,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-LLY.json",
+   "ticker": "LLY",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.29,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-LMT.json",
+   "ticker": "LMT",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 30.52,
+   "vsHodlPct": 0.6489
+  },
+  {
+   "file": "2026-09-19-LULU.json",
+   "ticker": "LULU",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.16,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-MPWR.json",
+   "ticker": "MPWR",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.25,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-MRNA.json",
+   "ticker": "MRNA",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 1.13,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-NET.json",
+   "ticker": "NET",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 2.5,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-NNE.json",
+   "ticker": "NNE",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.08,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-NOW.json",
+   "ticker": "NOW",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.03,
    "vsHodlPct": 0
   },
   {
@@ -50,11 +402,155 @@
    "vsHodlPct": 0
   },
   {
+   "file": "2026-09-19-PATH.json",
+   "ticker": "PATH",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-PENG.json",
+   "ticker": "PENG",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.25,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-PFE.json",
+   "ticker": "PFE",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "skipped",
+   "maxPremiumPct": null,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-19-QCOM.json",
+   "ticker": "QCOM",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 1.09,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-QUBT.json",
+   "ticker": "QUBT",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-RBLX.json",
+   "ticker": "RBLX",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 2.2,
+   "vsHodlPct": 0
+  },
+  {
    "file": "2026-09-19-RCAT.json",
    "ticker": "RCAT",
    "window": "2026-09-19T00:00:00Z",
    "status": "settled",
    "maxPremiumPct": 0.9,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-RDDT.json",
+   "ticker": "RDDT",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.44,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-RIVN.json",
+   "ticker": "RIVN",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.45,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-RUN.json",
+   "ticker": "RUN",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 21.21,
+   "vsHodlPct": 0.5152
+  },
+  {
+   "file": "2026-09-19-SHOP.json",
+   "ticker": "SHOP",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "skipped",
+   "maxPremiumPct": null,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-19-SIMO.json",
+   "ticker": "SIMO",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.01,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-SKHY.json",
+   "ticker": "SKHY",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-SMR.json",
+   "ticker": "SMR",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.49,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-SNAP.json",
+   "ticker": "SNAP",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.67,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-SNOW.json",
+   "ticker": "SNOW",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.67,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-SOFI.json",
+   "ticker": "SOFI",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-19-SOUN.json",
+   "ticker": "SOUN",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-SOXX.json",
+   "ticker": "SOXX",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.81,
    "vsHodlPct": 0
   },
   {
@@ -64,6 +560,62 @@
    "status": "skipped",
    "maxPremiumPct": null,
    "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-19-TE.json",
+   "ticker": "TE",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "skipped",
+   "maxPremiumPct": null,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-19-TEAM.json",
+   "ticker": "TEAM",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.09,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-UPS.json",
+   "ticker": "UPS",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0.07,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-WDAY.json",
+   "ticker": "WDAY",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-WYFI.json",
+   "ticker": "WYFI",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 1.25,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-XOM.json",
+   "ticker": "XOM",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 1.09,
+   "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-19-ZM.json",
+   "ticker": "ZM",
+   "window": "2026-09-19T00:00:00Z",
+   "status": "settled",
+   "maxPremiumPct": 0,
+   "vsHodlPct": 0
   }
  ]
 }

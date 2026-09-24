@@ -1,6 +1,6 @@
 {
  "ticker": "NU",
- "stock": "0x408c14038a04f7bD235329E26d2bf569ee20e250",
+ "stock": "0x408c14038a04f7bd235329e26d2bf569ee20e250",
  "feed": null,
  "poolId": "0x9136ac3e649882d73b81d5dcf2d73aef5e3054387401a30dbdafa4f744193b6d",
  "poolFee": 8000,
@@ -408,5 +408,5 @@
   }
  },
  "caveat": "Hypothetical: assumes the vault's position does not move the pool price. A live vault would dampen spikes; real fills would differ.",
- "generatedAt": "2026-09-23T20:44:39Z"
+ "generatedAt": "2026-09-24T00:51:34Z"
 }

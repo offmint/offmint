@@ -143,3 +143,14 @@
     shared ChainlinkPriceReference over the MockFeed.
   - The testnet keeper bot was restarted on the new community vault; the two duplicate stale bots from the first
     demo were stopped.
+- Keeper, MetaVault cycle (SPEC §6.5.2):
+  - `metaDecide()` is pure and unit-tested (7 tests). Its checks run in order: stop-loss (fresh, unpaused reference,
+    −earlyUnwindThresholdBps) → unwind (after the weekend, on a post-reopen print, once the instance is OPEN/OPEN_MIXED;
+    retries every 15 min) → Friday commit (6h before the window, instance still OPEN) → BUY-IN (SELECT picks, Wed/Thu
+    UTC, allocBps of the cycle base; blacklisted, stale, or already-above-cap picks are skipped).
+  - `metaBot.ts` executes those decisions. `bot.ts` now runs every instance of a deployment in one process: the
+    community vault, MetaVault's instance (skipped while empty), and MetaVault.
+- `MetaVault.buyIn` reverts if the clock has no upcoming window (demo clock not scheduled), so no position can be
+  recorded against a past weekend. DemoBuyer gains `scheduleWeekend(startIn, duration)`.
+- `scripts/e2e-meta.sh` (CI): the unmodified keeper bot runs buy-in → commit → arm → +70% squeeze → lock → settle →
+  unwind on anvil; MetaVault returns to IDLE with USDG NAV +2.05%. This is a thin demo pool, not a performance claim.

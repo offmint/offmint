@@ -16,6 +16,7 @@ import {OffmintVault} from "../src/OffmintVault.sol";
 import {MetaVault, IVaultRegistry} from "../src/MetaVault.sol";
 import {VaultFactory} from "../src/VaultFactory.sol";
 import {SessionClock} from "../src/clock/SessionClock.sol";
+import {ManualSessionClock} from "../src/clock/ManualSessionClock.sol";
 import {RangeMath} from "../src/libraries/RangeMath.sol";
 import {MockFeed} from "../src/mocks/MockFeed.sol";
 import {MockStockToken} from "../src/mocks/MockStockToken.sol";
@@ -306,6 +307,18 @@ contract MetaVaultTest is Deployers {
         vm.prank(keeperAddr);
         vm.expectRevert(MetaVault.NotWindow.selector);
         meta.buyIn(address(b.stock), 1000e6);
+    }
+
+    function test_buyIn_needsAnUpcomingWindow() public {
+        ManualSessionClock mc = new ManualSessionClock(address(this));
+        mc.setWindow(THU - 5 days, THU - 3 days); // last weekend only: nothing scheduled ahead
+        MetaVault m2 =
+            new MetaVault(IERC20(address(usd)), manager, ISessionClock(address(mc)), factory, owner, keeperAddr, feeTo);
+        vm.prank(owner);
+        factory.deployVault(address(a.stock), address(m2));
+        vm.prank(keeperAddr);
+        vm.expectRevert(MetaVault.NotWindow.selector);
+        m2.buyIn(address(a.stock), 1_000e6);
     }
 
     function test_buyIn_maxConcurrent() public {

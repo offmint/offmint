@@ -1,0 +1,54 @@
+{
+ "ticker": "ANET",
+ "stock": "0x28babd556b60e53663b8615036479a29c2cdd1bf",
+ "feed": null,
+ "poolId": "0x8cb0cb504062e0edc691c3bb4632e86c006c3b9a4f169439f5b9366730292754",
+ "poolFee": 2510,
+ "tickSpacing": 25,
+ "stockIsCurrency0": true,
+ "window": {
+  "start": 1789776000,
+  "end": 1789948800,
+  "startIso": "2026-09-19T00:00:00Z",
+  "endIso": "2026-09-21T00:00:00Z"
+ },
+ "params": {
+  "premiumBps": 1000,
+  "widthBps": 5000,
+  "armDelay": 300,
+  "minFrozen": 900,
+  "maxPreCloseAge": 21600,
+  "settleDelay": 3600,
+  "maxFreshAge": 3600,
+  "emergencyDelay": 345600,
+  "buybackSlippageBps": 100,
+  "perfFeeBps": 1000,
+  "lockLead": 900,
+  "quantities": [
+   10,
+   50,
+   100
+  ]
+ },
+ "status": "skipped",
+ "skipReason": "pool has no swaps",
+ "checks": {
+  "oraclePaused": null,
+  "sequencer": "no uptime feed listed for Robinhood mainnet"
+ },
+ "arm": null,
+ "stats": {
+  "swaps": 0,
+  "maxUsd": null,
+  "minUsd": null,
+  "maxPremiumPct": null,
+  "firstInBandAt": null,
+  "lastBlock": "0"
+ },
+ "timeline": [],
+ "outliers": [],
+ "fills": [],
+ "settlement": null,
+ "caveat": "Hypothetical: assumes the vault's position does not move the pool price. A live vault would dampen spikes; real fills would differ.",
+ "generatedAt": "2026-09-24T00:34:07Z"
+}

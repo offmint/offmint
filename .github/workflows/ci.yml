@@ -53,5 +53,7 @@ jobs:
       - run: npm ci
       - name: local anvil weekend (deploy -> arm -> squeeze -> lock -> settle)
         run: scripts/e2e-local.sh
+      - name: MetaVault weekly cycle (buy-in -> commit -> arm -> lock -> settle -> unwind, by the keeper bot)
+        run: scripts/e2e-meta.sh
       - name: stress (10 random weekends, 8 depositors, invariants after every step)
         run: npm run stress -w keeper -- --epochs 10 --users 8 --seed 11 --port 8549

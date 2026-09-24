@@ -1,6 +1,6 @@
 {
  "ticker": "BB",
- "stock": "0x48E39E56aCdbA37b09020C0b734A613C9a2f100A",
+ "stock": "0x48e39e56acdba37b09020c0b734a613c9a2f100a",
  "feed": null,
  "poolId": "0xc250650901b49785b18443a0b1bfee10b98f5c20f11988635252030e5283a288",
  "poolFee": 7100,
@@ -332,5 +332,5 @@
   }
  },
  "caveat": "Hypothetical: assumes the vault's position does not move the pool price. A live vault would dampen spikes; real fills would differ.",
- "generatedAt": "2026-09-23T20:44:01Z"
+ "generatedAt": "2026-09-24T00:56:46Z"
 }

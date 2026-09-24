@@ -1,6 +1,6 @@
 {
  "ticker": "RCAT",
- "stock": "0xFDE6b5d9BB419B10C23268c74e369AbFF39C0460",
+ "stock": "0xfde6b5d9bb419b10c23268c74e369abff39c0460",
  "feed": null,
  "poolId": "0xd3c27381f7d1ef4dcd8ec4ba66e74fe88d06ab5250c1393769d4dd0e996a8dc9",
  "poolFee": 2500,
@@ -2524,5 +2524,5 @@
   }
  },
  "caveat": "Hypothetical: assumes the vault's position does not move the pool price. A live vault would dampen spikes; real fills would differ.",
- "generatedAt": "2026-09-23T20:45:23Z"
+ "generatedAt": "2026-09-24T00:38:55Z"
 }

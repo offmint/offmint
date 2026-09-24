@@ -1,6 +1,6 @@
 {
  "ticker": "GLXY",
- "stock": "0x2D427692E928fa156ec22acfaBaFA0447C5805B7",
+ "stock": "0x2d427692e928fa156ec22acfabafa0447c5805b7",
  "feed": null,
  "poolId": "0xb49380cfe4008c71faa07f7d79865429f8e5ae468b4af80ff2497e6a27ecb804",
  "poolFee": 5000,
@@ -408,5 +408,5 @@
   }
  },
  "caveat": "Hypothetical: assumes the vault's position does not move the pool price. A live vault would dampen spikes; real fills would differ.",
- "generatedAt": "2026-09-23T20:44:14Z"
+ "generatedAt": "2026-09-24T00:39:16Z"
 }

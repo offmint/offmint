@@ -1,0 +1,652 @@
+{
+ "ticker": "DDOG",
+ "stock": "0x27c99fbde9d0d2aa4f4bfb4943f237843ddf6958",
+ "feed": null,
+ "poolId": "0x977c78c96cd9b306d87c235dee5a69ccab913b0f775575627e709643ad416598",
+ "poolFee": 10000,
+ "tickSpacing": 100,
+ "stockIsCurrency0": true,
+ "window": {
+  "start": 1789776000,
+  "end": 1789948800,
+  "startIso": "2026-09-19T00:00:00Z",
+  "endIso": "2026-09-21T00:00:00Z"
+ },
+ "params": {
+  "premiumBps": 1000,
+  "widthBps": 5000,
+  "armDelay": 300,
+  "minFrozen": 900,
+  "maxPreCloseAge": 21600,
+  "settleDelay": 3600,
+  "maxFreshAge": 3600,
+  "emergencyDelay": 345600,
+  "buybackSlippageBps": 100,
+  "perfFeeBps": 1000,
+  "lockLead": 900,
+  "quantities": [
+   10,
+   50,
+   100
+  ]
+ },
+ "status": "settled",
+ "skipReason": null,
+ "checks": {
+  "oraclePaused": null,
+  "sequencer": "no uptime feed listed for Robinhood mainnet"
+ },
+ "arm": {
+  "time": 1789776300,
+  "block": "66639913",
+  "p0": "23085899656",
+  "p0Usd": 230.85899656,
+  "p0Source": "pool",
+  "feedUpdatedAt": null,
+  "poolUsdAtArm": 230.85899656,
+  "tick": -221904,
+  "tickLower": -220900,
+  "tickUpper": -217300,
+  "bandUsd": [
+   255.21990403,
+   365.80761147
+  ]
+ },
+ "stats": {
+  "swaps": 104,
+  "maxUsd": 230.859,
+  "minUsd": 226.4048,
+  "maxPremiumPct": 0,
+  "firstInBandAt": null,
+  "lastBlock": "68386920"
+ },
+ "timeline": [
+  {
+   "t": 1789776300,
+   "usd": 230.85899656
+  },
+  {
+   "t": 1789778168,
+   "usd": 230.76673715
+  },
+  {
+   "t": 1789782676,
+   "usd": 230.7444211
+  },
+  {
+   "t": 1789782683,
+   "usd": 230.68878544
+  },
+  {
+   "t": 1789782712,
+   "usd": 230.58006283
+  },
+  {
+   "t": 1789782817,
+   "usd": 230.54936913
+  },
+  {
+   "t": 1789782817,
+   "usd": 230.52259095
+  },
+  {
+   "t": 1789782817,
+   "usd": 230.49878077
+  },
+  {
+   "t": 1789782817,
+   "usd": 230.47357979
+  },
+  {
+   "t": 1789782817,
+   "usd": 230.4458647
+  },
+  {
+   "t": 1789782817,
+   "usd": 230.42009726
+  },
+  {
+   "t": 1789782817,
+   "usd": 230.39409567
+  },
+  {
+   "t": 1789782817,
+   "usd": 230.37126449
+  },
+  {
+   "t": 1789782817,
+   "usd": 230.34660889
+  },
+  {
+   "t": 1789782817,
+   "usd": 230.32223187
+  },
+  {
+   "t": 1789782818,
+   "usd": 230.29833732
+  },
+  {
+   "t": 1789782818,
+   "usd": 230.27350735
+  },
+  {
+   "t": 1789782818,
+   "usd": 230.24742331
+  },
+  {
+   "t": 1789782818,
+   "usd": 230.21965681
+  },
+  {
+   "t": 1789782818,
+   "usd": 230.19793743
+  },
+  {
+   "t": 1789782818,
+   "usd": 230.17465127
+  },
+  {
+   "t": 1789782818,
+   "usd": 230.15144406
+  },
+  {
+   "t": 1789782818,
+   "usd": 230.12790154
+  },
+  {
+   "t": 1789782818,
+   "usd": 230.10687064
+  },
+  {
+   "t": 1789782818,
+   "usd": 230.08326315
+  },
+  {
+   "t": 1789787497,
+   "usd": 229.96209541
+  },
+  {
+   "t": 1789787497,
+   "usd": 229.95798757
+  },
+  {
+   "t": 1789794187,
+   "usd": 230.00206432
+  },
+  {
+   "t": 1789794187,
+   "usd": 230.04614524
+  },
+  {
+   "t": 1789794236,
+   "usd": 230.06084859
+  },
+  {
+   "t": 1789794236,
+   "usd": 230.0755524
+  },
+  {
+   "t": 1789795575,
+   "usd": 230.04712086
+  },
+  {
+   "t": 1789795575,
+   "usd": 230.0186237
+  },
+  {
+   "t": 1789795588,
+   "usd": 229.99038886
+  },
+  {
+   "t": 1789795588,
+   "usd": 229.96273233
+  },
+  {
+   "t": 1789799745,
+   "usd": 229.96215458
+  },
+  {
+   "t": 1789802853,
+   "usd": 229.9749684
+  },
+  {
+   "t": 1789812220,
+   "usd": 229.9278999
+  },
+  {
+   "t": 1789814603,
+   "usd": 229.91285243
+  },
+  {
+   "t": 1789818647,
+   "usd": 229.90350971
+  },
+  {
+   "t": 1789818711,
+   "usd": 229.8570358
+  },
+  {
+   "t": 1789820036,
+   "usd": 229.83464332
+  },
+  {
+   "t": 1789827360,
+   "usd": 229.77616412
+  },
+  {
+   "t": 1789827888,
+   "usd": 229.77240187
+  },
+  {
+   "t": 1789833316,
+   "usd": 229.79452034
+  },
+  {
+   "t": 1789833316,
+   "usd": 229.81663985
+  },
+  {
+   "t": 1789833316,
+   "usd": 229.83876041
+  },
+  {
+   "t": 1789833316,
+   "usd": 229.8814201
+  },
+  {
+   "t": 1789833317,
+   "usd": 229.88443685
+  },
+  {
+   "t": 1789833322,
+   "usd": 229.86239531
+  },
+  {
+   "t": 1789833322,
+   "usd": 229.84096481
+  },
+  {
+   "t": 1789833322,
+   "usd": 229.81953487
+  },
+  {
+   "t": 1789833322,
+   "usd": 229.77968636
+  },
+  {
+   "t": 1789833322,
+   "usd": 229.77692099
+  },
+  {
+   "t": 1789833971,
+   "usd": 229.77752289
+  },
+  {
+   "t": 1789833971,
+   "usd": 229.7781248
+  },
+  {
+   "t": 1789833971,
+   "usd": 229.77872671
+  },
+  {
+   "t": 1789833971,
+   "usd": 229.77932861
+  },
+  {
+   "t": 1789833971,
+   "usd": 229.77993052
+  },
+  {
+   "t": 1789833971,
+   "usd": 229.78053243
+  },
+  {
+   "t": 1789833971,
+   "usd": 229.78113434
+  },
+  {
+   "t": 1789833971,
+   "usd": 229.78173625
+  },
+  {
+   "t": 1789833971,
+   "usd": 229.78233816
+  },
+  {
+   "t": 1789833971,
+   "usd": 229.78294007
+  },
+  {
+   "t": 1789834251,
+   "usd": 229.701446
+  },
+  {
+   "t": 1789834276,
+   "usd": 229.57094825
+  },
+  {
+   "t": 1789834418,
+   "usd": 229.53346585
+  },
+  {
+   "t": 1789837235,
+   "usd": 229.52191449
+  },
+  {
+   "t": 1789837823,
+   "usd": 229.35335198
+  },
+  {
+   "t": 1789837987,
+   "usd": 229.35332809
+  },
+  {
+   "t": 1789838892,
+   "usd": 229.34955506
+  },
+  {
+   "t": 1789839642,
+   "usd": 229.32698822
+  },
+  {
+   "t": 1789849725,
+   "usd": 229.32624351
+  },
+  {
+   "t": 1789853029,
+   "usd": 229.33250278
+  },
+  {
+   "t": 1789853118,
+   "usd": 229.32649651
+  },
+  {
+   "t": 1789853827,
+   "usd": 229.3390058
+  },
+  {
+   "t": 1789857298,
+   "usd": 229.38579539
+  },
+  {
+   "t": 1789857298,
+   "usd": 229.43258968
+  },
+  {
+   "t": 1789857314,
+   "usd": 229.39150243
+  },
+  {
+   "t": 1789857314,
+   "usd": 229.35179931
+  },
+  {
+   "t": 1789859309,
+   "usd": 227.17690936
+  },
+  {
+   "t": 1789860681,
+   "usd": 227.03672618
+  },
+  {
+   "t": 1789860681,
+   "usd": 226.82803957
+  },
+  {
+   "t": 1789860681,
+   "usd": 226.6920114
+  },
+  {
+   "t": 1789860681,
+   "usd": 226.55850357
+  },
+  {
+   "t": 1789860681,
+   "usd": 226.40477721
+  },
+  {
+   "t": 1789860681,
+   "usd": 226.65354367
+  },
+  {
+   "t": 1789860681,
+   "usd": 226.64469206
+  },
+  {
+   "t": 1789891548,
+   "usd": 226.75802601
+  },
+  {
+   "t": 1789894871,
+   "usd": 226.76674753
+  },
+  {
+   "t": 1789896347,
+   "usd": 226.77308839
+  },
+  {
+   "t": 1789905300,
+   "usd": 226.77309487
+  },
+  {
+   "t": 1789905627,
+   "usd": 226.77310134
+  },
+  {
+   "t": 1789905683,
+   "usd": 226.81077154
+  },
+  {
+   "t": 1789905683,
+   "usd": 226.85069364
+  },
+  {
+   "t": 1789905912,
+   "usd": 226.81238693
+  },
+  {
+   "t": 1789905912,
+   "usd": 226.77623693
+  },
+  {
+   "t": 1789919373,
+   "usd": 226.75528756
+  },
+  {
+   "t": 1789921300,
+   "usd": 226.7512855
+  },
+  {
+   "t": 1789927546,
+   "usd": 226.75004911
+  },
+  {
+   "t": 1789937316,
+   "usd": 226.86346211
+  },
+  {
+   "t": 1789947942,
+   "usd": 227.00316418
+  },
+  {
+   "t": 1789949007,
+   "usd": 227.83100129
+  },
+  {
+   "t": 1789949020,
+   "usd": 227.93032331
+  },
+  {
+   "t": 1789951312,
+   "usd": 228.12899254
+  }
+ ],
+ "outliers": [],
+ "fills": [],
+ "settlement": {
+  "time": 1789952400,
+  "timeIso": "2026-09-21T01:00:00Z",
+  "block": "68386920",
+  "freshUsd": 228.12899254,
+  "freshSource": "pool",
+  "freshUpdatedAt": null,
+  "poolUsd": 228.129,
+  "capUsd": 230.4103,
+  "buybackPossible": true,
+  "results": {
+   "spec": [
+    {
+     "deployed": 10,
+     "stockBack": 10,
+     "usdgReceived": 0,
+     "avgSellUsd": null,
+     "stockBought": 0,
+     "usdgLeft": 0,
+     "feeStock": 0,
+     "netStock": 10,
+     "vsHodlPct": 0,
+     "lpFeesStockEq": 0,
+     "vsHodlPctExFees": 0,
+     "lockedAt": null,
+     "lockedUsd": null,
+     "state": "OPEN"
+    },
+    {
+     "deployed": 50,
+     "stockBack": 50,
+     "usdgReceived": 0,
+     "avgSellUsd": null,
+     "stockBought": 0,
+     "usdgLeft": 0,
+     "feeStock": 0,
+     "netStock": 50,
+     "vsHodlPct": 0,
+     "lpFeesStockEq": 0,
+     "vsHodlPctExFees": 0,
+     "lockedAt": null,
+     "lockedUsd": null,
+     "state": "OPEN"
+    },
+    {
+     "deployed": 100,
+     "stockBack": 100,
+     "usdgReceived": 0,
+     "avgSellUsd": null,
+     "stockBought": 0,
+     "usdgLeft": 0,
+     "feeStock": 0,
+     "netStock": 100,
+     "vsHodlPct": 0,
+     "lpFeesStockEq": 0,
+     "vsHodlPctExFees": 0,
+     "lockedAt": null,
+     "lockedUsd": null,
+     "state": "OPEN"
+    }
+   ],
+   "lockOnFill": [
+    {
+     "deployed": 10,
+     "stockBack": 10,
+     "usdgReceived": 0,
+     "avgSellUsd": null,
+     "stockBought": 0,
+     "usdgLeft": 0,
+     "feeStock": 0,
+     "netStock": 10,
+     "vsHodlPct": 0,
+     "lpFeesStockEq": 0,
+     "vsHodlPctExFees": 0,
+     "lockedAt": null,
+     "lockedUsd": null,
+     "state": "OPEN"
+    },
+    {
+     "deployed": 50,
+     "stockBack": 50,
+     "usdgReceived": 0,
+     "avgSellUsd": null,
+     "stockBought": 0,
+     "usdgLeft": 0,
+     "feeStock": 0,
+     "netStock": 50,
+     "vsHodlPct": 0,
+     "lpFeesStockEq": 0,
+     "vsHodlPctExFees": 0,
+     "lockedAt": null,
+     "lockedUsd": null,
+     "state": "OPEN"
+    },
+    {
+     "deployed": 100,
+     "stockBack": 100,
+     "usdgReceived": 0,
+     "avgSellUsd": null,
+     "stockBought": 0,
+     "usdgLeft": 0,
+     "feeStock": 0,
+     "netStock": 100,
+     "vsHodlPct": 0,
+     "lpFeesStockEq": 0,
+     "vsHodlPctExFees": 0,
+     "lockedAt": null,
+     "lockedUsd": null,
+     "state": "OPEN"
+    }
+   ],
+   "lockPreOpen": [
+    {
+     "deployed": 10,
+     "stockBack": 10,
+     "usdgReceived": 0,
+     "avgSellUsd": null,
+     "stockBought": 0,
+     "usdgLeft": 0,
+     "feeStock": 0,
+     "netStock": 10,
+     "vsHodlPct": 0,
+     "lpFeesStockEq": 0,
+     "vsHodlPctExFees": 0,
+     "lockedAt": "2026-09-20T23:45:00Z",
+     "lockedUsd": 226.8635,
+     "state": "OPEN"
+    },
+    {
+     "deployed": 50,
+     "stockBack": 50,
+     "usdgReceived": 0,
+     "avgSellUsd": null,
+     "stockBought": 0,
+     "usdgLeft": 0,
+     "feeStock": 0,
+     "netStock": 50,
+     "vsHodlPct": 0,
+     "lpFeesStockEq": 0,
+     "vsHodlPctExFees": 0,
+     "lockedAt": "2026-09-20T23:45:00Z",
+     "lockedUsd": 226.8635,
+     "state": "OPEN"
+    },
+    {
+     "deployed": 100,
+     "stockBack": 100,
+     "usdgReceived": 0,
+     "avgSellUsd": null,
+     "stockBought": 0,
+     "usdgLeft": 0,
+     "feeStock": 0,
+     "netStock": 100,
+     "vsHodlPct": 0,
+     "lpFeesStockEq": 0,
+     "vsHodlPctExFees": 0,
+     "lockedAt": "2026-09-20T23:45:00Z",
+     "lockedUsd": 226.8635,
+     "state": "OPEN"
+    }
+   ]
+  }
+ },
+ "caveat": "Hypothetical: assumes the vault's position does not move the pool price. A live vault would dampen spikes; real fills would differ.",
+ "generatedAt": "2026-09-24T00:41:27Z"
+}
