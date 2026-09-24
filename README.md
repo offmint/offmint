@@ -83,6 +83,8 @@ Scenario outcomes are synthetic, chosen to exercise every code path. Use the bac
 
 ## Paper mode service (Railway)
 
+Live: https://offmint-keeper-production.up.railway.app — `/health`, `/paper/index.json`, `/paper/<date>-<TICKER>.json`.
+
 The service runs keeper paper mode around the clock: a read-only, deterministic simulation on mainnet, with no keys. It uses the
 curated tickers (`contracts/config/tickers.json`) plus major controls, and records what the vault would have done every weekend.
 `keeper/Dockerfile` + `keeper/railway.json`. On Railway, leave Root Directory as `/` (the service also reads
