@@ -158,6 +158,12 @@ contract MetaVaultTest is Deployers {
         assertGt(meta.totalAssets(), nav0, "NAV up on a squeeze");
         assertGt(meta.maxWithdraw(alice), 0, "withdrawals reopen");
         emit log_named_decimal_uint("NAV change bps", (meta.totalAssets() - nav0) * BPS / nav0, 0);
+        // the same run, measured on the capital that actually sat in the ladder (for the labelled pair of numbers)
+        OffmintVault.Epoch memory e = t.vault.currentEpoch();
+        emit log_named_decimal_uint("USDG bought in", meta.cycleBase() == 0 ? 0 : nav0 * 3000 / BPS, 6);
+        emit log_named_decimal_uint("STOCK deployed in the ladder", e.stockDeployed, 18);
+        emit log_named_decimal_int("STOCK pnl in the ladder (before perf fee)", e.pnlStock, 18);
+        emit log_named_decimal_uint("return on ladder capital, bps", uint256(e.pnlStock) * BPS / e.stockDeployed, 0);
     }
 
     function test_noSqueeze_lossCappedByAlloc() public {

@@ -2,13 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-body { @apply bg-paper text-ink antialiased; }
+body { @apply bg-paper text-ink antialiased font-sans; }
 .card { @apply bg-paper-card border border-paper-line rounded-lg p-5; }
 .label { @apply text-xs uppercase tracking-wide text-ink-faint; }
-.num { @apply font-mono tabular-nums; }
+.num { font-variant-numeric: tabular-nums; }
 .btn { @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition disabled:opacity-40; }
-.btn-primary { @apply btn bg-accent text-white hover:bg-[#194d71]; }
+.btn-primary { @apply btn bg-tide text-white hover:bg-tide-dark; }
 .btn-ghost { @apply btn border border-paper-line bg-paper-card hover:bg-paper; }
+.btn-glow { @apply btn bg-glow text-matte hover:brightness-95; }
+.btn-outline-dark { @apply btn border border-graphite text-paper-text hover:bg-graphite; }
 table.data { @apply w-full text-sm; }
 table.data th { @apply text-left font-medium text-ink-faint text-xs uppercase tracking-wide py-2 px-2 border-b border-paper-line; }
 table.data td { @apply py-2 px-2 border-b border-paper-line; }

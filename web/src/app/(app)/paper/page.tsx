@@ -44,7 +44,7 @@ export default function Paper() {
       {sel && (
         <div className="card">
           <div className="mb-2 font-medium">{sel.ticker} · weekend of {sel.window?.startIso?.slice(0, 10)}</div>
-          <PriceChart data={sel.timeline ?? []} p0={sel.arm?.p0Usd} band={sel.arm?.bandUsd} />
+          <PriceChart data={sel.timeline ?? []} p0={sel.arm?.p0Usd} caption={`Source: live mainnet pool swaps, weekend of ${sel.window?.startIso?.slice(0, 10)} (paper mode, Railway service)`} />
           <p className="mt-2 text-xs text-ink-faint">{sel.caveat}</p>
         </div>
       )}

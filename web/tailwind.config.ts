@@ -1,19 +1,29 @@
 import type { Config } from "tailwindcss";
 
-// Calm, finance-grade palette (SPEC §9): ink on paper, one accent, a warning tone for risk copy. No neon.
+// Offmint brand (docs/BRAND.md). Teal/cyan are for brand + interactive elements only; gains/losses in data use a
+// neutral treatment so brand color is never read as "profit".
 export default {
   content: ["./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        ink: { DEFAULT: "#16202a", soft: "#4a5663", faint: "#8a95a1" },
-        paper: { DEFAULT: "#f7f6f2", card: "#ffffff", line: "#e4e2dc" },
-        accent: { DEFAULT: "#1f5f8b", soft: "#e6eef5" },
-        gain: "#2f7d4f",
-        loss: "#a8412f",
-        caution: { DEFAULT: "#8a5a12", bg: "#fbf3e3", line: "#ecd9b0" },
+        tide: { DEFAULT: "#0E9F9A", dark: "#0B807C" }, // primary on light
+        glow: "#3BE3EE", // primary on dark, the premium-gap shade on charts
+        matte: "#161819", // dark surfaces, text on light
+        graphite: "#2B2F31", // borders/surfaces on dark
+        mist: "#EEF4F3", // light background
+        // semantic aliases used across the app
+        ink: { DEFAULT: "#161819", soft: "#4B5356", faint: "#8A9396" },
+        paper: { DEFAULT: "#EEF4F3", card: "#FFFFFF", line: "#DCE5E3", text: "#F4F7F7" },
+        accent: { DEFAULT: "#0E9F9A", soft: "#E1F2F1" },
+        gain: "#2B2F31", // neutral: signs and arrows carry direction, not color
+        loss: "#8C3B2E", // muted brick, for losses and errors only
+        caution: { DEFAULT: "#6E4B12", bg: "#F7F1E4", line: "#E6D6B2" },
       },
-      fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"], mono: ["ui-monospace", "SFMono-Regular", "monospace"] },
+      fontFamily: {
+        sans: ["var(--font-schibsted)", "ui-sans-serif", "system-ui", "sans-serif"],
+        mono: ["ui-monospace", "SFMono-Regular", "monospace"],
+      },
     },
   },
   plugins: [],

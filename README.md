@@ -1,48 +1,104 @@
-# Offmint
+<p align="center"><img src="web/public/brand/offmint-logo-on-light.svg" alt="offmint" height="48"></p>
 
-> **They price the weekend. We supply it.**
+# Offmint: they price the weekend, we supply it
 
-Offmint is an epoch vault for Robinhood Chain stock tokens. Stock-token minting closes over the weekend, and scarcity
-premiums appear (tokenized HIMS printed ~$61 against a $28.84 close on 28–31 Aug 2026). Offmint posts a one-sided
-Uniswap v4 range order of depositors' stock above the last Chainlink price. It sells into those premiums, then buys
-the stock back after reopen. Depositors end the weekend with more stock per share.
+On weekends nobody can create new Robinhood stock tokens, so a newly listed token can spike far above its real share
+price, and whoever buys the top gets hit on Monday. **Offmint is the weekend seller**: it offers supply in steps above
+Friday's price while token creation is frozen, and buys back after the reopen, with the buyback capped at the fresh price.
 
-⚠️ Unaudited hackathon software. A Monday gap-up above the band is the covered-call trade-off. Buybacks are capped at feed + slippage.
+> Unaudited hackathon software, deployed on Robinhood Chain testnet (46630). Not available to US persons. Offmint is an
+> independent project, not affiliated with or endorsed by Robinhood or the Arbitrum Foundation.
 
-## Status
+## The problem
+On weekdays a stock token's price stays honest: if it trades above the real share, traders create new tokens at the real
+price and sell them. On weekends that loop is switched off. Our screen of every Robinhood stock token over 8 weekends
+(Uniswap v4 swap logs, 1 Aug – 19 Sep 2026) found two newly listed tokens without a Chainlink feed that spiked:
 
-| Milestone | Scope | Status |
+| Token | Weekend | Peak over Friday's close |
 |---|---|---|
-| M0 | Scaffold, on-chain fact checks (`docs/FACTS.md`, `contracts/config/*.json`) | ✅ done |
-| M0.5 | Ticker curation (SPEC §3.5): registry-wide screen + 8-weekend backtest | ✅ ran; **result: 0 shippable tickers**, see `docs/curation.md` (decision pending) |
-| M1 | Keeper paper mode (read-only mainnet) + `/monitor` | 🚧 paper/replay engine done; `/monitor` pending |
-| M2 | `SessionClock`, `ManualSessionClock`, `RangeMath` + unit/fuzz tests | ✅ done |
-| M3 | `OffmintVault` + unlock-callback flows + integration + invariant tests | ✅ done: 4-rung ladder (§5.0), per-rung `lock()`, pluggable `IPriceReference` (Chainlink / push with owner freeze); 126 tests, E2E +6.41 STOCK / 100 |
-| M3.5 | `MetaVault` + `VaultFactory` + keeper SELECT (§6.5) | ✅ contracts + acceptance tests (28, incl. `restrictedDepositor` isolation); keeper SELECT scoring + MetaVault cycle in the bot (local E2E: buy-in → commit → arm → settle → unwind, IDLE again) |
-| M4 | Mainnet fork test + backtest JSON | ✅ fork green on TSLA (Chainlink, S0), HIMS (push reference, S1) and GLXY (push reference, S0): +6.99 / +7.09 / +7.07 STOCK on 30 deployed; HIMS + GLXY backtests |
-| M5 | Web `/vault` `/backtest` `/paper`, testnet deploy, DemoBuyer | 🚧 backend done: Deploy + DemoBuyer scripts, keeper bot, local E2E green (+8.45 STOCK / 100); **testnet deployed + verified; live demo weekend completed: +8.45 mHIMS / 100** (arm → lock → settle by the keeper bot); web pending |
-| M6 | README, diagram, video, deck | ⏳ |
+| HIMS | Sat 29 Aug 2026 | **+317.6%** |
+| GLXY | Sat 12 Sep 2026 | **+186.1%** |
 
-## Backtest: HIMS, 28–31 Aug 2026
+The large names (NVDA, TSLA, AAPL, SPY and others) never moved more than about 4% over Friday's close. A few smaller
+feed-backed names had single-weekend spikes; the pattern that repeats is new listings. That is why Offmint rotates across
+a live basket of new listings (a detector rebuilds it every 6 hours) and does not use a fixed ticker list.
 
-Real Uniswap v4 swaps (8,306) on the deepest hook-free HIMS/USDG pool. P0 = $28.84 (NYSE close); band $31.76–$45.93.
-The pool peaked at $124.70 on Sunday night and was back at $32.53 when settle opens (Mon 01:00 UTC).
+## Why it is structural
+New tokens can only be created while the underlying share can be bought: Robinhood's tokenization window runs Monday
+02:00 to Saturday 02:00 CET/CEST. Even if those hours grow, weekends, market holidays and trading halts remain. Each of
+those is a window in which supply cannot respond to demand.
 
-| Variant (100 HIMS deployed) | Avg sell | STOCK vs HODL, ex-fees |
+## What Offmint does
+1. **Friday: post the ladder.** When token creation closes, the vault posts four one-sided Uniswap v4 range orders
+   above Friday's price: +8–12%, +15–22%, +25–35%, +40–55%. Nothing sells unless buyers pay more than Friday's price.
+2. **Weekend: sell only into a spike.** A fully sold step is pulled at once, so its dollars cannot be bought back on
+   the way down.
+3. **Monday: buy back, capped.** With a fresh post-reopen price, the vault buys the stock back, never above that
+   price + 1%. If Monday opens higher, it buys what it can and retries instead of chasing.
+
+The contracts call the Uniswap v4 PoolManager directly (`unlock` + callback). A rules-based keeper bot calls `arm` and
+`settle`; anyone can call them after a grace period if the keeper stops. Neither the owner nor the keeper can move funds
+to themselves.
+
+## Two ways in
+| | Community vault | MetaVault |
 |---|---|---|
-| Hold until settle (spec as first written) | — | −0.15% (the range order bought everything back on the way down) |
-| **`lock()` when the band is cleared** | $41.12 | **+14.7%** |
-| `lock()` at Mon 00:00 − 15 min | $51.24 | +14.7% |
+| You deposit | the stock token you already hold | USDG |
+| What happens | the weekend ladder runs on part of your tokens | each week the keeper may buy into up to 2 new listings (≤ 30% of the vault each), runs the ladder, sells back to USDG on Monday |
+| Exposure | none new: you already held the stock | **real market risk**: if no spike comes, it is an ordinary position sold Monday, up or down |
+| Guards | capped Monday buyback | 8% stop-loss before the Friday deposit, 30% allocation cap, 28-day blacklist after a loss > 10%, capped buy-in and sell-out |
+| Fees | 10% of realized profit | 0.5% on deposit and on withdraw, plus the vault's 10% of profit |
 
-A live vault would have dampened the spike, so real fills would differ. LP-fee estimates are reported separately in the JSON.
+The two use separate vault instances, so MetaVault's speculative timing never shapes a community depositor's risk.
+
+## What a squeeze is worth, two ways
+| Measured on | Result | Units |
+|---|---|---|
+| the capital in the sell ladder | **+8.1%** | STOCK, before the 10% performance fee |
+| the whole MetaVault | **+0.44%** | NAV in USDG, after fees |
+
+Both numbers come from the same run: a simulated +30% squeeze against a locally deployed Uniswap v4 pool
+(`contracts/test/MetaVault.t.sol`, `test_fullCycle_squeeze_navUp_A`). The gap is deliberate risk sizing: MetaVault buys in
+with 30% of the vault and 30% of that goes into the ladder, so about 9% of the vault is at work in a weekend.
+
+## Proof
+| Evidence | Result | Source |
+|---|---|---|
+| Replays of the two real weekends | HIMS: +14.7% more stock than holding on the capital deployed (sell-and-lock, before fees) | `backtest/`, real swap history; `web/public/data/backtest/` |
+| Mainnet-fork simulations | 30 tokens into a simulated squeeze came back as 36.99 TSLA, 37.09 HIMS, 37.07 GLXY | `contracts/test/Fork.t.sol` (HIMS/GLXY use the no-feed price reference) |
+| Autonomous testnet cycle | the keeper bot ran a full MetaVault week: 10,000 test USDG in, **10,103.71 out after both fees** (thin demo pool, +70% squeeze) | txs: [buy-in](https://explorer.testnet.chain.robinhood.com/tx/0x300799da34a0539bd9e91e0fd6c59e3f5b3e63de7df0a3a40bbf45ae45c6db44) · [commit](https://explorer.testnet.chain.robinhood.com/tx/0x5ace8e0ffcff552d5b00630ba3d88f2fb95a890030cbf122a8d539cd9d268773) · [arm](https://explorer.testnet.chain.robinhood.com/tx/0xbee65c69857ad7bd3d23234faea4ef5afbf72f9ce665bbbda67d2de7877ebd45) · [lock](https://explorer.testnet.chain.robinhood.com/tx/0xbb44130566bb67489c66247b9388622a29d1a018d6ea58c421a83dba4488a36c) · [settle](https://explorer.testnet.chain.robinhood.com/tx/0x0b385a948e9ce253e080cdf62f6a26147f216a8a9944ce305cd2b3ce7840e8de) · [unwind](https://explorer.testnet.chain.robinhood.com/tx/0xe64969cc5b07ecba05140341c9fb23113dbecbdfc6873edced65ef33764daa9e) |
+| Paper trading on mainnet | every new listing plus NVDA/SPY controls, every weekend, no funds; squeeze or not, published | https://offmint-keeper-production.up.railway.app/paper/index.json |
+| Stress test | 40 random weekends × 12 depositors on a local chain with the real deploy script and bot: 0 invariant violations | `npm run stress` |
+
+## Honest limits
+- The sample is small: two squeezes in the weekends we measured.
+- Pools are thin, so the dollar size of each opportunity is small.
+- Our own supply shrinks the spike it sells into, so real results would be lower than the replays.
+- A Monday that opens above the ladder is the cost of selling: in the stress test one squeeze weekend ended −0.49%.
+- Unaudited, testnet only.
+
+## Try it
+- **App (testnet):** connect a wallet on Robinhood Chain testnet, click **Get test tokens** (faucet: 1,000 test USDG +
+  10 mHIMS per 24 h), deposit into MetaVault. Gas needs testnet ETH from the
+  [Robinhood Chain testnet faucet](https://faucet.testnet.chain.robinhood.com).
+- **Run the site locally:** `cd web && npm ci && npm run build && npm start` → http://localhost:3000 (landing), `/app`.
+- **Reproduce a weekend in one command:** see below.
+
+## Reproduce in one command
+```bash
+npm ci                              # repo root (keeper + backtest workspaces); Foundry installed
+scripts/demo-cycle.sh local         # fresh anvil chain, both paths run by the unmodified keeper bot (~4 min)
+```
+Expected tail of the output (local chain, demo pool, +70% squeeze; this demonstrates the mechanism, not a return):
+```
+Community vault : totalAssets 100000000000000000000 -> 106406122541407994293
+                  E2E OK: +6.4061 STOCK per 100 deposited (after perf fee)
+MetaVault       : NAV 9950248756 -> 10154224849
+                  E2E META OK: NAV 2.05% in USDG after a squeeze weekend (fees included)
+```
 
 ## Deployed: Robinhood Chain testnet (46630)
-
-Redeployed 24 Sep 2026 with the laddered vault, `restrictedDepositor` isolation, VaultFactory and MetaVault: 30/30
-transactions succeeded and all 14 contracts are source-verified on the explorer. Pool: hook-free mHIMS/USDG, fee 0.30%,
-tick spacing 60, initialised at $28.84 (stock = currency0). The community vault is OPEN with a 100 mHIMS demo deposit.
-MetaVault is IDLE with 9,950.25 USDG (a 10,000 deposit minus the 0.5% entry fee). The first deployment (single-range vault,
-`0xc3413BCc…50bdA`, live demo weekend +8.45 mHIMS / 100) remains onchain; its record is in git history.
+All contracts are source-verified on Blockscout. Pool: hook-free mHIMS/USDG, fee 0.30%, tick spacing 60.
 
 | Contract | Address |
 |---|---|
@@ -63,110 +119,55 @@ MetaVault is IDLE with 9,950.25 USDG (a 10,000 deposit minus the 0.5% entry fee)
 | VaultPoolOps (linked library) | [`0xdb193f8c2021b974294ef9fb84150e01fa796cc5`](https://explorer.testnet.chain.robinhood.com/address/0xdb193f8c2021b974294ef9fb84150e01fa796cc5) |
 | RangeMath (linked library) | [`0x4d49582dee11bcecdc73430f7d6938ebbf88913f`](https://explorer.testnet.chain.robinhood.com/address/0x4d49582dee11bcecdc73430f7d6938ebbf88913f) |
 
-## Reproduce in one command
-
-```bash
-npm ci                              # repo root (keeper + backtest workspaces); Foundry installed
-scripts/demo-cycle.sh local         # fresh anvil chain, both paths run by the unmodified keeper bot (~4 min)
+## Architecture
+```mermaid
+flowchart LR
+  U1[Holder of a stock token] -->|deposit STOCK| CV[OffmintVault<br/>community instance]
+  U2[USDG depositor] -->|deposit USDG| MV[MetaVault]
+  MV -->|buy-in / unwind, capped swaps| PM[(Uniswap v4<br/>PoolManager)]
+  MV -->|Friday commit| MI[OffmintVault<br/>MetaVault-only instance]
+  CV -->|4-rung ladder, lock, capped buyback| PM
+  MI -->|4-rung ladder, lock, capped buyback| PM
+  F[VaultFactory] -.deploys both instances.-> CV & MI
+  PR[Price reference<br/>Chainlink or push] --> CV & MI & MV
+  K[Keeper bot<br/>rules only] -->|arm / lock / settle / buyIn / commit / unwind| CV & MI & MV
+  D[Detector] -->|basket of new listings| K
 ```
-Expected tail of the output (local chain, demo pool, +70% squeeze; this demonstrates the mechanism, not a return):
-```
-Community vault : totalAssets 100000000000000000000 -> 106406122541407994293
-                  E2E OK: +6.4061 STOCK per 100 deposited (after perf fee)
-MetaVault       : NAV 9950248756 -> 10154224849
-                  E2E META OK: NAV 2.05% in USDG after a squeeze weekend (fees included)
-```
-`scripts/demo-cycle.sh testnet` runs the same steps against the Robinhood Chain testnet sandbox (needs the sandbox
-deployment and `SANDBOX_PRIVATE_KEY` in `.env`).
-
-## Stress test (local chain, time-warped)
-
-`npm run stress -- --epochs 40 --users 12 --seed 7` runs the real `Deploy.s.sol` and the unmodified keeper bot through
-40 random weekends in about 67 s: squeezes, partial fills, quiet weekends, Monday gap-ups past the
-buyback cap, and oracles that never come back. There are 12 depositors, making 160 deposits and 69 redemptions between epochs.
-After every step it checks that owner and keeper balances never change, that the vault holds no USDG when OPEN,
-that deposits and withdrawals are gated outside OPEN, and that share supply is frozen while ARMED or PENDING.
-**Violations: 0.** The full report is in `docs/stress/stress-report.json`; CI runs a 10-epoch version.
-
-| Keeper action | Calls | Avg gas |
-|---|---|---|
-| `arm` | 40 | 446,903 |
-| `lock` | 24 | 184,561 |
-| `settle` | 38 | 230,877 |
-| `retryBuyback` | 78 | 179,302 |
-| `emergencyUnwind` | 2 | 75,700 |
-
-Scenario outcomes are synthetic, chosen to exercise every code path. Use the backtest for return expectations, not these.
-
-## Paper mode service (Railway)
-
-Live: https://offmint-keeper-production.up.railway.app — `/health`, `/paper/index.json`, `/paper/<date>-<TICKER>.json`.
-
-The service runs keeper paper mode around the clock: a read-only, deterministic simulation on mainnet, with no keys. It uses the
-curated tickers (`contracts/config/tickers.json`) plus major controls, and records what the vault would have done every weekend.
-`keeper/Dockerfile` + `keeper/railway.json`. On Railway, leave Root Directory as `/` (the service also reads
-`contracts/config/`), set **Config File Path** = `/keeper/railway.json`, and mount a volume at `/data`. Its watch paths are
-`keeper/**`, `contracts/config/**` and the root lockfile, so pushes that only touch `web/` don't redeploy it. Endpoints:
-`/health` (last tick, restarts), `/paper/index.json`, `/paper/<date>-<TICKER>.json`. Run it locally with `npm run service -w keeper`,
-or in tmux with `scripts/paper-run.sh`.
-
-## Demo (testnet)
-
-**Completed live on 23 Sep 2026** (`contracts/deployments/demo-46630.json`). The keeper bot armed
-([`0x0ba5…549e`](https://explorer.testnet.chain.robinhood.com/tx/0x0ba528efee4a85c8c02bf68ae7be5f7798328e9b62437d233db1ec616149549e)),
-locked when the band was cleared ([`0x7893…d268`](https://explorer.testnet.chain.robinhood.com/tx/0x7893e661e74fd038331203ee7c477168e0159648652f00b8e380489688d268bd))
-and settled ([`0xc862…6841`](https://explorer.testnet.chain.robinhood.com/tx/0xc86205ad0410819a4d5c290c8ce58b25f9290b2ddcd7404252383d0da3c06841)).
-The vault sold 30 mHIMS for 1,151.04 USDG and bought back 39.39, for +9.39 mHIMS gross and **+8.45 per 100 deposited after
-the 10% fee**. `scripts/demo-testnet.sh` reruns it and is resumable.
-
-`contracts/script/Deploy.s.sol` deploys mock HIMS, 6-decimal mock USDG, a MockFeed and a ManualSessionClock. It creates a
-hook-free pool on the chain's own v4 PoolManager and deploys the vault. `contracts/script/DemoBuyer.s.sol` plays the
-market (`fridayClose`, `openWeekend`, `pump`, `mondayPrint`), and the keeper bot does the rest. Demo timing uses the
-lowest values the hard bounds allow, so one weekend takes about 75 minutes (40-minute window + 30-minute `settleDelay`).
-
-## Contracts
 
 | Contract | Role |
 |---|---|
-| `OffmintVault` | ERC-4626 vault per stock. `arm` → (`lock`) → `settle` / `retryBuyback` / `emergencyUnwind` / `expireBuyback` / `redeemMixed`. Talks to the v4 PoolManager directly via `unlock` + `unlockCallback`. |
-| `SessionClock` | Weekend window Sat 00:00 → Mon 00:00 UTC, with an owner-set offset bounded to ±3h. |
-| `ManualSessionClock` | Testnet demo only: the owner opens and closes the window. |
-| `RangeMath` | USD ↔ sqrtPrice in both pool orientations; one-sided premium range; buyback cap. |
+| `OffmintVault` | ERC-4626 per stock: `arm` (4-rung ladder) → `lock` → `settle` / `retryBuyback` / `emergencyUnwind` / `expireBuyback` / `redeemMixed`. `restrictedDepositor` makes an instance MetaVault-only. |
+| `MetaVault` | USDG ERC-4626: `buyIn` → `triggerEarlyUnwind` (stop-loss) → `commit` → `unwind`; NAV across positions; ticker blacklist; 0.5% entry/exit fee. |
+| `VaultFactory` | Deploys both instances per listed stock, wired to one shared price reference; vault code is hash-pinned. |
+| `ChainlinkPriceReference` / `PushPriceReference` | Price reads with pause, halt, sequencer and staleness checks; the push version (for new listings without a feed) has a separate poster key, forward-only timestamps and a 20% per-post cap. |
+| `SessionClock` / `ManualSessionClock` | Weekend window (Sat 00:00 → Mon 00:00 UTC); the manual one is testnet-demo only. |
+| `RangeMath`, `VaultPoolOps`, `OffmintParams` | Linked libraries: price ↔ tick math in both pool orientations, PoolManager plumbing, bounded parameters. |
+| `Faucet` | Testnet only: pre-funded test tokens, one claim per wallet per 24 h. |
 
-Safety properties tested: the owner and keeper never receive funds; the range lower bound is ≥ P0·(1+premium); no arm or settle on a paused, stale or sequencer-down oracle; share supply is frozen while ARMED or PENDING; the buyback never pays more than feed·(1+slippage) plus the LP fee; anyone can arm or settle after the grace period; first-depositor inflation is unprofitable (decimals offset 3).
+Security properties covered by tests: the owner and keeper never receive funds; every sell step starts ≥ Friday's price
+× (1 + premium); no arm or settle on a paused, halted, stale or sequencer-down price; deposits and withdrawals are frozen
+mid-weekend; the buyback never pays more than the fresh price × 1.01 plus the LP fee; anyone can arm or settle after the
+grace period; first-depositor inflation is unprofitable.
 
-## Repo layout
-
-```
-contracts/  Foundry project (src/ test/ script/ config/)
-keeper/     arm/settle bot + paper mode (TypeScript + viem)
-web/        Next.js app: /monitor /vault /backtest /paper
-backtest/   HIMS 28–31 Aug replay -> web/public/backtest/*.json
-scripts/    fact-check / discovery helpers
-docs/       FACTS.md, CHANGELOG.md
-```
-
-## Run
-
-Monorepo: Foundry contracts in `contracts/`, npm workspaces for the TypeScript packages.
-
+## Run and test
 ```bash
-npm install && npm test                          # 101 forge tests (unit, fuzz, integration x2 orientations, invariants) + 28 keeper tests
-cd contracts && forge build && forge test -vvv
-python3 scripts/discover_pools.py TSLA NVDA     # refresh contracts/config/mainnet.json
-cd keeper && npm i && npm test
-npm run paper                                    # live paper mode (read-only mainnet, no key)
-npm run replay -- 2026-08-29 --tickers HIMS      # replay a past weekend -> web/public/paper/replay/
-npm run backtest -- --event hims-2026-08-28      # SPEC §10 backtest -> web/public/backtest/hims-2026-08-28.json
-npm run test:fork                                # mainnet fork tests (real PoolManager / TSLA / HIMS / USDG)
-npm run lint:contracts                           # forge fmt --check + forge lint (CI-enforced)
-npm run e2e                                      # fresh anvil: deploy -> keeper bot arms, locks, settles -> assert gain
-npm run abi                                      # regenerate keeper/src/abi from forge artifacts (CI checks drift)
+npm ci && npm test                      # 160 forge tests (unit, fuzz, integration in both pool orientations, invariants) + 76 keeper/backtest tests
+npm run test:fork                       # 12 mainnet-fork tests (needs ALCHEMY_RH_MAINNET_URL or RH_MAINNET_RPC)
+npm run lint:contracts                  # forge fmt --check + forge lint (CI-enforced)
+npm run e2e && npm run e2e:meta         # local end-to-end weekends run by the unmodified keeper bot (CI)
+npm run stress -- --epochs 40 --users 12 --seed 7
+npm run paper                           # live paper mode (read-only mainnet, no keys)
+npm run backtest -- --event hims-2026-08-28
+cd web && npm ci && npm run build       # web app (landing + /app /monitor /vault /backtest /paper)
+```
 
-# keeper bot against a deployment (testnet after the deploy is approved)
-RPC_URL=$RH_TESTNET_RPC KEEPER_PRIVATE_KEY=0x... npm run bot -w keeper -- --deployment ../contracts/deployments/46630.json
+```
+contracts/  Foundry: src/ test/ script/ config/ deployments/
+keeper/     keeper bot, MetaVault cycle, detector, SELECT, paper mode (TypeScript + viem)
+web/        Next.js: marketing landing (/) and the app (/app /monitor /vault /backtest /paper)
+backtest/   HIMS + GLXY replays -> web/public/data/backtest/
+scripts/    e2e, demo and reproduce scripts
 ```
 
 ## License
-
 MIT

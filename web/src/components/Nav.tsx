@@ -2,9 +2,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { Logo } from "@/components/Brand";
 
 const links = [
-  ["/app", "App"],
+  ["/app", "MetaVault"],
+  ["/vault/HIMS", "Vaults"],
   ["/monitor", "Monitor"],
   ["/backtest", "Backtest"],
   ["/paper", "Paper"],
@@ -16,10 +18,10 @@ export function Nav() {
     <header className="border-b border-paper-line bg-paper-card">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <div className="flex items-center gap-8">
-          <Link href="/" className="font-semibold tracking-tight">Offmint</Link>
+          <Logo height={24} />
           <nav className="flex gap-5 text-sm">
             {links.map(([href, label]) => (
-              <Link key={href} href={href} className={path?.startsWith(href) ? "text-accent" : "text-ink-soft hover:text-ink"}>
+              <Link key={href} href={href} className={path?.startsWith(href.split("/").slice(0, 2).join("/")) ? "font-medium text-tide" : "text-ink-soft hover:text-ink"}>
                 {label}
               </Link>
             ))}

@@ -1,26 +1,20 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Providers } from "./providers";
-import { Nav } from "@/components/Nav";
+import { Schibsted_Grotesk } from "next/font/google";
+
+const font = Schibsted_Grotesk({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-schibsted" });
 
 export const metadata: Metadata = {
-  title: "Offmint",
-  description: "They price the weekend. We supply it. Weekend supply for newly listed Robinhood Chain stock tokens.",
+  title: "Offmint: they price the weekend, we supply it",
+  description:
+    "Weekend supply for newly listed Robinhood Chain stock tokens: a 4-step sell ladder above Friday's price while token creation is frozen, and a capped buyback on Monday.",
+  icons: { icon: "/favicon.svg" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body>
-        <Providers>
-          <Nav />
-          <main className="mx-auto max-w-6xl px-4 pb-24 pt-8">{children}</main>
-          <footer className="mx-auto max-w-6xl px-4 pb-10 text-xs text-ink-faint">
-            Unaudited hackathon software on Robinhood Chain testnet. Not an offer of any security. The keeper is
-            deterministic automation (threshold checks against a price reference), not an AI agent.
-          </footer>
-        </Providers>
-      </body>
+    <html lang="en" className={font.variable}>
+      <body>{children}</body>
     </html>
   );
 }

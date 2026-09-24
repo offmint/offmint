@@ -200,7 +200,8 @@ export async function createBot(o: BotOptions) {
 
 export async function main(argv = process.argv.slice(2)) {
   const opt = (k: string) => (argv.includes(k) ? argv[argv.indexOf(k) + 1] : undefined);
-  const rpc = process.env.RPC_URL ?? process.env.ALCHEMY_RH_TESTNET_URL ?? process.env.RH_TESTNET_RPC;
+  // `||`, not `??`: an empty variable in .env must fall through to the next option
+  const rpc = process.env.RPC_URL || process.env.ALCHEMY_RH_TESTNET_URL || process.env.RH_TESTNET_RPC || "https://rpc.testnet.chain.robinhood.com";
   const pk = process.env.KEEPER_PRIVATE_KEY as Hex | undefined;
   if (!rpc || !pk) throw new Error("set RPC_URL (or ALCHEMY_RH_TESTNET_URL) and KEEPER_PRIVATE_KEY");
   const deploymentPath = resolve(opt("--deployment") ?? join(ROOT, "contracts/deployments/46630.json"));

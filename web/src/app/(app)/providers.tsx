@@ -23,7 +23,7 @@ export function Providers({ children }: { children: ReactNode }) {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={qc}>
-        <RainbowKitProvider theme={lightTheme({ accentColor: "#1f5f8b", borderRadius: "small" })}>{children}</RainbowKitProvider>
+        <RainbowKitProvider theme={lightTheme({ accentColor: "#0E9F9A", borderRadius: "small" })}>{children}</RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );

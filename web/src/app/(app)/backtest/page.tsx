@@ -20,7 +20,7 @@ export default function Backtest() {
           return (
             <div key={d.id} className="card space-y-4">
               <div className="font-medium">{d.summary.ticker}</div>
-              <PriceChart data={d.sim.timeline} p0={d.summary.p0Usd} band={d.summary.bandUsd} />
+              <PriceChart data={d.sim.timeline} p0={d.summary.p0Usd} caption={`Source: Uniswap v4 Swap logs on Robinhood Chain mainnet (deepest hook-free ${d.summary.ticker}/USDG pool), ${d.event.windowStart.slice(0, 10)} weekend. Replay: backtest/src/replay.ts`} />
               <div className="grid grid-cols-3 gap-3 text-sm">
                 <div><div className="label">Friday close</div><div className="num">${d.summary.p0Usd.toFixed(2)}</div></div>
                 <div><div className="label">Peak</div><div className="num">${d.summary.maxPoolUsd.toFixed(2)}</div></div>

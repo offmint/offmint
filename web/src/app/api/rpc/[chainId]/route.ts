@@ -3,8 +3,9 @@
 import { NextResponse } from "next/server";
 
 const UPSTREAM: Record<string, string | undefined> = {
-  "46630": process.env.ALCHEMY_RH_TESTNET_URL ?? process.env.RH_TESTNET_RPC ?? "https://rpc.testnet.chain.robinhood.com",
-  "4663": process.env.ALCHEMY_RH_MAINNET_URL ?? process.env.RH_MAINNET_RPC ?? "https://rpc.mainnet.chain.robinhood.com",
+  // `||` so an empty variable falls through to the next option
+  "46630": process.env.ALCHEMY_RH_TESTNET_URL || process.env.RH_TESTNET_RPC || "https://rpc.testnet.chain.robinhood.com",
+  "4663": process.env.ALCHEMY_RH_MAINNET_URL || process.env.RH_MAINNET_RPC || "https://rpc.mainnet.chain.robinhood.com",
 };
 const READ_ONLY = new Set([
   "eth_chainId", "eth_blockNumber", "eth_call", "eth_getLogs", "eth_getBlockByNumber", "eth_getBlockByHash",
