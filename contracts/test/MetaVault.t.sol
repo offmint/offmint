@@ -50,7 +50,8 @@ contract MetaVaultTest is Deployers {
         MockStockToken stock;
         PoolKey key;
         bool s0;
-        OffmintVault vault;
+        OffmintVault vault; // MetaVault's exclusive instance (mb)
+        OffmintVault community; // open instance (ob)
         bool push;
     }
 
@@ -98,15 +99,17 @@ contract MetaVaultTest is Deployers {
         factory.setListing(address(a.stock), VaultFactory.Listing(true, address(feedA), 3000, 60));
         factory.setListing(address(b.stock), VaultFactory.Listing(true, address(0), 3000, 60));
         vm.stopPrank();
-        vm.prank(rando); // permissionless
-        a.vault = OffmintVault(factory.deployVault(address(a.stock)));
-        b.vault = OffmintVault(factory.deployVault(address(b.stock)));
-        b.push = true;
-        _print(b, PB, THU);
-
         meta = new MetaVault(
             IERC20(address(usd)), manager, ISessionClock(address(clock)), factory, owner, keeperAddr, feeTo
         );
+        vm.startPrank(owner);
+        a.vault = OffmintVault(factory.deployVault(address(a.stock), address(meta)));
+        b.vault = OffmintVault(factory.deployVault(address(b.stock), address(meta)));
+        a.community = OffmintVault(factory.deployVault(address(a.stock), address(0)));
+        b.community = OffmintVault(factory.deployVault(address(b.stock), address(0)));
+        vm.stopPrank();
+        b.push = true;
+        _print(b, PB, THU);
         _depositUsd(alice, 100_000e6);
     }
 
@@ -465,37 +468,121 @@ contract MetaVaultTest is Deployers {
     }
 
     function test_factory_wiring() public view {
-        assertEq(factory.vaultFor(address(a.stock)), address(a.vault));
-        assertEq(factory.allVaults().length, 2);
+        assertEq(factory.vaultFor(address(a.stock), address(meta)), address(a.vault));
+        assertEq(factory.vaultFor(address(a.stock), address(0)), address(a.community));
+        assertEq(factory.allVaults().length, 4);
         assertEq(address(ChainlinkPriceReference(address(a.vault.priceRef())).feed()), address(feedA));
         PushPriceReference pr = PushPriceReference(address(b.vault.priceRef()));
         assertEq(pr.poster(), poster);
         assertEq(pr.owner(), refOwner);
+        assertEq(address(b.community.priceRef()), address(pr), "both instances read ONE reference");
+        assertEq(address(a.community.priceRef()), address(a.vault.priceRef()));
         assertEq(a.vault.keeper(), keeperAddr);
         assertEq(a.vault.owner(), owner);
-        assertEq(a.vault.symbol(), "omAAA");
+        assertEq(a.vault.symbol(), "mbAAA");
+        assertEq(a.community.symbol(), "obAAA");
+        assertEq(a.vault.restrictedDepositor(), address(meta));
+        assertEq(a.community.restrictedDepositor(), address(0));
     }
 
     function test_factory_rejects() public {
+        vm.startPrank(owner);
         vm.expectRevert(VaultFactory.AlreadyDeployed.selector);
-        factory.deployVault(address(a.stock));
+        factory.deployVault(address(a.stock), address(meta));
+        vm.expectRevert(VaultFactory.AlreadyDeployed.selector);
+        factory.deployVault(address(a.stock), address(0));
 
         MockStockToken c = _stockAt(address(uint160(0xC0000)), "CCC");
         vm.expectRevert(VaultFactory.NotCanonical.selector);
-        factory.deployVault(address(c));
+        factory.deployVault(address(c), address(0));
 
-        vm.prank(owner);
         factory.setListing(address(c), VaultFactory.Listing(true, address(0), 3000, 60));
         vm.expectRevert(VaultFactory.PoolNotInitialized.selector);
-        factory.deployVault(address(c));
+        factory.deployVault(address(c), address(0));
+
+        vm.expectRevert(VaultFactory.Sealed.selector);
+        factory.uploadVaultCode(hex"00");
+        vm.stopPrank();
 
         vm.prank(rando);
         vm.expectRevert(abi.encodeWithSignature("OwnableUnauthorizedAccount(address)", rando));
         factory.setListing(address(c), VaultFactory.Listing(true, address(0), 3000, 60));
+        vm.prank(rando);
+        vm.expectRevert(abi.encodeWithSignature("OwnableUnauthorizedAccount(address)", rando));
+        factory.deployVault(address(a.stock), rando); // owner-only (no onchain registry to gate it, §6.5.4)
+    }
 
-        vm.prank(owner);
-        vm.expectRevert(VaultFactory.Sealed.selector);
-        factory.uploadVaultCode(hex"00");
+    // ================================================================== restrictedDepositor isolation (§6.1)
+
+    function test_isolation_communityCannotEnterMetaInstance_andViceVersa() public {
+        // a community holder cannot deposit (or mint) into MetaVault's instance
+        a.stock.mint(bob, 10e18);
+        vm.startPrank(bob);
+        a.stock.approve(address(a.vault), type(uint256).max);
+        vm.expectRevert(OffmintVault.NotDepositor.selector);
+        a.vault.deposit(10e18, bob);
+        vm.expectRevert(OffmintVault.NotDepositor.selector);
+        a.vault.mint(1e21, bob);
+        // ...but the community instance is open to them
+        a.stock.approve(address(a.community), type(uint256).max);
+        a.community.deposit(10e18, bob);
+        vm.stopPrank();
+        assertGt(a.community.balanceOf(bob), 0);
+
+        // MetaVault's capital goes only into its own instance, never the community one
+        _buyIn(a, 10_000e6);
+        vm.warp(SAT - 6 hours);
+        uint256 communityBefore = a.community.totalAssets();
+        vm.prank(keeperAddr);
+        meta.commit(address(a.stock));
+        assertEq(a.community.totalAssets(), communityBefore, "community instance untouched");
+        assertEq(a.community.balanceOf(address(meta)), 0);
+        assertGt(a.vault.balanceOf(address(meta)), 0);
+        assertEq(a.vault.totalSupply(), a.vault.balanceOf(address(meta)), "MetaVault is the only holder of mb");
+    }
+
+    function test_isolation_metaRefusesACommunityInstance() public {
+        // a registry that points MetaVault at the community instance is rejected
+        FakeRegistry fake = new FakeRegistry(address(a.community));
+        MetaVault m2 =
+            new MetaVault(IERC20(address(usd)), manager, ISessionClock(address(clock)), fake, owner, keeperAddr, feeTo);
+        usd.mint(address(m2), 10_000e6);
+        vm.prank(keeperAddr);
+        vm.expectRevert(MetaVault.NoVault.selector);
+        m2.buyIn(address(a.stock), 1_000e6);
+    }
+
+    function test_blacklist_communityInstanceLossBlocksPick() public {
+        // community instance: holder deposits, a gap-up weekend loses > weeklyLossCapBps of what it deployed
+        a.stock.mint(bob, 100e18);
+        vm.startPrank(bob);
+        a.stock.approve(address(a.community), type(uint256).max);
+        a.community.deposit(100e18, bob);
+        vm.stopPrank();
+        vm.warp(SAT + 20 minutes);
+        _closePrint(a, PA);
+        vm.prank(keeperAddr);
+        a.community.arm(_ladder(), 3000);
+        _moveTo(a, PA * 160 / 100); // everything sold
+        a.community.lock();
+        // Monday gap-up: fresh print +60%, buyback capped -> STOCK loss on the deployed 30%
+        _reopen(a, PA * 160 / 100);
+        vm.prank(keeperAddr);
+        a.community.settle(0);
+        OffmintVault.Epoch memory e = a.community.currentEpoch();
+        assertLt(e.pnlStock, 0, "community lost STOCK");
+        assertGt(uint256(-e.pnlStock) * BPS, e.stockDeployed * 1000, "more than weeklyLossCapBps of deployed");
+
+        // next week MetaVault may not pick AAA
+        vm.warp(MON + 3 days);
+        feedA.setAnswerAt(int256(PA * 160 / 100), block.timestamp);
+        assertTrue(meta.isBlacklisted(address(a.stock)));
+        vm.prank(keeperAddr);
+        vm.expectRevert(MetaVault.Blacklisted.selector);
+        meta.buyIn(address(a.stock), 1_000e6);
+        // ...and after blacklistDays it may again
+        vm.warp(MON + 29 days);
+        assertFalse(meta.isBlacklisted(address(a.stock)));
     }
 
     function test_factory_unsealedCodeCannotDeploy() public {
@@ -518,9 +605,9 @@ contract MetaVaultTest is Deployers {
         f.uploadVaultCode(type(OffmintVault).creationCode);
         assertFalse(f.codeSealed(), "hash mismatch never seals");
         f.setListing(address(a.stock), VaultFactory.Listing(true, address(feedA), 3000, 60));
-        vm.stopPrank();
         vm.expectRevert(VaultFactory.CodeNotSealed.selector);
-        f.deployVault(address(a.stock));
+        f.deployVault(address(a.stock), address(0));
+        vm.stopPrank();
     }
 
     // ================================================================== helpers
@@ -634,5 +721,17 @@ contract MetaVaultTest is Deployers {
         r[1] = RangeMath.Rung(1500, 700, 3000);
         r[2] = RangeMath.Rung(2500, 1000, 2500);
         r[3] = RangeMath.Rung(4000, 1500, 2000);
+    }
+}
+
+contract FakeRegistry is IVaultRegistry {
+    address immutable v;
+
+    constructor(address v_) {
+        v = v_;
+    }
+
+    function vaultFor(address, address) external view returns (address) {
+        return v;
     }
 }

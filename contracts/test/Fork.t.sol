@@ -121,7 +121,8 @@ abstract contract ForkBase is Test {
                 owner: owner,
                 keeper: keeperAddr,
                 feeRecipient: feeTo,
-                ticker: ticker()
+                ticker: ticker(),
+                restrictedDepositor: address(0)
             })
         );
         router = new PoolSwapTest(pm);

@@ -112,7 +112,8 @@ abstract contract VaultSetup is Deployers {
                 owner: owner,
                 keeper: keeperAddr,
                 feeRecipient: feeTo,
-                ticker: "TSLA"
+                ticker: "TSLA",
+                restrictedDepositor: address(0)
             })
         );
 
@@ -390,7 +391,8 @@ abstract contract VaultTestBase is VaultSetup {
                 owner: owner,
                 keeper: keeperAddr,
                 feeRecipient: feeTo,
-                ticker: "TSLA"
+                ticker: "TSLA",
+                restrictedDepositor: address(0)
             })
         );
         address attacker = makeAddr("attacker");
@@ -802,7 +804,8 @@ abstract contract VaultTestBase is VaultSetup {
             owner: owner,
             keeper: keeperAddr,
             feeRecipient: feeTo,
-            ticker: "TSLA"
+            ticker: "TSLA",
+            restrictedDepositor: address(0)
         });
         vm.expectRevert(OffmintVault.BadConfig.selector);
         new OffmintVault(c);
@@ -814,7 +817,7 @@ abstract contract VaultTestBase is VaultSetup {
 
     function test_metadata() public view {
         assertEq(vault.name(), "Offmint TSLA");
-        assertEq(vault.symbol(), "omTSLA");
+        assertEq(vault.symbol(), "obTSLA");
         assertEq(vault.decimals(), 21);
         assertEq(vault.stockIsCurrency0(), s0);
     }
@@ -872,7 +875,8 @@ contract VaultSequencerTest is VaultSetup {
                 owner: owner,
                 keeper: keeperAddr,
                 feeRecipient: feeTo,
-                ticker: "TSLA"
+                ticker: "TSLA",
+                restrictedDepositor: address(0)
             })
         );
         _deposit(alice, 100e18);

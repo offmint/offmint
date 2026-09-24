@@ -440,6 +440,25 @@ export const metaVaultAbi = [
   },
   {
     "type": "function",
+    "name": "isBlacklisted",
+    "inputs": [
+      {
+        "name": "stock",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
     "name": "keeper",
     "inputs": [],
     "outputs": [

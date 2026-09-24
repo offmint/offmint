@@ -1,11 +1,11 @@
 {
- "generatedAt": "2026-09-23T22:49:29.802Z",
+ "generatedAt": "2026-09-24T00:05:54.116Z",
  "config": {
   "epochs": 10,
   "users": 8,
   "seed": 11
  },
- "wallClockSec": 18,
+ "wallClockSec": 15,
  "violations": [],
  "totals": {
   "deposits": 29,
@@ -39,23 +39,23 @@
  "gas": {
   "arm": {
    "calls": 10,
-   "avg": 948313,
-   "max": 961993
+   "avg": 948357,
+   "max": 962037
   },
   "lock": {
    "calls": 7,
-   "avg": 445251,
-   "max": 469265
+   "avg": 445288,
+   "max": 469300
   },
   "settle": {
    "calls": 10,
-   "avg": 340511,
-   "max": 491023
+   "avg": 340749,
+   "max": 491342
   },
   "retryBuyback": {
    "calls": 3,
-   "avg": 220604,
-   "max": 225287
+   "avg": 220923,
+   "max": 225606
   }
  },
  "epochs": [

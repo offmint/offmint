@@ -19,12 +19,14 @@ import {PushPriceReference} from "./oracle/PushPriceReference.sol";
 import {OffmintVault} from "./OffmintVault.sol";
 import {IVaultRegistry} from "./MetaVault.sol";
 
-/// @title VaultFactory — permissionless OffmintVault deployment for canonical stock tokens (SPEC §6.5.4)
-/// @notice Anyone can deploy the one vault for a stock once it is listed as canonical. The vault is wired to a
-///         ChainlinkPriceReference if the listing has a feed, else to a PushPriceReference (no-feed basket member).
-/// @dev There is no onchain copy of Robinhood's canonical token registry, so the owner mirrors it here (`setListing`),
-///      together with the stock's Chainlink feed (or none) and its hook-free STOCK/USDG pool. That listing is the
-///      anti-scam guard; everything else is fixed at construction. The factory has no power over deployed vaults.
+/// @title VaultFactory — OffmintVault deployment for canonical stock tokens (SPEC §6.5.4)
+/// @notice Each basket ticker gets up to two instances: the community one (`restrictedDepositor = address(0)`, open,
+///         market-neutral for existing holders) and MetaVault's exclusive one (`restrictedDepositor = metaVault`).
+///         Both read the same price reference: a ChainlinkPriceReference if the listing has a feed, else one
+///         PushPriceReference per stock (no-feed basket member).
+/// @dev There is no onchain copy of Robinhood's canonical token registry, so deployment is owner-only and the owner
+///      mirrors the registry entry here (`setListing`): canonical flag, Chainlink feed (or none), hook-free pool.
+///      Everything else is fixed at construction. The factory has no power over deployed vaults.
 ///      OffmintVault's initcode is ~28 KB, too big to embed (EIP-170), so it is stored in data contracts
 ///      (`uploadVaultCode`) and pinned by `vaultCodeHash`: a deploy reverts unless the stored code hashes to it.
 contract VaultFactory is IVaultRegistry, Ownable2Step {
@@ -69,11 +71,14 @@ contract VaultFactory is IVaultRegistry, Ownable2Step {
     address[] internal _codeChunks;
     bool public codeSealed;
     mapping(address stock => Listing) public listings;
-    mapping(address stock => address) public vaultFor;
+    mapping(address stock => mapping(address restrictedDepositor => address)) public vaultFor;
+    mapping(address stock => address) public refFor;
     address[] internal _all;
 
     event Listed(address indexed stock, Listing listing);
-    event VaultDeployed(address indexed stock, address vault, address priceRef, bool pushReference);
+    event VaultDeployed(
+        address indexed stock, address indexed restrictedDepositor, address vault, address priceRef, bool pushReference
+    );
     event CodeSealed(uint256 chunks);
 
     error NotCanonical();
@@ -128,12 +133,13 @@ contract VaultFactory is IVaultRegistry, Ownable2Step {
 
     // ------------------------------------------------------------------ deploy (anyone)
 
-    /// @notice Deploy the OffmintVault for a canonical `stock` (anyone). One vault per stock.
+    /// @notice Deploy an OffmintVault instance for a canonical `stock` (owner). One per (stock, restrictedDepositor).
+    /// @param restrictedDepositor address(0) for the community instance, the MetaVault for its exclusive instance
     /// @return vault the new vault
-    function deployVault(address stock) external returns (address vault) {
+    function deployVault(address stock, address restrictedDepositor) external onlyOwner returns (address vault) {
         Listing memory l = listings[stock];
         if (!l.canonical) revert NotCanonical();
-        if (vaultFor[stock] != address(0)) revert AlreadyDeployed();
+        if (vaultFor[stock][restrictedDepositor] != address(0)) revert AlreadyDeployed();
         if (!codeSealed) revert CodeNotSealed();
 
         PoolKey memory key = _poolKey(stock, l);
@@ -141,53 +147,33 @@ contract VaultFactory is IVaultRegistry, Ownable2Step {
         if (sp == 0) revert PoolNotInitialized();
 
         string memory sym = IERC20Metadata(stock).symbol();
-        bool push = l.feed == address(0);
-        IPriceReference ref = push
-            ? IPriceReference(
-                address(
-                    new PushPriceReference(
-                        poster,
-                        refOwner,
-                        IStockToken(stock),
-                        PUSH_MAX_MOVE_BPS,
-                        PUSH_GAP_AFTER,
-                        string.concat("Robinhood API ", sym, "/USD")
-                    )
-                )
-            )
-            : IPriceReference(
-                address(
-                    new ChainlinkPriceReference(
-                        AggregatorV3Interface(l.feed), AggregatorV3Interface(sequencerFeed), IStockToken(stock)
-                    )
-                )
-            );
-
+        (address ref, bool push) = _reference(stock, l.feed, sym);
         bytes memory init = bytes.concat(
             _vaultCode(),
             abi.encode(
                 OffmintVault.Config({
                     poolManager: poolManager,
                     clock: clock,
-                    priceRef: ref,
+                    priceRef: IPriceReference(ref),
                     stock: IERC20(stock),
                     usdg: usdg,
                     poolKey: key,
                     owner: vaultOwner,
                     keeper: keeper,
                     feeRecipient: feeRecipient,
-                    ticker: sym
+                    ticker: sym,
+                    restrictedDepositor: restrictedDepositor
                 })
             )
         );
-        bytes32 salt = bytes32(uint256(uint160(stock)));
+        bytes32 salt = keccak256(abi.encode(stock, restrictedDepositor));
         assembly ("memory-safe") {
             vault := create2(0, add(init, 0x20), mload(init), salt)
         }
         if (vault == address(0)) revert BadConfig();
-        vaultFor[stock] = vault;
+        vaultFor[stock][restrictedDepositor] = vault;
         _all.push(vault);
-        emit VaultDeployed(stock, vault, address(ref), push);
+        emit VaultDeployed(stock, restrictedDepositor, vault, ref, push);
     }
 
     // ------------------------------------------------------------------ views
@@ -203,6 +189,30 @@ contract VaultFactory is IVaultRegistry, Ownable2Step {
     }
 
     // ------------------------------------------------------------------ internals
+
+    /// @dev One price reference per stock, shared by both instances (and so by MetaVault's NAV): never two sources.
+    function _reference(address stock, address feed, string memory sym) internal returns (address ref, bool push) {
+        push = feed == address(0);
+        ref = refFor[stock];
+        if (ref != address(0)) return (ref, push);
+        ref = push
+            ? address(
+                new PushPriceReference(
+                    poster,
+                    refOwner,
+                    IStockToken(stock),
+                    PUSH_MAX_MOVE_BPS,
+                    PUSH_GAP_AFTER,
+                    string.concat("Robinhood API ", sym, "/USD")
+                )
+            )
+            : address(
+                new ChainlinkPriceReference(
+                    AggregatorV3Interface(feed), AggregatorV3Interface(sequencerFeed), IStockToken(stock)
+                )
+            );
+        refFor[stock] = ref;
+    }
 
     function _poolKey(address stock, Listing memory l) internal view returns (PoolKey memory) {
         (address c0, address c1) = stock < address(usdg) ? (stock, address(usdg)) : (address(usdg), stock);

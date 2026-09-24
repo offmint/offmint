@@ -12,23 +12,23 @@ import {PoolModifyLiquidityTest} from "@uniswap/v4-core/src/test/PoolModifyLiqui
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 import {OffmintVault} from "../src/OffmintVault.sol";
+import {MetaVault} from "../src/MetaVault.sol";
+import {VaultFactory} from "../src/VaultFactory.sol";
 import {OffmintParams} from "../src/libraries/OffmintParams.sol";
 import {ManualSessionClock} from "../src/clock/ManualSessionClock.sol";
 import {RangeMath} from "../src/libraries/RangeMath.sol";
 import {MockFeed} from "../src/mocks/MockFeed.sol";
 import {MockStockToken} from "../src/mocks/MockStockToken.sol";
 import {MockUSDG} from "../src/mocks/MockUSDG.sol";
-import {AggregatorV3Interface} from "../src/interfaces/AggregatorV3Interface.sol";
-import {IPriceReference} from "../src/interfaces/IPriceReference.sol";
-import {IStockToken} from "../src/interfaces/IStockToken.sol";
-import {ChainlinkPriceReference} from "../src/oracle/ChainlinkPriceReference.sol";
 import {ISessionClock} from "../src/interfaces/ISessionClock.sol";
 
 /// @title Deploy — testnet demo stack (SPEC §7)
 /// @notice Deploys MockStockToken + MockUSDG (6 dec) + MockFeed + ManualSessionClock, creates a hook-free
 ///         STOCK/USDG pool (fee 3000, spacing 60) on the PoolManager at the MockFeed price, seeds wide two-sided
-///         liquidity, deploys OffmintVault with demo-speed timing (all inside the hard bounds), and makes a first
-///         deposit. Writes deployments/<chainId>.json for the keeper and scripts.
+///         liquidity, then the platform: VaultFactory (OffmintVault code uploaded and hash-pinned), MetaVault, and
+///         both OffmintVault instances for the ticker (community `ob`, open; MetaVault-exclusive `mb`), with
+///         demo-speed timing (all inside the hard bounds). First deposits into the community instance (STOCK) and
+///         MetaVault (USDG). Writes deployments/<chainId>.json for the keeper and scripts (`vault` = community).
 ///
 ///   Dry run (no broadcast):  forge script script/Deploy.s.sol --rpc-url $RH_TESTNET_RPC
 ///   Broadcast (ask first!):  forge script script/Deploy.s.sol --rpc-url $RH_TESTNET_RPC --broadcast
@@ -36,7 +36,8 @@ import {ISessionClock} from "../src/interfaces/ISessionClock.sol";
 /// Env: DEPLOYER_PRIVATE_KEY, KEEPER_ADDRESS, FEE_RECIPIENT (required)
 ///      POOL_MANAGER (default: Robinhood Chain v4 PoolManager; deployed fresh if no code there, e.g. bare anvil)
 ///      DEMO_TICKER (default HIMS), INITIAL_PRICE_E8 (default 28.84e8), DEMO_DEPOSIT (default 100e18),
-///      SEED_LIQUIDITY (default 1e18)
+///      SEED_LIQUIDITY (default 1e18), META_DEPOSIT (USDG, default 10_000e6),
+///      POSTER_ADDRESS (PushPriceReference poster; default derived from ORACLE_POSTER_PRIVATE_KEY, never the keeper)
 contract Deploy is Script {
     address constant RH_POOL_MANAGER = 0x8366a39CC670B4001A1121B8F6A443A643e40951;
 
@@ -46,7 +47,11 @@ contract Deploy is Script {
         address usdg;
         address feed;
         address clock;
-        address vault;
+        address vault; // community instance (restrictedDepositor = 0)
+        address metaInstance; // MetaVault's exclusive instance
+        address metaVault;
+        address factory;
+        address priceRef;
         address swapRouter;
         address liquidityRouter;
         bool stockIsCurrency0;
@@ -61,6 +66,8 @@ contract Deploy is Script {
         uint256 demoDeposit;
         address pm;
         uint256 seedLiquidity;
+        uint256 metaDeposit;
+        address poster;
     }
 
     function run() external returns (Out memory o) {
@@ -74,7 +81,9 @@ contract Deploy is Script {
             demoDeposit: vm.envOr("DEMO_DEPOSIT", uint256(100e18)),
             pm: vm.envOr("POOL_MANAGER", RH_POOL_MANAGER),
             // ~$27k of depth per 1% move at $28.84: deep enough that a 30-share buyback stays inside the 1% cap
-            seedLiquidity: vm.envOr("SEED_LIQUIDITY", uint256(1e18))
+            seedLiquidity: vm.envOr("SEED_LIQUIDITY", uint256(1e18)),
+            metaDeposit: vm.envOr("META_DEPOSIT", uint256(10_000e6)),
+            poster: _poster()
         });
 
         vm.startBroadcast(pk);
@@ -119,38 +128,72 @@ contract Deploy is Script {
     }
 
     function _vault(Out memory o, Cfg memory c, PoolKey memory key) internal {
-        OffmintVault vault = new OffmintVault(
-            OffmintVault.Config({
+        (key); // the factory derives the same hook-free (fee 3000, spacing 60) key from the listing
+        bytes memory code = type(OffmintVault).creationCode;
+        VaultFactory f = new VaultFactory(
+            keccak256(code),
+            VaultFactory.Wiring({
                 poolManager: IPoolManager(o.poolManager),
                 clock: ISessionClock(o.clock),
-                // testnet: Chainlink-shaped adapter over the MockFeed (no sequencer feed on testnet)
-                priceRef: IPriceReference(
-                    address(
-                        new ChainlinkPriceReference(
-                            AggregatorV3Interface(o.feed), AggregatorV3Interface(address(0)), IStockToken(o.stock)
-                        )
-                    )
-                ),
-                stock: IERC20(o.stock),
                 usdg: IERC20(o.usdg),
-                poolKey: key,
-                owner: c.deployer,
+                vaultOwner: c.deployer,
                 keeper: c.keeper,
                 feeRecipient: c.feeTo,
-                ticker: c.ticker
-            })
+                poster: c.poster,
+                refOwner: c.deployer,
+                sequencerFeed: address(0) // none on testnet
+            }),
+            c.deployer
         );
-        o.vault = address(vault);
-        // demo-speed timing: every value at the edge of the hard bounds, never outside them
-        OffmintParams.Params memory p = vault.getParams();
+        for (uint256 i = 0; i < code.length; i += 15_000) {
+            f.uploadVaultCode(_slice(code, i, i + 15_000 > code.length ? code.length : i + 15_000));
+        }
+        require(f.codeSealed(), "vault code not sealed");
+        // testnet: the MockFeed stands in for a Chainlink feed (Chainlink-shaped adapter)
+        f.setListing(o.stock, VaultFactory.Listing(true, o.feed, 3000, 60));
+
+        MetaVault meta = new MetaVault(
+            IERC20(o.usdg), IPoolManager(o.poolManager), ISessionClock(o.clock), f, c.deployer, c.keeper, c.feeTo
+        );
+        o.factory = address(f);
+        o.metaVault = address(meta);
+        o.vault = f.deployVault(o.stock, address(0));
+        o.metaInstance = f.deployVault(o.stock, address(meta));
+        o.priceRef = f.refFor(o.stock);
+        _demoTiming(OffmintVault(o.vault));
+        _demoTiming(OffmintVault(o.metaInstance));
+
+        IERC20(o.stock).approve(o.vault, c.demoDeposit);
+        OffmintVault(o.vault).deposit(c.demoDeposit, c.deployer);
+        IERC20(o.usdg).approve(o.metaVault, c.metaDeposit);
+        meta.deposit(c.metaDeposit, c.deployer);
+    }
+
+    /// @dev Demo-speed timing: every value at the edge of the hard bounds, never outside them.
+    function _demoTiming(OffmintVault v) internal {
+        OffmintParams.Params memory p = v.getParams();
         p.armDelay = 1 minutes;
         p.minFrozen = 5 minutes;
         p.settleDelay = 30 minutes;
         p.armGrace = 30 minutes;
         p.settleGrace = 30 minutes;
-        vault.setParams(p);
-        IERC20(o.stock).approve(o.vault, c.demoDeposit);
-        vault.deposit(c.demoDeposit, c.deployer);
+        v.setParams(p);
+    }
+
+    function _poster() internal view returns (address p) {
+        p = vm.envOr("POSTER_ADDRESS", address(0));
+        if (p == address(0)) {
+            uint256 k = vm.envOr("ORACLE_POSTER_PRIVATE_KEY", uint256(0));
+            // unused on this deploy (the demo listing has a feed), but the factory requires a non-keeper poster
+            p = k != 0 ? vm.addr(k) : address(uint160(uint256(keccak256("offmint.poster.unset"))));
+        }
+    }
+
+    function _slice(bytes memory b, uint256 from, uint256 to) internal pure returns (bytes memory out) {
+        out = new bytes(to - from);
+        for (uint256 i = from; i < to; i++) {
+            out[i - from] = b[i];
+        }
     }
 
     function _key(Out memory o) internal pure returns (PoolKey memory) {
@@ -184,6 +227,10 @@ contract Deploy is Script {
         vm.serializeAddress(j, "feed", o.feed);
         vm.serializeAddress(j, "clock", o.clock);
         vm.serializeAddress(j, "vault", o.vault);
+        vm.serializeAddress(j, "metaInstance", o.metaInstance);
+        vm.serializeAddress(j, "metaVault", o.metaVault);
+        vm.serializeAddress(j, "factory", o.factory);
+        vm.serializeAddress(j, "priceRef", o.priceRef);
         vm.serializeAddress(j, "swapRouter", o.swapRouter);
         vm.serializeAddress(j, "liquidityRouter", o.liquidityRouter);
         vm.serializeAddress(j, "owner", c.deployer);
@@ -195,6 +242,7 @@ contract Deploy is Script {
         string memory path = string.concat("deployments/", vm.toString(block.chainid), ".json");
         vm.writeJson(out, path);
         console2.log("wrote", path);
-        console2.log("vault", o.vault);
+        console2.log("community vault", o.vault);
+        console2.log("MetaVault", o.metaVault);
     }
 }

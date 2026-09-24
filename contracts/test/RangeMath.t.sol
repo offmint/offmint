@@ -169,7 +169,15 @@ contract RangeMathTest is Test {
         int24 sp = sps[spSel % 4];
         uint256 curUsd = uint256(int256(p0) * (10_000 + curBps) / 10_000);
         int24 cur = RangeMath.usdToTick(curUsd, d, s0);
-        _checkRange(p0, prem, width, cur, sp, s0);
+        try h.sellRange(p0, prem, width, cur, sp, d, s0) returns (int24, int24) {
+            _checkRange(p0, prem, width, cur, sp, s0);
+        } catch {
+            // Only legitimate when the pool already sits inside the band and what is left above it is narrower than
+            // two spacings: snapping both edges inward then leaves nothing (the vault skips such a rung).
+            int24 far = RangeMath.usdToTick(p0 * (10_000 + prem + width) / 10_000, d, s0);
+            int24 left = s0 ? far - cur : cur - far;
+            assertLt(left, 2 * sp, "RangeInvalid only when < 2 spacings remain above market");
+        }
     }
 
     function testFuzz_buybackCapNeverAboveLimit(uint256 fresh, uint256 slip, bool s0) public view {

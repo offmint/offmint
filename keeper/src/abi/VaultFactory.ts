@@ -148,6 +148,11 @@ export const vaultFactoryAbi = [
         "name": "stock",
         "type": "address",
         "internalType": "address"
+      },
+      {
+        "name": "restrictedDepositor",
+        "type": "address",
+        "internalType": "address"
       }
     ],
     "outputs": [
@@ -319,6 +324,25 @@ export const vaultFactoryAbi = [
   },
   {
     "type": "function",
+    "name": "refFor",
+    "inputs": [
+      {
+        "name": "stock",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
     "name": "refOwner",
     "inputs": [],
     "outputs": [
@@ -457,6 +481,11 @@ export const vaultFactoryAbi = [
         "name": "stock",
         "type": "address",
         "internalType": "address"
+      },
+      {
+        "name": "restrictedDepositor",
+        "type": "address",
+        "internalType": "address"
       }
     ],
     "outputs": [
@@ -579,6 +608,12 @@ export const vaultFactoryAbi = [
     "inputs": [
       {
         "name": "stock",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "restrictedDepositor",
         "type": "address",
         "indexed": true,
         "internalType": "address"

@@ -64,7 +64,7 @@ async function main() {
     }
     // ------------------------------------------------------------------ deploy with the real script
     const depPath = join(ROOT, "contracts/deployments/31337.json");
-    execFileSync(join(FOUNDRY, "forge"), ["script", "script/Deploy.s.sol", "--rpc-url", rpc, "--broadcast"], {
+    execFileSync(join(FOUNDRY, "forge"), ["script", "script/Deploy.s.sol", "--rpc-url", rpc, "--broadcast", "--slow"], {
       cwd: join(ROOT, "contracts"),
       env: { ...process.env, DEPLOYER_PRIVATE_KEY: DEPLOYER_PK, KEEPER_ADDRESS: privateKeyToAccount(KEEPER_PK).address, FEE_RECIPIENT: FEE_TO },
       stdio: "ignore",

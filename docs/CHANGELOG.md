@@ -117,3 +117,23 @@
   - NAV is exact with one position armed and one still pre-arm;
   - factory rejections.
   In total: 151 forge tests; MetaVault is 19.1 KB and VaultFactory 11.2 KB.
+- SPEC update (§6.1, §6.5.3, §6.5.4, §6.6), `restrictedDepositor` isolation:
+  - `OffmintVault` has an immutable `restrictedDepositor`. `address(0)` is the community instance (`ob{TICKER}`,
+    open, market-neutral for existing holders). Otherwise only that address may deposit or mint (`mb{TICKER}`,
+    MetaVault's exclusive instance).
+  - `VaultFactory.deployVault(stock, restrictedDepositor)` is owner-only per SPEC and keyed by the pair. Both
+    instances share one price reference per stock.
+  - MetaVault only ever uses its own instance and refuses any vault whose `restrictedDepositor` is not itself.
+  - `isBlacklisted` is ticker-level: MetaVault's own loss above the cap, or a community-instance epoch in the last
+    `blacklistDays` that lost more than `weeklyLossCapBps` of the STOCK it deployed.
+  - `deployBps` is per instance, since each has its own params; both default to 3000 (the SPEC decision is pending).
+- Tests: 28 MetaVault/factory tests, including:
+  - a community deposit into the `mb` instance reverts, and MetaVault never touches the `ob` instance;
+  - MetaVault rejects a registry that points it at a community instance;
+  - a community-instance gap-up loss blocks MetaVault's next pick until `blacklistDays` pass.
+- The fuzz test `testFuzz_sellRange` found a case where a narrow rung with the pool mid-band and tick spacing 200 has
+  < 2 spacings left above market, so `RangeInvalid` is correct (the vault skips such a rung). The test now asserts
+  exactly that condition.
+- Deploy script: the testnet stack now deploys through `VaultFactory` (code uploaded and hash-pinned), `MetaVault`,
+  and both instances. The E2E and stress runs use `forge script --slow`, because anvil automine left 7.9M-gas
+  deploys pending.

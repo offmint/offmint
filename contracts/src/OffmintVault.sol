@@ -102,6 +102,9 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
     IPriceReference public immutable priceRef;
     IERC20 public immutable usdg;
     address public immutable feeRecipient;
+    /// @notice address(0): community instance, open to anyone. Otherwise the only address that may deposit/mint
+    ///         (MetaVault's exclusive instance, SPEC §6.1 / §6.5.3), so the two kinds of capital never share a vault.
+    address public immutable restrictedDepositor;
     bool public immutable stockIsCurrency0;
     uint8 internal immutable _stockDecimals;
     uint8 internal immutable _usdDecimals;
@@ -153,6 +156,7 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
     error SlippageMinOut();
     error OnlyPoolManager();
     error BadConfig();
+    error NotDepositor();
 
     // ------------------------------------------------------------------ constructor
 
@@ -167,11 +171,15 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
         address keeper;
         address feeRecipient;
         string ticker;
+        address restrictedDepositor;
     }
 
     constructor(Config memory c)
         ERC4626(c.stock)
-        ERC20(string.concat("Offmint ", c.ticker), string.concat("om", c.ticker))
+        ERC20(
+            string.concat("Offmint ", c.ticker),
+            string.concat(c.restrictedDepositor == address(0) ? "ob" : "mb", c.ticker)
+        )
         Ownable(c.owner)
     {
         address s = address(c.stock);
@@ -194,6 +202,7 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
         priceRef = c.priceRef;
         usdg = c.usdg;
         feeRecipient = c.feeRecipient;
+        restrictedDepositor = c.restrictedDepositor;
         stockIsCurrency0 = s0;
         _stockDecimals = IERC20Metadata(s).decimals();
         _usdDecimals = IERC20Metadata(u).decimals();
@@ -423,6 +432,12 @@ contract OffmintVault is ERC4626, Ownable2Step, ReentrancyGuardTransient, IUnloc
 
     function maxRedeem(address a) public view override returns (uint256) {
         return state == State.OPEN ? super.maxRedeem(a) : 0;
+    }
+
+    /// @dev A restricted instance only accepts its one depositor (deposit and mint both land here).
+    function _deposit(address caller, address receiver, uint256 assets, uint256 shares) internal override {
+        if (restrictedDepositor != address(0) && caller != restrictedDepositor) revert NotDepositor();
+        super._deposit(caller, receiver, assets, shares);
     }
 
     function _decimalsOffset() internal pure override returns (uint8) {

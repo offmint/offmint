@@ -84,6 +84,11 @@ export const offmintVaultAbi = [
             "name": "ticker",
             "type": "string",
             "internalType": "string"
+          },
+          {
+            "name": "restrictedDepositor",
+            "type": "address",
+            "internalType": "address"
           }
         ]
       }
@@ -1168,6 +1173,19 @@ export const offmintVaultAbi = [
   },
   {
     "type": "function",
+    "name": "restrictedDepositor",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
     "name": "retryBuyback",
     "inputs": [
       {
@@ -2210,6 +2228,11 @@ export const offmintVaultAbi = [
         "internalType": "uint256"
       }
     ]
+  },
+  {
+    "type": "error",
+    "name": "NotDepositor",
+    "inputs": []
   },
   {
     "type": "error",

@@ -19,9 +19,10 @@ import {OffmintVault} from "./OffmintVault.sol";
 import {RangeMath} from "./libraries/RangeMath.sol";
 import {VaultPoolOps} from "./libraries/VaultPoolOps.sol";
 
-/// @notice Where MetaVault finds each basket ticker's OffmintVault (implemented by VaultFactory).
+/// @notice Where MetaVault finds each basket ticker's OffmintVault instances (implemented by VaultFactory).
 interface IVaultRegistry {
-    function vaultFor(address stock) external view returns (address);
+    /// @param restrictedDepositor address(0) = community instance; MetaVault = its exclusive instance
+    function vaultFor(address stock, address restrictedDepositor) external view returns (address);
 }
 
 /// @title MetaVault — the USDG basket vault that drives the per-ticker OffmintVaults (SPEC §6.5)
@@ -178,7 +179,7 @@ contract MetaVault is ERC4626, Ownable2Step, ReentrancyGuard, IUnlockCallback {
     function buyIn(address stock, uint256 usdgAmount) external nonReentrant onlyKeeper {
         BasketPosition storage p = _pos[stock];
         if (p.phase != Phase.NONE) revert WrongState();
-        if (block.timestamp < blacklistedUntil[stock]) revert Blacklisted();
+        if (isBlacklisted(stock)) revert Blacklisted();
         if (clock.inWeekendWindow(block.timestamp)) revert NotWindow();
         OffmintVault v = _vault(stock);
         uint64 we = uint64(clock.windowEnd(block.timestamp + 7 days)); // the coming weekend (Mon-Fri call)
@@ -295,7 +296,7 @@ contract MetaVault is ERC4626, Ownable2Step, ReentrancyGuard, IUnlockCallback {
         total = IERC20(asset()).balanceOf(address(this));
         for (uint256 i = 0; i < _open.length; i++) {
             BasketPosition storage p = _pos[_open[i]];
-            OffmintVault v = OffmintVault(registry.vaultFor(p.stock));
+            OffmintVault v = OffmintVault(registry.vaultFor(p.stock, address(this)));
             uint256 units = p.phase == Phase.COMMITTED ? v.convertToAssets(p.obShares) : p.stockAmount;
             (uint256 price, uint8 pd) = (p.buyInPrice, p.priceDecimals);
             try v.priceRef().read() returns (uint256 px, uint8 d, uint256) {
@@ -410,6 +411,25 @@ contract MetaVault is ERC4626, Ownable2Step, ReentrancyGuard, IUnlockCallback {
         return _pos[stock];
     }
 
+    /// @notice Ticker-level blacklist (SPEC §6.5.3): MetaVault's own realized loss above `weeklyLossCapBps`, OR a
+    ///         settled epoch of the ticker's community instance within the last `blacklistDays` that lost more than
+    ///         `weeklyLossCapBps` of the STOCK it deployed. No keeper override.
+    function isBlacklisted(address stock) public view returns (bool) {
+        if (block.timestamp < blacklistedUntil[stock]) return true;
+        address c = registry.vaultFor(stock, address(0));
+        if (c == address(0)) return false;
+        OffmintVault v = OffmintVault(c);
+        uint256 window = uint256(params.blacklistDays) * 1 days;
+        uint256 n = v.epochCount();
+        for (uint256 id = n; id > 0 && n - id < 16; id--) {
+            OffmintVault.Epoch memory e = v.epochs(id);
+            if (e.settledAt == 0) continue;
+            if (e.settledAt + window <= block.timestamp) break;
+            if (e.pnlStock < 0 && uint256(-e.pnlStock) * BPS > e.stockDeployed * params.weeklyLossCapBps) return true;
+        }
+        return false;
+    }
+
     /// @notice All params.
     function getParams() external view returns (Params memory) {
         return params;
@@ -428,9 +448,10 @@ contract MetaVault is ERC4626, Ownable2Step, ReentrancyGuard, IUnlockCallback {
         emit ParamsUpdated(p);
     }
 
+    /// @dev MetaVault's exclusive instance for `stock`; never the community one (SPEC §6.5.3).
     function _vault(address stock) internal view returns (OffmintVault v) {
-        v = OffmintVault(registry.vaultFor(stock));
-        if (address(v) == address(0)) revert NoVault();
+        v = OffmintVault(registry.vaultFor(stock, address(this)));
+        if (address(v) == address(0) || v.restrictedDepositor() != address(this)) revert NoVault();
     }
 
     /// @dev Read through the ticker's own price reference (reverts if paused / halted / sequencer down); must be recent

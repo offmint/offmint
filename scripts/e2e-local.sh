@@ -46,7 +46,7 @@ expect_action() {
 call() { cast call "$VAULT" "$@" --rpc-url "$RPC" | awk '{print $1}'; }
 
 step "deploy"
-forge script script/Deploy.s.sol --rpc-url "$RPC" --broadcast >/dev/null
+forge script script/Deploy.s.sol --rpc-url "$RPC" --broadcast --slow >/dev/null
 VAULT=$(python3 -c "import json;print(json.load(open('deployments/31337.json'))['vault'])")
 ASSETS0=$(call "totalAssets()(uint256)")
 echo "vault $VAULT, totalAssets $ASSETS0"
