@@ -6,6 +6,8 @@ body { @apply bg-paper text-ink antialiased font-sans; }
 .card { @apply bg-paper-card border border-paper-line rounded-lg p-5; }
 .label { @apply text-xs uppercase tracking-wide text-ink-faint; }
 .num { font-variant-numeric: tabular-nums; }
+/* big display figures: proportional, lining (tabular spacing looks gappy at large sizes) */
+.fig { font-variant-numeric: lining-nums proportional-nums; letter-spacing: -0.02em; }
 .btn { @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition disabled:opacity-40; }
 .btn-primary { @apply btn bg-tide text-white hover:bg-tide-dark; }
 .btn-ghost { @apply btn border border-paper-line bg-paper-card hover:bg-paper; }

@@ -59,7 +59,9 @@ abstract contract ForkBase is Test {
     function useRealFeed() internal pure virtual returns (bool);
 
     function setUp() public virtual {
-        string memory url = vm.envOr("ALCHEMY_RH_MAINNET_URL", vm.envOr("RH_MAINNET_RPC", string("")));
+        // an empty ALCHEMY_RH_MAINNET_URL falls through to RH_MAINNET_RPC
+        string memory url = vm.envOr("ALCHEMY_RH_MAINNET_URL", string(""));
+        if (bytes(url).length == 0) url = vm.envOr("RH_MAINNET_RPC", string(""));
         if (bytes(url).length == 0) {
             vm.skip(true);
             return;
@@ -245,6 +247,16 @@ abstract contract ForkBase is Test {
         vm.prank(alice);
         uint256 out = vault.redeem(sh, alice, alice);
         assertGt(out, 100e18);
+        // per-rung detail for the landing page's worked example (same run)
+        OffmintVault.RungResult[] memory rs = vault.epochRungs(e.id);
+        for (uint256 i = 0; i < rs.length; i++) {
+            emit log_named_uint("rung", i);
+            emit log_named_decimal_uint("  STOCK placed", rs[i].stockDeployed, 18);
+            emit log_named_decimal_uint("  STOCK left unsold", rs[i].stockBack, 18);
+            emit log_named_decimal_uint("  USDG received", rs[i].usdgReceived, 6);
+        }
+        emit log_named_decimal_uint("perf fee (STOCK)", e.feeStock, 18);
+        emit log_named_decimal_uint("holder redeems 100 -> STOCK", out, 18);
     }
 
     function test_fork_gapUp_capsBuyback() public {

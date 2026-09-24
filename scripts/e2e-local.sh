@@ -87,3 +87,7 @@ python3 -c "import sys; sys.exit(0 if int('$ASSETS1') > int('$ASSETS0') else 1)"
   exit 1
 }
 echo "E2E OK: +$(python3 -c "print(round((int('$ASSETS1')-int('$ASSETS0'))/1e18,4))") STOCK per 100 deposited (after perf fee)"
+# optional: per-rung detail of this run (used for the landing page's hero numbers)
+if [ -n "${DUMP_EPOCH:-}" ]; then
+  (cd "$ROOT" && RPC_URL="$RPC" npx tsx keeper/src/dumpEpoch.ts contracts/deployments/31337.json) >"$DUMP_EPOCH"
+fi
