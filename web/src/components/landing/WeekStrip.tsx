@@ -24,8 +24,8 @@ export function WeekStrip() {
   const local = now?.toLocaleString(undefined, { weekday: "short", hour: "2-digit", minute: "2-digit" });
   const utc = now ? `${DAYS[(now.getUTCDay() + 6) % 7]} ${String(now.getUTCHours()).padStart(2, "0")}:${String(now.getUTCMinutes()).padStart(2, "0")} UTC` : "";
   return (
-    <section id="week" className="mx-auto max-w-6xl px-4 py-14">
-      <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">The week, as the market sees it</h2>
+    <section id="week" className="gutter py-14">
+      <h2 className="h-section text-[32px] md:text-[48px]">The week, as the market sees it</h2>
       <p className="mt-2 max-w-[64ch] text-ink-soft">Stock tokens trade 24/7. New ones can only be created while the real market is open.</p>
       <div ref={scroller} className="mt-4 overflow-x-auto pb-2 pt-8">
         <div className="relative min-w-[720px]">

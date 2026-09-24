@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import { PAPER_API } from "@/lib/config";
-import { PriceChart } from "@/components/PriceChart";
+import { CandleChart } from "@/components/CandleChart";
+import { Token } from "@/components/TokenLogo";
 import { pct } from "@/lib/format";
 
 interface Entry { file: string; ticker: string; window: string; status: string; maxPremiumPct: number | null; vsHodlPct: number | null }
@@ -29,7 +30,7 @@ export default function Paper() {
               <thead><tr><th>Ticker</th><th>Status</th><th>Max premium over Friday close</th><th>STOCK vs hold</th><th></th></tr></thead>
               <tbody>{rows.map((e) => (
                 <tr key={e.file}>
-                  <td className="font-medium">{e.ticker}{CONTROLS.includes(e.ticker) ? <span className="ml-1 text-xs text-ink-faint">control</span> : null}</td>
+                  <td className="font-medium"><Token ticker={e.ticker} size={22} />{CONTROLS.includes(e.ticker) ? <span className="ml-1 text-xs text-ink-faint">control</span> : null}</td>
                   <td className="text-xs">{e.status}</td>
                   <td className="num">{e.maxPremiumPct != null ? pct(e.maxPremiumPct) : "–"}</td>
                   <td className="num">{e.vsHodlPct != null ? pct(e.vsHodlPct) : "–"}</td>
@@ -43,8 +44,9 @@ export default function Paper() {
       {idx?.length === 0 && <div className="text-sm text-ink-faint">Paper service unreachable or no weekends recorded yet.</div>}
       {sel && (
         <div className="card">
-          <div className="mb-2 font-medium">{sel.ticker} · weekend of {sel.window?.startIso?.slice(0, 10)}</div>
-          <PriceChart data={sel.timeline ?? []} p0={sel.arm?.p0Usd} caption={`Source: live mainnet pool swaps, weekend of ${sel.window?.startIso?.slice(0, 10)} (paper mode, Railway service)`} />
+          <div className="mb-2 flex items-center gap-2 font-medium"><Token ticker={sel.ticker} size={24} /> · weekend of {sel.window?.startIso?.slice(0, 10)}</div>
+          <div className="rounded-[12px] bg-matte p-3">{(sel.timeline?.length ?? 0) > 1 ? <CandleChart swaps={sel.timeline} t0={sel.window.start} t1={Math.max(sel.window.end, sel.timeline[sel.timeline.length - 1].t)} p0={sel.arm?.p0Usd ?? sel.timeline[0].usd} p0Label="Friday price" reopenAt={sel.window.end} bucket={1800} height={300} /> : <div className="p-6 text-sm text-[#9AA3A6]">No swaps recorded for this weekend.</div>}</div>
+          <p className="mt-2 text-xs text-ink-faint">Source: live mainnet pool swaps, weekend of {sel.window?.startIso?.slice(0, 10)} (paper mode, Railway service). 30-min candles.</p>
           <p className="mt-2 text-xs text-ink-faint">{sel.caveat}</p>
         </div>
       )}

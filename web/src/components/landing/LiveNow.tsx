@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { sessionNow } from "./StatBand";
+import { Token } from "@/components/TokenLogo";
 
 interface Row { ticker: string; token: string; poolUsd: number | null; refUsd: number | null; premiumPct: number | null; depthUsdTo10: number; poolAgeDays: number }
 interface Live { basket: { live: boolean; count: number | null }; rows: Row[]; updatedAt: string }
@@ -22,9 +23,9 @@ export function LiveNow() {
   const session = sessionNow(Date.now()).off ? "Minting off" : "Minting on";
   return (
     <section id="live" className="border-y border-paper-line bg-paper-card">
-      <div className="mx-auto max-w-6xl px-4 py-16">
+      <div className="gutter py-16">
         <div className="flex flex-wrap items-end justify-between gap-3">
-          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Live now</h2>
+          <h2 className="h-section text-[40px] md:text-[64px]">Live now</h2>
           <Link href="/monitor" className="text-sm font-medium text-tide underline underline-offset-4">Open live monitor</Link>
         </div>
         <p className="mt-2 max-w-[64ch] text-ink-soft">New listings in the vulnerable window, highest premium first.</p>
@@ -40,7 +41,7 @@ export function LiveNow() {
               )}
               {rows.map((r) => (
                 <tr key={r.token} className="border-t border-paper-line">
-                  <td className="px-4 py-3"><span className="rounded-[6px] bg-matte px-1.5 py-0.5 text-[11px] font-semibold text-paper-text">{r.ticker}</span></td>
+                  <td className="px-4 py-3"><Token ticker={r.ticker} size={22} /></td>
                   <td className="num px-4 py-3">{usd(r.poolUsd)}</td>
                   <td className="num px-4 py-3 text-ink-soft">{usd(r.refUsd)}</td>
                   <td className={`num px-4 py-3 font-medium ${r.premiumPct! >= 5 ? "text-tide" : ""}`}>{r.premiumPct! >= 0 ? "+" : ""}{r.premiumPct!.toFixed(2)}%</td>

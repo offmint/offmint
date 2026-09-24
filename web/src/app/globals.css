@@ -16,3 +16,9 @@ body { @apply bg-paper text-ink antialiased font-sans; }
 table.data { @apply w-full text-sm; }
 table.data th { @apply text-left font-medium text-ink-faint text-xs uppercase tracking-wide py-2 px-2 border-b border-paper-line; }
 table.data td { @apply py-2 px-2 border-b border-paper-line; }
+
+/* edge-to-edge layout: content aligns to page gutters, no centred column */
+.gutter { @apply px-5 sm:px-8 lg:px-12 xl:px-16; }
+.h-display { font-weight: 700; letter-spacing: -0.045em; line-height: 0.95; }
+.h-section { font-weight: 650; letter-spacing: -0.035em; line-height: 1.02; }
+@media (prefers-reduced-motion: reduce) { .motion-safe-only { animation: none !important; transition: none !important; } }

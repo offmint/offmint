@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { PriceChart } from "@/components/PriceChart";
+import { CandleChart } from "@/components/CandleChart";
+import { Token } from "@/components/TokenLogo";
 import { EVENTS, loadBacktest, type BacktestDoc } from "@/lib/backtest";
 import { pct } from "@/lib/format";
 
@@ -19,8 +20,9 @@ export default function Backtest() {
           const mv = d.summary.metaVault?.exFees;
           return (
             <div key={d.id} className="card space-y-4">
-              <div className="font-medium">{d.summary.ticker}</div>
-              <PriceChart data={d.sim.timeline} p0={d.summary.p0Usd} caption={`Source: Uniswap v4 Swap logs on Robinhood Chain mainnet (deepest hook-free ${d.summary.ticker}/USDG pool), ${d.event.windowStart.slice(0, 10)} weekend. Replay: backtest/src/replay.ts`} />
+              <div className="font-medium"><Token ticker={d.summary.ticker} size={24} /></div>
+              <div className="rounded-[12px] bg-matte p-3"><CandleChart swaps={d.sim.timeline} t0={d.sim.window.start} t1={d.sim.timeline[d.sim.timeline.length - 1].t} p0={d.summary.p0Usd} p0Label="Friday close" reopenAt={d.sim.window.end} bucket={1800} height={300} /></div>
+              <p className="text-xs text-ink-faint">{`Source: Uniswap v4 Swap logs on Robinhood Chain mainnet (deepest hook-free ${d.summary.ticker}/USDG pool), ${d.event.windowStart.slice(0, 10)} weekend. Replay: backtest/src/replay.ts`}</p>
               <div className="grid grid-cols-3 gap-3 text-sm">
                 <div><div className="label">Friday close</div><div className="num">${d.summary.p0Usd.toFixed(2)}</div></div>
                 <div><div className="label">Peak</div><div className="num">${d.summary.maxPoolUsd.toFixed(2)}</div></div>

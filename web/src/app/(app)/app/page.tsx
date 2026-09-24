@@ -10,6 +10,7 @@ import { offmintVaultAbi } from "@/abi/OffmintVault";
 import { addrs, explorerAddr, explorerTx } from "@/lib/config";
 import { Countdown } from "@/components/Countdown";
 import { FaucetButton } from "@/components/FaucetButton";
+import { Token } from "@/components/TokenLogo";
 import { RiskDisclosure, JurisdictionNotice } from "@/components/Risk";
 import { short, usd, utc } from "@/lib/format";
 
@@ -95,7 +96,7 @@ export default function AppPage() {
                   if (!pos) return null;
                   return (
                     <tr key={i}>
-                      <td><Link className="underline" href={`/vault/${addrs.ticker}`}>{addrs.ticker}</Link> <span className="text-xs text-ink-faint">{short(pos.stock)}</span></td>
+                      <td><Link href={`/vault/${addrs.ticker}`}><Token ticker={addrs.ticker} size={22} /></Link> <span className="text-xs text-ink-faint">{short(pos.stock)}</span></td>
                       <td>{PHASES[pos.phase]}{pos.phase === 2 && instState.data !== undefined ? ` · instance ${SUB[instState.data]}` : ""}</td>
                       <td className="num">{usd(Number(formatUnits(pos.usdgSpent, 6)))} USDG</td>
                       <td className="num">${(Number(pos.buyInPrice) / 10 ** pos.priceDecimals).toFixed(2)}</td>

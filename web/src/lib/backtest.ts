@@ -6,7 +6,7 @@ export interface BacktestDoc {
     metaVault?: { assumptions: Record<string, unknown>; exFees: { sharesGainPct: number; priceMovePct: number; grossUsdPct: number; frictionPct: number; netUsdPct: number } };
     rows: { variant: string; deployed: number; avgSellUsd: number | null; vsHodlPct: number; vsHodlPctExFees: number; state: string }[];
   };
-  sim: { timeline: { t: number; usd: number }[]; outliers?: unknown[] };
+  sim: { timeline: { t: number; usd: number }[]; outliers?: unknown[]; window: { start: number; end: number; startIso: string; endIso: string } };
   caveats: string[];
 }
 export const EVENTS = ["hims-2026-08-28", "glxy-2026-09-11"] as const;

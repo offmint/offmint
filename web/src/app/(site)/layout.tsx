@@ -7,7 +7,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
   return (
     <div className="bg-mist text-matte">
       <header className="sticky top-0 z-20 border-b border-paper-line bg-mist/90 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+        <div className="gutter flex items-center justify-between py-3">
           <Logo tone="light" height={24} />
           <nav className="flex items-center gap-5 text-sm text-ink-soft">
             <a href="#evidence" className="hidden hover:text-matte sm:inline">Evidence</a>

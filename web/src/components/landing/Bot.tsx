@@ -10,8 +10,8 @@ const CANNOT = [
 
 export function Bot() {
   return (
-    <section id="bot" className="mx-auto max-w-6xl px-4 py-16">
-      <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">What the bot can and cannot do</h2>
+    <section id="bot" className="gutter py-16">
+      <h2 className="h-section text-[40px] md:text-[64px]">What the bot can and cannot do</h2>
       <div className="mt-8 grid gap-6 md:grid-cols-2">
         <div className="rounded-[12px] border border-paper-line bg-paper-card p-6">
           <div className="text-sm font-medium text-tide">Can</div>

@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { WORKED_GLXY as G } from "@/content/landing";
+import { TokenLogo } from "@/components/TokenLogo";
 
 const PREMIUMS = [8, 15, 25, 40];
 
@@ -30,11 +31,11 @@ export function HowItWorks() {
       : { n: "04", title: "Monday", big: `${G.held.toFixed(2)} GLXY`, sub: "ladder pulled back unsold: nothing lost on the ladder" },
   ];
   return (
-    <section id="how" className="mx-auto max-w-6xl px-4 py-16">
+    <section id="how" className="gutter py-16">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">How it works, with real numbers</h2>
-          <p className="mt-2 max-w-[64ch] text-ink-soft">One weekend on the real GLXY pool.</p>
+          <h2 className="h-section text-[40px] md:text-[64px]">How it works, with real numbers</h2>
+          <p className="mt-2 flex max-w-[64ch] items-center gap-2 text-ink-soft">One weekend on the real <TokenLogo ticker="GLXY" size={20} /><b className="text-matte">GLXY</b> pool.</p>
         </div>
         <div role="tablist" aria-label="Scenario" className="inline-flex rounded-[6px] border border-paper-line bg-paper-card p-1 text-sm">
           {[["Spike", true], ["No spike", false]].map(([label, v]) => (
@@ -52,7 +53,10 @@ export function HowItWorks() {
             <div className="rounded-[12px] border border-paper-line bg-paper-card p-5">
               <div className="text-xs text-ink-faint num">{c.n}</div>
               <div className="mt-1 text-sm font-medium">{c.title}</div>
-              <div className={`fig mt-3 text-[30px] font-semibold leading-none ${i === 3 && spike ? "text-tide" : ""}`}>{c.big}</div>
+              <div className={`fig mt-3 flex items-center gap-2 text-[30px] font-semibold leading-none ${i === 3 && spike ? "text-tide" : ""}`}>
+                {c.big.endsWith("GLXY") && <TokenLogo ticker="GLXY" size={26} />}
+                {c.big}
+              </div>
               <div className="mt-2 text-sm text-ink-soft">{c.sub}</div>
               {"steps" in c && c.steps && (
                 <div className="mt-4 space-y-1">

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { PAPER_API } from "@/lib/config";
 import { Countdown } from "@/components/Countdown";
 import { usd } from "@/lib/format";
+import { Token } from "@/components/TokenLogo";
 
 interface Member { ticker: string; token: string; hasFeed: boolean; poolAgeDays: number; tvlUsd: number; depthUsdTo10: number; priceUsd: number | null; path: string }
 interface Basket { generatedAt: string; rule?: string; counts: Record<string, number>; members: Member[]; excluded: { ticker: string; reason: string }[] }
@@ -46,7 +47,7 @@ export default function Monitor() {
           <tbody>
             {members.map((m) => (
               <tr key={m.token}>
-                <td className="font-medium">{m.ticker}</td>
+                <td><Token ticker={m.ticker} size={22} /></td>
                 <td className="text-xs">{m.hasFeed ? "Chainlink" : "none (PushPriceReference path)"}</td>
                 <td className="num">{m.priceUsd ? `$${m.priceUsd.toFixed(2)}` : "–"}</td>
                 <td className="num">{m.poolAgeDays.toFixed(1)}d</td>

@@ -4,7 +4,7 @@ import { REPO } from "@/content/landing";
 export function SiteFooter() {
   return (
     <footer className="border-t border-paper-line bg-mist">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 text-sm text-ink-soft md:grid-cols-[auto_1fr_auto]">
+      <div className="gutter grid gap-8 py-10 text-sm text-ink-soft md:grid-cols-[auto_1fr_auto]">
         <Logo tone="light" height={22} />
         <div className="max-w-[64ch] space-y-1">
           <p>Built on Robinhood Chain, an Arbitrum Orbit chain. Testnet deployment, unaudited.</p>

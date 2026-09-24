@@ -15,8 +15,8 @@ const CARDS = [
 export function Verify() {
   return (
     <section id="verify" className="bg-matte text-paper-text">
-      <div className="mx-auto max-w-6xl px-4 py-16">
-        <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Verify it yourself</h2>
+      <div className="gutter py-16">
+        <h2 className="h-section text-[40px] md:text-[64px]">Verify it yourself</h2>
         <p className="mt-2 max-w-[64ch] text-[#C9D1D3]">Every contract is source-verified on the Robinhood Chain testnet explorer.</p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {CARDS.map((c) => (

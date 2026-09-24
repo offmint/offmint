@@ -1,23 +1,27 @@
 import Link from "next/link";
-import { HeroCard } from "./HeroCard";
+import { HeroChart } from "./HeroChart";
 
 export function Hero() {
   return (
-    <section id="hero" className="mx-auto grid max-w-6xl items-center gap-10 px-4 pb-14 pt-12 md:grid-cols-[1fr_1.05fr] md:pt-16">
-      <div>
-        <h1 className="text-[44px] font-bold leading-[1.02] tracking-tight md:text-[64px]">
-          They price the weekend. <span className="text-tide">We supply it.</span>
-        </h1>
-        <p className="mt-5 max-w-[46ch] text-lg text-ink-soft">
+    <section id="hero" className="gutter pb-6 pt-14 md:pt-20">
+      <h1 className="h-display text-[50px] sm:text-[72px] lg:text-[86px] xl:text-[100px] 2xl:text-[120px]">
+        They price the weekend.
+        <br />
+        <span className="text-tide">We supply it.</span>
+      </h1>
+      <div className="mt-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <p className="max-w-[48ch] text-lg text-ink-soft md:text-xl">
           New stock tokens can&apos;t be created on weekends, so they spike. Offmint sells into the spike in steps above
           Friday&apos;s price and buys back on Monday.
         </p>
-        <div className="mt-7 flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-3">
           <Link href="/app" className="btn-primary rounded-[6px] px-5 py-3 text-base focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tide">Try it on testnet</Link>
           <a href="#live" className="btn-ghost rounded-[6px] px-5 py-3 text-base focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tide">See live prices</a>
         </div>
       </div>
-      <HeroCard />
+      <div className="mt-10">
+        <HeroChart />
+      </div>
     </section>
   );
 }

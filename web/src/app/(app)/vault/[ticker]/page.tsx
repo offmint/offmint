@@ -5,6 +5,7 @@ import { useReadContracts } from "wagmi";
 import { offmintVaultAbi } from "@/abi/OffmintVault";
 import { addrs, explorerAddr } from "@/lib/config";
 import { short, utc } from "@/lib/format";
+import { TokenLogo } from "@/components/TokenLogo";
 
 const STATES = ["OPEN", "ARMED", "PENDING_BUYBACK", "OPEN_MIXED"];
 
@@ -14,7 +15,7 @@ export default function VaultPage({ params }: { params: Promise<{ ticker: string
   const known = ticker.toUpperCase() === addrs.ticker.toUpperCase();
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-semibold">{ticker.toUpperCase()}: both vault instances</h1>
+      <h1 className="flex items-center gap-3 text-2xl font-semibold"><TokenLogo ticker={ticker.toUpperCase()} size={32} />{ticker.toUpperCase()}: both vault instances</h1>
       {!known ? (
         <p className="text-sm text-ink-soft">No vault for this ticker on this deployment.</p>
       ) : (
