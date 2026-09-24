@@ -2,6 +2,7 @@
 // Picks come from the latest SELECT output (select.ts) mapped to stocks that have a MetaVault instance in the factory;
 // META_PICKS=0xstock,... overrides them (testnet demo: the mock stock has no mainnet SELECT score).
 // META_BUYIN_OPEN=1 opens BUY-IN regardless of weekday (testnet demo clock); otherwise Wed/Thu UTC only.
+// META_COMMIT_LEAD=<seconds> shortens the Friday commit lead for a real-time demo weekend (default 6h).
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -138,7 +139,10 @@ export async function createMetaBot(o: { rpc: string; pk: Hex; deploymentPath: s
 
   async function tick() {
     const s = await snapshot();
-    const d = metaDecide(s, { ...META_POLICY, buyInOpen: process.env.META_BUYIN_OPEN === "1" || realBuyInOpen(s.now) });
+    const d = metaDecide(s, {
+      buyInOpen: process.env.META_BUYIN_OPEN === "1" || realBuyInOpen(s.now),
+      commitLead: Number(process.env.META_COMMIT_LEAD ?? META_POLICY.commitLead),
+    });
     o.log({ event: "tick", instance: "metaVault", open: s.openPositionCount, usdg: s.usdgBalance, picks: s.picks.length, action: d.action, reason: d.reason, now: s.now });
     if (d.action === "none") return { decision: d };
     const args = d.action === "buyIn" ? [d.stock, d.amount] : [d.stock];
