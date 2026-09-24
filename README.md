@@ -38,20 +38,29 @@ A live vault would have dampened the spike, so real fills would differ. LP-fee e
 
 ## Deployed: Robinhood Chain testnet (46630)
 
-All contracts are source-verified on the explorer. Pool: hook-free mHIMS/USDG, fee 0.30%, tick spacing 60, initialised at
-$28.84 (stock = currency0). The vault is OPEN with a 100 mHIMS demo deposit.
+Redeployed 24 Sep 2026 with the laddered vault, `restrictedDepositor` isolation, VaultFactory and MetaVault: 30/30
+transactions succeeded and all 14 contracts are source-verified on the explorer. Pool: hook-free mHIMS/USDG, fee 0.30%,
+tick spacing 60, initialised at $28.84 (stock = currency0). The community vault is OPEN with a 100 mHIMS demo deposit.
+MetaVault is IDLE with 9,950.25 USDG (a 10,000 deposit minus the 0.5% entry fee). The first deployment (single-range vault,
+`0xc3413BCc…50bdA`, live demo weekend +8.45 mHIMS / 100) remains onchain; its record is in git history.
 
 | Contract | Address |
 |---|---|
-| OffmintVault (omHIMS) | [`0xc3413BCcc6BAf64430FF0f0f56B9C2B1D9850bdA`](https://explorer.testnet.chain.robinhood.com/address/0xc3413BCcc6BAf64430FF0f0f56B9C2B1D9850bdA) |
-| Mock HIMS (mHIMS) | [`0x615f0560B449599e8f4825B76B495713f0fbC67B`](https://explorer.testnet.chain.robinhood.com/address/0x615f0560B449599e8f4825B76B495713f0fbC67B) |
-| Mock USDG (6 dec) | [`0x9ADB65C487dCC0B6D61b4110B45c07098f7A4006`](https://explorer.testnet.chain.robinhood.com/address/0x9ADB65C487dCC0B6D61b4110B45c07098f7A4006) |
-| MockFeed | [`0xB1427c1699306e612868EBCc92A2Ec3Ff9d414f6`](https://explorer.testnet.chain.robinhood.com/address/0xB1427c1699306e612868EBCc92A2Ec3Ff9d414f6) |
-| ManualSessionClock | [`0x2dc88AdB3D66Dc754F97CAE59Cb3a01E97eA109d`](https://explorer.testnet.chain.robinhood.com/address/0x2dc88AdB3D66Dc754F97CAE59Cb3a01E97eA109d) |
+| MetaVault (omMETA, USDG in) | [`0xDE1D914e7eC0cAd677137aBa80582c7129F61AAC`](https://explorer.testnet.chain.robinhood.com/address/0xDE1D914e7eC0cAd677137aBa80582c7129F61AAC) |
+| VaultFactory | [`0x93EeffA175076F01184Fd467CA9ca4d48Ca2A2E1`](https://explorer.testnet.chain.robinhood.com/address/0x93EeffA175076F01184Fd467CA9ca4d48Ca2A2E1) |
+| OffmintVault, community instance (obmHIMS, open) | [`0x2ea8dF9feA9DDEBb0abf774aE46E1DFF9a6E4285`](https://explorer.testnet.chain.robinhood.com/address/0x2ea8dF9feA9DDEBb0abf774aE46E1DFF9a6E4285) |
+| OffmintVault, MetaVault-exclusive instance (mbmHIMS) | [`0x4DF1d410aa932BF5B22E0E2d4dB8d71c1102193E`](https://explorer.testnet.chain.robinhood.com/address/0x4DF1d410aa932BF5B22E0E2d4dB8d71c1102193E) |
+| ChainlinkPriceReference (shared by both instances) | [`0x9B2eB67C72E32Fd0fb06F6130005CC0734271b61`](https://explorer.testnet.chain.robinhood.com/address/0x9B2eB67C72E32Fd0fb06F6130005CC0734271b61) |
+| Mock HIMS (mHIMS) | [`0x048A615495D189992bf03Ca54767be60754bD1bE`](https://explorer.testnet.chain.robinhood.com/address/0x048A615495D189992bf03Ca54767be60754bD1bE) |
+| Mock USDG (6 dec) | [`0x0844463B36f999C84641aE0cd0fFF27179C4DBBb`](https://explorer.testnet.chain.robinhood.com/address/0x0844463B36f999C84641aE0cd0fFF27179C4DBBb) |
+| MockFeed | [`0xd80327b5F068FD071a3401c6c1e4409CaCCC8e65`](https://explorer.testnet.chain.robinhood.com/address/0xd80327b5F068FD071a3401c6c1e4409CaCCC8e65) |
+| ManualSessionClock | [`0xa4C76ac760F3e616FB98924e031aFbabbe1AB0f8`](https://explorer.testnet.chain.robinhood.com/address/0xa4C76ac760F3e616FB98924e031aFbabbe1AB0f8) |
 | v4 PoolManager (chain's own) | [`0x8366a39CC670B4001A1121B8F6A443A643e40951`](https://explorer.testnet.chain.robinhood.com/address/0x8366a39CC670B4001A1121B8F6A443A643e40951) |
-| PoolSwapTest (demo buyer) | [`0xb0C6BE3C382e93a4d83Ae4648A91BcE3907B0edA`](https://explorer.testnet.chain.robinhood.com/address/0xb0C6BE3C382e93a4d83Ae4648A91BcE3907B0edA) |
-| PoolModifyLiquidityTest (seed LP) | [`0x6fA6b29869e5044A091E115B5Cb9f2dF737FE53e`](https://explorer.testnet.chain.robinhood.com/address/0x6fA6b29869e5044A091E115B5Cb9f2dF737FE53e) |
-| RangeMath (linked library) | [`0x20f2776d12dc69daabe0b61f731aae53b3a39d3a`](https://explorer.testnet.chain.robinhood.com/address/0x20f2776d12dc69daabe0b61f731aae53b3a39d3a) |
+| PoolSwapTest (demo buyer) | [`0xA6c9CC615b599659c654a36A9C0B12815ED5E542`](https://explorer.testnet.chain.robinhood.com/address/0xA6c9CC615b599659c654a36A9C0B12815ED5E542) |
+| PoolModifyLiquidityTest (seed LP) | [`0xf3C288f568503bB1184bb9dC61E3DE9eb333A1EE`](https://explorer.testnet.chain.robinhood.com/address/0xf3C288f568503bB1184bb9dC61E3DE9eb333A1EE) |
+| OffmintParams (linked library) | [`0xb1a77579a5c23c4b29b9539b572cb8ca855aee0b`](https://explorer.testnet.chain.robinhood.com/address/0xb1a77579a5c23c4b29b9539b572cb8ca855aee0b) |
+| VaultPoolOps (linked library) | [`0xdb193f8c2021b974294ef9fb84150e01fa796cc5`](https://explorer.testnet.chain.robinhood.com/address/0xdb193f8c2021b974294ef9fb84150e01fa796cc5) |
+| RangeMath (linked library) | [`0x4d49582dee11bcecdc73430f7d6938ebbf88913f`](https://explorer.testnet.chain.robinhood.com/address/0x4d49582dee11bcecdc73430f7d6938ebbf88913f) |
 
 ## Stress test (local chain, time-warped)
 

@@ -137,3 +137,9 @@
 - Deploy script: the testnet stack now deploys through `VaultFactory` (code uploaded and hash-pinned), `MetaVault`,
   and both instances. The E2E and stress runs use `forge script --slow`, because anvil automine left 7.9M-gas
   deploys pending.
+- **Testnet redeploy (46630, approved):** 30/30 transactions, 0.00036 ETH gas, 14/14 contracts verified on Blockscout.
+  - Deployed: VaultFactory (code sealed), MetaVault `0xDE1D…1AAC` (IDLE, 9,950.25 USDG), community instance
+    `obmHIMS` `0x2ea8…4285` (100 mHIMS), MetaVault instance `mbmHIMS` `0x4DF1…193E` (restricted to MetaVault), one
+    shared ChainlinkPriceReference over the MockFeed.
+  - The testnet keeper bot was restarted on the new community vault; the two duplicate stale bots from the first
+    demo were stopped.
