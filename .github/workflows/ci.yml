@@ -22,7 +22,7 @@ jobs:
         run: |
           out=$(forge lint src 2>&1); echo "$out"
           if echo "$out" | grep -qE '^(error|warning|note)\['; then exit 1; fi
-      - name: forge test (+ published test count must match: web/public/data/tests.json)
+      - name: "forge test (+ published test count must match web/public/data/tests.json)"
         working-directory: contracts
         run: |
           out=$(forge test 2>&1); echo "$out" | tail -3
