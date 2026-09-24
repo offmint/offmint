@@ -6,8 +6,9 @@ On weekends nobody can create new Robinhood stock tokens, so a newly listed toke
 price, and whoever buys the top gets hit on Monday. **Offmint is the weekend seller**: it offers supply in steps above
 Friday's price while token creation is frozen, and buys back after the reopen, with the buyback capped at the fresh price.
 
-> Unaudited hackathon software, deployed on Robinhood Chain testnet (46630). Not available to US persons. Offmint is an
-> independent project, not affiliated with or endorsed by Robinhood or the Arbitrum Foundation.
+> **Unaudited. Testnet only** (Robinhood Chain testnet, 46630). Not available to US persons. Offmint is an independent
+> project, not affiliated with or endorsed by Robinhood or the Arbitrum Foundation. Every number below names its source
+> and says whether it is measured, simulated or live.
 
 ## The problem
 On weekdays a stock token's price stays honest: if it trades above the real share, traders create new tokens at the real
@@ -19,14 +20,18 @@ price and sell them. On weekends that loop is switched off. Our screen of every 
 | HIMS | Sat 29 Aug 2026 | **+317.6%** |
 | GLXY | Sat 12 Sep 2026 | **+186.1%** |
 
-The large names (NVDA, TSLA, AAPL, SPY and others) never moved more than about 4% over Friday's close. A few smaller
-feed-backed names had single-weekend spikes; the pattern that repeats is new listings. That is why Offmint rotates across
-a live basket of new listings (a detector rebuilds it every 6 hours) and does not use a fixed ticker list.
+MSTR, which **has** a Chainlink feed, spiked **+243.31%** the same weekend as HIMS (checked against the Chainlink
+feed: the pool traded at parity on Thursday, Friday and Tuesday, +25% Saturday, +103% Sunday, back to parity Monday).
+The largest names (NVDA, TSLA, AAPL, SPY) stayed within a few percent. Squeezes are rare per ticker and recur across the
+basket, which is why Offmint rotates across a live basket (a detector rebuilds it every 6 hours) instead of a fixed list.
+Reference: the Chainlink close where a feed exists, otherwise the pool price at Fri 20:00 UTC. Data: `web/public/data/screen/weekends.json`.
 
 ## Why it is structural
 New tokens can only be created while the underlying share can be bought: Robinhood's tokenization window runs Monday
-02:00 to Saturday 02:00 CET/CEST. Even if those hours grow, weekends, market holidays and trading halts remain. Each of
-those is a window in which supply cannot respond to demand.
+02:00 to Saturday 02:00 CET/CEST and is closed on US market holidays; outside it, minting and burning are not supported
+while trading continues onchain ([Robinhood Chain docs](https://docs.robinhood.com/chain/stock-tokens/),
+[About Stock Tokens](https://robinhood.com/eu/en/support/articles/about-stock-tokens)). Even if those hours grow,
+weekends, holidays and trading halts remain.
 
 ## What Offmint does
 1. **Friday: post the ladder.** When token creation closes, the vault posts four one-sided Uniswap v4 range orders
@@ -51,21 +56,21 @@ to themselves.
 
 The two use separate vault instances, so MetaVault's speculative timing never shapes a community depositor's risk.
 
-## What a squeeze is worth, two ways
+## What a squeeze is worth, two ways (simulated)
 | Measured on | Result | Units |
 |---|---|---|
 | the capital in the sell ladder | **+8.1%** | STOCK, before the 10% performance fee |
 | the whole MetaVault | **+0.44%** | NAV in USDG, after fees |
 
-Both numbers come from the same run: a simulated +30% squeeze against a locally deployed Uniswap v4 pool
+Simulated, not measured: both numbers come from the same run, a simulated +30% squeeze against a locally deployed Uniswap v4 pool
 (`contracts/test/MetaVault.t.sol`, `test_fullCycle_squeeze_navUp_A`). The gap is deliberate risk sizing: MetaVault buys in
 with 30% of the vault and 30% of that goes into the ladder, so about 9% of the vault is at work in a weekend.
 
 ## Proof
 | Evidence | Result | Source |
 |---|---|---|
-| Replays of the two real weekends | HIMS: +14.7% more stock than holding on the capital deployed (sell-and-lock, before fees) | `backtest/`, real swap history; `web/public/data/backtest/` |
-| Mainnet-fork simulations | 30 tokens into a simulated squeeze came back as 36.99 TSLA, 37.09 HIMS, 37.07 GLXY | `contracts/test/Fork.t.sol` (HIMS/GLXY use the no-feed price reference) |
+| Replays of the two real weekends (simulated fills on real swaps) | HIMS: +14.7% more stock than holding on the capital deployed (sell-and-lock, before fees) | `backtest/`, real swap history; `web/public/data/backtest/` |
+| Mainnet-fork simulations (simulated spike, real pools) | 100 held, 30 in the ladder, simulated +70% spike: 106.32 TSLA, 106.37 HIMS, 106.31 GLXY after the fee | `contracts/test/Fork.t.sol`, mainnet fork @ block 71,241,990 (`web/public/data/sim/fork.json`) |
 | Autonomous testnet cycle | the keeper bot ran a full MetaVault week: 10,000 test USDG in, **10,103.71 out after both fees** (thin demo pool, +70% squeeze) | txs: [buy-in](https://explorer.testnet.chain.robinhood.com/tx/0x300799da34a0539bd9e91e0fd6c59e3f5b3e63de7df0a3a40bbf45ae45c6db44) · [commit](https://explorer.testnet.chain.robinhood.com/tx/0x5ace8e0ffcff552d5b00630ba3d88f2fb95a890030cbf122a8d539cd9d268773) · [arm](https://explorer.testnet.chain.robinhood.com/tx/0xbee65c69857ad7bd3d23234faea4ef5afbf72f9ce665bbbda67d2de7877ebd45) · [lock](https://explorer.testnet.chain.robinhood.com/tx/0xbb44130566bb67489c66247b9388622a29d1a018d6ea58c421a83dba4488a36c) · [settle](https://explorer.testnet.chain.robinhood.com/tx/0x0b385a948e9ce253e080cdf62f6a26147f216a8a9944ce305cd2b3ce7840e8de) · [unwind](https://explorer.testnet.chain.robinhood.com/tx/0xe64969cc5b07ecba05140341c9fb23113dbecbdfc6873edced65ef33764daa9e) |
 | Paper trading on mainnet | every new listing plus NVDA/SPY controls, every weekend, no funds; squeeze or not, published | https://offmint-keeper-production.up.railway.app/paper/index.json |
 | Stress test | 40 random weekends × 12 depositors on a local chain with the real deploy script and bot: 0 invariant violations | `npm run stress` |
@@ -73,7 +78,10 @@ with 30% of the vault and 30% of that goes into the ladder, so about 9% of the v
 ## Honest limits
 - The sample is small: two squeezes in the weekends we measured.
 - Pools are thin, so the dollar size of each opportunity is small.
-- Our own supply shrinks the spike it sells into, so real results would be lower than the replays.
+- Our own supply shrinks the spike it sells into, so real results would be lower than the replays and simulations
+  (a replay that adds our ladder's liquidity to the pool is not built yet).
+- Live premiums on the site are shown only when they pass a quality gate (TVL, depth, fresh swaps, tight quote,
+  independent price agrees); off-hours Robinhood quotes are often too wide to use.
 - A Monday that opens above the ladder is the cost of selling: in the stress test one squeeze weekend ended −0.49%.
 - Unaudited, testnet only.
 

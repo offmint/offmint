@@ -10,6 +10,12 @@ import { createPublicClient, createWalletClient, http, parseAbi, type Address, t
 import { privateKeyToAccount } from "viem/accounts";
 
 const API = "https://api.robinhood.com/rhj";
+/** Never post the mid of a wide quote (market closed): it is not a price (docs/verification/premiums.md). */
+export const MAX_SPREAD_BPS = 100;
+export const spreadBps = (bid: string, ask: string) => {
+  const b = Number(bid), a = Number(ask);
+  return b > 0 && a > 0 ? ((a - b) / ((a + b) / 2)) * 10_000 : Infinity;
+};
 const E18 = 10n ** 18n;
 
 /** Parses a non-negative decimal string into an integer scaled by 10^dp (truncating extra digits). */
@@ -86,6 +92,11 @@ async function main() {
       const q = (await getJson(`${API}/prices/${t}`)).quotes?.[0];
       if (!a || !q) {
         console.log(JSON.stringify({ ticker: t, error: "missing asset or quote" }));
+        continue;
+      }
+      const spread = spreadBps(q.bid, q.ask);
+      if (spread > MAX_SPREAD_BPS) {
+        console.log(JSON.stringify({ ticker: t, bid: q.bid, ask: q.ask, spreadBps: Math.round(spread), action: "skipped: quote spread too wide to be a price" }));
         continue;
       }
       const priceE8 = toTokenPriceE8({ kind: "api-raw", bid: q.bid, ask: q.ask, multiplier: a.currentMultiplier });

@@ -2524,5 +2524,5 @@
   }
  },
  "caveat": "Hypothetical: assumes the vault's position does not move the pool price. A live vault would dampen spikes; real fills would differ.",
- "generatedAt": "2026-09-24T03:50:06Z"
+ "generatedAt": "2026-09-24T09:51:32Z"
 }

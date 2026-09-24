@@ -16,7 +16,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { encodeAbiParameters, keccak256, parseAbi, type Address, type Hex } from "viem";
-import { makeClient, blockTime, POOL_MANAGER, type Client } from "../src/chain.js";
+import { makeClient, logClient, blockTime, POOL_MANAGER, type Client } from "../src/chain.js";
 import { sqrtPriceX96ToUsd } from "../src/rangeMath.js";
 import { stockDepthWithin10, tvlUsdEstimate, usdToPush10 } from "../src/depth.js";
 
@@ -79,7 +79,7 @@ interface Cache {
 
 async function getLogsSplit(c: Client, topics: (Hex | null)[], from: bigint, to: bigint): Promise<any[]> {
   try {
-    return await c.request({
+    return await logClient().request({
       method: "eth_getLogs",
       params: [{ address: POOL_MANAGER, fromBlock: `0x${from.toString(16)}`, toBlock: `0x${to.toString(16)}`, topics }],
     } as any);

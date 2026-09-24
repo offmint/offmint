@@ -14,6 +14,19 @@ export const robinhood = {
   contracts: { multicall3: { address: "0xcA11bde05977b3631167028862bE2a173976CA11" as const } },
 } as const;
 
+/**
+ * Log scans (eth_getLogs) always go to a log-capable RPC: Alchemy's free tier limits eth_getLogs to a 10-block range,
+ * so an Alchemy URL is used for reads and calls only. RH_MAINNET_RPC (or the public endpoint) serves logs.
+ */
+let _logClient: Client | undefined;
+export function logClient(): Client {
+  _logClient ??= createPublicClient({
+    chain: robinhood,
+    transport: http(process.env.RH_MAINNET_RPC || "https://rpc.mainnet.chain.robinhood.com", { retryCount: 6, retryDelay: 1_000, timeout: 60_000 }),
+  }) as unknown as Client;
+  return _logClient;
+}
+
 /** Which RPC a URL is, for logs: never prints the URL (an Alchemy URL contains the API key). */
 export const rpcKind = (u: string) => (/alchemy/i.test(u) ? "alchemy" : /rpc\.(mainnet|testnet)\.chain\.robinhood\.com/.test(u) ? "public" : "custom");
 let rpcLogged = false;
@@ -198,7 +211,7 @@ export async function swapLogs(c: Client, poolIds: Hex[], from: bigint, to: bigi
     const end = start + chunk - 1n > to ? to : start + chunk - 1n;
     let raw: any[];
     try {
-      raw = await c.request({
+      raw = await logClient().request({
         method: "eth_getLogs",
         params: [{ address: POOL_MANAGER, fromBlock: `0x${start.toString(16)}`, toBlock: `0x${end.toString(16)}`, topics: [SWAP_TOPIC, poolIds] }],
       } as any);

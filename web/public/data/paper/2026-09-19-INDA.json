@@ -50,5 +50,5 @@
  "fills": [],
  "settlement": null,
  "caveat": "Hypothetical: assumes the vault's position does not move the pool price. A live vault would dampen spikes; real fills would differ.",
- "generatedAt": "2026-09-24T03:47:10Z"
+ "generatedAt": "2026-09-24T09:46:09Z"
 }

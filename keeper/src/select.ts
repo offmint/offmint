@@ -10,7 +10,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { encodeAbiParameters, keccak256, parseAbi, type Hex } from "viem";
-import { makeClient, blockAtOrBefore, swapLogs, POOL_MANAGER, type Client } from "./chain.js";
+import { makeClient, logClient, blockAtOrBefore, swapLogs, POOL_MANAGER, type Client } from "./chain.js";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const USDG = "0x5fc5360d0400a0fd4f2af552add042d716f1d168";
@@ -163,7 +163,7 @@ async function fetchPools(c: Client, tokens: string[], sinceTs: number): Promise
 
 async function getLogsSplit(c: Client, topics: (Hex | Hex[] | null)[], from: bigint, to: bigint): Promise<any[]> {
   try {
-    return await c.request({
+    return await logClient().request({
       method: "eth_getLogs",
       params: [{ address: POOL_MANAGER, fromBlock: `0x${from.toString(16)}`, toBlock: `0x${to.toString(16)}`, topics }],
     } as any);

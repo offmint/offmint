@@ -8,6 +8,8 @@ import { gate, tokenRef, type GateResult } from "@/lib/liveGate";
 
 const PAPER_API = process.env.NEXT_PUBLIC_PAPER_API || "https://offmint-keeper-production.up.railway.app";
 const RPC = process.env.ALCHEMY_RH_MAINNET_URL || process.env.RH_MAINNET_RPC || "https://rpc.mainnet.chain.robinhood.com";
+// Alchemy's free tier limits eth_getLogs to 10 blocks: log scans use the public RPC
+const LOGS_RPC = process.env.RH_MAINNET_RPC || "https://rpc.mainnet.chain.robinhood.com";
 const PM = "0x8366a39cc670b4001a1121b8f6a443a643e40951" as const;
 const SWAP_TOPIC = "0x40e9cecb9f5f1f1c5b9c97dec2917b7ee92e57ba5563708daca94dd84ad7112f" as Hex;
 const pmAbi = parseAbi(["function extsload(bytes32) view returns (bytes32)"]);
@@ -97,13 +99,24 @@ async function build(): Promise<Live> {
       const span = BigInt(Math.ceil(6 * 3600 * perSec * 1.05));
       const ids = members.map((m) => m.pool.poolId as Hex);
       const byId = new Map(members.map((m) => [String(m.pool.poolId).toLowerCase(), m.token]));
-      for (let from = latest.number - span; from <= latest.number; from += 100_000n) {
-        const to = from + 99_999n > latest.number ? latest.number : from + 99_999n;
-        const logs = await c.request({
-          method: "eth_getLogs",
-          params: [{ address: PM, fromBlock: `0x${from.toString(16)}`, toBlock: `0x${to.toString(16)}`, topics: [SWAP_TOPIC, ids] }],
-        } as any) as any[];
+      // adaptive range: halve on RPC errors (public endpoint limits), like keeper/src/chain.ts swapLogs
+      const lc = createPublicClient({ transport: http(LOGS_RPC, { timeout: 20_000, retryCount: 2 }) });
+      let chunk = 50_000n;
+      for (let from = latest.number - span; from <= latest.number; ) {
+        const to = from + chunk - 1n > latest.number ? latest.number : from + chunk - 1n;
+        let logs: any[];
+        try {
+          logs = (await lc.request({
+            method: "eth_getLogs",
+            params: [{ address: PM, fromBlock: `0x${from.toString(16)}`, toBlock: `0x${to.toString(16)}`, topics: [SWAP_TOPIC, ids] }],
+          } as any)) as any[];
+        } catch (e) {
+          if (chunk <= 2_000n) throw e;
+          chunk /= 4n;
+          continue;
+        }
         for (const l of logs) lastSwap.set(byId.get(String(l.topics[1]).toLowerCase())!, Number(BigInt(l.blockNumber)));
+        from = to + 1n;
       }
       // convert last-swap blocks to ages
       for (const [tok, b] of lastSwap) lastSwap.set(tok, Math.max(0, (Number(latest.number) - b) / perSec));

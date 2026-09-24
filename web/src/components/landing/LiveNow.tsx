@@ -30,7 +30,7 @@ export function LiveNow() {
           <h2 className="h-section text-[40px] md:text-[64px]">Live now</h2>
           <Link href="/monitor" className="text-sm font-medium text-tide underline underline-offset-4">Open live monitor</Link>
         </div>
-        <p className="mt-2 max-w-[64ch] text-ink-soft">Verified live premiums only: every row passed the quality checks below. {L ? `${rows.length} of ${total} basket tokens pass right now.` : ""}</p>
+        <p className="mt-2 max-w-[64ch] text-ink-soft">Verified live premiums only: every row passed the quality checks below. {L ? `${L.verifiedCount} of ${total} basket tokens pass right now; the top ${rows.length} are shown.` : ""}</p>
         <div className="mt-6 overflow-x-auto rounded-[12px] border border-paper-line">
           <table className="w-full min-w-[640px] text-sm">
             <thead className="bg-mist text-left text-xs text-ink-faint">

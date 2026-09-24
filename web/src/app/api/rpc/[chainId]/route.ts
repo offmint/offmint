@@ -7,6 +7,11 @@ const UPSTREAM: Record<string, string | undefined> = {
   "46630": process.env.ALCHEMY_RH_TESTNET_URL || process.env.RH_TESTNET_RPC || "https://rpc.testnet.chain.robinhood.com",
   "4663": process.env.ALCHEMY_RH_MAINNET_URL || process.env.RH_MAINNET_RPC || "https://rpc.mainnet.chain.robinhood.com",
 };
+// Alchemy's free tier limits eth_getLogs to 10 blocks, so log queries go to the public endpoint
+const LOGS: Record<string, string> = {
+  "46630": process.env.RH_TESTNET_RPC || "https://rpc.testnet.chain.robinhood.com",
+  "4663": process.env.RH_MAINNET_RPC || "https://rpc.mainnet.chain.robinhood.com",
+};
 const READ_ONLY = new Set([
   "eth_chainId", "eth_blockNumber", "eth_call", "eth_getLogs", "eth_getBlockByNumber", "eth_getBlockByHash",
   "eth_getTransactionReceipt", "eth_getTransactionByHash", "eth_getBalance", "eth_getCode", "eth_getStorageAt",
@@ -27,6 +32,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ chainId
   if (calls.length > 50 || calls.some((c) => !READ_ONLY.has(c?.method))) {
     return NextResponse.json({ error: "method not allowed" }, { status: 403 });
   }
-  const r = await fetch(upstream, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+  const target = calls.some((c) => c.method === "eth_getLogs") ? LOGS[chainId] : upstream;
+  const r = await fetch(target, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
   return new NextResponse(await r.text(), { status: r.status, headers: { "content-type": "application/json" } });
 }
