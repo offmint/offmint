@@ -185,3 +185,8 @@
     `ALCHEMY_RH_MAINNET_URL`. The web app reads through a server-side proxy `/api/rpc/<chainId>` (read-only methods,
     so the Alchemy key never reaches the browser).
   - `web/railway.json` added for the web service.
+- NEXT.md Task 2 (faucet): the mock tokens keep owner-only `mint`. A separate `Faucet` (testnet only) is pre-funded
+  with 10,000,000 test USDG and 100,000 mHIMS and gives 1,000 test USDG + 10 mHIMS per address per 24 h. The owner can
+  pause, change amounts, and sweep; anyone can refill by transferring. 5 tests: claim, second claim inside 24 h reverts,
+  pause, empty reverts cleanly without starting the cooldown, sweep owner-only. Deployed and verified at
+  `0xdB89850F763D3e29931c62550C150B7Dd82C596b`. The web `/app` "Get test tokens" button links the Robinhood testnet ETH faucet.

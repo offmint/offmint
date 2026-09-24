@@ -9,6 +9,7 @@ import { metaVaultAbi } from "@/abi/MetaVault";
 import { offmintVaultAbi } from "@/abi/OffmintVault";
 import { addrs, explorerAddr, explorerTx } from "@/lib/config";
 import { Countdown } from "@/components/Countdown";
+import { FaucetButton } from "@/components/FaucetButton";
 import { RiskDisclosure, JurisdictionNotice } from "@/components/Risk";
 import { short, usd, utc } from "@/lib/format";
 
@@ -167,6 +168,7 @@ function DepositWithdraw(p: { idle: boolean; usdgBal?: bigint; allowance?: bigin
   return (
     <div className="card space-y-3">
       <div className="label">Deposit / withdraw USDG</div>
+      <FaucetButton onClaimed={p.onDone} />
       <div className="text-xs text-ink-soft">Wallet: <span className="num">{p.usdgBal !== undefined ? usd(Number(formatUnits(p.usdgBal, 6))) : "…"}</span> USDG</div>
       <input className="w-full rounded-md border border-paper-line px-3 py-2 num" placeholder="0.00" value={amt} onChange={(e) => { setAmt(e.target.value); reset(); }} />
       {!p.idle && <div className="text-xs text-caution">A cycle is active: deposits and withdrawals reopen once every position is back in USDG.</div>}

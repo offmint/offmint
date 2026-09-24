@@ -56,6 +56,7 @@ MetaVault is IDLE with 9,950.25 USDG (a 10,000 deposit minus the 0.5% entry fee)
 | MockFeed | [`0xd80327b5F068FD071a3401c6c1e4409CaCCC8e65`](https://explorer.testnet.chain.robinhood.com/address/0xd80327b5F068FD071a3401c6c1e4409CaCCC8e65) |
 | ManualSessionClock | [`0xa4C76ac760F3e616FB98924e031aFbabbe1AB0f8`](https://explorer.testnet.chain.robinhood.com/address/0xa4C76ac760F3e616FB98924e031aFbabbe1AB0f8) |
 | v4 PoolManager (chain's own) | [`0x8366a39CC670B4001A1121B8F6A443A643e40951`](https://explorer.testnet.chain.robinhood.com/address/0x8366a39CC670B4001A1121B8F6A443A643e40951) |
+| Faucet (1,000 test USDG + 10 mHIMS per wallet / 24 h) | [`0xdB89850F763D3e29931c62550C150B7Dd82C596b`](https://explorer.testnet.chain.robinhood.com/address/0xdB89850F763D3e29931c62550C150B7Dd82C596b) |
 | PoolSwapTest (demo buyer) | [`0xA6c9CC615b599659c654a36A9C0B12815ED5E542`](https://explorer.testnet.chain.robinhood.com/address/0xA6c9CC615b599659c654a36A9C0B12815ED5E542) |
 | PoolModifyLiquidityTest (seed LP) | [`0xf3C288f568503bB1184bb9dC61E3DE9eb333A1EE`](https://explorer.testnet.chain.robinhood.com/address/0xf3C288f568503bB1184bb9dC61E3DE9eb333A1EE) |
 | OffmintParams (linked library) | [`0xb1a77579a5c23c4b29b9539b572cb8ca855aee0b`](https://explorer.testnet.chain.robinhood.com/address/0xb1a77579a5c23c4b29b9539b572cb8ca855aee0b) |

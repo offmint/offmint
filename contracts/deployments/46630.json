@@ -18,5 +18,6 @@
   "tickSpacing": 60,
   "ticker": "HIMS",
   "usdg": "0x0844463B36f999C84641aE0cd0fFF27179C4DBBb",
-  "vault": "0x2ea8dF9feA9DDEBb0abf774aE46E1DFF9a6E4285"
+  "vault": "0x2ea8dF9feA9DDEBb0abf774aE46E1DFF9a6E4285",
+  "faucet": "0xdB89850F763D3e29931c62550C150B7Dd82C596b"
 }

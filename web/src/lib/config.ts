@@ -14,6 +14,7 @@ export const addrs = testnet as unknown as {
   usdg: Address;
   clock: Address;
   poolManager: Address;
+  faucet: Address;
 };
 
 /** Read-only paper-mode service (Railway): /health, /basket.json, /paper/*. */
