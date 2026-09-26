@@ -1,7 +1,8 @@
-# Private working docs (kept local, not committed): all of docs/ and every markdown file except the public README
-docs/
+# Markdown outside docs/ stays local (e.g. CLAUDE.md); the public README and everything in docs/ are tracked
+# (plans, decisions, verification reports, claims ledger, threat model: recoverable and visible to judges)
 *.md
 !README.md
+!docs/**/*.md
 
 # Secrets
 .env
