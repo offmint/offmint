@@ -2,6 +2,16 @@
 
 # Offmint: they price the weekend, we supply it
 
+**New Robinhood stock tokens can't be created on weekends, so they spike. Offmint sells into the spike in steps above
+Friday's price and buys back on Monday.** On 29 Aug 2026 HIMS traded **+317.6%** above its Friday reference while
+minting was off.
+
+<p align="center"><img src="docs/screenshots/D3/hero-1440.png" alt="The real HIMS weekend, 29–31 Aug 2026: every swap as 15-minute candles, Offmint's four sell steps above Friday's price" width="900"></p>
+
+**Live:** [paper mode on mainnet, every weekend](https://offmint-keeper-production.up.railway.app/paper/index.json) ·
+[contracts on Blockscout (testnet)](https://explorer.testnet.chain.robinhood.com/address/0x2ea8dF9feA9DDEBb0abf774aE46E1DFF9a6E4285) ·
+[latest CI](https://github.com/offmint/offmint/actions) · **Unaudited. Testnet only.**
+
 ## In plain English
 On weekends and US market holidays nobody can create new Robinhood stock tokens, so a token can trade far above the
 real share price. **Offmint's community vault** offers some of your tokens for sale only above that real price, then buys
@@ -97,6 +107,35 @@ instances, so it never shapes a community depositor's risk.
 - A Monday that opens above the ladder is the cost of selling: in the stress test one squeeze weekend ended −0.49%.
 - Unaudited, testnet only.
 
+## Four features, one story
+See it → learn from history → act yourself → or let the vault do it.
+
+| | Feature | What it does | Where |
+|---|---|---|---|
+| 1 | **Monitor** | Every stock token's pool price against Robinhood's real share price, live. A premium counts as verified only if it passes five checks (pool ≥ $10,000, a $1,000 swap moves it < 2%, traded in the last 6 h, quote spread < 1%, GeckoTerminal agrees within 2%). | `/monitor` |
+| 2 | **Weekend report** | Every mint-off window since 1 Jul: tokens above 10%, biggest premium, USD paid above the reference, wallets; per-token detail and a share card. Updated each Monday from paper mode. | `/weekends` |
+| 3 | **Personal sell order** | A sell-only Uniswap v4 order from your own wallet, priced above the verified reference (never the pool), refused if the pool is already there. Uniswap's PositionManager + Permit2; no Offmint contract. | `/sell` (testnet) |
+| 4 | **Vault** | Deposit tokens you already hold; the vault runs the weekend ladder and the capped Monday buyback for you. | `/vault/HIMS` (testnet) |
+
+## Fees
+| What | Fee |
+|---|---|
+| Community vault | **10% of realized profit** in stock (performance fee; hard bound 20%), nothing on a flat or losing weekend; no deposit or withdrawal fee. The replay also counts gas: about $1 per $1,000 per weekend. |
+| Personal sell order | **None.** You pay gas and the pool's LP fee; Offmint takes nothing. |
+| MetaVault (experimental) | 0.5% on entry and exit (hard bound 2%), plus the vault's performance fee. |
+
+The fee recipient is immutable and can never be the owner or keeper. Bounds are enforced onchain
+(`contracts/src/libraries/OffmintParams.sol`, `MetaVault.sol`).
+
+## Roadmap
+1. **Testnet** (now): contracts deployed and verified, paper mode on mainnet every weekend, weekend report.
+2. **Audit** before any real funds.
+3. **Capped mainnet**: small deposit caps per pool, sized to what the Monday buyback can absorb.
+4. **Bigger buybacks**: RFQ or aggregator routes on Monday, so capacity isn't limited by one pool's depth.
+5. **Launchpad pool supply**: offer the weekend ladder to issuers and launchpads at listing time.
+6. **Other issuers** of tokenized stocks with the same minting gap.
+7. **Onchain canonical-token check**: replace the owner-curated token list with an onchain registry check.
+
 ## Try it
 - **Sandbox (no wallet):** `/sandbox` walks through one weekend step by step in your browser, using the same engine
   as the replay (the market is illustrative, the vault's rules are real).
@@ -177,20 +216,20 @@ grace period; first-depositor inflation is unprofitable.
 
 ## Run and test
 ```bash
-npm ci && npm test                      # 160 forge tests (unit, fuzz, integration in both pool orientations, invariants) + 76 keeper/backtest tests
+npm ci && npm test                      # 160 forge tests (unit, fuzz, integration in both pool orientations, invariants) + 102 keeper/backtest tests
 npm run test:fork                       # 12 mainnet-fork tests (needs ALCHEMY_RH_MAINNET_URL or RH_MAINNET_RPC)
 npm run lint:contracts                  # forge fmt --check + forge lint (CI-enforced)
 npm run e2e && npm run e2e:meta         # local end-to-end weekends run by the unmodified keeper bot (CI)
 npm run stress -- --epochs 40 --users 12 --seed 7
 npm run paper                           # live paper mode (read-only mainnet, no keys)
 npm run backtest -- --event hims-2026-08-28
-cd web && npm ci && npm run build       # web app (landing + /app /monitor /vault /backtest /paper)
+cd web && npm ci && npm run build       # web app: landing + /monitor /weekends /sell /sandbox /vault /backtest /paper
 ```
 
 ```
 contracts/  Foundry: src/ test/ script/ config/ deployments/
 keeper/     keeper bot, MetaVault cycle, detector, SELECT, paper mode (TypeScript + viem)
-web/        Next.js: marketing landing (/) and the app (/app /monitor /vault /backtest /paper)
+web/        Next.js: landing (/) and the app (/monitor /weekends /sell /sandbox /vault /backtest /paper)
 backtest/   HIMS + GLXY replays -> web/public/data/backtest/
 scripts/    e2e, demo and reproduce scripts
 ```
