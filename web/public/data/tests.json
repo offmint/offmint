@@ -2,5 +2,5 @@
   "source": "forge test (contracts/), npm run test:keeper (keeper + backtest), forge test --match-path test/Fork.t.sol with a mainnet RPC",
   "contracts": 160,
   "fork": 12,
-  "keeperAndBacktest": 76
+  "keeperAndBacktest": 99
 }

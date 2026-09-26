@@ -42,7 +42,14 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run typecheck
-      - run: npm run test:keeper
+      - name: "keeper + backtest tests (+ published count must match web/public/data/tests.json)"
+        run: |
+          npm run test:keeper 2>&1 | tee /tmp/keeper-tests.txt
+          got=$(grep -E '^# pass [0-9]+' /tmp/keeper-tests.txt | awk '{s+=$3} END {print s}')
+          want=$(python3 -c "import json;print(json.load(open('web/public/data/tests.json'))['keeperAndBacktest'])")
+          echo "keeper+backtest tests: $got, published: $want"
+          test "$got" = "$want"
+          ! grep -qE '^# fail [1-9]' /tmp/keeper-tests.txt
 
   e2e:
     runs-on: ubuntu-latest

@@ -13,6 +13,7 @@ import { Evidence } from "../src/components/landing/Evidence";
 import { HowItWorks } from "../src/components/landing/HowItWorks";
 import { Verify } from "../src/components/landing/Verify";
 import { Explainer } from "../src/components/landing/Explainer";
+import { HeroChart } from "../src/components/landing/HeroChart";
 
 const ROOT = join(__dirname, "../..");
 const LANDING = join(__dirname, "../src/components/landing");
@@ -75,10 +76,25 @@ test("weekend report agrees with harm.json, window by window (same pools, refere
     const want = h[`above${th}pct`];
     assert.ok(Math.abs(w.paidAboveReferenceUsd - want.usdAboveReference) < 1, `${w.window}: $${w.paidAboveReferenceUsd} vs harm $${want.usdAboveReference}`);
     assert.equal(w.buysAbove, want.swaps, `${w.window}: buys`);
+    assert.ok(Math.abs(w.buysValueUsd - want.usdPaid) < 1, `${w.window}: value of buys $${w.buysValueUsd} vs harm $${want.usdPaid}`);
+    assert.ok(w.paidAboveReferenceUsd < w.buysValueUsd || w.buysValueUsd === 0, `${w.window}: the excess is part of the value, never more`);
     assert.equal(w.wallets, want.uniqueSenders, `${w.window}: wallets`);
+    const sumValue = w.tokens.reduce((a, t) => a + t.buysValueUsd, 0);
+    assert.ok(Math.abs(sumValue - w.buysValueUsd) < 1, `${w.window}: per-token values add up`);
     const sumTokens = w.tokens.reduce((a, t) => a + t.paidAboveReferenceUsd, 0);
     assert.ok(Math.abs(sumTokens - w.paidAboveReferenceUsd) < 1, `${w.window}: per-token rows add up`);
   }
+});
+
+test("weekend report period totals equal harm.json totals: both quantities, same definition", () => {
+  const harm = JSON.parse(readFileSync(join(ROOT, "web/public/data/harm.json"), "utf8"));
+  const h = harm.totals[`above${WEEKENDS.headlineThresholdPct}pct`];
+  const T = WEEKENDS.totals;
+  assert.ok(Math.abs(T.buysValueUsd - h.usdPaid) < 1, `value of buys ${T.buysValueUsd} vs ${h.usdPaid}`);
+  assert.ok(Math.abs(T.paidAboveReferenceUsd - h.usdAboveReference) < 1, `paid above ${T.paidAboveReferenceUsd} vs ${h.usdAboveReference}`);
+  assert.equal(T.buysAbove, h.swaps);
+  assert.equal(T.wallets, h.uniqueSenders);
+  assert.equal(T.windows, harm.windows.length);
 });
 
 test("landing explainer shows exactly the replay's numbers", () => {
@@ -109,4 +125,48 @@ test("README plain-English numbers match the replay data", () => {
   assert.ok(top.includes(`${c.feePct}% of profit`), "fee");
   assert.match(top, /did not pick HIMS before the 29 Aug spike/);
   assert.doesNotMatch(readme, /overpa|risk-free|guaranteed|market-neutral\b(?! for)/i, "banned wording");
+});
+
+test("hero Friday price (P0) is read from data and its caption names the reference (AIRTIGHT 5, FINISH B4)", () => {
+  const html = renderToStaticMarkup(createElement(HeroChart));
+  const ev = EVENTS[0];
+  assert.equal(ev.ticker, "HIMS");
+  assert.ok(html.includes(`Reference $${ev.p0.toFixed(2)} is the pool price at Fri 20:00 UTC`), "caption states which reference, from data");
+  assert.equal(ev.p0, ev.screen.p0, "P0 is the screen's reference, not derived from the premium");
+  if (ev.nyseClose !== null) assert.ok(html.includes(`NYSE close $${ev.nyseClose.toFixed(2)}`), "NYSE close shown next to it");
+});
+
+test("every fork-derived number shows its pinned block (AIRTIGHT 13, FINISH B5)", () => {
+  const block = FORK.forkBlock as number;
+  assert.ok(block > 0);
+  assert.ok(renderToStaticMarkup(createElement(Verify)).includes(`mainnet-fork tests @ block ${block}`), "Verify");
+  assert.ok(renderToStaticMarkup(createElement(HowItWorks)).includes(`block ${block}`), "HowItWorks worked example");
+  const readme = readFileSync(join(ROOT, "README.md"), "utf8");
+  const row = readme.split("\n").find((l) => l.startsWith("| Mainnet-fork simulations"));
+  assert.ok(row && row.includes(`block ${block.toLocaleString("en-US")}`), "README proof row names the block");
+  assert.match(readme, new RegExp(`npm run test:fork\\s+# ${TESTS.fork} mainnet-fork tests`), "README fork test count = tests.json");
+});
+
+test("CLAIMS.md ledger rows match their data files (FINISH B6)", () => {
+  const ledger = readFileSync(join(ROOT, "docs/CLAIMS.md"), "utf8");
+  const J = (f: string) => JSON.parse(readFileSync(join(ROOT, "web/public/data", f), "utf8"));
+  const harm = J("harm.json"), fr = J("frequency.json"), mo = J("mintoff.json"), tests = J("tests.json");
+  const m = (x: number) => `$${Math.round(x).toLocaleString("en-US")}`;
+  const has = (s: string, what: string) => assert.ok(ledger.includes(s), `CLAIMS.md is missing ${what}: ${s}`);
+  const h5 = harm.totals.above5pct, h2 = harm.totals.above2pct;
+  has(`${m(h5.usdPaid)} (${h5.swaps.toLocaleString("en-US")} buys)`, "value of buys >5%");
+  has(`| ${m(h5.usdAboveReference)} |`, "paid above the reference >5%");
+  has(`${h5.uniqueSenders.toLocaleString("en-US")} (bots`, "wallets >5%");
+  has(`${m(h2.usdPaid)} of buys, ${m(h2.usdAboveReference)} above the reference, ${h2.uniqueSenders.toLocaleString("en-US")} wallets`, "2% detail");
+  const c = COMMUNITY;
+  const pc = (x: number) => `${x >= 0 ? "+" : "-"}${Math.abs(x).toFixed(1)}%`;
+  has(`${pc(c.spike.low!.r.excessPctExLpFees)} (${c.spike.low!.e.ticker}`, "spike low");
+  has(`${pc(c.spike.high!.r.excessPctExLpFees)} (${c.spike.high!.e.ticker}`, "spike high");
+  has(`${pc(c.worst!.r.excessPctExLpFees)} (${c.worst!.e.ticker}`, "worst");
+  has(`median ${m(c.capacityUsd!)} (range ${m(c.capacityMin!)} to ${m(c.capacityMax!)}, ${c.capacityEvents} capped weekends)`, "capacity");
+  has(`nothing sells on ${c.normal.count} of ${c.screened} ticker-weekends`, "normal weekend");
+  const e10 = fr.eligible.byThreshold.find((r: any) => r.thresholdPct === 10);
+  has(`${e10.windowsWithAnySustained} of ${fr.eligible.windows} windows`, "frequency 1 in 3");
+  has(`= ${mo.shareOfCalendarPct}%`, "mint-off share");
+  has(`${tests.contracts} contract, ${tests.fork} fork, ${tests.keeperAndBacktest} keeper+backtest`, "test counts");
 });
