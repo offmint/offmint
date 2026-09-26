@@ -73,8 +73,9 @@ for (const w of windows) {
     tokens.push({
       ticker: r.ticker, reference: r.reference, refDate: r.refDate, active: r.active, mainPoolSwaps: r.mainPoolSwaps,
       peakPct: r.active ? r.peakPct : null, hoursAbove10: r.active ? r.hoursAbove[10] : null,
-      paidAboveReferenceUsd: r2(r.buys[HEADLINE].usdAbove), buysAbove: r.buys[HEADLINE].swaps, wallets: wallets(r.buys[HEADLINE].txs),
-      detail2pct: { paidAboveReferenceUsd: r2(r.buys[DETAIL].usdAbove), buys: r.buys[DETAIL].swaps, wallets: wallets(r.buys[DETAIL].txs) },
+      // two different quantities, never conflated (DECISIONS D6, FINISH B1): the value of the buys, and the excess over the reference
+      buysValueUsd: r2(r.buys[HEADLINE].usdPaid), paidAboveReferenceUsd: r2(r.buys[HEADLINE].usdAbove), buysAbove: r.buys[HEADLINE].swaps, wallets: wallets(r.buys[HEADLINE].txs),
+      detail2pct: { buysValueUsd: r2(r.buys[DETAIL].usdPaid), paidAboveReferenceUsd: r2(r.buys[DETAIL].usdAbove), buys: r.buys[DETAIL].swaps, wallets: wallets(r.buys[DETAIL].txs) },
       recovery: rec, vault: vaultOf(r.ticker, w),
     });
   }
@@ -85,10 +86,11 @@ for (const w of windows) {
     sample: { tickersWithTrackingPool: rows.length, activeTickers: active.length, swaps: rows.reduce((a, r) => a + r.mainPoolSwaps, 0) },
     tokensAbove10: active.filter((r) => r.hoursAbove[10] >= 1).length,
     biggest: biggest ? { ticker: biggest.ticker, peakPct: biggest.peakPct } : null,
+    buysValueUsd: r2(rows.reduce((a, r) => a + r.buys[HEADLINE].usdPaid, 0)),
     paidAboveReferenceUsd: r2(rows.reduce((a, r) => a + r.buys[HEADLINE].usdAbove, 0)),
     wallets: wallets(txs(HEADLINE)),
     buysAbove: rows.reduce((a, r) => a + r.buys[HEADLINE].swaps, 0),
-    detail2pct: { paidAboveReferenceUsd: r2(rows.reduce((a, r) => a + r.buys[DETAIL].usdAbove, 0)), wallets: wallets(txs(DETAIL)), buys: rows.reduce((a, r) => a + r.buys[DETAIL].swaps, 0) },
+    detail2pct: { buysValueUsd: r2(rows.reduce((a, r) => a + r.buys[DETAIL].usdPaid, 0)), paidAboveReferenceUsd: r2(rows.reduce((a, r) => a + r.buys[DETAIL].usdAbove, 0)), wallets: wallets(txs(DETAIL)), buys: rows.reduce((a, r) => a + r.buys[DETAIL].swaps, 0) },
     tokens,
   });
   console.error(`${w.label}: ${active.length} active tokens, ${out.at(-1).tokensAbove10} above 10% for 1h+, $${Math.round(out.at(-1).paidAboveReferenceUsd)} paid >${HEADLINE}% above reference by ${out.at(-1).wallets} wallets`);
@@ -105,6 +107,13 @@ const doc = {
     "Vault = the community vault's default ladder in the with-supply replay (web/public/data/supply/replay.json), simulated, per $1,000 and $10,000 of tokens deposited.",
   ],
   excluded: harm.excluded,
+  totals: {
+    windows: out.length,
+    buysAbove: out.reduce((a, w) => a + w.buysAbove, 0),
+    buysValueUsd: r2(out.reduce((a, w) => a + w.buysValueUsd, 0)),
+    paidAboveReferenceUsd: r2(out.reduce((a, w) => a + w.paidAboveReferenceUsd, 0)),
+    wallets: harm.totals[`above${HEADLINE}pct`].uniqueSenders,
+  },
   windows: out.reverse(),
 };
 writeFileSync(join(ROOT, "web/public/data/weekends.json"), JSON.stringify(doc, null, 1));

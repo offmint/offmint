@@ -49,7 +49,7 @@ export interface TickerWindow {
   hoursAbove: Record<number, number>; // main pool at/above each threshold, hours
   lastPrice: { block: number; sqrtPriceX96: bigint } | null; // main pool, last in-window print (for recovery)
   stockIs0: boolean;
-  buys: Record<number, { swaps: number; usdAbove: number; txs: string[] }>; // all tracking pools, per threshold
+  buys: Record<number, { swaps: number; usdPaid: number; usdAbove: number; txs: string[] }>; // all tracking pools, per threshold
 }
 
 export function loadPools(): Map<string, { ticker: string; stockIs0: boolean }> {
@@ -90,7 +90,7 @@ export async function tickerWindows(w: Window, logs: Log[], pools: ReturnType<ty
   for (const [ticker, ids] of tracking) {
     const ref = closes[ticker][w.refDate];
     const s0 = pools.get(ids[0])!.stockIs0;
-    const buys = Object.fromEntries(BUY_THRESHOLDS.map((t) => [t, { swaps: 0, usdAbove: 0, txs: [] as string[] }]));
+    const buys = Object.fromEntries(BUY_THRESHOLDS.map((t) => [t, { swaps: 0, usdPaid: 0, usdAbove: 0, txs: [] as string[] }]));
     for (const id of ids) {
       const ps0 = pools.get(id)!.stockIs0;
       for (const l of byPool.get(id)!) {
@@ -100,7 +100,7 @@ export async function tickerWindows(w: Window, logs: Log[], pools: ReturnType<ty
         const stock = Number(stk) / 1e18, paid = Number(-usd) / 1e6;
         if (stock <= 0 || paid < 0.01) continue;
         const prem = (paid / stock / ref - 1) * 100;
-        for (const t of BUY_THRESHOLDS) if (prem > t) { buys[t].swaps++; buys[t].usdAbove += paid - stock * ref; buys[t].txs.push(l.tx); }
+        for (const t of BUY_THRESHOLDS) if (prem > t) { buys[t].swaps++; buys[t].usdPaid += paid; buys[t].usdAbove += paid - stock * ref; buys[t].txs.push(l.tx); }
       }
     }
     // main pool: most in-window swaps

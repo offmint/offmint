@@ -15,7 +15,7 @@ export default async function Card({ params }: { params: Promise<{ date: string 
   const w = windowOf(date);
   const th = WEEKENDS.headlineThresholdPct;
   const line = w
-    ? `${w.tokensAbove10} token${w.tokensAbove10 === 1 ? "" : "s"} above 10% for an hour or more. ${money(w.paidAboveReferenceUsd)} paid more than ${th}% above the real price, by ${w.wallets.toLocaleString("en-US")} wallets.`
+    ? `${w.tokensAbove10} token${w.tokensAbove10 === 1 ? "" : "s"} above 10% for an hour or more. Buyers paid ${money(w.paidAboveReferenceUsd)} above the real price on ${money(w.buysValueUsd)} of buys priced more than ${th}% over it (${w.wallets.toLocaleString("en-US")} wallets).`
     : "Weekend report";
   return new ImageResponse(
     (

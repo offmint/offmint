@@ -30,13 +30,14 @@ export default async function WeekendDetail({ params }: { params: Promise<{ date
           {`${w.reason}, ${w.hours} hours with minting off. Reference: official close on ${w.refDate}.`}
         </p>
       </div>
-      <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
         <div className="card"><div className="label">Tokens above 10%</div><div className="num text-xl">{w.tokensAbove10}</div></div>
-        <div className="card"><div className="label">{`Paid more than ${th}% above reference`}</div><div className="num text-xl">{money(w.paidAboveReferenceUsd)}</div></div>
+        <div className="card"><div className="label">{`Value of buys priced >${th}% above the reference`}</div><div className="num text-xl">{money(w.buysValueUsd)}</div><div className="text-xs text-ink-faint">{`${w.buysAbove.toLocaleString("en-US")} buys`}</div></div>
+        <div className="card"><div className="label">Paid above the reference on those buys</div><div className="num text-xl">{money(w.paidAboveReferenceUsd)}</div></div>
         <div className="card"><div className="label">Wallets</div><div className="num text-xl">{w.wallets.toLocaleString("en-US")}</div></div>
         <div className="card"><div className="label">Sample</div><div className="num text-xl">{`${w.sample.activeTickers} tokens`}</div><div className="text-xs text-ink-faint">{`${w.sample.swaps.toLocaleString("en-US")} swaps`}</div></div>
       </div>
-      <p className="text-xs text-ink-faint">{`At the looser 2% threshold: ${money(w.detail2pct.paidAboveReferenceUsd)} paid above the reference by ${w.detail2pct.wallets.toLocaleString("en-US")} wallets.`}</p>
+      <p className="text-xs text-ink-faint">{`At the looser 2% threshold: ${money(w.detail2pct.buysValueUsd)} of buys, ${money(w.detail2pct.paidAboveReferenceUsd)} paid above the reference on them, by ${w.detail2pct.wallets.toLocaleString("en-US")} wallets.`}</p>
       <div className="overflow-x-auto">
         <table className="data min-w-[860px]">
           <thead>
@@ -44,7 +45,8 @@ export default async function WeekendDetail({ params }: { params: Promise<{ date
               <th>Token</th>
               <th>Peak (held 15 min)</th>
               <th>Hours above 10%</th>
-              <th>Paid above reference</th>
+              <th>{`Value of buys >${th}% above`}</th>
+              <th>Paid above the reference</th>
               <th>Wallets</th>
               <th>Back within 5% after reopen</th>
               <th>Community vault (simulated, per $1k)</th>
@@ -58,6 +60,7 @@ export default async function WeekendDetail({ params }: { params: Promise<{ date
                   <td><Token ticker={t.ticker} size={18} /></td>
                   <td className="num">{pctText(t.peakPct)}</td>
                   <td className="num">{t.hoursAbove10 === null ? "–" : t.hoursAbove10.toFixed(1)}</td>
+                  <td className="num">{money(t.buysValueUsd)}</td>
                   <td className="num">{money(t.paidAboveReferenceUsd)}</td>
                   <td className="num">{t.wallets.toLocaleString("en-US")}</td>
                   <td className="num">{t.recovery ? (t.recovery.hours === null ? "not within 72 h" : `${t.recovery.hours.toFixed(1)} h`) : "–"}</td>

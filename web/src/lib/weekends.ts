@@ -10,10 +10,11 @@ export interface WeekendToken {
   mainPoolSwaps: number;
   peakPct: number | null;
   hoursAbove10: number | null;
-  paidAboveReferenceUsd: number;
+  buysValueUsd: number; // total value of the buys priced > headline % above the reference
+  paidAboveReferenceUsd: number; // on those buys: amount paid above the reference (buysValue - stock x reference)
   buysAbove: number;
   wallets: number;
-  detail2pct: { paidAboveReferenceUsd: number; buys: number; wallets: number };
+  detail2pct: { buysValueUsd: number; paidAboveReferenceUsd: number; buys: number; wallets: number };
   recovery: { hours: number | null; postReference: number | null; postRefDate: string | null } | null;
   vault: { label: string | null; replayedWeekend?: string; note?: string; bySize?: Record<string, { excessPct: number | null; excessPctExLpFees: number | null; state: string | null }> };
 }
@@ -28,10 +29,11 @@ export interface WeekendWindow {
   sample: { tickersWithTrackingPool: number; activeTickers: number; swaps: number };
   tokensAbove10: number;
   biggest: { ticker: string; peakPct: number } | null;
+  buysValueUsd: number;
   paidAboveReferenceUsd: number;
   wallets: number;
   buysAbove: number;
-  detail2pct: { paidAboveReferenceUsd: number; wallets: number; buys: number };
+  detail2pct: { buysValueUsd: number; paidAboveReferenceUsd: number; wallets: number; buys: number };
   tokens: WeekendToken[];
 }
 
@@ -41,6 +43,7 @@ export const WEEKENDS = doc as unknown as {
   headlineThresholdPct: number;
   method: string[];
   excluded: { tickersWithoutReference: string[]; hookedPoolsNotScanned: number; offReferencePoolWindows: number; offReferenceSwaps: number };
+  totals: { windows: number; buysAbove: number; buysValueUsd: number; paidAboveReferenceUsd: number; wallets: number };
   windows: WeekendWindow[];
 };
 

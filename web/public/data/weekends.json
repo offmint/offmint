@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-26T06:05:35.799Z",
+ "generatedAt": "2026-09-26T07:13:42.140Z",
  "label": "observed onchain (Robinhood Chain mainnet); vault column simulated",
  "headlineThresholdPct": 5,
  "method": [
@@ -24,6 +24,13 @@
    "SATS"
   ]
  },
+ "totals": {
+  "windows": 12,
+  "buysAbove": 121905,
+  "buysValueUsd": 17594087.64,
+  "paidAboveReferenceUsd": 3615153.92,
+  "wallets": 21419
+ },
  "windows": [
   {
    "window": "2026-09-19",
@@ -43,10 +50,12 @@
     "ticker": "LMT",
     "peakPct": 14.44
    },
+   "buysValueUsd": 207804.91,
    "paidAboveReferenceUsd": 17532.35,
    "wallets": 459,
    "buysAbove": 1289,
    "detail2pct": {
+    "buysValueUsd": 939346.09,
     "paidAboveReferenceUsd": 38477.54,
     "wallets": 1367,
     "buys": 3700
@@ -60,10 +69,12 @@
      "mainPoolSwaps": 3276,
      "peakPct": 14.44,
      "hoursAbove10": 1.1,
+     "buysValueUsd": 197067.87,
      "paidAboveReferenceUsd": 16421.82,
      "buysAbove": 1243,
      "wallets": 431,
      "detail2pct": {
+      "buysValueUsd": 302367.92,
       "paidAboveReferenceUsd": 20031.02,
       "buys": 1933,
       "wallets": 641
@@ -86,10 +97,12 @@
      "mainPoolSwaps": 2,
      "peakPct": null,
      "hoursAbove10": null,
+     "buysValueUsd": 74.58,
      "paidAboveReferenceUsd": 5.74,
      "buysAbove": 2,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 74.58,
       "paidAboveReferenceUsd": 5.74,
       "buys": 2,
       "wallets": 0
@@ -108,10 +121,12 @@
      "mainPoolSwaps": 3912,
      "peakPct": 3.46,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 493810.77,
       "paidAboveReferenceUsd": 13908.24,
       "buys": 929,
       "wallets": 488
@@ -130,10 +145,12 @@
      "mainPoolSwaps": 563,
      "peakPct": 2.53,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 34128.4,
       "paidAboveReferenceUsd": 908.12,
       "buys": 134,
       "wallets": 59
@@ -152,10 +169,12 @@
      "mainPoolSwaps": 11,
      "peakPct": 2.19,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 9.92,
       "paidAboveReferenceUsd": 0.22,
       "buys": 1,
       "wallets": 1
@@ -174,10 +193,12 @@
      "mainPoolSwaps": 492,
      "peakPct": 1.69,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 21027.29,
       "paidAboveReferenceUsd": 480.63,
       "buys": 208,
       "wallets": 107
@@ -196,10 +217,12 @@
      "mainPoolSwaps": 1127,
      "peakPct": 1.67,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -218,10 +241,12 @@
      "mainPoolSwaps": 10,
      "peakPct": 1.45,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -240,10 +265,12 @@
      "mainPoolSwaps": 321,
      "peakPct": 1.37,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 11966.04,
       "paidAboveReferenceUsd": 291.04,
       "buys": 28,
       "wallets": 15
@@ -262,10 +289,12 @@
      "mainPoolSwaps": 778,
      "peakPct": 1.37,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -284,10 +313,12 @@
      "mainPoolSwaps": 128,
      "peakPct": 1.36,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 5461.69,
       "paidAboveReferenceUsd": 121.26,
       "buys": 34,
       "wallets": 26
@@ -306,10 +337,12 @@
      "mainPoolSwaps": 111,
      "peakPct": 1.21,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 20,
       "paidAboveReferenceUsd": 0.46,
       "buys": 1,
       "wallets": 1
@@ -328,10 +361,12 @@
      "mainPoolSwaps": 507,
      "peakPct": 1.19,
      "hoursAbove10": 0,
+     "buysValueUsd": 9323.91,
      "paidAboveReferenceUsd": 965.21,
      "buysAbove": 43,
      "wallets": 36,
      "detail2pct": {
+      "buysValueUsd": 29386.99,
       "paidAboveReferenceUsd": 1534.44,
       "buys": 193,
       "wallets": 137
@@ -350,10 +385,12 @@
      "mainPoolSwaps": 167,
      "peakPct": 1.18,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 2593,
       "paidAboveReferenceUsd": 53.97,
       "buys": 6,
       "wallets": 0
@@ -372,10 +409,12 @@
      "mainPoolSwaps": 4,
      "peakPct": null,
      "hoursAbove10": null,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 3.9,
       "paidAboveReferenceUsd": 0.08,
       "buys": 4,
       "wallets": 0
@@ -394,10 +433,12 @@
      "mainPoolSwaps": 204,
      "peakPct": 1.01,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -416,10 +457,12 @@
      "mainPoolSwaps": 1345,
      "peakPct": 0.99,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -438,10 +481,12 @@
      "mainPoolSwaps": 55,
      "peakPct": 0.96,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -460,10 +505,12 @@
      "mainPoolSwaps": 147,
      "peakPct": 0.91,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 3042.52,
       "paidAboveReferenceUsd": 72.3,
       "buys": 68,
       "wallets": 2
@@ -482,10 +529,12 @@
      "mainPoolSwaps": 130,
      "peakPct": 0.88,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -504,10 +553,12 @@
      "mainPoolSwaps": 267,
      "peakPct": 0.85,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -526,10 +577,12 @@
      "mainPoolSwaps": 112,
      "peakPct": 0.81,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -548,10 +601,12 @@
      "mainPoolSwaps": 1429,
      "peakPct": 0.8,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 200,
       "paidAboveReferenceUsd": 3.94,
       "buys": 1,
       "wallets": 1
@@ -570,10 +625,12 @@
      "mainPoolSwaps": 147,
      "peakPct": 0.79,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -592,10 +649,12 @@
      "mainPoolSwaps": 13671,
      "peakPct": 0.79,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 5890.82,
       "paidAboveReferenceUsd": 243.84,
       "buys": 5,
       "wallets": 1
@@ -614,10 +673,12 @@
      "mainPoolSwaps": 22,
      "peakPct": 0.71,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -636,10 +697,12 @@
      "mainPoolSwaps": 2060,
      "peakPct": 0.7,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 1653.14,
       "paidAboveReferenceUsd": 35.97,
       "buys": 1,
       "wallets": 0
@@ -658,10 +721,12 @@
      "mainPoolSwaps": 28,
      "peakPct": 0.66,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -680,10 +745,12 @@
      "mainPoolSwaps": 61,
      "peakPct": 0.65,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 127.58,
       "paidAboveReferenceUsd": 4.09,
       "buys": 1,
       "wallets": 1
@@ -702,10 +769,12 @@
      "mainPoolSwaps": 9127,
      "peakPct": 0.62,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -724,10 +793,12 @@
      "mainPoolSwaps": 421,
      "peakPct": 0.62,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -746,10 +817,12 @@
      "mainPoolSwaps": 6616,
      "peakPct": 0.61,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -768,10 +841,12 @@
      "mainPoolSwaps": 199,
      "peakPct": 0.61,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -790,10 +865,12 @@
      "mainPoolSwaps": 130,
      "peakPct": 0.6,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -812,10 +889,12 @@
      "mainPoolSwaps": 555,
      "peakPct": 0.58,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -834,10 +913,12 @@
      "mainPoolSwaps": 102,
      "peakPct": 0.58,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -856,10 +937,12 @@
      "mainPoolSwaps": 2650,
      "peakPct": 0.58,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -878,10 +961,12 @@
      "mainPoolSwaps": 149,
      "peakPct": 0.55,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -900,10 +985,12 @@
      "mainPoolSwaps": 109,
      "peakPct": 0.46,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -922,10 +1009,12 @@
      "mainPoolSwaps": 39,
      "peakPct": 0.41,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -944,10 +1033,12 @@
      "mainPoolSwaps": 223,
      "peakPct": 0.41,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -966,10 +1057,12 @@
      "mainPoolSwaps": 101,
      "peakPct": 0.41,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -988,10 +1081,12 @@
      "mainPoolSwaps": 20,
      "peakPct": 0.4,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1010,10 +1105,12 @@
      "mainPoolSwaps": 29,
      "peakPct": 0.39,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1032,10 +1129,12 @@
      "mainPoolSwaps": 621,
      "peakPct": 0.38,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1054,10 +1153,12 @@
      "mainPoolSwaps": 1595,
      "peakPct": 0.37,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 25836.63,
       "paidAboveReferenceUsd": 628.41,
       "buys": 148,
       "wallets": 48
@@ -1076,10 +1177,12 @@
      "mainPoolSwaps": 476,
      "peakPct": 0.33,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1098,10 +1201,12 @@
      "mainPoolSwaps": 57,
      "peakPct": 0.22,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1120,10 +1225,12 @@
      "mainPoolSwaps": 1747,
      "peakPct": 0.22,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1142,10 +1249,12 @@
      "mainPoolSwaps": 2612,
      "peakPct": 0.16,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 406.33,
       "paidAboveReferenceUsd": 14.2,
       "buys": 2,
       "wallets": 0
@@ -1164,10 +1273,12 @@
      "mainPoolSwaps": 84,
      "peakPct": 0.14,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1186,10 +1297,12 @@
      "mainPoolSwaps": 4980,
      "peakPct": 0.13,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1208,10 +1321,12 @@
      "mainPoolSwaps": 11,
      "peakPct": 0.13,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1230,10 +1345,12 @@
      "mainPoolSwaps": 1531,
      "peakPct": 0.12,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1252,10 +1369,12 @@
      "mainPoolSwaps": 38,
      "peakPct": 0.1,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1274,10 +1393,12 @@
      "mainPoolSwaps": 1059,
      "peakPct": 0.09,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1296,10 +1417,12 @@
      "mainPoolSwaps": 128,
      "peakPct": 0.06,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1318,10 +1441,12 @@
      "mainPoolSwaps": 885,
      "peakPct": 0.06,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1340,10 +1465,12 @@
      "mainPoolSwaps": 115,
      "peakPct": 0.04,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1362,10 +1489,12 @@
      "mainPoolSwaps": 218,
      "peakPct": 0.03,
      "hoursAbove10": 0,
+     "buysValueUsd": 1338.56,
      "paidAboveReferenceUsd": 139.58,
      "buysAbove": 1,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 1338.56,
       "paidAboveReferenceUsd": 139.58,
       "buys": 1,
       "wallets": 1
@@ -1384,10 +1513,12 @@
      "mainPoolSwaps": 201,
      "peakPct": 0.02,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1406,10 +1537,12 @@
      "mainPoolSwaps": 3796,
      "peakPct": 0.01,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1428,10 +1561,12 @@
      "mainPoolSwaps": 428,
      "peakPct": -0.08,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1450,10 +1585,12 @@
      "mainPoolSwaps": 420,
      "peakPct": -0.16,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1472,10 +1609,12 @@
      "mainPoolSwaps": 175,
      "peakPct": -0.24,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1494,10 +1633,12 @@
      "mainPoolSwaps": 321,
      "peakPct": -0.31,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1516,10 +1657,12 @@
      "mainPoolSwaps": 18,
      "peakPct": -0.35,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1538,10 +1681,12 @@
      "mainPoolSwaps": 1771,
      "peakPct": -0.4,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1560,10 +1705,12 @@
      "mainPoolSwaps": 13,
      "peakPct": -0.47,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1582,10 +1729,12 @@
      "mainPoolSwaps": 35,
      "peakPct": -0.53,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -1616,10 +1765,12 @@
     "ticker": "GLXY",
     "peakPct": 86.55
    },
+   "buysValueUsd": 2125457.26,
    "paidAboveReferenceUsd": 583399.39,
    "wallets": 2868,
    "buysAbove": 13590,
    "detail2pct": {
+    "buysValueUsd": 2996147.69,
     "paidAboveReferenceUsd": 608256.63,
     "wallets": 4649,
     "buys": 20152
@@ -1633,10 +1784,12 @@
      "mainPoolSwaps": 17170,
      "peakPct": 86.55,
      "hoursAbove10": 8.7,
+     "buysValueUsd": 1741772.07,
      "paidAboveReferenceUsd": 552772.22,
      "buysAbove": 10773,
      "wallets": 2341,
      "detail2pct": {
+      "buysValueUsd": 1799468.95,
       "paidAboveReferenceUsd": 554830.18,
       "buys": 10922,
       "wallets": 2371
@@ -1671,10 +1824,12 @@
      "mainPoolSwaps": 2092,
      "peakPct": 24.94,
      "hoursAbove10": 2.1,
+     "buysValueUsd": 66754.82,
      "paidAboveReferenceUsd": 11098.92,
      "buysAbove": 1008,
      "wallets": 198,
      "detail2pct": {
+      "buysValueUsd": 79816.48,
       "paidAboveReferenceUsd": 11521.75,
       "buys": 1093,
       "wallets": 251
@@ -1709,10 +1864,12 @@
      "mainPoolSwaps": 5472,
      "peakPct": 7.87,
      "hoursAbove10": 0,
+     "buysValueUsd": 313923.14,
      "paidAboveReferenceUsd": 18864.59,
      "buysAbove": 1795,
      "wallets": 502,
      "detail2pct": {
+      "buysValueUsd": 689645.7,
       "paidAboveReferenceUsd": 31620.4,
       "buys": 3864,
       "wallets": 1273
@@ -1743,10 +1900,12 @@
      "mainPoolSwaps": 3,
      "peakPct": null,
      "hoursAbove10": null,
+     "buysValueUsd": 5.56,
      "paidAboveReferenceUsd": 0.41,
      "buysAbove": 1,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 5.56,
       "paidAboveReferenceUsd": 0.41,
       "buys": 1,
       "wallets": 1
@@ -1765,10 +1924,12 @@
      "mainPoolSwaps": 76,
      "peakPct": 6.36,
      "hoursAbove10": 0,
+     "buysValueUsd": 503.13,
      "paidAboveReferenceUsd": 27.97,
      "buysAbove": 7,
      "wallets": 6,
      "detail2pct": {
+      "buysValueUsd": 1303.4,
       "paidAboveReferenceUsd": 48.42,
       "buys": 14,
       "wallets": 13
@@ -1787,10 +1948,12 @@
      "mainPoolSwaps": 5,
      "peakPct": null,
      "hoursAbove10": null,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 32.97,
       "paidAboveReferenceUsd": 1.24,
       "buys": 3,
       "wallets": 3
@@ -1809,10 +1972,12 @@
      "mainPoolSwaps": 5,
      "peakPct": null,
      "hoursAbove10": null,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 240.02,
       "paidAboveReferenceUsd": 5.94,
       "buys": 1,
       "wallets": 0
@@ -1831,10 +1996,12 @@
      "mainPoolSwaps": 142,
      "peakPct": 2.41,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 494.47,
       "paidAboveReferenceUsd": 12.25,
       "buys": 12,
       "wallets": 11
@@ -1853,10 +2020,12 @@
      "mainPoolSwaps": 920,
      "peakPct": 2.37,
      "hoursAbove10": 0,
+     "buysValueUsd": 24.27,
      "paidAboveReferenceUsd": 1.83,
      "buysAbove": 1,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 16884.21,
       "paidAboveReferenceUsd": 426.47,
       "buys": 67,
       "wallets": 48
@@ -1875,10 +2044,12 @@
      "mainPoolSwaps": 6824,
      "peakPct": 1.97,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 7591.66,
       "paidAboveReferenceUsd": 157.67,
       "buys": 73,
       "wallets": 18
@@ -1897,10 +2068,12 @@
      "mainPoolSwaps": 2558,
      "peakPct": 1.95,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 58997.78,
       "paidAboveReferenceUsd": 1249.74,
       "buys": 940,
       "wallets": 277
@@ -1919,10 +2092,12 @@
      "mainPoolSwaps": 976,
      "peakPct": 1.61,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 46319.2,
       "paidAboveReferenceUsd": 1041.62,
       "buys": 286,
       "wallets": 178
@@ -1941,10 +2116,12 @@
      "mainPoolSwaps": 423,
      "peakPct": 1.58,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 7684.47,
       "paidAboveReferenceUsd": 167.16,
       "buys": 35,
       "wallets": 28
@@ -1963,10 +2140,12 @@
      "mainPoolSwaps": 784,
      "peakPct": 1.58,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 1847.29,
       "paidAboveReferenceUsd": 42.79,
       "buys": 9,
       "wallets": 7
@@ -1985,10 +2164,12 @@
      "mainPoolSwaps": 5765,
      "peakPct": 1.57,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 102082.55,
       "paidAboveReferenceUsd": 2273.95,
       "buys": 1362,
       "wallets": 325
@@ -2007,10 +2188,12 @@
      "mainPoolSwaps": 2204,
      "peakPct": 1.53,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 19204.49,
       "paidAboveReferenceUsd": 404.27,
       "buys": 171,
       "wallets": 94
@@ -2029,10 +2212,12 @@
      "mainPoolSwaps": 1291,
      "peakPct": 1.36,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 368.28,
       "paidAboveReferenceUsd": 8.46,
       "buys": 5,
       "wallets": 2
@@ -2051,10 +2236,12 @@
      "mainPoolSwaps": 8708,
      "peakPct": 1.25,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 129458.89,
       "paidAboveReferenceUsd": 3095.73,
       "buys": 1109,
       "wallets": 313
@@ -2073,10 +2260,12 @@
      "mainPoolSwaps": 245,
      "peakPct": 1.19,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 4597.16,
       "paidAboveReferenceUsd": 96.08,
       "buys": 25,
       "wallets": 21
@@ -2095,10 +2284,12 @@
      "mainPoolSwaps": 368,
      "peakPct": 1.08,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 490.59,
       "paidAboveReferenceUsd": 9.81,
       "buys": 3,
       "wallets": 3
@@ -2117,10 +2308,12 @@
      "mainPoolSwaps": 87,
      "peakPct": 1,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 948.26,
       "paidAboveReferenceUsd": 18.96,
       "buys": 4,
       "wallets": 4
@@ -2139,10 +2332,12 @@
      "mainPoolSwaps": 15,
      "peakPct": 0.99,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2161,10 +2356,12 @@
      "mainPoolSwaps": 148,
      "peakPct": 0.97,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 2269.85,
       "paidAboveReferenceUsd": 46.09,
       "buys": 11,
       "wallets": 10
@@ -2183,10 +2380,12 @@
      "mainPoolSwaps": 10157,
      "peakPct": 0.88,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2205,10 +2404,12 @@
      "mainPoolSwaps": 64,
      "peakPct": 0.86,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2227,10 +2428,12 @@
      "mainPoolSwaps": 12,
      "peakPct": 0.84,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2249,10 +2452,12 @@
      "mainPoolSwaps": 3331,
      "peakPct": 0.83,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 182.64,
       "paidAboveReferenceUsd": 3.85,
       "buys": 4,
       "wallets": 4
@@ -2271,10 +2476,12 @@
      "mainPoolSwaps": 6935,
      "peakPct": 0.82,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2293,10 +2500,12 @@
      "mainPoolSwaps": 1857,
      "peakPct": 0.77,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 2304.92,
       "paidAboveReferenceUsd": 45.92,
       "buys": 18,
       "wallets": 15
@@ -2315,10 +2524,12 @@
      "mainPoolSwaps": 13326,
      "peakPct": 0.7,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2337,10 +2548,12 @@
      "mainPoolSwaps": 607,
      "peakPct": 0.69,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2359,10 +2572,12 @@
      "mainPoolSwaps": 35,
      "peakPct": 0.69,
      "hoursAbove10": 0,
+     "buysValueUsd": 150,
      "paidAboveReferenceUsd": 43.74,
      "buysAbove": 2,
      "wallets": 2,
      "detail2pct": {
+      "buysValueUsd": 165.46,
       "paidAboveReferenceUsd": 44.05,
       "buys": 3,
       "wallets": 2
@@ -2393,10 +2608,12 @@
      "mainPoolSwaps": 477,
      "peakPct": 0.67,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 6908.64,
       "paidAboveReferenceUsd": 149.06,
       "buys": 28,
       "wallets": 26
@@ -2427,10 +2644,12 @@
      "mainPoolSwaps": 36,
      "peakPct": 0.66,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 947.77,
       "paidAboveReferenceUsd": 25.38,
       "buys": 1,
       "wallets": 0
@@ -2449,10 +2668,12 @@
      "mainPoolSwaps": 47,
      "peakPct": 0.65,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2471,10 +2692,12 @@
      "mainPoolSwaps": 17188,
      "peakPct": 0.64,
      "hoursAbove10": 0,
+     "buysValueUsd": 1441.42,
      "paidAboveReferenceUsd": 503.65,
      "buysAbove": 2,
      "wallets": 2,
      "detail2pct": {
+      "buysValueUsd": 1441.42,
       "paidAboveReferenceUsd": 503.65,
       "buys": 2,
       "wallets": 2
@@ -2493,10 +2716,12 @@
      "mainPoolSwaps": 12,
      "peakPct": 0.6,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2515,10 +2740,12 @@
      "mainPoolSwaps": 1858,
      "peakPct": 0.58,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2537,10 +2764,12 @@
      "mainPoolSwaps": 4859,
      "peakPct": 0.54,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2559,10 +2788,12 @@
      "mainPoolSwaps": 1148,
      "peakPct": 0.52,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2581,10 +2812,12 @@
      "mainPoolSwaps": 189,
      "peakPct": 0.47,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2603,10 +2836,12 @@
      "mainPoolSwaps": 738,
      "peakPct": 0.46,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 2129.87,
       "paidAboveReferenceUsd": 43.57,
       "buys": 15,
       "wallets": 10
@@ -2625,10 +2860,12 @@
      "mainPoolSwaps": 108,
      "peakPct": 0.44,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 1938.57,
       "paidAboveReferenceUsd": 47.01,
       "buys": 7,
       "wallets": 7
@@ -2647,10 +2884,12 @@
      "mainPoolSwaps": 12442,
      "peakPct": 0.41,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2669,10 +2908,12 @@
      "mainPoolSwaps": 2129,
      "peakPct": 0.35,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2691,10 +2932,12 @@
      "mainPoolSwaps": 637,
      "peakPct": 0.34,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2713,10 +2956,12 @@
      "mainPoolSwaps": 103,
      "peakPct": 0.31,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 550.12,
       "paidAboveReferenceUsd": 14.12,
       "buys": 4,
       "wallets": 3
@@ -2735,10 +2980,12 @@
      "mainPoolSwaps": 6242,
      "peakPct": 0.29,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 110.63,
       "paidAboveReferenceUsd": 5.18,
       "buys": 1,
       "wallets": 1
@@ -2757,10 +3004,12 @@
      "mainPoolSwaps": 19121,
      "peakPct": 0.28,
      "hoursAbove10": 0,
+     "buysValueUsd": 882.84,
      "paidAboveReferenceUsd": 86.06,
      "buysAbove": 1,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 1300.03,
       "paidAboveReferenceUsd": 98.77,
       "buys": 4,
       "wallets": 1
@@ -2779,10 +3028,12 @@
      "mainPoolSwaps": 250,
      "peakPct": 0.27,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2801,10 +3052,12 @@
      "mainPoolSwaps": 7760,
      "peakPct": 0.23,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2823,10 +3076,12 @@
      "mainPoolSwaps": 793,
      "peakPct": 0.21,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2845,10 +3100,12 @@
      "mainPoolSwaps": 8520,
      "peakPct": 0.2,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2867,10 +3124,12 @@
      "mainPoolSwaps": 2494,
      "peakPct": 0.19,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2889,10 +3148,12 @@
      "mainPoolSwaps": 583,
      "peakPct": 0.18,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2911,10 +3172,12 @@
      "mainPoolSwaps": 875,
      "peakPct": 0.17,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2933,10 +3196,12 @@
      "mainPoolSwaps": 3108,
      "peakPct": 0.15,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2955,10 +3220,12 @@
      "mainPoolSwaps": 356,
      "peakPct": 0.14,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 196.29,
       "paidAboveReferenceUsd": 4.52,
       "buys": 1,
       "wallets": 1
@@ -2977,10 +3244,12 @@
      "mainPoolSwaps": 11,
      "peakPct": 0.12,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -2999,10 +3268,12 @@
      "mainPoolSwaps": 2034,
      "peakPct": 0.1,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 157.8,
       "paidAboveReferenceUsd": 3.17,
       "buys": 1,
       "wallets": 1
@@ -3021,10 +3292,12 @@
      "mainPoolSwaps": 3188,
      "peakPct": 0,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -3043,10 +3316,12 @@
      "mainPoolSwaps": 214,
      "peakPct": 0,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -3065,10 +3340,12 @@
      "mainPoolSwaps": 20,
      "peakPct": -0.01,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -3087,10 +3364,12 @@
      "mainPoolSwaps": 18350,
      "peakPct": -0.03,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -3109,10 +3388,12 @@
      "mainPoolSwaps": 359,
      "peakPct": -0.08,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -3131,10 +3412,12 @@
      "mainPoolSwaps": 1241,
      "peakPct": -0.09,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -3153,10 +3436,12 @@
      "mainPoolSwaps": 503,
      "peakPct": -0.13,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -3175,10 +3460,12 @@
      "mainPoolSwaps": 46,
      "peakPct": -0.15,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -3197,10 +3484,12 @@
      "mainPoolSwaps": 343,
      "peakPct": -0.18,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -3219,10 +3508,12 @@
      "mainPoolSwaps": 1895,
      "peakPct": -0.19,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -3241,10 +3532,12 @@
      "mainPoolSwaps": 24,
      "peakPct": -0.2,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -3263,10 +3556,12 @@
      "mainPoolSwaps": 504,
      "peakPct": -0.25,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -3285,10 +3580,12 @@
      "mainPoolSwaps": 1200,
      "peakPct": -0.27,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 8061.32,
       "paidAboveReferenceUsd": 189,
       "buys": 53,
       "wallets": 26
@@ -3307,10 +3604,12 @@
      "mainPoolSwaps": 12,
      "peakPct": -0.37,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -3329,10 +3628,12 @@
      "mainPoolSwaps": 16,
      "peakPct": -0.39,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -3351,10 +3652,12 @@
      "mainPoolSwaps": 800,
      "peakPct": -0.5,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -3373,10 +3676,12 @@
      "mainPoolSwaps": 253,
      "peakPct": -0.53,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -3395,10 +3700,12 @@
      "mainPoolSwaps": 11,
      "peakPct": -0.54,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -3417,10 +3724,12 @@
      "mainPoolSwaps": 16,
      "peakPct": -0.62,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -3439,10 +3748,12 @@
      "mainPoolSwaps": 810,
      "peakPct": -0.7,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -3461,10 +3772,12 @@
      "mainPoolSwaps": 23,
      "peakPct": -0.73,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -3483,10 +3796,12 @@
      "mainPoolSwaps": 13,
      "peakPct": -1.47,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -3517,10 +3832,12 @@
     "ticker": "LMT",
     "peakPct": 53.48
    },
+   "buysValueUsd": 4475993.13,
    "paidAboveReferenceUsd": 420119.14,
    "wallets": 8115,
    "buysAbove": 28736,
    "detail2pct": {
+    "buysValueUsd": 14362840.27,
     "paidAboveReferenceUsd": 703966.9,
     "wallets": 19863,
     "buys": 84267
@@ -3534,10 +3851,12 @@
      "mainPoolSwaps": 4511,
      "peakPct": 53.48,
      "hoursAbove10": 13.2,
+     "buysValueUsd": 363270.92,
      "paidAboveReferenceUsd": 51168.17,
      "buysAbove": 3520,
      "wallets": 1300,
      "detail2pct": {
+      "buysValueUsd": 447427.59,
       "paidAboveReferenceUsd": 54237.33,
       "buys": 4106,
       "wallets": 1600
@@ -3560,10 +3879,12 @@
      "mainPoolSwaps": 5249,
      "peakPct": 28.8,
      "hoursAbove10": 20.7,
+     "buysValueUsd": 607137.66,
      "paidAboveReferenceUsd": 87500.96,
      "buysAbove": 3043,
      "wallets": 670,
      "detail2pct": {
+      "buysValueUsd": 815965.36,
       "paidAboveReferenceUsd": 94034.34,
       "buys": 4312,
       "wallets": 941
@@ -3586,10 +3907,12 @@
      "mainPoolSwaps": 1648,
      "peakPct": 23.24,
      "hoursAbove10": 22.7,
+     "buysValueUsd": 99371.13,
      "paidAboveReferenceUsd": 11631.71,
      "buysAbove": 781,
      "wallets": 173,
      "detail2pct": {
+      "buysValueUsd": 131286.85,
       "paidAboveReferenceUsd": 12576.07,
       "buys": 965,
       "wallets": 195
@@ -3612,10 +3935,12 @@
      "mainPoolSwaps": 3655,
      "peakPct": 22.85,
      "hoursAbove10": 4.3,
+     "buysValueUsd": 88466.2,
      "paidAboveReferenceUsd": 7509.43,
      "buysAbove": 379,
      "wallets": 132,
      "detail2pct": {
+      "buysValueUsd": 895585.85,
       "paidAboveReferenceUsd": 33201.09,
       "buys": 3203,
       "wallets": 699
@@ -3638,10 +3963,12 @@
      "mainPoolSwaps": 8944,
      "peakPct": 10.89,
      "hoursAbove10": 1.3,
+     "buysValueUsd": 557141.32,
      "paidAboveReferenceUsd": 45686.53,
      "buysAbove": 3250,
      "wallets": 1207,
      "detail2pct": {
+      "buysValueUsd": 923890.52,
       "paidAboveReferenceUsd": 58119.04,
       "buys": 5401,
       "wallets": 2165
@@ -3664,10 +3991,12 @@
      "mainPoolSwaps": 30,
      "peakPct": 10.15,
      "hoursAbove10": 0.5,
+     "buysValueUsd": 742.8,
      "paidAboveReferenceUsd": 56.69,
      "buysAbove": 10,
      "wallets": 9,
      "detail2pct": {
+      "buysValueUsd": 768.28,
       "paidAboveReferenceUsd": 57.53,
       "buys": 11,
       "wallets": 10
@@ -3690,10 +4019,12 @@
      "mainPoolSwaps": 21280,
      "peakPct": 10.11,
      "hoursAbove10": 0.3,
+     "buysValueUsd": 1318560.79,
      "paidAboveReferenceUsd": 119557.57,
      "buysAbove": 7495,
      "wallets": 2582,
      "detail2pct": {
+      "buysValueUsd": 1698317.42,
       "paidAboveReferenceUsd": 133335.93,
       "buys": 9898,
       "wallets": 3291
@@ -3716,10 +4047,12 @@
      "mainPoolSwaps": 660,
      "peakPct": 9.81,
      "hoursAbove10": 0.3,
+     "buysValueUsd": 10168.14,
      "paidAboveReferenceUsd": 718.6,
      "buysAbove": 131,
      "wallets": 68,
      "detail2pct": {
+      "buysValueUsd": 48872.15,
       "paidAboveReferenceUsd": 2023.18,
       "buys": 352,
       "wallets": 156
@@ -3738,10 +4071,12 @@
      "mainPoolSwaps": 5,
      "peakPct": null,
      "hoursAbove10": null,
+     "buysValueUsd": 38.01,
      "paidAboveReferenceUsd": 2.56,
      "buysAbove": 3,
      "wallets": 2,
      "detail2pct": {
+      "buysValueUsd": 51.21,
       "paidAboveReferenceUsd": 3.13,
       "buys": 4,
       "wallets": 3
@@ -3760,10 +4095,12 @@
      "mainPoolSwaps": 13630,
      "peakPct": 8.84,
      "hoursAbove10": 0,
+     "buysValueUsd": 729974.89,
      "paidAboveReferenceUsd": 50222.51,
      "buysAbove": 5270,
      "wallets": 1842,
      "detail2pct": {
+      "buysValueUsd": 1134416.09,
       "paidAboveReferenceUsd": 64333.43,
       "buys": 8601,
       "wallets": 2711
@@ -3794,10 +4131,12 @@
      "mainPoolSwaps": 5743,
      "peakPct": 6.96,
      "hoursAbove10": 0,
+     "buysValueUsd": 154812.39,
      "paidAboveReferenceUsd": 9530.36,
      "buysAbove": 1409,
      "wallets": 425,
      "detail2pct": {
+      "buysValueUsd": 427519.64,
       "paidAboveReferenceUsd": 17348.96,
       "buys": 3081,
       "wallets": 788
@@ -3816,10 +4155,12 @@
      "mainPoolSwaps": 21354,
      "peakPct": 6.74,
      "hoursAbove10": 0.1,
+     "buysValueUsd": 183725.98,
      "paidAboveReferenceUsd": 12176.41,
      "buysAbove": 1226,
      "wallets": 590,
      "detail2pct": {
+      "buysValueUsd": 1599463.01,
       "paidAboveReferenceUsd": 47305.13,
       "buys": 12636,
       "wallets": 4729
@@ -3838,10 +4179,12 @@
      "mainPoolSwaps": 32,
      "peakPct": 6.26,
      "hoursAbove10": 0,
+     "buysValueUsd": 78.48,
      "paidAboveReferenceUsd": 4.17,
      "buysAbove": 3,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 467.64,
       "paidAboveReferenceUsd": 17.3,
       "buys": 12,
       "wallets": 9
@@ -3860,10 +4203,12 @@
      "mainPoolSwaps": 2952,
      "peakPct": 6.07,
      "hoursAbove10": 0,
+     "buysValueUsd": 182972.39,
      "paidAboveReferenceUsd": 14620.76,
      "buysAbove": 1183,
      "wallets": 662,
      "detail2pct": {
+      "buysValueUsd": 261213.58,
       "paidAboveReferenceUsd": 17390.26,
       "buys": 1909,
       "wallets": 1007
@@ -3882,10 +4227,12 @@
      "mainPoolSwaps": 9,
      "peakPct": null,
      "hoursAbove10": null,
+     "buysValueUsd": 105,
      "paidAboveReferenceUsd": 5.74,
      "buysAbove": 1,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 167.98,
       "paidAboveReferenceUsd": 8.67,
       "buys": 4,
       "wallets": 3
@@ -3904,10 +4251,12 @@
      "mainPoolSwaps": 830,
      "peakPct": 5.05,
      "hoursAbove10": 0,
+     "buysValueUsd": 42496.03,
      "paidAboveReferenceUsd": 2516.05,
      "buysAbove": 385,
      "wallets": 141,
      "detail2pct": {
+      "buysValueUsd": 66836.75,
       "paidAboveReferenceUsd": 3402.2,
       "buys": 624,
       "wallets": 238
@@ -3926,10 +4275,12 @@
      "mainPoolSwaps": 2916,
      "peakPct": 4.44,
      "hoursAbove10": 0,
+     "buysValueUsd": 8185.45,
      "paidAboveReferenceUsd": 442.91,
      "buysAbove": 46,
      "wallets": 32,
      "detail2pct": {
+      "buysValueUsd": 139835.96,
       "paidAboveReferenceUsd": 3650.6,
       "buys": 622,
       "wallets": 229
@@ -3948,10 +4299,12 @@
      "mainPoolSwaps": 2718,
      "peakPct": 4.18,
      "hoursAbove10": 0,
+     "buysValueUsd": 58619.79,
      "paidAboveReferenceUsd": 2868.85,
      "buysAbove": 249,
      "wallets": 115,
      "detail2pct": {
+      "buysValueUsd": 406785.69,
       "paidAboveReferenceUsd": 17146.11,
       "buys": 1558,
       "wallets": 366
@@ -3970,10 +4323,12 @@
      "mainPoolSwaps": 34,
      "peakPct": 4.13,
      "hoursAbove10": 0,
+     "buysValueUsd": 167.2,
      "paidAboveReferenceUsd": 9.3,
      "buysAbove": 1,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 1509,
       "paidAboveReferenceUsd": 61.81,
       "buys": 8,
       "wallets": 5
@@ -3992,10 +4347,12 @@
      "mainPoolSwaps": 14077,
      "peakPct": 3.47,
      "hoursAbove10": 0,
+     "buysValueUsd": 9444.17,
      "paidAboveReferenceUsd": 522.3,
      "buysAbove": 12,
      "wallets": 7,
      "detail2pct": {
+      "buysValueUsd": 1291513.27,
       "paidAboveReferenceUsd": 40432.96,
       "buys": 4893,
       "wallets": 1760
@@ -4026,10 +4383,12 @@
      "mainPoolSwaps": 1636,
      "peakPct": 3.23,
      "hoursAbove10": 0,
+     "buysValueUsd": 55836.99,
      "paidAboveReferenceUsd": 3033.79,
      "buysAbove": 322,
      "wallets": 159,
      "detail2pct": {
+      "buysValueUsd": 146244.06,
       "paidAboveReferenceUsd": 6210.16,
       "buys": 746,
       "wallets": 389
@@ -4060,10 +4419,12 @@
      "mainPoolSwaps": 2944,
      "peakPct": 3.09,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 18277.99,
       "paidAboveReferenceUsd": 521.23,
       "buys": 189,
       "wallets": 93
@@ -4082,10 +4443,12 @@
      "mainPoolSwaps": 337,
      "peakPct": 3.03,
      "hoursAbove10": 0,
+     "buysValueUsd": 294.08,
      "paidAboveReferenceUsd": 25.22,
      "buysAbove": 7,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 684.02,
       "paidAboveReferenceUsd": 37.48,
       "buys": 81,
       "wallets": 2
@@ -4104,10 +4467,12 @@
      "mainPoolSwaps": 4699,
      "peakPct": 2.77,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 270629.74,
       "paidAboveReferenceUsd": 8104.67,
       "buys": 2445,
       "wallets": 1100
@@ -4126,10 +4491,12 @@
      "mainPoolSwaps": 109,
      "peakPct": 2.76,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 1419.32,
       "paidAboveReferenceUsd": 35.79,
       "buys": 13,
       "wallets": 8
@@ -4148,10 +4515,12 @@
      "mainPoolSwaps": 5999,
      "peakPct": 2.74,
      "hoursAbove10": 0,
+     "buysValueUsd": 1337.01,
      "paidAboveReferenceUsd": 66.23,
      "buysAbove": 1,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 815816.45,
       "paidAboveReferenceUsd": 24153.23,
       "buys": 3665,
       "wallets": 1158
@@ -4170,10 +4539,12 @@
      "mainPoolSwaps": 792,
      "peakPct": 2.73,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 33853.59,
       "paidAboveReferenceUsd": 943.08,
       "buys": 205,
       "wallets": 141
@@ -4192,10 +4563,12 @@
      "mainPoolSwaps": 17610,
      "peakPct": 2.69,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 1050640.19,
       "paidAboveReferenceUsd": 25448.9,
       "buys": 4943,
       "wallets": 2091
@@ -4214,10 +4587,12 @@
      "mainPoolSwaps": 7,
      "peakPct": null,
      "hoursAbove10": null,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 277.5,
       "paidAboveReferenceUsd": 5.85,
       "buys": 1,
       "wallets": 1
@@ -4236,10 +4611,12 @@
      "mainPoolSwaps": 2087,
      "peakPct": 2.45,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 219818.25,
       "paidAboveReferenceUsd": 5382.37,
       "buys": 229,
       "wallets": 146
@@ -4258,10 +4635,12 @@
      "mainPoolSwaps": 644,
      "peakPct": 1.96,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 37821.2,
       "paidAboveReferenceUsd": 955.16,
       "buys": 275,
       "wallets": 158
@@ -4280,10 +4659,12 @@
      "mainPoolSwaps": 2270,
      "peakPct": 1.91,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 22833.19,
       "paidAboveReferenceUsd": 543.47,
       "buys": 192,
       "wallets": 117
@@ -4302,10 +4683,12 @@
      "mainPoolSwaps": 12,
      "peakPct": 1.88,
      "hoursAbove10": 0,
+     "buysValueUsd": 142.2,
      "paidAboveReferenceUsd": 7.45,
      "buysAbove": 1,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 340.46,
       "paidAboveReferenceUsd": 13.38,
       "buys": 4,
       "wallets": 1
@@ -4324,10 +4707,12 @@
      "mainPoolSwaps": 35,
      "peakPct": 1.75,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 1000.44,
       "paidAboveReferenceUsd": 32.19,
       "buys": 6,
       "wallets": 2
@@ -4346,10 +4731,12 @@
      "mainPoolSwaps": 398,
      "peakPct": 1.73,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 3483.77,
       "paidAboveReferenceUsd": 74.08,
       "buys": 28,
       "wallets": 18
@@ -4368,10 +4755,12 @@
      "mainPoolSwaps": 488,
      "peakPct": 1.67,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 1814.99,
       "paidAboveReferenceUsd": 40.71,
       "buys": 1,
       "wallets": 1
@@ -4390,10 +4779,12 @@
      "mainPoolSwaps": 8576,
      "peakPct": 1.58,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 13640.39,
       "paidAboveReferenceUsd": 295.32,
       "buys": 224,
       "wallets": 33
@@ -4412,10 +4803,12 @@
      "mainPoolSwaps": 54894,
      "peakPct": 1.57,
      "hoursAbove10": 0,
+     "buysValueUsd": 2133.69,
      "paidAboveReferenceUsd": 106.34,
      "buysAbove": 2,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 434386.61,
       "paidAboveReferenceUsd": 10661.32,
       "buys": 187,
       "wallets": 140
@@ -4446,10 +4839,12 @@
      "mainPoolSwaps": 7,
      "peakPct": null,
      "hoursAbove10": null,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 7.15,
       "paidAboveReferenceUsd": 0.15,
       "buys": 1,
       "wallets": 1
@@ -4468,10 +4863,12 @@
      "mainPoolSwaps": 2079,
      "peakPct": 1.56,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 115354.53,
       "paidAboveReferenceUsd": 2535.45,
       "buys": 1075,
       "wallets": 274
@@ -4490,10 +4887,12 @@
      "mainPoolSwaps": 114,
      "peakPct": 1.55,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 2141,
       "paidAboveReferenceUsd": 44.95,
       "buys": 15,
       "wallets": 10
@@ -4512,10 +4911,12 @@
      "mainPoolSwaps": 23,
      "peakPct": 1.54,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 139.02,
       "paidAboveReferenceUsd": 4.33,
       "buys": 2,
       "wallets": 0
@@ -4534,10 +4935,12 @@
      "mainPoolSwaps": 21,
      "peakPct": 1.5,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -4556,10 +4959,12 @@
      "mainPoolSwaps": 5634,
      "peakPct": 1.46,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 116140.32,
       "paidAboveReferenceUsd": 2390.82,
       "buys": 923,
       "wallets": 506
@@ -4578,10 +4983,12 @@
      "mainPoolSwaps": 13109,
      "peakPct": 1.43,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 341277.73,
       "paidAboveReferenceUsd": 7771.06,
       "buys": 3535,
       "wallets": 1500
@@ -4600,10 +5007,12 @@
      "mainPoolSwaps": 3651,
      "peakPct": 1.33,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 20109.87,
       "paidAboveReferenceUsd": 422.83,
       "buys": 80,
       "wallets": 35
@@ -4622,10 +5031,12 @@
      "mainPoolSwaps": 12,
      "peakPct": 1.17,
      "hoursAbove10": 0,
+     "buysValueUsd": 15,
      "paidAboveReferenceUsd": 1.25,
      "buysAbove": 1,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 15,
       "paidAboveReferenceUsd": 1.25,
       "buys": 1,
       "wallets": 1
@@ -4644,10 +5055,12 @@
      "mainPoolSwaps": 24549,
      "peakPct": 1.13,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -4666,10 +5079,12 @@
      "mainPoolSwaps": 3212,
      "peakPct": 1.1,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -4688,10 +5103,12 @@
      "mainPoolSwaps": 5039,
      "peakPct": 1.06,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 80215.06,
       "paidAboveReferenceUsd": 1703.13,
       "buys": 958,
       "wallets": 302
@@ -4710,10 +5127,12 @@
      "mainPoolSwaps": 5908,
      "peakPct": 1.03,
      "hoursAbove10": 0,
+     "buysValueUsd": 89.64,
      "paidAboveReferenceUsd": 5.44,
      "buysAbove": 1,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 10488.12,
       "paidAboveReferenceUsd": 325.34,
       "buys": 8,
       "wallets": 4
@@ -4732,10 +5151,12 @@
      "mainPoolSwaps": 11670,
      "peakPct": 1.01,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 2455.49,
       "paidAboveReferenceUsd": 62.71,
       "buys": 1,
       "wallets": 1
@@ -4754,10 +5175,12 @@
      "mainPoolSwaps": 16706,
      "peakPct": 0.98,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 285066.34,
       "paidAboveReferenceUsd": 5759.97,
       "buys": 1890,
       "wallets": 909
@@ -4776,10 +5199,12 @@
      "mainPoolSwaps": 92,
      "peakPct": 0.98,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -4798,10 +5223,12 @@
      "mainPoolSwaps": 62,
      "peakPct": 0.93,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -4820,10 +5247,12 @@
      "mainPoolSwaps": 5,
      "peakPct": null,
      "hoursAbove10": null,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 60.52,
       "paidAboveReferenceUsd": 1.2,
       "buys": 1,
       "wallets": 1
@@ -4842,10 +5271,12 @@
      "mainPoolSwaps": 29645,
      "peakPct": 0.9,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -4864,10 +5295,12 @@
      "mainPoolSwaps": 876,
      "peakPct": 0.9,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 13424.62,
       "paidAboveReferenceUsd": 344.94,
       "buys": 120,
       "wallets": 91
@@ -4886,10 +5319,12 @@
      "mainPoolSwaps": 17813,
      "peakPct": 0.86,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -4908,10 +5343,12 @@
      "mainPoolSwaps": 20,
      "peakPct": 0.75,
      "hoursAbove10": 0,
+     "buysValueUsd": 54.78,
      "paidAboveReferenceUsd": 2.68,
      "buysAbove": 1,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 488.04,
       "paidAboveReferenceUsd": 18.51,
       "buys": 2,
       "wallets": 0
@@ -4930,10 +5367,12 @@
      "mainPoolSwaps": 1989,
      "peakPct": 0.7,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 4978.18,
       "paidAboveReferenceUsd": 147.07,
       "buys": 1,
       "wallets": 0
@@ -4952,10 +5391,12 @@
      "mainPoolSwaps": 819,
      "peakPct": 0.68,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 2928.64,
       "paidAboveReferenceUsd": 118,
       "buys": 6,
       "wallets": 6
@@ -4974,10 +5415,12 @@
      "mainPoolSwaps": 15628,
      "peakPct": 0.68,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 803.74,
       "paidAboveReferenceUsd": 21.14,
       "buys": 1,
       "wallets": 1
@@ -4996,10 +5439,12 @@
      "mainPoolSwaps": 11149,
      "peakPct": 0.56,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 4.96,
       "paidAboveReferenceUsd": 0.14,
       "buys": 2,
       "wallets": 1
@@ -5018,10 +5463,12 @@
      "mainPoolSwaps": 13930,
      "peakPct": 0.56,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 171.69,
       "paidAboveReferenceUsd": 4.55,
       "buys": 1,
       "wallets": 1
@@ -5040,10 +5487,12 @@
      "mainPoolSwaps": 1217,
      "peakPct": 0.55,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5062,10 +5511,12 @@
      "mainPoolSwaps": 14190,
      "peakPct": 0.47,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 563.77,
       "paidAboveReferenceUsd": 12.81,
       "buys": 1,
       "wallets": 1
@@ -5084,10 +5535,12 @@
      "mainPoolSwaps": 5272,
      "peakPct": 0.41,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5106,10 +5559,12 @@
      "mainPoolSwaps": 2290,
      "peakPct": 0.39,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5128,10 +5583,12 @@
      "mainPoolSwaps": 2724,
      "peakPct": 0.35,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5150,10 +5607,12 @@
      "mainPoolSwaps": 96681,
      "peakPct": 0.29,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5172,10 +5631,12 @@
      "mainPoolSwaps": 965,
      "peakPct": 0.27,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5194,10 +5655,12 @@
      "mainPoolSwaps": 66937,
      "peakPct": 0.26,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 273.48,
       "paidAboveReferenceUsd": 6.56,
       "buys": 4,
       "wallets": 2
@@ -5216,10 +5679,12 @@
      "mainPoolSwaps": 1548,
      "peakPct": 0.25,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5238,10 +5703,12 @@
      "mainPoolSwaps": 47,
      "peakPct": 0.25,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5260,10 +5727,12 @@
      "mainPoolSwaps": 1095,
      "peakPct": 0.24,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5282,10 +5751,12 @@
      "mainPoolSwaps": 186,
      "peakPct": 0.19,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5304,10 +5775,12 @@
      "mainPoolSwaps": 2049,
      "peakPct": 0.17,
      "hoursAbove10": 0,
+     "buysValueUsd": 365,
      "paidAboveReferenceUsd": 23.13,
      "buysAbove": 1,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 365,
       "paidAboveReferenceUsd": 23.13,
       "buys": 1,
       "wallets": 1
@@ -5326,10 +5799,12 @@
      "mainPoolSwaps": 29,
      "peakPct": 0.1,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5348,10 +5823,12 @@
      "mainPoolSwaps": 25,
      "peakPct": 0.05,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5370,10 +5847,12 @@
      "mainPoolSwaps": 17851,
      "peakPct": -0.15,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5392,10 +5871,12 @@
      "mainPoolSwaps": 15271,
      "peakPct": -0.2,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5414,10 +5895,12 @@
      "mainPoolSwaps": 10421,
      "peakPct": -0.23,
      "hoursAbove10": 0,
+     "buysValueUsd": 245.99,
      "paidAboveReferenceUsd": 95.99,
      "buysAbove": 2,
      "wallets": 2,
      "detail2pct": {
+      "buysValueUsd": 491.99,
       "paidAboveReferenceUsd": 103.43,
       "buys": 4,
       "wallets": 4
@@ -5436,10 +5919,12 @@
      "mainPoolSwaps": 316,
      "peakPct": -0.28,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5458,10 +5943,12 @@
      "mainPoolSwaps": 24,
      "peakPct": -0.44,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5480,10 +5967,12 @@
      "mainPoolSwaps": 798,
      "peakPct": -0.67,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5502,10 +5991,12 @@
      "mainPoolSwaps": 1197,
      "peakPct": -0.7,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5524,10 +6015,12 @@
      "mainPoolSwaps": 13953,
      "peakPct": -0.94,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5546,10 +6039,12 @@
      "mainPoolSwaps": 191,
      "peakPct": -0.95,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5568,10 +6063,12 @@
      "mainPoolSwaps": 175,
      "peakPct": -1.22,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5590,10 +6087,12 @@
      "mainPoolSwaps": 12,
      "peakPct": -2.61,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -5624,10 +6123,12 @@
     "ticker": "MSTR",
     "peakPct": 166.51
    },
+   "buysValueUsd": 9994447.68,
    "paidAboveReferenceUsd": 2488111.54,
    "wallets": 10819,
    "buysAbove": 67057,
    "detail2pct": {
+    "buysValueUsd": 12867539.92,
     "paidAboveReferenceUsd": 2590310.5,
     "wallets": 12627,
     "buys": 85573
@@ -5641,10 +6142,12 @@
      "mainPoolSwaps": 62317,
      "peakPct": 166.51,
      "hoursAbove10": 41.2,
+     "buysValueUsd": 4566365.81,
      "paidAboveReferenceUsd": 1585675.33,
      "buysAbove": 25102,
      "wallets": 4899,
      "detail2pct": {
+      "buysValueUsd": 5540912.91,
       "paidAboveReferenceUsd": 1622271.21,
       "buys": 31544,
       "wallets": 5411
@@ -5679,10 +6182,12 @@
      "mainPoolSwaps": 189,
      "peakPct": 127.1,
      "hoursAbove10": 5.6,
+     "buysValueUsd": 5342.17,
      "paidAboveReferenceUsd": 2317.85,
      "buysAbove": 108,
      "wallets": 86,
      "detail2pct": {
+      "buysValueUsd": 5409.19,
       "paidAboveReferenceUsd": 2319.66,
       "buys": 112,
       "wallets": 86
@@ -5705,10 +6210,12 @@
      "mainPoolSwaps": 7549,
      "peakPct": 47.03,
      "hoursAbove10": 2.4,
+     "buysValueUsd": 875643.35,
      "paidAboveReferenceUsd": 161062.84,
      "buysAbove": 2206,
      "wallets": 713,
      "detail2pct": {
+      "buysValueUsd": 2068564.93,
       "paidAboveReferenceUsd": 203732.65,
       "buys": 6359,
       "wallets": 2094
@@ -5743,10 +6250,12 @@
      "mainPoolSwaps": 71295,
      "peakPct": 38.51,
      "hoursAbove10": 20.4,
+     "buysValueUsd": 3966769.67,
      "paidAboveReferenceUsd": 626414.34,
      "buysAbove": 33651,
      "wallets": 6317,
      "detail2pct": {
+      "buysValueUsd": 4306594.22,
       "paidAboveReferenceUsd": 637785.1,
       "buys": 36767,
       "wallets": 6916
@@ -5769,10 +6278,12 @@
      "mainPoolSwaps": 7953,
      "peakPct": 28.17,
      "hoursAbove10": 1.1,
+     "buysValueUsd": 339225.23,
      "paidAboveReferenceUsd": 94584.69,
      "buysAbove": 3441,
      "wallets": 834,
      "detail2pct": {
+      "buysValueUsd": 412475.95,
       "paidAboveReferenceUsd": 96944.36,
       "buys": 3856,
       "wallets": 936
@@ -5795,10 +6306,12 @@
      "mainPoolSwaps": 306,
      "peakPct": 24.83,
      "hoursAbove10": 25.2,
+     "buysValueUsd": 12778.07,
      "paidAboveReferenceUsd": 1440.58,
      "buysAbove": 163,
      "wallets": 118,
      "detail2pct": {
+      "buysValueUsd": 13917.14,
       "paidAboveReferenceUsd": 1479.73,
       "buys": 175,
       "wallets": 127
@@ -5821,10 +6334,12 @@
      "mainPoolSwaps": 151,
      "peakPct": 13.87,
      "hoursAbove10": 0.9,
+     "buysValueUsd": 1468.87,
      "paidAboveReferenceUsd": 128.7,
      "buysAbove": 30,
      "wallets": 17,
      "detail2pct": {
+      "buysValueUsd": 2669.64,
       "paidAboveReferenceUsd": 172.35,
       "buys": 70,
       "wallets": 37
@@ -5847,10 +6362,12 @@
      "mainPoolSwaps": 1966,
      "peakPct": 8.37,
      "hoursAbove10": 0,
+     "buysValueUsd": 181819.72,
      "paidAboveReferenceUsd": 13149.02,
      "buysAbove": 1806,
      "wallets": 697,
      "detail2pct": {
+      "buysValueUsd": 219712.86,
       "paidAboveReferenceUsd": 14727.32,
       "buys": 2050,
       "wallets": 747
@@ -5869,10 +6386,12 @@
      "mainPoolSwaps": 1534,
      "peakPct": 7.52,
      "hoursAbove10": 0,
+     "buysValueUsd": 12101.6,
      "paidAboveReferenceUsd": 948.61,
      "buysAbove": 230,
      "wallets": 59,
      "detail2pct": {
+      "buysValueUsd": 26423.27,
       "paidAboveReferenceUsd": 1441.11,
       "buys": 624,
       "wallets": 101
@@ -5891,10 +6410,12 @@
      "mainPoolSwaps": 58,
      "peakPct": 7.45,
      "hoursAbove10": 0,
+     "buysValueUsd": 873.97,
      "paidAboveReferenceUsd": 58.04,
      "buysAbove": 14,
      "wallets": 12,
      "detail2pct": {
+      "buysValueUsd": 1577.91,
       "paidAboveReferenceUsd": 81.66,
       "buys": 26,
       "wallets": 22
@@ -5913,10 +6434,12 @@
      "mainPoolSwaps": 6,
      "peakPct": null,
      "hoursAbove10": null,
+     "buysValueUsd": 178.99,
      "paidAboveReferenceUsd": 13.23,
      "buysAbove": 1,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 326.94,
       "paidAboveReferenceUsd": 17.94,
       "buys": 2,
       "wallets": 2
@@ -5935,10 +6458,12 @@
      "mainPoolSwaps": 4941,
      "peakPct": 5.1,
      "hoursAbove10": 0,
+     "buysValueUsd": 7789.96,
      "paidAboveReferenceUsd": 537.38,
      "buysAbove": 41,
      "wallets": 35,
      "detail2pct": {
+      "buysValueUsd": 118251.68,
       "paidAboveReferenceUsd": 4322.41,
       "buys": 2617,
       "wallets": 394
@@ -5957,10 +6482,12 @@
      "mainPoolSwaps": 601,
      "peakPct": 3.26,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 3548.76,
       "paidAboveReferenceUsd": 86.57,
       "buys": 60,
       "wallets": 51
@@ -5979,10 +6506,12 @@
      "mainPoolSwaps": 270,
      "peakPct": 2.9,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 8156.91,
       "paidAboveReferenceUsd": 224.31,
       "buys": 66,
       "wallets": 48
@@ -6001,10 +6530,12 @@
      "mainPoolSwaps": 182,
      "peakPct": 2.27,
      "hoursAbove10": 0,
+     "buysValueUsd": 1566.01,
      "paidAboveReferenceUsd": 129.01,
      "buysAbove": 19,
      "wallets": 13,
      "detail2pct": {
+      "buysValueUsd": 2206.32,
       "paidAboveReferenceUsd": 150.21,
       "buys": 41,
       "wallets": 25
@@ -6035,10 +6566,12 @@
      "mainPoolSwaps": 183,
      "peakPct": 2.18,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 434.08,
       "paidAboveReferenceUsd": 9.86,
       "buys": 3,
       "wallets": 3
@@ -6057,10 +6590,12 @@
      "mainPoolSwaps": 195,
      "peakPct": 2.14,
      "hoursAbove10": 0,
+     "buysValueUsd": 400,
      "paidAboveReferenceUsd": 22.13,
      "buysAbove": 2,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 745.1,
       "paidAboveReferenceUsd": 32.24,
       "buys": 29,
       "wallets": 17
@@ -6079,10 +6614,12 @@
      "mainPoolSwaps": 16,
      "peakPct": 1.89,
      "hoursAbove10": 0,
+     "buysValueUsd": 53.62,
      "paidAboveReferenceUsd": 5.47,
      "buysAbove": 4,
      "wallets": 3,
      "detail2pct": {
+      "buysValueUsd": 57.62,
       "paidAboveReferenceUsd": 5.61,
       "buys": 6,
       "wallets": 3
@@ -6101,10 +6638,12 @@
      "mainPoolSwaps": 2062,
      "peakPct": 1.78,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 9104.58,
       "paidAboveReferenceUsd": 199.97,
       "buys": 129,
       "wallets": 71
@@ -6123,10 +6662,12 @@
      "mainPoolSwaps": 23,
      "peakPct": 1.67,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 5.47,
       "paidAboveReferenceUsd": 0.18,
       "buys": 1,
       "wallets": 1
@@ -6145,10 +6686,12 @@
      "mainPoolSwaps": 2109,
      "peakPct": 1.38,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 20783.93,
       "paidAboveReferenceUsd": 519.85,
       "buys": 145,
       "wallets": 74
@@ -6167,10 +6710,12 @@
      "mainPoolSwaps": 802,
      "peakPct": 1.26,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 14497.54,
       "paidAboveReferenceUsd": 324.05,
       "buys": 77,
       "wallets": 54
@@ -6189,10 +6734,12 @@
      "mainPoolSwaps": 2974,
      "peakPct": 1.22,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 12594.47,
       "paidAboveReferenceUsd": 275.48,
       "buys": 94,
       "wallets": 55
@@ -6211,10 +6758,12 @@
      "mainPoolSwaps": 11475,
      "peakPct": 1.13,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -6233,10 +6782,12 @@
      "mainPoolSwaps": 733,
      "peakPct": 1.11,
      "hoursAbove10": 0,
+     "buysValueUsd": 33.22,
      "paidAboveReferenceUsd": 2.59,
      "buysAbove": 1,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 16039.63,
       "paidAboveReferenceUsd": 347.65,
       "buys": 102,
       "wallets": 56
@@ -6255,10 +6806,12 @@
      "mainPoolSwaps": 51861,
      "peakPct": 1.07,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -6277,10 +6830,12 @@
      "mainPoolSwaps": 2407,
      "peakPct": 1.03,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -6299,10 +6854,12 @@
      "mainPoolSwaps": 5472,
      "peakPct": 1,
      "hoursAbove10": 0,
+     "buysValueUsd": 659.17,
      "paidAboveReferenceUsd": 43.2,
      "buysAbove": 2,
      "wallets": 2,
      "detail2pct": {
+      "buysValueUsd": 3438.8,
       "paidAboveReferenceUsd": 115.48,
       "buys": 18,
       "wallets": 8
@@ -6321,10 +6878,12 @@
      "mainPoolSwaps": 7232,
      "peakPct": 0.97,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -6343,10 +6902,12 @@
      "mainPoolSwaps": 211,
      "peakPct": 0.96,
      "hoursAbove10": 0,
+     "buysValueUsd": 780.7,
      "paidAboveReferenceUsd": 58.16,
      "buysAbove": 5,
      "wallets": 5,
      "detail2pct": {
+      "buysValueUsd": 3409.83,
       "paidAboveReferenceUsd": 156.06,
       "buys": 33,
       "wallets": 25
@@ -6377,10 +6938,12 @@
      "mainPoolSwaps": 1500,
      "peakPct": 0.95,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 1715.51,
       "paidAboveReferenceUsd": 39.69,
       "buys": 3,
       "wallets": 3
@@ -6399,10 +6962,12 @@
      "mainPoolSwaps": 4150,
      "peakPct": 0.79,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -6421,10 +6986,12 @@
      "mainPoolSwaps": 1296,
      "peakPct": 0.59,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 6672.08,
       "paidAboveReferenceUsd": 171.72,
       "buys": 40,
       "wallets": 35
@@ -6443,10 +7010,12 @@
      "mainPoolSwaps": 5129,
      "peakPct": 0.56,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -6465,10 +7034,12 @@
      "mainPoolSwaps": 645,
      "peakPct": 0.46,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -6487,10 +7058,12 @@
      "mainPoolSwaps": 8206,
      "peakPct": 0.3,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 3561.76,
       "paidAboveReferenceUsd": 119.57,
       "buys": 6,
       "wallets": 5
@@ -6509,10 +7082,12 @@
      "mainPoolSwaps": 4766,
      "peakPct": -0.07,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -6531,10 +7106,12 @@
      "mainPoolSwaps": 2425,
      "peakPct": -0.14,
      "hoursAbove10": 0,
+     "buysValueUsd": 20597.55,
      "paidAboveReferenceUsd": 1520.35,
      "buysAbove": 231,
      "wallets": 134,
      "detail2pct": {
+      "buysValueUsd": 43730.86,
       "paidAboveReferenceUsd": 2236.51,
       "buys": 518,
       "wallets": 197
@@ -6565,10 +7142,12 @@
     "ticker": "DJT",
     "peakPct": 12.36
    },
+   "buysValueUsd": 332393.5,
    "paidAboveReferenceUsd": 25346.21,
    "wallets": 891,
    "buysAbove": 4332,
    "detail2pct": {
+    "buysValueUsd": 590905.35,
     "paidAboveReferenceUsd": 32014.03,
     "wallets": 1354,
     "buys": 5867
@@ -6582,10 +7161,12 @@
      "mainPoolSwaps": 6350,
      "peakPct": 12.36,
      "hoursAbove10": 5.8,
+     "buysValueUsd": 331775.56,
      "paidAboveReferenceUsd": 25279.37,
      "buysAbove": 4324,
      "wallets": 884,
      "detail2pct": {
+      "buysValueUsd": 342382.29,
       "paidAboveReferenceUsd": 25626.9,
       "buys": 4461,
       "wallets": 914
@@ -6608,10 +7189,12 @@
      "mainPoolSwaps": 37,
      "peakPct": 3.92,
      "hoursAbove10": 0,
+     "buysValueUsd": 617.95,
      "paidAboveReferenceUsd": 66.83,
      "buysAbove": 8,
      "wallets": 7,
      "detail2pct": {
+      "buysValueUsd": 1025.83,
       "paidAboveReferenceUsd": 81.58,
       "buys": 16,
       "wallets": 14
@@ -6630,10 +7213,12 @@
      "mainPoolSwaps": 133,
      "peakPct": 3.25,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 155.46,
       "paidAboveReferenceUsd": 4.28,
       "buys": 4,
       "wallets": 4
@@ -6652,10 +7237,12 @@
      "mainPoolSwaps": 1162,
      "peakPct": 3.05,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 98700.25,
       "paidAboveReferenceUsd": 2862.98,
       "buys": 677,
       "wallets": 372
@@ -6674,10 +7261,12 @@
      "mainPoolSwaps": 850,
      "peakPct": 2.52,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 132917.11,
       "paidAboveReferenceUsd": 3068.47,
       "buys": 222,
       "wallets": 57
@@ -6696,10 +7285,12 @@
      "mainPoolSwaps": 25,
      "peakPct": 2.48,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 516.5,
       "paidAboveReferenceUsd": 13.36,
       "buys": 7,
       "wallets": 6
@@ -6718,10 +7309,12 @@
      "mainPoolSwaps": 36,
      "peakPct": 2.28,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 301.16,
       "paidAboveReferenceUsd": 8.5,
       "buys": 14,
       "wallets": 10
@@ -6740,10 +7333,12 @@
      "mainPoolSwaps": 162,
      "peakPct": 2.28,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 1619.27,
       "paidAboveReferenceUsd": 54.68,
       "buys": 38,
       "wallets": 18
@@ -6762,10 +7357,12 @@
      "mainPoolSwaps": 10,
      "peakPct": 1.44,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -6784,10 +7381,12 @@
      "mainPoolSwaps": 568,
      "peakPct": 1.25,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 2693.44,
       "paidAboveReferenceUsd": 58,
       "buys": 37,
       "wallets": 11
@@ -6806,10 +7405,12 @@
      "mainPoolSwaps": 605,
      "peakPct": 1.25,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 7411.42,
       "paidAboveReferenceUsd": 163.16,
       "buys": 355,
       "wallets": 18
@@ -6828,10 +7429,12 @@
      "mainPoolSwaps": 852,
      "peakPct": 1.11,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 978.35,
       "paidAboveReferenceUsd": 27.8,
       "buys": 25,
       "wallets": 4
@@ -6850,10 +7453,12 @@
      "mainPoolSwaps": 117,
      "peakPct": 1.03,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 5.03,
       "paidAboveReferenceUsd": 0.11,
       "buys": 8,
       "wallets": 1
@@ -6872,10 +7477,12 @@
      "mainPoolSwaps": 451,
      "peakPct": 0.83,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 2199.25,
       "paidAboveReferenceUsd": 44.21,
       "buys": 3,
       "wallets": 2
@@ -6894,10 +7501,12 @@
      "mainPoolSwaps": 69,
      "peakPct": 0.78,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -6916,10 +7525,12 @@
      "mainPoolSwaps": 467,
      "peakPct": 0.77,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -6938,10 +7549,12 @@
      "mainPoolSwaps": 33,
      "peakPct": 0.76,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -6960,10 +7573,12 @@
      "mainPoolSwaps": 7038,
      "peakPct": 0.7,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -6982,10 +7597,12 @@
      "mainPoolSwaps": 309,
      "peakPct": 0.67,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7004,10 +7621,12 @@
      "mainPoolSwaps": 131,
      "peakPct": 0.65,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7026,10 +7645,12 @@
      "mainPoolSwaps": 649,
      "peakPct": 0.46,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7048,10 +7669,12 @@
      "mainPoolSwaps": 1105,
      "peakPct": 0.39,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7070,10 +7693,12 @@
      "mainPoolSwaps": 92,
      "peakPct": 0.37,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7092,10 +7717,12 @@
      "mainPoolSwaps": 605,
      "peakPct": 0.27,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7114,10 +7741,12 @@
      "mainPoolSwaps": 154,
      "peakPct": 0.11,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7136,10 +7765,12 @@
      "mainPoolSwaps": 129,
      "peakPct": -0.05,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7158,10 +7789,12 @@
      "mainPoolSwaps": 142,
      "peakPct": -0.13,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7180,10 +7813,12 @@
      "mainPoolSwaps": 6124,
      "peakPct": -0.3,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7202,10 +7837,12 @@
      "mainPoolSwaps": 577,
      "peakPct": -0.92,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7236,10 +7873,12 @@
     "ticker": "DJT",
     "peakPct": 11.72
    },
+   "buysValueUsd": 140512,
    "paidAboveReferenceUsd": 13763.11,
    "wallets": 443,
    "buysAbove": 1975,
    "detail2pct": {
+    "buysValueUsd": 149899.76,
     "paidAboveReferenceUsd": 13993.58,
     "wallets": 480,
     "buys": 2366
@@ -7253,10 +7892,12 @@
      "mainPoolSwaps": 2259,
      "peakPct": 11.72,
      "hoursAbove10": 18,
+     "buysValueUsd": 140223.36,
      "paidAboveReferenceUsd": 13625.76,
      "buysAbove": 1969,
      "wallets": 441,
      "detail2pct": {
+      "buysValueUsd": 141048.4,
       "paidAboveReferenceUsd": 13646.5,
       "buys": 1979,
       "wallets": 447
@@ -7279,10 +7920,12 @@
      "mainPoolSwaps": 6,
      "peakPct": null,
      "hoursAbove10": null,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 1.37,
       "paidAboveReferenceUsd": 0.03,
       "buys": 1,
       "wallets": 1
@@ -7301,10 +7944,12 @@
      "mainPoolSwaps": 31,
      "peakPct": 1.67,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 783.25,
       "paidAboveReferenceUsd": 17.73,
       "buys": 13,
       "wallets": 11
@@ -7323,10 +7968,12 @@
      "mainPoolSwaps": 309,
      "peakPct": 1.45,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 2138.42,
       "paidAboveReferenceUsd": 47.55,
       "buys": 170,
       "wallets": 3
@@ -7345,10 +7992,12 @@
      "mainPoolSwaps": 560,
      "peakPct": 1.23,
      "hoursAbove10": 0,
+     "buysValueUsd": 288.64,
      "paidAboveReferenceUsd": 137.35,
      "buysAbove": 6,
      "wallets": 2,
      "detail2pct": {
+      "buysValueUsd": 2401.33,
       "paidAboveReferenceUsd": 204.92,
       "buys": 130,
       "wallets": 2
@@ -7367,10 +8016,12 @@
      "mainPoolSwaps": 364,
      "peakPct": 1.18,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 2412.99,
       "paidAboveReferenceUsd": 52.49,
       "buys": 57,
       "wallets": 12
@@ -7389,10 +8040,12 @@
      "mainPoolSwaps": 9,
      "peakPct": null,
      "hoursAbove10": null,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 294.26,
       "paidAboveReferenceUsd": 5.91,
       "buys": 4,
       "wallets": 3
@@ -7411,10 +8064,12 @@
      "mainPoolSwaps": 1076,
      "peakPct": 0.95,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 607.55,
       "paidAboveReferenceUsd": 11.96,
       "buys": 7,
       "wallets": 5
@@ -7433,10 +8088,12 @@
      "mainPoolSwaps": 93,
      "peakPct": 0.95,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 1.93,
       "paidAboveReferenceUsd": 0.04,
       "buys": 2,
       "wallets": 1
@@ -7455,10 +8112,12 @@
      "mainPoolSwaps": 133,
      "peakPct": 0.93,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 74.52,
       "paidAboveReferenceUsd": 1.73,
       "buys": 2,
       "wallets": 2
@@ -7477,10 +8136,12 @@
      "mainPoolSwaps": 96,
      "peakPct": 0.78,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7499,10 +8160,12 @@
      "mainPoolSwaps": 365,
      "peakPct": 0.74,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7521,10 +8184,12 @@
      "mainPoolSwaps": 124,
      "peakPct": 0.73,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7543,10 +8208,12 @@
      "mainPoolSwaps": 239,
      "peakPct": 0.71,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7565,10 +8232,12 @@
      "mainPoolSwaps": 318,
      "peakPct": 0.56,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7587,10 +8256,12 @@
      "mainPoolSwaps": 46,
      "peakPct": 0.53,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7609,10 +8280,12 @@
      "mainPoolSwaps": 637,
      "peakPct": 0.45,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7631,10 +8304,12 @@
      "mainPoolSwaps": 53,
      "peakPct": 0.41,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7653,10 +8328,12 @@
      "mainPoolSwaps": 1911,
      "peakPct": 0.33,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7675,10 +8352,12 @@
      "mainPoolSwaps": 1176,
      "peakPct": 0.22,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7697,10 +8376,12 @@
      "mainPoolSwaps": 3696,
      "peakPct": 0.2,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7719,10 +8400,12 @@
      "mainPoolSwaps": 87,
      "peakPct": 0.13,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7741,10 +8424,12 @@
      "mainPoolSwaps": 650,
      "peakPct": 0.06,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7763,10 +8448,12 @@
      "mainPoolSwaps": 1,
      "peakPct": null,
      "hoursAbove10": null,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 135.75,
       "paidAboveReferenceUsd": 4.7,
       "buys": 1,
       "wallets": 1
@@ -7785,10 +8472,12 @@
      "mainPoolSwaps": 27,
      "peakPct": -0.06,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -7819,10 +8508,12 @@
     "ticker": "RDDT",
     "peakPct": 72.46
    },
+   "buysValueUsd": 124241.91,
    "paidAboveReferenceUsd": 36981.41,
    "wallets": 856,
    "buysAbove": 2602,
    "detail2pct": {
+    "buysValueUsd": 251059.77,
     "paidAboveReferenceUsd": 41158.83,
     "wallets": 1338,
     "buys": 3703
@@ -7836,10 +8527,12 @@
      "mainPoolSwaps": 5635,
      "peakPct": 72.46,
      "hoursAbove10": 42.2,
+     "buysValueUsd": 114678.46,
      "paidAboveReferenceUsd": 36496.05,
      "buysAbove": 2586,
      "wallets": 849,
      "detail2pct": {
+      "buysValueUsd": 116069.11,
       "paidAboveReferenceUsd": 36534.32,
       "buys": 2625,
       "wallets": 864
@@ -7862,10 +8555,12 @@
      "mainPoolSwaps": 6,
      "peakPct": null,
      "hoursAbove10": null,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 113.52,
       "paidAboveReferenceUsd": 5.3,
       "buys": 2,
       "wallets": 2
@@ -7884,10 +8579,12 @@
      "mainPoolSwaps": 1701,
      "peakPct": 3.43,
      "hoursAbove10": 0,
+     "buysValueUsd": 9563.44,
      "paidAboveReferenceUsd": 485.36,
      "buysAbove": 16,
      "wallets": 9,
      "detail2pct": {
+      "buysValueUsd": 118486.57,
       "paidAboveReferenceUsd": 4252.67,
       "buys": 956,
       "wallets": 428
@@ -7906,10 +8603,12 @@
      "mainPoolSwaps": 39,
      "peakPct": 3.18,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 1118.9,
       "paidAboveReferenceUsd": 31.83,
       "buys": 9,
       "wallets": 9
@@ -7928,10 +8627,12 @@
      "mainPoolSwaps": 7,
      "peakPct": null,
      "hoursAbove10": null,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 16.95,
       "paidAboveReferenceUsd": 0.57,
       "buys": 4,
       "wallets": 1
@@ -7950,10 +8651,12 @@
      "mainPoolSwaps": 4,
      "peakPct": null,
      "hoursAbove10": null,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 11.69,
       "paidAboveReferenceUsd": 0.3,
       "buys": 3,
       "wallets": 3
@@ -7972,10 +8675,12 @@
      "mainPoolSwaps": 214,
      "peakPct": 2.25,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 5284.62,
       "paidAboveReferenceUsd": 117.09,
       "buys": 16,
       "wallets": 12
@@ -7994,10 +8699,12 @@
      "mainPoolSwaps": 42,
      "peakPct": 1.96,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 1278.89,
       "paidAboveReferenceUsd": 30.19,
       "buys": 8,
       "wallets": 5
@@ -8016,10 +8723,12 @@
      "mainPoolSwaps": 778,
      "peakPct": 1.67,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 6969.94,
       "paidAboveReferenceUsd": 150.28,
       "buys": 58,
       "wallets": 44
@@ -8038,10 +8747,12 @@
      "mainPoolSwaps": 11,
      "peakPct": 1.22,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8060,10 +8771,12 @@
      "mainPoolSwaps": 315,
      "peakPct": 0.96,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8082,10 +8795,12 @@
      "mainPoolSwaps": 999,
      "peakPct": 0.95,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8104,10 +8819,12 @@
      "mainPoolSwaps": 13,
      "peakPct": 0.86,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8126,10 +8843,12 @@
      "mainPoolSwaps": 389,
      "peakPct": 0.86,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8148,10 +8867,12 @@
      "mainPoolSwaps": 117,
      "peakPct": 0.81,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8170,10 +8891,12 @@
      "mainPoolSwaps": 44,
      "peakPct": 0.45,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8192,10 +8915,12 @@
      "mainPoolSwaps": 11574,
      "peakPct": 0.43,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 10.48,
       "paidAboveReferenceUsd": 0.29,
       "buys": 2,
       "wallets": 2
@@ -8214,10 +8939,12 @@
      "mainPoolSwaps": 137,
      "peakPct": 0.34,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8236,10 +8963,12 @@
      "mainPoolSwaps": 204,
      "peakPct": 0.33,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 1699.11,
       "paidAboveReferenceUsd": 36,
       "buys": 20,
       "wallets": 15
@@ -8258,10 +8987,12 @@
      "mainPoolSwaps": 471,
      "peakPct": 0.25,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8280,10 +9011,12 @@
      "mainPoolSwaps": 57,
      "peakPct": 0.23,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8302,10 +9035,12 @@
      "mainPoolSwaps": 27,
      "peakPct": 0.19,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8324,10 +9059,12 @@
      "mainPoolSwaps": 602,
      "peakPct": 0.18,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8346,10 +9083,12 @@
      "mainPoolSwaps": 44,
      "peakPct": -0.2,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8380,10 +9119,12 @@
     "ticker": "SKHY",
     "peakPct": 4.95
    },
+   "buysValueUsd": 15818.23,
    "paidAboveReferenceUsd": 1122.74,
    "wallets": 74,
    "buysAbove": 121,
    "detail2pct": {
+    "buysValueUsd": 160354.97,
     "paidAboveReferenceUsd": 5231.69,
     "wallets": 254,
     "buys": 688
@@ -8397,10 +9138,12 @@
      "mainPoolSwaps": 87,
      "peakPct": 4.95,
      "hoursAbove10": 0,
+     "buysValueUsd": 78.87,
      "paidAboveReferenceUsd": 3.84,
      "buysAbove": 2,
      "wallets": 2,
      "detail2pct": {
+      "buysValueUsd": 1184.65,
       "paidAboveReferenceUsd": 37.96,
       "buys": 23,
       "wallets": 8
@@ -8419,10 +9162,12 @@
      "mainPoolSwaps": 338,
      "peakPct": 3.64,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 21642.83,
       "paidAboveReferenceUsd": 720.98,
       "buys": 73,
       "wallets": 30
@@ -8441,10 +9186,12 @@
      "mainPoolSwaps": 163,
      "peakPct": 2.78,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 34987.29,
       "paidAboveReferenceUsd": 1006.16,
       "buys": 105,
       "wallets": 19
@@ -8463,10 +9210,12 @@
      "mainPoolSwaps": 275,
      "peakPct": 2.67,
      "hoursAbove10": 0,
+     "buysValueUsd": 7036.45,
      "paidAboveReferenceUsd": 370.83,
      "buysAbove": 4,
      "wallets": 3,
      "detail2pct": {
+      "buysValueUsd": 14576.8,
       "paidAboveReferenceUsd": 581.85,
       "buys": 80,
       "wallets": 28
@@ -8497,10 +9246,12 @@
      "mainPoolSwaps": 121,
      "peakPct": 2.53,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 20550.13,
       "paidAboveReferenceUsd": 616.94,
       "buys": 24,
       "wallets": 4
@@ -8519,10 +9270,12 @@
      "mainPoolSwaps": 132,
      "peakPct": 2.34,
      "hoursAbove10": 0,
+     "buysValueUsd": 92.95,
      "paidAboveReferenceUsd": 4.6,
      "buysAbove": 1,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 4001.6,
       "paidAboveReferenceUsd": 127.54,
       "buys": 54,
       "wallets": 43
@@ -8541,10 +9294,12 @@
      "mainPoolSwaps": 176,
      "peakPct": 2.32,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 12618.81,
       "paidAboveReferenceUsd": 313.78,
       "buys": 28,
       "wallets": 18
@@ -8563,10 +9318,12 @@
      "mainPoolSwaps": 342,
      "peakPct": 2.17,
      "hoursAbove10": 0.1,
+     "buysValueUsd": 7214.2,
      "paidAboveReferenceUsd": 615.49,
      "buysAbove": 113,
      "wallets": 68,
      "detail2pct": {
+      "buysValueUsd": 9925.62,
       "paidAboveReferenceUsd": 703.46,
       "buys": 127,
       "wallets": 82
@@ -8585,10 +9342,12 @@
      "mainPoolSwaps": 59,
      "peakPct": 1.67,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8607,10 +9366,12 @@
      "mainPoolSwaps": 326,
      "peakPct": 1.53,
      "hoursAbove10": 0,
+     "buysValueUsd": 1395.75,
      "paidAboveReferenceUsd": 127.99,
      "buysAbove": 1,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 21999.68,
       "paidAboveReferenceUsd": 668.11,
       "buys": 50,
       "wallets": 14
@@ -8629,10 +9390,12 @@
      "mainPoolSwaps": 547,
      "peakPct": 1.14,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 12852.62,
       "paidAboveReferenceUsd": 270.87,
       "buys": 120,
       "wallets": 42
@@ -8651,10 +9414,12 @@
      "mainPoolSwaps": 224,
      "peakPct": 1.02,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8673,10 +9438,12 @@
      "mainPoolSwaps": 756,
      "peakPct": 0.85,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8695,10 +9462,12 @@
      "mainPoolSwaps": 343,
      "peakPct": 0.83,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 5643.64,
       "paidAboveReferenceUsd": 175.4,
       "buys": 3,
       "wallets": 1
@@ -8717,10 +9486,12 @@
      "mainPoolSwaps": 1726,
      "peakPct": 0.55,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 371.31,
       "paidAboveReferenceUsd": 8.65,
       "buys": 1,
       "wallets": 1
@@ -8739,10 +9510,12 @@
      "mainPoolSwaps": 26,
      "peakPct": 0.43,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8761,10 +9534,12 @@
      "mainPoolSwaps": 113,
      "peakPct": 0.32,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8783,10 +9558,12 @@
      "mainPoolSwaps": 2551,
      "peakPct": 0.28,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8805,10 +9582,12 @@
      "mainPoolSwaps": 994,
      "peakPct": 0.23,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8827,10 +9606,12 @@
      "mainPoolSwaps": 375,
      "peakPct": 0.17,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8849,10 +9630,12 @@
      "mainPoolSwaps": 150,
      "peakPct": -0.05,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8871,10 +9654,12 @@
      "mainPoolSwaps": 242,
      "peakPct": -0.26,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8893,10 +9678,12 @@
      "mainPoolSwaps": 58,
      "peakPct": -1.38,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8915,10 +9702,12 @@
      "mainPoolSwaps": 191,
      "peakPct": -3.18,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -8949,10 +9738,12 @@
     "ticker": "MSTR",
     "peakPct": 37.06
    },
+   "buysValueUsd": 109866.47,
    "paidAboveReferenceUsd": 24775.43,
    "wallets": 661,
    "buysAbove": 1744,
    "detail2pct": {
+    "buysValueUsd": 242429.97,
     "paidAboveReferenceUsd": 28328.1,
     "wallets": 952,
     "buys": 2523
@@ -8966,10 +9757,12 @@
      "mainPoolSwaps": 1633,
      "peakPct": 37.06,
      "hoursAbove10": 35.5,
+     "buysValueUsd": 24987.95,
      "paidAboveReferenceUsd": 8998.19,
      "buysAbove": 837,
      "wallets": 254,
      "detail2pct": {
+      "buysValueUsd": 25217.86,
       "paidAboveReferenceUsd": 9007.38,
       "buys": 847,
       "wallets": 259
@@ -8992,10 +9785,12 @@
      "mainPoolSwaps": 1842,
      "peakPct": 30.04,
      "hoursAbove10": 38.1,
+     "buysValueUsd": 84878.34,
      "paidAboveReferenceUsd": 15777.22,
      "buysAbove": 906,
      "wallets": 444,
      "detail2pct": {
+      "buysValueUsd": 86779.44,
       "paidAboveReferenceUsd": 15841.4,
       "buys": 938,
       "wallets": 451
@@ -9018,10 +9813,12 @@
      "mainPoolSwaps": 6,
      "peakPct": null,
      "hoursAbove10": null,
+     "buysValueUsd": 0.19,
      "paidAboveReferenceUsd": 0.02,
      "buysAbove": 1,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 0.19,
       "paidAboveReferenceUsd": 0.02,
       "buys": 1,
       "wallets": 1
@@ -9040,10 +9837,12 @@
      "mainPoolSwaps": 390,
      "peakPct": 3.06,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 19025.93,
       "paidAboveReferenceUsd": 579.43,
       "buys": 148,
       "wallets": 63
@@ -9062,10 +9861,12 @@
      "mainPoolSwaps": 208,
      "peakPct": 2.85,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 14294.33,
       "paidAboveReferenceUsd": 405.25,
       "buys": 79,
       "wallets": 28
@@ -9084,10 +9885,12 @@
      "mainPoolSwaps": 261,
      "peakPct": 2.69,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 12139.23,
       "paidAboveReferenceUsd": 318.48,
       "buys": 63,
       "wallets": 30
@@ -9106,10 +9909,12 @@
      "mainPoolSwaps": 509,
      "peakPct": 2.54,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 3622.6,
       "paidAboveReferenceUsd": 84.7,
       "buys": 48,
       "wallets": 34
@@ -9128,10 +9933,12 @@
      "mainPoolSwaps": 126,
      "peakPct": 2.49,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 6969.62,
       "paidAboveReferenceUsd": 186.31,
       "buys": 32,
       "wallets": 11
@@ -9150,10 +9957,12 @@
      "mainPoolSwaps": 547,
      "peakPct": 2.28,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 40101.2,
       "paidAboveReferenceUsd": 1022.48,
       "buys": 144,
       "wallets": 78
@@ -9172,10 +9981,12 @@
      "mainPoolSwaps": 950,
      "peakPct": 1.97,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 17078.6,
       "paidAboveReferenceUsd": 480.96,
       "buys": 141,
       "wallets": 104
@@ -9194,10 +10005,12 @@
      "mainPoolSwaps": 425,
      "peakPct": 1.8,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 11501.93,
       "paidAboveReferenceUsd": 274.86,
       "buys": 40,
       "wallets": 11
@@ -9216,10 +10029,12 @@
      "mainPoolSwaps": 3769,
      "peakPct": 1.42,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -9238,10 +10053,12 @@
      "mainPoolSwaps": 952,
      "peakPct": 1.35,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 5529.31,
       "paidAboveReferenceUsd": 121.47,
       "buys": 37,
       "wallets": 19
@@ -9260,10 +10077,12 @@
      "mainPoolSwaps": 397,
      "peakPct": 1.04,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -9282,10 +10101,12 @@
      "mainPoolSwaps": 402,
      "peakPct": 0.88,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -9304,10 +10125,12 @@
      "mainPoolSwaps": 5070,
      "peakPct": 0.88,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 169.72,
       "paidAboveReferenceUsd": 5.36,
       "buys": 5,
       "wallets": 5
@@ -9326,10 +10149,12 @@
      "mainPoolSwaps": 1159,
      "peakPct": 0.84,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -9348,10 +10173,12 @@
      "mainPoolSwaps": 1458,
      "peakPct": 0.73,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -9370,10 +10197,12 @@
      "mainPoolSwaps": 2848,
      "peakPct": 0.47,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -9392,10 +10221,12 @@
      "mainPoolSwaps": 4851,
      "peakPct": 0.19,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -9414,10 +10245,12 @@
      "mainPoolSwaps": 1710,
      "peakPct": 0.06,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -9436,10 +10269,12 @@
      "mainPoolSwaps": 733,
      "peakPct": -1.51,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -9470,10 +10305,12 @@
     "ticker": "SNDK",
     "peakPct": 8.81
    },
+   "buysValueUsd": 67397.76,
    "paidAboveReferenceUsd": 3994.4,
    "wallets": 247,
    "buysAbove": 452,
    "detail2pct": {
+    "buysValueUsd": 320151.68,
     "paidAboveReferenceUsd": 12879.35,
     "wallets": 907,
     "buys": 2077
@@ -9487,10 +10324,12 @@
      "mainPoolSwaps": 486,
      "peakPct": 8.81,
      "hoursAbove10": 0,
+     "buysValueUsd": 3961.13,
      "paidAboveReferenceUsd": 852.17,
      "buysAbove": 72,
      "wallets": 52,
      "detail2pct": {
+      "buysValueUsd": 4894.12,
       "paidAboveReferenceUsd": 883.86,
       "buys": 101,
       "wallets": 67
@@ -9509,10 +10348,12 @@
      "mainPoolSwaps": 2,
      "peakPct": null,
      "hoursAbove10": null,
+     "buysValueUsd": 1.41,
      "paidAboveReferenceUsd": 0.11,
      "buysAbove": 1,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 1.41,
       "paidAboveReferenceUsd": 0.11,
       "buys": 1,
       "wallets": 1
@@ -9531,10 +10372,12 @@
      "mainPoolSwaps": 49,
      "peakPct": 8.11,
      "hoursAbove10": 0,
+     "buysValueUsd": 203.48,
      "paidAboveReferenceUsd": 13.28,
      "buysAbove": 26,
      "wallets": 6,
      "detail2pct": {
+      "buysValueUsd": 203.48,
       "paidAboveReferenceUsd": 13.28,
       "buys": 26,
       "wallets": 6
@@ -9553,10 +10396,12 @@
      "mainPoolSwaps": 194,
      "peakPct": 7.98,
      "hoursAbove10": 0.3,
+     "buysValueUsd": 2836.43,
      "paidAboveReferenceUsd": 195.21,
      "buysAbove": 50,
      "wallets": 31,
      "detail2pct": {
+      "buysValueUsd": 4401.81,
       "paidAboveReferenceUsd": 247.24,
       "buys": 101,
       "wallets": 53
@@ -9575,10 +10420,12 @@
      "mainPoolSwaps": 4624,
      "peakPct": 3.87,
      "hoursAbove10": 0,
+     "buysValueUsd": 59758.12,
      "paidAboveReferenceUsd": 2896.71,
      "buysAbove": 296,
      "wallets": 163,
      "detail2pct": {
+      "buysValueUsd": 280199.71,
       "paidAboveReferenceUsd": 10866.34,
       "buys": 1771,
       "wallets": 795
@@ -9597,10 +10444,12 @@
      "mainPoolSwaps": 474,
      "peakPct": 1.48,
      "hoursAbove10": 0,
+     "buysValueUsd": 143.83,
      "paidAboveReferenceUsd": 8.13,
      "buysAbove": 5,
      "wallets": 4,
      "detail2pct": {
+      "buysValueUsd": 607.13,
       "paidAboveReferenceUsd": 21.52,
       "buys": 28,
       "wallets": 11
@@ -9619,10 +10468,12 @@
      "mainPoolSwaps": 1011,
      "peakPct": 1.19,
      "hoursAbove10": 0,
+     "buysValueUsd": 306.9,
      "paidAboveReferenceUsd": 15.48,
      "buysAbove": 1,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 22473.98,
       "paidAboveReferenceUsd": 644.6,
       "buys": 41,
       "wallets": 33
@@ -9641,10 +10492,12 @@
      "mainPoolSwaps": 79,
      "peakPct": 1.03,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 49.02,
       "paidAboveReferenceUsd": 1.27,
       "buys": 3,
       "wallets": 3
@@ -9663,10 +10516,12 @@
      "mainPoolSwaps": 1420,
      "peakPct": 0.52,
      "hoursAbove10": 0,
+     "buysValueUsd": 186.47,
      "paidAboveReferenceUsd": 13.32,
      "buysAbove": 1,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 5845.32,
       "paidAboveReferenceUsd": 171.62,
       "buys": 2,
       "wallets": 2
@@ -9685,10 +10540,12 @@
      "mainPoolSwaps": 4085,
      "peakPct": 0.49,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -9707,10 +10564,12 @@
      "mainPoolSwaps": 571,
      "peakPct": 0.44,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -9729,10 +10588,12 @@
      "mainPoolSwaps": 1795,
      "peakPct": 0.42,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -9751,10 +10612,12 @@
      "mainPoolSwaps": 2556,
      "peakPct": 0.35,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 1475.71,
       "paidAboveReferenceUsd": 29.51,
       "buys": 3,
       "wallets": 3
@@ -9773,10 +10636,12 @@
      "mainPoolSwaps": 1219,
      "peakPct": 0.25,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -9795,10 +10660,12 @@
      "mainPoolSwaps": 417,
      "peakPct": 0.19,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -9817,10 +10684,12 @@
      "mainPoolSwaps": 395,
      "peakPct": -0.16,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -9851,10 +10720,12 @@
     "ticker": "AMD",
     "peakPct": 2.25
    },
+   "buysValueUsd": 144.7,
    "paidAboveReferenceUsd": 7.66,
    "wallets": 3,
    "buysAbove": 3,
    "detail2pct": {
+    "buysValueUsd": 8553.23,
     "paidAboveReferenceUsd": 237.74,
     "wallets": 50,
     "buys": 95
@@ -9868,10 +10739,12 @@
      "mainPoolSwaps": 79,
      "peakPct": 2.25,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 12.06,
       "paidAboveReferenceUsd": 0.34,
       "buys": 3,
       "wallets": 3
@@ -9890,10 +10763,12 @@
      "mainPoolSwaps": 16,
      "peakPct": 2.02,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 25,
       "paidAboveReferenceUsd": 0.59,
       "buys": 1,
       "wallets": 1
@@ -9912,10 +10787,12 @@
      "mainPoolSwaps": 383,
      "peakPct": 1.5,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 5306.08,
       "paidAboveReferenceUsd": 119.38,
       "buys": 41,
       "wallets": 23
@@ -9934,10 +10811,12 @@
      "mainPoolSwaps": 419,
      "peakPct": 1.47,
      "hoursAbove10": 0,
+     "buysValueUsd": 144.7,
      "paidAboveReferenceUsd": 7.66,
      "buysAbove": 3,
      "wallets": 3,
      "detail2pct": {
+      "buysValueUsd": 3121.68,
       "paidAboveReferenceUsd": 115.21,
       "buys": 44,
       "wallets": 23
@@ -9956,10 +10835,12 @@
      "mainPoolSwaps": 29,
      "peakPct": 1.45,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 63.25,
       "paidAboveReferenceUsd": 1.41,
       "buys": 4,
       "wallets": 4
@@ -9978,10 +10859,12 @@
      "mainPoolSwaps": 60,
      "peakPct": 1.12,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -10000,10 +10883,12 @@
      "mainPoolSwaps": 2147,
      "peakPct": 0.88,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 25.17,
       "paidAboveReferenceUsd": 0.81,
       "buys": 2,
       "wallets": 2
@@ -10022,10 +10907,12 @@
      "mainPoolSwaps": 439,
      "peakPct": 0.51,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -10044,10 +10931,12 @@
      "mainPoolSwaps": 529,
      "peakPct": 0.45,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -10066,10 +10955,12 @@
      "mainPoolSwaps": 86,
      "peakPct": 0.17,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -10088,10 +10979,12 @@
      "mainPoolSwaps": 521,
      "peakPct": -0.16,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -10122,10 +11015,12 @@
     "ticker": "SPCX",
     "peakPct": 7.84
    },
+   "buysValueUsd": 10.09,
    "paidAboveReferenceUsd": 0.54,
    "wallets": 2,
    "buysAbove": 4,
    "detail2pct": {
+    "buysValueUsd": 502.77,
     "paidAboveReferenceUsd": 15.66,
     "wallets": 15,
     "buys": 24
@@ -10139,10 +11034,12 @@
      "mainPoolSwaps": 53,
      "peakPct": 7.84,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 16.87,
       "paidAboveReferenceUsd": 0.65,
       "buys": 4,
       "wallets": 3
@@ -10161,10 +11058,12 @@
      "mainPoolSwaps": 8,
      "peakPct": null,
      "hoursAbove10": null,
+     "buysValueUsd": 1.52,
      "paidAboveReferenceUsd": 0.08,
      "buysAbove": 3,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 4.34,
       "paidAboveReferenceUsd": 0.18,
       "buys": 6,
       "wallets": 4
@@ -10183,10 +11082,12 @@
      "mainPoolSwaps": 9,
      "peakPct": null,
      "hoursAbove10": null,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 1,
       "paidAboveReferenceUsd": 0.04,
       "buys": 1,
       "wallets": 1
@@ -10205,10 +11106,12 @@
      "mainPoolSwaps": 12,
      "peakPct": 2.79,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 9.88,
       "paidAboveReferenceUsd": 0.28,
       "buys": 7,
       "wallets": 4
@@ -10227,10 +11130,12 @@
      "mainPoolSwaps": 21,
      "peakPct": 1.66,
      "hoursAbove10": 0,
+     "buysValueUsd": 0,
      "paidAboveReferenceUsd": 0,
      "buysAbove": 0,
      "wallets": 0,
      "detail2pct": {
+      "buysValueUsd": 0,
       "paidAboveReferenceUsd": 0,
       "buys": 0,
       "wallets": 0
@@ -10249,10 +11154,12 @@
      "mainPoolSwaps": 79,
      "peakPct": 1.61,
      "hoursAbove10": 0,
+     "buysValueUsd": 8.57,
      "paidAboveReferenceUsd": 0.46,
      "buysAbove": 1,
      "wallets": 1,
      "detail2pct": {
+      "buysValueUsd": 470.68,
       "paidAboveReferenceUsd": 14.5,
       "buys": 6,
       "wallets": 5
