@@ -34,7 +34,7 @@ Every public number or claim, where it comes from, and its status. Generated fro
 | Same at 2% (detail) | $32,889,731 of buys, $4,074,871 above the reference, 38,844 wallets | harm.json totals.above2pct | verified (observed onchain) | /weekends detail |
 | 25 Jul window (definition check) | $109,866 of buys, $24,775 above the reference (5%); the earlier "$28,328" was the same excess at 2%: $28,328 | harm.json windows[2026-07-25] | verified (observed onchain) | /weekends |
 | Premium >10% held 1h+ on at least one eligible token | 4 of 11 windows (36.4%, "about 1 in 3"); 3.6% of eligible token-windows | frequency.json eligible (depth >= $10k) | verified (observed onchain) | /weekends (method), report |
-| Minting off, 2026 | 2,736 h of 8,760 h = 31.23% | mintoff.json (Robinhood window + NYSE holidays; holiday 02:00–02:00 Berlin assumption) | verified (computed from sources) | C1 section (pending) |
+| Minting off, 2026 | 2,736 h of 8,760 h = 31.23% | mintoff.json (Robinhood window + NYSE holidays; holiday 02:00–02:00 Berlin assumption) | verified (computed from sources) | landing mint-off section, /weekends, fact carousel, stat row |
 | Sell order contracts (testnet) | PositionManager 0x58daec3116aae6D93017bAAea7749052E8a04fA7, Permit2 0x000000000022D473030F116dDEE9F6B43aC78BA3 | docs/verification/sellorder-gate.md (fork run) | verified (fork) | /sell, README |
 | Sandbox | illustrative market, real vault rules | web/src/lib/sandbox.ts on keeper/src/supplyReplay.ts | simulated | /sandbox |
 
