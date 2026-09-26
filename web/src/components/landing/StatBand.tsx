@@ -49,7 +49,7 @@ export function StatBand() {
         {stats.map((x, i) => (
           <div key={i} title={`Source: ${x.src}`} className={`py-6 pr-4 ${i % 2 ? "pl-4 md:pl-6" : "md:pl-6"} ${i ? "md:border-l md:border-paper-line" : "md:pl-0"} ${i % 2 ? "border-l border-paper-line md:border-l" : ""}`}>
             <div className="text-sm text-ink-soft">{x.value ? x.label : `${x.label} (updating)`}</div>
-            <div className="fig mt-2 flex items-center gap-3 whitespace-nowrap text-[34px] font-semibold leading-none md:text-[52px]">
+            <div className="fig mt-2 flex flex-wrap items-center gap-x-3 gap-y-2 text-[34px] font-semibold leading-none md:text-[52px]">
               {x.value ?? <span className="text-ink-faint">—</span>}
               {x.logo && x.value && x.value !== "None" && <Token ticker={x.logo} />}
             </div>
