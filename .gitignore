@@ -18,6 +18,7 @@ contracts/broadcast/**/run-latest.json
 # Node
 node_modules/
 .next/
+.next-*/
 dist/
 *.tsbuildinfo
 

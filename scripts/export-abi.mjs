@@ -17,7 +17,8 @@ for (const [name, exportName] of targets) {
 }
 
 // Web app addresses (SPEC §9: web/src/config/addresses.<chainId>.json) from the committed deployment records.
-for (const id of ["46630"]) {
+// "sandbox-46630" = the separate sandbox stack (owner = keeper = a dedicated test wallet), for real testnet runs
+for (const id of ["46630", "sandbox-46630"]) {
   const src = join(root, `contracts/deployments/${id}.json`);
   const dst = join(root, `web/src/config/addresses.${id}.json`);
   mkdirSync(dirname(dst), { recursive: true });

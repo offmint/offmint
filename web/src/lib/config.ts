@@ -1,7 +1,14 @@
-import testnet from "@/config/addresses.46630.json";
+import main from "@/config/addresses.46630.json";
+import sandbox from "@/config/addresses.sandbox-46630.json";
 import type { Address } from "viem";
 
-/** Testnet deployment (written by scripts/export-abi.mjs from contracts/deployments/46630.json). */
+/**
+ * Testnet deployment (written by scripts/export-abi.mjs from contracts/deployments/*.json). Default: the main testnet
+ * stack the keeper runs on the real clock. NEXT_PUBLIC_TESTNET_DEPLOYMENT=sandbox builds against the separate sandbox
+ * stack (manual clock; owner = keeper = a dedicated test wallet), used for real end-to-end testnet runs.
+ */
+export const DEPLOYMENT = process.env.NEXT_PUBLIC_TESTNET_DEPLOYMENT === "sandbox" ? "sandbox" : "main";
+const testnet = DEPLOYMENT === "sandbox" ? sandbox : main;
 export const addrs = testnet as unknown as {
   chainId: number;
   ticker: string;

@@ -4,6 +4,9 @@ import { fileURLToPath } from "node:url";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // NEXT_DIST_DIR lets a second build (e.g. NEXT_PUBLIC_TESTNET_DEPLOYMENT=sandbox for testnet end-to-end runs) live
+  // next to the default one instead of overwriting it
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   // web/ has its own lockfile (kept out of the root npm workspaces so the keeper's Docker build is unaffected)
   outputFileTracingRoot: dirname(fileURLToPath(import.meta.url)),
   webpack: (config) => {

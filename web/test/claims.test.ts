@@ -14,6 +14,7 @@ import { HowItWorks } from "../src/components/landing/HowItWorks";
 import { Verify } from "../src/components/landing/Verify";
 import { Explainer } from "../src/components/landing/Explainer";
 import { HeroChart } from "../src/components/landing/HeroChart";
+import { MintOffWindow, MINTOFF } from "../src/components/MintOffWindow";
 
 const ROOT = join(__dirname, "../..");
 const LANDING = join(__dirname, "../src/components/landing");
@@ -169,4 +170,24 @@ test("CLAIMS.md ledger rows match their data files (FINISH B6)", () => {
   has(`${e10.windowsWithAnySustained} of ${fr.eligible.windows} windows`, "frequency 1 in 3");
   has(`= ${mo.shareOfCalendarPct}%`, "mint-off share");
   has(`${tests.contracts} contract, ${tests.fork} fork, ${tests.keeperAndBacktest} keeper+backtest`, "test counts");
+});
+
+test("mint-off section shows the 31.2% arithmetic from mintoff.json, with its sources (FINISH C1)", () => {
+  const html = renderToStaticMarkup(createElement(MintOffWindow));
+  const m = MINTOFF, a = m.arithmetic, n = (x: number) => x.toLocaleString("en-US");
+  assert.equal(a.weekends * a.weekendHours + a.holidayHours, m.mintOffHours, "weekends + holidays add up");
+  assert.ok(Math.abs((m.mintOffHours / m.hoursInYear) * 100 - m.shareOfCalendarPct) < 0.01, "share is hours / year");
+  for (const s of [`${a.weekends} × ${a.weekendHours} h = ${n(a.weekends * a.weekendHours)} h`, `${a.holidays} days = ${n(a.holidayHours)} h`, `${n(m.mintOffHours)} h of ${n(m.hoursInYear)} h`, `${m.shareOfCalendarPct}%`])
+    assert.ok(html.includes(s), `rendered: ${s}`);
+  for (const src of m.sources) assert.ok(html.includes(src.url), `source link ${src.url}`);
+  assert.ok(html.includes("02:00"), "the holiday assumption is stated");
+});
+
+test("harm wallet counts are complete: no unresolved sender lookups behind a published count", () => {
+  const harm = JSON.parse(readFileSync(join(ROOT, "web/public/data/harm.json"), "utf8"));
+  for (const k of ["above2pct", "above5pct", "above10pct"]) {
+    const u = harm.totals[k].unresolvedTxs;
+    if (u === undefined) continue; // older harm.json without the field
+    assert.equal(u, 0, `${k}: ${u} buys have no resolved sender, so uniqueSenders would be an undercount`);
+  }
 });
