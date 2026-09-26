@@ -44,12 +44,12 @@ export function StatBand() {
     { value: prem, label: L?.maxVerified ? "highest verified live premium" : "verified live premiums right now", src: "Live: pool price vs Robinhood's quote, passing every quality check (TVL, depth, fresh swaps, tight quote, GeckoTerminal agrees)", logo: L?.maxVerified?.ticker },
   ];
   return (
-    <section id="stats" className="gutter pb-16">
-      <div className="grid grid-cols-2 border-t border-paper-line md:grid-cols-4">
+    <section id="stats" className="gutter pb-12">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((x, i) => (
-          <div key={i} title={`Source: ${x.src}`} className={`py-6 pr-4 ${i % 2 ? "pl-4 md:pl-6" : "md:pl-6"} ${i ? "md:border-l md:border-paper-line" : "md:pl-0"} ${i % 2 ? "border-l border-paper-line md:border-l" : ""}`}>
+          <div key={i} title={`Source: ${x.src}`} className="rounded-[12px] border border-paper-line bg-paper-card p-5">
             <div className="text-sm text-ink-soft">{x.value ? x.label : `${x.label} (updating)`}</div>
-            <div className="fig mt-2 flex flex-wrap items-center gap-x-3 gap-y-2 text-[34px] font-semibold leading-none md:text-[52px]">
+            <div className="fig mt-2 flex flex-wrap items-center gap-x-3 gap-y-2 text-[34px] font-semibold leading-none md:text-[40px]">
               {x.value ?? <span className="text-ink-faint">—</span>}
               {x.logo && x.value && x.value !== "None" && <Token ticker={x.logo} />}
             </div>

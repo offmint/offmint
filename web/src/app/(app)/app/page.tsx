@@ -83,7 +83,7 @@ export default function AppPage() {
         <Stat label="Entry / exit fee" value={params ? `${Number(params.txFeeBps) / 100}% / ${Number(params.txFeeBps) / 100}%` : "…"} />
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <div className="card lg:col-span-2">
           <div className="label mb-2">This week</div>
           {idle ? (

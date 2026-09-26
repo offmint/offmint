@@ -1,14 +1,19 @@
 import { Providers } from "./providers";
 import { Nav } from "@/components/Nav";
-import { Disclaimer } from "@/components/Brand";
+import { SiteFooter } from "@/components/landing/Footer";
 
-/** The app shell: wallet connection lives here only, not on the marketing site. Edge to edge like the landing (.gutter). */
+/**
+ * The app shell: wallet connection lives here only, not on the marketing site. Same structure as the landing:
+ * pill nav, the page as a light panel inset on the dark band, then the footer card.
+ */
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <Providers>
       <Nav />
-      <main className="gutter pb-24 pt-8">{children}</main>
-      <footer className="gutter pb-10"><Disclaimer /></footer>
+      <div className="bg-matte pt-2 sm:pt-3">
+        <main className="gutter mx-2 min-h-[70vh] rounded-[20px] bg-mist pb-24 pt-8 text-matte sm:mx-3">{children}</main>
+      </div>
+      <SiteFooter />
     </Providers>
   );
 }
