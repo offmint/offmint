@@ -4,6 +4,10 @@ import { useMemo, useState } from "react";
 import { SandboxChart } from "@/components/SandboxChart";
 import { runSandbox, PRESETS, DEPTHS, SAT, MON, type Depth, type Scenario } from "@/lib/sandbox";
 import { PARAMS } from "@/lib/claims";
+import sandboxDeployment from "@/config/addresses.sandbox-46630.json";
+import { explorerAddr } from "@/lib/config";
+
+const REPO = "https://github.com/offmint/offmint/blob/main";
 
 const REF = 30; // an example real share price; everything scales with it
 const tok = (x: number, d = 2) => x.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
@@ -47,6 +51,31 @@ export default function Sandbox() {
           published results (default ladder, sell steps pulled when they sell out, one buyback on Monday capped at the fresh
           price + {PARAMS.vault.buybackSlippageBps / 100}%, {PARAMS.vault.perfFeeBps / 100}% fee on profit).
         </p>
+      </div>
+
+      {/* simulated vs onchain: no ambiguity (FINISH C5) */}
+      <div className="card grid gap-4 text-sm md:grid-cols-2">
+        <div>
+          <div className="label">Simulated in your browser (this page)</div>
+          <ul className="mt-2 list-disc space-y-1 pl-5 text-ink-soft">
+            <li>The market: the pool, the weekend buyers and sellers, the price path.</li>
+            <li>Every number on this page: steps sold, USDG received, buyback, your result.</li>
+            <li>Run by the same code as our published replay, with the vault&apos;s real rules. Nothing is sent to a chain.</li>
+          </ul>
+        </div>
+        <div>
+          <div className="label">Real, onchain (Robinhood Chain testnet)</div>
+          <ul className="mt-2 list-disc space-y-1 pl-5 text-ink-soft">
+            <li>
+              The same vault contract, deployed as a sandbox with a manual clock:{" "}
+              <a className="underline" href={explorerAddr(sandboxDeployment.vault)} target="_blank" rel="noreferrer">community vault</a>{" · "}
+              <a className="underline" href={explorerAddr(sandboxDeployment.clock)} target="_blank" rel="noreferrer">clock</a>.
+            </li>
+            <li>A full cycle we ran on it (deposit, weekend, squeeze, lock, Monday buyback, withdraw), every transaction linked: <a className="underline" href={`${REPO}/docs/verification/vault-live.md`} target="_blank" rel="noreferrer">vault run</a>.</li>
+            <li>A personal sell order placed, filled and collected from a wallet: <a className="underline" href={`${REPO}/docs/verification/sellorder-live.md`} target="_blank" rel="noreferrer">sell-order run</a>.</li>
+            <li>Try it yourself with test tokens: <Link className="underline" href="/vault/HIMS">vault</Link> · <Link className="underline" href="/sell">sell order</Link>.</li>
+          </ul>
+        </div>
       </div>
 
       {/* scenario */}
