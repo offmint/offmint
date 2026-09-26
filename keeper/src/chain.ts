@@ -141,13 +141,15 @@ export function poolIdOf(k: { currency0: Address; currency1: Address; fee: numbe
 export async function blockAtOrBefore(c: Client, ts: number): Promise<bigint> {
   const top = await c.getBlock();
   if (Number(top.timestamp) <= ts) return top.number;
-  const tsOf = async (b: bigint) => Number((await c.getBlock({ blockNumber: b < 0n ? 0n : b })).timestamp);
+  const clamp = (b: bigint) => (b < 0n ? 0n : b > top.number ? top.number : b);
+  const tsOf = async (b: bigint) => Number((await c.getBlock({ blockNumber: clamp(b) })).timestamp);
   const RATE = 10; // blocks per second on Robinhood Chain (steady); only used to aim, correctness comes from the search
-  let g = top.number - BigInt(Math.ceil((Number(top.timestamp) - ts) * RATE));
+  let g = clamp(top.number - BigInt(Math.ceil((Number(top.timestamp) - ts) * RATE)));
   for (let i = 0; i < 3; i++) {
     const t = await tsOf(g);
     if (Math.abs(t - ts) <= 2) break;
-    g += BigInt(Math.round((ts - t) * RATE));
+    // the rate was far lower before July 2026, so an aim can overshoot the head or genesis: keep it on the chain
+    g = clamp(g + BigInt(Math.round((ts - t) * RATE)));
   }
   // bracket [lo, hi] with ts(lo) <= ts < ts(hi), widening if the aim was off
   let w = 100n;
@@ -202,11 +204,19 @@ export async function blockTime(c: Client, b: bigint, latest?: bigint): Promise<
   return Math.round(tl + ((th - tl) * Number(b - lo)) / Number(hi - lo));
 }
 
+/** Public-RPC rate limit (HTTP 429): wait and retry the same request instead of shrinking the block range. */
+export const isRateLimited = (e: any) => e?.status === 429 || e?.code === 429 || e?.cause?.code === 429 || /too many requests/i.test(String(e?.details ?? e?.message ?? ""));
+export async function backoff(attempt: number): Promise<void> {
+  if (attempt >= 12) throw new Error("RPC still rate-limited after 12 retries");
+  await new Promise((r) => setTimeout(r, Math.min(60_000, 2_000 * 2 ** attempt)));
+}
+
 /** Swap logs for the given pools in [from, to], chunked adaptively. */
 export async function swapLogs(c: Client, poolIds: Hex[], from: bigint, to: bigint): Promise<SwapLog[]> {
   const out: SwapLog[] = [];
   const latest = await c.getBlockNumber();
   let chunk = 400_000n;
+  let limited = 0;
   for (let start = from; start <= to; ) {
     const end = start + chunk - 1n > to ? to : start + chunk - 1n;
     let raw: any[];
@@ -216,10 +226,17 @@ export async function swapLogs(c: Client, poolIds: Hex[], from: bigint, to: bigi
         params: [{ address: POOL_MANAGER, fromBlock: `0x${start.toString(16)}`, toBlock: `0x${end.toString(16)}`, topics: [SWAP_TOPIC, poolIds] }],
       } as any);
     } catch (e) {
+      if (isRateLimited(e)) {
+        await backoff(limited++);
+        continue;
+      }
       if (chunk <= 1_000n) throw e;
       chunk /= 4n;
       continue;
     }
+    limited = 0;
+    // one error (busy block range) should not keep every later request tiny: grow back toward the cap
+    if (chunk < 400_000n) chunk *= 2n;
     for (const l of raw) {
       const ev = decodeEventLog({ abi: swapEvent, data: l.data, topics: l.topics });
       out.push({

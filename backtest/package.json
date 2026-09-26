@@ -4,6 +4,11 @@
   "type": "module",
   "scripts": {
     "replay": "tsx src/replay.ts",
+    "supply": "tsx src/supply.ts",
+    "harm": "tsx src/harm.ts",
+    "window": "tsx src/window.ts",
+    "frequency": "tsx src/frequency.ts",
+    "weekends": "tsx src/weekends.ts",
     "test": "tsx --test test/*.test.ts",
     "typecheck": "tsc --noEmit",
     "curate": "tsx src/curate.ts",

@@ -1,0 +1,5323 @@
+{
+ "generatedAt": "2026-09-25T22:38:43.913Z",
+ "label": "simulated",
+ "source": "backtest/src/supply.ts over web/public/data/screen/weekends.json; pools rebuilt from their full onchain ModifyLiquidity history (Robinhood Chain mainnet)",
+ "method": [
+  "Default ladder from contracts (+8-12%, +15-22%, +25-35%, +40-55%), 30% of the holding deployed, armed Sat 00:05 UTC above p0.",
+  "raw: rungs marked along the logged price path (assumes we move nothing). supply: rungs are real liquidity in a rebuilt pool; each logged swap's input is re-run through it.",
+  "A rung is pulled when fully sold (lock) and every rung is pulled 15 min before reopen; buyback at Mon 01:00 UTC as one swap capped at fresh x 1.01, unfilled USDG marked at fresh.",
+  "Before the buyback the rebuilt pool is resynced to the logged Monday price (minting is back on, arbitrage restores NAV).",
+  "Costs: pool fee on every swap, our own price impact on the buyback, 10% performance fee on gains, $1 gas per armed weekend.",
+  "Assumption: traders send the same input amount they sent historically. Real buyers facing a smaller spike might buy more or less."
+ ],
+ "ladder": {
+  "rungs": [
+   {
+    "premiumBps": 800,
+    "widthBps": 400,
+    "shareBps": 2500
+   },
+   {
+    "premiumBps": 1500,
+    "widthBps": 700,
+    "shareBps": 3000
+   },
+   {
+    "premiumBps": 2500,
+    "widthBps": 1000,
+    "shareBps": 2500
+   },
+   {
+    "premiumBps": 4000,
+    "widthBps": 1500,
+    "shareBps": 2000
+   }
+  ],
+  "deployBps": 3000,
+  "buybackSlippageBps": 100,
+  "perfFeeBps": 1000,
+  "lockLead": 900
+ },
+ "sizesUsd": [
+  1000,
+  10000,
+  100000
+ ],
+ "headlineSizeUsd": 10000,
+ "gasUsdPerWeekend": 1,
+ "minPremiumReplayedPct": 5,
+ "screenedTickerWeekends": 198,
+ "belowThresholdZero": 182,
+ "totals": {
+  "1000": {
+   "rawExcessUsd": 279.33,
+   "supplyExcessUsd": 266.66,
+   "rawMeanExcessPctPerTickerWeekend": 0.14,
+   "supplyMeanExcessPctPerTickerWeekend": 0.13,
+   "rawBuyersPaidAboveReferenceUsd": 2431662.19,
+   "supplyBuyersPaidAboveReferenceUsd": 2430253.67,
+   "rawExcessUsdExLpFees": 279.33,
+   "supplyExcessUsdExLpFees": 212.99,
+   "supplyPendingUsdgUsd": 461.1,
+   "nonzeroSupplyEvents": 7
+  },
+  "10000": {
+   "rawExcessUsd": 2937.33,
+   "supplyExcessUsd": 2888.36,
+   "rawMeanExcessPctPerTickerWeekend": 0.15,
+   "supplyMeanExcessPctPerTickerWeekend": 0.15,
+   "rawBuyersPaidAboveReferenceUsd": 2431662.19,
+   "supplyBuyersPaidAboveReferenceUsd": 2426477.32,
+   "rawExcessUsdExLpFees": 2937.33,
+   "supplyExcessUsdExLpFees": 2220.89,
+   "supplyPendingUsdgUsd": 8137.42,
+   "nonzeroSupplyEvents": 7
+  },
+  "100000": {
+   "rawExcessUsd": 29517.33,
+   "supplyExcessUsd": 29481.23,
+   "rawMeanExcessPctPerTickerWeekend": 0.15,
+   "supplyMeanExcessPctPerTickerWeekend": 0.15,
+   "rawBuyersPaidAboveReferenceUsd": 2431662.19,
+   "supplyBuyersPaidAboveReferenceUsd": 2392685.31,
+   "rawExcessUsdExLpFees": 29517.33,
+   "supplyExcessUsdExLpFees": 24004.2,
+   "supplyPendingUsdgUsd": 152481.48,
+   "nonzeroSupplyEvents": 7
+  }
+ },
+ "events": [
+  {
+   "ticker": "HIMS",
+   "weekend": "2026-08-29",
+   "p0": 29.8653,
+   "p0Source": "pool-fri-close",
+   "fresh": 32.5274,
+   "freshSource": "pool price at Mon 01:00 UTC (no feed)",
+   "loggedPeakPremiumPct": 317.56,
+   "poolId": "0x68d4f28f1432e0ad714658853edb2e6b0b1ac4060355ff3d169fea656b1d1c52",
+   "stockIsCurrency0": false,
+   "tickSpacing": 90,
+   "blocks": {
+    "arm": "48712672",
+    "settle": "50454741"
+   },
+   "swaps": 8306,
+   "liquidityChanges": 2298,
+   "validation": {
+    "swaps": 8306,
+    "maxLogPriceErrPct": 0,
+    "maxLiquidityErrPct": 0,
+    "engagedSwaps": 36,
+    "armActiveLiquidityLogged": "230715600222971314"
+   },
+   "bySize": {
+    "1000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 241290,
+        "tickUpper": 241560,
+        "stockPlaced": 2.511276,
+        "soldPct": 100,
+        "lockedAt": 1787983343
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 240390,
+        "tickUpper": 240930,
+        "stockPlaced": 3.013531,
+        "soldPct": 100,
+        "lockedAt": 1788127854
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 239400,
+        "tickUpper": 240120,
+        "stockPlaced": 2.511276,
+        "soldPct": 100,
+        "lockedAt": 1788129173
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 238050,
+        "tickUpper": 238950,
+        "stockPlaced": 2.009021,
+        "soldPct": 100,
+        "lockedAt": 1788129173
+       }
+      ],
+      "stockDeployed": 10.045103,
+      "stockBack": 0,
+      "usdgReceived": 374.38,
+      "lpFeesUsd": 0,
+      "stockBought": 11.394843,
+      "buybackAvgUsd": 32.8556,
+      "usdgLeft": 0,
+      "perfFeeStock": 0.134974,
+      "netStock": 11.259869,
+      "extraShares": 1.214766,
+      "excessUsd": 38.51,
+      "excessPct": 3.8513,
+      "excessPctExLpFees": 3.8513,
+      "state": "OPEN",
+      "peakPremiumPct": 317.56,
+      "buyersPaidAboveReferenceUsd": 124634.83,
+      "vwapBuyPremiumPct": 8.37
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 241290,
+        "tickUpper": 241560,
+        "stockPlaced": 2.511276,
+        "soldPct": 99.39,
+        "lockedAt": 1787983343
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 240390,
+        "tickUpper": 240930,
+        "stockPlaced": 3.013531,
+        "soldPct": 98.79,
+        "lockedAt": 1788127854
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 239400,
+        "tickUpper": 240120,
+        "stockPlaced": 2.511276,
+        "soldPct": 99.52,
+        "lockedAt": 1788129173
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 238050,
+        "tickUpper": 238950,
+        "stockPlaced": 2.009021,
+        "soldPct": 100,
+        "lockedAt": 1788129173
+       }
+      ],
+      "stockDeployed": 10.045103,
+      "stockBack": 0.063676,
+      "usdgReceived": 380.38,
+      "lpFeesUsd": 8.07,
+      "stockBought": 11.563955,
+      "buybackAvgUsd": 32.8935,
+      "usdgLeft": 0,
+      "perfFeeStock": 0.158253,
+      "netStock": 11.469378,
+      "extraShares": 1.424276,
+      "excessUsd": 45.33,
+      "excessPct": 4.5328,
+      "excessPctExLpFees": 3.8069,
+      "state": "OPEN",
+      "peakPremiumPct": 317.56,
+      "buyersPaidAboveReferenceUsd": 124589.05,
+      "vwapBuyPremiumPct": 8.36
+     }
+    },
+    "10000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 241290,
+        "tickUpper": 241560,
+        "stockPlaced": 25.112756,
+        "soldPct": 100,
+        "lockedAt": 1787983343
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 240390,
+        "tickUpper": 240930,
+        "stockPlaced": 30.135308,
+        "soldPct": 100,
+        "lockedAt": 1788127854
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 239400,
+        "tickUpper": 240120,
+        "stockPlaced": 25.112756,
+        "soldPct": 100,
+        "lockedAt": 1788129173
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 238050,
+        "tickUpper": 238950,
+        "stockPlaced": 20.090205,
+        "soldPct": 100,
+        "lockedAt": 1788129173
+       }
+      ],
+      "stockDeployed": 100.451025,
+      "stockBack": 0,
+      "usdgReceived": 3743.85,
+      "lpFeesUsd": 0,
+      "stockBought": 113.94843,
+      "buybackAvgUsd": 32.8556,
+      "usdgLeft": 0,
+      "perfFeeStock": 1.34974,
+      "netStock": 112.598689,
+      "extraShares": 12.147664,
+      "excessUsd": 394.13,
+      "excessPct": 3.9413,
+      "excessPctExLpFees": 3.9413,
+      "state": "OPEN",
+      "peakPremiumPct": 317.56,
+      "buyersPaidAboveReferenceUsd": 124634.83,
+      "vwapBuyPremiumPct": 8.37
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 241290,
+        "tickUpper": 241560,
+        "stockPlaced": 25.112756,
+        "soldPct": 99.49,
+        "lockedAt": 1787983343
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 240390,
+        "tickUpper": 240930,
+        "stockPlaced": 30.135308,
+        "soldPct": 95.51,
+        "lockedAt": 1788129173
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 239400,
+        "tickUpper": 240120,
+        "stockPlaced": 25.112756,
+        "soldPct": 100,
+        "lockedAt": 1788129173
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 238050,
+        "tickUpper": 238950,
+        "stockPlaced": 20.090205,
+        "soldPct": 98.76,
+        "lockedAt": 1788129191
+       }
+      ],
+      "stockDeployed": 100.451025,
+      "stockBack": 1.729514,
+      "usdgReceived": 3835.93,
+      "lpFeesUsd": 148.33,
+      "stockBought": 49.869292,
+      "buybackAvgUsd": 33.0195,
+      "usdgLeft": 2189.27,
+      "perfFeeStock": 1.712094,
+      "netStock": 115.859872,
+      "extraShares": 15.408847,
+      "excessUsd": 500.21,
+      "excessPct": 5.0021,
+      "excessPctExLpFees": 3.6671,
+      "state": "PENDING_BUYBACK",
+      "peakPremiumPct": 317.56,
+      "buyersPaidAboveReferenceUsd": 123937.09,
+      "vwapBuyPremiumPct": 8.31
+     }
+    },
+    "100000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 241290,
+        "tickUpper": 241560,
+        "stockPlaced": 251.127563,
+        "soldPct": 100,
+        "lockedAt": 1787983343
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 240390,
+        "tickUpper": 240930,
+        "stockPlaced": 301.353075,
+        "soldPct": 100,
+        "lockedAt": 1788127854
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 239400,
+        "tickUpper": 240120,
+        "stockPlaced": 251.127563,
+        "soldPct": 100,
+        "lockedAt": 1788129173
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 238050,
+        "tickUpper": 238950,
+        "stockPlaced": 200.90205,
+        "soldPct": 100,
+        "lockedAt": 1788129173
+       }
+      ],
+      "stockDeployed": 1004.510251,
+      "stockBack": 0,
+      "usdgReceived": 37438.49,
+      "lpFeesUsd": 0,
+      "stockBought": 1139.484296,
+      "buybackAvgUsd": 32.8556,
+      "usdgLeft": 0,
+      "perfFeeStock": 13.497404,
+      "netStock": 1125.986891,
+      "extraShares": 121.47664,
+      "excessUsd": 3950.32,
+      "excessPct": 3.9503,
+      "excessPctExLpFees": 3.9503,
+      "state": "OPEN",
+      "peakPremiumPct": 317.56,
+      "buyersPaidAboveReferenceUsd": 124634.83,
+      "vwapBuyPremiumPct": 8.37
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 241290,
+        "tickUpper": 241560,
+        "stockPlaced": 251.127563,
+        "soldPct": 92.54,
+        "lockedAt": 1788128746
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 240390,
+        "tickUpper": 240930,
+        "stockPlaced": 301.353075,
+        "soldPct": 99.99,
+        "lockedAt": 1788128772
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 239400,
+        "tickUpper": 240120,
+        "stockPlaced": 251.127563,
+        "soldPct": 91.85,
+        "lockedAt": 1788132317
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 238050,
+        "tickUpper": 238950,
+        "stockPlaced": 200.90205,
+        "soldPct": 100,
+        "lockedAt": 1788132317
+       }
+      ],
+      "stockDeployed": 1004.510251,
+      "stockBack": 39.237831,
+      "usdgReceived": 39002.29,
+      "lpFeesUsd": 2840.1,
+      "stockBought": 49.869292,
+      "buybackAvgUsd": 33.0195,
+      "usdgLeft": 37355.63,
+      "perfFeeStock": 21.030211,
+      "netStock": 1193.782146,
+      "extraShares": 189.271895,
+      "excessUsd": 6155.52,
+      "excessPct": 6.1555,
+      "excessPctExLpFees": 3.5994,
+      "state": "PENDING_BUYBACK",
+      "peakPremiumPct": 317.56,
+      "buyersPaidAboveReferenceUsd": 114337.4,
+      "vwapBuyPremiumPct": 7.61
+     }
+    }
+   }
+  },
+  {
+   "ticker": "HIMS",
+   "weekend": "2026-09-05",
+   "p0": 27.5783,
+   "p0Source": "pool-fri-close",
+   "fresh": 28.4102,
+   "freshSource": "pool price at Mon 01:00 UTC (no feed)",
+   "loggedPeakPremiumPct": 5.09,
+   "poolId": "0x68d4f28f1432e0ad714658853edb2e6b0b1ac4060355ff3d169fea656b1d1c52",
+   "stockIsCurrency0": false,
+   "tickSpacing": 90,
+   "blocks": {
+    "arm": "54678526",
+    "settle": "56424730"
+   },
+   "swaps": 12377,
+   "liquidityChanges": 320,
+   "validation": {
+    "swaps": 12377,
+    "maxLogPriceErrPct": 0.0001,
+    "maxLiquidityErrPct": 0,
+    "engagedSwaps": 0,
+    "armActiveLiquidityLogged": "911669067744710076"
+   },
+   "bySize": {
+    "1000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 242100,
+        "tickUpper": 242370,
+        "stockPlaced": 2.719529,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 241200,
+        "tickUpper": 241740,
+        "stockPlaced": 3.263435,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 240210,
+        "tickUpper": 240840,
+        "stockPlaced": 2.719529,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 238770,
+        "tickUpper": 239760,
+        "stockPlaced": 2.175624,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 10.878118,
+      "stockBack": 10.878118,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 10.878118,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.1,
+      "excessPctExLpFees": -0.1,
+      "state": "OPEN",
+      "peakPremiumPct": 5.09,
+      "buyersPaidAboveReferenceUsd": 37572.72,
+      "vwapBuyPremiumPct": 2.97
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 242100,
+        "tickUpper": 242370,
+        "stockPlaced": 2.719529,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 241200,
+        "tickUpper": 241740,
+        "stockPlaced": 3.263435,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 240210,
+        "tickUpper": 240840,
+        "stockPlaced": 2.719529,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 238770,
+        "tickUpper": 239760,
+        "stockPlaced": 2.175624,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 10.878118,
+      "stockBack": 10.878118,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 10.878118,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.1,
+      "excessPctExLpFees": -0.1,
+      "state": "OPEN",
+      "peakPremiumPct": 5.09,
+      "buyersPaidAboveReferenceUsd": 37572.72,
+      "vwapBuyPremiumPct": 2.97
+     }
+    },
+    "10000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 242100,
+        "tickUpper": 242370,
+        "stockPlaced": 27.195295,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 241200,
+        "tickUpper": 241740,
+        "stockPlaced": 32.634354,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 240210,
+        "tickUpper": 240840,
+        "stockPlaced": 27.195295,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 238770,
+        "tickUpper": 239760,
+        "stockPlaced": 21.756236,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 108.781179,
+      "stockBack": 108.781179,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 108.781179,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.01,
+      "excessPctExLpFees": -0.01,
+      "state": "OPEN",
+      "peakPremiumPct": 5.09,
+      "buyersPaidAboveReferenceUsd": 37572.72,
+      "vwapBuyPremiumPct": 2.97
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 242100,
+        "tickUpper": 242370,
+        "stockPlaced": 27.195295,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 241200,
+        "tickUpper": 241740,
+        "stockPlaced": 32.634354,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 240210,
+        "tickUpper": 240840,
+        "stockPlaced": 27.195295,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 238770,
+        "tickUpper": 239760,
+        "stockPlaced": 21.756236,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 108.781179,
+      "stockBack": 108.781179,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 108.781179,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.01,
+      "excessPctExLpFees": -0.01,
+      "state": "OPEN",
+      "peakPremiumPct": 5.09,
+      "buyersPaidAboveReferenceUsd": 37572.72,
+      "vwapBuyPremiumPct": 2.97
+     }
+    },
+    "100000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 242100,
+        "tickUpper": 242370,
+        "stockPlaced": 271.952949,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 241200,
+        "tickUpper": 241740,
+        "stockPlaced": 326.343538,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 240210,
+        "tickUpper": 240840,
+        "stockPlaced": 271.952949,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 238770,
+        "tickUpper": 239760,
+        "stockPlaced": 217.562359,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 1087.811794,
+      "stockBack": 1087.811794,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 1087.811794,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.001,
+      "excessPctExLpFees": -0.001,
+      "state": "OPEN",
+      "peakPremiumPct": 5.09,
+      "buyersPaidAboveReferenceUsd": 37572.72,
+      "vwapBuyPremiumPct": 2.97
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 242100,
+        "tickUpper": 242370,
+        "stockPlaced": 271.952949,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 241200,
+        "tickUpper": 241740,
+        "stockPlaced": 326.343538,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 240210,
+        "tickUpper": 240840,
+        "stockPlaced": 271.952949,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 238770,
+        "tickUpper": 239760,
+        "stockPlaced": 217.562359,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 1087.811794,
+      "stockBack": 1087.811794,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 1087.811794,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.001,
+      "excessPctExLpFees": -0.001,
+      "state": "OPEN",
+      "peakPremiumPct": 5.09,
+      "buyersPaidAboveReferenceUsd": 37572.72,
+      "vwapBuyPremiumPct": 2.97
+     }
+    }
+   }
+  },
+  {
+   "ticker": "AMC",
+   "weekend": "2026-09-05",
+   "p0": 2.6739,
+   "p0Source": "pool-fri-close",
+   "fresh": 2.626,
+   "freshSource": "pool price at Mon 01:00 UTC (no feed)",
+   "loggedPeakPremiumPct": 7.5,
+   "poolId": "0x7499938c352d5b5b8f0c648722aca5ee964ef9b85c3a3041f1ec379726291d9d",
+   "stockIsCurrency0": true,
+   "tickSpacing": 10,
+   "blocks": {
+    "arm": "54678526",
+    "settle": "56424730"
+   },
+   "swaps": 44848,
+   "liquidityChanges": 949,
+   "validation": {
+    "swaps": 44848,
+    "maxLogPriceErrPct": 0.0003,
+    "maxLiquidityErrPct": 61.4066,
+    "engagedSwaps": 0,
+    "armActiveLiquidityLogged": "27355862173770361165"
+   },
+   "bySize": {
+    "1000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -265710,
+        "tickUpper": -265360,
+        "stockPlaced": 28.048917,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -265090,
+        "tickUpper": -264500,
+        "stockPlaced": 33.658701,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -264250,
+        "tickUpper": -263490,
+        "stockPlaced": 28.048917,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -263120,
+        "tickUpper": -262110,
+        "stockPlaced": 22.439134,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 112.195669,
+      "stockBack": 112.195669,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 112.195669,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.1,
+      "excessPctExLpFees": -0.1,
+      "state": "OPEN",
+      "peakPremiumPct": 7.5,
+      "buyersPaidAboveReferenceUsd": 41027.93,
+      "vwapBuyPremiumPct": -1.06
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -265710,
+        "tickUpper": -265360,
+        "stockPlaced": 28.048917,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -265090,
+        "tickUpper": -264500,
+        "stockPlaced": 33.658701,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -264250,
+        "tickUpper": -263490,
+        "stockPlaced": 28.048917,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -263120,
+        "tickUpper": -262110,
+        "stockPlaced": 22.439134,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 112.195669,
+      "stockBack": 112.195669,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 112.195669,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.1,
+      "excessPctExLpFees": -0.1,
+      "state": "OPEN",
+      "peakPremiumPct": 7.5,
+      "buyersPaidAboveReferenceUsd": 41027.93,
+      "vwapBuyPremiumPct": -1.06
+     }
+    },
+    "10000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -265710,
+        "tickUpper": -265360,
+        "stockPlaced": 280.489173,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -265090,
+        "tickUpper": -264500,
+        "stockPlaced": 336.587008,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -264250,
+        "tickUpper": -263490,
+        "stockPlaced": 280.489173,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -263120,
+        "tickUpper": -262110,
+        "stockPlaced": 224.391338,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 1121.956692,
+      "stockBack": 1121.956692,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 1121.956692,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.01,
+      "excessPctExLpFees": -0.01,
+      "state": "OPEN",
+      "peakPremiumPct": 7.5,
+      "buyersPaidAboveReferenceUsd": 41027.93,
+      "vwapBuyPremiumPct": -1.06
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -265710,
+        "tickUpper": -265360,
+        "stockPlaced": 280.489173,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -265090,
+        "tickUpper": -264500,
+        "stockPlaced": 336.587008,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -264250,
+        "tickUpper": -263490,
+        "stockPlaced": 280.489173,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -263120,
+        "tickUpper": -262110,
+        "stockPlaced": 224.391338,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 1121.956692,
+      "stockBack": 1121.956692,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 1121.956692,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.01,
+      "excessPctExLpFees": -0.01,
+      "state": "OPEN",
+      "peakPremiumPct": 7.5,
+      "buyersPaidAboveReferenceUsd": 41027.93,
+      "vwapBuyPremiumPct": -1.06
+     }
+    },
+    "100000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -265710,
+        "tickUpper": -265360,
+        "stockPlaced": 2804.891731,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -265090,
+        "tickUpper": -264500,
+        "stockPlaced": 3365.870077,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -264250,
+        "tickUpper": -263490,
+        "stockPlaced": 2804.891731,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -263120,
+        "tickUpper": -262110,
+        "stockPlaced": 2243.913385,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 11219.566925,
+      "stockBack": 11219.566925,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 11219.566925,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.001,
+      "excessPctExLpFees": -0.001,
+      "state": "OPEN",
+      "peakPremiumPct": 7.5,
+      "buyersPaidAboveReferenceUsd": 41027.93,
+      "vwapBuyPremiumPct": -1.06
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -265710,
+        "tickUpper": -265360,
+        "stockPlaced": 2804.891731,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -265090,
+        "tickUpper": -264500,
+        "stockPlaced": 3365.870077,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -264250,
+        "tickUpper": -263490,
+        "stockPlaced": 2804.891731,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -263120,
+        "tickUpper": -262110,
+        "stockPlaced": 2243.913385,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 11219.566925,
+      "stockBack": 11219.566925,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 11219.566925,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.001,
+      "excessPctExLpFees": -0.001,
+      "state": "OPEN",
+      "peakPremiumPct": 7.5,
+      "buyersPaidAboveReferenceUsd": 41027.93,
+      "vwapBuyPremiumPct": -1.06
+     }
+    }
+   }
+  },
+  {
+   "ticker": "BULL",
+   "weekend": "2026-09-05",
+   "p0": 9.8648,
+   "p0Source": "pool-fri-close",
+   "fresh": 9.8816,
+   "freshSource": "pool price at Mon 01:00 UTC (no feed)",
+   "loggedPeakPremiumPct": 7.86,
+   "poolId": "0xdfc620485cebd394955e7cde9e3d336ec8dabe24a7c80c4b9de71ea896208e79",
+   "stockIsCurrency0": false,
+   "tickSpacing": 50,
+   "blocks": {
+    "arm": "54678526",
+    "settle": "56424730"
+   },
+   "swaps": 12617,
+   "liquidityChanges": 469,
+   "validation": {
+    "swaps": 12617,
+    "maxLogPriceErrPct": 0.0002,
+    "maxLiquidityErrPct": 0,
+    "engagedSwaps": 0,
+    "armActiveLiquidityLogged": "1418272579823965328"
+   },
+   "bySize": {
+    "1000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 252300,
+        "tickUpper": 252650,
+        "stockPlaced": 7.60279,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 251450,
+        "tickUpper": 252000,
+        "stockPlaced": 9.123348,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 250450,
+        "tickUpper": 251200,
+        "stockPlaced": 7.60279,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 249050,
+        "tickUpper": 250050,
+        "stockPlaced": 6.082232,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 30.411159,
+      "stockBack": 30.411159,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 30.411159,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.1,
+      "excessPctExLpFees": -0.1,
+      "state": "OPEN",
+      "peakPremiumPct": 7.86,
+      "buyersPaidAboveReferenceUsd": 43519.08,
+      "vwapBuyPremiumPct": 4.84
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 252300,
+        "tickUpper": 252650,
+        "stockPlaced": 7.60279,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 251450,
+        "tickUpper": 252000,
+        "stockPlaced": 9.123348,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 250450,
+        "tickUpper": 251200,
+        "stockPlaced": 7.60279,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 249050,
+        "tickUpper": 250050,
+        "stockPlaced": 6.082232,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 30.411159,
+      "stockBack": 30.411159,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 30.411159,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.1,
+      "excessPctExLpFees": -0.1,
+      "state": "OPEN",
+      "peakPremiumPct": 7.86,
+      "buyersPaidAboveReferenceUsd": 43519.08,
+      "vwapBuyPremiumPct": 4.84
+     }
+    },
+    "10000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 252300,
+        "tickUpper": 252650,
+        "stockPlaced": 76.027897,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 251450,
+        "tickUpper": 252000,
+        "stockPlaced": 91.233477,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 250450,
+        "tickUpper": 251200,
+        "stockPlaced": 76.027897,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 249050,
+        "tickUpper": 250050,
+        "stockPlaced": 60.822318,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 304.111589,
+      "stockBack": 304.111589,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 304.111589,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.01,
+      "excessPctExLpFees": -0.01,
+      "state": "OPEN",
+      "peakPremiumPct": 7.86,
+      "buyersPaidAboveReferenceUsd": 43519.08,
+      "vwapBuyPremiumPct": 4.84
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 252300,
+        "tickUpper": 252650,
+        "stockPlaced": 76.027897,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 251450,
+        "tickUpper": 252000,
+        "stockPlaced": 91.233477,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 250450,
+        "tickUpper": 251200,
+        "stockPlaced": 76.027897,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 249050,
+        "tickUpper": 250050,
+        "stockPlaced": 60.822318,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 304.111589,
+      "stockBack": 304.111589,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 304.111589,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.01,
+      "excessPctExLpFees": -0.01,
+      "state": "OPEN",
+      "peakPremiumPct": 7.86,
+      "buyersPaidAboveReferenceUsd": 43519.08,
+      "vwapBuyPremiumPct": 4.84
+     }
+    },
+    "100000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 252300,
+        "tickUpper": 252650,
+        "stockPlaced": 760.278972,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 251450,
+        "tickUpper": 252000,
+        "stockPlaced": 912.334766,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 250450,
+        "tickUpper": 251200,
+        "stockPlaced": 760.278972,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 249050,
+        "tickUpper": 250050,
+        "stockPlaced": 608.223177,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 3041.115887,
+      "stockBack": 3041.115887,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 3041.115887,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.001,
+      "excessPctExLpFees": -0.001,
+      "state": "OPEN",
+      "peakPremiumPct": 7.86,
+      "buyersPaidAboveReferenceUsd": 43519.08,
+      "vwapBuyPremiumPct": 4.84
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 252300,
+        "tickUpper": 252650,
+        "stockPlaced": 760.278972,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 251450,
+        "tickUpper": 252000,
+        "stockPlaced": 912.334766,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 250450,
+        "tickUpper": 251200,
+        "stockPlaced": 760.278972,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 249050,
+        "tickUpper": 250050,
+        "stockPlaced": 608.223177,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 3041.115887,
+      "stockBack": 3041.115887,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 3041.115887,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.001,
+      "excessPctExLpFees": -0.001,
+      "state": "OPEN",
+      "peakPremiumPct": 7.86,
+      "buyersPaidAboveReferenceUsd": 43519.08,
+      "vwapBuyPremiumPct": 4.84
+     }
+    }
+   }
+  },
+  {
+   "ticker": "GLXY",
+   "weekend": "2026-09-12",
+   "p0": 24.3749,
+   "p0Source": "pool-fri-close",
+   "fresh": 23.8096,
+   "freshSource": "pool price at Mon 01:00 UTC (no feed)",
+   "loggedPeakPremiumPct": 186.09,
+   "poolId": "0xb49380cfe4008c71faa07f7d79865429f8e5ae468b4af80ff2497e6a27ecb804",
+   "stockIsCurrency0": true,
+   "tickSpacing": 25,
+   "blocks": {
+    "arm": "60666679",
+    "settle": "62400965"
+   },
+   "swaps": 17277,
+   "liquidityChanges": 690,
+   "validation": {
+    "swaps": 17277,
+    "maxLogPriceErrPct": 0.0007,
+    "maxLiquidityErrPct": 100,
+    "engagedSwaps": 138,
+    "armActiveLiquidityLogged": "121097195346906218"
+   },
+   "bySize": {
+    "1000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -243600,
+        "tickUpper": -243275,
+        "stockPlaced": 3.076936,
+        "soldPct": 100,
+        "lockedAt": 1789310901
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -242975,
+        "tickUpper": -242400,
+        "stockPlaced": 3.692323,
+        "soldPct": 100,
+        "lockedAt": 1789311018
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -242150,
+        "tickUpper": -241400,
+        "stockPlaced": 3.076936,
+        "soldPct": 100,
+        "lockedAt": 1789311022
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -241000,
+        "tickUpper": -240025,
+        "stockPlaced": 2.461549,
+        "soldPct": 100,
+        "lockedAt": 1789311029
+       }
+      ],
+      "stockDeployed": 12.307743,
+      "stockBack": 0,
+      "usdgReceived": 374.91,
+      "lpFeesUsd": 0,
+      "stockBought": 15.653505,
+      "buybackAvgUsd": 23.9508,
+      "usdgLeft": 0,
+      "perfFeeStock": 0.334576,
+      "netStock": 15.318929,
+      "extraShares": 3.011186,
+      "excessUsd": 70.7,
+      "excessPct": 7.0695,
+      "excessPctExLpFees": 7.0695,
+      "state": "OPEN",
+      "peakPremiumPct": 186.09,
+      "buyersPaidAboveReferenceUsd": 519043.65,
+      "vwapBuyPremiumPct": 47.12
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -243600,
+        "tickUpper": -243275,
+        "stockPlaced": 3.076936,
+        "soldPct": 99.07,
+        "lockedAt": 1789310901
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -242975,
+        "tickUpper": -242400,
+        "stockPlaced": 3.692323,
+        "soldPct": 99.04,
+        "lockedAt": 1789311022
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -242150,
+        "tickUpper": -241400,
+        "stockPlaced": 3.076936,
+        "soldPct": 98.92,
+        "lockedAt": 1789311022
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -241000,
+        "tickUpper": -240025,
+        "stockPlaced": 2.461549,
+        "soldPct": 99.37,
+        "lockedAt": 1789311029
+       }
+      ],
+      "stockDeployed": 12.307743,
+      "stockBack": 0.112753,
+      "usdgReceived": 380.49,
+      "lpFeesUsd": 8.26,
+      "stockBought": 15.880208,
+      "buybackAvgUsd": 23.9601,
+      "usdgLeft": 0,
+      "perfFeeStock": 0.368522,
+      "netStock": 15.624439,
+      "extraShares": 3.316696,
+      "excessUsd": 77.97,
+      "excessPct": 7.7969,
+      "excessPctExLpFees": 7.0533,
+      "state": "OPEN",
+      "peakPremiumPct": 186.09,
+      "buyersPaidAboveReferenceUsd": 519008.21,
+      "vwapBuyPremiumPct": 47.12
+     }
+    },
+    "10000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -243600,
+        "tickUpper": -243275,
+        "stockPlaced": 30.769357,
+        "soldPct": 100,
+        "lockedAt": 1789310901
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -242975,
+        "tickUpper": -242400,
+        "stockPlaced": 36.923228,
+        "soldPct": 100,
+        "lockedAt": 1789311018
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -242150,
+        "tickUpper": -241400,
+        "stockPlaced": 30.769357,
+        "soldPct": 100,
+        "lockedAt": 1789311022
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -241000,
+        "tickUpper": -240025,
+        "stockPlaced": 24.615486,
+        "soldPct": 100,
+        "lockedAt": 1789311029
+       }
+      ],
+      "stockDeployed": 123.077428,
+      "stockBack": 0,
+      "usdgReceived": 3749.14,
+      "lpFeesUsd": 0,
+      "stockBought": 156.535053,
+      "buybackAvgUsd": 23.9508,
+      "usdgLeft": 0,
+      "perfFeeStock": 3.345763,
+      "netStock": 153.189291,
+      "extraShares": 30.111863,
+      "excessUsd": 715.95,
+      "excessPct": 7.1595,
+      "excessPctExLpFees": 7.1595,
+      "state": "OPEN",
+      "peakPremiumPct": 186.09,
+      "buyersPaidAboveReferenceUsd": 519043.65,
+      "vwapBuyPremiumPct": 47.12
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -243600,
+        "tickUpper": -243275,
+        "stockPlaced": 30.769357,
+        "soldPct": 99.18,
+        "lockedAt": 1789310901
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -242975,
+        "tickUpper": -242400,
+        "stockPlaced": 36.923228,
+        "soldPct": 99.06,
+        "lockedAt": 1789311022
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -242150,
+        "tickUpper": -241400,
+        "stockPlaced": 30.769357,
+        "soldPct": 99.7,
+        "lockedAt": 1789311023
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -241000,
+        "tickUpper": -240025,
+        "stockPlaced": 24.615486,
+        "soldPct": 98.46,
+        "lockedAt": 1789311044
+       }
+      ],
+      "stockDeployed": 123.077428,
+      "stockBack": 1.069858,
+      "usdgReceived": 3798.34,
+      "lpFeesUsd": 74.67,
+      "stockBought": 157.982204,
+      "buybackAvgUsd": 24.0428,
+      "usdgLeft": 0,
+      "perfFeeStock": 3.597463,
+      "netStock": 155.454599,
+      "extraShares": 32.377171,
+      "excessUsd": 769.89,
+      "excessPct": 7.6989,
+      "excessPctExLpFees": 7.0268,
+      "state": "OPEN",
+      "peakPremiumPct": 186.09,
+      "buyersPaidAboveReferenceUsd": 518647.35,
+      "vwapBuyPremiumPct": 47.07
+     }
+    },
+    "100000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -243600,
+        "tickUpper": -243275,
+        "stockPlaced": 307.69357,
+        "soldPct": 100,
+        "lockedAt": 1789310901
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -242975,
+        "tickUpper": -242400,
+        "stockPlaced": 369.232284,
+        "soldPct": 100,
+        "lockedAt": 1789311018
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -242150,
+        "tickUpper": -241400,
+        "stockPlaced": 307.69357,
+        "soldPct": 100,
+        "lockedAt": 1789311022
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -241000,
+        "tickUpper": -240025,
+        "stockPlaced": 246.154856,
+        "soldPct": 100,
+        "lockedAt": 1789311029
+       }
+      ],
+      "stockDeployed": 1230.77428,
+      "stockBack": 0,
+      "usdgReceived": 37491.37,
+      "lpFeesUsd": 0,
+      "stockBought": 1565.350531,
+      "buybackAvgUsd": 23.9508,
+      "usdgLeft": 0,
+      "perfFeeStock": 33.457625,
+      "netStock": 1531.892906,
+      "extraShares": 301.118626,
+      "excessUsd": 7168.5,
+      "excessPct": 7.1685,
+      "excessPctExLpFees": 7.1685,
+      "state": "OPEN",
+      "peakPremiumPct": 186.09,
+      "buyersPaidAboveReferenceUsd": 519043.65,
+      "vwapBuyPremiumPct": 47.12
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -243600,
+        "tickUpper": -243275,
+        "stockPlaced": 307.69357,
+        "soldPct": 96.82,
+        "lockedAt": 1789311044
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -242975,
+        "tickUpper": -242400,
+        "stockPlaced": 369.232284,
+        "soldPct": 100,
+        "lockedAt": 1789311044
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -242150,
+        "tickUpper": -241400,
+        "stockPlaced": 307.69357,
+        "soldPct": 100,
+        "lockedAt": 1789311044
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -241000,
+        "tickUpper": -240025,
+        "stockPlaced": 246.154856,
+        "soldPct": 100,
+        "lockedAt": 1789311044
+       }
+      ],
+      "stockDeployed": 1230.77428,
+      "stockBack": 9.786106,
+      "usdgReceived": 37801.87,
+      "lpFeesUsd": 543.5,
+      "stockBought": 215.923936,
+      "buybackAvgUsd": 24.0747,
+      "usdgLeft": 32603.57,
+      "perfFeeStock": 34.273127,
+      "netStock": 1539.232421,
+      "extraShares": 308.458141,
+      "excessUsd": 7343.26,
+      "excessPct": 7.3433,
+      "excessPctExLpFees": 6.8541,
+      "state": "PENDING_BUYBACK",
+      "peakPremiumPct": 186.09,
+      "buyersPaidAboveReferenceUsd": 512959.81,
+      "vwapBuyPremiumPct": 46.31
+     }
+    }
+   }
+  },
+  {
+   "ticker": "NU",
+   "weekend": "2026-09-12",
+   "p0": 14.2972,
+   "p0Source": "pool-fri-close",
+   "fresh": 14.8338,
+   "freshSource": "pool price at Mon 01:00 UTC (no feed)",
+   "loggedPeakPremiumPct": 11.74,
+   "poolId": "0x9136ac3e649882d73b81d5dcf2d73aef5e3054387401a30dbdafa4f744193b6d",
+   "stockIsCurrency0": true,
+   "tickSpacing": 1,
+   "blocks": {
+    "arm": "60666679",
+    "settle": "62400965"
+   },
+   "swaps": 5479,
+   "liquidityChanges": 442,
+   "validation": {
+    "swaps": 5479,
+    "maxLogPriceErrPct": 0.0003,
+    "maxLiquidityErrPct": 0,
+    "engagedSwaps": 760,
+    "armActiveLiquidityLogged": "48732109924340342"
+   },
+   "bySize": {
+    "1000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -248952,
+        "tickUpper": -248589,
+        "stockPlaced": 5.245782,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -248324,
+        "tickUpper": -247734,
+        "stockPlaced": 6.294939,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -247490,
+        "tickUpper": -246721,
+        "stockPlaced": 5.245782,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -246357,
+        "tickUpper": -245340,
+        "stockPlaced": 4.196626,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       }
+      ],
+      "stockDeployed": 20.98313,
+      "stockBack": 20.98313,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 20.98313,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.1,
+      "excessPctExLpFees": -0.1,
+      "state": "OPEN",
+      "peakPremiumPct": 11.74,
+      "buyersPaidAboveReferenceUsd": 38397.81,
+      "vwapBuyPremiumPct": 6.4
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -248952,
+        "tickUpper": -248589,
+        "stockPlaced": 5.245782,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -248324,
+        "tickUpper": -247734,
+        "stockPlaced": 6.294939,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -247490,
+        "tickUpper": -246721,
+        "stockPlaced": 5.245782,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -246357,
+        "tickUpper": -245340,
+        "stockPlaced": 4.196626,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       }
+      ],
+      "stockDeployed": 20.98313,
+      "stockBack": 21.197821,
+      "usdgReceived": 3.36,
+      "lpFeesUsd": 6.55,
+      "stockBought": 0.224558,
+      "buybackAvgUsd": 14.9684,
+      "usdgLeft": 0,
+      "perfFeeStock": 0.043925,
+      "netStock": 21.378455,
+      "extraShares": 0.395325,
+      "excessUsd": 4.86,
+      "excessPct": 0.4864,
+      "excessPctExLpFees": -0.1027,
+      "state": "OPEN",
+      "peakPremiumPct": 11.66,
+      "buyersPaidAboveReferenceUsd": 38371.91,
+      "vwapBuyPremiumPct": 6.4
+     }
+    },
+    "10000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -248952,
+        "tickUpper": -248589,
+        "stockPlaced": 52.457824,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -248324,
+        "tickUpper": -247734,
+        "stockPlaced": 62.949389,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -247490,
+        "tickUpper": -246721,
+        "stockPlaced": 52.457824,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -246357,
+        "tickUpper": -245340,
+        "stockPlaced": 41.966259,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       }
+      ],
+      "stockDeployed": 209.831296,
+      "stockBack": 209.831296,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 209.831296,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.01,
+      "excessPctExLpFees": -0.01,
+      "state": "OPEN",
+      "peakPremiumPct": 11.74,
+      "buyersPaidAboveReferenceUsd": 38397.81,
+      "vwapBuyPremiumPct": 6.4
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -248952,
+        "tickUpper": -248589,
+        "stockPlaced": 52.457824,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -248324,
+        "tickUpper": -247734,
+        "stockPlaced": 62.949389,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -247490,
+        "tickUpper": -246721,
+        "stockPlaced": 52.457824,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -246357,
+        "tickUpper": -245340,
+        "stockPlaced": 41.966259,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       }
+      ],
+      "stockDeployed": 209.831296,
+      "stockBack": 211.821743,
+      "usdgReceived": 24.94,
+      "lpFeesUsd": 54.46,
+      "stockBought": 1.666024,
+      "buybackAvgUsd": 14.9684,
+      "usdgLeft": 0,
+      "perfFeeStock": 0.365647,
+      "netStock": 213.122119,
+      "extraShares": 3.290824,
+      "excessUsd": 47.82,
+      "excessPct": 0.4782,
+      "excessPctExLpFees": -0.012,
+      "state": "OPEN",
+      "peakPremiumPct": 11.26,
+      "buyersPaidAboveReferenceUsd": 38220.45,
+      "vwapBuyPremiumPct": 6.37
+     }
+    },
+    "100000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -248952,
+        "tickUpper": -248589,
+        "stockPlaced": 524.578239,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -248324,
+        "tickUpper": -247734,
+        "stockPlaced": 629.493887,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -247490,
+        "tickUpper": -246721,
+        "stockPlaced": 524.578239,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -246357,
+        "tickUpper": -245340,
+        "stockPlaced": 419.662591,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       }
+      ],
+      "stockDeployed": 2098.312956,
+      "stockBack": 2098.312956,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 2098.312956,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.001,
+      "excessPctExLpFees": -0.001,
+      "state": "OPEN",
+      "peakPremiumPct": 11.74,
+      "buyersPaidAboveReferenceUsd": 38397.81,
+      "vwapBuyPremiumPct": 6.4
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -248952,
+        "tickUpper": -248589,
+        "stockPlaced": 524.578239,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -248324,
+        "tickUpper": -247734,
+        "stockPlaced": 629.493887,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -247490,
+        "tickUpper": -246721,
+        "stockPlaced": 524.578239,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -246357,
+        "tickUpper": -245340,
+        "stockPlaced": 419.662591,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       }
+      ],
+      "stockDeployed": 2098.312956,
+      "stockBack": 2113.924398,
+      "usdgReceived": 178.66,
+      "lpFeesUsd": 410.24,
+      "stockBought": 11.935916,
+      "buybackAvgUsd": 14.9686,
+      "usdgLeft": 0,
+      "perfFeeStock": 2.754736,
+      "netStock": 2123.105578,
+      "extraShares": 24.792621,
+      "excessUsd": 366.77,
+      "excessPct": 0.3668,
+      "excessPctExLpFees": -0.0024,
+      "state": "OPEN",
+      "peakPremiumPct": 10.77,
+      "buyersPaidAboveReferenceUsd": 38021.58,
+      "vwapBuyPremiumPct": 6.33
+     }
+    }
+   }
+  },
+  {
+   "ticker": "AMD",
+   "weekend": "2026-08-01",
+   "p0": 474.5205,
+   "p0Source": "chainlink",
+   "fresh": 483.57,
+   "freshSource": "chainlink first round after reopen",
+   "loggedPeakPremiumPct": 7.72,
+   "poolId": "0xde9f85fdd9e05a943a52f2c69ffafe3064a3287df03d02c9b431bc92d4781274",
+   "stockIsCurrency0": false,
+   "tickSpacing": 200,
+   "blocks": {
+    "arm": "24594568",
+    "settle": "26350432"
+   },
+   "swaps": 278,
+   "liquidityChanges": 34,
+   "validation": {
+    "swaps": 278,
+    "maxLogPriceErrPct": 0,
+    "maxLiquidityErrPct": 0,
+    "engagedSwaps": 0,
+    "armActiveLiquidityLogged": "13917901903485908"
+   },
+   "bySize": {
+    "1000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 213600,
+        "tickUpper": 213800,
+        "stockPlaced": 0.158054,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 212800,
+        "tickUpper": 213200,
+        "stockPlaced": 0.189665,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 211800,
+        "tickUpper": 212400,
+        "stockPlaced": 0.158054,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 210400,
+        "tickUpper": 211200,
+        "stockPlaced": 0.126443,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       }
+      ],
+      "stockDeployed": 0.632217,
+      "stockBack": 0.632217,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 0.632217,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.1,
+      "excessPctExLpFees": -0.1,
+      "state": "OPEN",
+      "peakPremiumPct": 7.72,
+      "buyersPaidAboveReferenceUsd": 721.48,
+      "vwapBuyPremiumPct": 3.67
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 213600,
+        "tickUpper": 213800,
+        "stockPlaced": 0.158054,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 212800,
+        "tickUpper": 213200,
+        "stockPlaced": 0.189665,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 211800,
+        "tickUpper": 212400,
+        "stockPlaced": 0.158054,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 210400,
+        "tickUpper": 211200,
+        "stockPlaced": 0.126443,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       }
+      ],
+      "stockDeployed": 0.632217,
+      "stockBack": 0.632217,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 0.632217,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.1,
+      "excessPctExLpFees": -0.1,
+      "state": "OPEN",
+      "peakPremiumPct": 7.72,
+      "buyersPaidAboveReferenceUsd": 721.48,
+      "vwapBuyPremiumPct": 3.67
+     }
+    },
+    "10000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 213600,
+        "tickUpper": 213800,
+        "stockPlaced": 1.580543,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 212800,
+        "tickUpper": 213200,
+        "stockPlaced": 1.896651,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 211800,
+        "tickUpper": 212400,
+        "stockPlaced": 1.580543,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 210400,
+        "tickUpper": 211200,
+        "stockPlaced": 1.264434,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       }
+      ],
+      "stockDeployed": 6.322172,
+      "stockBack": 6.322172,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 6.322172,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.01,
+      "excessPctExLpFees": -0.01,
+      "state": "OPEN",
+      "peakPremiumPct": 7.72,
+      "buyersPaidAboveReferenceUsd": 721.48,
+      "vwapBuyPremiumPct": 3.67
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 213600,
+        "tickUpper": 213800,
+        "stockPlaced": 1.580543,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 212800,
+        "tickUpper": 213200,
+        "stockPlaced": 1.896651,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 211800,
+        "tickUpper": 212400,
+        "stockPlaced": 1.580543,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 210400,
+        "tickUpper": 211200,
+        "stockPlaced": 1.264434,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       }
+      ],
+      "stockDeployed": 6.322172,
+      "stockBack": 6.322172,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 6.322172,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.01,
+      "excessPctExLpFees": -0.01,
+      "state": "OPEN",
+      "peakPremiumPct": 7.72,
+      "buyersPaidAboveReferenceUsd": 721.48,
+      "vwapBuyPremiumPct": 3.67
+     }
+    },
+    "100000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 213600,
+        "tickUpper": 213800,
+        "stockPlaced": 15.805429,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 212800,
+        "tickUpper": 213200,
+        "stockPlaced": 18.966515,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 211800,
+        "tickUpper": 212400,
+        "stockPlaced": 15.805429,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 210400,
+        "tickUpper": 211200,
+        "stockPlaced": 12.644343,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       }
+      ],
+      "stockDeployed": 63.221715,
+      "stockBack": 63.221715,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 63.221715,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.001,
+      "excessPctExLpFees": -0.001,
+      "state": "OPEN",
+      "peakPremiumPct": 7.72,
+      "buyersPaidAboveReferenceUsd": 721.48,
+      "vwapBuyPremiumPct": 3.67
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 213600,
+        "tickUpper": 213800,
+        "stockPlaced": 15.805429,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 212800,
+        "tickUpper": 213200,
+        "stockPlaced": 18.966515,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 211800,
+        "tickUpper": 212400,
+        "stockPlaced": 15.805429,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 210400,
+        "tickUpper": 211200,
+        "stockPlaced": 12.644343,
+        "soldPct": 0,
+        "lockedAt": 1785714300
+       }
+      ],
+      "stockDeployed": 63.221715,
+      "stockBack": 63.221715,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 63.221715,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.001,
+      "excessPctExLpFees": -0.001,
+      "state": "OPEN",
+      "peakPremiumPct": 7.72,
+      "buyersPaidAboveReferenceUsd": 721.48,
+      "vwapBuyPremiumPct": 3.67
+     }
+    }
+   }
+  },
+  {
+   "ticker": "CRWV",
+   "weekend": "2026-08-29",
+   "p0": 84.051,
+   "p0Source": "chainlink",
+   "fresh": 83.225,
+   "freshSource": "chainlink first round after reopen",
+   "loggedPeakPremiumPct": 26.14,
+   "poolId": "0x237014478f7ef98afbe7412ac35b6a3f96b8fb111de48b7c4dbf49dba4bd9c4b",
+   "stockIsCurrency0": true,
+   "tickSpacing": 90,
+   "blocks": {
+    "arm": "48712672",
+    "settle": "50454741"
+   },
+   "swaps": 215,
+   "liquidityChanges": 8,
+   "validation": {
+    "swaps": 215,
+    "maxLogPriceErrPct": 0,
+    "maxLiquidityErrPct": 0,
+    "engagedSwaps": 3,
+    "armActiveLiquidityLogged": "385125407297341"
+   },
+   "bySize": {
+    "1000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -231210,
+        "tickUpper": -230940,
+        "stockPlaced": 0.892315,
+        "soldPct": 100,
+        "lockedAt": 1788036817
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -230580,
+        "tickUpper": -230040,
+        "stockPlaced": 1.070778,
+        "soldPct": 100,
+        "lockedAt": 1788036817
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -229770,
+        "tickUpper": -229050,
+        "stockPlaced": 0.892315,
+        "soldPct": 0,
+        "lockedAt": 1788133500
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -228600,
+        "tickUpper": -227700,
+        "stockPlaced": 0.713852,
+        "soldPct": 0,
+        "lockedAt": 1788133500
+       }
+      ],
+      "stockDeployed": 3.569262,
+      "stockBack": 1.606168,
+      "usdgReceived": 188.98,
+      "lpFeesUsd": 0,
+      "stockBought": 2.233727,
+      "buybackAvgUsd": 84.6035,
+      "usdgLeft": 0,
+      "perfFeeStock": 0.027063,
+      "netStock": 3.812832,
+      "extraShares": 0.24357,
+      "excessUsd": 19.27,
+      "excessPct": 1.9271,
+      "excessPctExLpFees": 1.9271,
+      "state": "OPEN",
+      "peakPremiumPct": 26.14,
+      "buyersPaidAboveReferenceUsd": 188.95,
+      "vwapBuyPremiumPct": 2.67
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -231210,
+        "tickUpper": -230940,
+        "stockPlaced": 0.892315,
+        "soldPct": 0,
+        "lockedAt": 1788133500
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -230580,
+        "tickUpper": -230040,
+        "stockPlaced": 1.070778,
+        "soldPct": 0,
+        "lockedAt": 1788133500
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -229770,
+        "tickUpper": -229050,
+        "stockPlaced": 0.892315,
+        "soldPct": 0,
+        "lockedAt": 1788133500
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -228600,
+        "tickUpper": -227700,
+        "stockPlaced": 0.713852,
+        "soldPct": 0,
+        "lockedAt": 1788133500
+       }
+      ],
+      "stockDeployed": 3.569262,
+      "stockBack": 3.587005,
+      "usdgReceived": 1.64,
+      "lpFeesUsd": 3.11,
+      "stockBought": 0.019325,
+      "buybackAvgUsd": 84.6128,
+      "usdgLeft": 0,
+      "perfFeeStock": 0.003707,
+      "netStock": 3.602623,
+      "extraShares": 0.033362,
+      "excessUsd": 1.78,
+      "excessPct": 0.1777,
+      "excessPctExLpFees": -0.1024,
+      "state": "OPEN",
+      "peakPremiumPct": 11.23,
+      "buyersPaidAboveReferenceUsd": 183.47,
+      "vwapBuyPremiumPct": 2.58
+     }
+    },
+    "10000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -231210,
+        "tickUpper": -230940,
+        "stockPlaced": 8.923154,
+        "soldPct": 100,
+        "lockedAt": 1788036817
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -230580,
+        "tickUpper": -230040,
+        "stockPlaced": 10.707785,
+        "soldPct": 100,
+        "lockedAt": 1788036817
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -229770,
+        "tickUpper": -229050,
+        "stockPlaced": 8.923154,
+        "soldPct": 0,
+        "lockedAt": 1788133500
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -228600,
+        "tickUpper": -227700,
+        "stockPlaced": 7.138523,
+        "soldPct": 0,
+        "lockedAt": 1788133500
+       }
+      ],
+      "stockDeployed": 35.692615,
+      "stockBack": 16.061677,
+      "usdgReceived": 1889.81,
+      "lpFeesUsd": 0,
+      "stockBought": 22.337273,
+      "buybackAvgUsd": 84.6035,
+      "usdgLeft": 0,
+      "perfFeeStock": 0.270633,
+      "netStock": 38.128316,
+      "extraShares": 2.435701,
+      "excessUsd": 201.71,
+      "excessPct": 2.0171,
+      "excessPctExLpFees": 2.0171,
+      "state": "OPEN",
+      "peakPremiumPct": 26.14,
+      "buyersPaidAboveReferenceUsd": 188.95,
+      "vwapBuyPremiumPct": 2.67
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -231210,
+        "tickUpper": -230940,
+        "stockPlaced": 8.923154,
+        "soldPct": 0,
+        "lockedAt": 1788133500
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -230580,
+        "tickUpper": -230040,
+        "stockPlaced": 10.707785,
+        "soldPct": 0,
+        "lockedAt": 1788133500
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -229770,
+        "tickUpper": -229050,
+        "stockPlaced": 8.923154,
+        "soldPct": 0,
+        "lockedAt": 1788133500
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -228600,
+        "tickUpper": -227700,
+        "stockPlaced": 7.138523,
+        "soldPct": 0,
+        "lockedAt": 1788133500
+       }
+      ],
+      "stockDeployed": 35.692615,
+      "stockBack": 35.719773,
+      "usdgReceived": 2.48,
+      "lpFeesUsd": 4.74,
+      "stockBought": 0.02927,
+      "buybackAvgUsd": 84.6176,
+      "usdgLeft": 0,
+      "perfFeeStock": 0.005643,
+      "netStock": 35.7434,
+      "extraShares": 0.050785,
+      "excessUsd": 3.23,
+      "excessPct": 0.0323,
+      "excessPctExLpFees": -0.0104,
+      "state": "OPEN",
+      "peakPremiumPct": 8.74,
+      "buyersPaidAboveReferenceUsd": 180.98,
+      "vwapBuyPremiumPct": 2.55
+     }
+    },
+    "100000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -231210,
+        "tickUpper": -230940,
+        "stockPlaced": 89.231538,
+        "soldPct": 100,
+        "lockedAt": 1788036817
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -230580,
+        "tickUpper": -230040,
+        "stockPlaced": 107.077846,
+        "soldPct": 100,
+        "lockedAt": 1788036817
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -229770,
+        "tickUpper": -229050,
+        "stockPlaced": 89.231538,
+        "soldPct": 0,
+        "lockedAt": 1788133500
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -228600,
+        "tickUpper": -227700,
+        "stockPlaced": 71.38523,
+        "soldPct": 0,
+        "lockedAt": 1788133500
+       }
+      ],
+      "stockDeployed": 356.926152,
+      "stockBack": 160.616768,
+      "usdgReceived": 18898.11,
+      "lpFeesUsd": 0,
+      "stockBought": 223.37273,
+      "buybackAvgUsd": 84.6035,
+      "usdgLeft": 0,
+      "perfFeeStock": 2.706335,
+      "netStock": 381.283163,
+      "extraShares": 24.357011,
+      "excessUsd": 2026.11,
+      "excessPct": 2.0261,
+      "excessPctExLpFees": 2.0261,
+      "state": "OPEN",
+      "peakPremiumPct": 26.14,
+      "buyersPaidAboveReferenceUsd": 188.95,
+      "vwapBuyPremiumPct": 2.67
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -231210,
+        "tickUpper": -230940,
+        "stockPlaced": 89.231538,
+        "soldPct": 0,
+        "lockedAt": 1788133500
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -230580,
+        "tickUpper": -230040,
+        "stockPlaced": 107.077846,
+        "soldPct": 0,
+        "lockedAt": 1788133500
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -229770,
+        "tickUpper": -229050,
+        "stockPlaced": 89.231538,
+        "soldPct": 0,
+        "lockedAt": 1788133500
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -228600,
+        "tickUpper": -227700,
+        "stockPlaced": 71.38523,
+        "soldPct": 0,
+        "lockedAt": 1788133500
+       }
+      ],
+      "stockDeployed": 356.926152,
+      "stockBack": 356.954831,
+      "usdgReceived": 2.61,
+      "lpFeesUsd": 5,
+      "stockBought": 0.030858,
+      "buybackAvgUsd": 84.6184,
+      "usdgLeft": 0,
+      "perfFeeStock": 0.005954,
+      "netStock": 356.979735,
+      "extraShares": 0.053583,
+      "excessUsd": 3.46,
+      "excessPct": 0.0035,
+      "excessPctExLpFees": -0.001,
+      "state": "OPEN",
+      "peakPremiumPct": 8.35,
+      "buyersPaidAboveReferenceUsd": 180.58,
+      "vwapBuyPremiumPct": 2.54
+     }
+    }
+   }
+  },
+  {
+   "ticker": "EWY",
+   "weekend": "2026-09-12",
+   "p0": 188.6404,
+   "p0Source": "chainlink",
+   "fresh": 181.885,
+   "freshSource": "chainlink first round after reopen",
+   "loggedPeakPremiumPct": 7.32,
+   "poolId": "0xaac10c49a6386a702427c6cd4f378706ade03c53267080712f9e5d2fc496b61a",
+   "stockIsCurrency0": false,
+   "tickSpacing": 500,
+   "blocks": {
+    "arm": "60666679",
+    "settle": "62400965"
+   },
+   "swaps": 194,
+   "liquidityChanges": 51,
+   "validation": {
+    "swaps": 194,
+    "maxLogPriceErrPct": 0,
+    "maxLiquidityErrPct": 0,
+    "engagedSwaps": 0,
+    "armActiveLiquidityLogged": "5318504934742358"
+   },
+   "bySize": {
+    "1000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 1500,
+        "tickLower": 222000,
+        "tickUpper": 222500,
+        "stockPlaced": 0.477098,
+        "soldPct": 0,
+        "lockedAt": null
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 221000,
+        "tickUpper": 221500,
+        "stockPlaced": 0.397582,
+        "soldPct": 0,
+        "lockedAt": null
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 220000,
+        "tickUpper": 220500,
+        "stockPlaced": 0.318065,
+        "soldPct": 0,
+        "lockedAt": null
+       }
+      ],
+      "stockDeployed": 1.192746,
+      "stockBack": 1.192746,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 1.192746,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.1,
+      "excessPctExLpFees": -0.1,
+      "state": "OPEN",
+      "peakPremiumPct": 7.32,
+      "buyersPaidAboveReferenceUsd": 1356.15,
+      "vwapBuyPremiumPct": 8.07
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 1500,
+        "tickLower": 222000,
+        "tickUpper": 222500,
+        "stockPlaced": 0.477098,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 221000,
+        "tickUpper": 221500,
+        "stockPlaced": 0.397582,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 220000,
+        "tickUpper": 220500,
+        "stockPlaced": 0.318065,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       }
+      ],
+      "stockDeployed": 1.192746,
+      "stockBack": 1.192746,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 1.192746,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.1,
+      "excessPctExLpFees": -0.1,
+      "state": "OPEN",
+      "peakPremiumPct": 7.32,
+      "buyersPaidAboveReferenceUsd": 1356.15,
+      "vwapBuyPremiumPct": 8.07
+     }
+    },
+    "10000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 1500,
+        "tickLower": 222000,
+        "tickUpper": 222500,
+        "stockPlaced": 4.770982,
+        "soldPct": 0,
+        "lockedAt": null
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 221000,
+        "tickUpper": 221500,
+        "stockPlaced": 3.975819,
+        "soldPct": 0,
+        "lockedAt": null
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 220000,
+        "tickUpper": 220500,
+        "stockPlaced": 3.180655,
+        "soldPct": 0,
+        "lockedAt": null
+       }
+      ],
+      "stockDeployed": 11.927456,
+      "stockBack": 11.927456,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 11.927456,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.01,
+      "excessPctExLpFees": -0.01,
+      "state": "OPEN",
+      "peakPremiumPct": 7.32,
+      "buyersPaidAboveReferenceUsd": 1356.15,
+      "vwapBuyPremiumPct": 8.07
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 1500,
+        "tickLower": 222000,
+        "tickUpper": 222500,
+        "stockPlaced": 4.770982,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 221000,
+        "tickUpper": 221500,
+        "stockPlaced": 3.975819,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 220000,
+        "tickUpper": 220500,
+        "stockPlaced": 3.180655,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       }
+      ],
+      "stockDeployed": 11.927456,
+      "stockBack": 11.927456,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 11.927456,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.01,
+      "excessPctExLpFees": -0.01,
+      "state": "OPEN",
+      "peakPremiumPct": 7.32,
+      "buyersPaidAboveReferenceUsd": 1356.15,
+      "vwapBuyPremiumPct": 8.07
+     }
+    },
+    "100000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 1500,
+        "tickLower": 222000,
+        "tickUpper": 222500,
+        "stockPlaced": 47.709822,
+        "soldPct": 0,
+        "lockedAt": null
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 221000,
+        "tickUpper": 221500,
+        "stockPlaced": 39.758185,
+        "soldPct": 0,
+        "lockedAt": null
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 220000,
+        "tickUpper": 220500,
+        "stockPlaced": 31.806548,
+        "soldPct": 0,
+        "lockedAt": null
+       }
+      ],
+      "stockDeployed": 119.274556,
+      "stockBack": 119.274556,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 119.274556,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.001,
+      "excessPctExLpFees": -0.001,
+      "state": "OPEN",
+      "peakPremiumPct": 7.32,
+      "buyersPaidAboveReferenceUsd": 1356.15,
+      "vwapBuyPremiumPct": 8.07
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 1500,
+        "tickLower": 222000,
+        "tickUpper": 222500,
+        "stockPlaced": 47.709822,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 221000,
+        "tickUpper": 221500,
+        "stockPlaced": 39.758185,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 220000,
+        "tickUpper": 220500,
+        "stockPlaced": 31.806548,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       }
+      ],
+      "stockDeployed": 119.274556,
+      "stockBack": 119.274556,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 119.274556,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.001,
+      "excessPctExLpFees": -0.001,
+      "state": "OPEN",
+      "peakPremiumPct": 7.32,
+      "buyersPaidAboveReferenceUsd": 1356.15,
+      "vwapBuyPremiumPct": 8.07
+     }
+    }
+   }
+  },
+  {
+   "ticker": "IONQ",
+   "weekend": "2026-09-19",
+   "p0": 39.0868,
+   "p0Source": "chainlink",
+   "fresh": 39.295,
+   "freshSource": "chainlink first round after reopen",
+   "loggedPeakPremiumPct": 14.56,
+   "poolId": "0xbd78e53962e76c3b6228b86dc074059258bc73d565e5e343ae4ad3c4c1ac5681",
+   "stockIsCurrency0": true,
+   "tickSpacing": 400,
+   "blocks": {
+    "arm": "66639913",
+    "settle": "68386920"
+   },
+   "swaps": 14,
+   "liquidityChanges": 2,
+   "validation": {
+    "swaps": 14,
+    "maxLogPriceErrPct": 0,
+    "maxLiquidityErrPct": 0,
+    "engagedSwaps": 0,
+    "armActiveLiquidityLogged": "789645100134878"
+   },
+   "bySize": {
+    "1000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 2500,
+        "tickLower": -237200,
+        "tickUpper": -236800,
+        "stockPlaced": 1.918806,
+        "soldPct": 0,
+        "lockedAt": null
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -236000,
+        "tickUpper": -235600,
+        "stockPlaced": 1.535045,
+        "soldPct": 0,
+        "lockedAt": null
+       }
+      ],
+      "stockDeployed": 3.453851,
+      "stockBack": 3.453851,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 3.453851,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.1,
+      "excessPctExLpFees": -0.1,
+      "state": "OPEN",
+      "peakPremiumPct": 14.56,
+      "buyersPaidAboveReferenceUsd": 73.2,
+      "vwapBuyPremiumPct": 11.77
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 2500,
+        "tickLower": -237200,
+        "tickUpper": -236800,
+        "stockPlaced": 1.918806,
+        "soldPct": 0,
+        "lockedAt": 1789947900
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -236000,
+        "tickUpper": -235600,
+        "stockPlaced": 1.535045,
+        "soldPct": 0,
+        "lockedAt": 1789947900
+       }
+      ],
+      "stockDeployed": 3.453851,
+      "stockBack": 3.453851,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 3.453851,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.1,
+      "excessPctExLpFees": -0.1,
+      "state": "OPEN",
+      "peakPremiumPct": 14.56,
+      "buyersPaidAboveReferenceUsd": 73.2,
+      "vwapBuyPremiumPct": 11.77
+     }
+    },
+    "10000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 2500,
+        "tickLower": -237200,
+        "tickUpper": -236800,
+        "stockPlaced": 19.188063,
+        "soldPct": 0,
+        "lockedAt": null
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -236000,
+        "tickUpper": -235600,
+        "stockPlaced": 15.350451,
+        "soldPct": 0,
+        "lockedAt": null
+       }
+      ],
+      "stockDeployed": 34.538514,
+      "stockBack": 34.538514,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 34.538514,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.01,
+      "excessPctExLpFees": -0.01,
+      "state": "OPEN",
+      "peakPremiumPct": 14.56,
+      "buyersPaidAboveReferenceUsd": 73.2,
+      "vwapBuyPremiumPct": 11.77
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 2500,
+        "tickLower": -237200,
+        "tickUpper": -236800,
+        "stockPlaced": 19.188063,
+        "soldPct": 0,
+        "lockedAt": 1789947900
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -236000,
+        "tickUpper": -235600,
+        "stockPlaced": 15.350451,
+        "soldPct": 0,
+        "lockedAt": 1789947900
+       }
+      ],
+      "stockDeployed": 34.538514,
+      "stockBack": 34.538514,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 34.538514,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.01,
+      "excessPctExLpFees": -0.01,
+      "state": "OPEN",
+      "peakPremiumPct": 14.56,
+      "buyersPaidAboveReferenceUsd": 73.2,
+      "vwapBuyPremiumPct": 11.77
+     }
+    },
+    "100000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 2500,
+        "tickLower": -237200,
+        "tickUpper": -236800,
+        "stockPlaced": 191.880635,
+        "soldPct": 0,
+        "lockedAt": null
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -236000,
+        "tickUpper": -235600,
+        "stockPlaced": 153.504508,
+        "soldPct": 0,
+        "lockedAt": null
+       }
+      ],
+      "stockDeployed": 345.385143,
+      "stockBack": 345.385143,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 345.385143,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.001,
+      "excessPctExLpFees": -0.001,
+      "state": "OPEN",
+      "peakPremiumPct": 14.56,
+      "buyersPaidAboveReferenceUsd": 73.2,
+      "vwapBuyPremiumPct": 11.77
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 2500,
+        "tickLower": -237200,
+        "tickUpper": -236800,
+        "stockPlaced": 191.880635,
+        "soldPct": 0,
+        "lockedAt": 1789947900
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -236000,
+        "tickUpper": -235600,
+        "stockPlaced": 153.504508,
+        "soldPct": 0,
+        "lockedAt": 1789947900
+       }
+      ],
+      "stockDeployed": 345.385143,
+      "stockBack": 345.385143,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 345.385143,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.001,
+      "excessPctExLpFees": -0.001,
+      "state": "OPEN",
+      "peakPremiumPct": 14.56,
+      "buyersPaidAboveReferenceUsd": 73.2,
+      "vwapBuyPremiumPct": 11.77
+     }
+    }
+   }
+  },
+  {
+   "ticker": "MSTR",
+   "weekend": "2026-08-29",
+   "p0": 127.8124,
+   "p0Source": "chainlink",
+   "fresh": 127.6,
+   "freshSource": "chainlink first round after reopen",
+   "loggedPeakPremiumPct": 243.31,
+   "poolId": "0x319bac87e616a89e241c10aeb8afd4892a852cdd8b373cd9765ecddc40b87cfe",
+   "stockIsCurrency0": false,
+   "tickSpacing": 25,
+   "blocks": {
+    "arm": "48712672",
+    "settle": "50454741"
+   },
+   "swaps": 62891,
+   "liquidityChanges": 1098,
+   "validation": {
+    "swaps": 62891,
+    "maxLogPriceErrPct": 0.0003,
+    "maxLiquidityErrPct": 100,
+    "engagedSwaps": 11462,
+    "armActiveLiquidityLogged": "18443982651907300"
+   },
+   "bySize": {
+    "1000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 226700,
+        "tickUpper": 227025,
+        "stockPlaced": 0.586798,
+        "soldPct": 100,
+        "lockedAt": 1787977800
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 225850,
+        "tickUpper": 226400,
+        "stockPlaced": 0.704157,
+        "soldPct": 100,
+        "lockedAt": 1787979413
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 224825,
+        "tickUpper": 225575,
+        "stockPlaced": 0.586798,
+        "soldPct": 100,
+        "lockedAt": 1787979468
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 223450,
+        "tickUpper": 224450,
+        "stockPlaced": 0.469438,
+        "soldPct": 100,
+        "lockedAt": 1788057939
+       }
+      ],
+      "stockDeployed": 2.34719,
+      "stockBack": 0,
+      "usdgReceived": 374.82,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 374.82,
+      "perfFeeStock": 0.055278,
+      "netStock": 2.844689,
+      "extraShares": 0.497499,
+      "excessUsd": 62.48,
+      "excessPct": 6.2481,
+      "excessPctExLpFees": 6.2481,
+      "state": "PENDING_BUYBACK",
+      "peakPremiumPct": 243.31,
+      "buyersPaidAboveReferenceUsd": 1607354.68,
+      "vwapBuyPremiumPct": 40.65
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 226700,
+        "tickUpper": 227025,
+        "stockPlaced": 0.586798,
+        "soldPct": 99.84,
+        "lockedAt": 1787977800
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 225850,
+        "tickUpper": 226400,
+        "stockPlaced": 0.704157,
+        "soldPct": 99.57,
+        "lockedAt": 1787979468
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 224825,
+        "tickUpper": 225575,
+        "stockPlaced": 0.586798,
+        "soldPct": 94.43,
+        "lockedAt": 1788023981
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 223450,
+        "tickUpper": 224450,
+        "stockPlaced": 0.469438,
+        "soldPct": 95.5,
+        "lockedAt": 1788057939
+       }
+      ],
+      "stockDeployed": 2.34719,
+      "stockBack": 0.057783,
+      "usdgReceived": 385.67,
+      "lpFeesUsd": 18.22,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 385.67,
+      "perfFeeStock": 0.069449,
+      "netStock": 2.972227,
+      "extraShares": 0.625037,
+      "excessUsd": 78.75,
+      "excessPct": 7.8755,
+      "excessPctExLpFees": 6.2356,
+      "state": "PENDING_BUYBACK",
+      "peakPremiumPct": 243.31,
+      "buyersPaidAboveReferenceUsd": 1606073.63,
+      "vwapBuyPremiumPct": 40.6
+     }
+    },
+    "10000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 226700,
+        "tickUpper": 227025,
+        "stockPlaced": 5.867975,
+        "soldPct": 100,
+        "lockedAt": 1787977800
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 225850,
+        "tickUpper": 226400,
+        "stockPlaced": 7.04157,
+        "soldPct": 100,
+        "lockedAt": 1787979413
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 224825,
+        "tickUpper": 225575,
+        "stockPlaced": 5.867975,
+        "soldPct": 100,
+        "lockedAt": 1787979468
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 223450,
+        "tickUpper": 224450,
+        "stockPlaced": 4.69438,
+        "soldPct": 100,
+        "lockedAt": 1788057939
+       }
+      ],
+      "stockDeployed": 23.471901,
+      "stockBack": 0,
+      "usdgReceived": 3748.23,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 3748.23,
+      "perfFeeStock": 0.552777,
+      "netStock": 28.446893,
+      "extraShares": 4.974992,
+      "excessUsd": 633.81,
+      "excessPct": 6.3381,
+      "excessPctExLpFees": 6.3381,
+      "state": "PENDING_BUYBACK",
+      "peakPremiumPct": 243.31,
+      "buyersPaidAboveReferenceUsd": 1607354.68,
+      "vwapBuyPremiumPct": 40.65
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 226700,
+        "tickUpper": 227025,
+        "stockPlaced": 5.867975,
+        "soldPct": 95.76,
+        "lockedAt": 1787986573
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 225850,
+        "tickUpper": 226400,
+        "stockPlaced": 7.04157,
+        "soldPct": 95.5,
+        "lockedAt": 1787991698
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 224825,
+        "tickUpper": 225575,
+        "stockPlaced": 5.867975,
+        "soldPct": 95.81,
+        "lockedAt": 1788024116
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 223450,
+        "tickUpper": 224450,
+        "stockPlaced": 4.69438,
+        "soldPct": 95.59,
+        "lockedAt": 1788058040
+       }
+      ],
+      "stockDeployed": 23.471901,
+      "stockBack": 1.018958,
+      "usdgReceived": 3918.8,
+      "lpFeesUsd": 300.59,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 3918.8,
+      "perfFeeStock": 0.786641,
+      "netStock": 30.55167,
+      "extraShares": 7.079769,
+      "excessUsd": 902.38,
+      "excessPct": 9.0238,
+      "excessPctExLpFees": 6.3185,
+      "state": "PENDING_BUYBACK",
+      "peakPremiumPct": 243.31,
+      "buyersPaidAboveReferenceUsd": 1603332.45,
+      "vwapBuyPremiumPct": 40.51
+     }
+    },
+    "100000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 226700,
+        "tickUpper": 227025,
+        "stockPlaced": 58.679753,
+        "soldPct": 100,
+        "lockedAt": 1787977800
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 225850,
+        "tickUpper": 226400,
+        "stockPlaced": 70.415703,
+        "soldPct": 100,
+        "lockedAt": 1787979413
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 224825,
+        "tickUpper": 225575,
+        "stockPlaced": 58.679753,
+        "soldPct": 100,
+        "lockedAt": 1787979468
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 223450,
+        "tickUpper": 224450,
+        "stockPlaced": 46.943802,
+        "soldPct": 100,
+        "lockedAt": 1788057939
+       }
+      ],
+      "stockDeployed": 234.71901,
+      "stockBack": 0,
+      "usdgReceived": 37482.28,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 37482.28,
+      "perfFeeStock": 5.527769,
+      "netStock": 284.46893,
+      "extraShares": 49.74992,
+      "excessUsd": 6347.09,
+      "excessPct": 6.3471,
+      "excessPctExLpFees": 6.3471,
+      "state": "PENDING_BUYBACK",
+      "peakPremiumPct": 243.31,
+      "buyersPaidAboveReferenceUsd": 1607354.68,
+      "vwapBuyPremiumPct": 40.65
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": 226700,
+        "tickUpper": 227025,
+        "stockPlaced": 58.679753,
+        "soldPct": 96.58,
+        "lockedAt": 1787990968
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": 225850,
+        "tickUpper": 226400,
+        "stockPlaced": 70.415703,
+        "soldPct": 100,
+        "lockedAt": 1787990968
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 224825,
+        "tickUpper": 225575,
+        "stockPlaced": 58.679753,
+        "soldPct": 96.89,
+        "lockedAt": 1788024608
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 223450,
+        "tickUpper": 224450,
+        "stockPlaced": 46.943802,
+        "soldPct": 96.13,
+        "lockedAt": 1788061079
+       }
+      ],
+      "stockDeployed": 234.71901,
+      "stockBack": 5.643281,
+      "usdgReceived": 38454.55,
+      "lpFeesUsd": 1692.36,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 38454.55,
+      "perfFeeStock": 6.844335,
+      "netStock": 296.318029,
+      "extraShares": 61.599019,
+      "excessUsd": 7859.03,
+      "excessPct": 7.859,
+      "excessPctExLpFees": 6.3359,
+      "state": "PENDING_BUYBACK",
+      "peakPremiumPct": 243.31,
+      "buyersPaidAboveReferenceUsd": 1585981.38,
+      "vwapBuyPremiumPct": 39.89
+     }
+    }
+   }
+  },
+  {
+   "ticker": "ORCL",
+   "weekend": "2026-08-29",
+   "p0": 151.0097,
+   "p0Source": "chainlink",
+   "fresh": 150.487,
+   "freshSource": "chainlink first round after reopen",
+   "loggedPeakPremiumPct": 15.25,
+   "poolId": "0xc2ce4784e1e72cf0221b51b30c8aaadf6c0b12863cf03ab3687854fb7b1d850a",
+   "stockIsCurrency0": false,
+   "tickSpacing": 200,
+   "blocks": {
+    "arm": "48712672",
+    "settle": "50454741"
+   },
+   "swaps": 182,
+   "liquidityChanges": 9,
+   "validation": {
+    "swaps": 182,
+    "maxLogPriceErrPct": 0,
+    "maxLiquidityErrPct": 0,
+    "engagedSwaps": 2,
+    "armActiveLiquidityLogged": "271302935374966"
+   },
+   "bySize": {
+    "1000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 1500,
+        "tickLower": 224200,
+        "tickUpper": 224600,
+        "stockPlaced": 0.595988,
+        "soldPct": 100,
+        "lockedAt": 1788049128
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 223200,
+        "tickUpper": 223800,
+        "stockPlaced": 0.496657,
+        "soldPct": 100,
+        "lockedAt": 1788049128
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 221800,
+        "tickUpper": 222600,
+        "stockPlaced": 0.397325,
+        "soldPct": 100,
+        "lockedAt": 1788049128
+       }
+      ],
+      "stockDeployed": 1.489971,
+      "stockBack": 0,
+      "usdgReceived": 293.97,
+      "lpFeesUsd": 0,
+      "stockBought": 1.924916,
+      "buybackAvgUsd": 152.7194,
+      "usdgLeft": 0,
+      "perfFeeStock": 0.043495,
+      "netStock": 1.881421,
+      "extraShares": 0.391451,
+      "excessUsd": 57.91,
+      "excessPct": 5.7908,
+      "excessPctExLpFees": 5.7908,
+      "state": "OPEN",
+      "peakPremiumPct": 15.25,
+      "buyersPaidAboveReferenceUsd": 151.4,
+      "vwapBuyPremiumPct": 4.63
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 1500,
+        "tickLower": 224200,
+        "tickUpper": 224600,
+        "stockPlaced": 0.595988,
+        "soldPct": 100,
+        "lockedAt": 1788049128
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 223200,
+        "tickUpper": 223800,
+        "stockPlaced": 0.496657,
+        "soldPct": 0,
+        "lockedAt": 1788133500
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 221800,
+        "tickUpper": 222600,
+        "stockPlaced": 0.397325,
+        "soldPct": 0,
+        "lockedAt": 1788133500
+       }
+      ],
+      "stockDeployed": 1.489971,
+      "stockBack": 0.91385,
+      "usdgReceived": 107.19,
+      "lpFeesUsd": 2.99,
+      "stockBought": 0.207306,
+      "buybackAvgUsd": 153.1994,
+      "usdgLeft": 75.43,
+      "perfFeeStock": 0.012202,
+      "netStock": 1.599787,
+      "extraShares": 0.109816,
+      "excessUsd": 15.53,
+      "excessPct": 1.5526,
+      "excessPctExLpFees": 1.2835,
+      "state": "PENDING_BUYBACK",
+      "peakPremiumPct": 32.73,
+      "buyersPaidAboveReferenceUsd": 151.4,
+      "vwapBuyPremiumPct": 4.63
+     }
+    },
+    "10000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 1500,
+        "tickLower": 224200,
+        "tickUpper": 224600,
+        "stockPlaced": 5.959882,
+        "soldPct": 100,
+        "lockedAt": 1788049128
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 223200,
+        "tickUpper": 223800,
+        "stockPlaced": 4.966568,
+        "soldPct": 100,
+        "lockedAt": 1788049128
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 221800,
+        "tickUpper": 222600,
+        "stockPlaced": 3.973255,
+        "soldPct": 100,
+        "lockedAt": 1788049128
+       }
+      ],
+      "stockDeployed": 14.899705,
+      "stockBack": 0,
+      "usdgReceived": 2939.72,
+      "lpFeesUsd": 0,
+      "stockBought": 19.249158,
+      "buybackAvgUsd": 152.7194,
+      "usdgLeft": 0,
+      "perfFeeStock": 0.434945,
+      "netStock": 18.814213,
+      "extraShares": 3.914508,
+      "excessUsd": 588.08,
+      "excessPct": 5.8808,
+      "excessPctExLpFees": 5.8808,
+      "state": "OPEN",
+      "peakPremiumPct": 15.25,
+      "buyersPaidAboveReferenceUsd": 151.4,
+      "vwapBuyPremiumPct": 4.63
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 1500,
+        "tickLower": 224200,
+        "tickUpper": 224600,
+        "stockPlaced": 5.959882,
+        "soldPct": 100,
+        "lockedAt": 1788049128
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 223200,
+        "tickUpper": 223800,
+        "stockPlaced": 4.966568,
+        "soldPct": 100,
+        "lockedAt": 1788049128
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 221800,
+        "tickUpper": 222600,
+        "stockPlaced": 3.973255,
+        "soldPct": 0,
+        "lockedAt": 1788133500
+       }
+      ],
+      "stockDeployed": 14.899705,
+      "stockBack": 4.070141,
+      "usdgReceived": 2061.11,
+      "lpFeesUsd": 26.41,
+      "stockBought": 0.207306,
+      "buybackAvgUsd": 153.1994,
+      "usdgLeft": 2029.35,
+      "perfFeeStock": 0.258271,
+      "netStock": 17.224141,
+      "extraShares": 2.324436,
+      "excessUsd": 348.8,
+      "excessPct": 3.488,
+      "excessPctExLpFees": 3.2503,
+      "state": "PENDING_BUYBACK",
+      "peakPremiumPct": 53.07,
+      "buyersPaidAboveReferenceUsd": 435.02,
+      "vwapBuyPremiumPct": 15.79
+     }
+    },
+    "100000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 1500,
+        "tickLower": 224200,
+        "tickUpper": 224600,
+        "stockPlaced": 59.59882,
+        "soldPct": 100,
+        "lockedAt": 1788049128
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 223200,
+        "tickUpper": 223800,
+        "stockPlaced": 49.665684,
+        "soldPct": 100,
+        "lockedAt": 1788049128
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 221800,
+        "tickUpper": 222600,
+        "stockPlaced": 39.732547,
+        "soldPct": 100,
+        "lockedAt": 1788049128
+       }
+      ],
+      "stockDeployed": 148.997051,
+      "stockBack": 0,
+      "usdgReceived": 29397.2,
+      "lpFeesUsd": 0,
+      "stockBought": 192.49158,
+      "buybackAvgUsd": 152.7194,
+      "usdgLeft": 0,
+      "perfFeeStock": 4.349453,
+      "netStock": 188.142127,
+      "extraShares": 39.145076,
+      "excessUsd": 5889.82,
+      "excessPct": 5.8898,
+      "excessPctExLpFees": 5.8898,
+      "state": "OPEN",
+      "peakPremiumPct": 15.25,
+      "buyersPaidAboveReferenceUsd": 151.4,
+      "vwapBuyPremiumPct": 4.63
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 1500,
+        "tickLower": 224200,
+        "tickUpper": 224600,
+        "stockPlaced": 59.59882,
+        "soldPct": 100,
+        "lockedAt": 1788049128
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": 223200,
+        "tickUpper": 223800,
+        "stockPlaced": 49.665684,
+        "soldPct": 100,
+        "lockedAt": 1788049128
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": 221800,
+        "tickUpper": 222600,
+        "stockPlaced": 39.732547,
+        "soldPct": 84.09,
+        "lockedAt": 1788133500
+       }
+      ],
+      "stockDeployed": 148.997051,
+      "stockBack": 6.320863,
+      "usdgReceived": 27995.85,
+      "lpFeesUsd": 49.8,
+      "stockBought": 0.207306,
+      "buybackAvgUsd": 153.1994,
+      "usdgLeft": 27964.09,
+      "perfFeeStock": 3.949326,
+      "netStock": 184.540981,
+      "extraShares": 35.54393,
+      "excessUsd": 5347.9,
+      "excessPct": 5.3479,
+      "excessPctExLpFees": 5.3031,
+      "state": "PENDING_BUYBACK",
+      "peakPremiumPct": 54.32,
+      "buyersPaidAboveReferenceUsd": 828.6,
+      "vwapBuyPremiumPct": 36.81
+     }
+    }
+   }
+  },
+  {
+   "ticker": "RGTI",
+   "weekend": "2026-09-05",
+   "p0": 15.2539,
+   "p0Source": "chainlink",
+   "fresh": 15.2562,
+   "freshSource": "chainlink first round after reopen",
+   "loggedPeakPremiumPct": 7.8,
+   "poolId": "0x98bb85ee9d390ce0d9104afeed2b83038f83df54843fc35afed5d7545ec4936f",
+   "stockIsCurrency0": true,
+   "tickSpacing": 500,
+   "blocks": {
+    "arm": "54678526",
+    "settle": "56424730"
+   },
+   "swaps": 6,
+   "liquidityChanges": 6,
+   "validation": {
+    "swaps": 6,
+    "maxLogPriceErrPct": 0,
+    "maxLiquidityErrPct": 0,
+    "engagedSwaps": 0,
+    "armActiveLiquidityLogged": "1179814986058470"
+   },
+   "bySize": {
+    "1000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 4000,
+        "tickLower": -245500,
+        "tickUpper": -245000,
+        "stockPlaced": 3.93342,
+        "soldPct": 0,
+        "lockedAt": null
+       }
+      ],
+      "stockDeployed": 3.93342,
+      "stockBack": 3.93342,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 3.93342,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.1,
+      "excessPctExLpFees": -0.1,
+      "state": "OPEN",
+      "peakPremiumPct": 7.8,
+      "buyersPaidAboveReferenceUsd": 52.46,
+      "vwapBuyPremiumPct": 11.22
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 4000,
+        "tickLower": -245500,
+        "tickUpper": -245000,
+        "stockPlaced": 3.93342,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 3.93342,
+      "stockBack": 3.93342,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 3.93342,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.1,
+      "excessPctExLpFees": -0.1,
+      "state": "OPEN",
+      "peakPremiumPct": 7.8,
+      "buyersPaidAboveReferenceUsd": 52.46,
+      "vwapBuyPremiumPct": 11.22
+     }
+    },
+    "10000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 4000,
+        "tickLower": -245500,
+        "tickUpper": -245000,
+        "stockPlaced": 39.334203,
+        "soldPct": 0,
+        "lockedAt": null
+       }
+      ],
+      "stockDeployed": 39.334203,
+      "stockBack": 39.334203,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 39.334203,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.01,
+      "excessPctExLpFees": -0.01,
+      "state": "OPEN",
+      "peakPremiumPct": 7.8,
+      "buyersPaidAboveReferenceUsd": 52.46,
+      "vwapBuyPremiumPct": 11.22
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 4000,
+        "tickLower": -245500,
+        "tickUpper": -245000,
+        "stockPlaced": 39.334203,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 39.334203,
+      "stockBack": 39.334203,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 39.334203,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.01,
+      "excessPctExLpFees": -0.01,
+      "state": "OPEN",
+      "peakPremiumPct": 7.8,
+      "buyersPaidAboveReferenceUsd": 52.46,
+      "vwapBuyPremiumPct": 11.22
+     }
+    },
+    "100000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 4000,
+        "tickLower": -245500,
+        "tickUpper": -245000,
+        "stockPlaced": 393.342031,
+        "soldPct": 0,
+        "lockedAt": null
+       }
+      ],
+      "stockDeployed": 393.342031,
+      "stockBack": 393.342031,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 393.342031,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.001,
+      "excessPctExLpFees": -0.001,
+      "state": "OPEN",
+      "peakPremiumPct": 7.8,
+      "buyersPaidAboveReferenceUsd": 52.46,
+      "vwapBuyPremiumPct": 11.22
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 4000,
+        "tickLower": -245500,
+        "tickUpper": -245000,
+        "stockPlaced": 393.342031,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 393.342031,
+      "stockBack": 393.342031,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 393.342031,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.001,
+      "excessPctExLpFees": -0.001,
+      "state": "OPEN",
+      "peakPremiumPct": 7.8,
+      "buyersPaidAboveReferenceUsd": 52.46,
+      "vwapBuyPremiumPct": 11.22
+     }
+    }
+   }
+  },
+  {
+   "ticker": "RKLB",
+   "weekend": "2026-09-05",
+   "p0": 64.225,
+   "p0Source": "chainlink",
+   "fresh": 64.7089,
+   "freshSource": "chainlink first round after reopen",
+   "loggedPeakPremiumPct": 6.31,
+   "poolId": "0xbbc15d66fef8391f53569e19016e86545be9de3f302b82db93ed6165236d22f3",
+   "stockIsCurrency0": true,
+   "tickSpacing": 90,
+   "blocks": {
+    "arm": "54678526",
+    "settle": "56424730"
+   },
+   "swaps": 1571,
+   "liquidityChanges": 122,
+   "validation": {
+    "swaps": 1571,
+    "maxLogPriceErrPct": 0,
+    "maxLiquidityErrPct": 0,
+    "engagedSwaps": 0,
+    "armActiveLiquidityLogged": "93441275114235508"
+   },
+   "bySize": {
+    "1000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -233910,
+        "tickUpper": -233640,
+        "stockPlaced": 1.16777,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -233280,
+        "tickUpper": -232740,
+        "stockPlaced": 1.401323,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -232380,
+        "tickUpper": -231750,
+        "stockPlaced": 1.16777,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -231300,
+        "tickUpper": -230400,
+        "stockPlaced": 0.934216,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 4.671078,
+      "stockBack": 4.671078,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 4.671078,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.1,
+      "excessPctExLpFees": -0.1,
+      "state": "OPEN",
+      "peakPremiumPct": 6.31,
+      "buyersPaidAboveReferenceUsd": 6008.47,
+      "vwapBuyPremiumPct": 4.18
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -233910,
+        "tickUpper": -233640,
+        "stockPlaced": 1.16777,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -233280,
+        "tickUpper": -232740,
+        "stockPlaced": 1.401323,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -232380,
+        "tickUpper": -231750,
+        "stockPlaced": 1.16777,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -231300,
+        "tickUpper": -230400,
+        "stockPlaced": 0.934216,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 4.671078,
+      "stockBack": 4.671078,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 4.671078,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.1,
+      "excessPctExLpFees": -0.1,
+      "state": "OPEN",
+      "peakPremiumPct": 6.31,
+      "buyersPaidAboveReferenceUsd": 6008.47,
+      "vwapBuyPremiumPct": 4.18
+     }
+    },
+    "10000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -233910,
+        "tickUpper": -233640,
+        "stockPlaced": 11.677696,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -233280,
+        "tickUpper": -232740,
+        "stockPlaced": 14.013235,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -232380,
+        "tickUpper": -231750,
+        "stockPlaced": 11.677696,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -231300,
+        "tickUpper": -230400,
+        "stockPlaced": 9.342156,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 46.710782,
+      "stockBack": 46.710782,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 46.710782,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.01,
+      "excessPctExLpFees": -0.01,
+      "state": "OPEN",
+      "peakPremiumPct": 6.31,
+      "buyersPaidAboveReferenceUsd": 6008.47,
+      "vwapBuyPremiumPct": 4.18
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -233910,
+        "tickUpper": -233640,
+        "stockPlaced": 11.677696,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -233280,
+        "tickUpper": -232740,
+        "stockPlaced": 14.013235,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -232380,
+        "tickUpper": -231750,
+        "stockPlaced": 11.677696,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -231300,
+        "tickUpper": -230400,
+        "stockPlaced": 9.342156,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 46.710782,
+      "stockBack": 46.710782,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 46.710782,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.01,
+      "excessPctExLpFees": -0.01,
+      "state": "OPEN",
+      "peakPremiumPct": 6.31,
+      "buyersPaidAboveReferenceUsd": 6008.47,
+      "vwapBuyPremiumPct": 4.18
+     }
+    },
+    "100000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -233910,
+        "tickUpper": -233640,
+        "stockPlaced": 116.776956,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -233280,
+        "tickUpper": -232740,
+        "stockPlaced": 140.132347,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -232380,
+        "tickUpper": -231750,
+        "stockPlaced": 116.776956,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -231300,
+        "tickUpper": -230400,
+        "stockPlaced": 93.421565,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 467.107824,
+      "stockBack": 467.107824,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 467.107824,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.001,
+      "excessPctExLpFees": -0.001,
+      "state": "OPEN",
+      "peakPremiumPct": 6.31,
+      "buyersPaidAboveReferenceUsd": 6008.47,
+      "vwapBuyPremiumPct": 4.18
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -233910,
+        "tickUpper": -233640,
+        "stockPlaced": 116.776956,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -233280,
+        "tickUpper": -232740,
+        "stockPlaced": 140.132347,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -232380,
+        "tickUpper": -231750,
+        "stockPlaced": 116.776956,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -231300,
+        "tickUpper": -230400,
+        "stockPlaced": 93.421565,
+        "soldPct": 0,
+        "lockedAt": 1788738300
+       }
+      ],
+      "stockDeployed": 467.107824,
+      "stockBack": 467.107824,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 467.107824,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.001,
+      "excessPctExLpFees": -0.001,
+      "state": "OPEN",
+      "peakPremiumPct": 6.31,
+      "buyersPaidAboveReferenceUsd": 6008.47,
+      "vwapBuyPremiumPct": 4.18
+     }
+    }
+   }
+  },
+  {
+   "ticker": "RKLB",
+   "weekend": "2026-09-12",
+   "p0": 62.9398,
+   "p0Source": "chainlink",
+   "fresh": 62.65,
+   "freshSource": "chainlink first round after reopen",
+   "loggedPeakPremiumPct": 35.83,
+   "poolId": "0xbbc15d66fef8391f53569e19016e86545be9de3f302b82db93ed6165236d22f3",
+   "stockIsCurrency0": true,
+   "tickSpacing": 90,
+   "blocks": {
+    "arm": "60666679",
+    "settle": "62400965"
+   },
+   "swaps": 2103,
+   "liquidityChanges": 15,
+   "validation": {
+    "swaps": 2103,
+    "maxLogPriceErrPct": 0,
+    "maxLiquidityErrPct": 0,
+    "engagedSwaps": 769,
+    "armActiveLiquidityLogged": "99464594317240901"
+   },
+   "bySize": {
+    "1000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -234090,
+        "tickUpper": -233820,
+        "stockPlaced": 1.191615,
+        "soldPct": 100,
+        "lockedAt": 1789255732
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -233460,
+        "tickUpper": -232920,
+        "stockPlaced": 1.429938,
+        "soldPct": 100,
+        "lockedAt": 1789257802
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -232650,
+        "tickUpper": -231930,
+        "stockPlaced": 1.191615,
+        "soldPct": 100,
+        "lockedAt": 1789258673
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -231480,
+        "tickUpper": -230580,
+        "stockPlaced": 0.953292,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       }
+      ],
+      "stockDeployed": 4.766459,
+      "stockBack": 0.953292,
+      "usdgReceived": 286.59,
+      "lpFeesUsd": 0,
+      "stockBought": 4.548557,
+      "buybackAvgUsd": 63.0061,
+      "usdgLeft": 0,
+      "perfFeeStock": 0.073539,
+      "netStock": 5.42831,
+      "extraShares": 0.66185,
+      "excessUsd": 40.46,
+      "excessPct": 4.0465,
+      "excessPctExLpFees": 4.0465,
+      "state": "OPEN",
+      "peakPremiumPct": 35.83,
+      "buyersPaidAboveReferenceUsd": 11559.38,
+      "vwapBuyPremiumPct": 16.59
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -234090,
+        "tickUpper": -233820,
+        "stockPlaced": 1.191615,
+        "soldPct": 99.44,
+        "lockedAt": 1789255732
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -233460,
+        "tickUpper": -232920,
+        "stockPlaced": 1.429938,
+        "soldPct": 97.04,
+        "lockedAt": 1789257805
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -232650,
+        "tickUpper": -231930,
+        "stockPlaced": 1.191615,
+        "soldPct": 98.32,
+        "lockedAt": 1789258673
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -231480,
+        "tickUpper": -230580,
+        "stockPlaced": 0.953292,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       }
+      ],
+      "stockDeployed": 4.766459,
+      "stockBack": 1.022436,
+      "usdgReceived": 294.69,
+      "lpFeesUsd": 12.44,
+      "stockBought": 4.674072,
+      "buybackAvgUsd": 63.0484,
+      "usdgLeft": 0,
+      "perfFeeStock": 0.093005,
+      "netStock": 5.603503,
+      "extraShares": 0.837044,
+      "excessUsd": 51.44,
+      "excessPct": 5.1441,
+      "excessPctExLpFees": 4.0247,
+      "state": "OPEN",
+      "peakPremiumPct": 35.64,
+      "buyersPaidAboveReferenceUsd": 11544.51,
+      "vwapBuyPremiumPct": 16.57
+     }
+    },
+    "10000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -234090,
+        "tickUpper": -233820,
+        "stockPlaced": 11.916148,
+        "soldPct": 100,
+        "lockedAt": 1789255732
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -233460,
+        "tickUpper": -232920,
+        "stockPlaced": 14.299378,
+        "soldPct": 100,
+        "lockedAt": 1789257802
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -232650,
+        "tickUpper": -231930,
+        "stockPlaced": 11.916148,
+        "soldPct": 100,
+        "lockedAt": 1789258673
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -231480,
+        "tickUpper": -230580,
+        "stockPlaced": 9.532919,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       }
+      ],
+      "stockDeployed": 47.664594,
+      "stockBack": 9.532919,
+      "usdgReceived": 2865.87,
+      "lpFeesUsd": 0,
+      "stockBought": 45.485569,
+      "buybackAvgUsd": 63.0061,
+      "usdgLeft": 0,
+      "perfFeeStock": 0.735389,
+      "netStock": 54.283099,
+      "extraShares": 6.618505,
+      "excessUsd": 413.65,
+      "excessPct": 4.1365,
+      "excessPctExLpFees": 4.1365,
+      "state": "OPEN",
+      "peakPremiumPct": 35.83,
+      "buyersPaidAboveReferenceUsd": 11559.38,
+      "vwapBuyPremiumPct": 16.59
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -234090,
+        "tickUpper": -233820,
+        "stockPlaced": 11.916148,
+        "soldPct": 99.54,
+        "lockedAt": 1789255738
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -233460,
+        "tickUpper": -232920,
+        "stockPlaced": 14.299378,
+        "soldPct": 97.47,
+        "lockedAt": 1789257947
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -232650,
+        "tickUpper": -231930,
+        "stockPlaced": 11.916148,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -231480,
+        "tickUpper": -230580,
+        "stockPlaced": 9.532919,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       }
+      ],
+      "stockDeployed": 47.664594,
+      "stockBack": 22.260659,
+      "usdgReceived": 1973.76,
+      "lpFeesUsd": 132.41,
+      "stockBought": 31.186111,
+      "buybackAvgUsd": 63.2896,
+      "usdgLeft": 0,
+      "perfFeeStock": 0.578218,
+      "netStock": 52.868552,
+      "extraShares": 5.203958,
+      "excessUsd": 325.03,
+      "excessPct": 3.2503,
+      "excessPctExLpFees": 2.0586,
+      "state": "OPEN",
+      "peakPremiumPct": 33.89,
+      "buyersPaidAboveReferenceUsd": 11392.49,
+      "vwapBuyPremiumPct": 16.31
+     }
+    },
+    "100000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -234090,
+        "tickUpper": -233820,
+        "stockPlaced": 119.161484,
+        "soldPct": 100,
+        "lockedAt": 1789255732
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -233460,
+        "tickUpper": -232920,
+        "stockPlaced": 142.993781,
+        "soldPct": 100,
+        "lockedAt": 1789257802
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -232650,
+        "tickUpper": -231930,
+        "stockPlaced": 119.161484,
+        "soldPct": 100,
+        "lockedAt": 1789258673
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -231480,
+        "tickUpper": -230580,
+        "stockPlaced": 95.329188,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       }
+      ],
+      "stockDeployed": 476.645938,
+      "stockBack": 95.329188,
+      "usdgReceived": 28658.67,
+      "lpFeesUsd": 0,
+      "stockBought": 454.855695,
+      "buybackAvgUsd": 63.0061,
+      "usdgLeft": 0,
+      "perfFeeStock": 7.353894,
+      "netStock": 542.830988,
+      "extraShares": 66.18505,
+      "excessUsd": 4145.49,
+      "excessPct": 4.1455,
+      "excessPctExLpFees": 4.1455,
+      "state": "OPEN",
+      "peakPremiumPct": 35.83,
+      "buyersPaidAboveReferenceUsd": 11559.38,
+      "vwapBuyPremiumPct": 16.59
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 800,
+        "tickLower": -234090,
+        "tickUpper": -233820,
+        "stockPlaced": 119.161484,
+        "soldPct": 98.45,
+        "lockedAt": 1789257795
+       },
+       {
+        "premiumBps": 1500,
+        "tickLower": -233460,
+        "tickUpper": -232920,
+        "stockPlaced": 142.993781,
+        "soldPct": 100,
+        "lockedAt": 1789257806
+       },
+       {
+        "premiumBps": 2500,
+        "tickLower": -232650,
+        "tickUpper": -231930,
+        "stockPlaced": 119.161484,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -231480,
+        "tickUpper": -230580,
+        "stockPlaced": 95.329188,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       }
+      ],
+      "stockDeployed": 476.645938,
+      "stockBack": 217.855467,
+      "usdgReceived": 19255.8,
+      "lpFeesUsd": 544.68,
+      "stockBought": 49.672305,
+      "buybackAvgUsd": 63.4589,
+      "usdgLeft": 16103.64,
+      "perfFeeStock": 4.283561,
+      "netStock": 515.197984,
+      "extraShares": 38.552046,
+      "excessUsd": 2414.29,
+      "excessPct": 2.4143,
+      "excessPctExLpFees": 1.9241,
+      "state": "PENDING_BUYBACK",
+      "peakPremiumPct": 28.52,
+      "buyersPaidAboveReferenceUsd": 10044.47,
+      "vwapBuyPremiumPct": 14.11
+     }
+    }
+   }
+  },
+  {
+   "ticker": "SLV",
+   "weekend": "2026-09-12",
+   "p0": 58.095,
+   "p0Source": "chainlink",
+   "fresh": 57.705,
+   "freshSource": "chainlink first round after reopen",
+   "loggedPeakPremiumPct": 6.33,
+   "poolId": "0xf6f742665e3927ee7ee8da2a9caac0b68580af5249f1c70f4db02937bb1b0b58",
+   "stockIsCurrency0": true,
+   "tickSpacing": 400,
+   "blocks": {
+    "arm": "60666679",
+    "settle": "62400965"
+   },
+   "swaps": 1,
+   "liquidityChanges": 0,
+   "validation": {
+    "swaps": 1,
+    "maxLogPriceErrPct": 0,
+    "maxLiquidityErrPct": 0,
+    "engagedSwaps": 0,
+    "armActiveLiquidityLogged": "526912262457"
+   },
+   "bySize": {
+    "1000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 2500,
+        "tickLower": -233200,
+        "tickUpper": -232800,
+        "stockPlaced": 1.290989,
+        "soldPct": 0,
+        "lockedAt": null
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -232000,
+        "tickUpper": -231600,
+        "stockPlaced": 1.032791,
+        "soldPct": 0,
+        "lockedAt": null
+       }
+      ],
+      "stockDeployed": 2.32378,
+      "stockBack": 2.32378,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 2.32378,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.1,
+      "excessPctExLpFees": -0.1,
+      "state": "OPEN",
+      "peakPremiumPct": 6.33,
+      "buyersPaidAboveReferenceUsd": 0,
+      "vwapBuyPremiumPct": null
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 2500,
+        "tickLower": -233200,
+        "tickUpper": -232800,
+        "stockPlaced": 1.290989,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -232000,
+        "tickUpper": -231600,
+        "stockPlaced": 1.032791,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       }
+      ],
+      "stockDeployed": 2.32378,
+      "stockBack": 2.32378,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 2.32378,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.1,
+      "excessPctExLpFees": -0.1,
+      "state": "OPEN",
+      "peakPremiumPct": 6.33,
+      "buyersPaidAboveReferenceUsd": 0,
+      "vwapBuyPremiumPct": null
+     }
+    },
+    "10000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 2500,
+        "tickLower": -233200,
+        "tickUpper": -232800,
+        "stockPlaced": 12.909889,
+        "soldPct": 0,
+        "lockedAt": null
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -232000,
+        "tickUpper": -231600,
+        "stockPlaced": 10.327911,
+        "soldPct": 0,
+        "lockedAt": null
+       }
+      ],
+      "stockDeployed": 23.2378,
+      "stockBack": 23.2378,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 23.2378,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.01,
+      "excessPctExLpFees": -0.01,
+      "state": "OPEN",
+      "peakPremiumPct": 6.33,
+      "buyersPaidAboveReferenceUsd": 0,
+      "vwapBuyPremiumPct": null
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 2500,
+        "tickLower": -233200,
+        "tickUpper": -232800,
+        "stockPlaced": 12.909889,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -232000,
+        "tickUpper": -231600,
+        "stockPlaced": 10.327911,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       }
+      ],
+      "stockDeployed": 23.2378,
+      "stockBack": 23.2378,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 23.2378,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.01,
+      "excessPctExLpFees": -0.01,
+      "state": "OPEN",
+      "peakPremiumPct": 6.33,
+      "buyersPaidAboveReferenceUsd": 0,
+      "vwapBuyPremiumPct": null
+     }
+    },
+    "100000": {
+     "skipped": null,
+     "raw": {
+      "rungs": [
+       {
+        "premiumBps": 2500,
+        "tickLower": -233200,
+        "tickUpper": -232800,
+        "stockPlaced": 129.09889,
+        "soldPct": 0,
+        "lockedAt": null
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -232000,
+        "tickUpper": -231600,
+        "stockPlaced": 103.279112,
+        "soldPct": 0,
+        "lockedAt": null
+       }
+      ],
+      "stockDeployed": 232.378002,
+      "stockBack": 232.378002,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 232.378002,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.001,
+      "excessPctExLpFees": -0.001,
+      "state": "OPEN",
+      "peakPremiumPct": 6.33,
+      "buyersPaidAboveReferenceUsd": 0,
+      "vwapBuyPremiumPct": null
+     },
+     "supply": {
+      "rungs": [
+       {
+        "premiumBps": 2500,
+        "tickLower": -233200,
+        "tickUpper": -232800,
+        "stockPlaced": 129.09889,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       },
+       {
+        "premiumBps": 4000,
+        "tickLower": -232000,
+        "tickUpper": -231600,
+        "stockPlaced": 103.279112,
+        "soldPct": 0,
+        "lockedAt": 1789343100
+       }
+      ],
+      "stockDeployed": 232.378002,
+      "stockBack": 232.378002,
+      "usdgReceived": 0,
+      "lpFeesUsd": 0,
+      "stockBought": 0,
+      "buybackAvgUsd": null,
+      "usdgLeft": 0,
+      "perfFeeStock": 0,
+      "netStock": 232.378002,
+      "extraShares": 0,
+      "excessUsd": -1,
+      "excessPct": -0.001,
+      "excessPctExLpFees": -0.001,
+      "state": "OPEN",
+      "peakPremiumPct": 6.33,
+      "buyersPaidAboveReferenceUsd": 0,
+      "vwapBuyPremiumPct": null
+     }
+    }
+   }
+  }
+ ]
+}

@@ -2,9 +2,33 @@
 
 # Offmint: they price the weekend, we supply it
 
-On weekends nobody can create new Robinhood stock tokens, so a newly listed token can spike far above its real share
-price, and whoever buys the top gets hit on Monday. **Offmint is the weekend seller**: it offers supply in steps above
-Friday's price while token creation is frozen, and buys back after the reopen, with the buyback capped at the fresh price.
+## In plain English
+On weekends and US market holidays nobody can create new Robinhood stock tokens, so a token can trade far above the
+real share price. **Offmint's community vault** offers some of your tokens for sale only above that real price, then buys
+them back after Monday's reopen, never paying more than the fresh price + 1%. The difference is extra tokens for you.
+
+1. **Connect** a wallet on Robinhood Chain testnet.
+2. **Deposit** stock tokens you already hold (no new exposure: you held them anyway; no deposit fee).
+3. **Withdraw** any weekday. After a weekend where the token spiked, you can get back more tokens than you put in.
+
+What it would have done, per $1,000 of tokens deposited (**simulated** on real weekend swaps with our own orders in the
+pool, excluding LP fee income, after the 10% fee on profit; `web/public/data/supply/replay.json`):
+
+| | |
+|---|---|
+| A big spike weekend | **+3.8% (HIMS, 29 Aug) to +7.1% (GLXY, 12 Sep)**; on 1 of these 3, part of the buyback was still waiting on Monday (valued at the cap) |
+| A normal weekend | **about 0%**: nothing sells (191 of 198 ticker-weekends screened) |
+| The worst weekend we replayed | **−0.1%** (NU, 12 Sep), mostly the gas we charge each weekend ($1 per $1,000) |
+| Fee | **10% of profit**, nothing otherwise |
+| Capacity today | **about $1,647 per pool** can be bought back on Monday within the 1% cap (middle of 5 weekends where the cap was reached; range $0 to $5,198) |
+
+**The risk:** if the real stock rises by Monday, the capped buyback can't get every sold token back, so you can end with
+fewer tokens than you deposited (in the stress test, one squeeze weekend ended −0.49%). Past weekends don't predict the
+next one. **MetaVault** (deposit dollars instead of tokens) is **experimental, coming later**: its weekly picker, replayed
+with only the data it would have had, did not pick HIMS before the 29 Aug spike.
+
+**Try it** (on the site): `/sandbox` (one weekend step by step in your browser, no wallet) · `/weekends` (weekend
+report) · `/vault/HIMS` (vault on testnet) · `/sell` (personal sell order, testnet).
 
 > **Unaudited. Testnet only** (Robinhood Chain testnet, 46630). Not available to US persons. Offmint is an independent
 > project, not affiliated with or endorsed by Robinhood or the Arbitrum Foundation. Every number below names its source
@@ -23,7 +47,7 @@ price and sell them. On weekends that loop is switched off. Our screen of every 
 MSTR, which **has** a Chainlink feed, spiked **+243.31%** the same weekend as HIMS (checked against the Chainlink
 feed: the pool traded at parity on Thursday, Friday and Tuesday, +25% Saturday, +103% Sunday, back to parity Monday).
 The largest names (NVDA, TSLA, AAPL, SPY) stayed within a few percent. Squeezes are rare per ticker and recur across the
-basket, which is why Offmint rotates across a live basket (a detector rebuilds it every 6 hours) instead of a fixed list.
+basket, which is why Offmint works from a live basket (a detector rebuilds it every 6 hours) instead of a fixed list.
 Reference: the Chainlink close where a feed exists, otherwise the pool price at Fri 20:00 UTC. Data: `web/public/data/screen/weekends.json`.
 
 ## Why it is structural
@@ -45,26 +69,11 @@ The contracts call the Uniswap v4 PoolManager directly (`unlock` + callback). A 
 `settle`; anyone can call them after a grace period if the keeper stops. Neither the owner nor the keeper can move funds
 to themselves.
 
-## Two ways in
-| | Community vault | MetaVault |
-|---|---|---|
-| You deposit | the stock token you already hold | USDG |
-| What happens | the weekend ladder runs on part of your tokens | each week the keeper may buy into up to 2 new listings (≤ 30% of the vault each), runs the ladder, sells back to USDG on Monday |
-| Exposure | none new: you already held the stock | **real market risk**: if no spike comes, it is an ordinary position sold Monday, up or down |
-| Guards | capped Monday buyback | 8% stop-loss before the Friday deposit, 30% allocation cap, 28-day blacklist after a loss > 10%, capped buy-in and sell-out |
-| Fees | 10% of realized profit | 0.5% on deposit and on withdraw, plus the vault's 10% of profit |
-
-The two use separate vault instances, so MetaVault's speculative timing never shapes a community depositor's risk.
-
-## What a squeeze is worth, two ways (simulated)
-| Measured on | Result | Units |
-|---|---|---|
-| the capital in the sell ladder | **+8.1%** | STOCK, before the 10% performance fee |
-| the whole MetaVault | **+0.44%** | NAV in USDG, after fees |
-
-Simulated, not measured: both numbers come from the same run, a simulated +30% squeeze against a locally deployed Uniswap v4 pool
-(`contracts/test/MetaVault.t.sol`, `test_fullCycle_squeeze_navUp_A`). The gap is deliberate risk sizing: MetaVault buys in
-with 30% of the vault and 30% of that goes into the ladder, so about 9% of the vault is at work in a weekend.
+## MetaVault
+Experimental, coming later. Its weekly picker (SELECT: volume growth + share of trading in non-USDG pools), replayed
+point-in-time with only the data available before each Thursday, **did not pick HIMS** before the 29 Aug spike; we do not
+claim the picker works. The code and tests stay in the repo (`contracts/src/MetaVault.sol`); it runs in separate vault
+instances, so it never shapes a community depositor's risk.
 
 ## Proof
 | Evidence | Result | Source |
@@ -78,18 +87,27 @@ with 30% of the vault and 30% of that goes into the ladder, so about 9% of the v
 ## Honest limits
 - The sample is small: two squeezes in the weekends we measured.
 - Pools are thin, so the dollar size of each opportunity is small.
-- Our own supply shrinks the spike it sells into, so real results would be lower than the replays and simulations
-  (a replay that adds our ladder's liquidity to the pool is not built yet).
+- Our own supply shrinks the spike it sells into. The numbers at the top come from a replay that puts our ladder's
+  liquidity into each real pool (rebuilt from its onchain liquidity history) and re-runs every weekend swap through it;
+  it assumes buyers send the same amounts they did historically. At $10,000 per ticker our orders cut CRWV's 29 Aug
+  spike from +26% to +9% and left almost nothing to earn; on the big spikes they barely dent the peak.
+- Capacity is small: the Monday buyback can only absorb what each pool supplies within 1% of the fresh price.
 - Live premiums on the site are shown only when they pass a quality gate (TVL, depth, fresh swaps, tight quote,
   independent price agrees); off-hours Robinhood quotes are often too wide to use.
 - A Monday that opens above the ladder is the cost of selling: in the stress test one squeeze weekend ended −0.49%.
 - Unaudited, testnet only.
 
 ## Try it
-- **App (testnet):** connect a wallet on Robinhood Chain testnet, click **Get test tokens** (faucet: 1,000 test USDG +
-  10 mHIMS per 24 h), deposit into MetaVault. Gas needs testnet ETH from the
+- **Sandbox (no wallet):** `/sandbox` walks through one weekend step by step in your browser, using the same engine
+  as the replay (the market is illustrative, the vault's rules are real).
+- **Vault (testnet):** connect a wallet on Robinhood Chain testnet, open `/vault/HIMS`, click **Get test tokens**
+  (faucet: 1,000 test USDG + 10 mHIMS per 24 h), deposit mHIMS. Gas needs testnet ETH from the
   [Robinhood Chain testnet faucet](https://faucet.testnet.chain.robinhood.com).
-- **Run the site locally:** `cd web && npm ci && npm run build && npm start` → http://localhost:3000 (landing), `/app`.
+- **Personal sell order (testnet):** `/sell` places a Uniswap v4 sell order from your own wallet, priced above the
+  verified reference price (Uniswap's PositionManager + Permit2; no Offmint contract holds your tokens).
+- **Weekend report:** `/weekends` lists every mint-off window since 1 Jul: premiums, USD paid above the reference price,
+  wallets.
+- **Run the site locally:** `cd web && npm ci && npm run build && npm start` → http://localhost:3000.
 - **Reproduce a weekend in one command:** see below.
 
 ## Reproduce in one command

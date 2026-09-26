@@ -14,7 +14,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
             <a href="#how" className="hidden hover:text-matte sm:inline">How it works</a>
             <a href="#live" className="hidden hover:text-matte sm:inline">Live</a>
             <a href="#verify" className="hidden hover:text-matte md:inline">Verify</a>
-            <Link href="/app" className="btn-primary rounded-[6px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tide">Launch app</Link>
+            <Link href="/vault/HIMS" className="btn-primary rounded-[6px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tide">Launch app</Link>
           </nav>
         </div>
       </header>

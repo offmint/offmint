@@ -1,0 +1,278 @@
+// "With our own supply" replay (docs/AIRTIGHT.md item 7). One weekend, one pool, the contract's ladder (§5.0).
+// Two modes over the same historical swaps:
+//   raw    — our rungs are marked along the *logged* price path (assumes we move nothing; the old EpochSim assumption).
+//   supply — our rungs are real liquidity in a rebuilt copy of the pool; each logged swap's input is pushed through it,
+//            so buyers hit our orders and the spike is smaller. The buyback is a real swap against the rebuilt pool.
+// Assumption (stated in every output): traders send the same input amount they sent historically. Before the buyback
+// the rebuilt pool is resynced to the logged Monday price (minting is back on, so arbitrage restores NAV; without this
+// the replay would let us buy back below NAV because arbs' historical trades were sized for the unsupplied pool).
+import { PoolSim, sqrtAtTick, amountsAt, liquidityFor } from "./poolSim.js";
+import { sellRange, usdToSqrtPriceX96, type Decimals } from "./rangeMath.js";
+
+const Q96 = 2 ** 96;
+const D: Decimals = { feed: 8, stock: 18, usd: 6 };
+
+export interface Rung { premiumBps: number; widthBps: number; shareBps: number }
+export interface LadderParams {
+  rungs: Rung[];
+  deployBps: number; // share of the holding placed in the ladder
+  buybackSlippageBps: number;
+  perfFeeBps: number;
+  lockLead: number; // seconds before windowEnd when every rung is pulled
+}
+
+export type PoolEvent =
+  | { kind: "modify"; block: bigint; logIndex: number; tickLower: number; tickUpper: number; liquidityDelta: bigint }
+  | { kind: "swap"; block: bigint; logIndex: number; ts: number; amount0: bigint; amount1: bigint; sqrtPriceX96: bigint; liquidity: bigint; fee: number };
+
+export interface ReplayInput {
+  stockIs0: boolean;
+  tickSpacing: number;
+  p0Usd: number; // reference at the freeze
+  freshUsd: number; // reference after reopen (buyback cap = fresh x (1 + slippage))
+  holdingUsd: number; // capital held in the token (valued at p0)
+  windowStart: number;
+  windowEnd: number;
+  armTime: number;
+  settleTime: number;
+  /** Pool state at arm: sqrt price and every base liquidity position change before arm. */
+  armSqrtPriceX96: bigint;
+  baseBefore: { tickLower: number; tickUpper: number; liquidityDelta: bigint }[];
+  /** Events after arm up to settle, in chain order. */
+  events: PoolEvent[];
+  /** Logged pool price at settle (resync point for the buyback). */
+  settleSqrtPriceX96: bigint;
+  gasUsd: number;
+  /** Optional: called after every swap with the logged price and the price with our orders in the pool (USD). */
+  trace?: (ts: number, loggedUsd: number, withSupplyUsd: number) => void;
+}
+
+export interface ModeResult {
+  rungs: { premiumBps: number; tickLower: number; tickUpper: number; stockPlaced: number; soldPct: number; lockedAt: number | null }[];
+  stockDeployed: number;
+  stockBack: number;
+  usdgReceived: number;
+  lpFeesUsd: number; // LP fee income (USDG + stock fees at fresh), included in the amounts above
+  stockBought: number;
+  buybackAvgUsd: number | null;
+  usdgLeft: number;
+  perfFeeStock: number;
+  netStock: number;
+  extraShares: number;
+  excessUsd: number; // extraShares x fresh - gas
+  excessPct: number; // excessUsd / holdingUsd x 100
+  excessPctExLpFees: number;
+  state: "OPEN" | "PENDING_BUYBACK";
+  peakPremiumPct: number; // highest pool price in the window vs p0
+  buyersPaidAboveReferenceUsd: number; // sum over window buys of (paid - stock x p0), where paid above p0
+  vwapBuyPremiumPct: number | null; // USD paid / stock received by weekend buyers, vs p0 (robust; the peak print is not)
+}
+
+export interface ReplayOutput {
+  skipped: string | null;
+  raw: ModeResult | null;
+  supply: ModeResult | null;
+  validation: { swaps: number; maxLogPriceErrPct: number; maxLiquidityErrPct: number | null; engagedSwaps: number };
+}
+
+const usdOfS = (S: number, s0: boolean) => (s0 ? S * S * 1e12 : 1e12 / (S * S));
+const sOfUsd = (usd: number, s0: boolean) => Number(usdToSqrtPriceX96(BigInt(Math.round(usd * 1e8)), D, s0)) / Q96;
+
+export function replayWeekend(inp: ReplayInput, params: LadderParams): ReplayOutput {
+  const s0 = inp.stockIs0;
+  const S_arm = Number(inp.armSqrtPriceX96) / Q96;
+  const armTick = new PoolSim(S_arm).tick;
+  const p0 = BigInt(Math.round(inp.p0Usd * 1e8));
+  const heldStock = inp.holdingUsd / inp.p0Usd; // whole tokens
+  const deploy = (heldStock * params.deployBps) / 10_000;
+
+  const rungs: { r: Rung; lower: number; upper: number; sa: number; sb: number; stock: number; L: number }[] = [];
+  for (const r of params.rungs) {
+    let t: { tickLower: number; tickUpper: number };
+    try {
+      t = sellRange(p0, BigInt(r.premiumBps), BigInt(r.widthBps), armTick, inp.tickSpacing, D, s0);
+    } catch {
+      continue; // RangeInvalid: pool already above this rung at arm
+    }
+    const [sa, sb] = [sqrtAtTick(t.tickLower), sqrtAtTick(t.tickUpper)];
+    const stock = (deploy * r.shareBps) / 10_000;
+    rungs.push({ r, lower: t.tickLower, upper: t.tickUpper, sa, sb, stock, L: liquidityFor(stock * 1e18, sa, sb, s0) });
+  }
+  if (!rungs.length) return { skipped: "RangeInvalid: pool already above every rung at arm", raw: null, supply: null, validation: { swaps: 0, maxLogPriceErrPct: 0, maxLiquidityErrPct: null, engagedSwaps: 0 } };
+  const placed = rungs.reduce((a, x) => a + x.stock, 0);
+  const soldOut = (S: number, x: { sa: number; sb: number }) => (s0 ? S >= x.sb : S <= x.sa);
+  const idle = (S: number, x: { sa: number; sb: number }) => (s0 ? S <= x.sa : S >= x.sb); // all stock, below the range
+  const stockOf = (a: { amount0: number; amount1: number }) => (s0 ? a.amount0 : a.amount1) / 1e18;
+  const usdgOf = (a: { amount0: number; amount1: number }) => (s0 ? a.amount1 : a.amount0) / 1e6;
+  const capUsd = (inp.freshUsd * (10_000 + params.buybackSlippageBps)) / 10_000;
+  const lockAt = inp.windowEnd - params.lockLead;
+  const swaps = inp.events.filter((e): e is Extract<PoolEvent, { kind: "swap" }> => e.kind === "swap");
+
+  // USD a buyer paid above the reference on one swap (stock out to trader); includes the pool fee
+  const paidAbove = (stockOut: number, usdIn: number) => (stockOut > 0 && usdIn / stockOut > inp.p0Usd ? usdIn - stockOut * inp.p0Usd : 0);
+
+  // ------------------------------------------------------------------ raw: marked along the logged path
+  const raw = (() => {
+    const st = rungs.map((x) => ({ locked: null as null | { stock: number; usdg: number; at: number } }));
+    let S = S_arm;
+    let peak = usdOfS(S_arm, s0);
+    let harm = 0;
+    const buy = { stock: 0, usd: 0 };
+    for (const e of swaps) {
+      if (e.ts >= lockAt) for (const [i, x] of rungs.entries()) st[i].locked ??= { stock: stockOf(amountsAt(x.L, S, x.sa, x.sb)), usdg: usdgOf(amountsAt(x.L, S, x.sa, x.sb)), at: lockAt };
+      S = Number(e.sqrtPriceX96) / Q96;
+      if (e.ts < inp.windowEnd && e.liquidity > 0n) peak = Math.max(peak, usdOfS(S, s0));
+      if (e.ts < inp.windowEnd) {
+        const [stk, usd] = s0 ? [e.amount0, e.amount1] : [e.amount1, e.amount0];
+        if (stk > 0n && usd < 0n) {
+          harm += paidAbove(Number(stk) / 1e18, Number(-usd) / 1e6);
+          buy.stock += Number(stk) / 1e18;
+          buy.usd += Number(-usd) / 1e6;
+        }
+      }
+      for (const [i, x] of rungs.entries()) if (!st[i].locked && soldOut(S, x)) st[i].locked = { stock: 0, usdg: usdgOf(amountsAt(x.L, S, x.sa, x.sb)), at: e.ts };
+    }
+    const ends = rungs.map((x, i) => st[i].locked ?? { stock: stockOf(amountsAt(x.L, S, x.sa, x.sb)), usdg: usdgOf(amountsAt(x.L, S, x.sa, x.sb)), at: null as number | null });
+    const stockBack = ends.reduce((a, x) => a + x.stock, 0);
+    const usdg = ends.reduce((a, x) => a + x.usdg, 0);
+    // buyback without impact at the logged settle price incl. pool fee (the old engine's rule)
+    const poolUsd = usdOfS(Number(inp.settleSqrtPriceX96) / Q96, s0);
+    const fee = (swaps.at(-1)?.fee ?? 3000) / 1e6;
+    const canBuy = poolUsd <= capUsd;
+    const bought = canBuy ? (usdg * (1 - fee)) / poolUsd : 0;
+    return finish(rungs.map((x, i) => ({ x, end: ends[i] })), stockBack, usdg, 0, bought, canBuy ? 0 : usdg, peak, harm, buy);
+  })();
+
+  // ------------------------------------------------------------------ supply: our rungs live in a rebuilt pool
+  let maxErr = 0;
+  let maxLErr: number | null = null;
+  let engaged = 0;
+  const supply = (() => {
+    const mk = () => {
+      const p = new PoolSim(S_arm);
+      for (const m of inp.baseBefore) p.modify(m.tickLower, m.tickUpper, Number(m.liquidityDelta));
+      p.setPrice(S_arm);
+      return p;
+    };
+    const pool = mk();
+    const shadow = mk(); // base only: must reproduce the logged prices (validation)
+    for (const [i, x] of rungs.entries()) pool.addOwn(`r${i}`, x.lower, x.upper, x.L);
+    const ends: ({ stock: number; usdg: number; at: number | null } | null)[] = rungs.map(() => null);
+    const feeUsd = rungs.map(() => 0);
+    const feeStock = rungs.map(() => 0);
+    let peak = usdOfS(S_arm, s0);
+    let harm = 0;
+    const buy = { stock: 0, usd: 0 };
+    const pull = (i: number, at: number) => {
+      const x = rungs[i];
+      const a = amountsAt(x.L, pool.S, x.sa, x.sb);
+      ends[i] = { stock: stockOf(a) + feeStock[i], usdg: usdgOf(a) + feeUsd[i], at };
+      pool.removeOwn(`r${i}`);
+    };
+    for (const e of inp.events) {
+      if (e.kind === "modify") {
+        pool.modify(e.tickLower, e.tickUpper, Number(e.liquidityDelta));
+        shadow.modify(e.tickLower, e.tickUpper, Number(e.liquidityDelta));
+        continue;
+      }
+      if (e.ts >= lockAt) for (const i of rungs.keys()) if (!ends[i]) pull(i, lockAt);
+      const zeroForOne = e.amount0 < 0n;
+      const amtIn = Number(zeroForOne ? -e.amount0 : -e.amount1);
+      if (amtIn <= 0) continue;
+      const r = pool.swap(zeroForOne, amtIn, e.fee);
+      shadow.swap(zeroForOne, amtIn, e.fee);
+      // fee income: token in = token0 if zeroForOne
+      for (const [id, f] of Object.entries(r.feeToOwn)) {
+        const i = Number(id.slice(1));
+        const inIsStock = zeroForOne === s0;
+        if (inIsStock) feeStock[i] += f / 1e18;
+        else feeUsd[i] += f / 1e6;
+      }
+      const logged = Number(e.sqrtPriceX96) / Q96;
+      inp.trace?.(e.ts, usdOfS(logged, s0), usdOfS(pool.S, s0));
+      if (e.liquidity > 0n) {
+        maxErr = Math.max(maxErr, Math.abs((shadow.S * shadow.S) / (logged * logged) - 1) * 100);
+        maxLErr = Math.max(maxLErr ?? 0, Math.abs(shadow.L / Number(e.liquidity) - 1) * 100);
+      }
+      if (e.ts < inp.windowEnd) {
+        if (pool.L > 0) peak = Math.max(peak, usdOfS(pool.S, s0));
+        const stockOut = zeroForOne !== s0 ? r.amountOut / 1e18 : 0; // stock leaves the pool when the input is USDG
+        if (stockOut > 0) {
+          harm += paidAbove(stockOut, r.amountIn / 1e6);
+          buy.stock += stockOut;
+          buy.usd += r.amountIn / 1e6;
+        }
+      }
+      for (const [i, x] of rungs.entries()) if (!ends[i] && soldOut(pool.S, x)) pull(i, e.ts);
+      // While none of our orders is in play (each rung pulled, or untouched on its unsold side) our liquidity cannot have
+      // changed the path, so the rebuilt pool follows the logged price exactly. It departs from history only while our
+      // orders absorb flow. Without this, float drift over thousands of fixed-input swaps can walk a patchy pool into an
+      // empty tick range and run away (seen on AMC 5 Sep before this rule).
+      if (rungs.every((x, i) => ends[i] || idle(pool.S, x))) {
+        pool.setPrice(logged);
+      } else engaged++;
+      // keep the shadow honest: resync to the logged price if it drifts (e.g. hook/rounding), and count it
+      if (Math.abs(shadow.S / logged - 1) > 1e-6) shadow.setPrice(logged);
+    }
+    for (const i of rungs.keys()) if (!ends[i]) pull(i, lockAt);
+    const fin = ends as { stock: number; usdg: number; at: number | null }[];
+    const stockBack = fin.reduce((a, x) => a + x.stock, 0);
+    const usdg = fin.reduce((a, x) => a + x.usdg, 0);
+    const lpFeesUsd = feeUsd.reduce((a, b) => a + b, 0) + feeStock.reduce((a, b) => a + b, 0) * inp.freshUsd;
+    // buyback: minting is back on; start from the logged Monday price, our rungs removed, capped at fresh x (1 + slip)
+    pool.setPrice(Number(inp.settleSqrtPriceX96) / Q96);
+    let bought = 0;
+    let left = usdg;
+    if (usdg > 0) {
+      const capS = sOfUsd(capUsd, s0);
+      const inIs0 = !s0; // USDG is token0 when stock is token1
+      const fee = swaps.at(-1)?.fee ?? 3000;
+      const r = pool.swap(inIs0, usdg * 1e6, fee, capS);
+      bought = r.amountOut / 1e18;
+      left = usdg - r.amountIn / 1e6;
+      if (left < 1e-6) left = 0;
+    }
+    return finish(rungs.map((x, i) => ({ x, end: fin[i] })), stockBack, usdg, lpFeesUsd, bought, left, peak, harm, buy);
+  })();
+
+  function finish(
+    rs: { x: (typeof rungs)[number]; end: { stock: number; usdg: number; at: number | null } }[],
+    stockBack: number, usdg: number, lpFeesUsd: number, bought: number, usdgLeft: number, peak: number, harm: number,
+    buy: { stock: number; usd: number },
+  ): ModeResult {
+    // Pending USDG (buyback capped) is marked at the worst price a later retryBuyback may pay: cap incl. the pool fee.
+    // The performance fee is charged on the marked gain either way, so a capped weekend never looks better than a full one.
+    const markPx = capUsd / (1 - (swaps.at(-1)?.fee ?? 3000) / 1e6);
+    const pnl = stockBack + bought + usdgLeft / markPx - placed;
+    const perfFee = pnl > 0 ? (pnl * params.perfFeeBps) / 10_000 : 0;
+    const netStock = stockBack + bought - perfFee + usdgLeft / markPx;
+    const extra = netStock - placed;
+    const excessUsd = extra * inp.freshUsd - inp.gasUsd; // arm + lock + settle gas, paid every armed weekend
+    const r4 = (v: number, d = 4) => Math.round(v * 10 ** d) / 10 ** d + 0;
+    return {
+      rungs: rs.map(({ x, end }) => ({
+        premiumBps: x.r.premiumBps, tickLower: x.lower, tickUpper: x.upper, stockPlaced: r4(x.stock, 6),
+        soldPct: r4(x.stock > 0 ? Math.max(0, 1 - end.stock / x.stock) * 100 : 0, 2), lockedAt: end.at,
+      })),
+      stockDeployed: r4(placed, 6),
+      stockBack: r4(stockBack, 6),
+      usdgReceived: r4(usdg, 2),
+      lpFeesUsd: r4(lpFeesUsd, 2),
+      stockBought: r4(bought, 6),
+      buybackAvgUsd: bought > 0 ? r4((usdg - usdgLeft) / bought, 4) : null,
+      usdgLeft: r4(usdgLeft, 2),
+      perfFeeStock: r4(perfFee, 6),
+      netStock: r4(netStock, 6),
+      extraShares: r4(extra, 6),
+      excessUsd: r4(excessUsd, 2),
+      excessPct: r4((excessUsd / inp.holdingUsd) * 100, 4),
+      excessPctExLpFees: r4(((excessUsd - lpFeesUsd * (1 - params.perfFeeBps / 10_000)) / inp.holdingUsd) * 100, 4),
+      state: usdgLeft > 0 ? "PENDING_BUYBACK" : "OPEN",
+      peakPremiumPct: r4((peak / inp.p0Usd - 1) * 100, 2),
+      buyersPaidAboveReferenceUsd: r4(harm, 2),
+      vwapBuyPremiumPct: buy.stock > 0 ? r4((buy.usd / buy.stock / inp.p0Usd - 1) * 100, 2) : null,
+    };
+  }
+
+  return { skipped: null, raw, supply, validation: { swaps: swaps.length, maxLogPriceErrPct: Math.round(maxErr * 1e4) / 1e4, maxLiquidityErrPct: maxLErr === null ? null : Math.round(maxLErr * 1e4) / 1e4, engagedSwaps: engaged } };
+}

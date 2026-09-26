@@ -13,7 +13,7 @@ export function SiteFooter() {
         <div className="flex gap-4 md:flex-col md:gap-1">
           <a className="hover:text-matte" href="#risk">Risk disclosure</a>
           <a className="hover:text-matte" href={REPO} target="_blank" rel="noreferrer">GitHub</a>
-          <a className="hover:text-matte" href="/app">Launch app</a>
+          <a className="hover:text-matte" href="/vault/HIMS">Launch app</a>
         </div>
       </div>
     </footer>

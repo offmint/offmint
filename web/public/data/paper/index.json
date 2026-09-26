@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-09-24T10:03:30Z",
+ "updatedAt": "2026-09-26T06:48:40Z",
  "entries": [
   {
    "file": "2026-09-19-AAOI.json",
@@ -616,6 +616,622 @@
    "status": "settled",
    "maxPremiumPct": 0,
    "vsHodlPct": 0
+  },
+  {
+   "file": "2026-09-26-AAOI.json",
+   "ticker": "AAOI",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-ADBE.json",
+   "ticker": "ADBE",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-AMC.json",
+   "ticker": "AMC",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0.35,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-ANET.json",
+   "ticker": "ANET",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-APP.json",
+   "ticker": "APP",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-ASTS.json",
+   "ticker": "ASTS",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-AVGO.json",
+   "ticker": "AVGO",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-BA.json",
+   "ticker": "BA",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-BB.json",
+   "ticker": "BB",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0.01,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-BE.json",
+   "ticker": "BE",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-BULL.json",
+   "ticker": "BULL",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-CBRS.json",
+   "ticker": "CBRS",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-CEG.json",
+   "ticker": "CEG",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-CELH.json",
+   "ticker": "CELH",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0.01,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-COST.json",
+   "ticker": "COST",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0.19,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-CRM.json",
+   "ticker": "CRM",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-CSCO.json",
+   "ticker": "CSCO",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-CVNA.json",
+   "ticker": "CVNA",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-DDOG.json",
+   "ticker": "DDOG",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0.03,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-ELF.json",
+   "ticker": "ELF",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-FIG.json",
+   "ticker": "FIG",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-FIX.json",
+   "ticker": "FIX",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "skipped",
+   "maxPremiumPct": null,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-FLY.json",
+   "ticker": "FLY",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-FTNT.json",
+   "ticker": "FTNT",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-FUTU.json",
+   "ticker": "FUTU",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-GE.json",
+   "ticker": "GE",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-GEV.json",
+   "ticker": "GEV",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "skipped",
+   "maxPremiumPct": null,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-GLD.json",
+   "ticker": "GLD",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0.01,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-GLXY.json",
+   "ticker": "GLXY",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-HII.json",
+   "ticker": "HII",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-HIMS.json",
+   "ticker": "HIMS",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0.06,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-HPE.json",
+   "ticker": "HPE",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-HWM.json",
+   "ticker": "HWM",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-IBM.json",
+   "ticker": "IBM",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0.15,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-INDA.json",
+   "ticker": "INDA",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-INOD.json",
+   "ticker": "INOD",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "skipped",
+   "maxPremiumPct": null,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-JNJ.json",
+   "ticker": "JNJ",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-JOBY.json",
+   "ticker": "JOBY",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-KTOS.json",
+   "ticker": "KTOS",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-LHX.json",
+   "ticker": "LHX",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-LLY.json",
+   "ticker": "LLY",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0.07,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-LMT.json",
+   "ticker": "LMT",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-LULU.json",
+   "ticker": "LULU",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0.05,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-MPWR.json",
+   "ticker": "MPWR",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-MRNA.json",
+   "ticker": "MRNA",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "skipped",
+   "maxPremiumPct": null,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-NET.json",
+   "ticker": "NET",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-NNE.json",
+   "ticker": "NNE",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-NOW.json",
+   "ticker": "NOW",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-NU.json",
+   "ticker": "NU",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-NVDA.json",
+   "ticker": "NVDA",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": -0.28,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-PATH.json",
+   "ticker": "PATH",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-PENG.json",
+   "ticker": "PENG",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-PFE.json",
+   "ticker": "PFE",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-QCOM.json",
+   "ticker": "QCOM",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0.11,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-QUBT.json",
+   "ticker": "QUBT",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-RBLX.json",
+   "ticker": "RBLX",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0.3,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-RCAT.json",
+   "ticker": "RCAT",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-RDDT.json",
+   "ticker": "RDDT",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0.3,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-RIVN.json",
+   "ticker": "RIVN",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-RUN.json",
+   "ticker": "RUN",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-SHOP.json",
+   "ticker": "SHOP",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-SIMO.json",
+   "ticker": "SIMO",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-SKHY.json",
+   "ticker": "SKHY",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-SMR.json",
+   "ticker": "SMR",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-SNAP.json",
+   "ticker": "SNAP",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0.11,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-SNOW.json",
+   "ticker": "SNOW",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-SOFI.json",
+   "ticker": "SOFI",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-SOUN.json",
+   "ticker": "SOUN",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-SOXX.json",
+   "ticker": "SOXX",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-SPY.json",
+   "ticker": "SPY",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "skipped",
+   "maxPremiumPct": null,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-TE.json",
+   "ticker": "TE",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-TEAM.json",
+   "ticker": "TEAM",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-UPS.json",
+   "ticker": "UPS",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-WDAY.json",
+   "ticker": "WDAY",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-WYFI.json",
+   "ticker": "WYFI",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-XOM.json",
+   "ticker": "XOM",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0.03,
+   "vsHodlPct": null
+  },
+  {
+   "file": "2026-09-26-ZM.json",
+   "ticker": "ZM",
+   "window": "2026-09-26T00:00:00Z",
+   "status": "armed",
+   "maxPremiumPct": 0,
+   "vsHodlPct": null
   }
  ]
 }

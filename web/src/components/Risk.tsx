@@ -16,7 +16,7 @@ export function RiskDisclosure({ compact = false }: { compact?: boolean }) {
           <li>A Monday gap-up above the sell range is the covered-call trade-off: the buyback is capped at the fresh price + 1%, and anything unfilled waits for a later retry.</li>
         </ul>
       )}
-      <p className="mt-3">These bound the downside. They do not remove the risk of picking wrong.</p>
+      <p className="mt-3">These bound the downside. They do not remove the risk of picking wrong, and the weekly picker is experimental and unvalidated: a point-in-time replay did not pick HIMS before its 29 Aug spike.</p>
     </div>
   );
 }

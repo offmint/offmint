@@ -15,7 +15,7 @@ export function Hero() {
           Friday&apos;s price and buys back on Monday.
         </p>
         <div className="flex flex-wrap gap-3">
-          <Link href="/app" className="btn-primary rounded-[6px] px-5 py-3 text-base focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tide">Try it on testnet</Link>
+          <Link href="/vault/HIMS" className="btn-primary rounded-[6px] px-5 py-3 text-base focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tide">Try it on testnet</Link>
           <a href="#live" className="btn-ghost rounded-[6px] px-5 py-3 text-base focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tide">See live prices</a>
         </div>
       </div>

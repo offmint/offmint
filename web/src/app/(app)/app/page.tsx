@@ -71,6 +71,12 @@ export default function AppPage() {
         </div>
       </div>
 
+      <div className="rounded-md border border-caution-line bg-caution-bg p-3 text-sm text-caution">
+        <b>Experimental, coming later.</b> MetaVault&apos;s weekly picker, replayed with only the data it would have had, did
+        not pick HIMS before the 29 Aug spike. It buys into new listings with real market risk. Start with the{" "}
+        <a className="underline" href="/vault/HIMS">community vault</a> instead.
+      </div>
+
       <div className="grid gap-4 md:grid-cols-4">
         <Stat label="NAV (USDG)" value={nav !== undefined ? usd(Number(formatUnits(nav, 6))) : "…"} />
         <Stat label="Cycle state" value={openCount === undefined ? "…" : idle ? "IDLE" : "CYCLE ACTIVE"} hint={idle ? "deposits and withdrawals open" : "deposits and withdrawals pause until every position is back in USDG"} />
@@ -85,7 +91,9 @@ export default function AppPage() {
             <p className="text-sm text-ink-soft">
               No open position. The keeper scores the basket on Wednesday/Thursday (volume growth + share of trading in
               non-USDG pools) and buys into at most {params ? Number(params.maxConcurrent) : 2} picks above the bar.
-              Zero picks is the normal outcome most weeks.
+              Zero picks is the normal outcome most weeks.{" "}
+              <b>The picker is experimental and unvalidated:</b> replayed with only the data it would have had, it did not
+              pick HIMS before the 29 Aug spike.
             </p>
           ) : (
             <table className="data">

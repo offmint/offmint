@@ -8,6 +8,7 @@ import tests from "../../public/data/tests.json";
 import hims from "../../public/data/backtest/hims-2026-08-28.json";
 import glxy from "../../public/data/backtest/glxy-2026-09-11.json";
 import fork from "../../public/data/sim/fork.json";
+import replay from "../../public/data/supply/replay.json";
 
 export interface Weekend { weekend: string; p0: number; p0Source: string; maxPremiumPct: number | null; premiumAtReopenPct?: number | null; hoursAbove10?: number; vaultVsHodlPctExFees?: number | null; note?: string }
 const W = (weekends as any).tickers as Record<string, Weekend[]>;
@@ -57,4 +58,35 @@ export const FORK = fork as any;
 export const WORKED = (() => {
   const g = FORK.tickers.GLXY;
   return { ...g, ticker: "GLXY", placed: g.rungs.map((r: any) => r.placed), usdg: g.rungs.map((r: any) => r.usdg), block: FORK.forkBlock };
+})();
+
+/**
+ * The plain-English community-vault numbers (docs/DECISIONS.md D2), all from the with-supply replay (simulated):
+ * per $1,000 of tokens deposited, our own orders in the pool, excluding LP fee income, after the 10% fee on profit.
+ */
+export const REPLAY = replay as any;
+export const COMMUNITY = (() => {
+  const size = "1000";
+  const rows = (REPLAY.events as any[]).map((e) => ({ e, r: e.bySize[size].supply })).filter((x) => x.r);
+  const filled = rows.filter((x) => x.r.usdgReceived > 0);
+  const spikes = filled.filter((x) => x.e.loggedPeakPremiumPct >= 100).sort((a, b) => a.r.excessPctExLpFees - b.r.excessPctExLpFees);
+  const worst = [...filled].sort((a, b) => a.r.excessPctExLpFees - b.r.excessPctExLpFees)[0];
+  // buyback capacity: USDG the Monday buyback absorbed before hitting the cap, on the largest-size run that hit it
+  const capped = (REPLAY.events as any[]).map((e) => e.bySize["100000"]?.supply).filter((r: any) => r && r.state === "PENDING_BUYBACK");
+  const capacity = capped.map((r: any) => r.usdgReceived - r.usdgLeft).sort((a: number, b: number) => a - b);
+  const noFill = rows.filter((x) => x.r.usdgReceived === 0);
+  return {
+    sizeUsd: Number(size),
+    spike: { low: spikes[0], high: spikes.at(-1) },
+    worst,
+    normal: { count: noFill.length + (REPLAY.belowThresholdZero as number), gasUsd: REPLAY.gasUsdPerWeekend as number },
+    screened: REPLAY.screenedTickerWeekends as number,
+    feePct: params.vault.perfFeeBps / 100,
+    capacityUsd: capacity.length ? capacity[Math.floor(capacity.length / 2)] : null,
+    capacityMin: capacity.length ? capacity[0] : null,
+    capacityMax: capacity.length ? (capacity.at(-1) as number) : null,
+    capacityEvents: capacity.length,
+    spikesPending: spikes.filter((x) => x.r.state === "PENDING_BUYBACK").length,
+    spikeCount: spikes.length,
+  };
 })();

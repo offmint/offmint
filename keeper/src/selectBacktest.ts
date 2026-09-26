@@ -7,7 +7,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Hex } from "viem";
-import { makeClient, logClient, blockAtOrBefore, swapLogs, POOL_MANAGER, type Client } from "./chain.js";
+import { makeClient, logClient, blockAtOrBefore, swapLogs, POOL_MANAGER, isRateLimited, backoff, type Client } from "./chain.js";
 import { volumeStats, select, SELECT_DEFAULTS, type PoolVolume } from "./select.js";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
@@ -17,10 +17,14 @@ const DAY = 86_400;
 const opt = (k: string, d: string) => (process.argv.includes(k) ? process.argv[process.argv.indexOf(k) + 1] : d);
 const topicOf = (a: string) => `0x${a.toLowerCase().slice(2).padStart(64, "0")}` as Hex;
 
-async function getLogsSplit(c: Client, topics: (Hex | Hex[] | null)[], from: bigint, to: bigint): Promise<any[]> {
+async function getLogsSplit(c: Client, topics: (Hex | Hex[] | null)[], from: bigint, to: bigint, attempt = 0): Promise<any[]> {
   try {
     return (await logClient().request({ method: "eth_getLogs", params: [{ address: POOL_MANAGER, fromBlock: `0x${from.toString(16)}`, toBlock: `0x${to.toString(16)}`, topics }] } as any)) as any[];
   } catch (e) {
+    if (isRateLimited(e)) {
+      await backoff(attempt);
+      return getLogsSplit(c, topics, from, to, attempt + 1);
+    }
     if (to - from < 1000n) throw e;
     const mid = (from + to) / 2n;
     return [...(await getLogsSplit(c, topics, from, mid)), ...(await getLogsSplit(c, topics, mid + 1n, to))];
@@ -70,25 +74,38 @@ for (const T of thursdays) {
       }
     }
   }
+  const progress = (m: string) => console.error(`[${new Date().toISOString().slice(11, 19)}] ${new Date(T * 1000).toISOString().slice(0, 10)} ${m}`);
+  progress(`basket ${cands.length}, pools ${pools.length}`);
   // swaps in the 14 days before T (score) and over the weekend (outcome)
   const byId = new Map(pools.map((p) => [p.poolId.toLowerCase(), p]));
   const ids = [...byId.keys()] as Hex[];
   const pre = new Map<string, PoolVolume[]>();
   const wk = new Map<string, { t: number; usd: number; pool: string }[]>();
-  for (let i = 0; i < ids.length; i += 150) {
-    for (const l of await swapLogs(c, ids.slice(i, i + 150), bFrom, bMon)) {
-      const p = byId.get(l.poolId.toLowerCase())!;
-      if (l.ts <= T) {
-        const list = pre.get(p.token) ?? (pre.set(p.token, []), pre.get(p.token)!);
-        let pv = list.find((x) => x.poolId === p.poolId);
-        if (!pv) list.push((pv = { poolId: p.poolId, quote: p.quote, createdAt: 0, swaps: [] }));
-        pv.swaps.push({ ts: l.ts, stock: Math.abs(Number(p.stockIs0 ? l.amount0 : l.amount1)) / 1e18 });
-      }
-      if (p.quote === USDG && l.ts >= fri20 - 6 * 3600 && l.ts <= mon && l.liquidity > 0n) {
-        const arr = wk.get(p.token) ?? (wk.set(p.token, []), wk.get(p.token)!);
-        arr.push({ t: l.ts, usd: usdOf(l.sqrtPriceX96, p.stockIs0), pool: p.poolId });
-      }
+  // Filtered passes only: an unfiltered PoolManager scan is ~3 swaps/block (tens of GB over the window) and never
+  // finished. The public RPC accepts up to 500 pool ids per filter; run a few batches in parallel.
+  const BATCH = 500, PARALLEL = 2;
+  const batches = Array.from({ length: Math.ceil(ids.length / BATCH) }, (_, i) => ids.slice(i * BATCH, i * BATCH + BATCH));
+  const take = (l: Awaited<ReturnType<typeof swapLogs>>[number]) => {
+    const p = byId.get(l.poolId.toLowerCase());
+    if (!p) return;
+    if (l.ts <= T) {
+      const list = pre.get(p.token) ?? (pre.set(p.token, []), pre.get(p.token)!);
+      let pv = list.find((x) => x.poolId === p.poolId);
+      if (!pv) list.push((pv = { poolId: p.poolId, quote: p.quote, createdAt: 0, swaps: [] }));
+      pv.swaps.push({ ts: l.ts, stock: Math.abs(Number(p.stockIs0 ? l.amount0 : l.amount1)) / 1e18 });
     }
+    if (p.quote === USDG && l.ts >= fri20 - 6 * 3600 && l.ts <= mon && l.liquidity > 0n) {
+      const arr = wk.get(p.token) ?? (wk.set(p.token, []), wk.get(p.token)!);
+      arr.push({ t: l.ts, usd: usdOf(l.sqrtPriceX96, p.stockIs0), pool: p.poolId });
+    }
+  };
+  let done = 0, seen = 0;
+  for (let i = 0; i < batches.length; i += PARALLEL) {
+    const got = await Promise.all(batches.slice(i, i + PARALLEL).map((b) => swapLogs(c, b, bFrom, bMon)));
+    // consume per batch (a batch can hold far more swaps than a spread push allows, and memory stays bounded)
+    for (const g of got) for (const l of g) take(l), seen++;
+    done += got.length;
+    progress(`swaps ${done}/${batches.length} batches, ${seen} swaps, rss ${Math.round(process.memoryUsage().rss / 2 ** 20)} MB`);
   }
   for (const list of pre.values()) for (const pv of list) pv.createdAt = Math.min(...pv.swaps.map((s) => s.ts), T);
   const stats = cands.map(([tok, sym]) => volumeStats(sym, tok, pre.get(tok) ?? [], T));
@@ -116,7 +133,7 @@ for (const T of thursdays) {
   weeks.push(week);
   console.log(JSON.stringify({ thursday: week.thursday, basket: week.basket, picks: week.picks, squeezed: week.squeezed, hits: week.hits, missed: week.missed }));
 }
-const outPath = join(ROOT, "keeper/logs/select-backtest.json");
+const outPath = process.env.SELECT_BT_OUT ?? join(ROOT, "keeper/logs/select-backtest.json");
 mkdirSync(dirname(outPath), { recursive: true });
 writeFileSync(outPath, JSON.stringify({ generatedAt: new Date().toISOString(), config: SELECT_DEFAULTS, squeezeThresholdPct: 15, weeks }, null, 2));
 console.log(`wrote ${outPath}`);

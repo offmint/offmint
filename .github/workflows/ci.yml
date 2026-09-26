@@ -30,7 +30,7 @@ jobs:
           want=$(python3 -c "import json;print(json.load(open('../web/public/data/tests.json'))['contracts'])")
           [ "$n" = "$want" ] || { echo "tests.json says $want contract tests, forge ran $n"; exit 1; }
       - name: keeper ABI matches contracts
-        run: node scripts/export-abi.mjs && git diff --exit-code keeper/src/abi web/src/abi web/src/config
+        run: node scripts/export-abi.mjs && git diff --exit-code keeper/src/abi web/src/abi web/src/config web/src/lib/range
 
   keeper:
     runs-on: ubuntu-latest

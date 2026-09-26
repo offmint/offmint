@@ -1,0 +1,86 @@
+{
+ "ticker": "XOM",
+ "stock": "0xf9b46d3d1b22199d4d1025a9cedb540a33f1a2d5",
+ "feed": null,
+ "poolId": "0xb3d129708f216d47fd3f996bc9dd0365912e6f14f961e0c61de76a0c1deef074",
+ "poolFee": 2000,
+ "tickSpacing": 20,
+ "stockIsCurrency0": false,
+ "window": {
+  "start": 1790380800,
+  "end": 1790553600,
+  "startIso": "2026-09-26T00:00:00Z",
+  "endIso": "2026-09-28T00:00:00Z"
+ },
+ "params": {
+  "premiumBps": 1000,
+  "widthBps": 5000,
+  "armDelay": 300,
+  "minFrozen": 900,
+  "maxPreCloseAge": 21600,
+  "settleDelay": 3600,
+  "maxFreshAge": 3600,
+  "emergencyDelay": 345600,
+  "buybackSlippageBps": 100,
+  "perfFeeBps": 1000,
+  "lockLead": 900,
+  "quantities": [
+   10,
+   50,
+   100
+  ]
+ },
+ "status": "armed",
+ "skipReason": null,
+ "checks": {
+  "oraclePaused": null,
+  "sequencer": "no uptime feed listed for Robinhood mainnet"
+ },
+ "arm": {
+  "time": 1790381100,
+  "block": "72642298",
+  "p0": "16121921170",
+  "p0Usd": 161.2192117,
+  "p0Source": "pool",
+  "feedUpdatedAt": null,
+  "poolUsdAtArm": 161.2192117,
+  "tick": 225493,
+  "tickLower": 220800,
+  "tickUpper": 224540,
+  "bandUsd": [
+   177.35329162,
+   257.78477783
+  ]
+ },
+ "stats": {
+  "swaps": 3,
+  "maxUsd": 161.2623,
+  "minUsd": 161.2192,
+  "maxPremiumPct": 0.03,
+  "firstInBandAt": null,
+  "lastBlock": "72878212"
+ },
+ "timeline": [
+  {
+   "t": 1790381100,
+   "usd": 161.2192117
+  },
+  {
+   "t": 1790387884,
+   "usd": 161.26231441
+  },
+  {
+   "t": 1790396413,
+   "usd": 161.25545888
+  },
+  {
+   "t": 1790402232,
+   "usd": 161.25410156
+  }
+ ],
+ "outliers": [],
+ "fills": [],
+ "settlement": null,
+ "caveat": "Hypothetical: assumes the vault's position does not move the pool price. A live vault would dampen spikes; real fills would differ.",
+ "generatedAt": "2026-09-26T06:46:05Z"
+}

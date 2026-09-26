@@ -1,0 +1,94 @@
+{
+ "generatedAt": "2026-09-25T06:25:31.489Z",
+ "label": "computed from Robinhood's published tokenization window + the NYSE holiday calendar",
+ "sources": [
+  {
+   "what": "Minting and burning are not supported outside the tokenization window; Stock Tokens still trade onchain",
+   "url": "https://docs.robinhood.com/chain/stock-tokens/"
+  },
+  {
+   "what": "Tokenization window: Monday 02:00 until Saturday 02:00 CET/CEST, closed on US market holidays",
+   "url": "https://robinhood.com/eu/en/support/articles/about-stock-tokens/"
+  },
+  {
+   "what": "US market holidays",
+   "url": "https://www.nyse.com/markets/hours-calendars"
+  }
+ ],
+ "assumption": "A US holiday is mint-off from 02:00 Berlin on the holiday to 02:00 the next day, merged with an adjacent weekend.",
+ "year": 2026,
+ "hoursInYear": 8760,
+ "mintOffHours": 2736,
+ "shareOfCalendarPct": 31.23,
+ "arithmetic": {
+  "weekends": 52,
+  "weekendHours": 48,
+  "holidays": 10,
+  "holidayHours": 240,
+  "text": "52 weekends x 48 h + 240 h of US holidays = 2736 h of 8760 h in 2026 = 31.2% of the calendar"
+ },
+ "longestWindowHours": 72,
+ "windowsWithHolidays": [
+  {
+   "start": "2026-01-01T01:00:00.000Z",
+   "end": "2026-01-02T01:00:00.000Z",
+   "hours": 24,
+   "reason": "New Year's Day"
+  },
+  {
+   "start": "2026-01-17T01:00:00.000Z",
+   "end": "2026-01-20T01:00:00.000Z",
+   "hours": 72,
+   "reason": "weekend + Martin Luther King Jr. Day"
+  },
+  {
+   "start": "2026-02-14T01:00:00.000Z",
+   "end": "2026-02-17T01:00:00.000Z",
+   "hours": 72,
+   "reason": "weekend + Washington's Birthday"
+  },
+  {
+   "start": "2026-04-03T00:00:00.000Z",
+   "end": "2026-04-06T00:00:00.000Z",
+   "hours": 72,
+   "reason": "weekend + Good Friday"
+  },
+  {
+   "start": "2026-05-23T00:00:00.000Z",
+   "end": "2026-05-26T00:00:00.000Z",
+   "hours": 72,
+   "reason": "weekend + Memorial Day"
+  },
+  {
+   "start": "2026-06-19T00:00:00.000Z",
+   "end": "2026-06-22T00:00:00.000Z",
+   "hours": 72,
+   "reason": "weekend + Juneteenth"
+  },
+  {
+   "start": "2026-07-03T00:00:00.000Z",
+   "end": "2026-07-06T00:00:00.000Z",
+   "hours": 72,
+   "reason": "weekend + Independence Day (observed)"
+  },
+  {
+   "start": "2026-09-05T00:00:00.000Z",
+   "end": "2026-09-08T00:00:00.000Z",
+   "hours": 72,
+   "reason": "weekend + Labor Day"
+  },
+  {
+   "start": "2026-11-26T01:00:00.000Z",
+   "end": "2026-11-27T01:00:00.000Z",
+   "hours": 24,
+   "reason": "Thanksgiving Day"
+  },
+  {
+   "start": "2026-12-25T01:00:00.000Z",
+   "end": "2026-12-28T01:00:00.000Z",
+   "hours": 72,
+   "reason": "weekend + Christmas Day"
+  }
+ ],
+ "plainWeekends": 44
+}

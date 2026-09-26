@@ -1,0 +1,118 @@
+{
+ "ticker": "RIVN",
+ "stock": "0xb1bf26c1d20ff267a4f93550d1e0d06ac40a114b",
+ "feed": null,
+ "poolId": "0x58b68552d45529cc6c3b35faeaa75e47f4e2bcf2afb2399597acbc39e34a9a8a",
+ "poolFee": 2300,
+ "tickSpacing": 23,
+ "stockIsCurrency0": false,
+ "window": {
+  "start": 1790380800,
+  "end": 1790553600,
+  "startIso": "2026-09-26T00:00:00Z",
+  "endIso": "2026-09-28T00:00:00Z"
+ },
+ "params": {
+  "premiumBps": 1000,
+  "widthBps": 5000,
+  "armDelay": 300,
+  "minFrozen": 900,
+  "maxPreCloseAge": 21600,
+  "settleDelay": 3600,
+  "maxFreshAge": 3600,
+  "emergencyDelay": 345600,
+  "buybackSlippageBps": 100,
+  "perfFeeBps": 1000,
+  "lockLead": 900,
+  "quantities": [
+   10,
+   50,
+   100
+  ]
+ },
+ "status": "armed",
+ "skipReason": null,
+ "checks": {
+  "oraclePaused": null,
+  "sequencer": "no uptime feed listed for Robinhood mainnet"
+ },
+ "arm": {
+  "time": 1790381100,
+  "block": "72642298",
+  "p0": "1548948262",
+  "p0Usd": 15.48948262,
+  "p0Source": "pool",
+  "feedUpdatedAt": null,
+  "poolUsdAtArm": 15.48948262,
+  "tick": 248921,
+  "tickLower": 244237,
+  "tickUpper": 247963,
+  "bandUsd": [
+   17.04677179,
+   24.74299007
+  ]
+ },
+ "stats": {
+  "swaps": 11,
+  "maxUsd": 15.4895,
+  "minUsd": 15.4621,
+  "maxPremiumPct": 0,
+  "firstInBandAt": null,
+  "lastBlock": "72878212"
+ },
+ "timeline": [
+  {
+   "t": 1790381100,
+   "usd": 15.48948262
+  },
+  {
+   "t": 1790382720,
+   "usd": 15.46659291
+  },
+  {
+   "t": 1790383158,
+   "usd": 15.47988338
+  },
+  {
+   "t": 1790383394,
+   "usd": 15.48353926
+  },
+  {
+   "t": 1790391422,
+   "usd": 15.4835035
+  },
+  {
+   "t": 1790401089,
+   "usd": 15.47455383
+  },
+  {
+   "t": 1790401104,
+   "usd": 15.46210531
+  },
+  {
+   "t": 1790401104,
+   "usd": 15.46234561
+  },
+  {
+   "t": 1790401121,
+   "usd": 15.4627358
+  },
+  {
+   "t": 1790401137,
+   "usd": 15.46310753
+  },
+  {
+   "t": 1790401137,
+   "usd": 15.4633536
+  },
+  {
+   "t": 1790403946,
+   "usd": 15.46312118
+  }
+ ],
+ "outliers": [],
+ "fills": [],
+ "settlement": null,
+ "caveat": "Hypothetical: assumes the vault's position does not move the pool price. A live vault would dampen spikes; real fills would differ.",
+ "generatedAt": "2026-09-26T06:44:02Z"
+}

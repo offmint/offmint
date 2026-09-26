@@ -1,0 +1,38 @@
+// Personal sell order levels (docs/FEATURES.md Feature 3). The level is a premium over the VERIFIED REFERENCE (real share)
+// price, never over the pool price: in a weekend spike the pool is already inflated, so "+10% over the pool" would sit far
+// above "+10% over the real price". Same tick rules as the vault (RangeMath §5: round away from the price, tickSpacing),
+// but where the vault's sellRange shifts a band that the pool has already reached, a personal order is refused instead.
+import { sellRange, usdToTick, BPS, type Decimals } from "./rangeMath.js";
+import { MIN_TICK, MAX_TICK } from "./tickMath.js";
+
+export const MIN_PREMIUM_BPS = 500; // +5% minimum (FEATURES.md)
+
+export class SellOrderError extends Error {
+  constructor(readonly code: "PremiumTooLow" | "PoolAboveLevel" | "RangeInvalid", message: string) {
+    super(message);
+  }
+}
+
+/**
+ * One-sided range for selling `stock` from `ref x (1 + premiumBps)` to `ref x (1 + premiumBps + widthBps)`.
+ * @param refAnswer verified reference price in `d.feed` decimals (Chainlink or PushPriceReference)
+ * @param curTick   the pool's current tick
+ */
+export function sellOrderRange(refAnswer: bigint, premiumBps: number, widthBps: number, curTick: number, spacing: number, d: Decimals, stockIs0: boolean) {
+  if (premiumBps < MIN_PREMIUM_BPS) throw new SellOrderError("PremiumTooLow", `minimum premium is +${MIN_PREMIUM_BPS / 100}%`);
+  // ticks from the reference alone: pass a current tick far on the unsold side so sellRange never shifts the band
+  const far = stockIs0 ? MIN_TICK : MAX_TICK - 1;
+  let r: { tickLower: number; tickUpper: number };
+  try {
+    r = sellRange(refAnswer, BigInt(premiumBps), BigInt(widthBps), far, spacing, d, stockIs0);
+  } catch {
+    throw new SellOrderError("RangeInvalid", "range too narrow for this pool's tick spacing");
+  }
+  // refuse when the pool is at or above the level itself (not just when the rounded range would touch the price),
+  // and keep the range strictly single-sided: entirely above the current price in USD terms
+  const levelTick = usdToTick((refAnswer * (BPS + BigInt(premiumBps))) / BPS, d, stockIs0);
+  const atLevel = stockIs0 ? curTick >= levelTick : curTick <= levelTick;
+  const touches = stockIs0 ? r.tickLower <= curTick : r.tickUpper > curTick;
+  if (atLevel || touches) throw new SellOrderError("PoolAboveLevel", "the pool already trades at or above this level; pick a higher premium");
+  return r;
+}

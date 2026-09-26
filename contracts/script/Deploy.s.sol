@@ -38,6 +38,7 @@ import {ISessionClock} from "../src/interfaces/ISessionClock.sol";
 ///      DEMO_TICKER (default HIMS), INITIAL_PRICE_E8 (default 28.84e8), DEMO_DEPOSIT (default 100e18),
 ///      SEED_LIQUIDITY (default 1e18), META_DEPOSIT (USDG, default 10_000e6),
 ///      POSTER_ADDRESS (PushPriceReference poster; default derived from ORACLE_POSTER_PRIVATE_KEY, never the keeper)
+///      DEPLOY_OUT (default deployments/<chainId>.json; the sandbox uses deployments/sandbox-46630.json)
 contract Deploy is Script {
     address constant RH_POOL_MANAGER = 0x8366a39CC670B4001A1121B8F6A443A643e40951;
 
@@ -239,7 +240,8 @@ contract Deploy is Script {
         vm.serializeBool(j, "stockIsCurrency0", o.stockIsCurrency0);
         vm.serializeUint(j, "poolFee", key.fee);
         string memory out = vm.serializeInt(j, "tickSpacing", key.tickSpacing);
-        string memory path = string.concat("deployments/", vm.toString(block.chainid), ".json");
+        // DEPLOY_OUT lets a second stack (the sandbox) write its own record instead of overwriting deployments/<chainId>.json
+        string memory path = vm.envOr("DEPLOY_OUT", string.concat("deployments/", vm.toString(block.chainid), ".json"));
         vm.writeJson(out, path);
         console2.log("wrote", path);
         console2.log("community vault", o.vault);

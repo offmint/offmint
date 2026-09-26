@@ -1,0 +1,106 @@
+{
+ "ticker": "QCOM",
+ "stock": "0x0f17206447090e464c277571124dd2688e48aea9",
+ "feed": null,
+ "poolId": "0x106af997d180cf37a574c42c04179f267b9245cf221b1c57fb3e491137915de6",
+ "poolFee": 3500,
+ "tickSpacing": 71,
+ "stockIsCurrency0": true,
+ "window": {
+  "start": 1790380800,
+  "end": 1790553600,
+  "startIso": "2026-09-26T00:00:00Z",
+  "endIso": "2026-09-28T00:00:00Z"
+ },
+ "params": {
+  "premiumBps": 1000,
+  "widthBps": 5000,
+  "armDelay": 300,
+  "minFrozen": 900,
+  "maxPreCloseAge": 21600,
+  "settleDelay": 3600,
+  "maxFreshAge": 3600,
+  "emergencyDelay": 345600,
+  "buybackSlippageBps": 100,
+  "perfFeeBps": 1000,
+  "lockLead": 900,
+  "quantities": [
+   10,
+   50,
+   100
+  ]
+ },
+ "status": "armed",
+ "skipReason": null,
+ "checks": {
+  "oraclePaused": null,
+  "sequencer": "no uptime feed listed for Robinhood mainnet"
+ },
+ "arm": {
+  "time": 1790381100,
+  "block": "72642298",
+  "p0": "20261520489",
+  "p0Usd": 202.61520489,
+  "p0Source": "pool",
+  "feedUpdatedAt": null,
+  "poolUsdAtArm": 202.61520489,
+  "tick": -223209,
+  "tickLower": -222230,
+  "tickUpper": -218538,
+  "bandUsd": [
+   223.43760255,
+   323.21370605
+  ]
+ },
+ "stats": {
+  "swaps": 8,
+  "maxUsd": 202.8479,
+  "minUsd": 202.457,
+  "maxPremiumPct": 0.11,
+  "firstInBandAt": null,
+  "lastBlock": "72878212"
+ },
+ "timeline": [
+  {
+   "t": 1790381100,
+   "usd": 202.61520489
+  },
+  {
+   "t": 1790384574,
+   "usd": 202.70612869
+  },
+  {
+   "t": 1790392072,
+   "usd": 202.70323506
+  },
+  {
+   "t": 1790395819,
+   "usd": 202.51380672
+  },
+  {
+   "t": 1790395948,
+   "usd": 202.48533548
+  },
+  {
+   "t": 1790396088,
+   "usd": 202.45696108
+  },
+  {
+   "t": 1790398748,
+   "usd": 202.84790566
+  },
+  {
+   "t": 1790402803,
+   "usd": 202.74473338
+  },
+  {
+   "t": 1790402956,
+   "usd": 202.72792646
+  }
+ ],
+ "outliers": [],
+ "fills": [],
+ "settlement": null,
+ "caveat": "Hypothetical: assumes the vault's position does not move the pool price. A live vault would dampen spikes; real fills would differ.",
+ "generatedAt": "2026-09-26T06:44:34Z"
+}

@@ -1,0 +1,138 @@
+{
+ "ticker": "LULU",
+ "stock": "0x4e62068525ab11fe768e29dfd00ef909b9803016",
+ "feed": null,
+ "poolId": "0x5d3fdc1880b35f9fe20f98bff4e47db44e48f2c293985feea658563fd83b9831",
+ "poolFee": 1860,
+ "tickSpacing": 19,
+ "stockIsCurrency0": true,
+ "window": {
+  "start": 1790380800,
+  "end": 1790553600,
+  "startIso": "2026-09-26T00:00:00Z",
+  "endIso": "2026-09-28T00:00:00Z"
+ },
+ "params": {
+  "premiumBps": 1000,
+  "widthBps": 5000,
+  "armDelay": 300,
+  "minFrozen": 900,
+  "maxPreCloseAge": 21600,
+  "settleDelay": 3600,
+  "maxFreshAge": 3600,
+  "emergencyDelay": 345600,
+  "buybackSlippageBps": 100,
+  "perfFeeBps": 1000,
+  "lockLead": 900,
+  "quantities": [
+   10,
+   50,
+   100
+  ]
+ },
+ "status": "armed",
+ "skipReason": null,
+ "checks": {
+  "oraclePaused": null,
+  "sequencer": "no uptime feed listed for Robinhood mainnet"
+ },
+ "arm": {
+  "time": 1790381100,
+  "block": "72642298",
+  "p0": "10110715676",
+  "p0Usd": 101.10715676,
+  "p0Source": "pool",
+  "feedUpdatedAt": null,
+  "poolUsdAtArm": 101.10715676,
+  "tick": -230160,
+  "tickLower": -229197,
+  "tickUpper": -225473,
+  "bandUsd": [
+   111.32646653,
+   161.5554465
+  ]
+ },
+ "stats": {
+  "swaps": 16,
+  "maxUsd": 101.162,
+  "minUsd": 101.0205,
+  "maxPremiumPct": 0.05,
+  "firstInBandAt": null,
+  "lastBlock": "72878212"
+ },
+ "timeline": [
+  {
+   "t": 1790381100,
+   "usd": 101.10715676
+  },
+  {
+   "t": 1790381598,
+   "usd": 101.05613277
+  },
+  {
+   "t": 1790381811,
+   "usd": 101.06084852
+  },
+  {
+   "t": 1790391613,
+   "usd": 101.04389659
+  },
+  {
+   "t": 1790392043,
+   "usd": 101.04127593
+  },
+  {
+   "t": 1790392530,
+   "usd": 101.15159048
+  },
+  {
+   "t": 1790393697,
+   "usd": 101.14975847
+  },
+  {
+   "t": 1790395529,
+   "usd": 101.13738452
+  },
+  {
+   "t": 1790395548,
+   "usd": 101.12415471
+  },
+  {
+   "t": 1790395598,
+   "usd": 101.11486826
+  },
+  {
+   "t": 1790396469,
+   "usd": 101.11425169
+  },
+  {
+   "t": 1790396616,
+   "usd": 101.1117958
+  },
+  {
+   "t": 1790397696,
+   "usd": 101.08696119
+  },
+  {
+   "t": 1790400961,
+   "usd": 101.08164908
+  },
+  {
+   "t": 1790401412,
+   "usd": 101.10028491
+  },
+  {
+   "t": 1790402079,
+   "usd": 101.02047139
+  },
+  {
+   "t": 1790403756,
+   "usd": 101.16195369
+  }
+ ],
+ "outliers": [],
+ "fills": [],
+ "settlement": null,
+ "caveat": "Hypothetical: assumes the vault's position does not move the pool price. A live vault would dampen spikes; real fills would differ.",
+ "generatedAt": "2026-09-26T06:43:59Z"
+}

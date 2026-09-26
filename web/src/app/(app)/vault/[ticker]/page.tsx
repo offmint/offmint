@@ -6,6 +6,7 @@ import { offmintVaultAbi } from "@/abi/OffmintVault";
 import { addrs, explorerAddr } from "@/lib/config";
 import { short, utc } from "@/lib/format";
 import { Token } from "@/components/TokenLogo";
+import { CommunityDeposit } from "@/components/CommunityDeposit";
 
 const STATES = ["OPEN", "ARMED", "PENDING_BUYBACK", "OPEN_MIXED"];
 
@@ -15,16 +16,19 @@ export default function VaultPage({ params }: { params: Promise<{ ticker: string
   const known = ticker.toUpperCase() === addrs.ticker.toUpperCase();
   return (
     <div className="space-y-6">
-      <h1 className="flex items-center gap-3 text-2xl font-semibold"><Token ticker={ticker.toUpperCase()} size={24} /> both vault instances</h1>
+      <h1 className="flex items-center gap-3 text-2xl font-semibold"><Token ticker={ticker.toUpperCase()} size={24} /> vault</h1>
       {!known ? (
         <p className="text-sm text-ink-soft">No vault for this ticker on this deployment.</p>
       ) : (
+        <>
+        <CommunityDeposit symbol={`m${ticker.toUpperCase()}`} />
         <div className="grid gap-6 lg:grid-cols-2">
           <Instance title="Community pool (open)" vault={addrs.vault}
             blurb="For people who already hold the stock: deposit it, the vault posts sell orders above the Friday close over the weekend and buys back Monday. You keep stock exposure you already had; no USDG fee." />
           <Instance title="MetaVault's own instance (mb)" vault={addrs.metaInstance}
-            blurb="Only MetaVault can deposit here: this week's actively bought-in capital. Same ladder mechanics, separate accounting, so MetaVault's speculative timing never shapes a community depositor's risk." />
+            blurb="Only MetaVault (experimental, coming later) can deposit here. Its weekly picker, replayed with only the data it would have had, did not pick HIMS before the 29 Aug spike. Separate accounting: it never shapes a community depositor's risk." />
         </div>
+        </>
       )}
     </div>
   );
@@ -50,8 +54,8 @@ function Instance({ title, vault, blurb }: { title: string; vault: Address; blur
   });
   const rs = (rungs.data?.[0]?.result as any[]) ?? [];
   return (
-    <div className="card space-y-3">
-      <div className="flex items-baseline justify-between">
+    <div className="card min-w-0 space-y-3">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-3">
         <div className="font-medium">{title}</div>
         <a className="text-xs underline" href={explorerAddr(vault)} target="_blank">{sym ?? "…"} · {short(vault)}</a>
       </div>
@@ -66,12 +70,14 @@ function Instance({ title, vault, blurb }: { title: string; vault: Address; blur
           <div className="label mb-1">Epoch #{Number(epoch.id)} · armed {utc(Number(epoch.armedAt))}{Number(epoch.settledAt) ? ` · settled ${utc(Number(epoch.settledAt))}` : ""}</div>
           <div className="num text-xs">deployed {Number(formatUnits(epoch.stockDeployed, 18)).toFixed(4)} · USDG from fills {Number(formatUnits(epoch.usdgReceived, 6)).toFixed(2)} · bought back {Number(formatUnits(epoch.stockBought, 18)).toFixed(4)} · PnL {Number(formatUnits(epoch.pnlStock, 18)).toFixed(4)} STOCK</div>
           {rs.length > 0 && (
+            <div className="overflow-x-auto">
             <table className="data mt-2">
               <thead><tr><th>Rung</th><th>Ticks</th><th>STOCK in</th><th>Removed</th><th>USDG out</th></tr></thead>
               <tbody>{rs.map((r: any, i: number) => (
                 <tr key={i}><td>{i}</td><td className="num text-xs">{r.tickLower}..{r.tickUpper}</td><td className="num">{Number(formatUnits(r.stockDeployed, 18)).toFixed(3)}</td><td>{r.removed ? "yes" : "live"}</td><td className="num">{Number(formatUnits(r.usdgReceived, 6)).toFixed(2)}</td></tr>
               ))}</tbody>
             </table>
+            </div>
           )}
         </div>
       )}
