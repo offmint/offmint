@@ -36,7 +36,7 @@ export default function Monitor() {
           <h1 className="text-2xl font-semibold">Monitor</h1>
           <p className="text-sm text-ink-soft">Every basket member the detector found on Robinhood Chain mainnet: newly listed (pool ≤ 30 days), no Chainlink feed, at least $10k of pool liquidity. Read-only, refreshed every 30 s.</p>
         </div>
-        <div className="text-right text-sm"><div className="label">Weekend window opens in</div><Countdown /></div>
+        <div className="text-right text-sm"><Countdown /></div>
       </div>
       {err && <div className="text-sm text-loss">Paper service unreachable: {err}</div>}
       <div className="grid gap-4 md:grid-cols-4">

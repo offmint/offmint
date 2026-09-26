@@ -66,7 +66,6 @@ export default function AppPage() {
           </div>
         </div>
         <div className="text-right text-sm">
-          <div className="label">Next weekend window (Sat 00:00 UTC)</div>
           <Countdown />
         </div>
       </div>
