@@ -3,6 +3,21 @@
 Decisions made by the user, newest first. Where a decision here conflicts with WINPLAN.md, FEATURES.md, TAILOR.md,
 BITGET.md or AIRTIGHT.md, **this file wins**. Each entry: what was decided, why, and what it changes.
 
+## 26 Sep 2026
+
+### D8. Token icons: Robinhood's own image only
+- The icon next to a ticker is Robinhood's token image from `https://api.robinhood.com/rhj/assets` (`logoUrl`), shown
+  next to the ticker badge (ASSETS.md §2). No third-party company logos (they matched by ticker and showed the wrong
+  company). If the image fails to load, the ticker badge alone is shown.
+
+### D7. Sandbox: in-browser simulation, fully explained
+- `/sandbox` runs one weekend in the browser on the same engine as the published replay (keeper/src/poolSim.ts +
+  supplyReplay.ts): the market is illustrative, the vault's rules are real. Six explained steps, three presets
+  (normal / big spike / Monday opens higher), glossary, honesty box.
+- Why not onchain-instant: `settleDelay >= 30 min` is a hard bound and the epoch stores `windowEnd` at arm, so a full
+  onchain cycle takes >= ~31 min without a contract change. The onchain sandbox stack is deployed
+  (`contracts/deployments/sandbox-46630.json`) for real testnet transactions; the page states which parts are onchain.
+
 ## 25 Sep 2026
 
 ### D6. Harm numbers: "paid above the reference price", headline at 5%
@@ -52,6 +67,6 @@ BITGET.md or AIRTIGHT.md, **this file wins**. Each entry: what was decided, why,
 
 ### D0. Entries
 - Two entries only: Arbitrum Open House Singapore (Sun 4 Oct, 07:59 UTC) and Bitget AI Base Camp S2 (8 Oct, UTC+8).
-  No Colosseum.
+  No Colosseum, no Unichain.
 - 25 Sep: redundant docs removed at the user's request (curation*.md, weekday-vs-weekend.md, window.md,
   price-reference.md, FACTS.md); all were regenerable outputs or superseded drafts.
