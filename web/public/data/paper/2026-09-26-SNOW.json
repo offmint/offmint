@@ -53,22 +53,30 @@
   ]
  },
  "stats": {
-  "swaps": 0,
+  "swaps": 2,
   "maxUsd": 338.0034,
-  "minUsd": 338.0034,
+  "minUsd": 337.9485,
   "maxPremiumPct": 0,
   "firstInBandAt": null,
-  "lastBlock": "72878212"
+  "lastBlock": "72962440"
  },
  "timeline": [
   {
    "t": 1790381100,
    "usd": 338.00337294
+  },
+  {
+   "t": 1790406352,
+   "usd": 337.99739633
+  },
+  {
+   "t": 1790413201,
+   "usd": 337.94845366
   }
  ],
  "outliers": [],
  "fills": [],
  "settlement": null,
  "caveat": "Hypothetical: assumes the vault's position does not move the pool price. A live vault would dampen spikes; real fills would differ.",
- "generatedAt": "2026-09-26T06:46:24Z"
+ "generatedAt": "2026-09-26T09:16:57Z"
 }

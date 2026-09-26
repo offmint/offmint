@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-26T05:10:20.087Z",
+ "generatedAt": "2026-09-26T08:45:50.919Z",
  "label": "observed (onchain swaps, Robinhood Chain mainnet)",
  "method": [
   "Mint-off windows: Sat 00:00 to Mon 00:00 UTC (Robinhood tokenization window closed Sat 02:00 to Mon 02:00 CEST), extended over US market holidays.",
@@ -30,6 +30,7 @@
    "above0pct": {
     "swaps": 110,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 5.088,
     "usdPaid": 1366.44,
     "usdAboveReference": 27.6
@@ -37,6 +38,7 @@
    "above2pct": {
     "swaps": 24,
     "uniqueSenders": 15,
+    "unresolvedTxs": 0,
     "stockBought": 2.4638,
     "usdPaid": 502.77,
     "usdAboveReference": 15.66
@@ -44,6 +46,7 @@
    "above5pct": {
     "swaps": 4,
     "uniqueSenders": 2,
+    "unresolvedTxs": 0,
     "stockBought": 0.0425,
     "usdPaid": 10.09,
     "usdAboveReference": 0.54
@@ -51,6 +54,7 @@
    "above10pct": {
     "swaps": 0,
     "uniqueSenders": 0,
+    "unresolvedTxs": 0,
     "stockBought": 0,
     "usdPaid": 0,
     "usdAboveReference": 0
@@ -67,6 +71,7 @@
    "above0pct": {
     "swaps": 815,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 378.4438,
     "usdPaid": 93527.68,
     "usdAboveReference": 717.07
@@ -74,6 +79,7 @@
    "above2pct": {
     "swaps": 95,
     "uniqueSenders": 50,
+    "unresolvedTxs": 0,
     "stockBought": 39.8912,
     "usdPaid": 8553.23,
     "usdAboveReference": 237.74
@@ -81,6 +87,7 @@
    "above5pct": {
     "swaps": 3,
     "uniqueSenders": 3,
+    "unresolvedTxs": 0,
     "stockBought": 0.1815,
     "usdPaid": 144.7,
     "usdAboveReference": 7.66
@@ -88,6 +95,7 @@
    "above10pct": {
     "swaps": 0,
     "uniqueSenders": 0,
+    "unresolvedTxs": 0,
     "stockBought": 0,
     "usdPaid": 0,
     "usdAboveReference": 0
@@ -104,6 +112,7 @@
    "above0pct": {
     "swaps": 6446,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 4356.1191,
     "usdPaid": 787759.54,
     "usdAboveReference": 15466.45
@@ -111,6 +120,7 @@
    "above2pct": {
     "swaps": 2077,
     "uniqueSenders": 907,
+    "unresolvedTxs": 0,
     "stockBought": 2312.8574,
     "usdPaid": 320151.68,
     "usdAboveReference": 12879.35
@@ -118,6 +128,7 @@
    "above5pct": {
     "swaps": 452,
     "uniqueSenders": 247,
+    "unresolvedTxs": 0,
     "stockBought": 502.5569,
     "usdPaid": 67397.76,
     "usdAboveReference": 3994.4
@@ -125,6 +136,7 @@
    "above10pct": {
     "swaps": 44,
     "uniqueSenders": 38,
+    "unresolvedTxs": 0,
     "stockBought": 8.5836,
     "usdPaid": 2574.52,
     "usdAboveReference": 765.19
@@ -141,6 +153,7 @@
    "above0pct": {
     "swaps": 16810,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 16339.0598,
     "usdPaid": 1920861.09,
     "usdAboveReference": 39190.32
@@ -148,6 +161,7 @@
    "above2pct": {
     "swaps": 2523,
     "uniqueSenders": 952,
+    "unresolvedTxs": 0,
     "stockBought": 2337.4747,
     "usdPaid": 242429.97,
     "usdAboveReference": 28328.1
@@ -155,6 +169,7 @@
    "above5pct": {
     "swaps": 1744,
     "uniqueSenders": 661,
+    "unresolvedTxs": 0,
     "stockBought": 583.9676,
     "usdPaid": 109866.47,
     "usdAboveReference": 24775.43
@@ -162,6 +177,7 @@
    "above10pct": {
     "swaps": 1638,
     "uniqueSenders": 613,
+    "unresolvedTxs": 0,
     "stockBought": 550.0334,
     "usdPaid": 103949.27,
     "usdAboveReference": 24363.17
@@ -178,6 +194,7 @@
    "above0pct": {
     "swaps": 4751,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 4072.6009,
     "usdPaid": 669964.85,
     "usdAboveReference": 8507.56
@@ -185,6 +202,7 @@
    "above2pct": {
     "swaps": 688,
     "uniqueSenders": 254,
+    "unresolvedTxs": 0,
     "stockBought": 2365.3291,
     "usdPaid": 160354.97,
     "usdAboveReference": 5231.69
@@ -192,6 +210,7 @@
    "above5pct": {
     "swaps": 121,
     "uniqueSenders": 74,
+    "unresolvedTxs": 0,
     "stockBought": 264.1564,
     "usdPaid": 15818.23,
     "usdAboveReference": 1122.74
@@ -199,6 +218,7 @@
    "above10pct": {
     "swaps": 59,
     "uniqueSenders": 43,
+    "unresolvedTxs": 0,
     "stockBought": 139.9331,
     "usdPaid": 4653.05,
     "usdAboveReference": 481.59
@@ -215,6 +235,7 @@
    "above0pct": {
     "swaps": 13055,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 5022.7101,
     "usdPaid": 1683694.88,
     "usdAboveReference": 46867.23
@@ -222,6 +243,7 @@
    "above2pct": {
     "swaps": 3703,
     "uniqueSenders": 1338,
+    "unresolvedTxs": 0,
     "stockBought": 1582.6832,
     "usdPaid": 251059.77,
     "usdAboveReference": 41158.83
@@ -229,6 +251,7 @@
    "above5pct": {
     "swaps": 2602,
     "uniqueSenders": 856,
+    "unresolvedTxs": 0,
     "stockBought": 551.7027,
     "usdPaid": 124241.91,
     "usdAboveReference": 36981.41
@@ -236,6 +259,7 @@
    "above10pct": {
     "swaps": 2555,
     "uniqueSenders": 842,
+    "unresolvedTxs": 0,
     "stockBought": 470.4113,
     "usdPaid": 112396.21,
     "usdAboveReference": 36330.71
@@ -252,6 +276,7 @@
    "above0pct": {
     "swaps": 9595,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 19014.1055,
     "usdPaid": 1174876.54,
     "usdAboveReference": 19217.35
@@ -259,6 +284,7 @@
    "above2pct": {
     "swaps": 2366,
     "uniqueSenders": 480,
+    "unresolvedTxs": 0,
     "stockBought": 15575.8071,
     "usdPaid": 149899.76,
     "usdAboveReference": 13993.58
@@ -266,6 +292,7 @@
    "above5pct": {
     "swaps": 1975,
     "uniqueSenders": 443,
+    "unresolvedTxs": 0,
     "stockBought": 15316.1604,
     "usdPaid": 140512,
     "usdAboveReference": 13763.11
@@ -273,6 +300,7 @@
    "above10pct": {
     "swaps": 1429,
     "uniqueSenders": 319,
+    "unresolvedTxs": 0,
     "stockBought": 10771.5727,
     "usdPaid": 99543.27,
     "usdAboveReference": 10378.12
@@ -289,6 +317,7 @@
    "above0pct": {
     "swaps": 17659,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 48079.6749,
     "usdPaid": 3256421.94,
     "usdAboveReference": 50113.19
@@ -296,6 +325,7 @@
    "above2pct": {
     "swaps": 5867,
     "uniqueSenders": 1354,
+    "unresolvedTxs": 0,
     "stockBought": 36010.8688,
     "usdPaid": 590905.35,
     "usdAboveReference": 32014.03
@@ -303,6 +333,7 @@
    "above5pct": {
     "swaps": 4332,
     "uniqueSenders": 891,
+    "unresolvedTxs": 0,
     "stockBought": 33695.2611,
     "usdPaid": 332393.5,
     "usdAboveReference": 25346.21
@@ -310,6 +341,7 @@
    "above10pct": {
     "swaps": 239,
     "uniqueSenders": 118,
+    "unresolvedTxs": 0,
     "stockBought": 2177.795,
     "usdPaid": 22289.11,
     "usdAboveReference": 2234.68
@@ -326,27 +358,31 @@
    "above0pct": {
     "swaps": 170540,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 546245.4851,
     "usdPaid": 25655620.15,
     "usdAboveReference": 2701836.39
    },
    "above2pct": {
     "swaps": 85573,
-    "uniqueSenders": 12627,
+    "uniqueSenders": 13480,
+    "unresolvedTxs": 0,
     "stockBought": 508233.9185,
     "usdPaid": 12867539.92,
     "usdAboveReference": 2590310.5
    },
    "above5pct": {
     "swaps": 67057,
-    "uniqueSenders": 10819,
+    "uniqueSenders": 11703,
+    "unresolvedTxs": 0,
     "stockBought": 419825.0489,
     "usdPaid": 9994447.68,
     "usdAboveReference": 2488111.54
    },
    "above10pct": {
     "swaps": 50819,
-    "uniqueSenders": 8758,
+    "uniqueSenders": 9692,
+    "unresolvedTxs": 0,
     "stockBought": 277677.7908,
     "usdPaid": 7526785.84,
     "usdAboveReference": 2325025.86
@@ -363,27 +399,31 @@
    "above0pct": {
     "swaps": 360485,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 5221075.7973,
     "usdPaid": 67318477.18,
     "usdAboveReference": 1096382.43
    },
    "above2pct": {
     "swaps": 84267,
-    "uniqueSenders": 19863,
+    "uniqueSenders": 21822,
+    "unresolvedTxs": 0,
     "stockBought": 553319.3865,
     "usdPaid": 14362840.27,
     "usdAboveReference": 703966.9
    },
    "above5pct": {
     "swaps": 28736,
-    "uniqueSenders": 8115,
+    "uniqueSenders": 8975,
+    "unresolvedTxs": 0,
     "stockBought": 163581.6907,
     "usdPaid": 4475993.13,
     "usdAboveReference": 420119.14
    },
    "above10pct": {
     "swaps": 10196,
-    "uniqueSenders": 3188,
+    "uniqueSenders": 3522,
+    "unresolvedTxs": 0,
     "stockBought": 56291.1567,
     "usdPaid": 1663109.55,
     "usdAboveReference": 238375.13
@@ -400,27 +440,31 @@
    "above0pct": {
     "swaps": 104110,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 1178498.685,
     "usdPaid": 15739510.55,
     "usdAboveReference": 689682.01
    },
    "above2pct": {
     "swaps": 20152,
-    "uniqueSenders": 4649,
+    "uniqueSenders": 5228,
+    "unresolvedTxs": 0,
     "stockBought": 113874.6349,
     "usdPaid": 2996147.69,
     "usdAboveReference": 608256.63
    },
    "above5pct": {
     "swaps": 13590,
-    "uniqueSenders": 2868,
+    "uniqueSenders": 3274,
+    "unresolvedTxs": 0,
     "stockBought": 69969.682,
     "usdPaid": 2125457.26,
     "usdAboveReference": 583399.39
    },
    "above10pct": {
     "swaps": 11233,
-    "uniqueSenders": 2389,
+    "uniqueSenders": 2709,
+    "unresolvedTxs": 0,
     "stockBought": 45075.003,
     "usdPaid": 1682292.05,
     "usdAboveReference": 555772.57
@@ -437,27 +481,31 @@
    "above0pct": {
     "swaps": 44044,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 402693.2797,
     "usdPaid": 9447126.17,
     "usdAboveReference": 90362.55
    },
    "above2pct": {
     "swaps": 3700,
-    "uniqueSenders": 1367,
+    "uniqueSenders": 1591,
+    "unresolvedTxs": 0,
     "stockBought": 9120.9346,
     "usdPaid": 939346.09,
     "usdAboveReference": 38477.54
    },
    "above5pct": {
     "swaps": 1289,
-    "uniqueSenders": 459,
+    "uniqueSenders": 620,
+    "unresolvedTxs": 0,
     "stockBought": 1379.8816,
     "usdPaid": 207804.91,
     "usdAboveReference": 17532.35
    },
    "above10pct": {
     "swaps": 395,
-    "uniqueSenders": 175,
+    "uniqueSenders": 260,
+    "unresolvedTxs": 0,
     "stockBought": 721.3206,
     "usdPaid": 65934.57,
     "usdAboveReference": 7810.54
@@ -468,27 +516,31 @@
   "above0pct": {
    "swaps": 748420,
    "uniqueSenders": null,
+   "unresolvedTxs": null,
    "usdPaid": 127749207.02,
    "usdAboveReference": 4758370.16,
    "tickers": 101
   },
   "above2pct": {
    "swaps": 211035,
-   "uniqueSenders": 35988,
+   "uniqueSenders": 38844,
+   "unresolvedTxs": 0,
    "usdPaid": 32889731.47,
    "usdAboveReference": 4074870.55,
    "tickers": 83
   },
   "above5pct": {
    "swaps": 121905,
-   "uniqueSenders": 21419,
+   "uniqueSenders": 23291,
+   "unresolvedTxs": 0,
    "usdPaid": 17594087.65,
    "usdAboveReference": 3615153.94,
    "tickers": 59
   },
   "above10pct": {
    "swaps": 78607,
-   "uniqueSenders": 14405,
+   "uniqueSenders": 15816,
+   "unresolvedTxs": 0,
    "usdPaid": 11283527.45,
    "usdAboveReference": 3201537.56,
    "tickers": 34
@@ -514,27 +566,31 @@
    "above0pct": {
     "swaps": 47099,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 55285.4975,
     "usdPaid": 9126280.89,
     "usdAboveReference": 1690128.19
    },
    "above2pct": {
     "swaps": 38263,
-    "uniqueSenders": 7791,
+    "uniqueSenders": 8624,
+    "unresolvedTxs": 0,
     "stockBought": 41254.2297,
     "usdPaid": 7110581.73,
     "usdAboveReference": 1670635.72
    },
    "above5pct": {
     "swaps": 25939,
-    "uniqueSenders": 5084,
+    "uniqueSenders": 5533,
+    "unresolvedTxs": 0,
     "stockBought": 23587.2821,
     "usdPaid": 4591353.76,
     "usdAboveReference": 1594673.53
    },
    "above10pct": {
     "swaps": 21395,
-    "uniqueSenders": 4558,
+    "uniqueSenders": 5023,
+    "unresolvedTxs": 0,
     "stockBought": 17956.7424,
     "usdPaid": 3822667.54,
     "usdAboveReference": 1542709.4
@@ -552,27 +608,31 @@
    "above0pct": {
     "swaps": 86917,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 1095051.6388,
     "usdPaid": 10783183.32,
     "usdAboveReference": 699058.75
    },
    "above2pct": {
     "swaps": 43220,
-    "uniqueSenders": 7859,
+    "uniqueSenders": 8452,
+    "unresolvedTxs": 0,
     "stockBought": 431799.3241,
     "usdPaid": 4797489.24,
     "usdAboveReference": 677407.66
    },
    "above5pct": {
     "swaps": 39945,
-    "uniqueSenders": 7249,
+    "uniqueSenders": 7862,
+    "unresolvedTxs": 0,
     "stockBought": 395770.6566,
     "usdPaid": 4439651.43,
     "usdAboveReference": 665405.54
    },
    "above10pct": {
     "swaps": 26886,
-    "uniqueSenders": 5108,
+    "uniqueSenders": 5767,
+    "unresolvedTxs": 0,
     "stockBought": 255661.9121,
     "usdPaid": 3018237.93,
     "usdAboveReference": 570877.98
@@ -588,27 +648,31 @@
    "above0pct": {
     "swaps": 12870,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 69026.8623,
     "usdPaid": 2285441.43,
     "usdAboveReference": 572510.91
    },
    "above2pct": {
     "swaps": 12480,
-    "uniqueSenders": 2662,
+    "uniqueSenders": 3058,
+    "unresolvedTxs": 0,
     "stockBought": 65808.0994,
     "usdPaid": 2206254.64,
     "usdAboveReference": 571976.29
    },
    "above5pct": {
     "swaps": 11022,
-    "uniqueSenders": 2412,
+    "uniqueSenders": 2770,
+    "unresolvedTxs": 0,
     "stockBought": 50846.8951,
     "usdPaid": 1800391.86,
     "usdAboveReference": 555641.07
    },
    "above10pct": {
     "swaps": 10314,
-    "uniqueSenders": 2266,
+    "uniqueSenders": 2584,
+    "unresolvedTxs": 0,
     "stockBought": 44048.7112,
     "usdPaid": 1619156.66,
     "usdAboveReference": 544368.12
@@ -624,27 +688,31 @@
    "above0pct": {
     "swaps": 15943,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 144861.0167,
     "usdPaid": 4341940.62,
     "usdAboveReference": 253784.51
    },
    "above2pct": {
     "swaps": 11258,
-    "uniqueSenders": 3777,
+    "uniqueSenders": 4052,
+    "unresolvedTxs": 0,
     "stockBought": 109901.0814,
     "usdPaid": 3362671.2,
     "usdAboveReference": 244219.58
    },
    "above5pct": {
     "swaps": 2218,
-    "uniqueSenders": 720,
+    "uniqueSenders": 776,
+    "unresolvedTxs": 0,
     "stockBought": 25099.383,
     "usdPaid": 885087.52,
     "usdAboveReference": 161585.14
    },
    "above10pct": {
     "swaps": 1555,
-    "uniqueSenders": 497,
+    "uniqueSenders": 559,
+    "unresolvedTxs": 0,
     "stockBought": 13659.9618,
     "usdPaid": 531600.71,
     "usdAboveReference": 137655.99
@@ -659,27 +727,31 @@
    "above0pct": {
     "swaps": 10884,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 5044.234,
     "usdPaid": 1835640.27,
     "usdAboveReference": 135049.18
    },
    "above2pct": {
     "swaps": 9932,
-    "uniqueSenders": 3313,
+    "uniqueSenders": 3547,
+    "unresolvedTxs": 0,
     "stockBought": 4657.4478,
     "usdPaid": 1703779.11,
     "usdAboveReference": 133457.19
    },
    "above5pct": {
     "swaps": 7495,
-    "uniqueSenders": 2582,
+    "uniqueSenders": 2761,
+    "unresolvedTxs": 0,
     "stockBought": 3555.9738,
     "usdPaid": 1318560.79,
     "usdAboveReference": 119557.57
    },
    "above10pct": {
     "swaps": 3455,
-    "uniqueSenders": 1369,
+    "uniqueSenders": 1450,
+    "unresolvedTxs": 0,
     "stockBought": 1600.7529,
     "usdPaid": 612800.89,
     "usdAboveReference": 73059.05
@@ -696,13 +768,15 @@
    "above0pct": {
     "swaps": 8946,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 9876.6211,
     "usdPaid": 868798.43,
     "usdAboveReference": 103162.22
    },
    "above2pct": {
     "swaps": 4756,
-    "uniqueSenders": 1187,
+    "uniqueSenders": 1218,
+    "unresolvedTxs": 0,
     "stockBought": 5037.0793,
     "usdPaid": 500292.97,
     "usdAboveReference": 99381.69
@@ -710,6 +784,7 @@
    "above5pct": {
     "swaps": 3492,
     "uniqueSenders": 859,
+    "unresolvedTxs": 0,
     "stockBought": 3036.3186,
     "usdPaid": 342426.66,
     "usdAboveReference": 94803.04
@@ -717,6 +792,7 @@
    "above10pct": {
     "swaps": 3166,
     "uniqueSenders": 728,
+    "unresolvedTxs": 0,
     "stockBought": 2290.5282,
     "usdPaid": 277646.45,
     "usdAboveReference": 90559.8
@@ -731,27 +807,31 @@
    "above0pct": {
     "swaps": 5865,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 107608.8223,
     "usdPaid": 990983.07,
     "usdAboveReference": 95573.85
    },
    "above2pct": {
     "swaps": 4312,
-    "uniqueSenders": 941,
+    "uniqueSenders": 1109,
+    "unresolvedTxs": 0,
     "stockBought": 86252.2136,
     "usdPaid": 815965.36,
     "usdAboveReference": 94034.34
    },
    "above5pct": {
     "swaps": 3043,
-    "uniqueSenders": 670,
+    "uniqueSenders": 777,
+    "unresolvedTxs": 0,
     "stockBought": 62083.2388,
     "usdPaid": 607137.66,
     "usdAboveReference": 87500.96
    },
    "above10pct": {
     "swaps": 2356,
-    "uniqueSenders": 548,
+    "uniqueSenders": 634,
+    "unresolvedTxs": 0,
     "stockBought": 49692.9572,
     "usdPaid": 496101.79,
     "usdAboveReference": 80171.74
@@ -767,27 +847,31 @@
    "above0pct": {
     "swaps": 9605,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 1962.8669,
     "usdPaid": 1115457.76,
     "usdAboveReference": 79941.44
    },
    "above2pct": {
     "swaps": 7401,
-    "uniqueSenders": 2432,
+    "uniqueSenders": 2833,
+    "unresolvedTxs": 0,
     "stockBought": 1468.2753,
     "usdPaid": 851878.05,
     "usdAboveReference": 76542.3
    },
    "above5pct": {
     "swaps": 4763,
-    "uniqueSenders": 1662,
+    "uniqueSenders": 2002,
+    "unresolvedTxs": 0,
     "stockBought": 932.8462,
     "usdPaid": 560338.79,
     "usdAboveReference": 67589.99
    },
    "above10pct": {
     "swaps": 2393,
-    "uniqueSenders": 925,
+    "uniqueSenders": 1138,
+    "unresolvedTxs": 0,
     "stockBought": 330.6117,
     "usdPaid": 218440.14,
     "usdAboveReference": 43985.87
@@ -804,6 +888,7 @@
    "above0pct": {
     "swaps": 10961,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 5916.9961,
     "usdPaid": 987551.9,
     "usdAboveReference": 62486.18
@@ -811,6 +896,7 @@
    "above2pct": {
     "swaps": 4373,
     "uniqueSenders": 1491,
+    "unresolvedTxs": 0,
     "stockBought": 1289.5828,
     "usdPaid": 263262.32,
     "usdAboveReference": 54979.84
@@ -818,6 +904,7 @@
    "above5pct": {
     "swaps": 3723,
     "uniqueSenders": 1379,
+    "unresolvedTxs": 0,
     "stockBought": 1017.727,
     "usdPaid": 220154.34,
     "usdAboveReference": 53793.63
@@ -825,6 +912,7 @@
    "above10pct": {
     "swaps": 3375,
     "uniqueSenders": 1212,
+    "unresolvedTxs": 0,
     "stockBought": 848.8766,
     "usdPaid": 191637.44,
     "usdAboveReference": 51713.48
@@ -839,27 +927,31 @@
    "above0pct": {
     "swaps": 13344,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 165781.0143,
     "usdPaid": 1658757.66,
     "usdAboveReference": 72206.94
    },
    "above2pct": {
     "swaps": 9710,
-    "uniqueSenders": 2963,
+    "uniqueSenders": 3429,
+    "unresolvedTxs": 0,
     "stockBought": 123570.0833,
     "usdPaid": 1263874.97,
     "usdAboveReference": 67429.15
    },
    "above5pct": {
     "swaps": 5270,
-    "uniqueSenders": 1842,
+    "uniqueSenders": 2112,
+    "unresolvedTxs": 0,
     "stockBought": 69789.7741,
     "usdPaid": 729974.89,
     "usdAboveReference": 50222.51
    },
    "above10pct": {
     "swaps": 11,
-    "uniqueSenders": 10,
+    "uniqueSenders": 11,
+    "unresolvedTxs": 0,
     "stockBought": 299.9128,
     "usdPaid": 3216.49,
     "usdAboveReference": 295.34
@@ -874,27 +966,31 @@
    "above0pct": {
     "swaps": 5719,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 6300.6456,
     "usdPaid": 970385.81,
     "usdAboveReference": 58828.29
    },
    "above2pct": {
     "swaps": 5412,
-    "uniqueSenders": 2173,
+    "uniqueSenders": 2393,
+    "unresolvedTxs": 0,
     "stockBought": 5984.4008,
     "usdPaid": 926160.37,
     "usdAboveReference": 58165.13
    },
    "above5pct": {
     "swaps": 3250,
-    "uniqueSenders": 1207,
+    "uniqueSenders": 1267,
+    "unresolvedTxs": 0,
     "stockBought": 3525.0865,
     "usdPaid": 557141.32,
     "usdAboveReference": 45686.53
    },
    "above10pct": {
     "swaps": 1454,
-    "uniqueSenders": 579,
+    "uniqueSenders": 606,
+    "unresolvedTxs": 0,
     "stockBought": 1582.4209,
     "usdPaid": 256491.63,
     "usdAboveReference": 26898.19
@@ -909,20 +1005,23 @@
    "above0pct": {
     "swaps": 4525,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 51885.0729,
     "usdPaid": 794007.89,
     "usdAboveReference": 33274.61
    },
    "above2pct": {
     "swaps": 4139,
-    "uniqueSenders": 1409,
+    "uniqueSenders": 1564,
+    "unresolvedTxs": 0,
     "stockBought": 47407.1419,
     "usdPaid": 727466.9,
     "usdAboveReference": 32575.56
    },
    "above5pct": {
     "swaps": 1795,
-    "uniqueSenders": 502,
+    "uniqueSenders": 591,
+    "unresolvedTxs": 0,
     "stockBought": 20181.844,
     "usdPaid": 313923.14,
     "usdAboveReference": 18864.59
@@ -930,6 +1029,7 @@
    "above10pct": {
     "swaps": 14,
     "uniqueSenders": 14,
+    "unresolvedTxs": 0,
     "stockBought": 176.6516,
     "usdPaid": 2843.71,
     "usdAboveReference": 261.06
@@ -944,20 +1044,23 @@
    "above0pct": {
     "swaps": 2762,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 10474.2395,
     "usdPaid": 314653.8,
     "usdAboveReference": 17901.5
    },
    "above2pct": {
     "swaps": 1914,
-    "uniqueSenders": 1009,
+    "uniqueSenders": 1230,
+    "unresolvedTxs": 0,
     "stockBought": 8583.22,
     "usdPaid": 261581.86,
     "usdAboveReference": 17398.72
    },
    "above5pct": {
     "swaps": 1183,
-    "uniqueSenders": 662,
+    "uniqueSenders": 800,
+    "unresolvedTxs": 0,
     "stockBought": 5917.4561,
     "usdPaid": 182972.39,
     "usdAboveReference": 14620.76
@@ -965,6 +1068,7 @@
    "above10pct": {
     "swaps": 103,
     "uniqueSenders": 101,
+    "unresolvedTxs": 0,
     "stockBought": 537.3487,
     "usdPaid": 19913.45,
     "usdAboveReference": 4625.88
@@ -980,27 +1084,31 @@
    "above0pct": {
     "swaps": 1924,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 3536.2356,
     "usdPaid": 243756.59,
     "usdAboveReference": 17967.67
    },
    "above2pct": {
     "swaps": 1839,
-    "uniqueSenders": 616,
+    "uniqueSenders": 712,
+    "unresolvedTxs": 0,
     "stockBought": 3264.0811,
     "usdPaid": 226060.54,
     "usdAboveReference": 17731.91
    },
    "above5pct": {
     "swaps": 1330,
-    "uniqueSenders": 344,
+    "uniqueSenders": 426,
+    "unresolvedTxs": 0,
     "stockBought": 1705.8406,
     "usdPaid": 122591.81,
     "usdAboveReference": 14132.7
    },
    "above10pct": {
     "swaps": 900,
-    "uniqueSenders": 162,
+    "uniqueSenders": 163,
+    "unresolvedTxs": 0,
     "stockBought": 751.5091,
     "usdPaid": 57817.43,
     "usdAboveReference": 10509.93
@@ -1015,6 +1123,7 @@
    "above0pct": {
     "swaps": 3245,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 48200.4519,
     "usdPaid": 398733.54,
     "usdAboveReference": 16026.27
@@ -1022,6 +1131,7 @@
    "above2pct": {
     "swaps": 2085,
     "uniqueSenders": 773,
+    "unresolvedTxs": 0,
     "stockBought": 26100.8706,
     "usdPaid": 227397.33,
     "usdAboveReference": 14894.48
@@ -1029,6 +1139,7 @@
    "above5pct": {
     "swaps": 1806,
     "uniqueSenders": 697,
+    "unresolvedTxs": 0,
     "stockBought": 20670.4289,
     "usdPaid": 181819.72,
     "usdAboveReference": 13149.02
@@ -1036,6 +1147,7 @@
    "above10pct": {
     "swaps": 71,
     "uniqueSenders": 44,
+    "unresolvedTxs": 0,
     "stockBought": 789.244,
     "usdPaid": 7394.85,
     "usdAboveReference": 954.62
@@ -1050,20 +1162,23 @@
    "above0pct": {
     "swaps": 14982,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 7679.5043,
     "usdPaid": 1855162.86,
     "usdAboveReference": 49456
    },
    "above2pct": {
     "swaps": 12636,
-    "uniqueSenders": 4729,
+    "uniqueSenders": 5244,
+    "unresolvedTxs": 0,
     "stockBought": 6608.0203,
     "usdPaid": 1599463.01,
     "usdAboveReference": 47305.13
    },
    "above5pct": {
     "swaps": 1226,
-    "uniqueSenders": 590,
+    "uniqueSenders": 647,
+    "unresolvedTxs": 0,
     "stockBought": 730.34,
     "usdPaid": 183725.98,
     "usdAboveReference": 12176.41
@@ -1071,6 +1186,7 @@
    "above10pct": {
     "swaps": 84,
     "uniqueSenders": 67,
+    "unresolvedTxs": 0,
     "stockBought": 114.5517,
     "usdPaid": 30278.86,
     "usdAboveReference": 3371.81
@@ -1085,27 +1201,31 @@
    "above0pct": {
     "swaps": 1077,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 2565.9523,
     "usdPaid": 145625.61,
     "usdAboveReference": 12812.56
    },
    "above2pct": {
     "swaps": 965,
-    "uniqueSenders": 195,
+    "uniqueSenders": 242,
+    "unresolvedTxs": 0,
     "stockBought": 2293.485,
     "usdPaid": 131286.85,
     "usdAboveReference": 12576.07
    },
    "above5pct": {
     "swaps": 781,
-    "uniqueSenders": 173,
+    "uniqueSenders": 215,
+    "unresolvedTxs": 0,
     "stockBought": 1695.1201,
     "usdPaid": 99371.13,
     "usdAboveReference": 11631.71
    },
    "above10pct": {
     "swaps": 486,
-    "uniqueSenders": 110,
+    "uniqueSenders": 154,
+    "unresolvedTxs": 0,
     "stockBought": 975.6496,
     "usdPaid": 59760.49,
     "usdAboveReference": 9260.86
@@ -1120,20 +1240,23 @@
    "above0pct": {
     "swaps": 4231,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 22419.0593,
     "usdPaid": 560219.24,
     "usdAboveReference": 19475.7
    },
    "above2pct": {
     "swaps": 3081,
-    "uniqueSenders": 788,
+    "uniqueSenders": 825,
+    "unresolvedTxs": 0,
     "stockBought": 17005.4172,
     "usdPaid": 427519.64,
     "usdAboveReference": 17348.96
    },
    "above5pct": {
     "swaps": 1409,
-    "uniqueSenders": 425,
+    "uniqueSenders": 452,
+    "unresolvedTxs": 0,
     "stockBought": 6023.3011,
     "usdPaid": 154812.39,
     "usdAboveReference": 9530.36
@@ -1141,6 +1264,7 @@
    "above10pct": {
     "swaps": 1,
     "uniqueSenders": 1,
+    "unresolvedTxs": 0,
     "stockBought": 10.4339,
     "usdPaid": 279.15,
     "usdAboveReference": 27.49
@@ -1155,27 +1279,31 @@
    "above0pct": {
     "swaps": 3678,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 58792.1833,
     "usdPaid": 959282.09,
     "usdAboveReference": 33709.18
    },
    "above2pct": {
     "swaps": 3203,
-    "uniqueSenders": 699,
+    "uniqueSenders": 811,
+    "unresolvedTxs": 0,
     "stockBought": 54789.3762,
     "usdPaid": 895585.85,
     "usdAboveReference": 33201.09
    },
    "above5pct": {
     "swaps": 379,
-    "uniqueSenders": 132,
+    "uniqueSenders": 161,
+    "unresolvedTxs": 0,
     "stockBought": 5143.3777,
     "usdPaid": 88466.2,
     "usdAboveReference": 7509.43
    },
    "above10pct": {
     "swaps": 203,
-    "uniqueSenders": 72,
+    "uniqueSenders": 100,
+    "unresolvedTxs": 0,
     "stockBought": 1228.1106,
     "usdPaid": 22660.34,
     "usdAboveReference": 3329.88
@@ -1192,13 +1320,15 @@
    "above0pct": {
     "swaps": 17645,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 22707.7357,
     "usdPaid": 3255906.39,
     "usdAboveReference": 52603.59
    },
    "above2pct": {
     "swaps": 6557,
-    "uniqueSenders": 2394,
+    "uniqueSenders": 2584,
+    "unresolvedTxs": 0,
     "stockBought": 8533.1903,
     "usdPaid": 1232678.3,
     "usdAboveReference": 39663.16
@@ -1206,6 +1336,7 @@
    "above5pct": {
     "swaps": 313,
     "uniqueSenders": 173,
+    "unresolvedTxs": 0,
     "stockBought": 535.3859,
     "usdPaid": 70658.57,
     "usdAboveReference": 3448.3
@@ -1213,6 +1344,7 @@
    "above10pct": {
     "swaps": 1,
     "uniqueSenders": 1,
+    "unresolvedTxs": 0,
     "stockBought": 0.1802,
     "usdPaid": 24.71,
     "usdAboveReference": 2.37
@@ -1227,20 +1359,23 @@
    "above0pct": {
     "swaps": 781,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 534.0167,
     "usdPaid": 88825.91,
     "usdAboveReference": 3615.86
    },
    "above2pct": {
     "swaps": 624,
-    "uniqueSenders": 238,
+    "uniqueSenders": 253,
+    "unresolvedTxs": 0,
     "stockBought": 397.7836,
     "usdPaid": 66836.75,
     "usdAboveReference": 3402.2
    },
    "above5pct": {
     "swaps": 385,
-    "uniqueSenders": 141,
+    "uniqueSenders": 157,
+    "unresolvedTxs": 0,
     "stockBought": 250.7053,
     "usdPaid": 42496.03,
     "usdAboveReference": 2516.05
@@ -1248,6 +1383,7 @@
    "above10pct": {
     "swaps": 0,
     "uniqueSenders": 0,
+    "unresolvedTxs": 0,
     "stockBought": 0,
     "usdPaid": 0,
     "usdAboveReference": 0
@@ -1262,6 +1398,7 @@
    "above0pct": {
     "swaps": 444,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 3352.644,
     "usdPaid": 29408.04,
     "usdAboveReference": 2554.12
@@ -1269,6 +1406,7 @@
    "above2pct": {
     "swaps": 115,
     "uniqueSenders": 89,
+    "unresolvedTxs": 0,
     "stockBought": 439.2557,
     "usdPaid": 5899.77,
     "usdAboveReference": 2329.47
@@ -1276,6 +1414,7 @@
    "above5pct": {
     "swaps": 108,
     "uniqueSenders": 86,
+    "unresolvedTxs": 0,
     "stockBought": 371.0825,
     "usdPaid": 5342.17,
     "usdAboveReference": 2317.85
@@ -1283,6 +1422,7 @@
    "above10pct": {
     "swaps": 106,
     "uniqueSenders": 84,
+    "unresolvedTxs": 0,
     "stockBought": 368.3257,
     "usdPaid": 5318.18,
     "usdAboveReference": 2316.33
@@ -1297,6 +1437,7 @@
    "above0pct": {
     "swaps": 620,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 350.9295,
     "usdPaid": 52219.9,
     "usdAboveReference": 1886.72
@@ -1304,6 +1445,7 @@
    "above2pct": {
     "swaps": 200,
     "uniqueSenders": 147,
+    "unresolvedTxs": 0,
     "stockBought": 121.3967,
     "usdPaid": 18514.3,
     "usdAboveReference": 1575.81
@@ -1311,6 +1453,7 @@
    "above5pct": {
     "swaps": 163,
     "uniqueSenders": 118,
+    "unresolvedTxs": 0,
     "stockBought": 82.1617,
     "usdPaid": 12778.07,
     "usdAboveReference": 1440.58
@@ -1318,6 +1461,7 @@
    "above10pct": {
     "swaps": 119,
     "uniqueSenders": 86,
+    "unresolvedTxs": 0,
     "stockBought": 52.7845,
     "usdPaid": 8417.17,
     "usdAboveReference": 1133.43
@@ -1335,20 +1479,23 @@
    "above0pct": {
     "swaps": 4864,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 24237.4882,
     "usdPaid": 489582.93,
     "usdAboveReference": 8180.67
    },
    "above2pct": {
     "swaps": 1952,
-    "uniqueSenders": 408,
+    "uniqueSenders": 498,
+    "unresolvedTxs": 0,
     "stockBought": 8812.4884,
     "usdPaid": 175340.22,
     "usdAboveReference": 5174.79
    },
    "above5pct": {
     "swaps": 238,
-    "uniqueSenders": 60,
+    "uniqueSenders": 92,
+    "unresolvedTxs": 0,
     "stockBought": 743.5525,
     "usdPaid": 15124.55,
     "usdAboveReference": 1353.53
@@ -1356,6 +1503,7 @@
    "above10pct": {
     "swaps": 11,
     "uniqueSenders": 5,
+    "unresolvedTxs": 0,
     "stockBought": 214.8451,
     "usdPaid": 5008.41,
     "usdAboveReference": 685.4
@@ -1370,6 +1518,7 @@
    "above0pct": {
     "swaps": 291,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 5140.0806,
     "usdPaid": 45548.27,
     "usdAboveReference": 1700.52
@@ -1377,6 +1526,7 @@
    "above2pct": {
     "swaps": 193,
     "uniqueSenders": 137,
+    "unresolvedTxs": 0,
     "stockBought": 3265.2464,
     "usdPaid": 29386.99,
     "usdAboveReference": 1534.44
@@ -1384,6 +1534,7 @@
    "above5pct": {
     "swaps": 43,
     "uniqueSenders": 36,
+    "unresolvedTxs": 0,
     "stockBought": 979.9182,
     "usdPaid": 9323.91,
     "usdAboveReference": 965.21
@@ -1391,6 +1542,7 @@
    "above10pct": {
     "swaps": 22,
     "uniqueSenders": 17,
+    "unresolvedTxs": 0,
     "stockBought": 570.7649,
     "usdPaid": 5578.54,
     "usdAboveReference": 709.91
@@ -1409,20 +1561,23 @@
    "above0pct": {
     "swaps": 3896,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 8672.696,
     "usdPaid": 397717.65,
     "usdAboveReference": 5422.72
    },
    "above2pct": {
     "swaps": 302,
-    "uniqueSenders": 159,
+    "uniqueSenders": 178,
+    "unresolvedTxs": 0,
     "stockBought": 559.8798,
     "usdPaid": 23258.34,
     "usdAboveReference": 1254.36
    },
    "above5pct": {
     "swaps": 154,
-    "uniqueSenders": 95,
+    "uniqueSenders": 97,
+    "unresolvedTxs": 0,
     "stockBought": 237.9698,
     "usdPaid": 9547.2,
     "usdAboveReference": 907.04
@@ -1430,6 +1585,7 @@
    "above10pct": {
     "swaps": 70,
     "uniqueSenders": 54,
+    "unresolvedTxs": 0,
     "stockBought": 102.7825,
     "usdPaid": 4285.98,
     "usdAboveReference": 549.49
@@ -1445,13 +1601,15 @@
    "above0pct": {
     "swaps": 3696,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 341.8569,
     "usdPaid": 546986.64,
     "usdAboveReference": 12435.18
    },
    "above2pct": {
     "swaps": 2703,
-    "uniqueSenders": 1259,
+    "uniqueSenders": 1416,
+    "unresolvedTxs": 0,
     "stockBought": 178.7136,
     "usdPaid": 310422.43,
     "usdAboveReference": 9831.18
@@ -1459,6 +1617,7 @@
    "above5pct": {
     "swaps": 75,
     "uniqueSenders": 53,
+    "unresolvedTxs": 0,
     "stockBought": 2.2956,
     "usdPaid": 3962.65,
     "usdAboveReference": 852.25
@@ -1466,6 +1625,7 @@
    "above10pct": {
     "swaps": 27,
     "uniqueSenders": 22,
+    "unresolvedTxs": 0,
     "stockBought": 0.9391,
     "usdPaid": 1980.92,
     "usdAboveReference": 708.59
@@ -1480,27 +1640,31 @@
    "above0pct": {
     "swaps": 429,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 159.4277,
     "usdPaid": 59268.17,
     "usdAboveReference": 2209.03
    },
    "above2pct": {
     "swaps": 352,
-    "uniqueSenders": 156,
+    "uniqueSenders": 186,
+    "unresolvedTxs": 0,
     "stockBought": 130.8996,
     "usdPaid": 48872.15,
     "usdAboveReference": 2023.18
    },
    "above5pct": {
     "swaps": 131,
-    "uniqueSenders": 68,
+    "uniqueSenders": 87,
+    "unresolvedTxs": 0,
     "stockBought": 26.4027,
     "usdPaid": 10168.14,
     "usdAboveReference": 718.6
    },
    "above10pct": {
     "swaps": 16,
-    "uniqueSenders": 7,
+    "uniqueSenders": 15,
+    "unresolvedTxs": 0,
     "stockBought": 3.7582,
     "usdPaid": 1501.43,
     "usdAboveReference": 156.38
@@ -1515,6 +1679,7 @@
    "above0pct": {
     "swaps": 3295,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 475.0589,
     "usdPaid": 198466.55,
     "usdAboveReference": 4880.28
@@ -1522,6 +1687,7 @@
    "above2pct": {
     "swaps": 2625,
     "uniqueSenders": 400,
+    "unresolvedTxs": 0,
     "stockBought": 284.1809,
     "usdPaid": 120583.17,
     "usdAboveReference": 4376.48
@@ -1529,6 +1695,7 @@
    "above5pct": {
     "swaps": 41,
     "uniqueSenders": 35,
+    "unresolvedTxs": 0,
     "stockBought": 17.7372,
     "usdPaid": 7789.96,
     "usdAboveReference": 537.38
@@ -1536,6 +1703,7 @@
    "above10pct": {
     "swaps": 0,
     "uniqueSenders": 0,
+    "unresolvedTxs": 0,
     "stockBought": 0,
     "usdPaid": 0,
     "usdAboveReference": 0
@@ -1552,13 +1720,15 @@
    "above0pct": {
     "swaps": 23799,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 16842.5916,
     "usdPaid": 3686738.66,
     "usdAboveReference": 24974.65
    },
    "above2pct": {
     "swaps": 247,
-    "uniqueSenders": 74,
+    "uniqueSenders": 76,
+    "unresolvedTxs": 0,
     "stockBought": 658.1633,
     "usdPaid": 145918.55,
     "usdAboveReference": 3932.34
@@ -1566,6 +1736,7 @@
    "above5pct": {
     "swaps": 4,
     "uniqueSenders": 4,
+    "unresolvedTxs": 0,
     "stockBought": 4.7031,
     "usdPaid": 1539.63,
     "usdAboveReference": 509.56
@@ -1573,6 +1744,7 @@
    "above10pct": {
     "swaps": 2,
     "uniqueSenders": 2,
+    "unresolvedTxs": 0,
     "stockBought": 4.296,
     "usdPaid": 1441.42,
     "usdAboveReference": 503.65
@@ -1587,20 +1759,23 @@
    "above0pct": {
     "swaps": 3685,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 1884.1195,
     "usdPaid": 555783.33,
     "usdAboveReference": 9544.59
    },
    "above2pct": {
     "swaps": 1001,
-    "uniqueSenders": 420,
+    "uniqueSenders": 514,
+    "unresolvedTxs": 0,
     "stockBought": 613.0859,
     "usdPaid": 180067.74,
     "usdAboveReference": 4535.5
    },
    "above5pct": {
     "swaps": 46,
-    "uniqueSenders": 32,
+    "uniqueSenders": 33,
+    "unresolvedTxs": 0,
     "stockBought": 27.759,
     "usdPaid": 8185.45,
     "usdAboveReference": 442.91
@@ -1608,6 +1783,7 @@
    "above10pct": {
     "swaps": 0,
     "uniqueSenders": 0,
+    "unresolvedTxs": 0,
     "stockBought": 0,
     "usdPaid": 0,
     "usdAboveReference": 0
@@ -1622,13 +1798,15 @@
    "above0pct": {
     "swaps": 11141,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 2040.6212,
     "usdPaid": 1007253.79,
     "usdAboveReference": 16277.69
    },
    "above2pct": {
     "swaps": 3851,
-    "uniqueSenders": 1620,
+    "uniqueSenders": 1731,
+    "unresolvedTxs": 0,
     "stockBought": 797.9104,
     "usdPaid": 390956.66,
     "usdAboveReference": 9278.67
@@ -1636,6 +1814,7 @@
    "above5pct": {
     "swaps": 4,
     "uniqueSenders": 3,
+    "unresolvedTxs": 0,
     "stockBought": 13.999,
     "usdPaid": 7036.45,
     "usdAboveReference": 370.83
@@ -1643,6 +1822,7 @@
    "above10pct": {
     "swaps": 0,
     "uniqueSenders": 0,
+    "unresolvedTxs": 0,
     "stockBought": 0,
     "usdPaid": 0,
     "usdAboveReference": 0
@@ -1657,13 +1837,15 @@
    "above0pct": {
     "swaps": 253,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 140.42,
     "usdPaid": 21849.75,
     "usdAboveReference": 379.7
    },
    "above2pct": {
     "swaps": 61,
-    "uniqueSenders": 39,
+    "uniqueSenders": 40,
+    "unresolvedTxs": 0,
     "stockBought": 34.9306,
     "usdPaid": 5564.22,
     "usdAboveReference": 233.02
@@ -1671,6 +1853,7 @@
    "above5pct": {
     "swaps": 19,
     "uniqueSenders": 13,
+    "unresolvedTxs": 0,
     "stockBought": 9.526,
     "usdPaid": 1566.01,
     "usdAboveReference": 129.01
@@ -1678,6 +1861,7 @@
    "above10pct": {
     "swaps": 3,
     "uniqueSenders": 3,
+    "unresolvedTxs": 0,
     "stockBought": 2.3328,
     "usdPaid": 396.93,
     "usdAboveReference": 45.03
@@ -1692,20 +1876,23 @@
    "above0pct": {
     "swaps": 24408,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 5128974.0099,
     "usdPaid": 13581534.1,
     "usdAboveReference": 145468.35
    },
    "above2pct": {
     "swaps": 188,
-    "uniqueSenders": 140,
+    "uniqueSenders": 143,
+    "unresolvedTxs": 0,
     "stockBought": 160495.2839,
     "usdPaid": 436039.75,
     "usdAboveReference": 10697.28
    },
    "above5pct": {
     "swaps": 2,
-    "uniqueSenders": 1,
+    "uniqueSenders": 2,
+    "unresolvedTxs": 0,
     "stockBought": 765.04,
     "usdPaid": 2133.69,
     "usdAboveReference": 106.34
@@ -1713,6 +1900,7 @@
    "above10pct": {
     "swaps": 0,
     "uniqueSenders": 0,
+    "unresolvedTxs": 0,
     "stockBought": 0,
     "usdPaid": 0,
     "usdAboveReference": 0
@@ -1727,13 +1915,15 @@
    "above0pct": {
     "swaps": 167,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 119.1852,
     "usdPaid": 10566.27,
     "usdAboveReference": 273.33
    },
    "above2pct": {
     "swaps": 49,
-    "uniqueSenders": 35,
+    "uniqueSenders": 36,
+    "unresolvedTxs": 0,
     "stockBought": 72.451,
     "usdPaid": 6498.6,
     "usdAboveReference": 226.38
@@ -1741,6 +1931,7 @@
    "above5pct": {
     "swaps": 5,
     "uniqueSenders": 5,
+    "unresolvedTxs": 0,
     "stockBought": 8.5781,
     "usdPaid": 780.7,
     "usdAboveReference": 58.16
@@ -1748,6 +1939,7 @@
    "above10pct": {
     "swaps": 1,
     "uniqueSenders": 1,
+    "unresolvedTxs": 0,
     "stockBought": 2.6209,
     "usdPaid": 242.84,
     "usdAboveReference": 22.08
@@ -1763,6 +1955,7 @@
    "above0pct": {
     "swaps": 457,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 114.4856,
     "usdPaid": 61581.13,
     "usdAboveReference": 607.53
@@ -1770,6 +1963,7 @@
    "above2pct": {
     "swaps": 34,
     "uniqueSenders": 30,
+    "unresolvedTxs": 0,
     "stockBought": 8.6796,
     "usdPaid": 4527.95,
     "usdAboveReference": 200.23
@@ -1777,6 +1971,7 @@
    "above5pct": {
     "swaps": 15,
     "uniqueSenders": 13,
+    "unresolvedTxs": 0,
     "stockBought": 1.7916,
     "usdPaid": 875.37,
     "usdAboveReference": 58.15
@@ -1784,6 +1979,7 @@
    "above10pct": {
     "swaps": 1,
     "uniqueSenders": 1,
+    "unresolvedTxs": 0,
     "stockBought": 0.0323,
     "usdPaid": 16.25,
     "usdAboveReference": 1.49
@@ -1798,20 +1994,23 @@
    "above0pct": {
     "swaps": 13,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 199.1607,
     "usdPaid": 923.88,
     "usdAboveReference": 58.38
    },
    "above2pct": {
     "swaps": 11,
-    "uniqueSenders": 10,
+    "uniqueSenders": 11,
+    "unresolvedTxs": 0,
     "stockBought": 167.0378,
     "usdPaid": 768.28,
     "usdAboveReference": 57.53
    },
    "above5pct": {
     "swaps": 10,
-    "uniqueSenders": 9,
+    "uniqueSenders": 10,
+    "unresolvedTxs": 0,
     "stockBought": 161.2479,
     "usdPaid": 742.8,
     "usdAboveReference": 56.69
@@ -1819,6 +2018,7 @@
    "above10pct": {
     "swaps": 0,
     "uniqueSenders": 0,
+    "unresolvedTxs": 0,
     "stockBought": 0,
     "usdPaid": 0,
     "usdAboveReference": 0
@@ -1834,13 +2034,15 @@
    "above0pct": {
     "swaps": 333,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 423.5771,
     "usdPaid": 22603.15,
     "usdAboveReference": 317.99
    },
    "above2pct": {
     "swaps": 53,
-    "uniqueSenders": 38,
+    "uniqueSenders": 39,
+    "unresolvedTxs": 0,
     "stockBought": 69.6801,
     "usdPaid": 3808.53,
     "usdAboveReference": 130.19
@@ -1848,6 +2050,7 @@
    "above5pct": {
     "swaps": 3,
     "uniqueSenders": 3,
+    "unresolvedTxs": 0,
     "stockBought": 2.058,
     "usdPaid": 165,
     "usdAboveReference": 44.99
@@ -1855,6 +2058,7 @@
    "above10pct": {
     "swaps": 2,
     "uniqueSenders": 2,
+    "unresolvedTxs": 0,
     "stockBought": 1.8282,
     "usdPaid": 150,
     "usdAboveReference": 43.74
@@ -1869,6 +2073,7 @@
    "above0pct": {
     "swaps": 19758,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 6429.7417,
     "usdPaid": 4196031.65,
     "usdAboveReference": 26619.4
@@ -1876,6 +2081,7 @@
    "above2pct": {
     "swaps": 18,
     "uniqueSenders": 8,
+    "unresolvedTxs": 0,
     "stockBought": 5.7495,
     "usdPaid": 3438.8,
     "usdAboveReference": 115.48
@@ -1883,6 +2089,7 @@
    "above5pct": {
     "swaps": 2,
     "uniqueSenders": 2,
+    "unresolvedTxs": 0,
     "stockBought": 1.0657,
     "usdPaid": 659.17,
     "usdAboveReference": 43.2
@@ -1890,6 +2097,7 @@
    "above10pct": {
     "swaps": 0,
     "uniqueSenders": 0,
+    "unresolvedTxs": 0,
     "stockBought": 0,
     "usdPaid": 0,
     "usdAboveReference": 0
@@ -1904,13 +2112,15 @@
    "above0pct": {
     "swaps": 144,
     "uniqueSenders": null,
+    "unresolvedTxs": null,
     "stockBought": 2427.2829,
     "usdPaid": 16437.98,
     "usdAboveReference": 248.71
    },
    "above2pct": {
     "swaps": 42,
-    "uniqueSenders": 30,
+    "uniqueSenders": 35,
+    "unresolvedTxs": 0,
     "stockBought": 706.3658,
     "usdPaid": 4787.18,
     "usdAboveReference": 122.5
@@ -1918,6 +2128,7 @@
    "above5pct": {
     "swaps": 7,
     "uniqueSenders": 6,
+    "unresolvedTxs": 0,
     "stockBought": 75.9036,
     "usdPaid": 503.13,
     "usdAboveReference": 27.97
@@ -1925,6 +2136,7 @@
    "above10pct": {
     "swaps": 0,
     "uniqueSenders": 0,
+    "unresolvedTxs": 0,
     "stockBought": 0,
     "usdPaid": 0,
     "usdAboveReference": 0

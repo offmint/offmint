@@ -16,6 +16,7 @@ export interface WeekendToken {
   wallets: number;
   detail2pct: { buysValueUsd: number; paidAboveReferenceUsd: number; buys: number; wallets: number };
   recovery: { hours: number | null; postReference: number | null; postRefDate: string | null } | null;
+  paper: { status: string; p0Usd: number | null; maxPremiumPct: number | null; vsHodlPctExFees: number | null; state: string | null } | null;
   vault: { label: string | null; replayedWeekend?: string; note?: string; bySize?: Record<string, { excessPct: number | null; excessPctExLpFees: number | null; state: string | null }> };
 }
 export interface WeekendWindow {
@@ -34,6 +35,7 @@ export interface WeekendWindow {
   wallets: number;
   buysAbove: number;
   detail2pct: { buysValueUsd: number; paidAboveReferenceUsd: number; wallets: number; buys: number };
+  paper: { label: string; tokens: number; settled: number; complete: boolean; filled: number } | null;
   tokens: WeekendToken[];
 }
 

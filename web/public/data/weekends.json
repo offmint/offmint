@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-26T07:13:42.140Z",
+ "generatedAt": "2026-09-26T09:04:59.604Z",
  "label": "observed onchain (Robinhood Chain mainnet); vault column simulated",
  "headlineThresholdPct": 5,
  "method": [
@@ -29,7 +29,7 @@
   "buysAbove": 121905,
   "buysValueUsd": 17594087.64,
   "paidAboveReferenceUsd": 3615153.92,
-  "wallets": 21419
+  "wallets": 23291
  },
  "windows": [
   {
@@ -39,7 +39,14 @@
    "hours": 48,
    "reason": "weekend",
    "refDate": "2026-09-18",
-   "source": "observed onchain",
+   "source": "observed onchain + paper mode (live observation)",
+   "paper": {
+    "label": "live observation (paper mode: real swaps, hypothetical position, single band +10% to +60%)",
+    "tokens": 77,
+    "settled": 66,
+    "complete": false,
+    "filled": 0
+   },
    "sample": {
     "tickersWithTrackingPool": 90,
     "activeTickers": 68,
@@ -52,12 +59,12 @@
    },
    "buysValueUsd": 207804.91,
    "paidAboveReferenceUsd": 17532.35,
-   "wallets": 459,
+   "wallets": 620,
    "buysAbove": 1289,
    "detail2pct": {
     "buysValueUsd": 939346.09,
     "paidAboveReferenceUsd": 38477.54,
-    "wallets": 1367,
+    "wallets": 1591,
     "buys": 3700
    },
    "tokens": [
@@ -72,12 +79,12 @@
      "buysValueUsd": 197067.87,
      "paidAboveReferenceUsd": 16421.82,
      "buysAbove": 1243,
-     "wallets": 431,
+     "wallets": 591,
      "detail2pct": {
       "buysValueUsd": 302367.92,
       "paidAboveReferenceUsd": 20031.02,
       "buys": 1933,
-      "wallets": 641
+      "wallets": 812
      },
      "recovery": {
       "hours": 0,
@@ -87,6 +94,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "LMT",
+      "status": "settled",
+      "p0Usd": 531.42383399,
+      "maxPremiumPct": 30.52,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -100,17 +115,25 @@
      "buysValueUsd": 74.58,
      "paidAboveReferenceUsd": 5.74,
      "buysAbove": 2,
-     "wallets": 0,
+     "wallets": 2,
      "detail2pct": {
       "buysValueUsd": 74.58,
       "paidAboveReferenceUsd": 5.74,
       "buys": 2,
-      "wallets": 0
+      "wallets": 2
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "SMR",
+      "status": "settled",
+      "p0Usd": 8.84892199,
+      "maxPremiumPct": 0.49,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -129,13 +152,14 @@
       "buysValueUsd": 493810.77,
       "paidAboveReferenceUsd": 13908.24,
       "buys": 929,
-      "wallets": 488
+      "wallets": 498
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "INTC",
@@ -153,13 +177,14 @@
       "buysValueUsd": 34128.4,
       "paidAboveReferenceUsd": 908.12,
       "buys": 134,
-      "wallets": 59
+      "wallets": 75
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "ZM",
@@ -183,6 +208,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "ZM",
+      "status": "settled",
+      "p0Usd": 90.71019629,
+      "maxPremiumPct": 0,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -201,12 +234,20 @@
       "buysValueUsd": 21027.29,
       "paidAboveReferenceUsd": 480.63,
       "buys": 208,
-      "wallets": 107
+      "wallets": 119
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "NET",
+      "status": "settled",
+      "p0Usd": 321.88921662,
+      "maxPremiumPct": 2.5,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -231,7 +272,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "QCOM",
@@ -255,6 +297,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "QCOM",
+      "status": "settled",
+      "p0Usd": 179.81769139,
+      "maxPremiumPct": 1.09,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -279,7 +329,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "BABA",
@@ -303,7 +354,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SNOW",
@@ -327,6 +379,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "SNOW",
+      "status": "settled",
+      "p0Usd": 334.72038644,
+      "maxPremiumPct": 0.67,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -351,7 +411,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RUN",
@@ -375,6 +436,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "RUN",
+      "status": "settled",
+      "p0Usd": 8.50434846,
+      "maxPremiumPct": 21.21,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -393,12 +462,20 @@
       "buysValueUsd": 2593,
       "paidAboveReferenceUsd": 53.97,
       "buys": 6,
-      "wallets": 0
+      "wallets": 6
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "HIMS",
+      "status": "settled",
+      "p0Usd": 28.19029922,
+      "maxPremiumPct": 0.48,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -417,12 +494,20 @@
       "buysValueUsd": 3.9,
       "paidAboveReferenceUsd": 0.08,
       "buys": 4,
-      "wallets": 0
+      "wallets": 2
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "CEG",
+      "status": "settled",
+      "p0Usd": 257.34062709,
+      "maxPremiumPct": 0.04,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -447,7 +532,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "IBM",
@@ -471,6 +557,14 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "IBM",
+      "status": "settled",
+      "p0Usd": 229.63523209,
+      "maxPremiumPct": 1.5,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -495,7 +589,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RDDT",
@@ -519,6 +614,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "RDDT",
+      "status": "settled",
+      "p0Usd": 152.19610952,
+      "maxPremiumPct": 0.44,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -543,6 +646,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "MRNA",
+      "status": "settled",
+      "p0Usd": 153.65215279,
+      "maxPremiumPct": 1.13,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -567,7 +678,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RIVN",
@@ -591,6 +703,14 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "RIVN",
+      "status": "settled",
+      "p0Usd": 15.04423241,
+      "maxPremiumPct": 0.45,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -615,6 +735,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "RBLX",
+      "status": "settled",
+      "p0Usd": 47.69936524,
+      "maxPremiumPct": 2.2,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -639,6 +767,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "SHOP",
+      "status": "skipped",
+      "p0Usd": null,
+      "maxPremiumPct": null,
+      "vsHodlPctExFees": null,
+      "state": null
      }
     },
     {
@@ -663,7 +799,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "CRM",
@@ -687,6 +824,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "CRM",
+      "status": "settled",
+      "p0Usd": 239.46265983,
+      "maxPremiumPct": 0.06,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -705,12 +850,20 @@
       "buysValueUsd": 1653.14,
       "paidAboveReferenceUsd": 35.97,
       "buys": 1,
-      "wallets": 0
+      "wallets": 1
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "AMC",
+      "status": "settled",
+      "p0Usd": 2.69820373,
+      "maxPremiumPct": 0.85,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -735,6 +888,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "XOM",
+      "status": "settled",
+      "p0Usd": 163.11669362,
+      "maxPremiumPct": 1.09,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -759,7 +920,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SPCX",
@@ -783,7 +945,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "BA",
@@ -807,6 +970,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "BA",
+      "status": "settled",
+      "p0Usd": 199.43989177,
+      "maxPremiumPct": 0,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -831,7 +1002,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SNDK",
@@ -855,7 +1027,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SKHY",
@@ -879,6 +1052,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "SKHY",
+      "status": "settled",
+      "p0Usd": 188.63357653,
+      "maxPremiumPct": 0,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -903,6 +1084,14 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "RCAT",
+      "status": "settled",
+      "p0Usd": 6.78683782,
+      "maxPremiumPct": 0.9,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -927,6 +1116,14 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "GLXY",
+      "status": "settled",
+      "p0Usd": 24.70571919,
+      "maxPremiumPct": 0.24,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -951,7 +1148,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "EWY",
@@ -975,7 +1173,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SGOV",
@@ -999,7 +1198,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NU",
@@ -1023,6 +1223,14 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "NU",
+      "status": "settled",
+      "p0Usd": 13.70433942,
+      "maxPremiumPct": 0.01,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -1047,7 +1255,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "DDOG",
@@ -1071,6 +1280,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "DDOG",
+      "status": "settled",
+      "p0Usd": 230.85899656,
+      "maxPremiumPct": 0,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -1095,6 +1312,14 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "BB",
+      "status": "settled",
+      "p0Usd": 8.00329098,
+      "maxPremiumPct": 0.39,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -1119,6 +1344,14 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "FIG",
+      "status": "settled",
+      "p0Usd": 23.0262637,
+      "maxPremiumPct": 0,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -1143,6 +1376,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "COST",
+      "status": "settled",
+      "p0Usd": 896.99048352,
+      "maxPremiumPct": 0.48,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -1161,13 +1402,14 @@
       "buysValueUsd": 25836.63,
       "paidAboveReferenceUsd": 628.41,
       "buys": 148,
-      "wallets": 48
+      "wallets": 79
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MSFT",
@@ -1191,7 +1433,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "BULL",
@@ -1215,6 +1458,14 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "BULL",
+      "status": "settled",
+      "p0Usd": 8.26820906,
+      "maxPremiumPct": 0,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -1239,6 +1490,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "INDA",
+      "status": "skipped",
+      "p0Usd": null,
+      "maxPremiumPct": null,
+      "vsHodlPctExFees": null,
+      "state": null
      }
     },
     {
@@ -1257,12 +1516,20 @@
       "buysValueUsd": 406.33,
       "paidAboveReferenceUsd": 14.2,
       "buys": 2,
-      "wallets": 0
+      "wallets": 2
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "NVDA",
+      "status": "settled",
+      "p0Usd": 222.44729849,
+      "maxPremiumPct": 0.15,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -1287,6 +1554,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "UPS",
+      "status": "settled",
+      "p0Usd": 99.18551527,
+      "maxPremiumPct": 0.07,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -1311,6 +1586,14 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "SPY",
+      "status": "skipped",
+      "p0Usd": null,
+      "maxPremiumPct": null,
+      "vsHodlPctExFees": null,
+      "state": null
      }
     },
     {
@@ -1335,7 +1618,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "LLY",
@@ -1359,6 +1643,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "LLY",
+      "status": "settled",
+      "p0Usd": 1152.06525806,
+      "maxPremiumPct": 0.29,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -1383,6 +1675,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "SOXX",
+      "status": "settled",
+      "p0Usd": 528.47184241,
+      "maxPremiumPct": 0.81,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -1407,7 +1707,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GLD",
@@ -1431,6 +1732,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "GLD",
+      "status": "skipped",
+      "p0Usd": null,
+      "maxPremiumPct": null,
+      "vsHodlPctExFees": null,
+      "state": null
      }
     },
     {
@@ -1455,7 +1764,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "ORCL",
@@ -1479,7 +1789,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GME",
@@ -1503,7 +1814,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "LULU",
@@ -1527,6 +1839,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "LULU",
+      "status": "settled",
+      "p0Usd": 97.9740161,
+      "maxPremiumPct": 0.16,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -1551,6 +1871,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "SNAP",
+      "status": "settled",
+      "p0Usd": 5.52767139,
+      "maxPremiumPct": 0.67,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -1575,7 +1903,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "PFE",
@@ -1599,6 +1928,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "PFE",
+      "status": "skipped",
+      "p0Usd": null,
+      "maxPremiumPct": null,
+      "vsHodlPctExFees": null,
+      "state": null
      }
     },
     {
@@ -1623,7 +1960,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "TSM",
@@ -1647,7 +1985,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SOUN",
@@ -1671,6 +2010,14 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "SOUN",
+      "status": "settled",
+      "p0Usd": 6.06365364,
+      "maxPremiumPct": 0,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
      }
     },
     {
@@ -1695,7 +2042,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RKLB",
@@ -1719,7 +2067,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NBIS",
@@ -1743,7 +2092,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     }
    ]
   },
@@ -1755,6 +2105,7 @@
    "reason": "weekend",
    "refDate": "2026-09-11",
    "source": "observed onchain",
+   "paper": null,
    "sample": {
     "tickersWithTrackingPool": 90,
     "activeTickers": 79,
@@ -1767,12 +2118,12 @@
    },
    "buysValueUsd": 2125457.26,
    "paidAboveReferenceUsd": 583399.39,
-   "wallets": 2868,
+   "wallets": 3274,
    "buysAbove": 13590,
    "detail2pct": {
     "buysValueUsd": 2996147.69,
     "paidAboveReferenceUsd": 608256.63,
-    "wallets": 4649,
+    "wallets": 5228,
     "buys": 20152
    },
    "tokens": [
@@ -1787,12 +2138,12 @@
      "buysValueUsd": 1741772.07,
      "paidAboveReferenceUsd": 552772.22,
      "buysAbove": 10773,
-     "wallets": 2341,
+     "wallets": 2689,
      "detail2pct": {
       "buysValueUsd": 1799468.95,
       "paidAboveReferenceUsd": 554830.18,
       "buys": 10922,
-      "wallets": 2371
+      "wallets": 2721
      },
      "recovery": {
       "hours": 0.1,
@@ -1814,7 +2165,8 @@
         "state": "OPEN"
        }
       }
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RKLB",
@@ -1827,12 +2179,12 @@
      "buysValueUsd": 66754.82,
      "paidAboveReferenceUsd": 11098.92,
      "buysAbove": 1008,
-     "wallets": 198,
+     "wallets": 199,
      "detail2pct": {
       "buysValueUsd": 79816.48,
       "paidAboveReferenceUsd": 11521.75,
       "buys": 1093,
-      "wallets": 251
+      "wallets": 258
      },
      "recovery": {
       "hours": 0,
@@ -1854,7 +2206,8 @@
         "state": "OPEN"
        }
       }
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NU",
@@ -1867,12 +2220,12 @@
      "buysValueUsd": 313923.14,
      "paidAboveReferenceUsd": 18864.59,
      "buysAbove": 1795,
-     "wallets": 502,
+     "wallets": 591,
      "detail2pct": {
       "buysValueUsd": 689645.7,
       "paidAboveReferenceUsd": 31620.4,
       "buys": 3864,
-      "wallets": 1273
+      "wallets": 1401
      },
      "recovery": null,
      "vault": {
@@ -1890,7 +2243,8 @@
         "state": "OPEN"
        }
       }
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "CBRS",
@@ -1914,7 +2268,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SOUN",
@@ -1938,7 +2293,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SMR",
@@ -1962,7 +2318,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "WULF",
@@ -1980,13 +2337,14 @@
       "buysValueUsd": 240.02,
       "paidAboveReferenceUsd": 5.94,
       "buys": 1,
-      "wallets": 0
+      "wallets": 1
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "F",
@@ -2010,7 +2368,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "USO",
@@ -2034,7 +2393,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RBLX",
@@ -2052,13 +2412,14 @@
       "buysValueUsd": 7591.66,
       "paidAboveReferenceUsd": 157.67,
       "buys": 73,
-      "wallets": 18
+      "wallets": 41
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "LULU",
@@ -2076,13 +2437,14 @@
       "buysValueUsd": 58997.78,
       "paidAboveReferenceUsd": 1249.74,
       "buys": 940,
-      "wallets": 277
+      "wallets": 354
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "TTWO",
@@ -2106,7 +2468,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "BB",
@@ -2130,7 +2493,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "CRCL",
@@ -2154,7 +2518,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "LMT",
@@ -2172,13 +2537,14 @@
       "buysValueUsd": 102082.55,
       "paidAboveReferenceUsd": 2273.95,
       "buys": 1362,
-      "wallets": 325
+      "wallets": 387
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NET",
@@ -2196,13 +2562,14 @@
       "buysValueUsd": 19204.49,
       "paidAboveReferenceUsd": 404.27,
       "buys": 171,
-      "wallets": 94
+      "wallets": 132
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "PFE",
@@ -2220,13 +2587,14 @@
       "buysValueUsd": 368.28,
       "paidAboveReferenceUsd": 8.46,
       "buys": 5,
-      "wallets": 2
+      "wallets": 5
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "BULL",
@@ -2244,13 +2612,14 @@
       "buysValueUsd": 129458.89,
       "paidAboveReferenceUsd": 3095.73,
       "buys": 1109,
-      "wallets": 313
+      "wallets": 324
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MRNA",
@@ -2274,7 +2643,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "QUBT",
@@ -2298,7 +2668,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NBIS",
@@ -2322,7 +2693,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "IREN",
@@ -2346,7 +2718,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SHOP",
@@ -2370,7 +2743,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMC",
@@ -2394,7 +2768,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NNE",
@@ -2418,7 +2793,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "CEG",
@@ -2442,7 +2818,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SNAP",
@@ -2466,7 +2843,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "TSLA",
@@ -2490,7 +2868,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SKHY",
@@ -2508,13 +2887,14 @@
       "buysValueUsd": 2304.92,
       "paidAboveReferenceUsd": 45.92,
       "buys": 18,
-      "wallets": 15
+      "wallets": 18
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GOOGL",
@@ -2538,7 +2918,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SNDK",
@@ -2562,7 +2943,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SLV",
@@ -2580,7 +2962,7 @@
       "buysValueUsd": 165.46,
       "paidAboveReferenceUsd": 44.05,
       "buys": 3,
-      "wallets": 2
+      "wallets": 3
      },
      "recovery": null,
      "vault": {
@@ -2598,7 +2980,8 @@
         "state": "OPEN"
        }
       }
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "EWY",
@@ -2634,7 +3017,8 @@
         "state": "OPEN"
        }
       }
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "CRWV",
@@ -2652,13 +3036,14 @@
       "buysValueUsd": 947.77,
       "paidAboveReferenceUsd": 25.38,
       "buys": 1,
-      "wallets": 0
+      "wallets": 1
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "DDOG",
@@ -2682,7 +3067,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NVDA",
@@ -2706,7 +3092,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "QCOM",
@@ -2730,7 +3117,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RDDT",
@@ -2754,7 +3142,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "PLTR",
@@ -2778,7 +3167,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "LLY",
@@ -2802,7 +3192,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SGOV",
@@ -2826,7 +3217,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "COIN",
@@ -2850,7 +3242,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "ORCL",
@@ -2874,7 +3267,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "BABA",
@@ -2898,7 +3292,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "IBM",
@@ -2922,7 +3317,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "QQQ",
@@ -2946,7 +3342,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "ADBE",
@@ -2970,7 +3367,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AAPL",
@@ -2994,7 +3392,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "DJT",
@@ -3007,18 +3406,19 @@
      "buysValueUsd": 882.84,
      "paidAboveReferenceUsd": 86.06,
      "buysAbove": 1,
-     "wallets": 0,
+     "wallets": 1,
      "detail2pct": {
       "buysValueUsd": 1300.03,
       "paidAboveReferenceUsd": 98.77,
       "buys": 4,
-      "wallets": 1
+      "wallets": 3
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GLD",
@@ -3042,7 +3442,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MSTR",
@@ -3066,7 +3467,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "TSM",
@@ -3090,7 +3492,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "META",
@@ -3114,7 +3517,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMD",
@@ -3138,7 +3542,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MU",
@@ -3162,7 +3567,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMZN",
@@ -3186,7 +3592,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MSFT",
@@ -3210,7 +3617,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GME",
@@ -3234,7 +3642,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AVGO",
@@ -3258,7 +3667,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "COST",
@@ -3282,7 +3692,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RCAT",
@@ -3306,7 +3717,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SNOW",
@@ -3330,7 +3742,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "UNH",
@@ -3354,7 +3767,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SPY",
@@ -3378,7 +3792,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "INTC",
@@ -3402,7 +3817,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RIVN",
@@ -3426,7 +3842,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "HIMS",
@@ -3450,7 +3867,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "XOM",
@@ -3474,7 +3892,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "BA",
@@ -3498,7 +3917,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "UPS",
@@ -3522,7 +3942,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RUN",
@@ -3546,7 +3967,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "DELL",
@@ -3570,7 +3992,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NFLX",
@@ -3594,7 +4017,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "APLD",
@@ -3618,7 +4042,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "ZM",
@@ -3642,7 +4067,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "INDA",
@@ -3666,7 +4092,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "FIG",
@@ -3690,7 +4117,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "PENG",
@@ -3714,7 +4142,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SOXX",
@@ -3738,7 +4167,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SPCX",
@@ -3762,7 +4192,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "WYFI",
@@ -3786,7 +4217,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "P",
@@ -3810,7 +4242,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     }
    ]
   },
@@ -3822,6 +4255,7 @@
    "reason": "weekend + Labor Day",
    "refDate": "2026-09-04",
    "source": "observed onchain",
+   "paper": null,
    "sample": {
     "tickersWithTrackingPool": 99,
     "activeTickers": 86,
@@ -3834,12 +4268,12 @@
    },
    "buysValueUsd": 4475993.13,
    "paidAboveReferenceUsd": 420119.14,
-   "wallets": 8115,
+   "wallets": 8975,
    "buysAbove": 28736,
    "detail2pct": {
     "buysValueUsd": 14362840.27,
     "paidAboveReferenceUsd": 703966.9,
-    "wallets": 19863,
+    "wallets": 21822,
     "buys": 84267
    },
    "tokens": [
@@ -3854,12 +4288,12 @@
      "buysValueUsd": 363270.92,
      "paidAboveReferenceUsd": 51168.17,
      "buysAbove": 3520,
-     "wallets": 1300,
+     "wallets": 1495,
      "detail2pct": {
       "buysValueUsd": 447427.59,
       "paidAboveReferenceUsd": 54237.33,
       "buys": 4106,
-      "wallets": 1600
+      "wallets": 1815
      },
      "recovery": {
       "hours": 0,
@@ -3869,7 +4303,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RCAT",
@@ -3882,12 +4317,12 @@
      "buysValueUsd": 607137.66,
      "paidAboveReferenceUsd": 87500.96,
      "buysAbove": 3043,
-     "wallets": 670,
+     "wallets": 777,
      "detail2pct": {
       "buysValueUsd": 815965.36,
       "paidAboveReferenceUsd": 94034.34,
       "buys": 4312,
-      "wallets": 941
+      "wallets": 1109
      },
      "recovery": {
       "hours": 0.1,
@@ -3897,7 +4332,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "PENG",
@@ -3910,12 +4346,12 @@
      "buysValueUsd": 99371.13,
      "paidAboveReferenceUsd": 11631.71,
      "buysAbove": 781,
-     "wallets": 173,
+     "wallets": 215,
      "detail2pct": {
       "buysValueUsd": 131286.85,
       "paidAboveReferenceUsd": 12576.07,
       "buys": 965,
-      "wallets": 195
+      "wallets": 242
      },
      "recovery": {
       "hours": 0,
@@ -3925,7 +4361,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RIVN",
@@ -3938,12 +4375,12 @@
      "buysValueUsd": 88466.2,
      "paidAboveReferenceUsd": 7509.43,
      "buysAbove": 379,
-     "wallets": 132,
+     "wallets": 161,
      "detail2pct": {
       "buysValueUsd": 895585.85,
       "paidAboveReferenceUsd": 33201.09,
       "buys": 3203,
-      "wallets": 699
+      "wallets": 811
      },
      "recovery": {
       "hours": 0,
@@ -3953,7 +4390,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SHOP",
@@ -3966,12 +4404,12 @@
      "buysValueUsd": 557141.32,
      "paidAboveReferenceUsd": 45686.53,
      "buysAbove": 3250,
-     "wallets": 1207,
+     "wallets": 1267,
      "detail2pct": {
       "buysValueUsd": 923890.52,
       "paidAboveReferenceUsd": 58119.04,
       "buys": 5401,
-      "wallets": 2165
+      "wallets": 2385
      },
      "recovery": {
       "hours": 9.9,
@@ -3981,7 +4419,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "CLOV",
@@ -3994,12 +4433,12 @@
      "buysValueUsd": 742.8,
      "paidAboveReferenceUsd": 56.69,
      "buysAbove": 10,
-     "wallets": 9,
+     "wallets": 10,
      "detail2pct": {
       "buysValueUsd": 768.28,
       "paidAboveReferenceUsd": 57.53,
       "buys": 11,
-      "wallets": 10
+      "wallets": 11
      },
      "recovery": {
       "hours": 0,
@@ -4009,7 +4448,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SNOW",
@@ -4022,12 +4462,12 @@
      "buysValueUsd": 1318560.79,
      "paidAboveReferenceUsd": 119557.57,
      "buysAbove": 7495,
-     "wallets": 2582,
+     "wallets": 2761,
      "detail2pct": {
       "buysValueUsd": 1698317.42,
       "paidAboveReferenceUsd": 133335.93,
       "buys": 9898,
-      "wallets": 3291
+      "wallets": 3525
      },
      "recovery": {
       "hours": 0,
@@ -4037,7 +4477,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AVGO",
@@ -4050,18 +4491,19 @@
      "buysValueUsd": 10168.14,
      "paidAboveReferenceUsd": 718.6,
      "buysAbove": 131,
-     "wallets": 68,
+     "wallets": 87,
      "detail2pct": {
       "buysValueUsd": 48872.15,
       "paidAboveReferenceUsd": 2023.18,
       "buys": 352,
-      "wallets": 156
+      "wallets": 186
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "FLNC",
@@ -4085,7 +4527,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "BULL",
@@ -4098,12 +4541,12 @@
      "buysValueUsd": 729974.89,
      "paidAboveReferenceUsd": 50222.51,
      "buysAbove": 5270,
-     "wallets": 1842,
+     "wallets": 2112,
      "detail2pct": {
       "buysValueUsd": 1134416.09,
       "paidAboveReferenceUsd": 64333.43,
       "buys": 8601,
-      "wallets": 2711
+      "wallets": 3168
      },
      "recovery": null,
      "vault": {
@@ -4121,7 +4564,8 @@
         "state": "OPEN"
        }
       }
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "FIG",
@@ -4134,18 +4578,19 @@
      "buysValueUsd": 154812.39,
      "paidAboveReferenceUsd": 9530.36,
      "buysAbove": 1409,
-     "wallets": 425,
+     "wallets": 452,
      "detail2pct": {
       "buysValueUsd": 427519.64,
       "paidAboveReferenceUsd": 17348.96,
       "buys": 3081,
-      "wallets": 788
+      "wallets": 825
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "IBM",
@@ -4158,18 +4603,19 @@
      "buysValueUsd": 183725.98,
      "paidAboveReferenceUsd": 12176.41,
      "buysAbove": 1226,
-     "wallets": 590,
+     "wallets": 647,
      "detail2pct": {
       "buysValueUsd": 1599463.01,
       "paidAboveReferenceUsd": 47305.13,
       "buys": 12636,
-      "wallets": 4729
+      "wallets": 5244
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SOFI",
@@ -4182,18 +4628,19 @@
      "buysValueUsd": 78.48,
      "paidAboveReferenceUsd": 4.17,
      "buysAbove": 3,
-     "wallets": 1,
+     "wallets": 3,
      "detail2pct": {
       "buysValueUsd": 467.64,
       "paidAboveReferenceUsd": 17.3,
       "buys": 12,
-      "wallets": 9
+      "wallets": 12
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "PFE",
@@ -4206,18 +4653,19 @@
      "buysValueUsd": 182972.39,
      "paidAboveReferenceUsd": 14620.76,
      "buysAbove": 1183,
-     "wallets": 662,
+     "wallets": 800,
      "detail2pct": {
       "buysValueUsd": 261213.58,
       "paidAboveReferenceUsd": 17390.26,
       "buys": 1909,
-      "wallets": 1007
+      "wallets": 1227
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "ALAB",
@@ -4235,13 +4683,14 @@
       "buysValueUsd": 167.98,
       "paidAboveReferenceUsd": 8.67,
       "buys": 4,
-      "wallets": 3
+      "wallets": 4
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "XOM",
@@ -4254,18 +4703,19 @@
      "buysValueUsd": 42496.03,
      "paidAboveReferenceUsd": 2516.05,
      "buysAbove": 385,
-     "wallets": 141,
+     "wallets": 157,
      "detail2pct": {
       "buysValueUsd": 66836.75,
       "paidAboveReferenceUsd": 3402.2,
       "buys": 624,
-      "wallets": 238
+      "wallets": 253
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NET",
@@ -4278,18 +4728,19 @@
      "buysValueUsd": 8185.45,
      "paidAboveReferenceUsd": 442.91,
      "buysAbove": 46,
-     "wallets": 32,
+     "wallets": 33,
      "detail2pct": {
       "buysValueUsd": 139835.96,
       "paidAboveReferenceUsd": 3650.6,
       "buys": 622,
-      "wallets": 229
+      "wallets": 275
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GLXY",
@@ -4302,18 +4753,19 @@
      "buysValueUsd": 58619.79,
      "paidAboveReferenceUsd": 2868.85,
      "buysAbove": 249,
-     "wallets": 115,
+     "wallets": 129,
      "detail2pct": {
       "buysValueUsd": 406785.69,
       "paidAboveReferenceUsd": 17146.11,
       "buys": 1558,
-      "wallets": 366
+      "wallets": 422
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SMCI",
@@ -4331,13 +4783,14 @@
       "buysValueUsd": 1509,
       "paidAboveReferenceUsd": 61.81,
       "buys": 8,
-      "wallets": 5
+      "wallets": 8
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "HIMS",
@@ -4355,7 +4808,7 @@
       "buysValueUsd": 1291513.27,
       "paidAboveReferenceUsd": 40432.96,
       "buys": 4893,
-      "wallets": 1760
+      "wallets": 1905
      },
      "recovery": null,
      "vault": {
@@ -4373,7 +4826,8 @@
         "state": "OPEN"
        }
       }
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RKLB",
@@ -4386,12 +4840,12 @@
      "buysValueUsd": 55836.99,
      "paidAboveReferenceUsd": 3033.79,
      "buysAbove": 322,
-     "wallets": 159,
+     "wallets": 244,
      "detail2pct": {
       "buysValueUsd": 146244.06,
       "paidAboveReferenceUsd": 6210.16,
       "buys": 746,
-      "wallets": 389
+      "wallets": 481
      },
      "recovery": null,
      "vault": {
@@ -4409,7 +4863,8 @@
         "state": "OPEN"
        }
       }
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "CRCL",
@@ -4427,13 +4882,14 @@
       "buysValueUsd": 18277.99,
       "paidAboveReferenceUsd": 521.23,
       "buys": 189,
-      "wallets": 93
+      "wallets": 115
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "USO",
@@ -4446,18 +4902,19 @@
      "buysValueUsd": 294.08,
      "paidAboveReferenceUsd": 25.22,
      "buysAbove": 7,
-     "wallets": 1,
+     "wallets": 2,
      "detail2pct": {
       "buysValueUsd": 684.02,
       "paidAboveReferenceUsd": 37.48,
       "buys": 81,
-      "wallets": 2
+      "wallets": 3
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SNDK",
@@ -4475,13 +4932,14 @@
       "buysValueUsd": 270629.74,
       "paidAboveReferenceUsd": 8104.67,
       "buys": 2445,
-      "wallets": 1100
+      "wallets": 1257
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "ORCL",
@@ -4499,13 +4957,14 @@
       "buysValueUsd": 1419.32,
       "paidAboveReferenceUsd": 35.79,
       "buys": 13,
-      "wallets": 8
+      "wallets": 9
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SPCX",
@@ -4523,13 +4982,14 @@
       "buysValueUsd": 815816.45,
       "paidAboveReferenceUsd": 24153.23,
       "buys": 3665,
-      "wallets": 1158
+      "wallets": 1352
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "INTC",
@@ -4547,13 +5007,14 @@
       "buysValueUsd": 33853.59,
       "paidAboveReferenceUsd": 943.08,
       "buys": 205,
-      "wallets": 141
+      "wallets": 155
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MSTR",
@@ -4571,13 +5032,14 @@
       "buysValueUsd": 1050640.19,
       "paidAboveReferenceUsd": 25448.9,
       "buys": 4943,
-      "wallets": 2091
+      "wallets": 2529
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "TER",
@@ -4601,7 +5063,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MU",
@@ -4619,13 +5082,14 @@
       "buysValueUsd": 219818.25,
       "paidAboveReferenceUsd": 5382.37,
       "buys": 229,
-      "wallets": 146
+      "wallets": 161
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NU",
@@ -4643,13 +5107,14 @@
       "buysValueUsd": 37821.2,
       "paidAboveReferenceUsd": 955.16,
       "buys": 275,
-      "wallets": 158
+      "wallets": 192
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SKHY",
@@ -4667,13 +5132,14 @@
       "buysValueUsd": 22833.19,
       "paidAboveReferenceUsd": 543.47,
       "buys": 192,
-      "wallets": 117
+      "wallets": 148
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NBIS",
@@ -4691,13 +5157,14 @@
       "buysValueUsd": 340.46,
       "paidAboveReferenceUsd": 13.38,
       "buys": 4,
-      "wallets": 1
+      "wallets": 3
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "IREN",
@@ -4715,13 +5182,14 @@
       "buysValueUsd": 1000.44,
       "paidAboveReferenceUsd": 32.19,
       "buys": 6,
-      "wallets": 2
+      "wallets": 6
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SOUN",
@@ -4739,13 +5207,14 @@
       "buysValueUsd": 3483.77,
       "paidAboveReferenceUsd": 74.08,
       "buys": 28,
-      "wallets": 18
+      "wallets": 23
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GLD",
@@ -4769,7 +5238,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RDDT",
@@ -4793,7 +5263,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMC",
@@ -4806,12 +5277,12 @@
      "buysValueUsd": 2133.69,
      "paidAboveReferenceUsd": 106.34,
      "buysAbove": 2,
-     "wallets": 1,
+     "wallets": 2,
      "detail2pct": {
       "buysValueUsd": 434386.61,
       "paidAboveReferenceUsd": 10661.32,
       "buys": 187,
-      "wallets": 140
+      "wallets": 143
      },
      "recovery": null,
      "vault": {
@@ -4829,7 +5300,8 @@
         "state": "OPEN"
        }
       }
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "CCL",
@@ -4853,7 +5325,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GME",
@@ -4871,13 +5344,14 @@
       "buysValueUsd": 115354.53,
       "paidAboveReferenceUsd": 2535.45,
       "buys": 1075,
-      "wallets": 274
+      "wallets": 325
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "CRWV",
@@ -4901,7 +5375,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "FIX",
@@ -4919,13 +5394,14 @@
       "buysValueUsd": 139.02,
       "paidAboveReferenceUsd": 4.33,
       "buys": 2,
-      "wallets": 0
+      "wallets": 2
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "ON",
@@ -4949,7 +5425,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "F",
@@ -4967,13 +5444,14 @@
       "buysValueUsd": 116140.32,
       "paidAboveReferenceUsd": 2390.82,
       "buys": 923,
-      "wallets": 506
+      "wallets": 562
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMD",
@@ -4991,13 +5469,14 @@
       "buysValueUsd": 341277.73,
       "paidAboveReferenceUsd": 7771.06,
       "buys": 3535,
-      "wallets": 1500
+      "wallets": 1611
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "TSM",
@@ -5015,13 +5494,14 @@
       "buysValueUsd": 20109.87,
       "paidAboveReferenceUsd": 422.83,
       "buys": 80,
-      "wallets": 35
+      "wallets": 60
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SLV",
@@ -5045,7 +5525,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SGOV",
@@ -5069,7 +5550,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "EWY",
@@ -5093,7 +5575,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "COIN",
@@ -5111,13 +5594,14 @@
       "buysValueUsd": 80215.06,
       "paidAboveReferenceUsd": 1703.13,
       "buys": 958,
-      "wallets": 302
+      "wallets": 421
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NVDA",
@@ -5141,7 +5625,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "LULU",
@@ -5165,7 +5650,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "PLTR",
@@ -5183,13 +5669,14 @@
       "buysValueUsd": 285066.34,
       "paidAboveReferenceUsd": 5759.97,
       "buys": 1890,
-      "wallets": 909
+      "wallets": 1045
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "UNH",
@@ -5213,7 +5700,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "ASML",
@@ -5237,7 +5725,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "HPE",
@@ -5261,7 +5750,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "TSLA",
@@ -5285,7 +5775,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "ZM",
@@ -5309,7 +5800,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "UPS",
@@ -5333,7 +5825,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "QCOM",
@@ -5346,18 +5839,19 @@
      "buysValueUsd": 54.78,
      "paidAboveReferenceUsd": 2.68,
      "buysAbove": 1,
-     "wallets": 0,
+     "wallets": 1,
      "detail2pct": {
       "buysValueUsd": 488.04,
       "paidAboveReferenceUsd": 18.51,
       "buys": 2,
-      "wallets": 0
+      "wallets": 1
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMZN",
@@ -5375,13 +5869,14 @@
       "buysValueUsd": 4978.18,
       "paidAboveReferenceUsd": 147.07,
       "buys": 1,
-      "wallets": 0
+      "wallets": 1
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "DELL",
@@ -5405,7 +5900,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AAPL",
@@ -5429,7 +5925,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MSFT",
@@ -5453,7 +5950,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "BABA",
@@ -5477,7 +5975,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SOXX",
@@ -5501,7 +6000,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GOOGL",
@@ -5525,7 +6025,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "COST",
@@ -5549,7 +6050,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "BB",
@@ -5573,7 +6075,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "TTWO",
@@ -5597,7 +6100,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SPY",
@@ -5621,7 +6125,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "LLY",
@@ -5645,7 +6150,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "DJT",
@@ -5669,7 +6175,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "BA",
@@ -5693,7 +6200,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "JNJ",
@@ -5717,7 +6225,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "QQQ",
@@ -5741,7 +6250,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MRNA",
@@ -5765,7 +6275,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NFLX",
@@ -5789,7 +6300,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SHY",
@@ -5813,7 +6325,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "LITE",
@@ -5837,7 +6350,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "META",
@@ -5861,7 +6375,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SNAP",
@@ -5885,7 +6400,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RBLX",
@@ -5909,7 +6425,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RUN",
@@ -5933,7 +6450,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "WULF",
@@ -5957,7 +6475,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "DDOG",
@@ -5981,7 +6500,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "QUBT",
@@ -6005,7 +6525,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "INDA",
@@ -6029,7 +6550,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "ADBE",
@@ -6053,7 +6575,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "WYFI",
@@ -6077,7 +6600,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "CEG",
@@ -6101,7 +6625,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     }
    ]
   },
@@ -6113,6 +6638,7 @@
    "reason": "weekend",
    "refDate": "2026-08-28",
    "source": "observed onchain",
+   "paper": null,
    "sample": {
     "tickersWithTrackingPool": 40,
     "activeTickers": 37,
@@ -6125,12 +6651,12 @@
    },
    "buysValueUsd": 9994447.68,
    "paidAboveReferenceUsd": 2488111.54,
-   "wallets": 10819,
+   "wallets": 11703,
    "buysAbove": 67057,
    "detail2pct": {
     "buysValueUsd": 12867539.92,
     "paidAboveReferenceUsd": 2590310.5,
-    "wallets": 12627,
+    "wallets": 13480,
     "buys": 85573
    },
    "tokens": [
@@ -6145,12 +6671,12 @@
      "buysValueUsd": 4566365.81,
      "paidAboveReferenceUsd": 1585675.33,
      "buysAbove": 25102,
-     "wallets": 4899,
+     "wallets": 5352,
      "detail2pct": {
       "buysValueUsd": 5540912.91,
       "paidAboveReferenceUsd": 1622271.21,
       "buys": 31544,
-      "wallets": 5411
+      "wallets": 5855
      },
      "recovery": {
       "hours": 0.8,
@@ -6172,7 +6698,8 @@
         "state": "PENDING_BUYBACK"
        }
       }
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "QUBT",
@@ -6200,7 +6727,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "HIMS",
@@ -6213,12 +6741,12 @@
      "buysValueUsd": 875643.35,
      "paidAboveReferenceUsd": 161062.84,
      "buysAbove": 2206,
-     "wallets": 713,
+     "wallets": 769,
      "detail2pct": {
       "buysValueUsd": 2068564.93,
       "paidAboveReferenceUsd": 203732.65,
       "buys": 6359,
-      "wallets": 2094
+      "wallets": 2223
      },
      "recovery": {
       "hours": 1.2,
@@ -6240,7 +6768,8 @@
         "state": "PENDING_BUYBACK"
        }
       }
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "DJT",
@@ -6253,12 +6782,12 @@
      "buysValueUsd": 3966769.67,
      "paidAboveReferenceUsd": 626414.34,
      "buysAbove": 33651,
-     "wallets": 6317,
+     "wallets": 6946,
      "detail2pct": {
       "buysValueUsd": 4306594.22,
       "paidAboveReferenceUsd": 637785.1,
       "buys": 36767,
-      "wallets": 6916
+      "wallets": 7524
      },
      "recovery": {
       "hours": 1.1,
@@ -6268,7 +6797,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NFLX",
@@ -6296,7 +6826,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MRNA",
@@ -6324,7 +6855,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RBLX",
@@ -6337,12 +6869,12 @@
      "buysValueUsd": 1468.87,
      "paidAboveReferenceUsd": 128.7,
      "buysAbove": 30,
-     "wallets": 17,
+     "wallets": 19,
      "detail2pct": {
       "buysValueUsd": 2669.64,
       "paidAboveReferenceUsd": 172.35,
       "buys": 70,
-      "wallets": 37
+      "wallets": 38
      },
      "recovery": {
       "hours": 0.1,
@@ -6352,7 +6884,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "BB",
@@ -6376,7 +6909,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GME",
@@ -6389,18 +6923,19 @@
      "buysValueUsd": 12101.6,
      "paidAboveReferenceUsd": 948.61,
      "buysAbove": 230,
-     "wallets": 59,
+     "wallets": 91,
      "detail2pct": {
       "buysValueUsd": 26423.27,
       "paidAboveReferenceUsd": 1441.11,
       "buys": 624,
-      "wallets": 101
+      "wallets": 141
      },
      "recovery": null,
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "DELL",
@@ -6424,7 +6959,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "IREN",
@@ -6448,7 +6984,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GLD",
@@ -6472,7 +7009,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "CRCL",
@@ -6496,7 +7034,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SKHY",
@@ -6520,7 +7059,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "ORCL",
@@ -6556,7 +7096,8 @@
         "state": "PENDING_BUYBACK"
        }
       }
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "USO",
@@ -6580,7 +7121,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "COST",
@@ -6598,13 +7140,14 @@
       "buysValueUsd": 745.1,
       "paidAboveReferenceUsd": 32.24,
       "buys": 29,
-      "wallets": 17
+      "wallets": 20
      },
      "recovery": null,
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "QQQ",
@@ -6628,7 +7171,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "COIN",
@@ -6652,7 +7196,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SLV",
@@ -6676,7 +7221,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMD",
@@ -6700,7 +7246,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SNDK",
@@ -6724,7 +7271,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "PLTR",
@@ -6748,7 +7296,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "TSLA",
@@ -6772,7 +7321,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "INTC",
@@ -6796,7 +7346,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SPY",
@@ -6820,7 +7371,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NVDA",
@@ -6844,7 +7396,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "META",
@@ -6868,7 +7421,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AAPL",
@@ -6892,7 +7446,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "CRWV",
@@ -6928,7 +7483,8 @@
         "state": "OPEN"
        }
       }
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "TSM",
@@ -6952,7 +7508,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MU",
@@ -6976,7 +7533,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "TTWO",
@@ -7000,7 +7558,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MSFT",
@@ -7024,7 +7583,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMZN",
@@ -7048,7 +7608,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GOOGL",
@@ -7072,7 +7633,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SPCX",
@@ -7096,7 +7658,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RDDT",
@@ -7120,7 +7683,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     }
    ]
   },
@@ -7132,6 +7696,7 @@
    "reason": "weekend",
    "refDate": "2026-08-21",
    "source": "observed onchain",
+   "paper": null,
    "sample": {
     "tickersWithTrackingPool": 33,
     "activeTickers": 29,
@@ -7179,7 +7744,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RBLX",
@@ -7203,7 +7769,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "CRCL",
@@ -7227,7 +7794,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "TTWO",
@@ -7251,7 +7819,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NVDA",
@@ -7275,7 +7844,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GLD",
@@ -7299,7 +7869,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SKHY",
@@ -7323,7 +7894,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "COIN",
@@ -7347,7 +7919,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "CRWV",
@@ -7371,7 +7944,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "PLTR",
@@ -7395,7 +7969,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NFLX",
@@ -7419,7 +7994,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GME",
@@ -7443,7 +8019,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "INTC",
@@ -7467,7 +8044,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MU",
@@ -7491,7 +8069,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SNDK",
@@ -7515,7 +8094,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "META",
@@ -7539,7 +8119,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "QQQ",
@@ -7563,7 +8144,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SPY",
@@ -7587,7 +8169,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MSFT",
@@ -7611,7 +8194,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MRNA",
@@ -7635,7 +8219,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "TSLA",
@@ -7659,7 +8244,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AAPL",
@@ -7683,7 +8269,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMZN",
@@ -7707,7 +8294,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RDDT",
@@ -7731,7 +8319,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GOOGL",
@@ -7755,7 +8344,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "USO",
@@ -7779,7 +8369,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMD",
@@ -7803,7 +8394,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SPCX",
@@ -7827,7 +8419,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "HIMS",
@@ -7851,7 +8444,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     }
    ]
   },
@@ -7863,6 +8457,7 @@
    "reason": "weekend",
    "refDate": "2026-08-14",
    "source": "observed onchain",
+   "paper": null,
    "sample": {
     "tickersWithTrackingPool": 30,
     "activeTickers": 22,
@@ -7910,7 +8505,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "BE",
@@ -7934,7 +8530,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SNDK",
@@ -7958,7 +8555,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "PLTR",
@@ -7982,7 +8580,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GME",
@@ -8006,7 +8605,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NFLX",
@@ -8030,7 +8630,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "INTC",
@@ -8054,7 +8655,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "TTWO",
@@ -8078,7 +8680,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMD",
@@ -8102,7 +8705,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RBLX",
@@ -8126,7 +8730,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "CRCL",
@@ -8150,7 +8755,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RDDT",
@@ -8174,7 +8780,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GOOGL",
@@ -8198,7 +8805,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MSFT",
@@ -8222,7 +8830,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MU",
@@ -8246,7 +8855,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMZN",
@@ -8270,7 +8880,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "TSLA",
@@ -8294,7 +8905,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "META",
@@ -8318,7 +8930,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NVDA",
@@ -8342,7 +8955,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SPCX",
@@ -8366,7 +8980,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SPY",
@@ -8390,7 +9005,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "USO",
@@ -8414,7 +9030,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AAPL",
@@ -8438,7 +9055,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "IREN",
@@ -8462,7 +9080,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SGOV",
@@ -8486,7 +9105,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     }
    ]
   },
@@ -8498,6 +9118,7 @@
    "reason": "weekend",
    "refDate": "2026-08-07",
    "source": "observed onchain",
+   "paper": null,
    "sample": {
     "tickersWithTrackingPool": 27,
     "activeTickers": 21,
@@ -8545,7 +9166,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "IREN",
@@ -8569,7 +9191,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SPCX",
@@ -8593,7 +9216,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GME",
@@ -8617,7 +9241,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMAT",
@@ -8641,7 +9266,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "USAR",
@@ -8665,7 +9291,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "CRCL",
@@ -8689,7 +9316,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RBLX",
@@ -8713,7 +9341,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "PLTR",
@@ -8737,7 +9366,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SLV",
@@ -8761,7 +9391,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GOOGL",
@@ -8785,7 +9416,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NVDA",
@@ -8809,7 +9441,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SNDK",
@@ -8833,7 +9466,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "TSLA",
@@ -8857,7 +9491,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "META",
@@ -8881,7 +9516,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "COIN",
@@ -8905,7 +9541,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SPY",
@@ -8929,7 +9566,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMZN",
@@ -8953,7 +9591,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NFLX",
@@ -8977,7 +9616,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MSFT",
@@ -9001,7 +9641,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "INTC",
@@ -9025,7 +9666,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMD",
@@ -9049,7 +9691,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AAPL",
@@ -9073,7 +9716,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MU",
@@ -9097,7 +9741,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     }
    ]
   },
@@ -9109,6 +9754,7 @@
    "reason": "weekend",
    "refDate": "2026-07-31",
    "source": "observed onchain",
+   "paper": null,
    "sample": {
     "tickersWithTrackingPool": 33,
     "activeTickers": 24,
@@ -9152,7 +9798,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MU",
@@ -9176,7 +9823,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "INTC",
@@ -9200,7 +9848,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMD",
@@ -9236,7 +9885,8 @@
         "state": "OPEN"
        }
       }
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NFLX",
@@ -9260,7 +9910,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "USAR",
@@ -9284,7 +9935,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SNDK",
@@ -9308,7 +9960,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RBLX",
@@ -9332,7 +9985,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SLV",
@@ -9356,7 +10010,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GME",
@@ -9380,7 +10035,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SPCX",
@@ -9404,7 +10060,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "META",
@@ -9428,7 +10085,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "TSLA",
@@ -9452,7 +10110,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMZN",
@@ -9476,7 +10135,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AAPL",
@@ -9500,7 +10160,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RDDT",
@@ -9524,7 +10185,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "PLTR",
@@ -9548,7 +10210,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SPY",
@@ -9572,7 +10235,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NVDA",
@@ -9596,7 +10260,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GOOGL",
@@ -9620,7 +10285,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "COIN",
@@ -9644,7 +10310,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MSFT",
@@ -9668,7 +10335,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "CRCL",
@@ -9692,7 +10360,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "USO",
@@ -9716,7 +10385,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     }
    ]
   },
@@ -9728,6 +10398,7 @@
    "reason": "weekend",
    "refDate": "2026-07-24",
    "source": "observed onchain",
+   "paper": null,
    "sample": {
     "tickersWithTrackingPool": 27,
     "activeTickers": 21,
@@ -9775,7 +10446,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RDDT",
@@ -9803,7 +10475,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "RBLX",
@@ -9827,7 +10500,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "INTC",
@@ -9851,7 +10525,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMD",
@@ -9875,7 +10550,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "USAR",
@@ -9899,7 +10575,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SLV",
@@ -9923,7 +10600,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SNDK",
@@ -9947,7 +10625,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MU",
@@ -9971,7 +10650,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NFLX",
@@ -9995,7 +10675,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "COIN",
@@ -10019,7 +10700,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GOOGL",
@@ -10043,7 +10725,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GME",
@@ -10067,7 +10750,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "META",
@@ -10091,7 +10775,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMZN",
@@ -10115,7 +10800,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NVDA",
@@ -10139,7 +10825,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "TSLA",
@@ -10163,7 +10850,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MSFT",
@@ -10187,7 +10875,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SPY",
@@ -10211,7 +10900,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AAPL",
@@ -10235,7 +10925,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "PLTR",
@@ -10259,7 +10950,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SPCX",
@@ -10283,7 +10975,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     }
    ]
   },
@@ -10295,6 +10988,7 @@
    "reason": "weekend",
    "refDate": "2026-07-17",
    "source": "observed onchain",
+   "paper": null,
    "sample": {
     "tickersWithTrackingPool": 16,
     "activeTickers": 15,
@@ -10338,7 +11032,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "DELL",
@@ -10362,7 +11057,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "INTC",
@@ -10386,7 +11082,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NFLX",
@@ -10410,7 +11107,8 @@
      "vault": {
       "label": null,
       "note": "not in the replayed universe"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SPCX",
@@ -10434,7 +11132,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MU",
@@ -10458,7 +11157,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MSFT",
@@ -10482,7 +11182,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "QQQ",
@@ -10506,7 +11207,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "TSLA",
@@ -10530,7 +11232,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NVDA",
@@ -10554,7 +11257,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMZN",
@@ -10578,7 +11282,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GOOGL",
@@ -10602,7 +11307,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AAPL",
@@ -10626,7 +11332,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SPY",
@@ -10650,7 +11357,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMD",
@@ -10674,7 +11382,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "META",
@@ -10698,7 +11407,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     }
    ]
   },
@@ -10710,6 +11420,7 @@
    "reason": "weekend",
    "refDate": "2026-07-10",
    "source": "observed onchain",
+   "paper": null,
    "sample": {
     "tickersWithTrackingPool": 12,
     "activeTickers": 11,
@@ -10753,7 +11464,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SNDK",
@@ -10777,7 +11489,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SPCX",
@@ -10801,7 +11514,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SPY",
@@ -10825,7 +11539,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "MU",
@@ -10849,7 +11564,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "META",
@@ -10873,7 +11589,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NVDA",
@@ -10897,7 +11614,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "TSLA",
@@ -10921,7 +11639,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AAPL",
@@ -10945,7 +11664,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "PLTR",
@@ -10969,7 +11689,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "GOOGL",
@@ -10993,7 +11714,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     }
    ]
   },
@@ -11005,6 +11727,7 @@
    "reason": "weekend + Independence Day (observed)",
    "refDate": "2026-07-02",
    "source": "observed onchain",
+   "paper": null,
    "sample": {
     "tickersWithTrackingPool": 6,
     "activeTickers": 4,
@@ -11048,7 +11771,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "SNDK",
@@ -11072,7 +11796,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "QQQ",
@@ -11096,7 +11821,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "AMD",
@@ -11120,7 +11846,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "TSLA",
@@ -11144,7 +11871,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     },
     {
      "ticker": "NVDA",
@@ -11168,7 +11896,8 @@
      "vault": {
       "label": "simulated",
       "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
-     }
+     },
+     "paper": null
     }
    ]
   }

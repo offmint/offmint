@@ -1,0 +1,1 @@
+{"ticker":"TEST","status":"settled","arm":{"p0Usd":30},"stats":{"maxPremiumPct":42.5},"settlement":{"results":{"lockOnFill":[{"deployed":10,"vsHodlPctExFees":1.5,"state":"OPEN"},{"deployed":100,"vsHodlPctExFees":2.25,"state":"OPEN"}]}}}

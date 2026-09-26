@@ -50,6 +50,7 @@ export default async function WeekendDetail({ params }: { params: Promise<{ date
               <th>Wallets</th>
               <th>Back within 5% after reopen</th>
               <th>Community vault (simulated, per $1k)</th>
+              {w.paper && <th>Paper mode (live)</th>}
             </tr>
           </thead>
           <tbody>
@@ -65,12 +66,16 @@ export default async function WeekendDetail({ params }: { params: Promise<{ date
                   <td className="num">{t.wallets.toLocaleString("en-US")}</td>
                   <td className="num">{t.recovery ? (t.recovery.hours === null ? "not within 72 h" : `${t.recovery.hours.toFixed(1)} h`) : "–"}</td>
                   <td className="text-sm">{v?.excessPctExLpFees != null ? <span className="num">{pctText(v.excessPctExLpFees)}</span> : <span className="text-xs text-ink-faint">{t.vault.label ? "no fill" : "not replayed"}</span>}</td>
+                  {w.paper && <td className="text-sm">{t.paper ? (t.paper.vsHodlPctExFees !== null ? <span className="num">{pctText(t.paper.vsHodlPctExFees)}</span> : <span className="text-xs text-ink-faint">{t.paper.status}</span>) : <span className="text-xs text-ink-faint">not watched</span>}</td>}
                 </tr>
               );
             })}
           </tbody>
         </table>
       </div>
+      {w.paper && (
+        <p className="text-xs text-ink-faint">{`Paper mode: ${w.paper.label}. ${w.paper.settled} of ${w.paper.tokens} tokens settled${w.paper.complete ? "" : " so far"}; ${w.paper.filled} had a nonzero result. Its engine is a single band, not the vault's 4-step ladder, so its % differs from the simulated column.`}</p>
+      )}
       {quiet.length > 0 && (
         <details className="text-sm">
           <summary className="cursor-pointer text-ink-soft">{`${quiet.length} more tokens stayed within ${th}% of the reference`}</summary>

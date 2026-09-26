@@ -58,7 +58,7 @@
   "minUsd": 61.2913,
   "maxPremiumPct": 0,
   "firstInBandAt": null,
-  "lastBlock": "72878212"
+  "lastBlock": "72954897"
  },
  "timeline": [
   {
@@ -70,5 +70,5 @@
  "fills": [],
  "settlement": null,
  "caveat": "Hypothetical: assumes the vault's position does not move the pool price. A live vault would dampen spikes; real fills would differ.",
- "generatedAt": "2026-09-26T06:48:02Z"
+ "generatedAt": "2026-09-26T09:03:47Z"
 }

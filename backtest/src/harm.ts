@@ -219,13 +219,15 @@ for (const w of windows) {
 for (const T of perTicker.values()) for (const th of THRESHOLDS) for (const h of T.a[th].txs) { const f = txFrom.get(h); if (f) T.a[th].senders.add(f); }
 
 function fmt(a: Agg, th: number) {
-  return { swaps: a.swaps, uniqueSenders: th >= SENDERS_FROM ? a.senders.size : null, stockBought: Math.round(a.stock * 1e4) / 1e4, usdPaid: Math.round(a.usdPaid * 100) / 100, usdAboveReference: Math.round(a.aboveUsd * 100) / 100 };
+  // unresolvedTxs: buys whose sender lookup failed; > 0 means uniqueSenders is an undercount (never silent)
+  return { swaps: a.swaps, uniqueSenders: th >= SENDERS_FROM ? a.senders.size : null, unresolvedTxs: th >= SENDERS_FROM ? [...a.txs].filter((h) => !txFrom.has(h)).length : null, stockBought: Math.round(a.stock * 1e4) / 1e4, usdPaid: Math.round(a.usdPaid * 100) / 100, usdAboveReference: Math.round(a.aboveUsd * 100) / 100 };
 }
 const total = Object.fromEntries(THRESHOLDS.map((th) => {
   const s = new Set<string>();
   for (const T of perTicker.values()) for (const x of T.a[th].senders) s.add(x);
   const sum = (k: keyof Agg) => [...perTicker.values()].reduce((a, T) => a + (T.a[th][k] as number), 0);
-  return [`above${th}pct`, { swaps: sum("swaps"), uniqueSenders: th >= SENDERS_FROM ? s.size : null, usdPaid: Math.round(sum("usdPaid") * 100) / 100, usdAboveReference: Math.round(sum("aboveUsd") * 100) / 100, tickers: [...perTicker.values()].filter((T) => T.a[th].swaps > 0).length }];
+  const unresolved = th >= SENDERS_FROM ? [...perTicker.values()].reduce((n, T) => n + [...T.a[th].txs].filter((h) => !txFrom.has(h)).length, 0) : null;
+  return [`above${th}pct`, { swaps: sum("swaps"), uniqueSenders: th >= SENDERS_FROM ? s.size : null, unresolvedTxs: unresolved, usdPaid: Math.round(sum("usdPaid") * 100) / 100, usdAboveReference: Math.round(sum("aboveUsd") * 100) / 100, tickers: [...perTicker.values()].filter((T) => T.a[th].swaps > 0).length }];
 }));
 const byTicker = [...perTicker.entries()]
   .map(([t, T]) => ({ ticker: t, windowsAbove2pct: [...T.windows], maxBuyPremiumPct: Math.round(T.maxPremiumPct * 100) / 100, ...Object.fromEntries(THRESHOLDS.map((th) => [`above${th}pct`, fmt(T.a[th], th)])) }))

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Token } from "@/components/TokenLogo";
 import { WEEKENDS, windowDates, money } from "@/lib/weekends";
 import { Footnotes } from "@/components/WeekendFootnotes";
+import { MintOffWindow } from "@/components/MintOffWindow";
 
 export const metadata = { title: "Weekend report · Offmint" };
 
@@ -46,6 +47,7 @@ export default function Weekends() {
                 <td>
                   <Link href={`/weekends/${w.window}`} className="font-medium text-tide hover:underline">{windowDates(w)}</Link>
                   {w.reason !== "weekend" && <div className="text-xs text-ink-faint">{w.reason}</div>}
+                  {w.paper && <div className="text-xs text-tide">{`paper mode: ${w.paper.settled} of ${w.paper.tokens} tokens settled (live)`}</div>}
                 </td>
                 <td className="num">{w.tokensAbove10}</td>
                 <td>{w.biggest ? <span className="flex items-center gap-2"><Token ticker={w.biggest.ticker} size={18} /><span className="num">{`${w.biggest.peakPct >= 0 ? "+" : ""}${w.biggest.peakPct.toFixed(1)}%`}</span></span> : "–"}</td>
@@ -59,6 +61,7 @@ export default function Weekends() {
         </table>
       </div>
       <Footnotes />
+      <div className="border-t border-paper-line pt-6"><MintOffWindow /></div>
     </div>
   );
 }

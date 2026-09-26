@@ -9,6 +9,7 @@ import type { Hex } from "viem";
 import { makeClient, blockTime, blockAtOrBefore, swapLogs } from "../../keeper/src/chain.js";
 import { mintOffWindows } from "./window.js";
 import { tickerWindows, loadPools, loadCloses, loadWindowLogs, usdOf, CACHE, type TickerWindow } from "./tickerWindows.js";
+import { paperRowsFor, paperSummary, saturdayOf } from "./paperMerge.js";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const since = "2026-07-01";
@@ -29,6 +30,7 @@ const txFrom: Record<string, string> = existsSync(join(CACHE, "txfrom.json")) ? 
 const replayPath = join(ROOT, "web/public/data/supply/replay.json");
 const replay = existsSync(replayPath) ? JSON.parse(readFileSync(replayPath, "utf8")) : null;
 const screen = JSON.parse(readFileSync(join(ROOT, "web/public/data/screen/weekends.json"), "utf8"));
+const PAPER_DIR = process.env.PAPER_DIR ?? join(ROOT, "web/public/data/paper");
 
 const wallets = (txs: string[]) => new Set(txs.map((h) => txFrom[h]).filter(Boolean)).size;
 const r2 = (x: number) => Math.round(x * 100) / 100;
@@ -64,6 +66,7 @@ function vaultOf(ticker: string, w: { start: number; end: number }) {
 const out: any[] = [];
 for (const w of windows) {
   const rows = await tickerWindows(w, loadWindowLogs(w), pools, closes, timeOf);
+  const paper = paperRowsFor(PAPER_DIR, saturdayOf(new Date(w.start * 1000).toISOString()));
   const active = rows.filter((r) => r.active);
   const txs = (th: number) => rows.flatMap((r) => r.buys[th].txs);
   const tokens = [];
@@ -77,12 +80,15 @@ for (const w of windows) {
       buysValueUsd: r2(r.buys[HEADLINE].usdPaid), paidAboveReferenceUsd: r2(r.buys[HEADLINE].usdAbove), buysAbove: r.buys[HEADLINE].swaps, wallets: wallets(r.buys[HEADLINE].txs),
       detail2pct: { buysValueUsd: r2(r.buys[DETAIL].usdPaid), paidAboveReferenceUsd: r2(r.buys[DETAIL].usdAbove), buys: r.buys[DETAIL].swaps, wallets: wallets(r.buys[DETAIL].txs) },
       recovery: rec, vault: vaultOf(r.ticker, w),
+      paper: paper.get(r.ticker) ?? null,
     });
   }
   const biggest = active.sort((a, b) => b.peakPct - a.peakPct)[0];
   out.push({
     window: w.label, start: new Date(w.start * 1000).toISOString(), end: new Date(w.end * 1000).toISOString(), hours: (w.end - w.start) / 3600,
-    reason: w.reason, refDate: w.refDate, source: "observed onchain",
+    reason: w.reason, refDate: w.refDate,
+    source: paper.size ? "observed onchain + paper mode (live observation)" : "observed onchain",
+    paper: paper.size ? paperSummary(paper) : null,
     sample: { tickersWithTrackingPool: rows.length, activeTickers: active.length, swaps: rows.reduce((a, r) => a + r.mainPoolSwaps, 0) },
     tokensAbove10: active.filter((r) => r.hoursAbove[10] >= 1).length,
     biggest: biggest ? { ticker: biggest.ticker, peakPct: biggest.peakPct } : null,
