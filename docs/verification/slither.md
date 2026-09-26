@@ -17,6 +17,8 @@ Slither 0.11.6 on `contracts/` (src only; lib, test, script, mocks excluded): 67
 | Informational | `unindexed-event-address` | 2 | Accepted | Informational. |
 | Optimization | `cache-array-length` | 2 | Accepted | Gas optimization only. |
 
+**Re-run 26 Sep 2026** (FINISH E2) on HEAD `0de42a1`: same Slither 0.11.6, 67 contracts, 102 detectors, **73 results with the identical breakdown** (every row above, same counts). `contracts/src` is unchanged since 24 Sep (`8c3a55d`, Faucet), so the triage stands; no new finding.
+
 Reproduce: `python3 -m venv .venv && .venv/bin/pip install slither-analyzer && slither contracts --filter-paths "lib/|test/|script/|mocks/"`
 
 Not an audit: static analysis catches a class of bugs, not economic or design flaws. The code is unaudited.
