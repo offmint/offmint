@@ -28,8 +28,9 @@ URLs. No Cloudflare token lives in GitHub. Worker config: `web/wrangler.jsonc`.
    | `NEXT_PUBLIC_SITE_URL` | the Worker's public URL, e.g. `https://offmint-web.<subdomain>.workers.dev` (share-card links) |
    | `NEXT_PUBLIC_WC_PROJECT_ID` | optional: a WalletConnect/Reown project ID; without it the site offers browser-extension wallets only |
 
-4. **Runtime secrets** (Settings → Variables and secrets, type *Secret*; read by the server routes at request time):
-   `ALCHEMY_RH_MAINNET_URL`, `ALCHEMY_RH_TESTNET_URL`. Without them the site uses the public RPC (works, rate-limited).
+4. **Runtime variables** (Settings → Variables and secrets; read by the server routes at request time):
+   `ALCHEMY_RH_MAINNET_URL`, `ALCHEMY_RH_TESTNET_URL` (set, 27 Sep). Without them the site uses the public RPC.
+   `wrangler.jsonc` has `keep_vars: true`, so a deploy from the terminal keeps them; they are never in the repo.
 5. The first deploy happens on save. After it, copy the workers.dev URL into `NEXT_PUBLIC_SITE_URL` and retry the
    build once (Deployments → Retry build) so share cards carry the right absolute URL.
 
@@ -42,6 +43,14 @@ URLs. No Cloudflare token lives in GitHub. Worker config: `web/wrangler.jsonc`.
 `/api/rpc` forwards read-only JSON-RPC methods only, at most 50 calls per request, and is rate-limited per IP to 120
 requests per minute (Workers Rate Limiting binding `RPC_LIMITER`; `web/src/lib/rateLimit.ts`). The browser batches its
 reads, so one visitor sends about 12 requests a minute.
+
+## Live data that doesn't come from the Worker
+Cloudflare's egress IPs are shared, so the public Robinhood RPC and GeckoTerminal answer the Worker with 429, and
+Alchemy's free tier allows only 10-block `eth_getLogs`. The paper service on Railway (its own IP) therefore scans the
+basket pools' last swaps every 2 min and fetches GeckoTerminal prices every 5 min, served at
+`https://offmint-keeper-production.up.railway.app/last-swaps.json` (`keeper/src/lastSwaps.ts`). `/api/live` uses it
+when fresh (last swaps < 10 min, prices < 15 min old) and falls back to scanning itself otherwise (local dev).
+`/api/live` reports which in `lastSwapSource`.
 
 ## Local
 `cd web && npm run cf:preview` builds and serves the Worker locally in workerd (http://localhost:8787).

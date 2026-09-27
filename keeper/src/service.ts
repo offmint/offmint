@@ -3,11 +3,14 @@
 //   GET /health            -> { ok, lastTickAgoSec, ticks, restarts, universe, uptimeSec }
 //   GET /paper/index.json  -> list of paper epochs;  GET /paper/<date>-<TICKER>.json -> one epoch
 //   GET /basket.json       -> the detector's current basket (SPEC §3.7), for the web /monitor page
+//   GET /last-swaps.json   -> last swap time per basket pool, refreshed every 2 min (the web's quality gate reads it)
 import { createServer } from "node:http";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve, basename } from "node:path";
 import { live, liveStatus } from "./paper.js";
 import { runDetector } from "../detector/detector.js";
+import { makeClient } from "./chain.js";
+import { emptyLastSwaps, independentPrices, refreshLastSwaps, type LastSwaps } from "./lastSwaps.js";
 
 const OUT = resolve(process.env.PAPER_OUT_DIR ?? "/data/paper");
 const PORT = Number(process.env.PORT ?? 8080);
@@ -71,6 +74,7 @@ createServer((req, res) => {
     res.writeHead(200, { "content-type": "application/json", "access-control-allow-origin": "*", "cache-control": "no-store" });
     return res.end(readFileSync(f));
   }
+  if (url.pathname === "/last-swaps.json") return json(res, lastSwaps.updatedAt ? 200 : 503, { ...lastSwaps, independent });
   const m = url.pathname.match(/^\/paper\/([A-Za-z0-9.\-]+\.json)$/);
   if (m) {
     const f = join(OUT, basename(m[1])); // basename: no path traversal
@@ -78,7 +82,7 @@ createServer((req, res) => {
     res.writeHead(200, { "content-type": "application/json", "access-control-allow-origin": "*", "cache-control": "no-store" });
     return res.end(readFileSync(f));
   }
-  json(res, 404, { error: "not found", routes: ["/health", "/basket.json", "/paper/index.json", "/paper/<date>-<TICKER>.json"] });
+  json(res, 404, { error: "not found", routes: ["/health", "/basket.json", "/last-swaps.json", "/paper/index.json", "/paper/<date>-<TICKER>.json"] });
 }).listen(PORT, () => console.log(JSON.stringify({ event: "service-start", port: PORT, out: OUT })));
 
 // Detector (SPEC §3.7): refresh the basket at start and every 6h; a failed run keeps the last good basket.
@@ -94,8 +98,40 @@ async function detectOnce() {
   }
 }
 (globalThis as any).__detectorStatus = detectorStatus;
+
+// Last swap per basket pool (src/lastSwaps.ts): every 2 min; one run at a time; a failed run keeps the last good state.
+let lastSwaps: LastSwaps = emptyLastSwaps();
+let scanning = false;
+// GeckoTerminal pool prices (independent check), every 5 min
+let independent: { updatedAt: string | null; prices: Record<string, number>; error: string | null } = { updatedAt: null, prices: {}, error: null };
+let geckoAt = 0;
+async function scanLastSwaps() {
+  if (scanning) return;
+  scanning = true;
+  try {
+    const f = resolve(process.env.BASKET_PATH ?? "/data/basket.json");
+    if (!existsSync(f)) return;
+    const ids = (JSON.parse(readFileSync(f, "utf8")).members ?? []).map((m: any) => m.pool.poolId);
+    lastSwaps = await refreshLastSwaps(makeClient(), lastSwaps, ids);
+    if (Date.now() - geckoAt >= 5 * 60_000) {
+      geckoAt = Date.now();
+      try {
+        independent = { updatedAt: new Date().toISOString(), prices: await independentPrices(ids), error: null };
+      } catch (e) {
+        independent = { ...independent, error: String(e).slice(0, 200) };
+      }
+    }
+  } catch (e) {
+    lastSwaps = { ...lastSwaps, error: String(e).slice(0, 200) };
+    console.error(JSON.stringify({ event: "last-swaps-failed", msg: lastSwaps.error }));
+  } finally {
+    scanning = false;
+  }
+}
 void (async () => {
   await detectOnce();
   setInterval(detectOnce, 6 * 3600_000);
+  void scanLastSwaps();
+  setInterval(scanLastSwaps, 2 * 60_000);
   void runForever();
 })();

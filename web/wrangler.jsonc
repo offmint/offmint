@@ -1,5 +1,5 @@
 // Cloudflare Worker for the web app (built by @opennextjs/cloudflare: `npm run cf:deploy`).
-// Secrets (never in this file): ALCHEMY_RH_MAINNET_URL, ALCHEMY_RH_TESTNET_URL, set with `npx wrangler secret put`.
+// Runtime values (never in this file): ALCHEMY_RH_MAINNET_URL, ALCHEMY_RH_TESTNET_URL, set in the dashboard or with `npx wrangler secret put`.
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "offmint-web",
@@ -10,5 +10,7 @@
   "services": [{ "binding": "WORKER_SELF_REFERENCE", "service": "offmint-web" }],
   // /api/rpc per-IP limit (src/lib/rateLimit.ts RPC_LIMIT must match)
   "ratelimits": [{ "name": "RPC_LIMITER", "namespace_id": "4663001", "simple": { "limit": 120, "period": 60 } }],
+  // runtime variables set in the dashboard (the Alchemy URLs) survive `wrangler deploy`; they are never in this file
+  "keep_vars": true,
   "observability": { "enabled": true }
 }

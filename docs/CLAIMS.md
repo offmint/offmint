@@ -17,7 +17,7 @@ Every public number or claim, where it comes from, and its status. Generated fro
 | Fork results TSLA/HIMS/GLXY | 106.32 / 106.37 / 106.31 | sim/fork.json @ block 71241990 | simulated | README proof |
 | MetaVault picker (SELECT) | experimental, coming later: missed HIMS (picked COHR, CRWD) | keeper/logs/select-bt-2026-08-27.json; docs/verification/select.md | verified (negative result) | landing explainer, /app banner, /vault, README |
 | Testnet MetaVault cycle | 10000.0 in, 10103.706316 out | testnet/demo-meta.json (tx hashes, Blockscout) | verified (testnet, thin demo pool, simulated squeeze) | verify, README |
-| Test counts | 160 contract, 12 fork, 102 keeper+backtest | tests.json; CI fails if the forge or keeper+backtest count differs | verified | verify, README |
+| Test counts | 160 contract, 12 fork, 104 keeper+backtest | tests.json; CI fails if the forge or keeper+backtest count differs | verified | verify, README |
 | Ladder / limits | steps [8, 15, 25, 40]; stop-loss 8%, alloc 30%, loss cap 10%, blacklist 28 d, fee 0.5% | params.json parsed from contracts/src; test compares | verified | hero, how it works, sandbox |
 | HIMS replay +14.7% vs hold | +14.7% | backtest/hims-2026-08-28.json lockOnFill | simulated | README only (labelled) |
 | Tokenization window Mon 02:00 - Sat 02:00 CET/CEST, closed US holidays | - | docs.robinhood.com/chain/stock-tokens/, robinhood.com/eu/en/support/articles/about-stock-tokens | verified | week strip, README |

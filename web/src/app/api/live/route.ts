@@ -21,6 +21,8 @@ export interface LiveRow extends GateResult {
 }
 export interface Live {
   ok: boolean; updatedAt: string; rpc: "alchemy" | "public";
+  /** where the last-swap ages (quality gate) came from */
+  lastSwapSource: "paper-service" | "direct-scan" | null;
   basket: { live: boolean; generatedAt: string | null; count: number | null };
   rows: LiveRow[]; maxVerified: { ticker: string; pct: number } | null; verifiedCount: number; errors: string[];
 }
@@ -73,6 +75,8 @@ async function build(): Promise<Live> {
   const pool = new Map<string, number>();
   const lastSwap = new Map<string, number>();
   let nowTs = Math.floor(Date.now() / 1000);
+  let lastSwapSource: Live["lastSwapSource"] = null;
+  let paperIndependent: Map<string, number> | null = null; // GeckoTerminal prices fetched by the paper service
   if (members.length) {
     const c = createPublicClient({ transport: http(rpcUrl(), { timeout: 15_000 }) });
     try {
@@ -91,7 +95,27 @@ async function build(): Promise<Live> {
     } catch (e) {
       errors.push(`pools: ${String(e).slice(0, 80)}`);
     }
+    // Last swap per pool. First choice: the paper service's scan (keeper/src/lastSwaps.ts, its own IP): on Cloudflare the
+    // public RPC rate-limits the shared egress IPs and Alchemy's free tier allows 10-block log queries. Fallback: scan here.
     try {
+      const r = await fetch(`${PAPER_API}/last-swaps.json`, { cache: "no-store", signal: AbortSignal.timeout(8000) });
+      const ls = r.ok ? await r.json() : null;
+      const indAt = ls?.independent?.updatedAt;
+      if (indAt && Date.now() - Date.parse(indAt) < 15 * 60_000) {
+        paperIndependent = new Map(Object.entries(ls.independent.prices as Record<string, number>));
+      }
+      if (ls?.updatedAt && Date.now() - Date.parse(ls.updatedAt) < 10 * 60_000) {
+        nowTs = Number((await c.getBlock()).timestamp);
+        for (const m of members) {
+          const ts = ls.pools?.[String(m.pool.poolId).toLowerCase()];
+          if (ts) lastSwap.set(m.token, Math.max(0, nowTs - ts));
+        }
+        lastSwapSource = "paper-service";
+      }
+    } catch {
+      // fall through to the direct scan
+    }
+    if (!lastSwapSource) try {
       // last swap per pool within the last 6 h (estimate the block rate from the chain itself)
       const latest = await c.getBlock();
       const back = await c.getBlock({ blockNumber: latest.number - 100_000n });
@@ -121,11 +145,13 @@ async function build(): Promise<Live> {
       }
       // convert last-swap blocks to ages
       for (const [tok, b] of lastSwap) lastSwap.set(tok, Math.max(0, (Number(latest.number) - b) / perSec));
+      lastSwapSource = "direct-scan";
     } catch (e) {
       errors.push(`last swaps: ${String(e).slice(0, 80)}`);
     }
   }
-  const ind = members.length ? await geckoPrices(members.map((m) => String(m.pool.poolId)), errors) : new Map();
+  // independent price: the paper service's GeckoTerminal fetch first (GeckoTerminal rate-limits Cloudflare's shared IPs)
+  const ind = paperIndependent ?? (members.length ? await geckoPrices(members.map((m) => String(m.pool.poolId)), errors) : new Map());
   const rows: LiveRow[] = members.map((m) => {
     const poolUsd = pool.get(m.token) ?? null;
     const independentUsd = ind.get(String(m.pool.poolId).toLowerCase()) ?? null;
@@ -138,6 +164,7 @@ async function build(): Promise<Live> {
     ok: errors.length === 0,
     updatedAt: new Date(nowTs * 1000).toISOString(),
     rpc: process.env.ALCHEMY_RH_MAINNET_URL ? "alchemy" : "public",
+    lastSwapSource,
     basket: { live: !!basket, generatedAt: basket?.generatedAt ?? null, count: basket ? members.length : null },
     rows,
     maxVerified: verified[0] ? { ticker: verified[0].ticker, pct: verified[0].premiumPct! } : null,

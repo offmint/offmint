@@ -221,7 +221,7 @@ grace period; first-depositor inflation is unprofitable.
 
 ## Run and test
 ```bash
-npm ci && npm test                      # 160 forge tests (unit, fuzz, integration in both pool orientations, invariants) + 102 keeper/backtest tests
+npm ci && npm test                      # 160 forge tests (unit, fuzz, integration in both pool orientations, invariants) + 104 keeper/backtest tests
 npm run test:fork                       # 12 mainnet-fork tests (needs ALCHEMY_RH_MAINNET_URL or RH_MAINNET_RPC)
 npm run lint:contracts                  # forge fmt --check + forge lint (CI-enforced)
 npm run e2e && npm run e2e:meta         # local end-to-end weekends run by the unmodified keeper bot (CI)
