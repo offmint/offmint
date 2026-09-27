@@ -1,9 +1,11 @@
 import { CandleChart } from "@/components/CandleChart";
 import { Token } from "@/components/TokenLogo";
 import { BARS, EVENTS, SCREEN_WEEKENDS } from "@/lib/claims";
+import { FEED_SPLIT as F } from "@/lib/feedSplit";
+
+const day = (iso: string) => new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" });
 
 const fmt = (x: number) => `+${x < 1 ? x.toFixed(2) : x.toFixed(1)}%`;
-const day = (iso: string) => new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" });
 
 function Bars() {
   const max = Math.max(...BARS.map((b) => b.pct));
@@ -66,11 +68,17 @@ export function Evidence() {
           ))}
         </div>
         <p className="mt-8 max-w-[64ch] text-[#C9D1D3]">
-          New listings without a Chainlink feed spiked on two weekends; MSTR, which has a feed, spiked the same weekend as HIMS.
-          The largest names stayed within a few percent.
+          A Chainlink feed doesn&apos;t make a token immune. In {F.windows} mint-off windows ({day(F.first)} to {day(F.last)}), a token held more
+          than 10% above its reference for an hour or more {F.spikes} times: {F.noFeed} on tokens without a feed
+          {F.lmt && <> (LMT +{F.lmt.pct.toFixed(1)}% on {day(F.lmt.window)}, for {F.lmt.hours} h)</>} and {F.withFeed} on tokens with one
+          ({F.withFeedTickers.join(", ")}). The largest names (NVDA, TSLA, AAPL, SPY) never went above {F.largeMaxPct.toFixed(1)}%.
         </p>
         <p className="mt-2 max-w-[64ch] text-[11px] text-[#9AA3A6]">
-          Source: our weekend screen, {SCREEN_WEEKENDS.length} weekends ({SCREEN_WEEKENDS[0]} to {SCREEN_WEEKENDS.at(-1)}), every swap on each
+          Spike counts: our <a className="underline" href="/weekends">weekend report</a> (every hook-free USDG pool, premium held at least 15 minutes vs the
+          official close). Feed list: Chainlink&apos;s reference data directory ({F.feedCount} Robinhood Chain stock feeds).
+        </p>
+        <p className="mt-2 max-w-[64ch] text-[11px] text-[#9AA3A6]">
+          Bars and charts: our weekend screen, {SCREEN_WEEKENDS.length} weekends ({SCREEN_WEEKENDS[0]} to {SCREEN_WEEKENDS.at(-1)}), every swap on each
           ticker&apos;s deepest hook-free pool. Reference: the Chainlink close where a feed exists, otherwise the pool price at Fri 20:00 UTC.
         </p>
       </div>

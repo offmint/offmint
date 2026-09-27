@@ -15,8 +15,9 @@ Read as a judge who opens the README and the site cold, with 5 minutes. Scores a
    (paper mode JSON, Blockscout, CI). **Needs the user.**
 2. **Sponsor quote without a source.** "Robinhood's crypto GM named user-supplied pool depth as the fix" is our
    strongest PMF line and it has no link.
-   → Marked `[SOURCE NEEDED]` in HACKQUEST.md and QA.md. **Needs the user:** paste the link, or we delete the line
-   before submission. We won't submit it unsourced.
+   → **Fixed 27 Sep:** sourced to BigGo Finance's write-up of Kerbrat's Bankless interview (https://finance.biggo.com/news/4691062f7e0b2bb5), a secondary
+   source, so it's paraphrased with attribution and no quotation marks. Robinhood's newsroom launch post is linked as
+   the official line on lending pools.
 3. **Small numbers.** +3.8% to +7.1% on a spike weekend, ~0% otherwise, capacity ~$1,647 per pool.
    → Can't be fixed by Friday and shouldn't be hidden. Framed as honest size + roadmap (RFQ/aggregator buybacks) in the
    README, deck slide 5 and QA "Why so small?".
@@ -26,7 +27,9 @@ Read as a judge who opens the README and the site cold, with 5 minutes. Scores a
   "updating" rather than stale numbers. Set `ALCHEMY_RH_MAINNET_URL` on the web host before judging.
 - Sell-order **buy back** is shown after Mon 28 Sep 00:00 UTC (C3 caveat); first live weekend-report row lands the same
   Monday (C2 caveat).
-- The weekend report shows LMT (a feed-backed large cap) at +53.5% held for 13.2 h on 5 Sep, with 4,511 swaps and 1,495
-  wallets. That's real pool trading, not a data error, and it doesn't contradict the landing (the "stayed within a few
-  percent" claim is scoped to NVDA, TSLA, AAPL, SPY). A judge may ask; answer: pool premiums are not limited to
-  no-feed tokens, which is why the monitor watches the whole basket.
+- The weekend report shows LMT at +53.5% held for 13.2 h on 5 Sep, with 4,511 swaps and 1,495 wallets. That's real pool
+  trading, not a data error. **Correction (27 Sep):** this note first called LMT "feed-backed"; it isn't. Chainlink's
+  directory lists 35 Robinhood feeds and LMT isn't one, and the detector has it in the basket (no feed, new pool). The
+  old "feed-backed tokens stayed under ~4%" line came from a 10-ticker hand-picked scan that never included LMT, and
+  the 35-feed scan already had MSTR, RKLB, CRWV and ORCL above it. Copy now says: 19 spikes (>10%, 1 h+) in 12 windows,
+  16 without a feed, 3 with one (MSTR, RKLB); the largest names stayed within 2.6% (landing, README, HACKQUEST, CLAIMS).

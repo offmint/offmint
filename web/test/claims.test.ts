@@ -9,6 +9,7 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { BARS, EVENTS, WORKED, DEMO, TESTS, PARAMS, FORK, LARGEST, COMMUNITY } from "../src/lib/claims";
 import { WEEKENDS } from "../src/lib/weekends";
+import { FEED_SPLIT } from "../src/lib/feedSplit";
 import { Evidence } from "../src/components/landing/Evidence";
 import { HowItWorks } from "../src/components/landing/HowItWorks";
 import { Verify } from "../src/components/landing/Verify";
@@ -190,4 +191,27 @@ test("harm wallet counts are complete: no unresolved sender lookups behind a pub
     if (u === undefined) continue; // older harm.json without the field
     assert.equal(u, 0, `${k}: ${u} buys have no resolved sender, so uniqueSenders would be an undercount`);
   }
+});
+
+test("feed split: spike counts and large-cap ceiling match the weekend report, in every place the claim appears", () => {
+  const F = FEED_SPLIT;
+  const feeds = JSON.parse(readFileSync(join(ROOT, "web/public/data/feeds.json"), "utf8"));
+  // LMT has no Chainlink feed (the claim this replaced called it feed-backed)
+  assert.ok(!feeds.tickers.includes("LMT"), "LMT is in the feed list: re-check docs/verification/feed-claim.md");
+  assert.equal(F.noFeed + F.withFeed, F.spikes);
+  assert.ok(F.withFeed > 0, "copy says a feed does not make a token immune");
+  const html = renderToStaticMarkup(createElement(Evidence));
+  const text = html.replace(/<[^>]+>/g, "").replace(/&#x27;|&apos;/g, "'");
+  assert.match(text, new RegExp(`${F.spikes} times: ${F.noFeed} on tokens without a feed`));
+  assert.match(text, new RegExp(`${F.withFeed} on tokens with one \\(${F.withFeedTickers.join(", ")}\\)`));
+  assert.ok(text.includes(`never went above ${F.largeMaxPct.toFixed(1)}%`));
+  const lmt = `LMT +${F.lmt!.pct.toFixed(1)}% on 5 Sep`;
+  const spikes = `${F.spikes} times, ${F.noFeed} on tokens without a feed`;
+  for (const f of ["README.md", "docs/submission/HACKQUEST.md"]) {
+    const doc = readFileSync(join(ROOT, f), "utf8").replace(/\s+/g, " ");
+    assert.ok(doc.includes(lmt), `${f}: ${lmt}`);
+    assert.ok(doc.includes(`within ${F.largeMaxPct.toFixed(1)}%`) || doc.includes(`above ${F.largeMaxPct.toFixed(1)}%`), `${f}: large-cap ceiling`);
+    assert.ok(doc.includes(`${F.spikes} times`) && doc.includes(`${F.noFeed} on tokens without a feed`), `${f}: ${spikes}`);
+  }
+  assert.ok(!/feed-backed large cap/.test(readFileSync(join(ROOT, "docs/submission/JUDGE_REVIEW.md"), "utf8").replace("called LMT \"feed-backed\"", "")));
 });

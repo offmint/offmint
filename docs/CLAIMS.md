@@ -9,6 +9,7 @@ Every public number or claim, where it comes from, and its status. Generated fro
 | MSTR peak weekend premium (has a feed) | +243.31% | screen/weekends.json (ref = Chainlink close); cross-checked in docs/verification/mstr.md | verified | evidence bars, README |
 | RKLB largest weekend premium | +35.83% | screen/weekends.json | verified | evidence bars |
 | Large caps (NVDA, TSLA, AAPL, SPY) largest | +2.62% | screen/weekends.json | verified | evidence bars |
+| Spikes by feed (>10% held 1h+, 12 windows) | 19 = 16 without a feed + 3 with one (MSTR, RKLB); LMT +53.48% 5 Sep 13.2 h (no feed) | weekends.json + feeds.json (Chainlink directory, 35 feeds) via web/src/lib/feedSplit.ts | verified (observed onchain) | evidence, README, HACKQUEST |
 | HIMS weekday 95th percentile | +0.41% | backtest/weekday-vs-weekend.json | verified | evidence bars |
 | Hero replay: HIMS candles, steps sold-through times | times from data | backtest/hims-2026-08-28.json timeline + params.json ladder | verified (real swaps); step fills are hypothetical | hero |
 | HIMS NYSE close | $28.84 | backtest/hims-2026-08-28.json event.p0 (NYSE close, SPEC §10) | verified | hero caption, evidence caption |
@@ -43,6 +44,7 @@ Every public number or claim, where it comes from, and its status. Generated fro
 |---|---|---|
 | Live stat "highest live premium" (showed INDA +24.96%) | "highest verified live premium" | reference quotes off-hours are too wide (docs/verification/premiums.md) |
 | "Every feed-backed ticker stayed under ~4%" | largest names within a few percent; MSTR (has a feed) +243.3% | MSTR was a real squeeze (docs/verification/mstr.md) |
+| "New listings without a feed spiked on two weekends; the largest names stayed within a few percent" (and JUDGE_REVIEW "LMT, a feed-backed large cap") | 19 spikes (>10% held 1h+) in 12 windows: 16 without a feed (incl. LMT +53.5%, 5 Sep), 3 with one (MSTR ×2, RKLB); largest names ≤ 2.6% | LMT has no feed (Chainlink directory, 35 feeds); "≤ 3.7%" came from a 10-ticker hand-picked scan without LMT (docs/verification/feed-claim.md) |
 | Hero "Friday price $29.87" derived from +317.6% | reference read from the screen data ($29.8653, pool @ Fri 20:00 UTC) | ground rule 1 |
 | GLXY worked example 106.36 (unpinned fork) | 106.31 @ block 71241990 | fork pinned (item 13) |
 | Company logos (Parqet/FMP) | Robinhood token icon next to ticker badge | wrong-company risk (item 4) |

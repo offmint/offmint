@@ -30,6 +30,11 @@ price and failing to buy back on a gap-up is a real outcome.
 Squeezes recur across the basket, not per ticker: HIMS and GLXY spiked on different weekends; a fixed list would have
 caught one by luck. The detector rebuilds the basket every 6 hours.
 
+**Doesn't a Chainlink feed stop this?**
+Not on its own. In 12 mint-off windows, a premium above 10% held for an hour or more 19 times: 16 on tokens without a
+feed (LMT +53.5% on 5 Sep, for 13.2 h) and 3 on tokens with one (MSTR, RKLB). The largest names (NVDA, TSLA, AAPL, SPY)
+stayed within 2.6%. A feed helps a vault price its buyback; it doesn't add supply on a weekend.
+
 **What stops the keeper from stealing?**
 Nothing to steal with: the keeper can only arm with a ladder at least as conservative as the default, lock, and settle
 within the caps. Owner and keeper can never receive funds (invariant-tested). If the keeper stops, anyone can arm or
@@ -44,7 +49,11 @@ post. The owner can freeze it.
 
 **Robinhood is adding market makers. Doesn't that kill this?**
 It narrows the window, and that's good for users. Weekends, holidays and halts remain, and new listings arrive thin.
-Robinhood's own fix names users supplying stock tokens into pools, which is what the vault does [SOURCE NEEDED].
+In a Bankless interview ([reported by BigGo Finance](https://finance.biggo.com/news/4691062f7e0b2bb5)), Robinhood's Johann Kerbrat said the main fix is
+market-maker depth, with Uniswap pools where users lend stock tokens as part of the liquidity. He also separated news-driven
+gaps from supply-crunch premiums, where too few tokens were minted for demand. The vault is that user-supplied pool
+depth, aimed at the supply-crunch case. Robinhood's [launch announcement](https://robinhood.com/us/en/newsroom/robinhood-accelerates-global-expansion-robinhood-chain-mainnet-stock-tokens-agentic-trading/) also lists deploying Stock Tokens into
+lending pools.
 
 **What about MetaVault?**
 Experimental, coming later. Its weekly picker, replayed with only the data it would have had, did not pick HIMS.

@@ -56,7 +56,11 @@ price and sell them. On weekends that loop is switched off. Our screen of every 
 
 MSTR, which **has** a Chainlink feed, spiked **+243.31%** the same weekend as HIMS (checked against the Chainlink
 feed: the pool traded at parity on Thursday, Friday and Tuesday, +25% Saturday, +103% Sunday, back to parity Monday).
-The largest names (NVDA, TSLA, AAPL, SPY) stayed within a few percent. Squeezes are rare per ticker and recur across the
+A Chainlink feed doesn't make a token immune: in 12 mint-off windows (3 Jul to 19 Sep), a token held more than 10% above
+its reference for an hour or more 19 times, 16 on tokens without a feed (LMT +53.5% on 5 Sep, for 13.2 h) and 3 on tokens
+with one (MSTR twice, RKLB once; from the [weekend report](web/public/data/weekends.json), premium held 15 min vs the
+official close; feed list from Chainlink's directory, [feeds.json](web/public/data/feeds.json)). The largest names
+(NVDA, TSLA, AAPL, SPY) never went above 2.6%. Squeezes are rare per ticker and recur across the
 basket, which is why Offmint works from a live basket (a detector rebuilds it every 6 hours) instead of a fixed list.
 Reference: the Chainlink close where a feed exists, otherwise the pool price at Fri 20:00 UTC. Data: `web/public/data/screen/weekends.json`.
 
