@@ -30,13 +30,22 @@ Onchain data for the weekend of 29–30 Aug 2026 shows **two different regimes, 
   (BONER) became its dominant liquidity venue over the free float and absorbed it. Same chain, wildly different outcome.
 - **Total weekend volume was huge either way** ($492.6M across Sat/Sun, zero new supply minted) — the *demand* is real,
   the *dislocation* is concentrated in thin names, not broad ones.
-- **Robinhood is actively patching this.** Their crypto GM said they specifically onboarded market makers ~10 days
-  before a later 3-day weekend "to prevent the dislocation seen earlier," and named exactly this mechanism (users
-  lending stock tokens into pools) as part of the fix. Cite this on the pitch deck — it's the sponsor validating the
-  product — but treat it as a **shrinking-window risk**, not a permanent moat.
+- **Robinhood is actively patching this.** In a Bankless interview ([reported by BigGo Finance](https://finance.biggo.com/news/4691062f7e0b2bb5),
+  21 Sep 2026), Robinhood's Johann Kerbrat said they onboarded market makers ahead of a later 3-day weekend to prevent
+  the earlier dislocation, and that Uniswap pools where users lend stock tokens are part of the liquidity. Secondary
+  source: paraphrase with attribution, never in quotation marks. Treat it as a **shrinking-window risk**, not a
+  permanent moat.
+- **A Chainlink feed does not make a token immune** (updated 27 Sep 2026, docs/verification/feed-claim.md). Weekend
+  report, 12 mint-off windows (3 Jul–19 Sep), every hook-free USDG pool, premium held ≥ 15 min vs the official close: a
+  token held > 10% above its reference for ≥ 1 h **19 times — 16 on tokens without a feed** (e.g. LMT +53.5% on 5 Sep,
+  13.2 h; LMT has no feed) **and 3 on tokens with one** (MSTR 25 Jul and 29 Aug, RKLB 12 Sep). The largest names
+  (NVDA, TSLA, AAPL, SPY) never went above 2.6%. So "majors don't squeeze" holds for the largest names, not for
+  "has a feed". The earlier line "every feed-backed ticker stayed ≤ 3.7%" came from a 10-ticker hand-picked scan
+  (8 majors) and is withdrawn.
 
-**Consequence for the build:** this vault must NOT default to "works on any stock." §3.5 below defines a required
-curation step. Ship vaults only for tickers with a demonstrated pattern of weekend dislocation.
+**Consequence for the build:** this vault must NOT default to "works on any stock." The live Detector (§3.7) decides
+which tokens are in the basket; §3.5's fixed curation list is superseded. The Detector's "has a feed → graduated" rule
+excludes MSTR and RKLB, which did spike (flagged in docs/verification/mstr.md §5; not changed yet).
 
 ---
 
@@ -88,7 +97,9 @@ check fails → epoch skipped (safe). If Monday is a holiday, the feed stays fro
 The original plan here was a static, hand-picked list of 3–5 tickers. **Real backtest data killed that plan on
 24 Sep 2026.** Across the observed no-feed listings (GLXY, HIMS, NU, BULL, AMC, BB, FIG, IBM, RIVN, RCAT), two genuine
 squeezes occurred in four weekends — HIMS (+317.6%, 29 Aug) and GLXY (+186.1%, 12 Sep) — on **two different tickers**,
-with every other name staying calm (≤11.7%) in the weekends observed. Per-ticker, a squeeze is close to a one-off; a
+with every other name in that set staying calm (≤11.7%) over those four weekends. (That bound is only for those 10
+names: the full weekend report, 187 tickers over 12 windows, has 19 spikes > 10% held ≥ 1 h — 16 without a feed,
+3 with one; see §1.1 and docs/verification/feed-claim.md.) Per-ticker, a squeeze is close to a one-off; a
 fixed list built from last month's evidence would have caught at most one of the two real events, by luck. Pool-wide,
 across the whole no-feed basket, a squeeze recurred roughly every other weekend. **The unit of the product is the
 basket, not the ticker.** See §3.7 (Detector) and §6.5 (MetaVault) for what replaced this.

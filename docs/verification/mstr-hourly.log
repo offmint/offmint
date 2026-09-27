@@ -1,0 +1,51 @@
+{"event":"rpc","network":"mainnet","using":"public fallback","expects":["ALCHEMY_RH_MAINNET_URL","RH_MAINNET_RPC"],"set":{"ALCHEMY_RH_MAINNET_URL":false,"RH_MAINNET_RPC":false}}
+reference (last Chainlink round before Sat 00:00) $127.81
+h 0 08-29T00:00 swaps=   49 median=0.7% max=1.3% >200%=0
+h 1 08-29T01:00 swaps=  149 median=1.0% max=1.9% >200%=0
+h 2 08-29T02:00 swaps= 6865 median=2.8% max=3.9% >200%=0
+h 3 08-29T03:00 swaps= 2806 median=3.3% max=3.9% >200%=0
+h 4 08-29T04:00 swaps= 7799 median=4.7% max=43.2% >200%=0
+h 5 08-29T05:00 swaps= 3619 median=6.9% max=10.8% >200%=0
+h 6 08-29T06:00 swaps= 1507 median=8.8% max=32.6% >200%=0
+h 7 08-29T07:00 swaps= 2302 median=16.5% max=29.4% >200%=0
+h 8 08-29T08:00 swaps= 1375 median=22.3% max=31.3% >200%=0
+h 9 08-29T09:00 swaps=  848 median=28.7% max=32.9% >200%=0
+h10 08-29T10:00 swaps=  806 median=27.7% max=32.5% >200%=0
+h11 08-29T11:00 swaps=  556 median=27.0% max=28.8% >200%=0
+h12 08-29T12:00 swaps=  457 median=25.8% max=26.9% >200%=0
+h13 08-29T13:00 swaps=  801 median=27.0% max=28.0% >200%=0
+h14 08-29T14:00 swaps=  583 median=28.6% max=29.9% >200%=0
+h15 08-29T15:00 swaps=  448 median=27.5% max=28.7% >200%=0
+h16 08-29T16:00 swaps=  418 median=27.4% max=34.2% >200%=0
+h17 08-29T17:00 swaps=  873 median=43.4% max=48.0% >200%=0
+h18 08-29T18:00 swaps=  841 median=43.8% max=48.6% >200%=0
+h19 08-29T19:00 swaps=  491 median=45.6% max=47.7% >200%=0
+h20 08-29T20:00 swaps=  446 median=45.6% max=47.8% >200%=0
+h21 08-29T21:00 swaps= 1319 median=42.1% max=45.3% >200%=0
+h22 08-29T22:00 swaps=  611 median=42.0% max=43.5% >200%=0
+h23 08-29T23:00 swaps=  549 median=40.2% max=43.9% >200%=0
+h24 08-30T00:00 swaps=  339 median=40.5% max=41.9% >200%=0
+h25 08-30T01:00 swaps=  386 median=41.8% max=43.8% >200%=0
+h26 08-30T02:00 swaps= 1337 median=46.1% max=62.8% >200%=0
+h27 08-30T03:00 swaps= 1644 median=69.2% max=85.0% >200%=0
+h28 08-30T04:00 swaps= 1342 median=94.2% max=117.3% >200%=0
+h29 08-30T05:00 swaps=  595 median=81.8% max=94.5% >200%=0
+h30 08-30T06:00 swaps= 1023 median=81.7% max=87.9% >200%=0
+h31 08-30T07:00 swaps=  431 median=77.2% max=83.0% >200%=0
+h32 08-30T08:00 swaps=  230 median=67.4% max=76.7% >200%=0
+h33 08-30T09:00 swaps=  220 median=70.0% max=74.6% >200%=0
+h34 08-30T10:00 swaps=  321 median=76.1% max=80.8% >200%=0
+h35 08-30T11:00 swaps=  569 median=88.1% max=99.8% >200%=0
+h36 08-30T12:00 swaps= 1589 median=108.0% max=122.7% >200%=0
+h37 08-30T13:00 swaps= 5308 median=124.9% max=179.4% >200%=0
+h38 08-30T14:00 swaps= 3584 median=171.4% max=243.3% >200%=390
+h39 08-30T15:00 swaps= 1628 median=114.2% max=152.7% >200%=0
+h40 08-30T16:00 swaps= 1165 median=134.4% max=149.7% >200%=0
+h41 08-30T17:00 swaps=  963 median=97.4% max=141.4% >200%=0
+h42 08-30T18:00 swaps=  752 median=100.9% max=112.5% >200%=0
+h43 08-30T19:00 swaps=  447 median=89.6% max=106.6% >200%=0
+h44 08-30T20:00 swaps=  530 median=79.4% max=95.4% >200%=0
+h45 08-30T21:00 swaps=  371 median=72.3% max=84.1% >200%=0
+h46 08-30T22:00 swaps=  470 median=79.3% max=93.3% >200%=0
+h47 08-30T23:00 swaps=  555 median=84.3% max=100.7% >200%=0
+TOTAL swaps=62317 max=243.31% (hour starting 08-30T14:00) swaps>150%=3846 swaps>200%=390 hours with median>150%=1

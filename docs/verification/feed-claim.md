@@ -24,6 +24,10 @@ feed-backed tokens stayed under ~4% (from a scan that found every feed token at 
 - The measures differ on thin pools: CRWV +26.1% (Scan B, a print) vs +1.55% held (report); ORCL +15.3% vs +2.76%
   (a zero-liquidity drain print, see docs/verification/replay-with-supply.md). On the four largest names they agree:
   report max +2.52% (NVDA), Scan B max +2.62% (NVDA).
+- **MSTR is not in that group: its premium is real under both measures** (agrees with docs/verification/mstr.md).
+  +243.31% (Scan B) is the highest traded price: 390 swaps above +200% in the hour from Sun 30 Aug 14:00 UTC. The
+  report's +166.51% is the highest level held 15 minutes; it held above +10% for 41.2 h. Checked swap by swap on
+  27 Sep: docs/verification/mstr-hourly.log.
 
 ## The claim now (all copy)
 In 12 mint-off windows, a token held more than 10% above its reference for 1 h or more **19 times: 16 on tokens without

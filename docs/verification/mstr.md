@@ -23,6 +23,14 @@ The pool is at parity before and after; units, decimals, orientation and multipl
 correct. The gap opens only while minting is off and closes after reopen: a genuine weekend squeeze.
 Script: `docs/verification/mstr-probe.mts` (read-only mainnet logs).
 
+**The +243.31% itself is a traded level, not a stray print** (added 27 Sep; every swap Sat 00:00 to Mon 00:00 UTC,
+hour by hour vs the Chainlink close $127.81; `docs/verification/mstr-hourly.mts`, output `mstr-hourly.log`):
+62,317 swaps with liquidity (the weekend report counts the same 62,317). The +243.31% print is in the hour from
+Sun 30 Aug 14:00, where **390 swaps** traded above +200% and the hour's median was +171.4%; 3,846 swaps traded above
++150% over the weekend. Hourly medians were above +25% from Sat 09:00 to the end of the window. The top was brief: no
+level above +166.5% held for 15 minutes, which is why the weekend report (peak = held ≥ 15 min) shows **+166.51%**.
+Both numbers are right for what they measure: +243.3% = highest traded price; +166.5% = highest held 15 min.
+
 ## 2. Why −100%? Engine bug, fixed, stale cache.
 The screen's cached run had `note: "buyback capped: would end PENDING_BUYBACK"`. The engine version that produced it
 valued the USDG held after a capped buyback at zero, so a vault that had sold at a premium and was waiting to buy
