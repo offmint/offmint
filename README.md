@@ -151,6 +151,7 @@ The fee recipient is immutable and can never be the owner or keeper. Bounds are 
 - **Weekend report:** `/weekends` lists every mint-off window since 1 Jul: premiums, USD paid above the reference price,
   wallets.
 - **Run the site locally:** `cd web && npm ci && npm run build && npm start` → http://localhost:3000.
+- **Hosting:** Cloudflare Workers, built from this repo on every push to `main` ([docs/DEPLOY.md](docs/DEPLOY.md)).
 - **Reproduce a weekend in one command:** see below.
 
 ## Reproduce in one command
