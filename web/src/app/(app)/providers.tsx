@@ -10,7 +10,11 @@ import { useState, type ReactNode } from "react";
 // Standard wallet-connect only (SPEC §9.1): the user brings their own wallet and gas. No sponsored transactions.
 // Reads go through our server-side proxy (Alchemy key never reaches the browser); wallets sign with their own RPC.
 const transports = {
-  [robinhoodTestnet.id]: http(typeof window === "undefined" ? undefined : `${window.location.origin}/api/rpc/${robinhoodTestnet.id}`),
+  // batch: reads fired together go out as one JSON-RPC array (the proxy takes up to 50), so a visitor stays far under the
+  // per-IP rate limit on /api/rpc (src/lib/rateLimit.ts)
+  [robinhoodTestnet.id]: http(typeof window === "undefined" ? undefined : `${window.location.origin}/api/rpc/${robinhoodTestnet.id}`, {
+    batch: { batchSize: 50, wait: 20 },
+  }),
 };
 const WC_PROJECT_ID = process.env.NEXT_PUBLIC_WC_PROJECT_ID;
 // Without a WalletConnect (Reown) project ID, offer browser-extension wallets only rather than a broken WalletConnect option.

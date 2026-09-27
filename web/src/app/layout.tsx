@@ -5,6 +5,8 @@ import { Schibsted_Grotesk } from "next/font/google";
 const font = Schibsted_Grotesk({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-schibsted" });
 
 export const metadata: Metadata = {
+  // absolute base for share-card (og:image) URLs; set NEXT_PUBLIC_SITE_URL at build time to the public URL
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: "Offmint: they price the weekend, we supply it",
   description:
     "Weekend supply for newly listed Robinhood Chain stock tokens: a 4-step sell ladder above Friday's price while token creation is frozen, and a capped buyback on Monday.",

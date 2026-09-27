@@ -43,3 +43,8 @@ backtest/.cache/
 
 # detector log cache (large, rebuilt incrementally)
 contracts/config/.detector-cache.json
+
+# Cloudflare (OpenNext build output, local wrangler state, local secrets)
+web/.open-next/
+web/.wrangler/
+.dev.vars

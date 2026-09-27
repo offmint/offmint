@@ -7,9 +7,10 @@ import { createPublicClient, encodeAbiParameters, http, keccak256, parseAbi, typ
 import { gate, tokenRef, type GateResult } from "@/lib/liveGate";
 
 const PAPER_API = process.env.NEXT_PUBLIC_PAPER_API || "https://offmint-keeper-production.up.railway.app";
-const RPC = process.env.ALCHEMY_RH_MAINNET_URL || process.env.RH_MAINNET_RPC || "https://rpc.mainnet.chain.robinhood.com";
+// Read per call, not at module load: on Cloudflare the secrets reach process.env with the request.
+const rpcUrl = () => process.env.ALCHEMY_RH_MAINNET_URL || process.env.RH_MAINNET_RPC || "https://rpc.mainnet.chain.robinhood.com";
 // Alchemy's free tier limits eth_getLogs to 10 blocks: log scans use the public RPC
-const LOGS_RPC = process.env.RH_MAINNET_RPC || "https://rpc.mainnet.chain.robinhood.com";
+const logsRpcUrl = () => process.env.RH_MAINNET_RPC || "https://rpc.mainnet.chain.robinhood.com";
 const PM = "0x8366a39cc670b4001a1121b8f6a443a643e40951" as const;
 const SWAP_TOPIC = "0x40e9cecb9f5f1f1c5b9c97dec2917b7ee92e57ba5563708daca94dd84ad7112f" as Hex;
 const pmAbi = parseAbi(["function extsload(bytes32) view returns (bytes32)"]);
@@ -73,7 +74,7 @@ async function build(): Promise<Live> {
   const lastSwap = new Map<string, number>();
   let nowTs = Math.floor(Date.now() / 1000);
   if (members.length) {
-    const c = createPublicClient({ transport: http(RPC, { timeout: 15_000 }) });
+    const c = createPublicClient({ transport: http(rpcUrl(), { timeout: 15_000 }) });
     try {
       const slot = (id: Hex) => keccak256(encodeAbiParameters([{ type: "bytes32" }, { type: "uint256" }], [id, 6n]));
       const res = await c.multicall({
@@ -100,7 +101,7 @@ async function build(): Promise<Live> {
       const ids = members.map((m) => m.pool.poolId as Hex);
       const byId = new Map(members.map((m) => [String(m.pool.poolId).toLowerCase(), m.token]));
       // adaptive range: halve on RPC errors (public endpoint limits), like keeper/src/chain.ts swapLogs
-      const lc = createPublicClient({ transport: http(LOGS_RPC, { timeout: 20_000, retryCount: 2 }) });
+      const lc = createPublicClient({ transport: http(logsRpcUrl(), { timeout: 20_000, retryCount: 2 }) });
       let chunk = 50_000n;
       for (let from = latest.number - span; from <= latest.number; ) {
         const to = from + chunk - 1n > latest.number ? latest.number : from + chunk - 1n;
