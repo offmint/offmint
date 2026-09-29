@@ -5,7 +5,7 @@ Read as a judge who opens the README and the site cold, with 5 minutes. Scores a
 | Criterion | Score | Why | Evidence a judge can click |
 |---|---|---|---|
 | Smart contract quality | **8/10** | 160 forge tests incl. fuzz, invariants and both pool orientations; 12 pinned fork tests; stress with 0 violations; Slither triaged; threat model per key and input, incl. the sell order; contracts source-verified. Minus: unaudited; the testnet sandbox needs a ≥ 30 min cycle, so a judge can't run the onchain cycle instantly (the browser sandbox covers it, labelled). | README "Deployed" table, CI runs, docs/verification/slither.md, docs/THREAT_MODEL.md |
-| Real problem | **9/10** | HIMS +317.6% on one chart; $3.6M paid above the reference by 23,291 wallets, every swap scanned; minting off 31.2% of the year with Robinhood's own sources. Minus: the sponsor quote (GM) has no source link yet. | `/weekends`, landing hero, README first screen |
+| Real problem | **9/10** | HIMS +317.6% on one chart; $3.6M paid above the reference by 23,306 wallets, every swap scanned; minting off 31.2% of the year with Robinhood's own sources. Minus: the sponsor quote (GM) has no source link yet. | `/weekends`, landing hero, README first screen |
 | Innovation | **7/10** | Liquidity gated on the tokenization clock + a reference for tokens without feeds + sell orders anchored to the reference. Minus: a judge may read the mechanism as "a limit order" (answered in QA.md and the landing FAQ). | Landing "Four things you can do", FAQ, `/sell` |
 | Product-market fit | **6/10** | Clear first user (holders), honest fee model, basket-wide recurrence. Minus: capacity ~$1,647 per pool and ~0% on normal weekends make it a small product today; MetaVault is unproven. | Landing explainer table, README Fees + Roadmap |
 
@@ -31,5 +31,5 @@ Read as a judge who opens the README and the site cold, with 5 minutes. Scores a
   trading, not a data error. **Correction (27 Sep):** this note first called LMT "feed-backed"; it isn't. Chainlink's
   directory lists 35 Robinhood feeds and LMT isn't one, and the detector has it in the basket (no feed, new pool). The
   old "feed-backed tokens stayed under ~4%" line came from a 10-ticker hand-picked scan that never included LMT, and
-  the 35-feed scan already had MSTR, RKLB, CRWV and ORCL above it. Copy now says: 19 spikes (>10%, 1 h+) in 12 windows,
+  the 35-feed scan already had MSTR, RKLB, CRWV and ORCL above it. Copy now says: 19 spikes (>10%, 1 h+) in 13 windows,
   16 without a feed, 3 with one (MSTR, RKLB); the largest names stayed within 2.6% (landing, README, HACKQUEST, CLAIMS).

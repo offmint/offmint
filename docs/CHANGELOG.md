@@ -233,3 +233,20 @@
 - Item 15: startup log shows RPC kind (never the key) and expected env names. Found: Alchemy's free tier limits
   eth_getLogs to 10 blocks, so all log scans now use the public RPC (Alchemy for reads/calls only); this had broken
   the local paper backup and the live last-swap check.
+
+## 2026-09-29: site live, Monday items
+- Site live at https://offmint-web.offmintfinance.workers.dev (Cloudflare Workers). URL in README and HACKQUEST. Repo
+  public; every GitHub link resolves.
+- Hero card starts on its final frame (+317.6%, 4/4 steps), so no-JS and reduced-motion visitors never see +0.0% / 0/4.
+  Test: static render shows the final frame.
+- Alchemy keys hit their monthly capacity (HTTP 429). Live premiums on the site went to 0 of 66 (`/api/live` ok:false)
+  and the paper service's detector stalled. Fixes: `/api/live` and `/api/rpc` fall back to the public RPC; the keeper's
+  client no longer retries on Alchemy (a minute of backoff per call before the fallback).
+- Weekend report: the reference-close cache was never refreshed for cached tickers, so the 26 Sep window came out empty
+  (0 tokens). `harm.ts` now refetches a series that doesn't reach the newest window's reference date. 26 Sep: 69 active
+  tokens, no spike, $172 paid above the reference. Totals now $3,615,326 / $17,596,979 / 23,306 wallets over 13 windows;
+  recurrence 4 of 12 eligible windows. Test: every window has priced tokens.
+- G1: `docs/verification/paper-2026-09-26.md` (calm weekend, nothing sold, 0%) and the poster's weekend runs in
+  `docs/verification/poster.md` (spread check held; API quote lags the Sunday-night reopen by up to 3.1%).
+- QA: Blackout Desk (Bitget) "the reference catches up" question. `mstr.md`: which surface shows +243.3% vs +166.5%.
+- `web/scripts/live-check.mjs`: real-browser check of countdown, basket, verified premiums, live tables, hero fallback.

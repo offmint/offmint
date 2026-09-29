@@ -9,8 +9,8 @@ Numbers from docs/CLAIMS.md. One idea per slide.
 
 ## 2. The problem is structural and it recurs
 - Minting off **31.2% of 2026** (2,736 of 8,760 h).
-- **$3,615,154 paid above the reference** by **23,291 wallets** in 12 windows since 1 Jul.
-- Different token each time (HIMS, GLXY, MSTR…): >10% held 1 h+ in **4 of 11** windows, but only 3.6% of token-weekends.
+- **$3,615,326 paid above the reference** by **23,306 wallets** in 13 windows since 1 Jul.
+- Different token each time (HIMS, GLXY, MSTR…): >10% held 1 h+ in **4 of 12** windows, but only 3.1% of token-weekends.
 - Visual: weekend-report bars per window.
 
 ## 3. Session-gated liquidity

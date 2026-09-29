@@ -90,7 +90,7 @@ for (const w of WIDTHS) {
   await p.screenshot({ path: join(SHOTS, "monitor-live-1440.png"), fullPage: false });
   await p.goto(BASE + "/weekends", { waitUntil: "networkidle" });
   const txt = await p.locator("body").innerText();
-  results.live.weekends = { paidAbove: /\$3,615,154/.test(txt), valueOfBuys: /\$17,594,088/.test(txt), liveObservation: /live observation|paper mode/i.test(txt) };
+  results.live.weekends = { paidAbove: /\$3,615,326/.test(txt), valueOfBuys: /\$17,596,979/.test(txt), liveObservation: /live observation|paper mode/i.test(txt) };
   if (!results.live.weekends.paidAbove || !results.live.weekends.valueOfBuys) fail.push(`/weekends data: ${JSON.stringify(results.live.weekends)}`);
   await ctx.close();
 }

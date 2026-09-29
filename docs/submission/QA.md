@@ -31,7 +31,7 @@ Squeezes recur across the basket, not per ticker: HIMS and GLXY spiked on differ
 caught one by luck. The detector rebuilds the basket every 6 hours.
 
 **Doesn't a Chainlink feed stop this?**
-Not on its own. In 12 mint-off windows, a premium above 10% held for an hour or more 19 times: 16 on tokens without a
+Not on its own. In 13 mint-off windows, a premium above 10% held for an hour or more 19 times: 16 on tokens without a
 feed (LMT +53.5% on 5 Sep, for 13.2 h) and 3 on tokens with one (MSTR, RKLB). The largest names (NVDA, TSLA, AAPL, SPY)
 stayed within 2.6%. A feed helps a vault price its buyback; it doesn't add supply on a weekend.
 

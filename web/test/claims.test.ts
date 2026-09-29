@@ -67,6 +67,10 @@ test("rendered numbers equal their data values", () => {
   assert.ok(ver.includes((Number(DEMO.withdrawn) / 1e6).toLocaleString("en-US", { minimumFractionDigits: 2 })), "testnet cycle result");
 });
 
+test("every weekend-report window has priced tokens (a missing reference close empties a window silently)", () => {
+  for (const w of WEEKENDS.windows) assert.ok(w.tokens.some((t) => t.active), `${w.window}: no active token with a reference`);
+});
+
 test("weekend report agrees with harm.json, window by window (same pools, references and buy rules)", () => {
   const harm = JSON.parse(readFileSync(join(ROOT, "web/public/data/harm.json"), "utf8"));
   const th = WEEKENDS.headlineThresholdPct;

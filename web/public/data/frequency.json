@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-26T08:36:11.926Z",
+ "generatedAt": "2026-09-29T23:45:30.630Z",
  "label": "observed (onchain swaps vs official closes)",
  "method": [
   "Same windows, pools and reference closes as web/public/data/harm.json.",
@@ -16,88 +16,88 @@
  ],
  "sustainHours": 1,
  "all": {
-  "tickerWindows": 417,
-  "tickers": 91,
-  "windows": 12,
+  "tickerWindows": 486,
+  "tickers": 92,
+  "windows": 13,
   "byThreshold": [
    {
     "thresholdPct": 2,
-    "peakCount": 90,
-    "peakSharePct": 21.6,
-    "sustainedCount": 85,
-    "sustainedSharePct": 20.4,
-    "windowsWithAnySustained": 12,
+    "peakCount": 93,
+    "peakSharePct": 19.1,
+    "sustainedCount": 88,
+    "sustainedSharePct": 18.1,
+    "windowsWithAnySustained": 13,
     "windowsWithAnySustainedSharePct": 100
    },
    {
     "thresholdPct": 5,
-    "peakCount": 39,
-    "peakSharePct": 9.4,
-    "sustainedCount": 34,
-    "sustainedSharePct": 8.2,
-    "windowsWithAnySustained": 9,
-    "windowsWithAnySustainedSharePct": 75
+    "peakCount": 40,
+    "peakSharePct": 8.2,
+    "sustainedCount": 35,
+    "sustainedSharePct": 7.2,
+    "windowsWithAnySustained": 10,
+    "windowsWithAnySustainedSharePct": 76.9
    },
    {
     "thresholdPct": 10,
     "peakCount": 22,
-    "peakSharePct": 5.3,
+    "peakSharePct": 4.5,
     "sustainedCount": 19,
-    "sustainedSharePct": 4.6,
+    "sustainedSharePct": 3.9,
     "windowsWithAnySustained": 8,
-    "windowsWithAnySustainedSharePct": 66.7
+    "windowsWithAnySustainedSharePct": 61.5
    },
    {
     "thresholdPct": 25,
     "peakCount": 11,
-    "peakSharePct": 2.6,
+    "peakSharePct": 2.3,
     "sustainedCount": 8,
-    "sustainedSharePct": 1.9,
+    "sustainedSharePct": 1.6,
     "windowsWithAnySustained": 4,
-    "windowsWithAnySustainedSharePct": 33.3
+    "windowsWithAnySustainedSharePct": 30.8
    }
   ]
  },
  "eligible": {
-  "tickerWindows": 278,
-  "tickers": 73,
-  "windows": 11,
+  "tickerWindows": 327,
+  "tickers": 74,
+  "windows": 12,
   "byThreshold": [
    {
     "thresholdPct": 2,
-    "peakCount": 45,
-    "peakSharePct": 16.2,
-    "sustainedCount": 44,
-    "sustainedSharePct": 15.8,
-    "windowsWithAnySustained": 9,
-    "windowsWithAnySustainedSharePct": 81.8
+    "peakCount": 47,
+    "peakSharePct": 14.4,
+    "sustainedCount": 46,
+    "sustainedSharePct": 14.1,
+    "windowsWithAnySustained": 10,
+    "windowsWithAnySustainedSharePct": 83.3
    },
    {
     "thresholdPct": 5,
     "peakCount": 16,
-    "peakSharePct": 5.8,
+    "peakSharePct": 4.9,
     "sustainedCount": 15,
-    "sustainedSharePct": 5.4,
+    "sustainedSharePct": 4.6,
     "windowsWithAnySustained": 4,
-    "windowsWithAnySustainedSharePct": 36.4
+    "windowsWithAnySustainedSharePct": 33.3
    },
    {
     "thresholdPct": 10,
     "peakCount": 10,
-    "peakSharePct": 3.6,
+    "peakSharePct": 3.1,
     "sustainedCount": 10,
-    "sustainedSharePct": 3.6,
+    "sustainedSharePct": 3.1,
     "windowsWithAnySustained": 4,
-    "windowsWithAnySustainedSharePct": 36.4
+    "windowsWithAnySustainedSharePct": 33.3
    },
    {
     "thresholdPct": 25,
     "peakCount": 6,
-    "peakSharePct": 2.2,
+    "peakSharePct": 1.8,
     "sustainedCount": 3,
-    "sustainedSharePct": 1.1,
+    "sustainedSharePct": 0.9,
     "windowsWithAnySustained": 2,
-    "windowsWithAnySustainedSharePct": 18.2
+    "windowsWithAnySustainedSharePct": 16.7
    }
   ]
  },
@@ -5574,6 +5574,903 @@
    "swaps": 35,
    "depthUsd": 16299,
    "peakPct": -0.53,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "RUN",
+   "window": "2026-09-26",
+   "swaps": 71,
+   "depthUsd": 2224,
+   "peakPct": 6.05,
+   "hoursAbove": {
+    "2": 8.7,
+    "5": 3.7,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "USO",
+   "window": "2026-09-26",
+   "swaps": 1201,
+   "depthUsd": 136280,
+   "peakPct": 2.88,
+   "hoursAbove": {
+    "2": 12.3,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "MSTR",
+   "window": "2026-09-26",
+   "swaps": 892,
+   "depthUsd": 420645,
+   "peakPct": 2.15,
+   "hoursAbove": {
+    "2": 1.3,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "INTC",
+   "window": "2026-09-26",
+   "swaps": 716,
+   "depthUsd": 172081,
+   "peakPct": 1.95,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "GME",
+   "window": "2026-09-26",
+   "swaps": 189,
+   "depthUsd": 18737,
+   "peakPct": 1.72,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "MU",
+   "window": "2026-09-26",
+   "swaps": 393,
+   "depthUsd": 119407,
+   "peakPct": 1.57,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "PLTR",
+   "window": "2026-09-26",
+   "swaps": 633,
+   "depthUsd": 115728,
+   "peakPct": 1.4,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "IREN",
+   "window": "2026-09-26",
+   "swaps": 10,
+   "depthUsd": 1688,
+   "peakPct": 1.29,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "COIN",
+   "window": "2026-09-26",
+   "swaps": 160,
+   "depthUsd": 6697,
+   "peakPct": 1.28,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "CRCL",
+   "window": "2026-09-26",
+   "swaps": 238,
+   "depthUsd": 36706,
+   "peakPct": 1.11,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "ZM",
+   "window": "2026-09-26",
+   "swaps": 10,
+   "depthUsd": 2408,
+   "peakPct": 1.08,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "CRM",
+   "window": "2026-09-26",
+   "swaps": 24,
+   "depthUsd": 44680,
+   "peakPct": 1.05,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "SKHY",
+   "window": "2026-09-26",
+   "swaps": 436,
+   "depthUsd": 36007,
+   "peakPct": 0.94,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "GLXY",
+   "window": "2026-09-26",
+   "swaps": 27,
+   "depthUsd": 2857,
+   "peakPct": 0.89,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "RDDT",
+   "window": "2026-09-26",
+   "swaps": 259,
+   "depthUsd": 76977,
+   "peakPct": 0.87,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "NNE",
+   "window": "2026-09-26",
+   "swaps": 15,
+   "depthUsd": 2913,
+   "peakPct": 0.82,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "QCOM",
+   "window": "2026-09-26",
+   "swaps": 18,
+   "depthUsd": 26919,
+   "peakPct": 0.81,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "NBIS",
+   "window": "2026-09-26",
+   "swaps": 70,
+   "depthUsd": 17823,
+   "peakPct": 0.81,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "ORCL",
+   "window": "2026-09-26",
+   "swaps": 52,
+   "depthUsd": 47777,
+   "peakPct": 0.74,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "SNDK",
+   "window": "2026-09-26",
+   "swaps": 248,
+   "depthUsd": 85528,
+   "peakPct": 0.65,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "BABA",
+   "window": "2026-09-26",
+   "swaps": 270,
+   "depthUsd": 63324,
+   "peakPct": 0.63,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "BULL",
+   "window": "2026-09-26",
+   "swaps": 19,
+   "depthUsd": 2058,
+   "peakPct": 0.63,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "RCAT",
+   "window": "2026-09-26",
+   "swaps": 45,
+   "depthUsd": 32848,
+   "peakPct": 0.61,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "SNOW",
+   "window": "2026-09-26",
+   "swaps": 20,
+   "depthUsd": 59891,
+   "peakPct": 0.61,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "NFLX",
+   "window": "2026-09-26",
+   "swaps": 95,
+   "depthUsd": 17972,
+   "peakPct": 0.59,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "AMD",
+   "window": "2026-09-26",
+   "swaps": 404,
+   "depthUsd": 202362,
+   "peakPct": 0.59,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "TSM",
+   "window": "2026-09-26",
+   "swaps": 35,
+   "depthUsd": 288204,
+   "peakPct": 0.57,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "DELL",
+   "window": "2026-09-26",
+   "swaps": 207,
+   "depthUsd": 108336,
+   "peakPct": 0.57,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "PFE",
+   "window": "2026-09-26",
+   "swaps": 307,
+   "depthUsd": 18672,
+   "peakPct": 0.56,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "SGOV",
+   "window": "2026-09-26",
+   "swaps": 194,
+   "depthUsd": 35761,
+   "peakPct": 0.5,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "TTWO",
+   "window": "2026-09-26",
+   "swaps": 154,
+   "depthUsd": 11056,
+   "peakPct": 0.49,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "XOM",
+   "window": "2026-09-26",
+   "swaps": 15,
+   "depthUsd": 13452,
+   "peakPct": 0.47,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "FIG",
+   "window": "2026-09-26",
+   "swaps": 19,
+   "depthUsd": 448,
+   "peakPct": 0.46,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "SPCX",
+   "window": "2026-09-26",
+   "swaps": 3817,
+   "depthUsd": 37600,
+   "peakPct": 0.45,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "RIVN",
+   "window": "2026-09-26",
+   "swaps": 118,
+   "depthUsd": 115534,
+   "peakPct": 0.42,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "NU",
+   "window": "2026-09-26",
+   "swaps": 18,
+   "depthUsd": 28074,
+   "peakPct": 0.4,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "MSFT",
+   "window": "2026-09-26",
+   "swaps": 331,
+   "depthUsd": 245908,
+   "peakPct": 0.38,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "CBRS",
+   "window": "2026-09-26",
+   "swaps": 11,
+   "depthUsd": 5129,
+   "peakPct": 0.38,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "IBM",
+   "window": "2026-09-26",
+   "swaps": 350,
+   "depthUsd": 17925,
+   "peakPct": 0.38,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "RKLB",
+   "window": "2026-09-26",
+   "swaps": 20,
+   "depthUsd": 2185,
+   "peakPct": 0.35,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "SHOP",
+   "window": "2026-09-26",
+   "swaps": 33,
+   "depthUsd": 30628,
+   "peakPct": 0.35,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "RBLX",
+   "window": "2026-09-26",
+   "swaps": 296,
+   "depthUsd": 8112,
+   "peakPct": 0.35,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "SNAP",
+   "window": "2026-09-26",
+   "swaps": 389,
+   "depthUsd": 122800,
+   "peakPct": 0.28,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "DDOG",
+   "window": "2026-09-26",
+   "swaps": 25,
+   "depthUsd": 44124,
+   "peakPct": 0.22,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "COST",
+   "window": "2026-09-26",
+   "swaps": 580,
+   "depthUsd": 55853,
+   "peakPct": 0.2,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "UPS",
+   "window": "2026-09-26",
+   "swaps": 79,
+   "depthUsd": 10874,
+   "peakPct": 0.19,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "TSLA",
+   "window": "2026-09-26",
+   "swaps": 365,
+   "depthUsd": 903791,
+   "peakPct": 0.19,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "LMT",
+   "window": "2026-09-26",
+   "swaps": 54,
+   "depthUsd": 222755,
+   "peakPct": 0.18,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "NVDA",
+   "window": "2026-09-26",
+   "swaps": 13881,
+   "depthUsd": 1665,
+   "peakPct": 0.17,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "UNH",
+   "window": "2026-09-26",
+   "swaps": 14,
+   "depthUsd": 710,
+   "peakPct": 0.16,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "GOOGL",
+   "window": "2026-09-26",
+   "swaps": 358,
+   "depthUsd": 5064,
+   "peakPct": 0.15,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "AMZN",
+   "window": "2026-09-26",
+   "swaps": 112,
+   "depthUsd": 135798,
+   "peakPct": 0.14,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "LLY",
+   "window": "2026-09-26",
+   "swaps": 184,
+   "depthUsd": 94838,
+   "peakPct": 0.09,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "SOXX",
+   "window": "2026-09-26",
+   "swaps": 23,
+   "depthUsd": 4677,
+   "peakPct": 0.06,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "ASML",
+   "window": "2026-09-26",
+   "swaps": 11,
+   "depthUsd": 601,
+   "peakPct": 0.04,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "AAPL",
+   "window": "2026-09-26",
+   "swaps": 464,
+   "depthUsd": 474428,
+   "peakPct": 0.03,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "SPY",
+   "window": "2026-09-26",
+   "swaps": 1288,
+   "depthUsd": 11390103,
+   "peakPct": -0.03,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "EWY",
+   "window": "2026-09-26",
+   "swaps": 25,
+   "depthUsd": 510,
+   "peakPct": -0.04,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "BA",
+   "window": "2026-09-26",
+   "swaps": 255,
+   "depthUsd": 35922,
+   "peakPct": -0.06,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "SLV",
+   "window": "2026-09-26",
+   "swaps": 14,
+   "depthUsd": 73,
+   "peakPct": -0.06,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "META",
+   "window": "2026-09-26",
+   "swaps": 10878,
+   "depthUsd": 5419229,
+   "peakPct": -0.08,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "INDA",
+   "window": "2026-09-26",
+   "swaps": 181,
+   "depthUsd": 125246,
+   "peakPct": -0.1,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "GLD",
+   "window": "2026-09-26",
+   "swaps": 393,
+   "depthUsd": 129052,
+   "peakPct": -0.12,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "LULU",
+   "window": "2026-09-26",
+   "swaps": 109,
+   "depthUsd": 10443,
+   "peakPct": -0.14,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "CRWV",
+   "window": "2026-09-26",
+   "swaps": 64,
+   "depthUsd": 3369,
+   "peakPct": -0.14,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "DJT",
+   "window": "2026-09-26",
+   "swaps": 1585,
+   "depthUsd": 190662,
+   "peakPct": -0.14,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "HIMS",
+   "window": "2026-09-26",
+   "swaps": 74,
+   "depthUsd": 18749,
+   "peakPct": -0.18,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "AMC",
+   "window": "2026-09-26",
+   "swaps": 1622,
+   "depthUsd": 235167,
+   "peakPct": -0.19,
+   "hoursAbove": {
+    "2": 0,
+    "5": 0,
+    "10": 0,
+    "25": 0
+   }
+  },
+  {
+   "ticker": "BB",
+   "window": "2026-09-26",
+   "swaps": 50,
+   "depthUsd": 9049,
+   "peakPct": -0.27,
    "hoursAbove": {
     "2": 0,
     "5": 0,

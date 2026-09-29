@@ -56,7 +56,7 @@ price and sell them. On weekends that loop is switched off. Our screen of every 
 
 MSTR, which **has** a Chainlink feed, spiked **+243.31%** the same weekend as HIMS (checked against the Chainlink
 feed: the pool traded at parity on Thursday, Friday and Tuesday, +25% Saturday, +103% Sunday, back to parity Monday).
-A Chainlink feed doesn't make a token immune: in 12 mint-off windows (3 Jul to 19 Sep), a token held more than 10% above
+A Chainlink feed doesn't make a token immune: in 13 mint-off windows (3 Jul to 26 Sep), a token held more than 10% above
 its reference for an hour or more 19 times, 16 on tokens without a feed (LMT +53.5% on 5 Sep, for 13.2 h) and 3 on tokens
 with one (MSTR twice, RKLB once; from the [weekend report](web/public/data/weekends.json), premium held 15 min vs the
 official close; feed list from Chainlink's directory, [feeds.json](web/public/data/feeds.json)). The largest names

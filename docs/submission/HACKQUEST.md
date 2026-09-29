@@ -22,14 +22,14 @@ Robinhood stock tokens trade 24/7, but new tokens can only be created while the 
 for **31.2% of 2026** (2,736 of 8,760 hours: every weekend and US market holiday). With no new supply, a token can
 trade far above the real share:
 - **HIMS +317.6%** above its Friday reference on the weekend of 29 Aug 2026; **GLXY +186.1%** on 12 Sep. Both were new
-  listings without a Chainlink feed. A feed doesn't make a token immune: in 12 windows, a premium above 10% held for an
+  listings without a Chainlink feed. A feed doesn't make a token immune: in 13 windows, a premium above 10% held for an
   hour or more 19 times, 16 on tokens without a feed (LMT +53.5% on 5 Sep) and 3 on tokens with one (MSTR, including
   +243.3% the same weekend as HIMS, and RKLB). The largest names (NVDA, TSLA, AAPL, SPY) stayed within 2.6%.
-- Across 12 mint-off windows since 1 Jul, buyers paid **$3,615,154 above the reference price** on **$17,594,088** of
-  buys priced more than 5% above it, from **23,291 wallets** (every onchain swap vs the official close; bots and
+- Across 13 mint-off windows since 1 Jul, buyers paid **$3,615,326 above the reference price** on **$17,596,979** of
+  buys priced more than 5% above it, from **23,306 wallets** (every onchain swap vs the official close; bots and
   aggregators included).
-- It recurs across the basket, not per ticker: a premium above 10% held for an hour or more in **4 of 11** windows, on
-  only 3.6% of token-weekends. That's why Offmint works from a live basket (a detector rebuilt every 6 hours), not a
+- It recurs across the basket, not per ticker: a premium above 10% held for an hour or more in **4 of 12** windows, on
+  only 3.1% of token-weekends. That's why Offmint works from a live basket (a detector rebuilt every 6 hours), not a
   fixed list.
 
 ## What we built: four features, one story
@@ -65,9 +65,9 @@ fewer tokens (the stress test saw −0.49% on one weekend). Unaudited, testnet o
 | Criterion | Evidence |
 |---|---|
 | **Smart contract quality** | 160 forge tests (unit, fuzz, both pool orientations, invariants), 12 mainnet-fork tests pinned at block 71,241,990, 104 keeper + backtest tests, all in CI. Stress: 40 random weekends × 12 depositors, 0 invariant violations. Slither triaged (docs/verification/slither.md). Threat model per key and per input, including the sell order (docs/THREAT_MODEL.md). Owner and keeper can never receive funds; every sell step starts ≥ Friday's price × (1 + premium); buyback capped; anyone can arm or settle if the keeper stops. Contracts talk to the v4 PoolManager directly (`unlock` + callback). All testnet contracts source-verified. |
-| **Real problem** | HIMS +317.6%, GLXY +186.1%; $3,615,154 paid above the reference by 23,291 wallets in 12 windows; minting off 31.2% of the year; Robinhood's own docs on the tokenization window. In a Bankless interview ([reported by BigGo Finance](https://finance.biggo.com/news/4691062f7e0b2bb5), 21 Sep 2026), Robinhood's Johann Kerbrat named market-maker depth as the main fix and said Uniswap pools where users lend stock tokens are part of the liquidity; Robinhood's [launch announcement](https://robinhood.com/us/en/newsroom/robinhood-accelerates-global-expansion-robinhood-chain-mainnet-stock-tokens-agentic-trading/) (1 Jul 2026) lists deploying Stock Tokens into lending pools. |
+| **Real problem** | HIMS +317.6%, GLXY +186.1%; $3,615,326 paid above the reference by 23,306 wallets in 13 windows; minting off 31.2% of the year; Robinhood's own docs on the tokenization window. In a Bankless interview ([reported by BigGo Finance](https://finance.biggo.com/news/4691062f7e0b2bb5), 21 Sep 2026), Robinhood's Johann Kerbrat named market-maker depth as the main fix and said Uniswap pools where users lend stock tokens are part of the liquidity; Robinhood's [launch announcement](https://robinhood.com/us/en/newsroom/robinhood-accelerates-global-expansion-robinhood-chain-mainnet-stock-tokens-agentic-trading/) (1 Jul 2026) lists deploying Stock Tokens into lending pools. |
 | **Innovation** | Liquidity that follows the tokenization clock: it exists only while minting is off. A detector that finds new listings without a Chainlink feed, and a Robinhood-API price reference for them (separate poster key, 20% per-post cap). Sell orders anchored to the verified reference, refused when the pool is already there. Community and MetaVault money kept in separate vault instances. |
-| **Product-market fit** | Clear first user: holders of newly listed tokens, who add no new exposure. Recurrence is basket-wide (4 of 11 windows). Fees: 10% of profit, no fee on a flat weekend; the sell order is free. Honest size: about $1,647 per pool today, raised by RFQ/aggregator buybacks (roadmap). Aggregators route weekend buyers to the best price, so our orders fill without our own frontend. |
+| **Product-market fit** | Clear first user: holders of newly listed tokens, who add no new exposure. Recurrence is basket-wide (4 of 12 windows). Fees: 10% of profit, no fee on a flat weekend; the sell order is free. Honest size: about $1,647 per pool today, raised by RFQ/aggregator buybacks (roadmap). Aggregators route weekend buyers to the best price, so our orders fill without our own frontend. |
 
 ## Honest limits
 - Small sample: two big squeezes in the weekends measured.

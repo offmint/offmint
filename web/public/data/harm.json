@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-26T08:45:50.919Z",
+ "generatedAt": "2026-09-29T23:31:42.508Z",
  "label": "observed (onchain swaps, Robinhood Chain mainnet)",
  "method": [
   "Mint-off windows: Sat 00:00 to Mon 00:00 UTC (Robinhood tokenization window closed Sat 02:00 to Mon 02:00 CEST), extended over US market holidays.",
@@ -510,45 +510,86 @@
     "usdPaid": 65934.57,
     "usdAboveReference": 7810.54
    }
+  },
+  {
+   "window": "2026-09-26",
+   "start": "2026-09-26T00:00:00.000Z",
+   "end": "2026-09-28T00:00:00.000Z",
+   "hours": 48,
+   "reason": "weekend",
+   "referenceClose": "2026-09-25",
+   "swapsScanned": 58442,
+   "above0pct": {
+    "swaps": 15624,
+    "uniqueSenders": null,
+    "unresolvedTxs": null,
+    "stockBought": 36704.6063,
+    "usdPaid": 6053312.72,
+    "usdAboveReference": 21361.46
+   },
+   "above2pct": {
+    "swaps": 857,
+    "uniqueSenders": 452,
+    "unresolvedTxs": 0,
+    "stockBought": 2205.6175,
+    "usdPaid": 276012.22,
+    "usdAboveReference": 6497.09
+   },
+   "above5pct": {
+    "swaps": 20,
+    "uniqueSenders": 17,
+    "unresolvedTxs": 0,
+    "stockBought": 255.2966,
+    "usdPaid": 2891.69,
+    "usdAboveReference": 172.48
+   },
+   "above10pct": {
+    "swaps": 1,
+    "uniqueSenders": 1,
+    "unresolvedTxs": 0,
+    "stockBought": 12.6499,
+    "usdPaid": 328.01,
+    "usdAboveReference": 32.13
+   }
   }
  ],
  "totals": {
   "above0pct": {
-   "swaps": 748420,
+   "swaps": 764044,
    "uniqueSenders": null,
    "unresolvedTxs": null,
-   "usdPaid": 127749207.02,
-   "usdAboveReference": 4758370.16,
-   "tickers": 101
+   "usdPaid": 133802519.74,
+   "usdAboveReference": 4779731.62,
+   "tickers": 102
   },
   "above2pct": {
-   "swaps": 211035,
-   "uniqueSenders": 38844,
+   "swaps": 211892,
+   "uniqueSenders": 39087,
    "unresolvedTxs": 0,
-   "usdPaid": 32889731.47,
-   "usdAboveReference": 4074870.55,
-   "tickers": 83
+   "usdPaid": 33165743.7,
+   "usdAboveReference": 4081367.64,
+   "tickers": 84
   },
   "above5pct": {
-   "swaps": 121905,
-   "uniqueSenders": 23291,
+   "swaps": 121925,
+   "uniqueSenders": 23306,
    "unresolvedTxs": 0,
-   "usdPaid": 17594087.65,
-   "usdAboveReference": 3615153.94,
+   "usdPaid": 17596979.34,
+   "usdAboveReference": 3615326.42,
    "tickers": 59
   },
   "above10pct": {
-   "swaps": 78607,
+   "swaps": 78608,
    "uniqueSenders": 15816,
    "unresolvedTxs": 0,
-   "usdPaid": 11283527.45,
-   "usdAboveReference": 3201537.56,
+   "usdPaid": 11283855.46,
+   "usdAboveReference": 3201569.69,
    "tickers": 34
   }
  },
  "excluded": {
-  "offReferencePoolWindows": 52,
-  "offReferenceSwaps": 8285,
+  "offReferencePoolWindows": 57,
+  "offReferenceSwaps": 8290,
   "noReferenceTickerWindows": 0,
   "hookedPoolsNotScanned": 1569,
   "tickersWithoutReference": [
@@ -564,20 +605,20 @@
    ],
    "maxBuyPremiumPct": 240.02,
    "above0pct": {
-    "swaps": 47099,
+    "swaps": 47979,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 55285.4975,
-    "usdPaid": 9126280.89,
-    "usdAboveReference": 1690128.19
+    "stockBought": 57574.0747,
+    "usdPaid": 9494303.4,
+    "usdAboveReference": 1695159.49
    },
    "above2pct": {
-    "swaps": 38263,
-    "uniqueSenders": 8624,
+    "swaps": 38429,
+    "uniqueSenders": 8672,
     "unresolvedTxs": 0,
-    "stockBought": 41254.2297,
-    "usdPaid": 7110581.73,
-    "usdAboveReference": 1670635.72
+    "stockBought": 41805.8899,
+    "usdPaid": 7199986.37,
+    "usdAboveReference": 1672541.54
    },
    "above5pct": {
     "swaps": 25939,
@@ -606,12 +647,12 @@
    ],
    "maxBuyPremiumPct": 132.1,
    "above0pct": {
-    "swaps": 86917,
+    "swaps": 87226,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 1095051.6388,
-    "usdPaid": 10783183.32,
-    "usdAboveReference": 699058.75
+    "stockBought": 1099223.4031,
+    "usdPaid": 10821399.08,
+    "usdAboveReference": 699144.59
    },
    "above2pct": {
     "swaps": 43220,
@@ -646,12 +687,12 @@
    ],
    "maxBuyPremiumPct": 204.94,
    "above0pct": {
-    "swaps": 12870,
+    "swaps": 12881,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 69026.8623,
-    "usdPaid": 2285441.43,
-    "usdAboveReference": 572510.91
+    "stockBought": 69145.6069,
+    "usdPaid": 2288346.31,
+    "usdAboveReference": 572537.42
    },
    "above2pct": {
     "swaps": 12480,
@@ -686,12 +727,12 @@
    ],
    "maxBuyPremiumPct": 275.15,
    "above0pct": {
-    "swaps": 15943,
+    "swaps": 15946,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 144861.0167,
-    "usdPaid": 4341940.62,
-    "usdAboveReference": 253784.51
+    "stockBought": 144879.3806,
+    "usdPaid": 4342487.06,
+    "usdAboveReference": 253790.68
    },
    "above2pct": {
     "swaps": 11258,
@@ -766,12 +807,12 @@
    ],
    "maxBuyPremiumPct": 146.84,
    "above0pct": {
-    "swaps": 8946,
+    "swaps": 9012,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 9876.6211,
-    "usdPaid": 868798.43,
-    "usdAboveReference": 103162.22
+    "stockBought": 9906.0832,
+    "usdPaid": 870927.37,
+    "usdAboveReference": 103194.94
    },
    "above2pct": {
     "swaps": 4756,
@@ -805,20 +846,20 @@
    ],
    "maxBuyPremiumPct": 50.66,
    "above0pct": {
-    "swaps": 5865,
+    "swaps": 5886,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 107608.8223,
-    "usdPaid": 990983.07,
-    "usdAboveReference": 95573.85
+    "stockBought": 107623.2058,
+    "usdPaid": 991079.62,
+    "usdAboveReference": 95574.61
    },
    "above2pct": {
-    "swaps": 4312,
-    "uniqueSenders": 1109,
+    "swaps": 4313,
+    "uniqueSenders": 1110,
     "unresolvedTxs": 0,
-    "stockBought": 86252.2136,
-    "usdPaid": 815965.36,
-    "usdAboveReference": 94034.34
+    "stockBought": 86252.405,
+    "usdPaid": 815966.66,
+    "usdAboveReference": 94034.37
    },
    "above5pct": {
     "swaps": 3043,
@@ -845,12 +886,12 @@
    ],
    "maxBuyPremiumPct": 60.18,
    "above0pct": {
-    "swaps": 9605,
+    "swaps": 9612,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 1962.8669,
-    "usdPaid": 1115457.76,
-    "usdAboveReference": 79941.44
+    "stockBought": 1963.559,
+    "usdPaid": 1115818.5,
+    "usdAboveReference": 79942.55
    },
    "above2pct": {
     "swaps": 7401,
@@ -886,20 +927,20 @@
    ],
    "maxBuyPremiumPct": 113.18,
    "above0pct": {
-    "swaps": 10961,
+    "swaps": 11076,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 5916.9961,
-    "usdPaid": 987551.9,
-    "usdAboveReference": 62486.18
+    "stockBought": 6129.9575,
+    "usdPaid": 1019781.41,
+    "usdAboveReference": 62805.57
    },
    "above2pct": {
-    "swaps": 4373,
+    "swaps": 4421,
     "uniqueSenders": 1491,
     "unresolvedTxs": 0,
-    "stockBought": 1289.5828,
-    "usdPaid": 263262.32,
-    "usdAboveReference": 54979.84
+    "stockBought": 1297.5547,
+    "usdPaid": 264483.7,
+    "usdAboveReference": 55006.72
    },
    "above5pct": {
     "swaps": 3723,
@@ -925,12 +966,12 @@
    ],
    "maxBuyPremiumPct": 10.37,
    "above0pct": {
-    "swaps": 13344,
+    "swaps": 13350,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 165781.0143,
-    "usdPaid": 1658757.66,
-    "usdAboveReference": 72206.94
+    "stockBought": 165790.2541,
+    "usdPaid": 1658825.15,
+    "usdAboveReference": 72207.99
    },
    "above2pct": {
     "swaps": 9710,
@@ -964,12 +1005,12 @@
    ],
    "maxBuyPremiumPct": 15.73,
    "above0pct": {
-    "swaps": 5719,
+    "swaps": 5725,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 6300.6456,
-    "usdPaid": 970385.81,
-    "usdAboveReference": 58828.29
+    "stockBought": 6306.592,
+    "usdPaid": 971239.2,
+    "usdAboveReference": 58835.8
    },
    "above2pct": {
     "swaps": 5412,
@@ -1003,12 +1044,12 @@
    ],
    "maxBuyPremiumPct": 10.25,
    "above0pct": {
-    "swaps": 4525,
+    "swaps": 4539,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 51885.0729,
-    "usdPaid": 794007.89,
-    "usdAboveReference": 33274.61
+    "stockBought": 51984.7076,
+    "usdPaid": 795376.45,
+    "usdAboveReference": 33289.13
    },
    "above2pct": {
     "swaps": 4139,
@@ -1042,12 +1083,12 @@
    ],
    "maxBuyPremiumPct": 184755.11,
    "above0pct": {
-    "swaps": 2762,
+    "swaps": 2907,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 10474.2395,
-    "usdPaid": 314653.8,
-    "usdAboveReference": 17901.5
+    "stockBought": 10923.3042,
+    "usdPaid": 327577.14,
+    "usdAboveReference": 17950.16
    },
    "above2pct": {
     "swaps": 1914,
@@ -1082,12 +1123,12 @@
    ],
    "maxBuyPremiumPct": 36.98,
    "above0pct": {
-    "swaps": 1924,
+    "swaps": 1933,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 3536.2356,
-    "usdPaid": 243756.59,
-    "usdAboveReference": 17967.67
+    "stockBought": 3538.6542,
+    "usdPaid": 243936.75,
+    "usdAboveReference": 17968.97
    },
    "above2pct": {
     "swaps": 1839,
@@ -1121,12 +1162,12 @@
    ],
    "maxBuyPremiumPct": 35.81,
    "above0pct": {
-    "swaps": 3245,
+    "swaps": 3263,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 48200.4519,
-    "usdPaid": 398733.54,
-    "usdAboveReference": 16026.27
+    "stockBought": 48902.5904,
+    "usdPaid": 404522.83,
+    "usdAboveReference": 16051
    },
    "above2pct": {
     "swaps": 2085,
@@ -1160,12 +1201,12 @@
    ],
    "maxBuyPremiumPct": 15.79,
    "above0pct": {
-    "swaps": 14982,
+    "swaps": 15154,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 7679.5043,
-    "usdPaid": 1855162.86,
-    "usdAboveReference": 49456
+    "stockBought": 7764.6057,
+    "usdPaid": 1874410.76,
+    "usdAboveReference": 49512.68
    },
    "above2pct": {
     "swaps": 12636,
@@ -1199,11 +1240,11 @@
    ],
    "maxBuyPremiumPct": 32.35,
    "above0pct": {
-    "swaps": 1077,
+    "swaps": 1078,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 2565.9523,
-    "usdPaid": 145625.61,
+    "stockBought": 2566.0356,
+    "usdPaid": 145630.3,
     "usdAboveReference": 12812.56
    },
    "above2pct": {
@@ -1277,12 +1318,12 @@
    ],
    "maxBuyPremiumPct": 24.83,
    "above0pct": {
-    "swaps": 3678,
+    "swaps": 3717,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 58792.1833,
-    "usdPaid": 959282.09,
-    "usdAboveReference": 33709.18
+    "stockBought": 59671.6049,
+    "usdPaid": 972941.91,
+    "usdAboveReference": 33764.35
    },
    "above2pct": {
     "swaps": 3203,
@@ -1318,12 +1359,12 @@
    ],
    "maxBuyPremiumPct": 10.59,
    "above0pct": {
-    "swaps": 17645,
+    "swaps": 18236,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 22707.7357,
-    "usdPaid": 3255906.39,
-    "usdAboveReference": 52603.59
+    "stockBought": 22940.7955,
+    "usdPaid": 3290614.72,
+    "usdAboveReference": 52660.59
    },
    "above2pct": {
     "swaps": 6557,
@@ -1357,12 +1398,12 @@
    ],
    "maxBuyPremiumPct": 7.83,
    "above0pct": {
-    "swaps": 781,
+    "swaps": 786,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 534.0167,
-    "usdPaid": 88825.91,
-    "usdAboveReference": 3615.86
+    "stockBought": 534.9851,
+    "usdPaid": 88982.45,
+    "usdAboveReference": 3616.88
    },
    "above2pct": {
     "swaps": 624,
@@ -1392,32 +1433,33 @@
   {
    "ticker": "QUBT",
    "windowsAbove2pct": [
-    "2026-08-29"
+    "2026-08-29",
+    "2026-09-26"
    ],
    "maxBuyPremiumPct": 129.15,
    "above0pct": {
-    "swaps": 444,
+    "swaps": 445,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 3352.644,
-    "usdPaid": 29408.04,
+    "stockBought": 3352.6608,
+    "usdPaid": 29408.2,
     "usdAboveReference": 2554.12
    },
    "above2pct": {
-    "swaps": 115,
-    "uniqueSenders": 89,
+    "swaps": 116,
+    "uniqueSenders": 90,
     "unresolvedTxs": 0,
-    "stockBought": 439.2557,
-    "usdPaid": 5899.77,
-    "usdAboveReference": 2329.47
+    "stockBought": 439.2725,
+    "usdPaid": 5899.93,
+    "usdAboveReference": 2329.48
    },
    "above5pct": {
-    "swaps": 108,
-    "uniqueSenders": 86,
+    "swaps": 109,
+    "uniqueSenders": 87,
     "unresolvedTxs": 0,
-    "stockBought": 371.0825,
-    "usdPaid": 5342.17,
-    "usdAboveReference": 2317.85
+    "stockBought": 371.0993,
+    "usdPaid": 5342.33,
+    "usdAboveReference": 2317.86
    },
    "above10pct": {
     "swaps": 106,
@@ -1435,12 +1477,12 @@
    ],
    "maxBuyPremiumPct": 26.15,
    "above0pct": {
-    "swaps": 620,
+    "swaps": 621,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 350.9295,
-    "usdPaid": 52219.9,
-    "usdAboveReference": 1886.72
+    "stockBought": 350.9344,
+    "usdPaid": 52220.9,
+    "usdAboveReference": 1886.73
    },
    "above2pct": {
     "swaps": 200,
@@ -1473,71 +1515,73 @@
     "2026-08-01",
     "2026-08-15",
     "2026-08-29",
-    "2026-09-19"
+    "2026-09-19",
+    "2026-09-26"
    ],
    "maxBuyPremiumPct": 194.11,
    "above0pct": {
-    "swaps": 4864,
+    "swaps": 4980,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 24237.4882,
-    "usdPaid": 489582.93,
-    "usdAboveReference": 8180.67
+    "stockBought": 24526.2595,
+    "usdPaid": 496479,
+    "usdAboveReference": 8322.38
    },
    "above2pct": {
-    "swaps": 1952,
-    "uniqueSenders": 498,
+    "swaps": 1971,
+    "uniqueSenders": 509,
     "unresolvedTxs": 0,
-    "stockBought": 8812.4884,
-    "usdPaid": 175340.22,
-    "usdAboveReference": 5174.79
+    "stockBought": 8862.4009,
+    "usdPaid": 176581.5,
+    "usdAboveReference": 5248.61
    },
    "above5pct": {
-    "swaps": 238,
-    "uniqueSenders": 92,
+    "swaps": 241,
+    "uniqueSenders": 95,
     "unresolvedTxs": 0,
-    "stockBought": 743.5525,
-    "usdPaid": 15124.55,
-    "usdAboveReference": 1353.53
+    "stockBought": 785.9686,
+    "usdPaid": 16185.8,
+    "usdAboveReference": 1422.66
    },
    "above10pct": {
-    "swaps": 11,
-    "uniqueSenders": 5,
+    "swaps": 12,
+    "uniqueSenders": 6,
     "unresolvedTxs": 0,
-    "stockBought": 214.8451,
-    "usdPaid": 5008.41,
-    "usdAboveReference": 685.4
+    "stockBought": 227.495,
+    "usdPaid": 5336.43,
+    "usdAboveReference": 717.53
    }
   },
   {
    "ticker": "RUN",
    "windowsAbove2pct": [
-    "2026-09-19"
+    "2026-09-19",
+    "2026-09-26"
    ],
    "maxBuyPremiumPct": 19.86,
    "above0pct": {
-    "swaps": 291,
+    "swaps": 334,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 5140.0806,
-    "usdPaid": 45548.27,
-    "usdAboveReference": 1700.52
+    "stockBought": 5739.6274,
+    "usdPaid": 50595.61,
+    "usdAboveReference": 1885.54
    },
    "above2pct": {
-    "swaps": 193,
-    "uniqueSenders": 137,
+    "swaps": 223,
+    "uniqueSenders": 161,
     "unresolvedTxs": 0,
-    "stockBought": 3265.2464,
-    "usdPaid": 29386.99,
-    "usdAboveReference": 1534.44
+    "stockBought": 3740.9983,
+    "usdPaid": 33416.83,
+    "usdAboveReference": 1705.93
    },
    "above5pct": {
-    "swaps": 43,
-    "uniqueSenders": 36,
+    "swaps": 57,
+    "uniqueSenders": 48,
     "unresolvedTxs": 0,
-    "stockBought": 979.9182,
-    "usdPaid": 9323.91,
-    "usdAboveReference": 965.21
+    "stockBought": 1190.7819,
+    "usdPaid": 11136.32,
+    "usdAboveReference": 1067.51
    },
    "above10pct": {
     "swaps": 22,
@@ -1559,12 +1603,12 @@
    ],
    "maxBuyPremiumPct": 139.4,
    "above0pct": {
-    "swaps": 3896,
+    "swaps": 3986,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 8672.696,
-    "usdPaid": 397717.65,
-    "usdAboveReference": 5422.72
+    "stockBought": 8813.3619,
+    "usdPaid": 404266.67,
+    "usdAboveReference": 5439.22
    },
    "above2pct": {
     "swaps": 302,
@@ -1599,12 +1643,12 @@
    ],
    "maxBuyPremiumPct": 1207.23,
    "above0pct": {
-    "swaps": 3696,
+    "swaps": 3812,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 341.8569,
-    "usdPaid": 546986.64,
-    "usdAboveReference": 12435.18
+    "stockBought": 350.5383,
+    "usdPaid": 562503.86,
+    "usdAboveReference": 12518.58
    },
    "above2pct": {
     "swaps": 2703,
@@ -1677,12 +1721,12 @@
    ],
    "maxBuyPremiumPct": 9.55,
    "above0pct": {
-    "swaps": 3295,
+    "swaps": 3307,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 475.0589,
-    "usdPaid": 198466.55,
-    "usdAboveReference": 4880.28
+    "stockBought": 478.6188,
+    "usdPaid": 199870.77,
+    "usdAboveReference": 4884.02
    },
    "above2pct": {
     "swaps": 2625,
@@ -1718,20 +1762,20 @@
    ],
    "maxBuyPremiumPct": 83.7,
    "above0pct": {
-    "swaps": 23799,
+    "swaps": 29803,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 16842.5916,
-    "usdPaid": 3686738.66,
-    "usdAboveReference": 24974.65
+    "stockBought": 34204.8716,
+    "usdPaid": 7598031.22,
+    "usdAboveReference": 28538.71
    },
    "above2pct": {
-    "swaps": 247,
-    "uniqueSenders": 76,
+    "swaps": 248,
+    "uniqueSenders": 77,
     "unresolvedTxs": 0,
-    "stockBought": 658.1633,
-    "usdPaid": 145918.55,
-    "usdAboveReference": 3932.34
+    "stockBought": 658.185,
+    "usdPaid": 145923.56,
+    "usdAboveReference": 3932.47
    },
    "above5pct": {
     "swaps": 4,
@@ -1757,12 +1801,12 @@
    ],
    "maxBuyPremiumPct": 6.82,
    "above0pct": {
-    "swaps": 3685,
+    "swaps": 3688,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 1884.1195,
-    "usdPaid": 555783.33,
-    "usdAboveReference": 9544.59
+    "stockBought": 1884.3396,
+    "usdPaid": 555861.06,
+    "usdAboveReference": 9545.49
    },
    "above2pct": {
     "swaps": 1001,
@@ -1796,12 +1840,12 @@
    ],
    "maxBuyPremiumPct": 5.65,
    "above0pct": {
-    "swaps": 11141,
+    "swaps": 11308,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 2040.6212,
-    "usdPaid": 1007253.79,
-    "usdAboveReference": 16277.69
+    "stockBought": 2089.338,
+    "usdPaid": 1038415.71,
+    "usdAboveReference": 16717.34
    },
    "above2pct": {
     "swaps": 3851,
@@ -1835,12 +1879,12 @@
    ],
    "maxBuyPremiumPct": 14.94,
    "above0pct": {
-    "swaps": 253,
+    "swaps": 274,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 140.42,
-    "usdPaid": 21849.75,
-    "usdAboveReference": 379.7
+    "stockBought": 178.0242,
+    "usdPaid": 27051.91,
+    "usdAboveReference": 426.32
    },
    "above2pct": {
     "swaps": 61,
@@ -1874,12 +1918,12 @@
    ],
    "maxBuyPremiumPct": 8.57,
    "above0pct": {
-    "swaps": 24408,
+    "swaps": 24410,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 5128974.0099,
-    "usdPaid": 13581534.1,
-    "usdAboveReference": 145468.35
+    "stockBought": 5129742.3141,
+    "usdPaid": 13583793.45,
+    "usdAboveReference": 145468.88
    },
    "above2pct": {
     "swaps": 188,
@@ -1913,12 +1957,12 @@
    ],
    "maxBuyPremiumPct": 10,
    "above0pct": {
-    "swaps": 167,
+    "swaps": 176,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 119.1852,
-    "usdPaid": 10566.27,
-    "usdAboveReference": 273.33
+    "stockBought": 122.8828,
+    "usdPaid": 10892.71,
+    "usdAboveReference": 275.91
    },
    "above2pct": {
     "swaps": 49,
@@ -1953,12 +1997,12 @@
    ],
    "maxBuyPremiumPct": 10.13,
    "above0pct": {
-    "swaps": 457,
+    "swaps": 552,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 114.4856,
-    "usdPaid": 61581.13,
-    "usdAboveReference": 607.53
+    "stockBought": 165.0978,
+    "usdPaid": 90305.37,
+    "usdAboveReference": 842.65
    },
    "above2pct": {
     "swaps": 34,
@@ -2071,20 +2115,20 @@
    ],
    "maxBuyPremiumPct": 8.14,
    "above0pct": {
-    "swaps": 19758,
+    "swaps": 21322,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 6429.7417,
-    "usdPaid": 4196031.65,
-    "usdAboveReference": 26619.4
+    "stockBought": 6834.5797,
+    "usdPaid": 4500752.17,
+    "usdAboveReference": 27039.44
    },
    "above2pct": {
-    "swaps": 18,
-    "uniqueSenders": 8,
+    "swaps": 20,
+    "uniqueSenders": 9,
     "unresolvedTxs": 0,
-    "stockBought": 5.7495,
-    "usdPaid": 3438.8,
-    "usdAboveReference": 115.48
+    "stockBought": 6.2126,
+    "usdPaid": 3798.85,
+    "usdAboveReference": 127.43
    },
    "above5pct": {
     "swaps": 2,
@@ -2110,12 +2154,12 @@
    ],
    "maxBuyPremiumPct": 6.41,
    "above0pct": {
-    "swaps": 144,
+    "swaps": 145,
     "uniqueSenders": null,
     "unresolvedTxs": null,
-    "stockBought": 2427.2829,
-    "usdPaid": 16437.98,
-    "usdAboveReference": 248.71
+    "stockBought": 2428.1639,
+    "usdPaid": 16443.34,
+    "usdAboveReference": 248.75
    },
    "above2pct": {
     "swaps": 42,

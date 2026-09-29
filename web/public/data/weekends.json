@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-09-26T09:04:59.604Z",
+ "generatedAt": "2026-09-29T23:42:27.741Z",
  "label": "observed onchain (Robinhood Chain mainnet); vault column simulated",
  "headlineThresholdPct": 5,
  "method": [
@@ -16,8 +16,8 @@
   "Vault = the community vault's default ladder in the with-supply replay (web/public/data/supply/replay.json), simulated, per $1,000 and $10,000 of tokens deposited."
  ],
  "excluded": {
-  "offReferencePoolWindows": 52,
-  "offReferenceSwaps": 8285,
+  "offReferencePoolWindows": 57,
+  "offReferenceSwaps": 8290,
   "noReferenceTickerWindows": 0,
   "hookedPoolsNotScanned": 1569,
   "tickersWithoutReference": [
@@ -25,13 +25,2117 @@
   ]
  },
  "totals": {
-  "windows": 12,
-  "buysAbove": 121905,
-  "buysValueUsd": 17594087.64,
-  "paidAboveReferenceUsd": 3615153.92,
-  "wallets": 23291
+  "windows": 13,
+  "buysAbove": 121925,
+  "buysValueUsd": 17596979.33,
+  "paidAboveReferenceUsd": 3615326.4,
+  "wallets": 23306
  },
  "windows": [
+  {
+   "window": "2026-09-26",
+   "start": "2026-09-26T00:00:00.000Z",
+   "end": "2026-09-28T00:00:00.000Z",
+   "hours": 48,
+   "reason": "weekend",
+   "refDate": "2026-09-25",
+   "source": "observed onchain + paper mode (live observation)",
+   "paper": {
+    "label": "live observation (paper mode: real swaps, hypothetical position, single band +10% to +60%)",
+    "tokens": 77,
+    "settled": 69,
+    "complete": false,
+    "filled": 0
+   },
+   "sample": {
+    "tickersWithTrackingPool": 93,
+    "activeTickers": 69,
+    "swaps": 45584
+   },
+   "tokensAbove10": 0,
+   "biggest": {
+    "ticker": "RUN",
+    "peakPct": 6.05
+   },
+   "buysValueUsd": 2891.69,
+   "paidAboveReferenceUsd": 172.48,
+   "wallets": 17,
+   "buysAbove": 20,
+   "detail2pct": {
+    "buysValueUsd": 276012.22,
+    "paidAboveReferenceUsd": 6497.09,
+    "wallets": 452,
+    "buys": 857
+   },
+   "tokens": [
+    {
+     "ticker": "RUN",
+     "reference": 8.109999656677246,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 71,
+     "peakPct": 6.05,
+     "hoursAbove10": 0,
+     "buysValueUsd": 1812.4,
+     "paidAboveReferenceUsd": 102.3,
+     "buysAbove": 14,
+     "wallets": 12,
+     "detail2pct": {
+      "buysValueUsd": 4029.84,
+      "paidAboveReferenceUsd": 171.49,
+      "buys": 30,
+      "wallets": 24
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "RUN",
+      "status": "settled",
+      "p0Usd": 8.12318428,
+      "maxPremiumPct": 6.19,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "SMR",
+     "reference": 8.420000076293945,
+     "refDate": "2026-09-25",
+     "active": false,
+     "mainPoolSwaps": 4,
+     "peakPct": null,
+     "hoursAbove10": null,
+     "buysValueUsd": 17.88,
+     "paidAboveReferenceUsd": 1.04,
+     "buysAbove": 2,
+     "wallets": 1,
+     "detail2pct": {
+      "buysValueUsd": 17.88,
+      "paidAboveReferenceUsd": 1.04,
+      "buys": 2,
+      "wallets": 1
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "SMR",
+      "status": "settled",
+      "p0Usd": 8.84890419,
+      "maxPremiumPct": 0.06,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "APLD",
+     "reference": 26.25,
+     "refDate": "2026-09-25",
+     "active": false,
+     "mainPoolSwaps": 2,
+     "peakPct": null,
+     "hoursAbove10": null,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 22.92,
+      "paidAboveReferenceUsd": 0.78,
+      "buys": 2,
+      "wallets": 2
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "USO",
+     "reference": 148.3300018310547,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 1201,
+     "peakPct": 2.88,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 84111.56,
+      "paidAboveReferenceUsd": 1906.99,
+      "buys": 293,
+      "wallets": 154
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "MSTR",
+     "reference": 158.61000061035156,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 892,
+     "peakPct": 2.15,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 89404.64,
+      "paidAboveReferenceUsd": 1905.82,
+      "buys": 166,
+      "wallets": 89
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "INTC",
+     "reference": 123,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 716,
+     "peakPct": 1.95,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 66932.77,
+      "paidAboveReferenceUsd": 1757.21,
+      "buys": 172,
+      "wallets": 105
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "GME",
+     "reference": 23.389999389648438,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 189,
+     "peakPct": 1.72,
+     "hoursAbove10": 0,
+     "buysValueUsd": 1061.25,
+     "paidAboveReferenceUsd": 69.13,
+     "buysAbove": 3,
+     "wallets": 3,
+     "detail2pct": {
+      "buysValueUsd": 1241.28,
+      "paidAboveReferenceUsd": 73.82,
+      "buys": 19,
+      "wallets": 12
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "MU",
+     "reference": 1082.280029296875,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 393,
+     "peakPct": 1.57,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 27550.82,
+      "paidAboveReferenceUsd": 613.49,
+      "buys": 109,
+      "wallets": 77
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "PLTR",
+     "reference": 189.6699981689453,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 633,
+     "peakPct": 1.4,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "IREN",
+     "reference": 44.125,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 10,
+     "peakPct": 1.29,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 74.85,
+      "paidAboveReferenceUsd": 1.55,
+      "buys": 7,
+      "wallets": 6
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "COIN",
+     "reference": 195.11000061035156,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 160,
+     "peakPct": 1.28,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "CRCL",
+     "reference": 89,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 238,
+     "peakPct": 1.11,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 10,
+      "paidAboveReferenceUsd": 0.21,
+      "buys": 1,
+      "wallets": 1
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "ZM",
+     "reference": 89.70999908447266,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 10,
+     "peakPct": 1.08,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 266.08,
+      "paidAboveReferenceUsd": 6.89,
+      "buys": 1,
+      "wallets": 1
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "ZM",
+      "status": "settled",
+      "p0Usd": 90.67601952,
+      "maxPremiumPct": 0.98,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "CRM",
+     "reference": 234.02000427246094,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 24,
+     "peakPct": 1.05,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "CRM",
+      "status": "settled",
+      "p0Usd": 236.46762496,
+      "maxPremiumPct": 0,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "SKHY",
+     "reference": 191.55999755859375,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 436,
+     "peakPct": 0.94,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 532.66,
+      "paidAboveReferenceUsd": 11,
+      "buys": 1,
+      "wallets": 1
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "SKHY",
+      "status": "settled",
+      "p0Usd": 190.27884354,
+      "maxPremiumPct": 1.85,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "GLXY",
+     "reference": 24.239999771118164,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 27,
+     "peakPct": 0.89,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "GLXY",
+      "status": "settled",
+      "p0Usd": 24.3303724,
+      "maxPremiumPct": 0.17,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "RDDT",
+     "reference": 149.83999633789062,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 259,
+     "peakPct": 0.87,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 1221.39,
+      "paidAboveReferenceUsd": 26.88,
+      "buys": 48,
+      "wallets": 2
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "RDDT",
+      "status": "settled",
+      "p0Usd": 150.65228901,
+      "maxPremiumPct": 0.4,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "NNE",
+     "reference": 16.989999771118164,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 15,
+     "peakPct": 0.82,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "NNE",
+      "status": "settled",
+      "p0Usd": 17.12901573,
+      "maxPremiumPct": 0,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "QCOM",
+     "reference": 201.97000122070312,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 18,
+     "peakPct": 0.81,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "QCOM",
+      "status": "settled",
+      "p0Usd": 202.61520489,
+      "maxPremiumPct": 0.49,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "NBIS",
+     "reference": 237.3300018310547,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 70,
+     "peakPct": 0.81,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "ORCL",
+     "reference": 137.10000610351562,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 52,
+     "peakPct": 0.74,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "SNDK",
+     "reference": 1777.800048828125,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 248,
+     "peakPct": 0.65,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "BABA",
+     "reference": 109.73999786376953,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 270,
+     "peakPct": 0.63,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "BULL",
+     "reference": 7.190000057220459,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 19,
+     "peakPct": 0.63,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "BULL",
+      "status": "settled",
+      "p0Usd": 7.23562364,
+      "maxPremiumPct": 0.2,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "RCAT",
+     "reference": 6.659999847412109,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 45,
+     "peakPct": 0.61,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 1.3,
+      "paidAboveReferenceUsd": 0.03,
+      "buys": 1,
+      "wallets": 1
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "RCAT",
+      "status": "settled",
+      "p0Usd": 6.70062573,
+      "maxPremiumPct": 0,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "SNOW",
+     "reference": 335.94000244140625,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 20,
+     "peakPct": 0.61,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "SNOW",
+      "status": "settled",
+      "p0Usd": 338.00337294,
+      "maxPremiumPct": 0,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "NFLX",
+     "reference": 71.1500015258789,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 95,
+     "peakPct": 0.59,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "AMD",
+     "reference": 630.6300048828125,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 404,
+     "peakPct": 0.59,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "TSM",
+     "reference": 450.6099853515625,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 35,
+     "peakPct": 0.57,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "DELL",
+     "reference": 562.8900146484375,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 207,
+     "peakPct": 0.57,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "PFE",
+     "reference": 28.670000076293945,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 307,
+     "peakPct": 0.56,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "PFE",
+      "status": "armed",
+      "p0Usd": 27.91700534,
+      "maxPremiumPct": 0,
+      "vsHodlPctExFees": null,
+      "state": null
+     }
+    },
+    {
+     "ticker": "SGOV",
+     "reference": 100.66000366210938,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 194,
+     "peakPct": 0.5,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "TTWO",
+     "reference": 201.44000244140625,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 154,
+     "peakPct": 0.49,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "XOM",
+     "reference": 160.58999633789062,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 15,
+     "peakPct": 0.47,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "XOM",
+      "status": "settled",
+      "p0Usd": 161.2192117,
+      "maxPremiumPct": 0.08,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "FIG",
+     "reference": 20.850000381469727,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 19,
+     "peakPct": 0.46,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "FIG",
+      "status": "settled",
+      "p0Usd": 21.27675724,
+      "maxPremiumPct": 0,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "SPCX",
+     "reference": 148.67999267578125,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 3817,
+     "peakPct": 0.45,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "RIVN",
+     "reference": 15.470000267028809,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 118,
+     "peakPct": 0.42,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "RIVN",
+      "status": "settled",
+      "p0Usd": 15.48948262,
+      "maxPremiumPct": 0.29,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "NU",
+     "reference": 13.59000015258789,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 18,
+     "peakPct": 0.4,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "NU",
+      "status": "settled",
+      "p0Usd": 13.58071877,
+      "maxPremiumPct": 0.47,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "MSFT",
+     "reference": 516.1699829101562,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 331,
+     "peakPct": 0.38,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 229.03,
+      "paidAboveReferenceUsd": 7.81,
+      "buys": 1,
+      "wallets": 1
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "CBRS",
+     "reference": 206.75,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 11,
+     "peakPct": 0.38,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "CBRS",
+      "status": "settled",
+      "p0Usd": 207.17303159,
+      "maxPremiumPct": 0.18,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "IBM",
+     "reference": 225.50999450683594,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 350,
+     "peakPct": 0.38,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "IBM",
+      "status": "settled",
+      "p0Usd": 225.92063167,
+      "maxPremiumPct": 0.31,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "RKLB",
+     "reference": 73.94999694824219,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 20,
+     "peakPct": 0.35,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "SHOP",
+     "reference": 142.25,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 33,
+     "peakPct": 0.35,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "SHOP",
+      "status": "armed",
+      "p0Usd": 148.73296851,
+      "maxPremiumPct": 0,
+      "vsHodlPctExFees": null,
+      "state": null
+     }
+    },
+    {
+     "ticker": "RBLX",
+     "reference": 46.439998626708984,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 296,
+     "peakPct": 0.35,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "RBLX",
+      "status": "settled",
+      "p0Usd": 46.54766896,
+      "maxPremiumPct": 0.3,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "SNAP",
+     "reference": 5.420000076293945,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 389,
+     "peakPct": 0.28,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "SNAP",
+      "status": "settled",
+      "p0Usd": 5.43653504,
+      "maxPremiumPct": 0.11,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "DDOG",
+     "reference": 268.1300048828125,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 25,
+     "peakPct": 0.22,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "DDOG",
+      "status": "settled",
+      "p0Usd": 268.40555568,
+      "maxPremiumPct": 0.11,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "COST",
+     "reference": 922.77001953125,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 580,
+     "peakPct": 0.2,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "COST",
+      "status": "settled",
+      "p0Usd": 920.45309352,
+      "maxPremiumPct": 0.52,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "UPS",
+     "reference": 93.95999908447266,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 79,
+     "peakPct": 0.19,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "UPS",
+      "status": "settled",
+      "p0Usd": 94.13552008,
+      "maxPremiumPct": 0,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "TSLA",
+     "reference": 372.1099853515625,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 365,
+     "peakPct": 0.19,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "LMT",
+     "reference": 519.5599975585938,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 54,
+     "peakPct": 0.18,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "LMT",
+      "status": "settled",
+      "p0Usd": 520.48124864,
+      "maxPremiumPct": 0,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "NVDA",
+     "reference": 225.07000732421875,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 13881,
+     "peakPct": 0.17,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 5.01,
+      "paidAboveReferenceUsd": 0.14,
+      "buys": 1,
+      "wallets": 1
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "NVDA",
+      "status": "settled",
+      "p0Usd": 225.66018707,
+      "maxPremiumPct": -0.26,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "UNH",
+     "reference": 376.5899963378906,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 14,
+     "peakPct": 0.16,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "GOOGL",
+     "reference": 343.9200134277344,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 358,
+     "peakPct": 0.15,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "AMZN",
+     "reference": 249.6699981689453,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 112,
+     "peakPct": 0.14,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "LLY",
+     "reference": 1183.4599609375,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 184,
+     "peakPct": 0.09,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "LLY",
+      "status": "settled",
+      "p0Usd": 1183.33299471,
+      "maxPremiumPct": 0.1,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "SOXX",
+     "reference": 572.6799926757812,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 23,
+     "peakPct": 0.06,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "SOXX",
+      "status": "settled",
+      "p0Usd": 570.65199653,
+      "maxPremiumPct": 0,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "ASML",
+     "reference": 1743.93994140625,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 11,
+     "peakPct": 0.04,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "AAPL",
+     "reference": 341.07000732421875,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 464,
+     "peakPct": 0.03,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "SPY",
+     "reference": 771.3499755859375,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 1288,
+     "peakPct": -0.03,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "SPY",
+      "status": "skipped",
+      "p0Usd": null,
+      "maxPremiumPct": null,
+      "vsHodlPctExFees": null,
+      "state": null
+     }
+    },
+    {
+     "ticker": "EWY",
+     "reference": 187.17999267578125,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 25,
+     "peakPct": -0.04,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "BA",
+     "reference": 198.07000732421875,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 255,
+     "peakPct": -0.06,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "BA",
+      "status": "settled",
+      "p0Usd": 198.05766441,
+      "maxPremiumPct": 0,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "SLV",
+     "reference": 58.13999938964844,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 14,
+     "peakPct": -0.06,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "META",
+     "reference": 751.6599731445312,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 10878,
+     "peakPct": -0.08,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 360.04,
+      "paidAboveReferenceUsd": 11.95,
+      "buys": 2,
+      "wallets": 1
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "INDA",
+     "reference": 47.86000061035156,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 181,
+     "peakPct": -0.1,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "INDA",
+      "status": "armed",
+      "p0Usd": 48.3859115,
+      "maxPremiumPct": 0,
+      "vsHodlPctExFees": null,
+      "state": null
+     }
+    },
+    {
+     "ticker": "GLD",
+     "reference": 393.4100036621094,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 393,
+     "peakPct": -0.12,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "GLD",
+      "status": "settled",
+      "p0Usd": 392.91599509,
+      "maxPremiumPct": 0.52,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "LULU",
+     "reference": 101.30000305175781,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 109,
+     "peakPct": -0.14,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "LULU",
+      "status": "settled",
+      "p0Usd": 101.10715676,
+      "maxPremiumPct": 0.05,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "CRWV",
+     "reference": 87.58999633789062,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 64,
+     "peakPct": -0.14,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "DJT",
+     "reference": 9.140000343322754,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 1585,
+     "peakPct": -0.14,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": null
+    },
+    {
+     "ticker": "HIMS",
+     "reference": 29.420000076293945,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 74,
+     "peakPct": -0.18,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "HIMS",
+      "status": "settled",
+      "p0Usd": 29.45382698,
+      "maxPremiumPct": 0.06,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "AMC",
+     "reference": 2.940000057220459,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 1622,
+     "peakPct": -0.19,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "AMC",
+      "status": "settled",
+      "p0Usd": 2.92947626,
+      "maxPremiumPct": 0.38,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "BB",
+     "reference": 8.210000038146973,
+     "refDate": "2026-09-25",
+     "active": true,
+     "mainPoolSwaps": 50,
+     "peakPct": -0.27,
+     "hoursAbove10": 0,
+     "buysValueUsd": 0,
+     "paidAboveReferenceUsd": 0,
+     "buysAbove": 0,
+     "wallets": 0,
+     "detail2pct": {
+      "buysValueUsd": 0,
+      "paidAboveReferenceUsd": 0,
+      "buys": 0,
+      "wallets": 0
+     },
+     "recovery": null,
+     "vault": {
+      "label": "simulated",
+      "note": "logged peak below the +5% replay threshold: the ladder starts at +8%, so no fills (gas only)"
+     },
+     "paper": {
+      "ticker": "BB",
+      "status": "settled",
+      "p0Usd": 8.13618325,
+      "maxPremiumPct": 0.99,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    },
+    {
+     "ticker": "QUBT",
+     "reference": 8.960000038146973,
+     "refDate": "2026-09-25",
+     "active": false,
+     "mainPoolSwaps": 3,
+     "peakPct": null,
+     "hoursAbove10": null,
+     "buysValueUsd": 0.16,
+     "paidAboveReferenceUsd": 0.01,
+     "buysAbove": 1,
+     "wallets": 1,
+     "detail2pct": {
+      "buysValueUsd": 0.16,
+      "paidAboveReferenceUsd": 0.01,
+      "buys": 1,
+      "wallets": 1
+     },
+     "recovery": null,
+     "vault": {
+      "label": null,
+      "note": "not in the replayed universe"
+     },
+     "paper": {
+      "ticker": "QUBT",
+      "status": "settled",
+      "p0Usd": 8.12867452,
+      "maxPremiumPct": 0,
+      "vsHodlPctExFees": 0,
+      "state": "OPEN"
+     }
+    }
+   ]
+  },
   {
    "window": "2026-09-19",
    "start": "2026-09-19T00:00:00.000Z",

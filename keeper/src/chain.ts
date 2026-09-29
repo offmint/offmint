@@ -44,7 +44,11 @@ export function makeClient() {
   }
   return createPublicClient({
     chain: robinhood,
-    transport: fallback([...new Set(urls)].map((u) => http(u, { retryCount: 6, retryDelay: 1_000, timeout: 60_000 }))),
+    // Alchemy gets no retries: when it refuses (429 once the plan's monthly capacity is used up) the next URL answers at
+    // once. With retries on every URL, each call spent about a minute backing off on Alchemy first (29 Sep: the paper
+    // service's detector never finished a pass).
+    transport: fallback([...new Set(urls)].map((u) =>
+      http(u, rpcKind(u) === "alchemy" ? { retryCount: 0, timeout: 20_000 } : { retryCount: 6, retryDelay: 1_000, timeout: 60_000 }))),
   });
 }
 export type Client = ReturnType<typeof makeClient>;

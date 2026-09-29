@@ -5,7 +5,7 @@ import feedList from "../../public/data/feeds.json";
 import { maxOver } from "./claims";
 
 /**
- * Feed vs no feed, from the weekend report (every hook-free pool, 12 windows, premium held 15 min vs the official close).
+ * Feed vs no feed, from the weekend report (every hook-free pool, 13 windows, premium held 15 min vs the official close).
  * A spike = held more than 10% above the reference for an hour or more. A Chainlink feed does not make a token immune.
  */
 export const FEED_SPLIT = (() => {

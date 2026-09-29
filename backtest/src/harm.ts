@@ -58,8 +58,13 @@ console.error(`${tokens.size} registry tokens; ${pools.size} hook-free USDG pool
 // ---------------------------------------------------------------- reference closes (Yahoo daily chart, cached)
 const closesPath = join(CACHE, `closes-${since}.json`);
 const closes: Record<string, Record<string, number> | null> = existsSync(closesPath) ? JSON.parse(readFileSync(closesPath, "utf8")) : {};
+// A cached series is reused only if it already reaches the newest window's reference date; otherwise it is refetched
+// (it used to be reused forever, so each new window had no reference close and came out empty).
+const newestRef = windows.map((w) => w.refDate).sort().at(-1)!;
+const covers = (c: Record<string, number> | null) => !!c && Object.keys(c).sort().at(-1)! >= newestRef;
 for (const t of tickers) {
-  if (closes[t]) continue;
+  if (covers(closes[t])) continue;
+  const cached = closes[t];
   const sym = t.replace(".", "-");
   closes[t] = null; // failures are retried on the next run, never cached
   for (let attempt = 0; attempt < 4 && !closes[t]; attempt++) {
@@ -74,6 +79,7 @@ for (const t of tickers) {
       await new Promise((r) => setTimeout(r, 5_000 * 2 ** attempt));
     }
   }
+  if (!closes[t] && cached) closes[t] = cached; // refetch failed: keep what we had, retry next run
   await new Promise((r) => setTimeout(r, 400));
 }
 writeFileSync(closesPath, JSON.stringify(Object.fromEntries(Object.entries(closes).filter(([, v]) => v))));
