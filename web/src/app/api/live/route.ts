@@ -3,14 +3,20 @@
 // prices from Robinhood's Stock Token API (token-adjusted fields), an independent pool price from GeckoTerminal.
 // Every premium goes through the quality gate (src/lib/liveGate.ts); only verified ones reach the landing page.
 import { NextResponse } from "next/server";
-import { createPublicClient, encodeAbiParameters, http, keccak256, parseAbi, type Hex } from "viem";
+import { createPublicClient, encodeAbiParameters, fallback, http, keccak256, parseAbi, type Hex } from "viem";
 import { gate, tokenRef, type GateResult } from "@/lib/liveGate";
 
 const PAPER_API = process.env.NEXT_PUBLIC_PAPER_API || "https://offmint-keeper-production.up.railway.app";
 // Read per call, not at module load: on Cloudflare the secrets reach process.env with the request.
-const rpcUrl = () => process.env.ALCHEMY_RH_MAINNET_URL || process.env.RH_MAINNET_RPC || "https://rpc.mainnet.chain.robinhood.com";
+const publicRpcUrl = () => process.env.RH_MAINNET_RPC || "https://rpc.mainnet.chain.robinhood.com";
+// Alchemy first when set, the public RPC if Alchemy fails (e.g. 429 when the plan's monthly capacity runs out)
+const readTransport = () => {
+  const pub = http(publicRpcUrl(), { timeout: 15_000 });
+  const alchemy = process.env.ALCHEMY_RH_MAINNET_URL;
+  return alchemy ? fallback([http(alchemy, { timeout: 15_000, retryCount: 0 }), pub]) : pub;
+};
 // Alchemy's free tier limits eth_getLogs to 10 blocks: log scans use the public RPC
-const logsRpcUrl = () => process.env.RH_MAINNET_RPC || "https://rpc.mainnet.chain.robinhood.com";
+const logsRpcUrl = publicRpcUrl;
 const PM = "0x8366a39cc670b4001a1121b8f6a443a643e40951" as const;
 const SWAP_TOPIC = "0x40e9cecb9f5f1f1c5b9c97dec2917b7ee92e57ba5563708daca94dd84ad7112f" as Hex;
 const pmAbi = parseAbi(["function extsload(bytes32) view returns (bytes32)"]);
@@ -78,7 +84,7 @@ async function build(): Promise<Live> {
   let lastSwapSource: Live["lastSwapSource"] = null;
   let paperIndependent: Map<string, number> | null = null; // GeckoTerminal prices fetched by the paper service
   if (members.length) {
-    const c = createPublicClient({ transport: http(rpcUrl(), { timeout: 15_000 }) });
+    const c = createPublicClient({ transport: readTransport() });
     try {
       const slot = (id: Hex) => keccak256(encodeAbiParameters([{ type: "bytes32" }, { type: "uint256" }], [id, 6n]));
       const res = await c.multicall({

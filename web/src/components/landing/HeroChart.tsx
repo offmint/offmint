@@ -20,7 +20,8 @@ const fmtT = (t: number) => {
 };
 
 export function HeroChart() {
-  const [tc, setTc] = useState(WIN.start);
+  // Start on the final frame: no-JS and reduced-motion visitors see the finished weekend; the chart's animation rewinds it.
+  const [tc, setTc] = useState(T1);
   const crossings = useMemo(() => LADDER.map(([, hi]) => RAW.find((d) => d.usd >= P0 * (1 + hi / 100))?.t ?? null), []);
   let k = 0;
   while (k < RAW.length - 1 && RAW[k + 1].t <= tc) k++;

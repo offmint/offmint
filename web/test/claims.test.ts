@@ -7,7 +7,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { BARS, EVENTS, WORKED, DEMO, TESTS, PARAMS, FORK, LARGEST, COMMUNITY } from "../src/lib/claims";
+import { BARS, EVENTS, WORKED, DEMO, TESTS, PARAMS, FORK, LARGEST, COMMUNITY, LADDER } from "../src/lib/claims";
 import { WEEKENDS } from "../src/lib/weekends";
 import { FEED_SPLIT } from "../src/lib/feedSplit";
 import { Evidence } from "../src/components/landing/Evidence";
@@ -136,6 +136,17 @@ test("hero Friday price (P0) is read from data and its caption names the referen
   assert.ok(html.includes(`Reference $${ev.p0.toFixed(2)} is the pool price at Fri 20:00 UTC`), "caption states which reference, from data");
   assert.equal(ev.p0, ev.screen.p0, "P0 is the screen's reference, not derived from the premium");
   if (ev.nyseClose !== null) assert.ok(html.includes(`NYSE close $${ev.nyseClose.toFixed(2)}`), "NYSE close shown next to it");
+});
+
+test("hero card without JS (and with reduced motion) shows the final frame, not +0.0% / 0 of 4", () => {
+  const html = renderToStaticMarkup(createElement(HeroChart));
+  const ev = EVENTS[0];
+  const pct = (ev.screen.maxPremiumPct as number).toFixed(1);
+  assert.equal(pct, "317.6");
+  assert.ok(html.includes(`+${pct}%`), `peak +${pct}% shown`);
+  assert.ok(html.includes(`${LADDER.length}/${LADDER.length} sell steps reached`), "every step reached");
+  assert.ok(!html.includes("+0.0%"), "no zero frame");
+  assert.ok(html.includes("Minting on"), "Monday reopen reached");
 });
 
 test("every fork-derived number shows its pinned block (AIRTIGHT 13, FINISH B5)", () => {

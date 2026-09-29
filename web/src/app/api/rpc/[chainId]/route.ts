@@ -9,7 +9,7 @@ const upstreamFor = (chainId: string): string | undefined => ({
   "46630": process.env.ALCHEMY_RH_TESTNET_URL || process.env.RH_TESTNET_RPC || "https://rpc.testnet.chain.robinhood.com",
   "4663": process.env.ALCHEMY_RH_MAINNET_URL || process.env.RH_MAINNET_RPC || "https://rpc.mainnet.chain.robinhood.com",
 } as Record<string, string>)[chainId];
-// Alchemy's free tier limits eth_getLogs to 10 blocks, so log queries go to the public endpoint
+// The public endpoint: log queries (Alchemy's free tier limits eth_getLogs to 10 blocks) and the fallback
 const logsFor = (chainId: string): string => ({
   "46630": process.env.RH_TESTNET_RPC || "https://rpc.testnet.chain.robinhood.com",
   "4663": process.env.RH_MAINNET_RPC || "https://rpc.mainnet.chain.robinhood.com",
@@ -38,6 +38,12 @@ export async function POST(req: Request, { params }: { params: Promise<{ chainId
     return NextResponse.json({ error: "method not allowed" }, { status: 403 });
   }
   const target = calls.some((c) => c.method === "eth_getLogs") ? logsFor(chainId) : upstream;
-  const r = await fetch(target, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+  const send = (url: string) =>
+    fetch(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body), signal: AbortSignal.timeout(15_000) })
+      .catch(() => null);
+  let r = await send(target);
+  // Alchemy refused or unreachable (429 when the plan's monthly capacity runs out, 5xx, network error): use the public endpoint
+  if ((!r || r.status === 429 || r.status >= 500) && target !== logsFor(chainId)) r = await send(logsFor(chainId));
+  if (!r) return NextResponse.json({ error: "upstream unreachable" }, { status: 502 });
   return new NextResponse(await r.text(), { status: r.status, headers: { "content-type": "application/json" } });
 }
