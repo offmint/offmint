@@ -35,6 +35,13 @@ Not on its own. In 12 mint-off windows, a premium above 10% held for an hour or 
 feed (LMT +53.5% on 5 Sep, for 13.2 h) and 3 on tokens with one (MSTR, RKLB). The largest names (NVDA, TSLA, AAPL, SPY)
 stayed within 2.6%. A feed helps a vault price its buyback; it doesn't add supply on a weekend.
 
+**A Bitget entry (Blackout Desk) found most weekend gaps on Bitget rTokens close because the reference catches up, not the token. Doesn't that apply here?**
+Yes, for most weekend moves. Many are real news: the stock itself moves and Monday's reference catches up. If the move
+stays below the first step (+8%), Offmint does nothing. If it goes past, Offmint sells, Monday opens near the new level,
+and the capped buyback can't get everything back: a small loss. It pays only on scarcity spikes, where the token trades
+far above a reference that then doesn't follow. That is why a normal weekend is about 0% (nothing sold on 191 of 198
+replayed ticker-weekends).
+
 **What stops the keeper from stealing?**
 Nothing to steal with: the keeper can only arm with a ladder at least as conservative as the default, lock, and settle
 within the caps. Owner and keeper can never receive funds (invariant-tested). If the keeper stops, anyone can arm or

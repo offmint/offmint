@@ -47,6 +47,9 @@ The cached screen result simply predated the fix.
 
 ## 4. What changed on the site
 - MSTR is now a bar in the comparison ("has a Chainlink feed · 29 Aug", +243.3%).
+- Where each number appears (checked on the live site 29 Sep): **+243.3%** (highest traded) on the landing's
+  comparison bars, README and HACKQUEST; **+166.5%** (highest held 15 min) on the landing's ticker strip, `/weekends` and
+  `/weekends/2026-08-29`. Each surface names its measure.
 - Removed the claim "feed-backed names stay calm". New wording: new listings without a feed spiked on two
   weekends; MSTR, which has a feed, spiked the same weekend as HIMS; the largest names stayed within a few percent.
 

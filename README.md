@@ -8,7 +8,7 @@ minting was off.
 
 <p align="center"><img src="docs/screenshots/D3/hero-1440.png" alt="The real HIMS weekend, 29–31 Aug 2026: every swap as 15-minute candles, Offmint's four sell steps above Friday's price" width="900"></p>
 
-**Live:** [paper mode on mainnet, every weekend](https://offmint-keeper-production.up.railway.app/paper/index.json) ·
+**Live:** [the site](https://offmint-web.offmintfinance.workers.dev) · [paper mode on mainnet, every weekend](https://offmint-keeper-production.up.railway.app/paper/index.json) ·
 [contracts on Blockscout (testnet)](https://explorer.testnet.chain.robinhood.com/address/0x2ea8dF9feA9DDEBb0abf774aE46E1DFF9a6E4285) ·
 [latest CI](https://github.com/offmint/offmint/actions) · **Unaudited. Testnet only.**
 

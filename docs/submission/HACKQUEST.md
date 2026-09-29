@@ -11,7 +11,7 @@ exists only while minting is off, placed only above the reference price, with a 
 ## Links
 | | |
 |---|---|
-| Site | PUBLIC URL (added at D1, Cloudflare) |
+| Site | https://offmint-web.offmintfinance.workers.dev |
 | Repo | https://github.com/offmint/offmint |
 | Contracts (testnet 46630, source-verified) | https://explorer.testnet.chain.robinhood.com/address/0x2ea8dF9feA9DDEBb0abf774aE46E1DFF9a6E4285 (community vault); full table in README |
 | Live paper mode (mainnet, read-only) | https://offmint-keeper-production.up.railway.app/paper/index.json |
