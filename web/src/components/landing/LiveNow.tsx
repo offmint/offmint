@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { sessionNow } from "./StatBand";
 import { Token } from "@/components/TokenLogo";
 import { GATE } from "@/lib/liveGate";
+import { fetchLive } from "@/lib/liveFetch";
 
 interface Row { ticker: string; token: string; poolUsd: number | null; refUsd: number | null; premiumPct: number | null; depthUsdTo10: number; poolAgeDays: number; verified: boolean; reasons: string[] }
 interface Live { basket: { live: boolean; count: number | null }; rows: Row[]; updatedAt: string; verifiedCount: number }
@@ -14,7 +15,7 @@ const usd = (x: number | null, d = 2) => (x === null ? "—" : `$${x.toLocaleStr
 export function LiveNow() {
   const [live, setLive] = useState<Live | null | "error">(null);
   useEffect(() => {
-    const load = () => fetch("/api/live").then((r) => r.json()).then(setLive).catch(() => setLive("error"));
+    const load = () => fetchLive<Live>().then(setLive).catch(() => setLive("error"));
     load();
     const t = setInterval(load, 60_000);
     return () => clearInterval(t);

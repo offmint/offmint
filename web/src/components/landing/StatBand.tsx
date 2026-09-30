@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { LARGEST, EVENTS } from "@/lib/claims";
 import { GATE } from "@/lib/liveGate";
 import { Token } from "@/components/TokenLogo";
+import { fetchLive } from "@/lib/liveFetch";
 
 /** Weekend window (SessionClock): Sat 00:00 -> Mon 00:00 UTC. Returns whether minting is off and the next flip. */
 export function sessionNow(ms: number) {
@@ -28,7 +29,7 @@ export function StatBand() {
   useEffect(() => {
     setNow(Date.now());
     const t = setInterval(() => setNow(Date.now()), 30_000);
-    const load = () => fetch("/api/live").then((r) => r.json()).then(setLive).catch(() => setLive("error"));
+    const load = () => fetchLive<Live>().then(setLive).catch(() => setLive("error"));
     load();
     const u = setInterval(load, 60_000);
     return () => { clearInterval(t); clearInterval(u); };

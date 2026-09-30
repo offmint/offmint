@@ -34,6 +34,7 @@ export interface Live {
 }
 
 let cache: { at: number; body: Live } | null = null;
+let lastGood: { at: number; body: Live } | null = null;
 let gecko: { at: number; prices: Map<string, number> } | null = null;
 
 async function geckoPrices(poolIds: string[], errors: string[]): Promise<Map<string, number>> {
@@ -85,24 +86,14 @@ async function build(): Promise<Live> {
   let paperIndependent: Map<string, number> | null = null; // GeckoTerminal prices fetched by the paper service
   if (members.length) {
     const c = createPublicClient({ transport: readTransport() });
-    try {
-      const slot = (id: Hex) => keccak256(encodeAbiParameters([{ type: "bytes32" }, { type: "uint256" }], [id, 6n]));
-      const res = await c.multicall({
-        contracts: members.map((m) => ({ address: PM, abi: pmAbi, functionName: "extsload" as const, args: [slot(m.pool.poolId)] as const })),
-        allowFailure: true,
-        multicallAddress: "0xcA11bde05977b3631167028862bE2a173976CA11",
-      });
-      members.forEach((m, i) => {
-        if (res[i].status !== "success") return;
-        const sqrt = Number(BigInt(res[i].result as Hex) & ((1n << 160n) - 1n)) / 2 ** 96;
-        const p = sqrt * sqrt; // currency1 raw per currency0 raw
-        if (p > 0) pool.set(m.token, m.pool.stockIsCurrency0 ? p * 1e12 : 1e12 / p); // 18-dec stock vs 6-dec USDG
-      });
-    } catch (e) {
-      errors.push(`pools: ${String(e).slice(0, 80)}`);
-    }
-    // Last swap per pool. First choice: the paper service's scan (keeper/src/lastSwaps.ts, its own IP): on Cloudflare the
-    // public RPC rate-limits the shared egress IPs and Alchemy's free tier allows 10-block log queries. Fallback: scan here.
+    const usdOf = (m: any, sqrtX96: bigint) => {
+      const sqrt = Number(sqrtX96) / 2 ** 96;
+      const p = sqrt * sqrt; // currency1 raw per currency0 raw
+      return p > 0 ? (m.pool.stockIsCurrency0 ? p * 1e12 : 1e12 / p) : null; // 18-dec stock vs 6-dec USDG
+    };
+    // First choice for pool prices and last swaps: the paper service (keeper/src/lastSwaps.ts), refreshed every 2 min
+    // from its own IP. On Cloudflare the public RPC sometimes refuses the shared egress IPs, and Alchemy's free tier
+    // allows 10-block log queries. Fallback: read here.
     try {
       const r = await fetch(`${PAPER_API}/last-swaps.json`, { cache: "no-store", signal: AbortSignal.timeout(8000) });
       const ls = r.ok ? await r.json() : null;
@@ -111,15 +102,45 @@ async function build(): Promise<Live> {
         paperIndependent = new Map(Object.entries(ls.independent.prices as Record<string, number>));
       }
       if (ls?.updatedAt && Date.now() - Date.parse(ls.updatedAt) < 10 * 60_000) {
-        nowTs = Number((await c.getBlock()).timestamp);
+        nowTs = Math.floor(Date.now() / 1000); // chain timestamps track wall-clock time; no RPC call needed
         for (const m of members) {
-          const ts = ls.pools?.[String(m.pool.poolId).toLowerCase()];
+          const id = String(m.pool.poolId).toLowerCase();
+          const ts = ls.pools?.[id];
           if (ts) lastSwap.set(m.token, Math.max(0, nowTs - ts));
+          const sq = ls.sqrtPriceX96?.[id];
+          const usd = sq ? usdOf(m, BigInt(sq)) : null;
+          if (usd) pool.set(m.token, usd);
         }
         lastSwapSource = "paper-service";
       }
     } catch {
-      // fall through to the direct scan
+      // fall through to reading the chain here
+    }
+    const unpriced = members.filter((m) => !pool.has(m.token));
+    if (unpriced.length) try {
+      const slot = (id: Hex) => keccak256(encodeAbiParameters([{ type: "bytes32" }, { type: "uint256" }], [id, 6n]));
+      // One eth_call for all of them (batchSize 0: no chunking), retried on failure. With viem's default 1 KB chunks, a
+      // refused chunk marked its pools as failed silently and the page showed "no pool price".
+      const read = () => c.multicall({
+        contracts: unpriced.map((m) => ({ address: PM, abi: pmAbi, functionName: "extsload" as const, args: [slot(m.pool.poolId)] as const })),
+        allowFailure: true,
+        batchSize: 0,
+        multicallAddress: "0xcA11bde05977b3631167028862bE2a173976CA11",
+      });
+      let res = await read();
+      for (let attempt = 1; attempt < 3 && res.some((x) => x.status !== "success"); attempt++) {
+        await new Promise((r) => setTimeout(r, 500 * attempt));
+        res = await read();
+      }
+      const failed = res.filter((x) => x.status !== "success").length;
+      if (failed) errors.push(`pools: ${failed} of ${members.length} pool reads failed`);
+      unpriced.forEach((m, i) => {
+        if (res[i].status !== "success") return;
+        const usd = usdOf(m, BigInt(res[i].result as Hex) & ((1n << 160n) - 1n));
+        if (usd) pool.set(m.token, usd);
+      });
+    } catch (e) {
+      errors.push(`pools: ${String(e).slice(0, 80)}`);
     }
     if (!lastSwapSource) try {
       // last swap per pool within the last 6 h (estimate the block rate from the chain itself)
@@ -180,6 +201,14 @@ async function build(): Promise<Live> {
 }
 
 export async function GET() {
-  if (!cache || Date.now() - cache.at > 60_000) cache = { at: Date.now(), body: await build() };
-  return NextResponse.json(cache.body, { headers: { "cache-control": "public, max-age=30" } });
+  // A failed read (ok false or pool reads failed: the public RPC sometimes refuses Cloudflare's shared IPs) is kept for
+  // 10 s only, and while it lasts visitors get the last good result (up to 15 min old; its updatedAt says when).
+  const bad = (b: Live) => !b.ok || b.errors.some((e) => e.startsWith("pools:"));
+  const ttl = cache && bad(cache.body) ? 10_000 : 60_000;
+  if (!cache || Date.now() - cache.at > ttl) {
+    cache = { at: Date.now(), body: await build() };
+    if (!bad(cache.body)) lastGood = cache;
+  }
+  const body = bad(cache.body) && lastGood && Date.now() - lastGood.at < 15 * 60_000 ? lastGood.body : cache.body;
+  return NextResponse.json(body, { headers: { "cache-control": "public, max-age=30" } });
 }

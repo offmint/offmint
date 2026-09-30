@@ -4,8 +4,8 @@
 // reads GET /last-swaps.json. Incremental: the first run looks back LOOKBACK_SEC, later runs scan only new blocks.
 // The same route carries GeckoTerminal's pool prices (the gate's independent check), fetched here for the same reason:
 // GeckoTerminal rate-limits Cloudflare's shared IPs too.
-import type { Hex } from "viem";
-import { blockAtOrBefore, swapLogs, type Client, type SwapLog } from "./chain.js";
+import { encodeAbiParameters, keccak256, parseAbi, type Hex } from "viem";
+import { blockAtOrBefore, POOL_MANAGER, swapLogs, type Client, type SwapLog } from "./chain.js";
 
 export const LOOKBACK_SEC = 6 * 3600;
 
@@ -17,10 +17,13 @@ export interface LastSwaps {
   pools: Record<string, number>;
   /** basket pools already scanned from the look-back start (so a quiet pool isn't rescanned every run) */
   knownPools: string[];
+  /** poolId (lowercase) -> sqrtPriceX96 (decimal string) at `scannedTo`: the web reads pool prices from here, because the
+   *  public RPC sometimes refuses Cloudflare's shared IPs (29 Sep: 1 in 5 page loads had no pool prices) */
+  sqrtPriceX96: Record<string, string>;
   error: string | null;
 }
 
-export const emptyLastSwaps = (): LastSwaps => ({ updatedAt: null, scannedTo: null, lookbackSec: LOOKBACK_SEC, pools: {}, knownPools: [], error: null });
+export const emptyLastSwaps = (): LastSwaps => ({ updatedAt: null, scannedTo: null, lookbackSec: LOOKBACK_SEC, pools: {}, knownPools: [], sqrtPriceX96: {}, error: null });
 
 /** Fold new swap logs into the state: keep the latest time per pool, drop pools outside the look-back or the basket. */
 export function mergeLastSwaps(prev: Record<string, number>, logs: Pick<SwapLog, "poolId" | "ts" | "liquidity">[], basket: string[], now: number): Record<string, number> {
@@ -59,8 +62,31 @@ export async function refreshLastSwaps(c: Client, state: LastSwaps, basketPoolId
     lookbackSec: LOOKBACK_SEC,
     pools: mergeLastSwaps(state.pools, logs, ids, now),
     knownPools: ids,
+    sqrtPriceX96: await poolPrices(c, ids, latest.number),
     error: null,
   };
+}
+
+const pmAbi = parseAbi(["function extsload(bytes32) view returns (bytes32)"]);
+/** sqrtPriceX96 of every pool at one block, in a single eth_call (PoolManager `extsload` of the pool's slot0). */
+export async function poolPrices(c: Client, ids: Hex[], block: bigint): Promise<Record<string, string>> {
+  if (!ids.length) return {};
+  const slot = (id: Hex) => keccak256(encodeAbiParameters([{ type: "bytes32" }, { type: "uint256" }], [id, 6n]));
+  const res = await c.multicall({
+    contracts: ids.map((id) => ({ address: POOL_MANAGER, abi: pmAbi, functionName: "extsload" as const, args: [slot(id)] as const })),
+    allowFailure: true,
+    batchSize: 0,
+    blockNumber: block,
+    multicallAddress: "0xcA11bde05977b3631167028862bE2a173976CA11",
+  });
+  const out: Record<string, string> = {};
+  ids.forEach((id, i) => {
+    const r = res[i];
+    if (r.status !== "success") return;
+    const sqrt = BigInt(r.result as Hex) & ((1n << 160n) - 1n);
+    if (sqrt > 0n) out[id] = sqrt.toString();
+  });
+  return out;
 }
 
 /** GeckoTerminal price of the stock token in USDG, per pool (lowercase poolId). Same parsing as web/src/app/api/live. */

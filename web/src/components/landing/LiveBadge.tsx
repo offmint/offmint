@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { TickerBadge } from "@/components/Brand";
+import { fetchLive } from "@/lib/liveFetch";
 
 interface Live { basket: { live: boolean; count: number | null }; rows?: { ticker?: string }[] }
 
@@ -8,7 +9,7 @@ interface Live { basket: { live: boolean; count: number | null }; rows?: { ticke
 export function LiveBadge() {
   const [live, setLive] = useState<Live | null | "error">(null);
   useEffect(() => {
-    fetch("/api/live").then((r) => r.json()).then(setLive).catch(() => setLive("error"));
+    fetchLive<Live>().then(setLive).catch(() => setLive("error"));
   }, []);
   const L = live && live !== "error" && live.basket.live ? live.basket : null;
   const tickers = live && live !== "error" ? (live.rows ?? []).map((r) => r.ticker).filter((t): t is string => !!t).slice(0, 3) : [];

@@ -4,6 +4,7 @@ import { PAPER_API } from "@/lib/config";
 import { Countdown } from "@/components/Countdown";
 import { usd } from "@/lib/format";
 import { Token } from "@/components/TokenLogo";
+import { fetchLive } from "@/lib/liveFetch";
 
 interface Member { ticker: string; token: string; hasFeed: boolean; poolAgeDays: number; tvlUsd: number; depthUsdTo10: number; priceUsd: number | null; path: string }
 interface Basket { generatedAt: string; rule?: string; counts: Record<string, number>; members: Member[]; excluded: { ticker: string; reason: string }[] }
@@ -21,7 +22,7 @@ export default function Monitor() {
       Promise.all([fetch(`${PAPER_API}/basket.json`).then((r) => r.json()), fetch(`${PAPER_API}/health`).then((r) => r.json())])
         .then(([b, h]) => { setBasket(b); setHealth(h); setErr(null); })
         .catch((e) => setErr(String(e)));
-    const loadLive = () => fetch("/api/live").then((r) => r.json()).then((d) => setLive(new Map((d.rows as LiveRow[]).map((r) => [r.token, r])))).catch(() => {});
+    const loadLive = () => fetchLive().then((d) => setLive(new Map((d.rows as LiveRow[]).map((r) => [r.token, r])))).catch(() => {});
     load();
     loadLive();
     const t = setInterval(() => { load(); loadLive(); }, 60_000);

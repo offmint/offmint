@@ -29,8 +29,14 @@ URLs. No Cloudflare token lives in GitHub. Worker config: `web/wrangler.jsonc`.
    | `NEXT_PUBLIC_WC_PROJECT_ID` | optional: a WalletConnect/Reown project ID; without it the site offers browser-extension wallets only |
 
 4. **Runtime variables** (Settings → Variables and secrets; read by the server routes at request time):
-   `ALCHEMY_RH_MAINNET_URL`, `ALCHEMY_RH_TESTNET_URL` (set, 27 Sep). Without them the site uses the public RPC.
-   `wrangler.jsonc` has `keep_vars: true`, so a deploy from the terminal keeps them; they are never in the repo.
+   `ALCHEMY_RH_MAINNET_URL`, `ALCHEMY_RH_TESTNET_URL`: optional. **Removed 30 Sep** (both keys had used up their monthly
+   capacity, HTTP 429): the site runs on the public RPC. Pool prices and last swaps come from the paper service's
+   `/last-swaps.json` (its own IP; the public RPC sometimes refuses Cloudflare's shared IPs), with an onchain read as the
+   fallback. `wrangler.jsonc` has `keep_vars: true`, so a terminal deploy keeps any dashboard variables.
+
+   **Deploying from the terminal** (Workers Builds did not pick up the 29 Sep pushes):
+   `cd web && CLOUDFLARE_API_TOKEN=… NEXT_PUBLIC_SITE_URL=https://offmint-web.offmintfinance.workers.dev npm run cf:deploy`.
+   The token is an account API token with Workers edit rights; never commit it.
 5. The first deploy happens on save. After it, copy the workers.dev URL into `NEXT_PUBLIC_SITE_URL` and retry the
    build once (Deployments → Retry build) so share cards carry the right absolute URL.
 
