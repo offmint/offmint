@@ -55,12 +55,21 @@ Robinhood's own quote × multiplier (applied once), posted by a separate key wit
 post. The owner can freeze it.
 
 **Robinhood is adding market makers. Doesn't that kill this?**
-It narrows the window, and that's good for users. Weekends, holidays and halts remain, and new listings arrive thin.
+It narrows the window, and that's good for users. New listings still arrive thin, and that's where the spikes happened.
 In a Bankless interview ([reported by BigGo Finance](https://finance.biggo.com/news/4691062f7e0b2bb5)), Robinhood's Johann Kerbrat said the main fix is
 market-maker depth, with Uniswap pools where users lend stock tokens as part of the liquidity. He also separated news-driven
 gaps from supply-crunch premiums, where too few tokens were minted for demand. The vault is that user-supplied pool
 depth, aimed at the supply-crunch case. Robinhood's [launch announcement](https://robinhood.com/us/en/newsroom/robinhood-accelerates-global-expansion-robinhood-chain-mainnet-stock-tokens-agentic-trading/) also lists deploying Stock Tokens into
 lending pools.
+
+**What if Robinhood trades stocks on weekends?**
+It confirms the demand: people want to trade when news breaks on a Saturday. On 29 Sep 2026 Robinhood announced 24/7
+trading, weekends included, for a curated list of US stocks and ETFs in its brokerage app (via Bruce ATS), pending
+regulatory review and planned for early next year ([Robinhood newsroom](https://robinhood.com/us/en/newsroom/hood-summit-2026/)). It isn't live yet. It starts with a
+curated list, and the announcement doesn't mention Stock Tokens: today new tokens can still only be minted inside the
+tokenization window. Thin new listings, where our spikes happened, may stay outside that list. And where a live weekend
+price does exist, the ladder can anchor to it instead of Friday's close, so it sells only into scarcity above the real
+price, not into news. That is on the roadmap.
 
 **What about MetaVault?**
 Experimental, coming later. Its weekly picker, replayed with only the data it would have had, did not pick HIMS.

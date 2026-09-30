@@ -77,7 +77,8 @@ fewer tokens (the stress test saw −0.49% on one weekend). Unaudited, testnet o
 - Unaudited. Testnet only. Not available to US persons.
 
 ## Roadmap
-Testnet (now) → audit → capped mainnet → RFQ/aggregator buybacks → launchpad pool supply → other tokenized-stock issuers
+Testnet (now) → audit → capped mainnet → RFQ/aggregator buybacks → live weekend reference price where one exists →
+launchpad pool supply → other tokenized-stock issuers
 → onchain canonical-token check in the factory.
 
 ## Team and disclosure

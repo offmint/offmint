@@ -64,12 +64,14 @@ official close; feed list from Chainlink's directory, [feeds.json](web/public/da
 basket, which is why Offmint works from a live basket (a detector rebuilds it every 6 hours) instead of a fixed list.
 Reference: the Chainlink close where a feed exists, otherwise the pool price at Fri 20:00 UTC. Data: `web/public/data/screen/weekends.json`.
 
-## Why it is structural
+## Why it happens
 New tokens can only be created while the underlying share can be bought: Robinhood's tokenization window runs Monday
 02:00 to Saturday 02:00 CET/CEST and is closed on US market holidays; outside it, minting and burning are not supported
 while trading continues onchain ([Robinhood Chain docs](https://docs.robinhood.com/chain/stock-tokens/),
-[About Stock Tokens](https://robinhood.com/eu/en/support/articles/about-stock-tokens)). Even if those hours grow,
-weekends, holidays and trading halts remain.
+[About Stock Tokens](https://robinhood.com/eu/en/support/articles/about-stock-tokens)). This can change: on 29 Sep 2026
+Robinhood announced 24/7 trading, weekends included, for a curated list of US stocks and ETFs in its brokerage app,
+pending regulatory review and planned for early next year ([Robinhood newsroom](https://robinhood.com/us/en/newsroom/hood-summit-2026/)). It isn't live yet and the
+announcement doesn't mention Stock Tokens; see [QA](docs/submission/QA.md) ("What if Robinhood trades stocks on weekends?").
 
 ## What Offmint does
 1. **Friday: post the ladder.** When token creation closes, the vault posts four one-sided Uniswap v4 range orders
@@ -136,9 +138,11 @@ The fee recipient is immutable and can never be the owner or keeper. Bounds are 
 2. **Audit** before any real funds.
 3. **Capped mainnet**: small deposit caps per pool, sized to what the Monday buyback can absorb.
 4. **Bigger buybacks**: RFQ or aggregator routes on Monday, so capacity isn't limited by one pool's depth.
-5. **Launchpad pool supply**: offer the weekend ladder to issuers and launchpads at listing time.
-6. **Other issuers** of tokenized stocks with the same minting gap.
-7. **Onchain canonical-token check**: replace the owner-curated token list with an onchain registry check.
+5. **Live weekend reference**: when a live weekend price exists for a stock (for example Robinhood's planned 24/7
+   trading), anchor the ladder to it instead of Friday's close.
+6. **Launchpad pool supply**: offer the weekend ladder to issuers and launchpads at listing time.
+7. **Other issuers** of tokenized stocks with the same minting gap.
+8. **Onchain canonical-token check**: replace the owner-curated token list with an onchain registry check.
 
 ## Try it
 - **Sandbox (no wallet):** `/sandbox` walks through one weekend step by step in your browser, using the same engine

@@ -38,6 +38,7 @@ Every public number or claim, where it comes from, and its status. Generated fro
 | Minting off, 2026 | 2,736 h of 8,760 h = 31.23% | mintoff.json (Robinhood window + NYSE holidays; holiday 02:00–02:00 Berlin assumption) | verified (computed from sources) | landing mint-off section, /weekends, fact carousel, stat row |
 | Sell order contracts (testnet) | PositionManager 0x58daec3116aae6D93017bAAea7749052E8a04fA7, Permit2 0x000000000022D473030F116dDEE9F6B43aC78BA3 | docs/verification/sellorder-gate.md (fork run) | verified (fork) | /sell, README |
 | Sandbox | illustrative market, real vault rules | web/src/lib/sandbox.ts on keeper/src/supplyReplay.ts | simulated | /sandbox |
+| Robinhood weekend trading (announced, not live) | 24/7 incl. weekends, curated list of US stocks and ETFs, brokerage app via Bruce ATS, pending regulatory review, "early next year"; no mention of Stock Tokens | https://robinhood.com/us/en/newsroom/hood-summit-2026/ (29 Sep 2026) | sourced (announcement) | FAQ, QA, README |
 
 ## Removed or corrected
 | Was | Now | Why |

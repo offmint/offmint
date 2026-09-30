@@ -16,6 +16,10 @@ const QA: [string, string][] = [
     "Not at today's size. Our replays show it can trim a thin pool's peak, but the buyback on Monday is limited by pool depth, so capacity is small. We say so rather than claim we fix the market.",
   ],
   [
+    "What if Robinhood trades stocks on weekends?",
+    "It confirms the demand. On 29 Sep 2026 Robinhood announced 24/7 trading, weekends included, for a curated list of US stocks and ETFs in its app, pending regulatory review and planned for early next year (Robinhood newsroom). It isn't live yet, it starts with a curated list, and the announcement doesn't mention Stock Tokens: new tokens can still only be minted inside the tokenization window. Thin new listings, where the spikes we measured happened, may stay outside that list. Where a live weekend price does exist, the ladder can anchor to it instead of Friday's close, so it sells only into scarcity, not into news.",
+  ],
+  [
     "Why is capacity so small?",
     c.capacityUsd !== null
       ? `On Monday the vault must buy back within 1% of the fresh price. In our replays that absorbed about $${Math.round(c.capacityUsd).toLocaleString("en-US")} per pool (middle of ${c.capacityEvents} capped weekends). Deeper pools or other buyback routes would raise it.`

@@ -7,7 +7,7 @@ Numbers from docs/CLAIMS.md. One idea per slide.
 - Visual: the HIMS weekend chart, **+317.6%** over Friday's reference (29 Aug 2026).
 - Footer: Unaudited · Robinhood Chain testnet · offmint (repo link).
 
-## 2. The problem is structural and it recurs
+## 2. The problem is real and it recurs today
 - Minting off **31.2% of 2026** (2,736 of 8,760 h).
 - **$3,615,326 paid above the reference** by **23,306 wallets** in 13 windows since 1 Jul.
 - Different token each time (HIMS, GLXY, MSTR…): >10% held 1 h+ in **4 of 12** windows, but only 3.1% of token-weekends.
@@ -26,4 +26,5 @@ Numbers from docs/CLAIMS.md. One idea per slide.
 ## 5. Honest size, clear path
 - Per $1,000 (simulated): big spike +3.8% to +7.1%, normal weekend ~0%, worst −0.1%. Capacity ≈ $1,647 per pool today.
 - It can lose: a Monday gap-up can leave you with fewer tokens.
-- Roadmap: audit → capped mainnet → RFQ/aggregator buybacks → launchpad pool supply → other issuers.
+- Roadmap: audit → capped mainnet → RFQ/aggregator buybacks → live weekend reference where one exists → launchpad pool
+  supply → other issuers.
