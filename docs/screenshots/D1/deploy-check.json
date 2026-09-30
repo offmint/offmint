@@ -1,0 +1,178 @@
+{
+  "base": "https://offmint-web.offmintfinance.workers.dev",
+  "at": "2026-09-30T06:50:38.471Z",
+  "pages": [
+    {
+      "route": "/",
+      "width": 1440,
+      "status": 200,
+      "errors": [],
+      "overflowPx": 0
+    },
+    {
+      "route": "/monitor",
+      "width": 1440,
+      "status": 200,
+      "errors": [],
+      "overflowPx": 0
+    },
+    {
+      "route": "/weekends",
+      "width": 1440,
+      "status": 200,
+      "errors": [],
+      "overflowPx": 0
+    },
+    {
+      "route": "/weekends/2026-08-29",
+      "width": 1440,
+      "status": 200,
+      "errors": [],
+      "overflowPx": 0
+    },
+    {
+      "route": "/sell",
+      "width": 1440,
+      "status": 200,
+      "errors": [],
+      "overflowPx": 0
+    },
+    {
+      "route": "/app",
+      "width": 1440,
+      "status": 200,
+      "errors": [],
+      "overflowPx": 0
+    },
+    {
+      "route": "/sandbox",
+      "width": 1440,
+      "status": "nav error: page.goto: Timeout 90000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://of",
+      "errors": [],
+      "overflowPx": 0
+    },
+    {
+      "route": "/vault/HIMS",
+      "width": 1440,
+      "status": 200,
+      "errors": [],
+      "overflowPx": 0
+    },
+    {
+      "route": "/backtest",
+      "width": 1440,
+      "status": 200,
+      "errors": [],
+      "overflowPx": 0
+    },
+    {
+      "route": "/paper",
+      "width": 1440,
+      "status": 200,
+      "errors": [],
+      "overflowPx": 0
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "status": 200,
+      "errors": [],
+      "overflowPx": 0
+    },
+    {
+      "route": "/monitor",
+      "width": 390,
+      "status": 200,
+      "errors": [],
+      "overflowPx": 0
+    },
+    {
+      "route": "/weekends",
+      "width": 390,
+      "status": 200,
+      "errors": [],
+      "overflowPx": 0
+    },
+    {
+      "route": "/weekends/2026-08-29",
+      "width": 390,
+      "status": 200,
+      "errors": [],
+      "overflowPx": 0
+    },
+    {
+      "route": "/sell",
+      "width": 390,
+      "status": 200,
+      "errors": [],
+      "overflowPx": 0
+    },
+    {
+      "route": "/app",
+      "width": 390,
+      "status": 200,
+      "errors": [],
+      "overflowPx": 0
+    },
+    {
+      "route": "/sandbox",
+      "width": 390,
+      "status": 200,
+      "errors": [],
+      "overflowPx": 0
+    },
+    {
+      "route": "/vault/HIMS",
+      "width": 390,
+      "status": 200,
+      "errors": [],
+      "overflowPx": 0
+    },
+    {
+      "route": "/backtest",
+      "width": 390,
+      "status": 200,
+      "errors": [],
+      "overflowPx": 0
+    },
+    {
+      "route": "/paper",
+      "width": 390,
+      "status": 200,
+      "errors": [],
+      "overflowPx": 0
+    }
+  ],
+  "live": {
+    "monitor": {
+      "ok": true,
+      "rpc": "public",
+      "basketLive": true,
+      "rows": 66,
+      "verified": 20,
+      "errors": [],
+      "pricedRowsOnPage": 66
+    },
+    "weekends": {
+      "paidAbove": true,
+      "valueOfBuys": true,
+      "liveObservation": true
+    }
+  },
+  "wallet": [
+    {
+      "width": 1440,
+      "connected": true,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "connected": true,
+      "errors": []
+    }
+  ],
+  "rpcPerMinute": 28,
+  "fail": [
+    "/sandbox @1440: {\"route\":\"/sandbox\",\"width\":1440,\"status\":\"nav error: page.goto: Timeout 90000ms exceeded.\\nCall log:\\n\\u001b[2m  - navigating to \\\"https://of\",\"errors\":[],\"overflowPx\":0}"
+  ]
+}
